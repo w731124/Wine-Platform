@@ -24,7 +24,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 4, tannin: 5, body: 5, alcohol: 4, finish: 5 },
       aromaWheel: ['Cassis', 'Graphite', 'Cedar', 'Blackberry'],
       foodPairingTags: ['High Fat', 'Red Meat', 'Hard Cheese'],
-      radarStats: { tannin: 9.5, acidity: 7.5, body: 9, aging: 9.5, floral: 3.5 }
+      radarStats: { tannin: 9.5, acidity: 7.5, body: 9, aging: 9.5, floral: 3.5 },
+      wineColor: 'red',
+      profile: { tannin: 9, acidity: 8, body: 9, alcohol: 8, finish: 9, aging: 10, floral: 3 },
     },
     {
       id: 'margaux',
@@ -45,7 +47,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 4, tannin: 4, body: 4, alcohol: 4, finish: 5 },
       aromaWheel: ['Violet', 'Cassis', 'Pencil Shavings', 'Rose'],
       foodPairingTags: ['Red Meat', 'Moderate Fat', 'Mushroom Umami'],
-      radarStats: { tannin: 8, acidity: 7, body: 7.5, aging: 9, floral: 7 }
+      radarStats: { tannin: 8, acidity: 7, body: 7.5, aging: 9, floral: 7 },
+      wineColor: 'red',
+      profile: { tannin: 7, acidity: 7, body: 7, alcohol: 7, finish: 9, aging: 9, floral: 8 },
     },
     {
       id: 'saint-emilion',
@@ -66,7 +70,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 3, tannin: 3, body: 4, alcohol: 4, finish: 4 },
       aromaWheel: ['Red Plum', 'Chocolate', 'Truffle', 'Cherry'],
       foodPairingTags: ['Moderate Fat', 'Red Meat', 'Umami'],
-      radarStats: { tannin: 6.5, acidity: 6.5, body: 8, aging: 7.5, floral: 5 }
+      radarStats: { tannin: 6.5, acidity: 6.5, body: 8, aging: 7.5, floral: 5 },
+      wineColor: 'red',
+      profile: { tannin: 6, acidity: 6, body: 8, alcohol: 7, finish: 7, aging: 8, floral: 5 },
     },
     /* ── France · Burgundy ── */
     {
@@ -88,7 +94,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 5, tannin: 0, body: 2, alcohol: 2, finish: 3 },
       aromaWheel: ['Oyster Shell', 'Flint', 'Green Apple', 'Lemon Zest'],
       foodPairingTags: ['Seafood', 'Oysters', 'Light Fat', 'Salty'],
-      radarStats: { tannin: 1, acidity: 9.5, body: 3.5, aging: 6, floral: 4.5 }
+      radarStats: { tannin: 1, acidity: 9.5, body: 3.5, aging: 6, floral: 4.5 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 9, body: 3, alcohol: 4, finish: 6, aging: 7, floral: 4 },
     },
     {
       id: 'cote-de-nuits',
@@ -109,7 +117,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 4, tannin: 3, body: 3, alcohol: 3, finish: 5 },
       aromaWheel: ['Rose', 'Red Cherry', 'Mushroom', 'Earth'],
       foodPairingTags: ['Moderate Fat', 'White Meat', 'Mushroom Umami', 'Duck'],
-      radarStats: { tannin: 5.5, acidity: 8.5, body: 5.5, aging: 9, floral: 9 }
+      radarStats: { tannin: 5.5, acidity: 8.5, body: 5.5, aging: 9, floral: 9 },
+      wineColor: 'red',
+      profile: { tannin: 6, acidity: 8, body: 5, alcohol: 6, finish: 9, aging: 9, floral: 9 },
     },
     {
       id: 'cote-de-beaune',
@@ -130,7 +140,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 4, tannin: 1, body: 4, alcohol: 4, finish: 5 },
       aromaWheel: ['Butter', 'Hazelnut', 'Apple', 'Lemon Curd'],
       foodPairingTags: ['Moderate Fat', 'Seafood', 'White Meat', 'Cream Sauce'],
-      radarStats: { tannin: 1, acidity: 8, body: 6, aging: 8, floral: 6 }
+      radarStats: { tannin: 1, acidity: 8, body: 6, aging: 8, floral: 6 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 8, body: 6, alcohol: 6, finish: 8, aging: 8, floral: 6 },
     },
     /* ── France · Rhône ── */
     {
@@ -152,7 +164,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 4, tannin: 5, body: 5, alcohol: 5, finish: 5 },
       aromaWheel: ['Black Pepper', 'Olive', 'Smoke', 'Violet'],
       foodPairingTags: ['High Fat', 'Red Meat', 'Game', 'Hard Cheese'],
-      radarStats: { tannin: 8.5, acidity: 7, body: 9, aging: 9.5, floral: 5 }
+      radarStats: { tannin: 8.5, acidity: 7, body: 9, aging: 9.5, floral: 5 },
+      wineColor: 'red',
+      profile: { tannin: 9, acidity: 7, body: 9, alcohol: 8, finish: 9, aging: 10, floral: 4 },
     },
     {
       id: 'chateauneuf-du-pape',
@@ -173,7 +187,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 3, tannin: 3, body: 5, alcohol: 5, finish: 4 },
       aromaWheel: ['Red Berry', 'Garrigue', 'Leather', 'Spice'],
       foodPairingTags: ['High Fat', 'Red Meat', 'Spicy'],
-      radarStats: { tannin: 6, acidity: 5.5, body: 9, aging: 7, floral: 5.5 }
+      radarStats: { tannin: 6, acidity: 5.5, body: 9, aging: 7, floral: 5.5 },
+      wineColor: 'red',
+      profile: { tannin: 6, acidity: 5, body: 9, alcohol: 9, finish: 7, aging: 7, floral: 5 },
     },
     /* ── France · Champagne ── */
     {
@@ -195,7 +211,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 5, tannin: 1, body: 3, alcohol: 2, finish: 4 },
       aromaWheel: ['Red Apple', 'Strawberry', 'Brioche', 'Almond'],
       foodPairingTags: ['Seafood', 'Light Fat', 'Appetizer', 'Umami'],
-      radarStats: { tannin: 1.5, acidity: 8.5, body: 5, aging: 7, floral: 5 }
+      radarStats: { tannin: 1.5, acidity: 8.5, body: 5, aging: 7, floral: 5 },
+      wineColor: 'sparkling',
+      profile: { tannin: 1, acidity: 9, body: 5, alcohol: 6, finish: 7, aging: 7, floral: 5 },
     },
     {
       id: 'vallee-de-la-marne',
@@ -216,7 +234,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 4, tannin: 1, body: 3, alcohol: 2, finish: 3 },
       aromaWheel: ['Yellow Plum', 'Peach', 'Honey', 'Soft Citrus'],
       foodPairingTags: ['Light Fat', 'Appetizer', 'Salty', 'Fruit'],
-      radarStats: { tannin: 1, acidity: 7, body: 4.5, aging: 5, floral: 4 }
+      radarStats: { tannin: 1, acidity: 7, body: 4.5, aging: 5, floral: 4 },
+      wineColor: 'sparkling',
+      profile: { tannin: 1, acidity: 7, body: 4, alcohol: 6, finish: 5, aging: 5, floral: 4 },
     },
     {
       id: 'cote-des-blancs',
@@ -237,7 +257,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 5, tannin: 0, body: 2, alcohol: 2, finish: 4 },
       aromaWheel: ['Lemon', 'Chalk Dust', 'Almond Blossom', 'White Flower'],
       foodPairingTags: ['Seafood', 'Oysters', 'Light Fat', 'Salty'],
-      radarStats: { tannin: 0.5, acidity: 9.5, body: 3, aging: 8, floral: 6 }
+      radarStats: { tannin: 0.5, acidity: 9.5, body: 3, aging: 8, floral: 6 },
+      wineColor: 'sparkling',
+      profile: { tannin: 0, acidity: 9, body: 3, alcohol: 6, finish: 8, aging: 8, floral: 6 },
     },
     /* ── France · Loire Valley ── */
     {
@@ -259,7 +281,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 4, tannin: 0, body: 1, alcohol: 1, finish: 2 },
       aromaWheel: ['Lemon', 'Green Apple', 'Sea Salt', 'Bread Dough'],
       foodPairingTags: ['Seafood', 'Oysters', 'Light Fat', 'Salty'],
-      radarStats: { tannin: 0.5, acidity: 8, body: 2.5, aging: 3.5, floral: 3 }
+      radarStats: { tannin: 0.5, acidity: 8, body: 2.5, aging: 3.5, floral: 3 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 8, body: 2, alcohol: 4, finish: 3, aging: 3, floral: 3 },
     },
     {
       id: 'vouvray',
@@ -280,7 +304,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 5, tannin: 0, body: 3, alcohol: 2, finish: 4 },
       aromaWheel: ['Quince', 'Beeswax', 'Honey', 'Wet Wool'],
       foodPairingTags: ['Moderate Fat', 'White Meat', 'Spicy', 'Cheese'],
-      radarStats: { tannin: 0.5, acidity: 9, body: 4, aging: 8, floral: 5 }
+      radarStats: { tannin: 0.5, acidity: 9, body: 4, aging: 8, floral: 5 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 9, body: 4, alcohol: 5, finish: 7, aging: 8, floral: 5 },
     },
     {
       id: 'sancerre',
@@ -301,7 +327,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 5, tannin: 0, body: 2, alcohol: 2, finish: 3 },
       aromaWheel: ['Gooseberry', 'Grass', 'Flint', 'Citrus'],
       foodPairingTags: ['Seafood', 'Goat Cheese', 'Light Fat', 'Acidic'],
-      radarStats: { tannin: 0.5, acidity: 9, body: 3, aging: 5, floral: 4.5 }
+      radarStats: { tannin: 0.5, acidity: 9, body: 3, aging: 5, floral: 4.5 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 9, body: 3, alcohol: 5, finish: 6, aging: 5, floral: 5 },
     },
     /* ── France · Alsace ── */
     {
@@ -323,7 +351,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 4, tannin: 0, body: 4, alcohol: 4, finish: 4 },
       aromaWheel: ['Lychee', 'Rose', 'Ginger', 'Petrol(陳年)'],
       foodPairingTags: ['Spicy', 'White Meat', 'Moderate Fat', 'Asian Cuisine'],
-      radarStats: { tannin: 0.5, acidity: 7.5, body: 6, aging: 7, floral: 7.5 }
+      radarStats: { tannin: 0.5, acidity: 7.5, body: 6, aging: 7, floral: 7.5 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 7, body: 6, alcohol: 7, finish: 7, aging: 7, floral: 8 },
     },
     /* ── Italy ── */
     {
@@ -345,7 +375,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 5, tannin: 5, body: 4, alcohol: 4, finish: 5 },
       aromaWheel: ['Tar', 'Rose', 'Cherry', 'Truffle'],
       foodPairingTags: ['High Fat', 'Red Meat', 'Truffle', 'Hard Cheese'],
-      radarStats: { tannin: 9.5, acidity: 9, body: 8.5, aging: 9.5, floral: 8 }
+      radarStats: { tannin: 9.5, acidity: 9, body: 8.5, aging: 9.5, floral: 8 },
+      wineColor: 'red',
+      profile: { tannin: 9, acidity: 9, body: 8, alcohol: 8, finish: 9, aging: 10, floral: 8 },
     },
     {
       id: 'barbaresco',
@@ -366,7 +398,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 5, tannin: 4, body: 4, alcohol: 4, finish: 5 },
       aromaWheel: ['Rose Petal', 'Red Cherry', 'Licorice', 'Earth'],
       foodPairingTags: ['High Fat', 'Red Meat', 'Truffle', 'Hard Cheese'],
-      radarStats: { tannin: 8.5, acidity: 8.5, body: 7.5, aging: 8.5, floral: 8.5 }
+      radarStats: { tannin: 8.5, acidity: 8.5, body: 7.5, aging: 8.5, floral: 8.5 },
+      wineColor: 'red',
+      profile: { tannin: 8, acidity: 8, body: 7, alcohol: 7, finish: 8, aging: 9, floral: 9 },
     },
     {
       id: 'chianti-classico',
@@ -387,7 +421,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 5, tannin: 4, body: 3, alcohol: 3, finish: 4 },
       aromaWheel: ['Sour Cherry', 'Tomato Leaf', 'Leather', 'Violet'],
       foodPairingTags: ['Moderate Fat', 'Red Meat', 'Tomato Acid', 'Pizza'],
-      radarStats: { tannin: 7.5, acidity: 8.5, body: 7, aging: 7.5, floral: 5.5 }
+      radarStats: { tannin: 7.5, acidity: 8.5, body: 7, aging: 7.5, floral: 5.5 },
+      wineColor: 'red',
+      profile: { tannin: 7, acidity: 8, body: 6, alcohol: 7, finish: 7, aging: 7, floral: 5 },
     },
     {
       id: 'brunello-di-montalcino',
@@ -408,7 +444,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 5, tannin: 5, body: 5, alcohol: 4, finish: 5 },
       aromaWheel: ['Dried Cherry', 'Leather', 'Licorice', 'Tobacco'],
       foodPairingTags: ['High Fat', 'Red Meat', 'Game', 'Hard Cheese'],
-      radarStats: { tannin: 8.5, acidity: 8, body: 8.5, aging: 9, floral: 5 }
+      radarStats: { tannin: 8.5, acidity: 8, body: 8.5, aging: 9, floral: 5 },
+      wineColor: 'red',
+      profile: { tannin: 9, acidity: 8, body: 8, alcohol: 8, finish: 9, aging: 9, floral: 5 },
     },
     /* ── Italy · Veneto ── */
     {
@@ -430,7 +468,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 4, tannin: 0, body: 2, alcohol: 2, finish: 2 },
       aromaWheel: ['Pear', 'Green Apple', 'White Flower', 'Citrus'],
       foodPairingTags: ['Light Fat', 'Seafood', 'Appetizer', 'Salty'],
-      radarStats: { tannin: 0.5, acidity: 7.5, body: 3, aging: 2, floral: 7 }
+      radarStats: { tannin: 0.5, acidity: 7.5, body: 3, aging: 2, floral: 7 },
+      wineColor: 'sparkling',
+      profile: { tannin: 0, acidity: 7, body: 3, alcohol: 5, finish: 4, aging: 2, floral: 7 },
     },
     {
       id: 'soave',
@@ -451,7 +491,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 4, tannin: 0, body: 3, alcohol: 3, finish: 3 },
       aromaWheel: ['Almond', 'White Flower', 'Lemon', 'Mineral'],
       foodPairingTags: ['Seafood', 'Light Fat', 'White Meat', 'Risotto'],
-      radarStats: { tannin: 0.5, acidity: 7, body: 4.5, aging: 4, floral: 6 }
+      radarStats: { tannin: 0.5, acidity: 7, body: 4.5, aging: 4, floral: 6 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 7, body: 4, alcohol: 6, finish: 5, aging: 4, floral: 6 },
     },
     {
       id: 'amarone-della-valpolicella',
@@ -472,7 +514,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 3, tannin: 4, body: 5, alcohol: 5, finish: 5 },
       aromaWheel: ['Raisin', 'Dried Fig', 'Dark Chocolate', 'Bitter Licorice'],
       foodPairingTags: ['High Fat', 'Red Meat', 'Game', 'Hard Cheese'],
-      radarStats: { tannin: 7.5, acidity: 5.5, body: 9.5, aging: 8, floral: 2.5 }
+      radarStats: { tannin: 7.5, acidity: 5.5, body: 9.5, aging: 8, floral: 2.5 },
+      wineColor: 'red',
+      profile: { tannin: 8, acidity: 5, body: 9, alcohol: 9, finish: 9, aging: 8, floral: 2 },
     },
     /* ── Italy · Sicily ── */
     {
@@ -494,7 +538,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 4, tannin: 3, body: 3, alcohol: 3, finish: 4 },
       aromaWheel: ['Red Cherry', 'Volcanic Mineral', 'Orange Peel', 'Herbs'],
       foodPairingTags: ['Moderate Fat', 'Seafood', 'White Meat', 'Umami'],
-      radarStats: { tannin: 5, acidity: 8, body: 5, aging: 6.5, floral: 5.5 }
+      radarStats: { tannin: 5, acidity: 8, body: 5, aging: 6.5, floral: 5.5 },
+      wineColor: 'red',
+      profile: { tannin: 5, acidity: 8, body: 5, alcohol: 6, finish: 7, aging: 6, floral: 6 },
     },
     /* ── USA ── */
     {
@@ -516,7 +562,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 3, tannin: 4, body: 5, alcohol: 5, finish: 4 },
       aromaWheel: ['Blackberry Jam', 'Vanilla', 'Mocha', 'Oak'],
       foodPairingTags: ['High Fat', 'Red Meat', 'Grilled'],
-      radarStats: { tannin: 8, acidity: 6, body: 9.5, aging: 8, floral: 3 }
+      radarStats: { tannin: 8, acidity: 6, body: 9.5, aging: 8, floral: 3 },
+      wineColor: 'red',
+      profile: { tannin: 8, acidity: 6, body: 9, alcohol: 9, finish: 8, aging: 8, floral: 3 },
     },
     {
       id: 'sonoma-coast',
@@ -537,7 +585,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 4, tannin: 2, body: 3, alcohol: 3, finish: 4 },
       aromaWheel: ['Red Cherry', 'Sea Salt Mineral', 'White Pepper', 'Cranberry'],
       foodPairingTags: ['Moderate Fat', 'Seafood', 'White Meat', 'Umami'],
-      radarStats: { tannin: 3.5, acidity: 7.5, body: 5, aging: 6.5, floral: 5.5 }
+      radarStats: { tannin: 3.5, acidity: 7.5, body: 5, aging: 6.5, floral: 5.5 },
+      wineColor: 'red',
+      profile: { tannin: 4, acidity: 7, body: 5, alcohol: 6, finish: 7, aging: 6, floral: 6 },
     },
     /* ── Australia ── */
     {
@@ -559,7 +609,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 2, tannin: 3, body: 5, alcohol: 5, finish: 4 },
       aromaWheel: ['Blackberry Jam', 'Chocolate', 'Vanilla', 'Licorice'],
       foodPairingTags: ['High Fat', 'Red Meat', 'Grilled', 'BBQ'],
-      radarStats: { tannin: 7.5, acidity: 5.5, body: 9.5, aging: 8, floral: 3 }
+      radarStats: { tannin: 7.5, acidity: 5.5, body: 9.5, aging: 8, floral: 3 },
+      wineColor: 'red',
+      profile: { tannin: 8, acidity: 5, body: 9, alcohol: 9, finish: 8, aging: 8, floral: 2 },
     },
     {
       id: 'margaret-river',
@@ -580,7 +632,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 4, tannin: 4, body: 4, alcohol: 3, finish: 4 },
       aromaWheel: ['Blackcurrant', 'Cedar', 'Eucalyptus Mint', 'Graphite'],
       foodPairingTags: ['Moderate Fat', 'Red Meat', 'Grilled', 'Hard Cheese'],
-      radarStats: { tannin: 7, acidity: 6.5, body: 7, aging: 8, floral: 4 }
+      radarStats: { tannin: 7, acidity: 6.5, body: 7, aging: 8, floral: 4 },
+      wineColor: 'red',
+      profile: { tannin: 7, acidity: 6, body: 7, alcohol: 7, finish: 7, aging: 8, floral: 4 },
     },
     /* ── Spain · Rioja & Castilla y León ── */
     {
@@ -602,7 +656,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 3, tannin: 3, body: 4, alcohol: 4, finish: 4 },
       aromaWheel: ['Dried Strawberry', 'Coconut', 'Vanilla', 'Leather'],
       foodPairingTags: ['Moderate Fat', 'Red Meat', 'Tomato Acid', 'Grilled'],
-      radarStats: { tannin: 6, acidity: 6, body: 7, aging: 7.5, floral: 4 }
+      radarStats: { tannin: 6, acidity: 6, body: 7, aging: 7.5, floral: 4 },
+      wineColor: 'red',
+      profile: { tannin: 6, acidity: 6, body: 7, alcohol: 7, finish: 7, aging: 7, floral: 4 },
     },
     {
       id: 'ribera-del-duero',
@@ -623,7 +679,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 4, tannin: 5, body: 5, alcohol: 5, finish: 5 },
       aromaWheel: ['Blackberry', 'Black Plum', 'Cedar', 'Graphite'],
       foodPairingTags: ['High Fat', 'Red Meat', 'Game', 'Hard Cheese'],
-      radarStats: { tannin: 8.5, acidity: 7, body: 9, aging: 8.5, floral: 3 }
+      radarStats: { tannin: 8.5, acidity: 7, body: 9, aging: 8.5, floral: 3 },
+      wineColor: 'red',
+      profile: { tannin: 8, acidity: 7, body: 9, alcohol: 8, finish: 8, aging: 8, floral: 3 },
     },
     {
       id: 'jerez',
@@ -644,7 +702,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 4, tannin: 0, body: 3, alcohol: 5, finish: 5 },
       aromaWheel: ['Almond', 'Walnut', 'Salted Air', 'Caramel'],
       foodPairingTags: ['Umami', 'Salty', 'Cured Meat', 'Nuts'],
-      radarStats: { tannin: 0.5, acidity: 6.5, body: 5.5, aging: 6, floral: 2 }
+      radarStats: { tannin: 0.5, acidity: 6.5, body: 5.5, aging: 6, floral: 2 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 6, body: 5, alcohol: 9, finish: 8, aging: 6, floral: 2 },
     },
     {
       id: 'priorat',
@@ -665,7 +725,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 3, tannin: 4, body: 5, alcohol: 5, finish: 5 },
       aromaWheel: ['Blackberry Liqueur', 'Slate Mineral', 'Licorice', 'Dark Spice'],
       foodPairingTags: ['High Fat', 'Red Meat', 'Game', 'Hard Cheese'],
-      radarStats: { tannin: 8, acidity: 5.5, body: 9.5, aging: 9, floral: 3 }
+      radarStats: { tannin: 8, acidity: 5.5, body: 9.5, aging: 9, floral: 3 },
+      wineColor: 'red',
+      profile: { tannin: 8, acidity: 5, body: 9, alcohol: 9, finish: 8, aging: 9, floral: 3 },
     },
     /* ── France · Languedoc-Roussillon ── */
     {
@@ -687,7 +749,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 3, tannin: 4, body: 4, alcohol: 4, finish: 3 },
       aromaWheel: ['Blackberry', 'Garrigue Herbs', 'Black Pepper', 'Licorice'],
       foodPairingTags: ['Moderate Fat', 'Red Meat', 'Grilled', 'BBQ'],
-      radarStats: { tannin: 6.5, acidity: 5.5, body: 7, aging: 5.5, floral: 4.5 }
+      radarStats: { tannin: 6.5, acidity: 5.5, body: 7, aging: 5.5, floral: 4.5 },
+      wineColor: 'red',
+      profile: { tannin: 6, acidity: 5, body: 7, alcohol: 7, finish: 5, aging: 5, floral: 4 },
     },
     /* ── Germany · Mosel ── */
     {
@@ -709,7 +773,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 5, tannin: 0, body: 1, alcohol: 1, finish: 4 },
       aromaWheel: ['Lime', 'Green Apple', 'Slate Mineral', 'White Flower'],
       foodPairingTags: ['Spicy', 'Asian Cuisine', 'Shellfish', 'Light Appetizer'],
-      radarStats: { tannin: 0.5, acidity: 9, body: 3, aging: 7.5, floral: 6.5 }
+      radarStats: { tannin: 0.5, acidity: 9, body: 3, aging: 7.5, floral: 6.5 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 9, body: 2, alcohol: 3, finish: 7, aging: 7, floral: 6 },
     },
     /* ── Germany · Rheingau ── */
     {
@@ -731,7 +797,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 4, tannin: 0, body: 3, alcohol: 3, finish: 4 },
       aromaWheel: ['Yellow Apple', 'Apricot', 'Honey', 'Petrol(aged)'],
       foodPairingTags: ['Roasted Poultry', 'Pork', 'Cream Sauce', 'Soft Cheese'],
-      radarStats: { tannin: 0.5, acidity: 7, body: 4.5, aging: 7, floral: 5 }
+      radarStats: { tannin: 0.5, acidity: 7, body: 4.5, aging: 7, floral: 5 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 7, body: 4, alcohol: 6, finish: 7, aging: 7, floral: 5 },
     },
     /* ── New Zealand · Marlborough ── */
     {
@@ -753,7 +821,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 5, tannin: 0, body: 2, alcohol: 2, finish: 3 },
       aromaWheel: ['Passion Fruit', 'Gooseberry', 'Fresh Cut Grass', 'Bell Pepper'],
       foodPairingTags: ['Goat Cheese', 'Shellfish', 'Asparagus', 'Light Salad'],
-      radarStats: { tannin: 0.5, acidity: 9, body: 3.5, aging: 2, floral: 4 }
+      radarStats: { tannin: 0.5, acidity: 9, body: 3.5, aging: 2, floral: 4 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 9, body: 3, alcohol: 5, finish: 5, aging: 2, floral: 4 },
     },
     /* ── New Zealand · Central Otago ── */
     {
@@ -775,7 +845,9 @@ const WINE_DB = {
       sensoryProfile: { acidity: 4, tannin: 3, body: 3, alcohol: 4, finish: 4 },
       aromaWheel: ['Black Cherry', 'Plum', 'Baking Spice', 'Forest Floor'],
       foodPairingTags: ['Duck', 'Lamb', 'Mushroom', 'Roasted Salmon'],
-radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
+      radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 },
+      wineColor: 'red',
+      profile: { tannin: 5, acidity: 6, body: 6, alcohol: 7, finish: 6, aging: 6, floral: 6 },
     },
 
     /* ── France · Bordeaux · Left Bank & Right Bank 補全 (Batch 1) ── */
@@ -802,7 +874,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 3, tannin: 3, body: 4, alcohol: 3, finish: 3 },
       aromaWheel: ['Blackcurrant', 'Cedar', 'Gravel Mineral', 'Plum'],
       foodPairingTags: ['Moderate Fat', 'Red Meat', 'Grilled', 'Hard Cheese'],
-      radarStats: { tannin: 6.5, acidity: 6.5, body: 7, aging: 6.5, floral: 3 }
+      radarStats: { tannin: 6.5, acidity: 6.5, body: 7, aging: 6.5, floral: 3 },
+      wineColor: 'red',
+      profile: { tannin: 6, acidity: 6, body: 7, alcohol: 7, finish: 6, aging: 6, floral: 3 },
     },
     {
       id: 'haut-medoc',
@@ -827,7 +901,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 4, tannin: 4, body: 4, alcohol: 4, finish: 4 },
       aromaWheel: ['Blackcurrant', 'Cedar', 'Graphite', 'Dark Cherry'],
       foodPairingTags: ['High Fat', 'Red Meat', 'Hard Cheese', 'Grilled'],
-      radarStats: { tannin: 7.5, acidity: 7, body: 8, aging: 8, floral: 3.5 }
+      radarStats: { tannin: 7.5, acidity: 7, body: 8, aging: 8, floral: 3.5 },
+      wineColor: 'red',
+      profile: { tannin: 7, acidity: 7, body: 8, alcohol: 7, finish: 7, aging: 8, floral: 3 },
     },
     {
       id: 'pessac-leognan',
@@ -852,7 +928,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 4, tannin: 4, body: 4, alcohol: 4, finish: 5 },
       aromaWheel: ['Smoked Gravel', 'Blackcurrant', 'Cigar Box', 'Beeswax(White)'],
       foodPairingTags: ['High Fat', 'Red Meat', 'Seafood(White)', 'Truffle'],
-      radarStats: { tannin: 7.5, acidity: 7.5, body: 8, aging: 9, floral: 5 }
+      radarStats: { tannin: 7.5, acidity: 7.5, body: 8, aging: 9, floral: 5 },
+      wineColor: 'red',
+      profile: { tannin: 7, acidity: 7, body: 8, alcohol: 7, finish: 8, aging: 9, floral: 5 },
     },
     {
       id: 'graves',
@@ -877,7 +955,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 3, tannin: 3, body: 3, alcohol: 3, finish: 3 },
       aromaWheel: ['Gravel Mineral', 'Tobacco Leaf', 'Blackcurrant', 'Herb'],
       foodPairingTags: ['Moderate Fat', 'White Meat', 'Seafood', 'Grilled'],
-      radarStats: { tannin: 6, acidity: 6.5, body: 6.5, aging: 6, floral: 4 }
+      radarStats: { tannin: 6, acidity: 6.5, body: 6.5, aging: 6, floral: 4 },
+      wineColor: 'red',
+      profile: { tannin: 6, acidity: 6, body: 6, alcohol: 7, finish: 6, aging: 6, floral: 4 },
     },
     {
       id: 'pomerol',
@@ -902,7 +982,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 3, tannin: 4, body: 5, alcohol: 4, finish: 5 },
       aromaWheel: ['Black Truffle', 'Velvet Plum', 'Blackberry', 'Iron Mineral'],
       foodPairingTags: ['High Fat', 'Red Meat', 'Truffle', 'Game'],
-      radarStats: { tannin: 7, acidity: 6.5, body: 9, aging: 9.5, floral: 5.5 }
+      radarStats: { tannin: 7, acidity: 6.5, body: 9, aging: 9.5, floral: 5.5 },
+      wineColor: 'red',
+      profile: { tannin: 7, acidity: 6, body: 9, alcohol: 8, finish: 9, aging: 9, floral: 6 },
     },
     {
       id: 'sauternes',
@@ -927,7 +1009,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 4, tannin: 0, body: 5, alcohol: 4, finish: 5 },
       aromaWheel: ['Honey', 'Saffron', 'Dried Apricot', 'Orange Marmalade'],
       foodPairingTags: ['Foie Gras', 'Blue Cheese', 'Fruit Dessert', 'Light Spicy'],
-      radarStats: { tannin: 0.5, acidity: 7.5, body: 8, aging: 10, floral: 7 }
+      radarStats: { tannin: 0.5, acidity: 7.5, body: 8, aging: 10, floral: 7 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 7, body: 9, alcohol: 7, finish: 9, aging: 10, floral: 7 },
     },
     {
       id: 'barsac',
@@ -952,7 +1036,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 4, tannin: 0, body: 4, alcohol: 4, finish: 5 },
       aromaWheel: ['Honey', 'White Flower', 'Apricot', 'Lemon Curd'],
       foodPairingTags: ['Foie Gras', 'Soft Cheese', 'Fruit Dessert', 'Shellfish'],
-      radarStats: { tannin: 0.5, acidity: 8, body: 7, aging: 9, floral: 7.5 }
+      radarStats: { tannin: 0.5, acidity: 8, body: 7, aging: 9, floral: 7.5 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 8, body: 7, alcohol: 7, finish: 8, aging: 9, floral: 7 },
     },
     {
       id: 'entre-deux-mers',
@@ -977,7 +1063,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 4, tannin: 0, body: 2, alcohol: 2, finish: 2 },
       aromaWheel: ['Grass', 'Gooseberry', 'White Flower', 'Citrus'],
       foodPairingTags: ['Seafood', 'Oysters', 'Light Fat', 'Salad'],
-      radarStats: { tannin: 0.5, acidity: 8, body: 3, aging: 2.5, floral: 5 }
+      radarStats: { tannin: 0.5, acidity: 8, body: 3, aging: 2.5, floral: 5 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 8, body: 3, alcohol: 5, finish: 4, aging: 2, floral: 5 },
     },
 
     /* ── France · Burgundy 補全 (Batch 2) ── */
@@ -1004,7 +1092,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 4, tannin: 3, body: 3, alcohol: 3, finish: 3 },
       aromaWheel: ['Red Berry', 'Earth', 'Cherry', 'Subtle Oak'],
       foodPairingTags: ['Moderate Fat', 'White Meat', 'Mushroom Umami', 'Charcuterie'],
-      radarStats: { tannin: 4.5, acidity: 7.5, body: 5, aging: 5.5, floral: 6 }
+      radarStats: { tannin: 4.5, acidity: 7.5, body: 5, aging: 5.5, floral: 6 },
+      wineColor: 'red',
+      profile: { tannin: 4, acidity: 7, body: 5, alcohol: 6, finish: 5, aging: 5, floral: 6 },
     },
     {
       id: 'maconnais',
@@ -1029,7 +1119,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 3, tannin: 0, body: 3, alcohol: 3, finish: 3 },
       aromaWheel: ['White Peach', 'Butter', 'Apple', 'Mild Oak'],
       foodPairingTags: ['Seafood', 'Light Fat', 'White Meat', 'Cream Sauce'],
-      radarStats: { tannin: 0.5, acidity: 6.5, body: 5, aging: 4.5, floral: 5.5 }
+      radarStats: { tannin: 0.5, acidity: 6.5, body: 5, aging: 4.5, floral: 5.5 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 6, body: 5, alcohol: 6, finish: 5, aging: 4, floral: 5 },
     },
     {
       id: 'hautes-cotes-de-nuits',
@@ -1054,7 +1146,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 4, tannin: 2, body: 2, alcohol: 3, finish: 3 },
       aromaWheel: ['Strawberry', 'Red Currant', 'Earth', 'Light Spice'],
       foodPairingTags: ['Light Fat', 'White Meat', 'Charcuterie', 'Mushroom'],
-      radarStats: { tannin: 3.5, acidity: 8, body: 4, aging: 4, floral: 7 }
+      radarStats: { tannin: 3.5, acidity: 8, body: 4, aging: 4, floral: 7 },
+      wineColor: 'red',
+      profile: { tannin: 3, acidity: 8, body: 4, alcohol: 6, finish: 5, aging: 4, floral: 7 },
     },
     {
       id: 'hautes-cotes-de-beaune',
@@ -1079,7 +1173,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 4, tannin: 2, body: 2, alcohol: 3, finish: 3 },
       aromaWheel: ['White Flower', 'Green Apple', 'Strawberry(Red)', 'Citrus'],
       foodPairingTags: ['Light Fat', 'Seafood(White)', 'White Meat', 'Salad'],
-      radarStats: { tannin: 3, acidity: 7.5, body: 3.5, aging: 3.5, floral: 7.5 }
+      radarStats: { tannin: 3, acidity: 7.5, body: 3.5, aging: 3.5, floral: 7.5 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 7, body: 3, alcohol: 5, finish: 5, aging: 3, floral: 7 },
     },
     {
       id: 'pouilly-fume',
@@ -1104,7 +1200,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 5, tannin: 0, body: 3, alcohol: 3, finish: 4 },
       aromaWheel: ['Flint Smoke', 'Gooseberry', 'White Asparagus', 'Citrus Zest'],
       foodPairingTags: ['Goat Cheese', 'Seafood', 'Asparagus', 'Light Salad'],
-      radarStats: { tannin: 0.5, acidity: 9, body: 4, aging: 5.5, floral: 4.5 }
+      radarStats: { tannin: 0.5, acidity: 9, body: 4, aging: 5.5, floral: 4.5 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 9, body: 4, alcohol: 5, finish: 6, aging: 5, floral: 4 },
     },
     {
       id: 'chinon',
@@ -1129,7 +1227,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 4, tannin: 3, body: 3, alcohol: 3, finish: 3 },
       aromaWheel: ['Violet', 'Raspberry', 'Bell Pepper', 'Graphite'],
       foodPairingTags: ['Light Fat', 'White Meat', 'Charcuterie', 'Mushroom'],
-    radarStats: { tannin: 4.5, acidity: 8, body: 4.5, aging: 6, floral: 8 }
+      radarStats: { tannin: 4.5, acidity: 8, body: 4.5, aging: 6, floral: 8 },
+      wineColor: 'red',
+      profile: { tannin: 4, acidity: 8, body: 4, alcohol: 6, finish: 6, aging: 6, floral: 8 },
     },
 
     /* ── France · Rhône 補全 (Batch 3) ── */
@@ -1156,7 +1256,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 4, tannin: 4, body: 4, alcohol: 4, finish: 5 },
       aromaWheel: ['Violet', 'Olive', 'Smoked Bacon', 'Black Pepper'],
       foodPairingTags: ['High Fat', 'Red Meat', 'Game', 'Truffle'],
-      radarStats: { tannin: 7.5, acidity: 7.5, body: 8, aging: 9, floral: 8.5 }
+      radarStats: { tannin: 7.5, acidity: 7.5, body: 8, aging: 9, floral: 8.5 },
+      wineColor: 'red',
+      profile: { tannin: 7, acidity: 7, body: 8, alcohol: 8, finish: 8, aging: 9, floral: 9 },
     },
     {
       id: 'condrieu',
@@ -1181,7 +1283,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 2, tannin: 0, body: 5, alcohol: 4, finish: 4 },
       aromaWheel: ['White Peach', 'Apricot', 'Honeysuckle', 'Ginger'],
       foodPairingTags: ['Moderate Fat', 'Seafood', 'White Meat', 'Spicy Asian'],
-      radarStats: { tannin: 0.5, acidity: 4.5, body: 7.5, aging: 4, floral: 9.5 }
+      radarStats: { tannin: 0.5, acidity: 4.5, body: 7.5, aging: 4, floral: 9.5 },
+      wineColor: 'white',
+      profile: { tannin: 0, acidity: 4, body: 7, alcohol: 8, finish: 7, aging: 4, floral: 9 },
     },
     {
       id: 'gigondas',
@@ -1206,7 +1310,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 4, tannin: 4, body: 4, alcohol: 4, finish: 4 },
       aromaWheel: ['Blackberry', 'Garrigue', 'Spice', 'Mineral'],
       foodPairingTags: ['Moderate Fat', 'Red Meat', 'Grilled', 'Herb Roasted'],
-      radarStats: { tannin: 6.5, acidity: 6.5, body: 8, aging: 7.5, floral: 5 }
+      radarStats: { tannin: 6.5, acidity: 6.5, body: 8, aging: 7.5, floral: 5 },
+      wineColor: 'red',
+      profile: { tannin: 6, acidity: 6, body: 8, alcohol: 8, finish: 7, aging: 7, floral: 5 },
     },
     {
       id: 'cotes-du-rhone',
@@ -1231,7 +1337,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 3, tannin: 3, body: 4, alcohol: 4, finish: 3 },
       aromaWheel: ['Red Berry', 'Garrigue', 'Warm Spice', 'Plum'],
       foodPairingTags: ['Moderate Fat', 'Grilled', 'Pizza', 'Charcuterie'],
-      radarStats: { tannin: 5, acidity: 5.5, body: 7, aging: 4, floral: 4.5 }
+      radarStats: { tannin: 5, acidity: 5.5, body: 7, aging: 4, floral: 4.5 },
+      wineColor: 'red',
+      profile: { tannin: 5, acidity: 5, body: 7, alcohol: 7, finish: 5, aging: 4, floral: 4 },
     },
 
     /* ── Italy · Veneto 補全 (Batch 3) ── */
@@ -1258,7 +1366,9 @@ radarStats: { tannin: 5.5, acidity: 6.5, body: 6, aging: 6, floral: 5.5 }
       sensoryProfile: { acidity: 4, tannin: 2, body: 2, alcohol: 3, finish: 2 },
       aromaWheel: ['Sour Cherry', 'Red Berry', 'Almond', 'Herbs'],
       foodPairingTags: ['Light Fat', 'White Meat', 'Pizza', 'Charcuterie'],
-      radarStats: { tannin: 3.5, acidity: 7.5, body: 4, aging: 3.5, floral: 4 }
+      radarStats: { tannin: 3.5, acidity: 7.5, body: 4, aging: 3.5, floral: 4 },
+      wineColor: 'red',
+      profile: { tannin: 3, acidity: 7, body: 4, alcohol: 6, finish: 4, aging: 3, floral: 4 },
     }
   ],
   l2Config:{

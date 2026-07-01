@@ -30,9 +30,9 @@ function clearInspector(){
   if(selMapMarker){selMapMarker.classList.remove('selected');selMapMarker=null;}
 }
 function buildMapInsHTML(app){
-  const sp=app.sensoryProfile||{};
-  const dims=[{k:'acidity',l:'酸度',c:'#3A6EA8'},{k:'tannin',l:'單寧',c:'#5C061C'},{k:'body',l:'酒體',c:'#A88A60'},{k:'alcohol',l:'酒精',c:'#7A44A8'},{k:'finish',l:'餘韻',c:'#2A7A58'}];
-  const bH=dims.map(d=>{const v=sp[d.k]??0;return`<div style="margin-bottom:5px;"><div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:2px;"><span style="color:var(--txt3);">${d.l}</span><span style="color:${d.c};font-weight:700;">${v}/5</span></div><div class="stat-bg"><div class="stat-fill" style="width:${v*20}%;background:${d.c};"></div></div></div>`}).join('');
+  const sp=app.profile||{};
+const dims=[{k:'acidity',l:'酸度',c:'#3A6EA8'},{k:'tannin',l:'單寧',c:'#5C061C'},{k:'body',l:'酒體',c:'#A88A60'},{k:'alcohol',l:'酒精',c:'#7A44A8'},{k:'finish',l:'餘韻',c:'#2A7A58'},{k:'aging',l:'陳年潛力',c:'#1A6A4A'},{k:'floral',l:'花香/草本',c:'#A84A7A'}];
+  const bH=dims.map(d=>{const v=sp[d.k]??0;return`<div style="margin-bottom:5px;"><div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:2px;"><span style="color:var(--txt3);">${d.l}</span><span style="color:${d.c};font-weight:700;">${v}/10</span></div><div class="stat-bg"><div class="stat-fill" style="width:${v*10}%;background:${d.c};"></div></div></div>`}).join('');
   return `<div style="margin-bottom:10px;"><h3 style="font-size:14px;font-weight:700;color:var(--txt);">${app.name}</h3><p style="font-size:11px;color:var(--txt3);">${app.region}</p></div>
     <div class="mh" style="margin-bottom:10px;"><p style="font-size:11px;font-style:italic;color:var(--burg);">「${app.memoryHook}」</p></div>
     <div style="display:flex;flex-wrap:wrap;gap:3px;margin-bottom:8px;">${app.primaryGrapes.map(g=>`<span class="tg tg-grape">${g}</span>`).join('')}</div>

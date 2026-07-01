@@ -139,27 +139,27 @@ function renderFilteredRegions(){
 function openDrawer(app){
   const cellar=getCellar();
   const inCellar=cellar.includes(app.id);
-  const sp=app.sensoryProfile||{acidity:3,tannin:3,body:3,alcohol:3,finish:3};
+  const sp=app.profile||{acidity:6,tannin:6,body:6,alcohol:6,finish:6,aging:5,floral:5};
   const worldTag=app.world==='old-world'
     ?`<span class="tg tg-co">${app.emoji} ${app.country}</span>`
     :`<span class="tg tg-nw">${app.emoji} ${app.country}</span>`;
   const kiH=(app.keyIdentifiers||[]).map(k=>`<span class="tg tg-reg">${k}</span>`).join(' ');
   const foodH=(app.foodPairingTags||[]).map(f=>`<span class="tg tg-food">${f}</span>`).join(' ');
   const estH=(app.famousEstates||[]).map(e=>`<li style="font-size:11.5px;padding:1.5px 0;color:var(--txt2);">• ${e}</li>`).join('');
-  const dims=[{k:'acidity',l:'酸度',c:'#3A6EA8'},{k:'tannin',l:'單寧',c:'#5C061C'},{k:'body',l:'酒體',c:'#A88A60'},{k:'alcohol',l:'酒精感',c:'#7A44A8'},{k:'finish',l:'餘韻',c:'#2A7A58'}];
+  const dims=[{k:'acidity',l:'酸度',c:'#3A6EA8'},{k:'tannin',l:'單寧',c:'#5C061C'},{k:'body',l:'酒體',c:'#A88A60'},{k:'alcohol',l:'酒精感',c:'#7A44A8'},{k:'finish',l:'餘韻',c:'#2A7A58'},{k:'aging',l:'陳年潛力',c:'#1A6A4A'},{k:'floral',l:'花香/草本',c:'#A84A7A'}];
   const barsH=dims.map(d=>{
-    const v=sp[d.k]??0, pct=v*20;
+    const v=sp[d.k]??0, pct=v*10;
     return `<div style="margin-bottom:8px;">
       <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px;">
         <span style="color:var(--txt3);">${d.l}</span>
-        <span style="font-weight:600;color:${d.c};">${'●'.repeat(v)}${'○'.repeat(5-v)}</span>
+        <span style="font-weight:600;color:${d.c};">${v}/10</span>
       </div>
       <div class="stat-bg"><div class="stat-fill" style="width:${pct}%;background:${d.c};"></div></div>
     </div>`;
   }).join('');
 
   // SVG Pentagon radar
-  const pentaH=buildPentaSVG(sp);
+  const pentaH=buildPentaSVG(sp,'profile');
 
   const drawerContent = document.getElementById('drawer-body');
   if (drawerContent) {
@@ -265,12 +265,12 @@ function closeDrawer(){
 }
 
 /* ── Pure SVG Pentagon radar ── */
-function buildPentaSVG(sp){
+function buildPentaSVG(sp,mode){
   const vals=[sp.acidity||0,sp.tannin||0,sp.body||0,sp.alcohol||0,sp.finish||0];
   const cx=70,cy=70,R=55;
   const angles=[-90,-90+72,-90+144,-90+216,-90+288];
   const points=vals.map((v,i)=>{
-    const frac=v/5;
+    const frac=v/10;
     const rad=angles[i]*Math.PI/180;
     return [cx+R*frac*Math.cos(rad), cy+R*frac*Math.sin(rad)];
   });
