@@ -31,7 +31,6 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-s
 .fp{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;color:var(--txt3);font-size:12px;padding:5px 13px;cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif;white-space:nowrap}
 .fp:hover{border-color:var(--gold-dk);color:var(--txt)}
 .fp.active{background:var(--burg);border-color:var(--burg);color:#fff;font-weight:500}
-.fp.cellar-active{background:rgba(42,122,88,.12);border-color:var(--em);color:var(--em);font-weight:600}
 
 /* ── L2 slide bar ── */
 .l2-bar{overflow:hidden;transition:max-height .3s ease,opacity .3s ease;max-height:0;opacity:0}
@@ -57,7 +56,6 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-s
 .app-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2.5px;background:linear-gradient(90deg,var(--burg),var(--gold));opacity:0;transition:opacity .2s}
 .app-card:hover{box-shadow:var(--sh2);border-color:var(--gold);transform:translateY(-1px)}
 .app-card:hover::before{opacity:1}
-.app-card.in-cellar{border-color:var(--em);box-shadow:0 0 0 1.5px rgba(42,122,88,.2)}
 
 /* ── Tags ── */
 .tg{display:inline-flex;align-items:center;border-radius:20px;font-size:10.5px;padding:2px 8px;font-weight:500;white-space:nowrap}
@@ -78,11 +76,6 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-s
 
 /* ── Sensory Radar (pure SVG pentagon) ── */
 .sens-radar{display:block;margin:0 auto}
-
-/* ── Cellar heart btn ── */
-.cellar-btn{background:none;border:1px solid var(--border);border-radius:20px;padding:4px 10px;cursor:pointer;font-size:11px;color:var(--txt3);transition:all .15s;display:inline-flex;align-items:center;gap:4px;font-family:'Inter',sans-serif}
-.cellar-btn:hover{border-color:var(--burg-lt);color:var(--burg)}
-.cellar-btn.saved{background:rgba(92,6,28,.07);border-color:var(--burg);color:var(--burg);font-weight:500}
 
 /* ── Vintage matrix ── */
 .vm-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}

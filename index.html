@@ -29,12 +29,9 @@
         <button class="tab-btn" onclick="showPanel('vintage',this)"><span class="ti">📅</span><span class="tl">📅 年份矩陣</span></button>
         <button class="tab-btn" onclick="showPanel('compare',this)"><span class="ti">⚖️</span><span class="tl">⚖️ 比較模式</span></button>
         <button class="tab-btn" onclick="showPanel('tasting',this)"><span class="ti">👁</span><span class="tl">👁 品飲系統</span></button>
+        <button class="tab-btn" onclick="showPanel('grapes',this)"><span class="ti">🍇</span><span class="tl">🍇 品種圖鑑</span></button>
       </div>
     </nav>
-    <!-- Cellar count badge -->
-    <div id="cellar-badge" style="display:none;background:rgba(92,6,28,.10);border:1px solid rgba(92,6,28,.25);border-radius:20px;padding:4px 11px;font-size:11.5px;color:var(--burg);font-weight:600;cursor:pointer;white-space:nowrap;flex-shrink:0;" onclick="toggleCellarFilter()">
-      ❤️ <span id="cellar-count">0</span>
-    </div>
   </div>
 </header>
 
@@ -61,7 +58,6 @@
     <button class="fp" data-l1="Australia(澳洲)">🇦🇺 Australia(澳洲)</button>
     <button class="fp" data-l1="Germany(德國)">🇩🇪 Germany(德國)</button>
     <button class="fp" data-l1="New Zealand(紐西蘭)">🇳🇿 New Zealand(紐西蘭)</button>
-    <button class="fp" id="cellar-filter-btn" data-l1="cellar" style="display:none;">❤️ 我的酒窖</button>
   </div>
 
   <!-- L2 dynamic bar -->
@@ -605,6 +601,21 @@
   </div>
 </div>
  
+<!-- ╔══════════════════════════════════╗
+     ║  PANEL 7 — 品種圖鑑 Grape Varieties ║
+     ╚══════════════════════════════════╝ -->
+<div id="panel-grapes" class="panel">
+  <div class="mb-4">
+    <h1 style="font-family:'Cinzel',serif;font-size:21px;font-weight:700;color:var(--burg);margin-bottom:3px;">品種圖鑑 Grape Varieties</h1>
+    <p style="font-size:12.5px;color:var(--txt3);">WSET Level 2 八大葡萄品種 · 點擊卡片展開風味結構與 7 維雷達圖</p>
+  </div>
+  <div class="flex flex-wrap gap-2 mb-4" id="grape-color-filters">
+    <button class="fp active" onclick="setGrapeColorFilter('all',this)">全部 All</button>
+    <button class="fp" onclick="setGrapeColorFilter('red',this)">🔴 紅葡萄品種</button>
+    <button class="fp" onclick="setGrapeColorFilter('white',this)">🟡 白葡萄品種</button>
+  </div>
+  <div id="grape-container"></div>
+</div>
 
 </main>
 
@@ -625,5 +636,6 @@
 <script src="js/map.js"></script>
 <script src="js/vintage.js"></script>
 <script src="js/compare.js"></script>
+<script src="js/grapes.js"></script>
 </body>
 </html>

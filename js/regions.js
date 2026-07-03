@@ -27,14 +27,11 @@ if (rs) {
    RENDER: 4-LAYER ACCORDION SYSTEM
 ════════════════════════════════════ */
 function renderFilteredRegions(){
-  const cellar=getCellar();
   const cont=document.getElementById('region-container');
   if(!cont) return;
 
   // 1. Filter
   let list=WINE_DB.appellations.filter(a=>{
-    if(cellarFilter && !cellar.includes(a.id)) return false;
-    if(curL1==='cellar') return cellar.includes(a.id);
     if(curL1==='old-world') return a.world==='old-world';
     if(curL1==='new-world') return a.world==='new-world';
     if(curL1!=='all') { if(a.country!==curL1) return false; }
@@ -88,18 +85,14 @@ function renderFilteredRegions(){
     const grid=document.createElement('div');
     grid.className='app-grid';
     grp.apps.forEach(app=>{
-      const inCellar=cellar.includes(app.id);
       const card=document.createElement('div');
-      card.className='app-card'+(inCellar?' in-cellar':'');
+      card.className='app-card';
       card.innerHTML=`
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
           <div>
             <div style="font-size:13.5px;font-weight:700;color:var(--txt);margin-bottom:2px;">${app.name}</div>
             <div style="font-size:11px;color:var(--txt3);">${app.subRegion}</div>
           </div>
-          <button class="cellar-btn ${inCellar?'saved':''}" onclick="event.stopPropagation();toggleCellar('${app.id}')" title="${inCellar?'移出酒窖':'加入酒窖'}">
-            ${inCellar?'❤️':'🤍'} ${inCellar?'已收藏':'收藏'}
-          </button>
         </div>
         <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px;">
           ${app.primaryGrapes.map(g=>`<span class="tg tg-grape">${g}</span>`).join('')}
@@ -137,8 +130,6 @@ function renderFilteredRegions(){
    L4 BOTTOM DRAWER — Full detail
 ════════════════════════════════════ */
 function openDrawer(app){
-  const cellar=getCellar();
-  const inCellar=cellar.includes(app.id);
   const sp=app.profile||{acidity:6,tannin:6,body:6,alcohol:6,finish:6,aging:5,floral:5};
   const worldTag=app.world==='old-world'
     ?`<span class="tg tg-co">${app.emoji} ${app.country}</span>`
@@ -146,7 +137,7 @@ function openDrawer(app){
   const kiH=(app.keyIdentifiers||[]).map(k=>`<span class="tg tg-reg">${k}</span>`).join(' ');
   const foodH=(app.foodPairingTags||[]).map(f=>`<span class="tg tg-food">${f}</span>`).join(' ');
   const estH=(app.famousEstates||[]).map(e=>`<li style="font-size:11.5px;padding:1.5px 0;color:var(--txt2);">• ${e}</li>`).join('');
-  const dims=[{k:'acidity',l:'酸度',c:'#3A6EA8'},{k:'tannin',l:'單寧',c:'#5C061C'},{k:'body',l:'酒體',c:'#A88A60'},{k:'alcohol',l:'酒精感',c:'#7A44A8'},{k:'finish',l:'餘韻',c:'#2A7A58'},{k:'aging',l:'陳年潛力',c:'#1A6A4A'},{k:'floral',l:'花香/草本',c:'#A84A7A'}];
+  const dims=[{k:'acidity',l:'酸度',c:'#3A6EA8'},{k:'tannin',l:'單寧',c:'#5C061C'},{k:'body',l:'酒體',c:'#A88A60'},{k:'alcohol',l:'酒精',c:'#7A44A8'},{k:'finish',l:'餘韻',c:'#2A7A58'},{k:'aging',l:'陳年潛力',c:'#1A6A4A'},{k:'floral',l:'花香/草本',c:'#A84A7A'}];
   const barsH=dims.map(d=>{
     const v=sp[d.k]??0, pct=v*10;
     return `<div style="margin-bottom:8px;">
@@ -158,9 +149,6 @@ function openDrawer(app){
     </div>`;
   }).join('');
 
-  // SVG Pentagon radar
-  const pentaH=buildPentaSVG(sp,'profile');
-
   const drawerContent = document.getElementById('drawer-body');
   if (drawerContent) {
     drawerContent.innerHTML=`
@@ -170,9 +158,6 @@ function openDrawer(app){
           <h2 style="font-size:17px;font-weight:700;color:var(--txt);margin-bottom:2px;">${app.name}</h2>
           <p style="font-size:11.5px;color:var(--txt3);">${app.region} · ${app.subRegion}</p>
         </div>
-        <button class="cellar-btn ${inCellar?'saved':''}" onclick="toggleCellar('${app.id}');this.outerHTML=getDrawerCellarBtn('${app.id}')" style="flex-shrink:0;">
-          ${inCellar?'❤️ 已收藏':'🤍 加入酒窖'}
-        </button>
       </div>
       <div class="mh" style="margin-bottom:14px;"><p style="font-size:12px;font-style:italic;color:var(--burg);">「${app.memoryHook}」</p></div>
       <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px;">
@@ -180,41 +165,26 @@ function openDrawer(app){
       </div>
       <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);margin-bottom:14px;">${app.styleSummary}</p>
 
-      <!-- Grid: sensory + pentagon -->
+<!-- Grid: sensory bars + tag groups -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
         <div class="ic">
           <p style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:8px;">物理結構量化</p>
           ${barsH}
         </div>
-        <div class="ic" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
-          <p style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:6px;text-align:center;">感官五角圖</p>
-          ${pentaH}
-          <div style="display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:6px;">
-            <span style="font-size:9px;color:var(--txt4);">酸</span>
-            <span style="font-size:9px;color:var(--txt4);">單寧</span>
-            <span style="font-size:9px;color:var(--txt4);">酒體</span>
-            <span style="font-size:9px;color:var(--txt4);">酒精</span>
-            <span style="font-size:9px;color:var(--txt4);">餘韻</span>
+        <div class="ic" style="display:flex;flex-direction:column;gap:12px;">
+          <div>
+            <p style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:6px;">核心風味 Aroma Wheel</p>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">${(app.aromaWheel||[]).map(a=>`<span class="tg tg-aroma">${a}</span>`).join('')}</div>
+          </div>
+          <div>
+            <p style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:6px;">辨識特徵</p>
+            <div style="display:flex;flex-wrap:wrap;gap:4px;">${kiH}</div>
+          </div>
+          <div>
+            <p style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:6px;">餐酒配對結構</p>
+            <div style="display:flex;flex-wrap:wrap;gap:4px;">${foodH}</div>
           </div>
         </div>
-      </div>
-
-      <!-- Aroma -->
-      <div style="margin-bottom:12px;">
-        <p style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:6px;">核心風味 Aroma Wheel</p>
-        <div style="display:flex;flex-wrap:wrap;gap:5px;">${(app.aromaWheel||[]).map(a=>`<span class="tg tg-aroma">${a}</span>`).join('')}</div>
-      </div>
-
-      <!-- KEY IDENTIFIERS -->
-      <div style="margin-bottom:12px;">
-        <p style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:6px;">辨識特徵</p>
-        <div style="display:flex;flex-wrap:wrap;gap:4px;">${kiH}</div>
-      </div>
-
-      <!-- Food pairing -->
-      <div style="margin-bottom:12px;">
-        <p style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:6px;">餐酒配對結構</p>
-        <div style="display:flex;flex-wrap:wrap;gap:4px;">${foodH}</div>
       </div>
 
       <!-- Terroir -->
@@ -251,42 +221,10 @@ function openDrawer(app){
   document.body.style.overflow='hidden';
 }
 
-function getDrawerCellarBtn(id){
-  const inC=getCellar().includes(id);
-  return `<button class="cellar-btn ${inC?'saved':''}" onclick="toggleCellar('${id}');this.outerHTML=getDrawerCellarBtn('${id}')" style="flex-shrink:0;">${inC?'❤️ 已收藏':'🤍 加入酒窖'}</button>`;
-}
-
 function closeDrawer(){
   const drawer = document.getElementById('bottom-drawer');
   const ov = document.getElementById('drawer-ov');
   if (drawer) drawer.classList.remove('open');
   if (ov) ov.classList.remove('open');
   document.body.style.overflow='';
-}
-
-/* ── Pure SVG Pentagon radar ── */
-function buildPentaSVG(sp,mode){
-  const vals=[sp.acidity||0,sp.tannin||0,sp.body||0,sp.alcohol||0,sp.finish||0];
-  const cx=70,cy=70,R=55;
-  const angles=[-90,-90+72,-90+144,-90+216,-90+288];
-  const points=vals.map((v,i)=>{
-    const frac=v/10;
-    const rad=angles[i]*Math.PI/180;
-    return [cx+R*frac*Math.cos(rad), cy+R*frac*Math.sin(rad)];
-  });
-  const bg=angles.map(a=>{const r=a*Math.PI/180;return[cx+R*Math.cos(r),cy+R*Math.sin(r)]});
-  const toPath=pts=>pts.map((p,i)=>`${i===0?'M':'L'}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' ')+'Z';
-  const labels=['酸','單','體','醇','餘'];
-  const labPts=angles.map((a,i)=>{const r=a*Math.PI/180;return{x:cx+(R+10)*Math.cos(r),y:cy+(R+10)*Math.sin(r),l:labels[i]}});
-  const gridLines=[.2,.4,.6,.8,1].map(f=>
-    `<polygon points="${angles.map(a=>{const r=a*Math.PI/180;return`${(cx+R*f*Math.cos(r)).toFixed(1)},${(cy+R*f*Math.sin(r)).toFixed(1)}`}).join(' ')}" fill="none" stroke="var(--border)" stroke-width="0.8"/>`
-  ).join('');
-  const spokes=angles.map(a=>{const r=a*Math.PI/180;return`<line x1="${cx}" y1="${cy}" x2="${(cx+R*Math.cos(r)).toFixed(1)}" y2="${(cy+R*Math.sin(r)).toFixed(1)}" stroke="var(--border)" stroke-width="0.8"/>`}).join('');
-
-  return `<svg width="140" height="140" viewBox="0 0 140 140" class="sens-radar">
-    ${gridLines}${spokes}
-    <polygon points="${points.map(p=>p.map(v=>v.toFixed(1)).join(',')).join(' ')}" fill="rgba(92,6,28,.15)" stroke="var(--burg)" stroke-width="1.8"/>
-    ${points.map(p=>`<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="3" fill="var(--burg)"/>`).join('')}
-    ${labPts.map(p=>`<text x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" font-size="9" fill="var(--txt3)" font-family="Inter,sans-serif">${p.l}</text>`).join('')}
-  </svg>`;
 }

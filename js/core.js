@@ -2,22 +2,16 @@
    STATE
 ════════════════════════════════════ */
 let curL1='all', curL2='all-regions', srchQ='';
-let cellarFilter=false;
 let radarInst=null;
 let selMapMarker=null;
 
 /* ════════════════════════════════════
-   LOCALSTORAGE CELLAR
+   LEGACY CELLAR CLEANUP（一次性）
+   酒窖功能已移除，此處僅負責清除使用者瀏覽器中殘留的舊 localStorage 資料。
+   確認所有使用者端資料清除完畢後，此函式與其呼叫可一併刪除。
 ════════════════════════════════════ */
-function getCellar(){ try{return JSON.parse(localStorage.getItem('wine_cellar')||'[]')}catch{return[]} }
-function saveCellar(arr){ localStorage.setItem('wine_cellar',JSON.stringify(arr)) }
-function toggleCellar(id){
-  let c=getCellar();
-  const i=c.indexOf(id);
-  if(i>=0) c.splice(i,1); else c.push(id);
-  saveCellar(c);
-  updateCellarBadge();
-  renderFilteredRegions();
+function cleanupLegacyCellarStorage(){
+  try{ localStorage.removeItem('wine_cellar'); }catch{}
 }
 
 /* ════════════════════════════════════
@@ -81,22 +75,6 @@ function auditWineDB(){
   return report;
 }
 
-function updateCellarBadge(){
-  const c=getCellar();
-  const badge=document.getElementById('cellar-badge');
-  const btn=document.getElementById('cellar-filter-btn');
-  if(badge) badge.style.display=c.length>0?'block':'none';
-  if(btn) btn.style.display=c.length>0?'inline-flex':'none';
-  const countSpan = document.getElementById('cellar-count');
-  if(countSpan) countSpan.textContent=c.length;
-}
-function toggleCellarFilter(){
-  cellarFilter=!cellarFilter;
-  const btn=document.getElementById('cellar-filter-btn');
-  if(btn) btn.classList.toggle('cellar-active',cellarFilter);
-  renderFilteredRegions();
-}
-
 /* ════════════════════════════════════
    TAB / MAP NAV
 ════════════════════════════════════ */
@@ -126,8 +104,8 @@ const l1Filters = document.getElementById('l1-filters');
 if (l1Filters) {
   l1Filters.addEventListener('click',function(e){
     const btn=e.target.closest('.fp');
-    if(!btn||btn.id==='cellar-filter-btn') return;
-    this.querySelectorAll('.fp:not(#cellar-filter-btn)').forEach(b=>b.classList.remove('active'));
+    if(!btn) return;
+    this.querySelectorAll('.fp').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     curL1=btn.dataset.l1;
     curL2='all-regions';
@@ -140,10 +118,11 @@ if (l1Filters) {
    INIT
 ════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', function() {
-  updateCellarBadge();
+  cleanupLegacyCellarStorage();
   renderFilteredRegions();
   buildVintageMatrix();
   populateCompareSelects();
+  renderGrapePanel();
   initMapTooltips();
   auditWineDB();
 });
