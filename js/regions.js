@@ -211,7 +211,12 @@ function openDrawer(app){
       <div style="display:flex;justify-content:space-between;font-size:12px;">
         <span style="color:var(--txt4);">陳年潛力</span>
         <span style="color:var(--burg);font-weight:600;">${app.agingPotential}</span>
-      </div>`;
+      </div>
+      ${app.agingNote ? `
+      <div class="ic" style="margin-top:10px;">
+        <p style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:6px;">陳年潛力解析</p>
+        <p style="font-size:11.5px;line-height:1.7;color:var(--txt3);">${app.agingNote}</p>
+      </div>` : ''}`;
   }
 
   const drawer = document.getElementById('bottom-drawer');

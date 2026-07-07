@@ -62,6 +62,10 @@ function buildGrapeCardHTML(g) {
             <div style="position:relative;width:100%;max-width:260px;height:230px;">
               <canvas id="grape-radar-${g.id}"></canvas>
             </div>
+            <div style="display:flex;gap:10px;justify-content:center;margin-top:6px;font-size:10px;color:var(--txt3);">
+              <span>● 品種基因特性</span>
+              <span>○ 風格參考值（依產地／釀造而異）</span>
+            </div>
           </div>
         </div>
       </div>
@@ -92,8 +96,18 @@ function buildGrapeRadar(id) {
   if (!ctx) return;
 
   const p = g.profile || {};
-  const labels = ['單寧\nTannin', '酸度\nAcidity', '酒體\nBody', '酒精\nAlcohol', '餘韻\nFinish', '陳年潛力\nAging', '花香/草本\nFloral'];
-  const data = [p.tannin || 0, p.acidity || 0, p.body || 0, p.alcohol || 0, p.finish || 0, p.aging || 0, p.floral || 0];
+  // genetic: 品種基因決定（花香、單寧上限、酸度保留力）；style: 風格參考值，主要由產地/釀造決定
+  const DIMS = [
+    { key: 'tannin',  label: '單寧\nTannin',       genetic: true  },
+    { key: 'acidity', label: '酸度\nAcidity',      genetic: true  },
+    { key: 'body',    label: '酒體\nBody',         genetic: false },
+    { key: 'alcohol', label: '酒精\nAlcohol',      genetic: false },
+    { key: 'finish',  label: '餘韻\nFinish',       genetic: false },
+    { key: 'aging',   label: '陳年潛力\nAging',    genetic: false },
+    { key: 'floral',  label: '花香/草本\nFloral',  genetic: true  }
+  ];
+  const labels = DIMS.map(d => d.label);
+  const data = DIMS.map(d => p[d.key] || 0);
   const color = g.skinColor === 'red' ? '#5C061C' : '#C5A228';
 
   grapeRadarInsts[id] = new Chart(ctx.getContext('2d'), {
@@ -106,8 +120,10 @@ function buildGrapeRadar(id) {
         backgroundColor: g.skinColor === 'red' ? 'rgba(92,6,28,.18)' : 'rgba(197,168,128,.22)',
         borderColor: color,
         borderWidth: 2.5,
-        pointBackgroundColor: color,
-        pointRadius: 4
+        pointBackgroundColor: DIMS.map(d => d.genetic ? color : '#FFFFFF'),
+        pointBorderColor: DIMS.map(() => color),
+        pointBorderWidth: 1.5,
+        pointRadius: DIMS.map(d => d.genetic ? 5 : 3.5)
       }]
     },
     options: {
@@ -120,7 +136,10 @@ function buildGrapeRadar(id) {
           ticks: { stepSize: 2, color: '#A8A29E', font: { size: 9 }, backdropColor: 'transparent' },
           grid: { color: 'rgba(0,0,0,.07)' },
           angleLines: { color: 'rgba(0,0,0,.09)' },
-          pointLabels: { color: '#44403C', font: { size: 9, family: 'Inter' } }
+          pointLabels: {
+            color: (ctx) => DIMS[ctx.index].genetic ? '#44403C' : '#A8A29E',
+            font: { size: 9, family: 'Inter' }
+          }
         }
       }
     }

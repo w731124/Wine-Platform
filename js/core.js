@@ -121,6 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
   cleanupLegacyCellarStorage();
   renderFilteredRegions();
   buildVintageMatrix();
+  renderCompareColorFilters();
   populateCompareSelects();
   renderGrapePanel();
   initMapTooltips();
