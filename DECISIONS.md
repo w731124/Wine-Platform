@@ -196,3 +196,6 @@
 65. **篩選器沿用既有 `.fp` 按鈕樣式與單一 `set*Filter(value,btn)` 函式命名模式**（`setClassBasisFilter`），未新增篩選器專屬 CSS。
     原因：延續本專案既有的「品種顏色篩選」「比較模式顏色篩選」慣例，維持視覺與程式碼模式一致，符合架構鐵律「新增邏輯時盡量將資料處理與 DOM 渲染區隔」——`classifications.js` 只負責讀取 `WINE_DB.classifications` 並輸出 HTML 字串，不直接操作篩選器以外的其他面板狀態。
     驗證：用 headless Chrome 對正式 `index.html` 截圖三次——(1) 從導覽列點入分級制度頁面確認7套系統依國家分組正確顯示；(2) 點擊「By Vineyard」篩選器確認僅顯示勃根地與Barolo MGA兩套，義大利段落標題正確跟著篩選結果只顯示有符合項目的國家；(3) 展開Grand Cru/Premier Cru卡片確認分級層級、歷史背景、跨區對照三個區塊都正確渲染無破版。另外用 `--dump-dom` 確認新增 `data/wine-data.js` 的 `classifications` 陣列與新的 `js/classifications.js` 載入後頁面無 JS 錯誤，且用大括號／中括號配對計數確認 `wine-data.js` 新增內容後結構仍平衡（1014/1014、545/545）。
+66. **修正分級制度卡片可同時多開的問題，改為單一展開手風琴**：使用者回報「點選卡片展開後，再點別的卡片，原本的卡片應該要收合」，發現 #64 沿用 `toggleSATSection()` 是允許多卡同開的邏輯（SAT頁面本來就設計成可同時參考視覺/嗅覺/味覺多個段落）。新增 `toggleClassCard()`（仿 `grapes.js` 的 `toggleGrapeCard()` 單開邏輯，但不需銷毀 Chart.js 實例，因為分級卡片沒有圖表），卡片 `onclick` 改呼叫新函式，`toggleSATSection()` 維持只給 SAT 頁面使用不受影響。
+    原因：這推翻了 #64 當時「可安全跨頁重用」的判斷——`toggleSATSection()` 邏輯本身沒有 bug，但「該不該單開」是每個頁面的產品行為決定，SAT頁面要多開、分級制度頁面要單開，這兩種頁面看似都是手風琴卡片，實際互動需求不同，不能只看函式邏輯是否通用就共用，這是本次修正記取的教訓。
+    驗證：用 headless Chrome 模擬依序點擊卡片0與卡片2，確認卡片0自動收合、卡片2維持展開，並將每張卡片的 open 狀態即時印在頁面上核對截圖無誤。

@@ -4,11 +4,11 @@
 
 ## 一、本次開發歷程
 
-延續上次「頂層導覽列改版」收尾的三個視覺 bug 修正（DECISIONS.md #58-60，已 push），本次 session 開發了**「分級制度」頁面的第一批內容**（DECISIONS.md #61-65），這是導覽列改版時預留的 disabled 停用項目第一次真正被啟用。
+延續上次「頂層導覽列改版」收尾的三個視覺 bug 修正（DECISIONS.md #58-60，已 push），本次 session 開發了**「分級制度」頁面的第一批內容**（DECISIONS.md #61-65），這是導覽列改版時預留的 disabled 停用項目第一次真正被啟用；接著修正使用者回報的手風琴多開 bug（DECISIONS.md #66）。
 
 ### 做了什麼
 - **新增 `WINE_DB.classifications[]` 資料陣列**（`data/wine-data.js`，插在 `grapes[]` 陣列與 `vintages{}` 之間）：7筆分級系統資料，法國3套（1855 Cru Classé、Saint-Émilion Classification、Grand Cru/Premier Cru、Échelle des Crus）＋義大利4套（DOCG/DOC/IGT/VdT、Barolo/Barbaresco MGA、Chianti Classico Gran Selezione）。每筆含 `basis`（`estate`／`vineyard`／`region`，即「By酒莊／By葡萄園／By產區」三種分級邏輯）、`tiers[]`（分級層級）、`history`、`crossNote`（跨區對照說明）。
-- **新增 `js/classifications.js`**：`renderClassificationPanel()` 依 `basis` 篩選＋依 `country` 分組渲染，`buildClassificationCardHTML()` 組出手風琴卡片。手風琴展開/收合直接重用 `core.js` 既有的 `toggleSATSection()`，未另寫新函式（該函式無 SAT 頁面專屬依賴，可安全跨頁重用）。
+- **新增 `js/classifications.js`**：`renderClassificationPanel()` 依 `basis` 篩選＋依 `country` 分組渲染，`buildClassificationCardHTML()` 組出手風琴卡片。手風琴展開/收合原本重用 `core.js` 的 `toggleSATSection()`（多開邏輯），使用者回報「展開別的卡片時原本的應該收合」後，改為新寫 `toggleClassCard()`（單開邏輯，仿 `grapes.js` 的 `toggleGrapeCard()` 但不需銷毀圖表）。
 - **`index.html`**：把導覽下拉選單裡「分級制度（即將推出）」的 `disabled` 項目改為可點擊（`onclick="selectTabFromGroup(this,'classifications',event)"`），新增 `<div id="panel-classifications">` 內容區塊（含 `全部/By Estate/By Vineyard/By Region` 篩選按鈕＋容器），新增 `<script src="js/classifications.js">`。
 - **`js/core.js`**：`DOMContentLoaded` 初始化流程加入 `renderClassificationPanel()`。
 
@@ -43,5 +43,5 @@
 - **已知限制／未完成的驗證**：
   - 分級制度頁面目前**沒有**跟產區資料庫或品種圖鑑做雙向跳轉連結（不像 `regions.js`/`grapes.js` 之間已有的 `jumpToGrapeById`/`jumpToRegionById`）——`classifications[]` 目前也沒有欄位可以掛這種連結，這是刻意的最小範圍實作，見上方「下一步規劃」。
   - 本機環境沒有 Node.js、Python 也無法執行，所有驗證都是 headless Chrome `--dump-dom` ／ `--screenshot` ／ bash `grep -o | wc -l` 計數，抓不到 JS 語法本身以外的邏輯錯誤，需要接手者實際操作頁面複查。
-- **手風琴共用提醒**：`classifications.js` 的卡片展開/收合重用 `core.js` 的 `toggleSATSection()`，如果未來要幫分級制度卡片加圖表（例如視覺化分級金字塔），要比照 `grapes.js` 的 `toggleGrapeCard()` 模式另外處理資源銷毀，不能繼續共用 `toggleSATSection()`。
+- **手風琴行為提醒**：`classifications.js` 現在有自己的 `toggleClassCard()`（單開，不涉及圖表銷毀），`core.js` 的 `toggleSATSection()`（多開）維持只給 SAT 頁面使用，兩者不要再互相取代——這次的教訓是「手風琴函式邏輯通用」不代表「跨頁面的展開行為需求也相同」，未來新增手風琴頁面時要先確認該頁面該單開還是多開，不要預設沿用其他頁面的函式。
 - **接手的 Claude Code 務必實際開啟異動的檔案核對真實現況**，不要只憑這份 HANDOFF.md 的文字描述去猜測。

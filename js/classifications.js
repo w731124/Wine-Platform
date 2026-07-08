@@ -40,6 +40,26 @@ function renderClassificationPanel() {
   `).join('');
 }
 
+function toggleClassCard(hdr) {
+  const body = hdr.nextElementSibling;
+  const arrow = hdr.querySelector('.acc-arrow');
+  const isOpen = body.classList.contains('open');
+
+  // 手風琴行為：收合其他已展開卡片
+  document.querySelectorAll('#classification-container .acc-hdr.open').forEach(otherHdr => {
+    if (otherHdr === hdr) return;
+    const otherBody = otherHdr.nextElementSibling;
+    const otherArrow = otherHdr.querySelector('.acc-arrow');
+    if (otherBody) otherBody.classList.remove('open');
+    otherHdr.classList.remove('open');
+    if (otherArrow) { otherArrow.classList.remove('open'); otherArrow.textContent = '▼'; }
+  });
+
+  body.classList.toggle('open', !isOpen);
+  hdr.classList.toggle('open', !isOpen);
+  if (arrow) { arrow.classList.toggle('open', !isOpen); arrow.textContent = isOpen ? '▼' : '▲'; }
+}
+
 function buildClassificationCardHTML(c) {
   const meta = CLASS_BASIS_META[c.basis] || {};
   const tiersHTML = (c.tiers || []).map((t, i) => `
@@ -53,7 +73,7 @@ function buildClassificationCardHTML(c) {
 
   return `
     <div class="acc-wrap mb-3">
-      <div class="acc-hdr" onclick="toggleSATSection(this)">
+      <div class="acc-hdr" data-class-id="${c.id}" onclick="toggleClassCard(this)">
         <div class="flex items-center gap-3">
           <span style="font-size:18px;">🎖️</span>
           <div>
