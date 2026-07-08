@@ -2888,37 +2888,6 @@ const WINE_DB = {
       profile: { tannin: 0, acidity: 5, body: 3, alcohol: 4, finish: 4, aging: 2, floral: 10 },
     },
   ],
-  l2Config:{
-    'France(法國)':[
-      {val:'all-regions',label:'全部大區'},
-      {val:'Bordeaux(波爾多)',label:'Bordeaux(波爾多)'},
-      {val:'Burgundy(勃根地)',label:'Burgundy(勃根地)'},
-      {val:'Beaujolais(薄酒萊)',label:'Beaujolais(薄酒萊)'},
-      {val:'Rhône Valley(隆河谷)',label:'Rhône Valley(隆河谷)'},
-      {val:'Champagne(香檳)',label:'Champagne(香檳)'},
-      {val:'Loire Valley(羅亞爾河谷)',label:'Loire Valley(羅亞爾河谷)'},
-      {val:'Alsace(阿爾薩斯)',label:'Alsace(阿爾薩斯)'},
-      {val:'Languedoc-Roussillon(朗格多克-胡西雍)',label:'Languedoc-Roussillon(朗格多克-胡西雍)'},
-    ],
-    'Italy(義大利)':[
-      {val:'all-regions',label:'全部大區'},
-      {val:'Piedmont(皮埃蒙特)',label:'Piedmont(皮埃蒙特)'},
-      {val:'Tuscany(托斯卡尼)',label:'Tuscany(托斯卡尼)'},
-      {val:'Veneto(威尼托)',label:'Veneto(威尼托)'},
-      {val:'Sicily(西西里)',label:'Sicily(西西里)'},
-    ],
-    'Spain(西班牙)':[
-      {val:'all-regions',label:'全部大區'},
-      {val:'Rioja(里奧哈)',label:'Rioja(里奧哈)'},
-      {val:'Castilla y León(卡斯提亞-雷昂)',label:'Castilla y León(卡斯提亞-雷昂)'},
-      {val:'Andalusia(安達魯西亞)',label:'Andalusia(安達魯西亞)'},
-      {val:'Catalonia(加泰隆尼亞)',label:'Catalonia(加泰隆尼亞)'},
-    ],
-    'USA(美國)':[{val:'all-regions',label:'全部大區'},{val:'California(加州)',label:'California(加州)'}],
-    'Australia(澳洲)':[{val:'all-regions',label:'全部大區'},{val:'South Australia(南澳)',label:'South Australia(南澳)'},{val:'Western Australia(西澳)',label:'Western Australia(西澳)'}],
-    'Germany(德國)':[{val:'all-regions',label:'全部大區'},{val:'Mosel(摩澤爾)',label:'Mosel(摩澤爾)'},{val:'Rheingau(萊茵高)',label:'Rheingau(萊茵高)'}],
-    'New Zealand(紐西蘭)':[{val:'all-regions',label:'全部大區'},{val:'South Island(南島)',label:'South Island(南島)'}],
-  },
 
   vintages:{
     rows:[

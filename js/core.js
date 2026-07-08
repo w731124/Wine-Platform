@@ -119,6 +119,7 @@ if (l1Filters) {
 ════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', function() {
   cleanupLegacyCellarStorage();
+  renderL1CountryFilters();
   renderFilteredRegions();
   buildVintageMatrix();
   renderCompareColorFilters();

@@ -1,9 +1,20 @@
+function renderL1CountryFilters(){
+  const wrap=document.getElementById('l1-country-filters');
+  if (!wrap) return;
+  const flagByCountry={};
+  WINE_DB.appellations.forEach(a=>{ if(!flagByCountry[a.country]) flagByCountry[a.country]=a.emoji; });
+  wrap.innerHTML=Object.keys(flagByCountry).map(country=>
+    `<button class="fp" data-l1="${country}">${flagByCountry[country]} ${country}</button>`
+  ).join('');
+}
+
 function renderL2Bar(){
   const bar=document.getElementById('l2-bar');
   const cont=document.getElementById('l2-filters');
   if (!bar || !cont) return;
-  const cfg=WINE_DB.l2Config[curL1];
-  if(!cfg){bar.classList.remove('open');cont.innerHTML='';return;}
+  if(curL1==='all'||curL1==='old-world'||curL1==='new-world'){bar.classList.remove('open');cont.innerHTML='';return;}
+  const regions=[...new Set(WINE_DB.appellations.filter(a=>a.country===curL1).map(a=>a.region))];
+  const cfg=[{val:'all-regions',label:'全部大區'}, ...regions.map(r=>({val:r,label:r}))];
   cont.innerHTML=cfg.map(i=>`<button class="fp2 ${i.val===curL2?'active':''}" data-l2="${i.val}">${i.label}</button>`).join('');
   bar.classList.add('open');
   cont.onclick=e=>{
