@@ -58,3 +58,18 @@
     原因：與先前批次一致的判斷原則——已達標的內容不重寫，只補真正缺少的欄位；避免為了「統一動一次」而對已經合格的史實文字做無意義的編輯。
 18. **至此 B1～B11 全部 55 個產區的 `agingNote` 欄位皆已補齊**（`grep -c "agingNote:"` 與 `grep -c "wineColor:"` 皆為 55，一一對應），產區描述擴充工程主線正式完成。
     原因：此為使用者原始批次計畫的最終里程碑；本次新增內容涉及的史實（如 Prosecco Cartizze 頂級園與 2019 UNESCO 世界遺產、Amarone 2010年升格DOCG、Napa Valley 1981年成為加州第一個AVA、Barossa Old Vine Charter 老藤分級、Margaret River 由 Gladstones 博士氣候報告催生、Vega Sicilia 1864年創立、Sherry 一名源自 Jerez 英語化拼寫、Rheingau 19世紀末建立熟度分級概念）皆為有把握內容，無不確定項目需使用者核實。
+
+## 2026-07-08 品種圖鑑擴增 15 個新品種（WSET L2 之外的主流品種）＋介面調整
+
+19. **新增 15 個品種，選取原則為「國際主流市場常見、避免冷門難尋」**：紅酒 Tempranillo、Sangiovese、Nebbiolo、Grenache/Garnacha、Cabernet Franc、Malbec、Zinfandel/Primitivo、Gamay；白酒 Chenin Blanc、Gewürztraminer、Viognier、Sémillon、Albariño、Grüner Veltliner、Muscat/Moscato。欄位格式沿用既有 8 個 WSET L2 品種的結構（`styleSummary` 單句 40-90 字，非長段落，與產區物件的擴充字數目標不同）。
+    原因：使用者要求擴增品種但排除冷門品種；先提出清單經使用者確認後才動工，維持與產區擴充相同的「先建議範圍、確認後才分批施作」流程。
+20. **`representativeRegions` 欄位：9 個新品種（Tempranillo/Sangiovese/Nebbiolo/Grenache/Cabernet Franc/Chenin Blanc/Gewürztraminer/Viognier/Sémillon）連結到現有 55 個產區中已存在的對應產區；Malbec、Zinfandel/Primitivo、Gamay、Albariño、Grüner Veltliner、Muscat 這 6 個因其代表產區（Mendoza、Beaujolais、Rías Baixas、Wachau 等）尚未建入產區資料庫，暫留空陣列**。
+    原因：不在無對應資料下勉強塞入不準確的產區連結；此缺口與使用者接下來要做的「擴增產區」步驟直接對應，屆時補上對應產區後即可回填。
+21. **新增 `originCountry` 欄位（23 個品種全數），語意採「當代旗艦／代表國家」而非「植物學歷史原產國」**（例：Malbec 標示 Argentina 而非法國 Cahors；Zinfandel 標示 USA 而非克羅埃西亞）。
+    原因：這是資料語意上的判斷分歧，已用 AskUserQuestion 向使用者確認，選擇對一般學習者更直覺實用的「當代代表國家」語意，且與品種擴增時 styleSummary 已經寫好的敘述口徑一致（如 Malbec 的 styleSummary 就是「阿根廷旗艦品種」）。
+22. **新增 `wsetLevel: 2` 欄位到原始 8 個品種**（cabernet-sauvignon、merlot、pinot-noir、syrah-shiraz、chardonnay、pinot-gris、sauvignon-blanc、riesling），`js/grapes.js` 依此欄位渲染「WSET L2」徽章，而非在渲染程式碼裡寫死品種 id 清單。
+    原因：符合「資料處理與 DOM 渲染區隔」的架構傾向；未來若要標示 WSET L3 等其他分級，直接在資料層加欄位即可，不需要改渲染邏輯。
+23. **品種卡片改為手風琴式單一展開**：`toggleGrapeCard()` 在展開新卡片前，先收合 `#grape-container` 範圍內所有其他已展開卡片並銷毀其 Chart.js 雷達圖實例。刻意將 `querySelectorAll` 範圍限定在 `#grape-container` 內，而非全頁面搜尋 `.acc-hdr.open`。
+    原因：`.acc-wrap`/`.acc-hdr`/`.acc-body` 這組 class 在品飲系統（SAT）分頁的手風琴區塊也有使用，若不限定範圍，品種卡片的收合邏輯可能誤觸其他分頁的手風琴狀態；同時遵守 CLAUDE.md 技術死線關於 Chart.js 銷毀舊實例的規定。
+24. **未能於此環境完成互動式瀏覽器自動化驗證**：嘗試以 headless Chrome + DevTools Protocol 驗證手風琴收合行為，但 Windows PowerShell 5.1 無法建立 WebSocket 連線執行 CDP 互動指令（環境無 Node.js、Python 也無法執行）；已改為完整讀回程式碼人工核對邏輯正確性，並將此限制告知使用者，由使用者於自己的瀏覽器手動確認。
+    原因：誠實記錄驗證方式的落差，避免未來誤以為此功能已通過自動化測試；若日後要在此環境做瀏覽器自動化，需先取得使用者同意安裝 Node.js。

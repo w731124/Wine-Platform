@@ -35,11 +35,15 @@ function buildGrapeCardHTML(g) {
 
   return `
     <div class="acc-wrap mb-3">
-      <div class="acc-hdr" onclick="toggleGrapeCard(this,'${g.id}')">
+      <div class="acc-hdr" data-grape-id="${g.id}" onclick="toggleGrapeCard(this,'${g.id}')">
         <div class="flex items-center gap-3">
           <span style="font-size:18px;">${g.skinColor === 'red' ? '🍷' : '🥂'}</span>
           <div>
-            <div style="font-family:'Cinzel',serif;font-size:14px;font-weight:600;color:var(--burg);">${g.name}</div>
+            <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
+              <div style="font-family:'Cinzel',serif;font-size:14px;font-weight:600;color:var(--burg);">${g.name}</div>
+              ${g.originCountry ? `<span class="tg tg-co" style="font-size:9.5px;padding:1px 7px;">${g.originCountry}</span>` : ''}
+              ${g.wsetLevel === 2 ? `<span class="tg-match" style="font-size:9.5px;padding:1px 7px;">WSET L2</span>` : ''}
+            </div>
             <div style="font-size:11.5px;color:var(--txt3);max-width:480px;">${g.styleSummary}</div>
           </div>
         </div>
@@ -76,6 +80,19 @@ function toggleGrapeCard(hdr, id) {
   const body = hdr.nextElementSibling;
   const arrow = hdr.querySelector('.acc-arrow');
   const isOpen = body.classList.contains('open');
+
+  // 手風琴行為：收合其他已展開卡片，並銷毀其雷達圖實例避免記憶體洩漏
+  document.querySelectorAll('#grape-container .acc-hdr.open').forEach(otherHdr => {
+    if (otherHdr === hdr) return;
+    const otherId = otherHdr.getAttribute('data-grape-id');
+    const otherBody = otherHdr.nextElementSibling;
+    const otherArrow = otherHdr.querySelector('.acc-arrow');
+    if (otherBody) otherBody.classList.remove('open');
+    otherHdr.classList.remove('open');
+    if (otherArrow) { otherArrow.classList.remove('open'); otherArrow.textContent = '▼'; }
+    if (otherId && grapeRadarInsts[otherId]) { grapeRadarInsts[otherId].destroy(); delete grapeRadarInsts[otherId]; }
+  });
+
   body.classList.toggle('open', !isOpen);
   hdr.classList.toggle('open', !isOpen);
   if (arrow) { arrow.classList.toggle('open', !isOpen); arrow.textContent = isOpen ? '▼' : '▲'; }
