@@ -24,12 +24,35 @@
     </div>
     <nav class="flex-1 overflow-x-auto">
       <div class="tab-nav min-w-max">
-        <button class="tab-btn active" onclick="showPanel('regions',this)"><span class="ti">📋</span><span class="tl">📋 產區資料庫</span></button>
-        <button class="tab-btn" onclick="showPanel('mapview',this)"><span class="ti">🌍</span><span class="tl">🌍 地圖探索</span></button>
-        <button class="tab-btn" onclick="showPanel('vintage',this)"><span class="ti">📅</span><span class="tl">📅 年份矩陣</span></button>
-        <button class="tab-btn" onclick="showPanel('compare',this)"><span class="ti">⚖️</span><span class="tl">⚖️ 比較模式</span></button>
+        <div class="tab-group" data-group="regions-group">
+          <button class="tab-btn tab-group-trigger active" onclick="toggleTabGroup(this,'regions-group')">
+            <span class="ti">📖</span><span class="tl">📖 產區與分級</span><span class="tab-caret">▾</span>
+          </button>
+          <div class="tab-dropdown" id="dd-regions-group">
+            <button class="tab-dropdown-item active" onclick="selectTabFromGroup(this,'regions',event)"><span>📋</span> 產區資料庫</button>
+            <button class="tab-dropdown-item" onclick="selectTabFromGroup(this,'mapview',event)"><span>🌍</span> 地圖探索</button>
+            <button class="tab-dropdown-item" disabled title="即將推出"><span>🎖️</span> 分級制度（即將推出）</button>
+          </div>
+        </div>
+        <div class="tab-group" data-group="grapes-group">
+          <button class="tab-btn tab-group-trigger" onclick="toggleTabGroup(this,'grapes-group')">
+            <span class="ti">🍇</span><span class="tl">🍇 品種與釀造</span><span class="tab-caret">▾</span>
+          </button>
+          <div class="tab-dropdown" id="dd-grapes-group">
+            <button class="tab-dropdown-item" onclick="selectTabFromGroup(this,'grapes',event)"><span>🍇</span> 品種圖鑑</button>
+            <button class="tab-dropdown-item" disabled title="即將推出"><span>🍷</span> 釀造工藝（即將推出）</button>
+          </div>
+        </div>
         <button class="tab-btn" onclick="showPanel('tasting',this)"><span class="ti">👁</span><span class="tl">👁 品飲系統</span></button>
-        <button class="tab-btn" onclick="showPanel('grapes',this)"><span class="ti">🍇</span><span class="tl">🍇 品種圖鑑</span></button>
+        <div class="tab-group" data-group="tools-group">
+          <button class="tab-btn tab-group-trigger" onclick="toggleTabGroup(this,'tools-group')">
+            <span class="ti">🛠️</span><span class="tl">🛠️ 工具</span><span class="tab-caret">▾</span>
+          </button>
+          <div class="tab-dropdown" id="dd-tools-group">
+            <button class="tab-dropdown-item" onclick="selectTabFromGroup(this,'vintage',event)"><span>📅</span> 年份矩陣</button>
+            <button class="tab-dropdown-item" onclick="selectTabFromGroup(this,'compare',event)"><span>⚖️</span> 比較模式</button>
+          </div>
+        </div>
       </div>
     </nav>
   </div>

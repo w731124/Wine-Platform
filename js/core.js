@@ -90,9 +90,53 @@ function showPanel(name,btn){
     renderCompareRadar();
     }
 }
+
+/* ════════════════════════════════════
+   TAB NAV：下拉分類群組（產區與分級／品種與釀造／工具）
+════════════════════════════════════ */
+function toggleTabGroup(btn, groupId){
+  const dd = document.getElementById('dd-'+groupId);
+  if (!dd) return;
+  const isOpen = dd.classList.contains('open');
+  document.querySelectorAll('.tab-dropdown').forEach(d=>d.classList.remove('open'));
+  document.querySelectorAll('.tab-group-trigger').forEach(b=>b.classList.remove('dd-open'));
+  if (!isOpen) {
+    dd.classList.add('open');
+    btn.classList.add('dd-open');
+  }
+}
+
+function selectTabFromGroup(itemBtn, panelName, evt){
+  if (evt) evt.stopPropagation();
+  const groupEl = itemBtn.closest('.tab-group');
+  const trigger = groupEl ? groupEl.querySelector('.tab-group-trigger') : null;
+  document.querySelectorAll('.tab-dropdown-item').forEach(b=>b.classList.remove('active'));
+  itemBtn.classList.add('active');
+  showPanel(panelName, trigger);
+  document.querySelectorAll('.tab-dropdown').forEach(d=>d.classList.remove('open'));
+  document.querySelectorAll('.tab-group-trigger').forEach(b=>b.classList.remove('dd-open'));
+}
+
+document.addEventListener('click', function(e){
+  if (!e.target.closest('.tab-group')) {
+    document.querySelectorAll('.tab-dropdown').forEach(d=>d.classList.remove('open'));
+    document.querySelectorAll('.tab-group-trigger').forEach(b=>b.classList.remove('dd-open'));
+  }
+});
+
 function switchToPanel(name){
-  const btn = document.querySelector(`.tab-btn[onclick*="'${name}'"]`);
-  showPanel(name, btn);
+  // 獨立分頁按鈕（不在下拉群組內，例如品飲系統）
+  const directBtn = document.querySelector(`.tab-nav > .tab-btn[onclick*="showPanel('${name}'"]`);
+  if (directBtn) { showPanel(name, directBtn); return; }
+  // 下拉群組內的分頁：連動高亮群組觸發鈕與對應項目
+  const item = document.querySelector(`.tab-dropdown-item[onclick*="'${name}',event"]`);
+  if (item) {
+    const groupEl = item.closest('.tab-group');
+    const trigger = groupEl ? groupEl.querySelector('.tab-group-trigger') : null;
+    document.querySelectorAll('.tab-dropdown-item').forEach(b=>b.classList.remove('active'));
+    item.classList.add('active');
+    showPanel(name, trigger);
+  }
 }
 
 /* ════════════════════════════════════
