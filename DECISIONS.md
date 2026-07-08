@@ -42,3 +42,10 @@
     原因：延續既定批次計畫接續作業；`alsace.history`（215字）略超 200 字上限，因為要完整交代法德多次易手史與品種標示傳統這兩項核心史實，選擇保留完整語意而非砍字湊數。
 13. **修正 `vallee-de-la-marne.famousEstates` 既有錯誤資料**：移除 `'Jean-Marc Selosse anko'`（疑似資料損壞產生的錯字／幻覺內容——Jacques Selosse 實際上是白丘 Avize 的生產者，不屬於馬恩河谷，且「anko」無法辨識其意義），僅保留可確認正確的 `Gaston Chiquet`、`José Michel` 兩筆。
     原因：此為執行 B4 任務時範圍外意外發現的資料品質問題，使用者確認後一併修正；未自行猜測替換成其他生產者名稱（雖懷疑原意可能是馬恩河谷小農 Jean-Marc Sélèque，但把握不足，選擇移除而非用不確定的猜測填補）。
+
+## 2026-07-08 產區描述擴充 B5+B6+B7（羅亞爾＋隆河/朗格多克＋義大利，一併處理）
+
+14. **執行前發現 6 筆（pouilly-fume、chinon、cote-rotie、condrieu、gigondas、cotes-du-rhone）已在更早、未被 HANDOFF.md 追蹤到的「Batch 3」工作中完成 styleSummary/history/多行terroir 擴充，只缺 `agingNote`**；`languedoc-roussillon` 則是 history 已達標、但 styleSummary 與 terroir 仍是原始短版本。
+    原因：據此調整實際施工範圍為「10 筆全套擴充＋1 筆半套（languedoc-roussillon 補 styleSummary/terroir/agingNote，history 不動）＋6 筆只補 agingNote」，避免不必要地重寫已經合格的內容；此發現已於動工前回報並取得使用者確認。
+15. **完成 B5（muscadet, vouvray, sancerre, pouilly-fume, chinon）、B6（hermitage, chateauneuf-du-pape, cote-rotie, condrieu, gigondas, cotes-du-rhone, languedoc-roussillon）、B7（barolo, barbaresco, chianti-classico, brunello-di-montalcino, etna）共 17 筆**，依上述調整後範圍分別處理。
+    原因：使用者要求三個批次一次處理完，內容涵蓋的史實（如 Hermitage「hermitaged claret」典故、教皇新堡 1923 年 Baron Le Roy 規範、Barolo/Barbaresco 陳年月數與 Barolo Boys 現代派、Chianti Classico 1996 年獨立與 Gran Selezione、Brunello 由 Biondi-Santi 首創、Etna 的 contrada 與未嫁接老藤）皆為有把握的既有 WSET/產區知識；少數欄位（如 brunello.history 232字、etna.agingNote 139字）超出字數目標但未強行刪減，理由與先前批次一致——不影響版面、不需動程式碼即不強行湊數字。
