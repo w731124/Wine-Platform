@@ -73,3 +73,12 @@
     原因：`.acc-wrap`/`.acc-hdr`/`.acc-body` 這組 class 在品飲系統（SAT）分頁的手風琴區塊也有使用，若不限定範圍，品種卡片的收合邏輯可能誤觸其他分頁的手風琴狀態；同時遵守 CLAUDE.md 技術死線關於 Chart.js 銷毀舊實例的規定。
 24. **未能於此環境完成互動式瀏覽器自動化驗證**：嘗試以 headless Chrome + DevTools Protocol 驗證手風琴收合行為，但 Windows PowerShell 5.1 無法建立 WebSocket 連線執行 CDP 互動指令（環境無 Node.js、Python 也無法執行）；已改為完整讀回程式碼人工核對邏輯正確性，並將此限制告知使用者，由使用者於自己的瀏覽器手動確認。
     原因：誠實記錄驗證方式的落差，避免未來誤以為此功能已通過自動化測試；若日後要在此環境做瀏覽器自動化，需先取得使用者同意安裝 Node.js。
+
+## 2026-07-08 新增6個產區，補齊品種擴增時留白的代表產區連結
+
+25. **新增 mendoza（阿根廷）、lodi（美國加州）、beaujolais（法國）、rias-baixas（西班牙）、wachau（奧地利，資料庫第一個奧地利產區）、asti（義大利）共6個產區**，逐一對應先前品種擴增時 representativeRegions 留空的 Malbec、Zinfandel/Primitivo、Gamay、Albariño、Grüner Veltliner、Muscat。每個品種只選一個最具代表性/國際能見度最高的單一產區（例如 Zinfandel 選 Lodi 而非 Paso Robles，Muscat 選 Asti 而非 Beaumes-de-Venise），不做多產區並列，維持與品種擴增時「主流常見、避免冷門」的原則一致。
+    原因：這是使用者規劃三步驟（擴增品種→補齊代表產區缺口→全面複查連結）中的第二個子任務；先提出6個候選產區清單附理由，經使用者確認「Go」才動工，維持既定的「先建議、後施作」流程。
+26. **beaujolais 的 `region` 欄位設為 `Burgundy(勃根地)`，未使用獨立的 `Beaujolais` region 值**。
+    原因：資料庫的 L2 篩選清單（`l2Config`）目前 France 底下只有 Bordeaux/Burgundy/Rhône Valley/Champagne/Loire Valley/Alsace/Languedoc-Roussillon 七個選項，沒有 Beaujolais；若賦予獨立 region 值，會在地區篩選下拉選單中找不到對應選項、只能在「全部大區」才看得到。薄酒萊在法定行政與傳統教學脈絡上也常被歸入廣義勃根地產區討論，因此選擇歸入現有 Burgundy 篩選類別，避免額外修改 `index.html`／`core.js` 的篩選設定（超出本次任務範圍）。此為技術權宜考量，非產區身份認定的絕對主張，供未來檢視。
+27. **6個品種的 `representativeRegions` 已全數補上對應產區 id 連結**（malbec→mendoza、zinfandel-primitivo→lodi、gamay→beaujolais、albarino→rias-baixas、gruner-veltliner→wachau、muscat→asti），資料庫目前已無任何品種的 `representativeRegions` 是空陣列。
+    原因：完成使用者三步驟計畫的第二步；第三步「全面複查每個產區跟每個品種的連結」仍待後續 session 執行。
