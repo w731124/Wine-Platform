@@ -4,22 +4,23 @@
 
 ## 一、本次開發歷程
 
-延續先前試點（haut-medoc、marlborough，commit `aebceb8`）與 B1-B3（commit `a86e61c`）的產區描述擴充工程，本次 session 沒有新增產區內容，改為處理**專案本身的版控/工具設定**（非網站內容更動），共兩次 commit：
+延續先前試點（`aebceb8`）、B1-B3（`a86e61c`）、版控整理（`6ae8051`、`33699c4`）的進度，本次 session 完成：
 
-### commit `6ae8051`：CLAUDE.md 納入版控、補寫 DECISIONS.md、修正 B1-B3 terroir 格式不一致
-- **CLAUDE.md 正式加入 git 版控**（先前一直放在 repo 但未追蹤）。
-- **新建 DECISIONS.md**，回溯記錄 `aebceb8`／`a86e61c` 與本次的關鍵決策與原因，日後每個階段性功能完成後採**追加**方式寫入，不覆蓋舊內容（跟 HANDOFF.md 的覆蓋邏輯不同，要注意分辨）。
-- **data/wine-data.js**：margaux／saint-emilion／chablis／cote-de-nuits／cote-de-beaune 五筆的 `terroir` 從單行寫法改成與其餘筆數一致的多行寫法，純排版統一，文字內容與字數完全未變動。
+### B4 產區描述擴充：montagne-de-reims、vallee-de-la-marne、cote-des-blancs、alsace（香檳＋阿爾薩斯，共 4 筆）
+異動內容與前幾批相同：`styleSummary`（90-120字）、`history`（150-200字）、`terroir.climate`／`terroir.soil`（各30-40字，統一改為多行寫法）、新增 `agingNote`（80-120字）。`alsace.history` 為交代法德易手史與品種標示傳統完整語意，落在 215 字（略超 200 字上限，屬刻意保留、非疏漏）。
 
-### 本次未 commit 的最新變動（尚未 push，見下方「現況檢查提醒」）
-- **新建 `.gitignore`**，內容為 `.claude/settings.local.json`。
-- **`.claude/settings.json` 納入版控**；`.claude/settings.local.json` 維持不版控。
-  原因：`settings.json` 是「git push/fetch/pull 免確認」這類跨裝置共用的專案層級設定，值得共享；`settings.local.json` 是 Claude Code 每次 session 自動累加寫入的「已核准指令清單」，內含本機暫存資料夾絕對路徑（如 `C:\Users\HARRYW~1\AppData\Local\Temp\claude\...`），換裝置或換 session 就毫無意義，版控只會讓歷史越滾越亂。
+### 範圍外資料修正
+`data/wine-data.js` 的 `vallee-de-la-marne.famousEstates` 原本有一筆 `'Jean-Marc Selosse anko'`，是執行 B4 時意外發現的既有錯誤資料（Jacques Selosse 實際上是白丘 Avize 的生產者、不屬於馬恩河谷，且「anko」無法辨識意義），經使用者確認後移除，只保留可確認正確的 `Gaston Chiquet`、`José Michel`。**未**自行猜測填入替代生產者名稱。
+
+### 版控相關（.claude/、DECISIONS.md）——延續自上次 session，未變動
+- CLAUDE.md、`.claude/settings.json`、`.gitignore`（排除 `.claude/settings.local.json`）皆已 commit。
+- DECISIONS.md 持續以**追加**方式記錄每個階段的決策，本次新增第 12、13 條（B4 內容決策、Selosse 錯字修正原因）。
+
+以上全部已 commit（見下方「現況檢查提醒」的 commit hash），**尚未 push**——使用者明確表示「等這一階段完成之後再一起 push」。
 
 ## 二、討論過但尚未執行的項目
 
-- **B4～B11（剩餘 36 個產區）尚未開始**，下次應從 **B4** 接續（與上次 HANDOFF 記錄相同，本次未動）：
-  - B4：montagne-de-reims, vallee-de-la-marne, cote-des-blancs, alsace（香檳+阿爾薩斯）
+- **B5～B11（剩餘 32 個產區）尚未開始**，下次應從 **B5** 接續：
   - B5：muscadet, vouvray, sancerre, pouilly-fume, chinon（羅亞爾）
   - B6：hermitage, chateauneuf-du-pape, cote-rotie, condrieu, gigondas, cotes-du-rhone, languedoc-roussillon（隆河+朗格多克）
   - B7：barolo, barbaresco, chianti-classico, brunello-di-montalcino, etna（義大利 1）
@@ -27,11 +28,8 @@
   - B9：rioja, ribera-del-duero, jerez, priorat（西班牙）
   - B10：mosel, rheingau, napa-valley, sonoma-coast（德國+美國）
   - B11：barossa-valley, margaret-river, central-otago（澳洲+紐西蘭）
-- **B1-B3 的 17 筆產區仍有字數超標/不足未調整**（使用者已明確決定不強行湊字數，只要不影響版面/不需動程式就維持現況——這不是「待辦」，是已定案的判斷，記錄於 DECISIONS.md 第 9 條，供接手者理解為何沒有處理）：
-  - `cote-de-nuits.history`＝247字（目標 150-200，超標 47）
-  - `hautes-cotes-de-nuits.history`＝131字、`hautes-cotes-de-beaune.history`＝140字（皆低於 150 下限）
-  - `cote-de-beaune.agingNote`＝149字（目標 80-120，超標 29）
-  - `cote-de-beaune.terroir.climate`≈22字（目標 30-40，略低於下限）
+- **B1-B3 的既有字數超標/不足未調整**（已定案，非待辦，詳見 DECISIONS.md 第 9 條）：`cote-de-nuits.history`＝247字、`hautes-cotes-de-nuits.history`＝131字、`hautes-cotes-de-beaune.history`＝140字、`cote-de-beaune.agingNote`＝149字、`cote-de-beaune.terroir.climate`≈22字。
+- **本次 session 累積的所有 commit 都尚未 push 到 GitHub**，等這個開發階段（目前規劃到 B11 全部完成）告一段落後才會一次 push。
 
 ## 三、我明確要求先記下來、之後再處理的內容
 
@@ -39,9 +37,12 @@
 
 ## 四、現況檢查提醒
 
-- **目前有未 commit 的變動**：`.gitignore`（新檔）與 `.claude/settings.json`（新增追蹤）已 `git add` 進暫存區，但尚未執行 `git commit`。接手裝置 `git pull` 前，若原裝置這邊沒有先完成 commit，這兩個檔案的異動不會出現在遠端。
-- **commit `6ae8051` 目前也尚未 push 到 GitHub**（`git status` 顯示 `ahead of origin/main by 1 commit`）。接手前務必先確認原裝置這邊的 push 狀態，避免兩台裝置各自產生不同步的本地 commit。
-- **B1～B3 的 17 筆產區資料本身沒有半成品**：欄位（styleSummary／history／terroir.climate／terroir.soil／agingNote）皆已完整寫入且格式已統一為多行寫法，每次寫入後都有重新讀取比對大括號/中括號配對（目前為 984/984、319/319，平衡）。
-- **本機環境沒有安裝 Node.js**（`node` 指令不存在，PowerShell 與 Bash 皆確認過），語法正確性靠人工讀取比對，並非跑過 `node --check` 或任何自動化 lint／build 驗證。若接手環境有 Node，建議先跑一次語法檢查再繼續動工。
-- **接手的 Claude Code 務必實際開啟相關檔案核對現況**（尤其 `data/wine-data.js`、`.gitignore`、`.claude/settings.json` 的 git 追蹤狀態），不要只憑這份 HANDOFF.md 的文字描述去猜測。
-- B4 開始前，同樣需要先讀取該批各產區在 `data/wine-data.js` 中的現有內容，逐筆確認現況而非假設全部是最初的短版本。
+- **本機領先 origin/main 的 commit**（尚未 push，接手裝置 `git pull` 前務必先確認原裝置是否已 push，避免兩邊各自產生不同步的本地 commit）：
+  - `6ae8051` CLAUDE.md 納入版控、補寫 DECISIONS.md、修正 B1-B3 terroir 格式不一致
+  - `33699c4` `.claude/` 分流版控
+  - 本次 session 的 B4＋Selosse 修正尚待 commit（見下一點）
+- **本次 session 的 wine-data.js 異動（B4 四筆＋Selosse 修正）截至本檔案寫入時尚未 commit**，接手前請先確認原裝置是否已完成 commit。
+- **B4 四筆資料本身沒有半成品**：欄位皆已完整寫入，terroir 已統一為多行寫法；寫入後已重新讀取比對大括號/中括號配對（984/984、319/319，平衡），`agingNote` 總數為 23（=試點2＋B1-B3共17＋B4共4），與預期一致。
+- **本機環境沒有安裝 Node.js**，語法正確性靠人工讀取比對＋括號配對檢查，並非跑過 `node --check`。若接手環境有 Node，建議先跑一次語法檢查。
+- **接手的 Claude Code 務必實際開啟 `data/wine-data.js` 核對 B4 這 4 筆與 Selosse 修正的真實現況**，不要只憑這份 HANDOFF.md 的文字描述去猜測。
+- B5 開始前，同樣需要先讀取該批各產區在 `data/wine-data.js` 中的現有內容，逐筆確認現況再動工。
