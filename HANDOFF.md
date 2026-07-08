@@ -4,31 +4,46 @@
 
 ## 一、本次開發歷程
 
-延續義大利/西班牙第一輪深化（`d5dc217`，84個產區）之後，本次 session 完成**義大利/西班牙第二輪深化擴充**。
+延續義大利/西班牙第二輪深化（`6ec41f6`，91個產區）之後，本次 session 執行**三步驟計畫的第三步：全面複查產區與品種的連結**。
 
-### 新增 7 個產區
-`data/wine-data.js` 的 `appellations` 陣列從 84 筆擴充到 **91 筆**：
-- **義大利（15筆→20筆，新增5筆，填補剩餘全部空白大區）**：Cerasuolo di Vittoria（西西里第2筆，與 Etna 風格形成對比）、Lambrusco（艾米利亞-羅馬涅，氣泡紅酒）、Collio（弗留利-威尼斯朱利亞，精品白酒）、Verdicchio dei Castelli di Jesi（馬爾凱，平價白酒）、Sagrantino di Montefalco（溫布里亞，單寧最強品種）。**義大利12個大區目前已全數涵蓋**。
-- **西班牙（9筆→11筆，新增2筆）**：Jumilla（穆爾西亞，Monastrell未嫁接老藤）、Navarra（納瓦拉，格那希粉紅酒故鄉現代化轉型紅酒）。
+### 複查方式
+比對 91 個產區的 `primaryGrapes`（純文字品種陣列）與 23 個品種的 `representativeRegions`（產區id陣列），發現四類落差，逐類回報使用者定案：
 
-一個資料語意決定：**Navarra 的 `wineColor` 選了 `red` 而非該產區歷史上更知名的 Rosado（粉紅酒）**，因為資料庫目前完全沒有 rosé 的 wineColor 分類與渲染邏輯，貿然引入超出本次任務範圍；rosado 傳統只在文字描述中帶到，未實際建立粉紅酒資料。若未來要讓 Navarra（或其他產區）以粉紅酒身分呈現，需要先評估是否要新增 rosé 這個 wineColor 分類並確認 UI 渲染邏輯（篩選按鈕、雷達圖顏色等目前只處理 red/white/sparkling）。
+1. **明確遺漏（2項，已修正）**：`zinfandel-primitivo` 補 `primitivo-di-manduria`、`gewurztraminer` 補 `alto-adige`——這兩筆是先前 session 自己說要連結卻忘記做的疏漏。
+2. **同品種不同國家命名（已定案處理原則並執行4筆）**：`primaryGrapes` 維持依當地命名（不強制統一），改在品種頁 `styleSummary` 補一句提及別名。已更新 `tempranillo`（提及 Tinta de Toro）、`albarino`（提及 Alvarinho）、`pinot-noir`（提及 Spätburgunder）、`pinot-gris`（提及 Grauburgunder）。
+3. **representativeRegions 缺口（優先修3項，其餘列待辦）**：`pinot-noir` 補 `montagne-de-reims`／`vallee-de-la-marne`、`semillon` 補 `hunter-valley`、`viognier` 補 `cote-rotie`。
+4. **品種完全沒有對應頁面（~30個品種名稱，維持擱置）**：如 Marsanne、Mourvèdre、Corvina、Aglianico 等，屬於「品種資料庫規模擴增」的獨立決定，不在本次範圍。
 
-以上全部已 commit（見下方「現況檢查提醒」），**尚未 push**。
+以上已 commit（見下方「現況檢查提醒」），**尚未 push**。
 
-## 二、⚠️ 使用者明確要求：接下來請提醒進行第三步驟
+## 二、⚠️ 使用者明確表示「之後還是要補齊」——第三類的待辦清單
 
-**使用者在本次 session 開場明確說：「繼續深化義大利/西班牙，結束後再提醒我進行複查產區與品種的連結」。義大利/西班牙深化已完成兩輪，本次 session 結束後，新 session 開場時務必主動提醒使用者：該進行「三步驟計畫」的第三步——檢查每個產區跟每個品種的連結。**
+**這是使用者明確要求保留、下次要繼續處理的項目**，不是我自行判斷的待辦。以下是本次複查發現、但這次沒動的 `representativeRegions` 缺口（品種已存在，產區也正確列為 primaryGrape，只是品種頁沒收錄該產區）：
 
-第三步的具體內容：逐一檢視現有 91 個產區的 `primaryGrapes`（純文字品種名稱陣列）與 23 個品種的 `representativeRegions`（產區id陣列）是否互相對應、有沒有遺漏或不一致。這是全面複查性質的任務，不是新增內容。
+- **cabernet-sauvignon**（現8個）缺：mendoza, maipo-valley, stellenbosch, columbia-valley, paso-robles
+- **chardonnay**（現7個）缺：hautes-cotes-de-nuits, hautes-cotes-de-beaune, margaret-river, willamette-valley, yarra-valley, gisborne, franciacorta
+- **syrah-shiraz**（現6個）缺：languedoc-roussillon, hunter-valley, clare-valley, hawkes-bay, columbia-valley, paso-robles
+- **grenache**（現5個）缺：languedoc-roussillon, rioja, paso-robles, navarra
+- **riesling**（現3個）缺：wachau, clare-valley, pfalz
+- **cabernet-franc**（現2個）缺：pomerol（波美侯卡本內弗朗比例高，教學上較明顯的缺口）
+- **pinot-noir**（本次已補香檳2筆，現9個）仍缺：marlborough, willamette-valley, yarra-valley
+- **pinot-gris**（現1個）仍缺：alto-adige, collio（本次只做了 styleSummary 別名補充，未做連結）
+- **tempranillo**（現2個）仍缺：toro, navarra（本次只做了 styleSummary 別名補充，未做連結）
+- **albarino**（現1個）仍缺：vinho-verde（本次只做了 styleSummary 別名補充，未做連結）
+- **semillon**（本次已補獵人谷，現5個）仍缺：entre-deux-mers
+- **sauvignon-blanc**（現6個）缺：sauternes, barsac, rueda, collio（皆為次要混調角色，優先度較低）
+- **merlot**（現6個）缺：columbia-valley（pauillac／margaux 為次要角色，優先度低）
+
+下次接手時，建議先跟使用者確認要一次處理完還是分批，不要自行決定範圍。
 
 ## 三、我明確要求先記下來、之後再處理的內容
 
-- **完成義大利/西班牙深化後，提醒使用者進行第三步「複查產區與品種連結」**（見上方第二節，已用粗體標註，避免被忽略）。
+- **上方第二節的 `representativeRegions` 缺口清單**，使用者原話「依你建議，但之後還是要補齊」——這不是可以無限期擱置的項目，是明確要接續的待辦。
 
 ## 四、現況檢查提醒
 
-- **本次 session 的 wine-data.js 異動（7個新產區）截至本檔案寫入時尚未 commit**，接手前請先確認原裝置是否已完成 commit。
-- **資料完整性已核對**：大括號/中括號配對正確（1195/1195、544/544），`wineColor` 與 `agingNote` 皆為91筆（一一對應），全檔 id 無重複。國家分布：法國35、義大利20、西班牙11、美國6、澳洲5、紐西蘭4、德國4、葡萄牙2、南非1、智利1、奧地利1、阿根廷1，共12國。
+- **本次 session 的 wine-data.js 異動（9處修正：2項明確遺漏＋4項命名補充＋3項優先連結）截至本檔案寫入時尚未 commit**，接手前請先確認原裝置是否已完成 commit。
+- **資料完整性已核對**：大括號/中括號配對正確（1195/1195、544/544，本次異動不影響總數，只是陣列內增加字串與修改既有字串）。
 - **本機環境沒有 Node.js，Python 也無法執行**，語法正確性靠人工讀取比對＋括號配對檢查。
-- **接手的 Claude Code 務必實際開啟 `data/wine-data.js` 核對這7個新產區的真實現況**，不要只憑這份 HANDOFF.md 的文字描述去猜測。
-- **資料庫目前沒有任何 `wineColor: 'rosé'` 的產區**，Navarra 等歷史上以粉紅酒聞名的產區都是以紅酒身分收錄，這是刻意的範圍控制決定（見上方第一節），不是遺漏。
+- **接手的 Claude Code 務必實際開啟 `data/wine-data.js` 核對這9處異動的真實現況**，不要只憑這份 HANDOFF.md 的文字描述去猜測。
+- **第四類（~30個品種完全沒有對應頁面）維持擱置**，除非使用者主動提起，否則不要在複查任務的脈絡下自行提議處理。

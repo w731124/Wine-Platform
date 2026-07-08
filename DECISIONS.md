@@ -109,3 +109,16 @@
     原因：與義大利同批動工，選取標準一致；Navarra 的 `wineColor` 選擇 `red` 而非該產區歷史上更知名的粉紅酒（Rosado），因為資料庫目前完全沒有 rosé 相關的 wineColor 資料與渲染邏輯，貿然引入會超出本次任務範圍，因此聚焦於 Navarra 現代化後同樣傑出的紅酒面向，rosado 傳統僅在 styleSummary/history 文字中帶到。
 36. **本批次沿用第30/33條建立的「history 超標30%以上才主動刪減」門檻**：Cerasuolo di Vittoria、Collio 兩筆草稿超標接近或略高於30%，各自二次刪減至20%左右超標範圍；其餘5筆（Lambrusco、Verdicchio、Sagrantino、Jumilla、Navarra）維持10-25%輕微超標不強行砍字。
     原因：延續已確立的判斷標準，維持批次間處理方式的一致性。
+
+## 2026-07-08 三步驟計畫第三步：全面複查91個產區與23個品種的連結
+
+37. **全面比對 91 個產區的 `primaryGrapes`（純文字品種陣列）與 23 個品種的 `representativeRegions`（產區id陣列）**，發現四類落差並回報使用者逐類定案處理方式，而非自行決定。
+    原因：這是使用者明確要求的複查任務，資料量大（91×23交叉比對）不適合逕行修改，須先完整回報讓使用者決定優先順序與處理原則，才符合「先報告、後施作」的既定流程。
+38. **修正兩筆明確遺漏的品種-產區連結**：`zinfandel-primitivo.representativeRegions` 補上 `primitivo-di-manduria`、`gewurztraminer.representativeRegions` 補上 `alto-adige`。
+    原因：這兩筆是先前 session 自己在 DECISIONS.md 明確寫過「打算連結」卻忘記回頭補上的疏漏（見第31、34條），屬於明確錯誤而非設計判斷，使用者確認後直接修正。
+39. **「同一品種不同國家命名不同」的處理原則定案**：`primaryGrapes` 欄位維持依各產區當地命名（不強制統一成單一名稱），改在該品種頁面的 `styleSummary` 補一句提及其他產區的別名。本次依此原則更新 4 個品種：`tempranillo`（補充 Toro 產區稱 Tinta de Toro）、`albarino`（補充葡萄牙稱 Alvarinho）、`pinot-noir`（補充德語產區稱 Spätburgunder）、`pinot-gris`（補充德國稱 Grauburgunder）。`grenache`（Grenache/Garnacha）在品種新增當下就已經是雙語品種名稱，不需額外處理。
+    原因：使用者明確裁示的處理原則——保留各地命名的教學真實性（法國格那希、西班牙格那希在地就叫 Garnacha 是事實，統一改名反而失真），透過品種頁面說明別名來解決「看起來像兩個不同品種」的認知落差，而不用去改產區資料。
+40. **`representativeRegions` 缺口採「本次修復影響最大的3項、其餘列入待辦」策略**：新增 `pinot-noir` 的 `montagne-de-reims`／`vallee-de-la-marne`（原本香檳兩個產區完全沒被黑皮諾品種頁收錄）、`semillon` 的 `hunter-valley`（陳年賽美蓉是這品種最具教學獨特性的案例）、`viognier` 的 `cote-rotie`（Côte-Rôtie 的內容本身就整段在講維歐尼耶共發酵，卻沒連結）。
+    原因：使用者裁示「依你建議，但之後還是要補齊」——這3項是回報時評估教學重要性最高、遺漏最明顯的案例，優先修正；其餘同類缺口（見下方待辦清單）規模較大，留待下次 session 專門處理，避免一次改動範圍過大難以核對。
+41. **第四類（91個產區裡提及、但23個品種完全沒有對應頁面的~30個品種名稱，如 Marsanne、Mourvèdre、Corvina、Aglianico 等）維持擱置**，不在本次處理範圍。
+    原因：使用者明確裁示擱置；這類屬於「品種資料庫規模擴增」的獨立決定，性質與本次「複查既有連結」不同，混在一起處理會模糊任務邊界。
