@@ -180,3 +180,5 @@
 59. **修正下拉選單展開後被裁切、要靠捲軸才看得到的問題**：`<nav class="flex-1 overflow-x-auto">` 的 `overflow-x-auto` 依 CSS Overflow 規範會讓 `overflow-y` 也一併被瀏覽器計算成 `auto`（而非維持 `visible`），使 nav 變成一個雙向裁切／捲動的容器，絕對定位展開的 `.tab-dropdown` 因此被關在這個框裡而非正常疊加在頁面上層。移除 nav 的 `overflow-x-auto`，只保留 `flex-1`。
     原因：新版只剩4個頂層項目（含 icon-only 的行動裝置窄螢幕模式），寬度需求遠低於改版前的6個平行分頁，原本為橫向捲動保留的 `overflow-x-auto` 已非必要，直接移除是修正裁切問題風險最低的做法，避免另外用 JS 動態定位下拉選單增加複雜度。
     驗證：用 headless Chrome 對正式 `index.html` 截圖確認四個頂層項目寬度平均分布；另外用一份會自動觸發 `toggleTabGroup()` 展開下拉選單的暫存測試頁（載入同目錄的真實 CSS/JS，測試後即刪除）截圖，確認下拉選單完整顯示在頁面上層、無捲軸裁切。
+60. **修正等寬後文字未置中、版面看起來仍分散不整齊的問題**：等寬修正（#58）只解決了容器寬度，容器內的文字沒有跟著置中——`.tab-btn` 本身沒有 `text-align:center`，`.tab-group-trigger` 雖是 `display:flex` 排列圖示與文字但沒有 `justify-content:center`，導致每個項目的內容仍貼齊各自容器左側，寬度一致但視覺仍不整齊。修正為 `.tab-btn` 加 `text-align:center`、`.tab-group-trigger` 加 `justify-content:center`。
+    原因：使用者截圖回報等寬修好之後文字仍分散不齊，是 #58 等寬修正時遺漏的下一層問題（容器寬度與內容對齊是兩件事），用 headless Chrome 截圖確認四個項目文字皆置中後才回報完成。
