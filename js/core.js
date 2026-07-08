@@ -45,10 +45,10 @@ function auditWineDB(){
     const hasMapNode = !!document.querySelector(`.pulse-marker[data-id="${app.id}"]`);
     if(!hasMapNode){ report.missingMap.push(app.id); issues.push('map'); }
 
-    // 3) 比較模式檢查：radarStats 五維是否齊全
-    const rs = app.radarStats;
-    const rsOk = rs && ['tannin','acidity','body','aging','floral'].every(k => typeof rs[k] === 'number');
-    if(!rsOk){ report.missingCompare.push(app.id); issues.push('compare'); }
+    // 3) 比較模式檢查：profile 七維是否齊全（比較模式雷達圖實際讀取的欄位）
+    const p = app.profile;
+    const pOk = p && ['tannin','acidity','body','alcohol','finish','aging','floral'].every(k => typeof p[k] === 'number');
+    if(!pOk){ report.missingCompare.push(app.id); issues.push('compare'); }
 
     // 4) 法國產區年份矩陣綁定檢查
     if(app.country === 'France(法國)'){
@@ -65,7 +65,7 @@ function auditWineDB(){
   // Console 報告輸出
   console.groupCollapsed(`%c[WINE_DB Audit] ${report.ok.length}/${report.total} 完全通過`, 'color:#5C061C;font-weight:bold;');
   if(report.missingMap.length) console.warn('❌ 缺少地圖座標 (data-id 未在地圖 DOM 中找到):', report.missingMap);
-  if(report.missingCompare.length) console.warn('❌ 缺少比較模式所需 radarStats 欄位:', report.missingCompare);
+  if(report.missingCompare.length) console.warn('❌ 缺少比較模式所需 profile 欄位:', report.missingCompare);
   if(report.franceUnboundToVintage.length) console.warn('❌ 法國產區未綁定至年份矩陣任何一列:', report.franceUnboundToVintage);
   if(!report.missingMap.length && !report.missingCompare.length && !report.franceUnboundToVintage.length){
     console.log('%c✅ 全部產區通過一致性稽核', 'color:#1a7a1a;font-weight:bold;');

@@ -160,7 +160,3 @@ function renderCompareRadar() {
     }).join('');
   }
 }
-
-function renderRadar() {
-  renderCompareRadar();
-}
