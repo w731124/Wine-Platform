@@ -29,7 +29,9 @@ function buildGrapeCardHTML(g) {
   const aromaTags = (g.aromaWheel || []).map(a => `<span class="tg tg-aroma">${a}</span>`).join('');
   const regionTags = (g.representativeRegions || []).map(rid => {
     const app = WINE_DB.appellations.find(a => a.id === rid);
-    return `<span class="tg tg-reg">${app ? app.name : rid}</span>`;
+    return app
+      ? `<span class="tg tg-reg" style="cursor:pointer;text-decoration:underline;" onclick="jumpToRegionById('${rid}')">${app.name}</span>`
+      : `<span class="tg tg-reg">${rid}</span>`;
   }).join('');
   const foodTags = (g.foodPairingTags || []).map(f => `<span class="tg tg-food">${f}</span>`).join('');
 

@@ -90,6 +90,45 @@ function showPanel(name,btn){
     renderCompareRadar();
     }
 }
+function switchToPanel(name){
+  const btn = document.querySelector(`.tab-btn[onclick*="'${name}'"]`);
+  showPanel(name, btn);
+}
+
+/* ════════════════════════════════════
+   CROSS-PANEL LINKS：產區 ⇄ 品種
+════════════════════════════════════ */
+function findGrapeIdByName(text){
+  const g = (WINE_DB.grapes || []).find(x => {
+    const englishName = x.name.split('(')[0].trim();
+    if (englishName === text) return true;
+    return englishName.split('/').map(s => s.trim()).includes(text);
+  });
+  return g ? g.id : null;
+}
+
+function jumpToGrapeById(id){
+  const g = (WINE_DB.grapes || []).find(x => x.id === id);
+  if (!g) return;
+  closeDrawer();
+  switchToPanel('grapes');
+  const allBtn = document.querySelector('#grape-color-filters .fp');
+  if (allBtn) setGrapeColorFilter('all', allBtn);
+  setTimeout(() => {
+    const hdr = document.querySelector(`.acc-hdr[data-grape-id="${id}"]`);
+    if (hdr) {
+      hdr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (!hdr.classList.contains('open')) toggleGrapeCard(hdr, id);
+    }
+  }, 50);
+}
+
+function jumpToRegionById(id){
+  const app = WINE_DB.appellations.find(a => a.id === id);
+  if (!app) return;
+  switchToPanel('regions');
+  openDrawer(app);
+}
 function showMap(id,btn){
   document.querySelectorAll('.map-subpanel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.map-tab').forEach(b=>b.classList.remove('active'));

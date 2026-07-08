@@ -4,27 +4,27 @@
 
 ## 一、本次開發歷程
 
-延續三步驟計畫全部完成（`e07d67f`，91個產區/23個品種，已 push）之後，本次 session 修正**產區資料庫 L1 國家篩選鈕與 L2 大產區清單的資料過時問題**（使用者主動回報：新增的葡萄牙/智利/南非/奧地利/阿根廷沒有出現在國家篩選鈕）。
+延續產區篩選鈕修正（`b4c4158`，已 push）之後，本次 session 新增**產區抽屜 ⇄ 品種卡片的雙向跳轉連結**。
 
-### 根因與修法
-不只 L1 按鈕過時，`data/wine-data.js` 的 `l2Config`（各國底下的大產區篩選清單）也早已過時，連既有國家都缺新產區（美國缺 Oregon/Washington、澳洲缺 New South Wales/Victoria）。這跟先前修過的品種顏色篩選鈕、比較模式酒色篩選鈕是同一類「寫死清單不會隨資料新增自動更新」的問題，採同一種根治手法：
+### 功能
+- **產區抽屜（L4）展開後**，`primaryGrapes` 標籤若能比對到品種資料庫裡的品種，會變成可點擊連結，點擊後切換到品種圖鑑分頁、重設顏色篩選為「全部」、捲動並展開對應品種卡片。
+- **品種卡片展開後**，「代表產區」標籤一律可點擊（`representativeRegions` 本身就是結構化 id，不需比對），點擊後切換到產區資料庫分頁並直接開啟該產區的詳情抽屜。
 
-- `index.html`：國家按鈕改為空容器 `#l1-country-filters`
-- `js/regions.js`：新增 `renderL1CountryFilters()`（初始化時從 `WINE_DB.appellations` 動態產生國家按鈕，國旗 emoji 取自該國第一筆產區資料）；`renderL2Bar()` 改成即時用 filter+map 算出當下國家的實際大產區清單
-- `js/core.js`：`DOMContentLoaded` 加一行呼叫 `renderL1CountryFilters()`
-- `data/wine-data.js`：`l2Config` 區塊（確認只有 `regions.js` 一處使用）整個移除
+### 技術設計
+- `js/core.js` 新增 `findGrapeIdByName(text)`（依品種 `name` 欄位的 `/` 雙語命名慣例比對，不另建對照表）、`switchToPanel(name)`、`jumpToGrapeById(id)`、`jumpToRegionById(id)`。
+- `js/regions.js` 只改了 L4 抽屜的品種標籤（第175行），**沒有改 L3 卡片列表上的品種標籤**（第109行維持純文字，使用者情境只提到「抽屜展開後」）。
+- `js/grapes.js` 的代表產區標籤一律加上點擊事件（因為 `representativeRegions` 保證是有效 id，已於先前 session 的複查確認全部91個連結都有效）。
 
-### 驗證方式
-本機無 Node.js，且 Windows PowerShell 5.1 無法執行 CDP WebSocket 互動（更早已知限制）。這次改用 headless Chrome `--dump-dom`（不需要 WebSocket）實際載入頁面、等 JS 執行完後輸出渲染結果，**確認12個國家按鈕（含新增的阿根廷/奧地利/葡萄牙/智利/南非）真的正確渲染**，才回報使用者。L2 清單的點擊互動因同樣工具限制無法自動化驗證，已請使用者手動抽查（尚未收到使用者的抽查結果回饋）。
+### 驗證方式與過程中修的一個 bug
+寫了一個獨立測試頁直接載入正式的 `data/wine-data.js`，在瀏覽器裡跑 `findGrapeIdByName` 對全部資料做比對，用 headless Chrome `--dump-dom` 取得真實執行結果：**124個品種標籤成功比對、53個維持純文字（在圖鑑裡沒有對應品種，符合使用者「找不到就不連結」的要求）、113個代表產區連結全部有效**。測試過程中發現 `Muscat/Moscato`（asti 的 primaryGrapes）因為是未拆分的組合字串而比對失敗，已修正比對函式並重新驗證確認修好。
 
-以上已 commit，**尚未 push**（見下方「現況檢查提醒」）。
+以上已 commit（見下方「現況檢查提醒」），**尚未 push**。
 
 ## 二、討論過但尚未執行的項目
 
-- 第四類（品種完全無對應頁面的約30個名稱）維持擱置。
+- **沒有已知的下一步方向**——新 session 開場應直接詢問使用者接下來要做什麼。
 - 是否要 push 這次的 commit，尚待使用者決定。
-- 若要在此環境做完整的瀏覽器互動自動化測試（例如驗證 L2 清單點擊後的內容），需要使用者同意安裝 Node.js；目前只能用 `--dump-dom` 驗證頁面載入後的靜態渲染結果，無法驗證點擊等互動行為。
-- **沒有已知的下一步方向**——三步驟計畫與這次的篩選鈕修正都已完成，新 session 開場應直接詢問使用者接下來要做什麼。
+- 若使用者之後想連 L3 卡片列表上的品種標籤，或想把 53 個目前未比對到的品種（Aglianico、Corvina、Marsanne、Mourvèdre 等）也建立品種頁面/別名連結，屬於新任務，需另外確認範圍。
 
 ## 三、我明確要求先記下來、之後再處理的內容
 
@@ -32,8 +32,7 @@
 
 ## 四、現況檢查提醒
 
-- **本次 session 的異動（index.html／js/core.js／js/regions.js／data/wine-data.js）截至本檔案寫入時尚未 commit**，接手前請先確認原裝置是否已完成 commit。
-- **資料完整性已核對**：移除 `l2Config` 後大括號/中括號配對正確（1165/1165、537/537，減少的數量與移除的物件/陣列數吻合）。
-- **這是繼品種顏色篩選鈕（`js/grapes.js`）、比較模式酒色篩選鈕（`js/compare.js`）之後，第三個從「寫死清單」改成「資料驅動動態產生」的篩選 UI**。若未來再發現類似的寫死清單（例如地圖分頁、年份矩陣是否也有類似寫死清單，本次未檢查），建議比照同樣手法處理。
-- **本機環境沒有 Node.js，Python 也無法執行**。但發現 headless Chrome 的 `--dump-dom` 旗標可在不需要 WebSocket 的情況下取得頁面 JS 執行完畢後的渲染結果，比純程式碼推論更可靠，之後驗證「初始渲染是否正確」類的問題可以採用此方法；仍無法驗證點擊等互動行為。
-- **接手的 Claude Code 務必實際開啟異動的4個檔案核對真實現況**，不要只憑這份 HANDOFF.md 的文字描述去猜測。
+- **本次 session 的異動（js/core.js／js/regions.js／js/grapes.js）截至本檔案寫入時尚未 commit**，接手前請先確認原裝置是否已完成 commit。
+- **驗證方式的新發現**：除了先前發現的 headless Chrome `--dump-dom` 可取得頁面載入後的渲染結果，本次進一步發現可以**寫一個獨立測試 HTML 頁直接載入正式的 `data/wine-data.js`／`js/core.js` 等檔案，在瀏覽器裡跑任意測試邏輯並把結果印到 DOM 上**，再用 `--dump-dom` 讀出來——這比純程式碼推論更可靠，且不需要 CDP WebSocket 互動，之後驗證資料比對/篩選邏輯正確性都可以用這個方法。測試檔案存在 scratchpad（session 專屬暫存目錄），非專案內檔案，不影響 git 狀態。
+- **本機環境沒有 Node.js，Python 也無法執行**。
+- **接手的 Claude Code 務必實際開啟異動的3個檔案核對真實現況**，不要只憑這份 HANDOFF.md 的文字描述去猜測。

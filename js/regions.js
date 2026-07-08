@@ -172,7 +172,12 @@ function openDrawer(app){
       </div>
       <div class="mh" style="margin-bottom:14px;"><p style="font-size:12px;font-style:italic;color:var(--burg);">「${app.memoryHook}」</p></div>
       <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px;">
-        ${app.primaryGrapes.map(g=>`<span class="tg tg-grape">${g}</span>`).join('')}
+        ${app.primaryGrapes.map(g=>{
+          const gid=findGrapeIdByName(g);
+          return gid
+            ? `<span class="tg tg-grape" style="cursor:pointer;text-decoration:underline;" onclick="jumpToGrapeById('${gid}')">${g}</span>`
+            : `<span class="tg tg-grape">${g}</span>`;
+        }).join('')}
       </div>
       <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);margin-bottom:14px;">${app.styleSummary}</p>
 
