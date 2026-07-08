@@ -82,3 +82,12 @@
     原因：資料庫的 L2 篩選清單（`l2Config`）目前 France 底下只有 Bordeaux/Burgundy/Rhône Valley/Champagne/Loire Valley/Alsace/Languedoc-Roussillon 七個選項，沒有 Beaujolais；若賦予獨立 region 值，會在地區篩選下拉選單中找不到對應選項、只能在「全部大區」才看得到。薄酒萊在法定行政與傳統教學脈絡上也常被歸入廣義勃根地產區討論，因此選擇歸入現有 Burgundy 篩選類別，避免額外修改 `index.html`／`core.js` 的篩選設定（超出本次任務範圍）。此為技術權宜考量，非產區身份認定的絕對主張，供未來檢視。
 27. **6個品種的 `representativeRegions` 已全數補上對應產區 id 連結**（malbec→mendoza、zinfandel-primitivo→lodi、gamay→beaujolais、albarino→rias-baixas、gruner-veltliner→wachau、muscat→asti），資料庫目前已無任何品種的 `representativeRegions` 是空陣列。
     原因：完成使用者三步驟計畫的第二步；第三步「全面複查每個產區跟每個品種的連結」仍待後續 session 執行。
+
+## 2026-07-08 Beaujolais 獨立篩選類別＋新增14個非法國產區
+
+28. **`l2Config` 的 France 清單新增 `Beaujolais(薄酒萊)` 選項，並將 `beaujolais.region` 從 `Burgundy(勃根地)` 改為獨立的 `Beaujolais(薄酒萊)`**。
+    原因：使用者明確要求給薄酒萊獨立篩選類別，推翻先前第26條的技術權宜安排；改動範圍僅限新增一個 l2Config 選項與修改一筆 region 值，不影響其他既有產區的篩選歸屬。
+29. **新增 14 個法國以外的產區，補強國家覆蓋廣度**：Douro、Vinho Verde（葡萄牙，資料庫首次納入）、Maipo Valley（智利，資料庫首次納入）、Stellenbosch（南非，資料庫首次納入）、Willamette Valley、Columbia Valley、Paso Robles（美國，從3筆增至6筆）、Hunter Valley、Clare Valley、Yarra Valley（澳洲，從2筆增至5筆）、Hawke's Bay、Gisborne（紐西蘭，從2筆增至4筆）、Pfalz、Baden（德國，從2筆增至4筆）。國家分布從9國擴展到12國，共75個產區。
+    原因：使用者先確認「其他國家擴充」的候選清單，並指定美/澳/紐/德要再加碼補強（原提案這4國各只有1個新增），經二次確認後才動工。選擇標準與品種擴增一致：優先填補「完全空白的國家」與「風格單一、只有1-2個產區代表整國」的缺口（例如美國原本只有納帕/索諾瑪海岸/洛代皆加州，德國只有麗絲玲產區沒有德國紅酒），刻意挑選能展現風格多樣性的產區（如 Willamette Valley 黑皮諾補上加州以外的美國樣貌、Baden 補上德國紅酒缺口、Hunter Valley 的陳年賽美蓉補上澳洲白酒獨特案例）。
+30. **少數新產區的 `history` 欄位在草稿階段明顯超過200字目標（Maipo Valley 269字、Stellenbosch 280字），主動二次刪減至180字左右**，而非直接套用「不影響版面就不強行調整」的既定寬鬆原則。
+    原因：這兩筆的初稿超標幅度（30-40%）遠高於本次其餘產區與過去批次的「輕微超標」範圍，判斷屬於內容尚未精煉而非必要的完整語意，因此主動刪減而非援引寬鬆原則放行；其餘產區的10-25%輕微超標維持既定原則不強行砍字。
