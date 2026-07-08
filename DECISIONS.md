@@ -172,3 +172,11 @@
     原因：原本 `switchToPanel` 用簡單的 `onclick` 屬性字串比對（`[onclick*="'name'"]`）在分類群組觸發鈕的 `onclick`（如 `toggleTabGroup(this,'grapes-group')`）裡找不到精確比對目標，會意外比對到下拉項目而非觸發鈕，導致跨分頁連結跳轉後頂層看不出目前在哪一類——這是新增下拉結構後才會出現的連動問題，動工時就一併發現並修正，未留給下次 session。
 57. **驗證方式**：先前的 headless Chrome `--dump-dom` 只能確認靜態渲染，這次新增了「載入真實 `js/core.js`＋精簡版導覽 HTML 骨架＋用 `.click()` 觸發真實 onclick handler」的獨立測試頁，實際跑過7種互動情境（展開/收合下拉、跨群組切換、獨立按鈕切換、`switchToPanel()` 連動、點外部關閉）並印出每一步的 DOM 狀態，全數比對正確後才回報完成；另外也對正式 `index.html` 跑過 `--dump-dom` 確認無載入錯誤、先前修過的功能（國家篩選鈕、品種卡片）沒有被這次改動波及。
     原因：`.click()` 屬於原生 DOM API、可在 headless 環境下不透過 CDP WebSocket 觸發真實 onclick 綁定，填補了先前「只能驗證靜態渲染、無法驗證互動行為」的缺口，是這次意外發現的新驗證手段，比純程式碼推論更可靠。
+
+## 2026-07-08 修正頂層導覽列改版遺留的兩個視覺 bug
+
+58. **修正「品飲系統」獨立按鈕被撐大、擠壓其他頂層項目的問題**：`.tab-nav` 是 `display:flex`，`.tab-btn{flex:1}` 原本假設全部頂層項目都是直接掛在 `.tab-nav` 下的 `.tab-btn`，但改版後多了 `.tab-group` 包裹層，`.tab-group` 本身沒有 `flex:1`，只有「品飲系統」這個沒被包裹的獨立按鈕還吃得到這條規則，導致它獨自撐大、其餘三個下拉群組被壓縮到內容寬度。修正為 `.tab-group{position:relative;flex:1;display:flex}`，讓群組容器在 `.tab-nav` 這層也吃到跟獨立按鈕相同的 `flex:1` 比例，內部的 `.tab-group-trigger`（本身也有 `.tab-btn` 的 `flex:1`）再自然撐滿容器寬度。
+    原因：使用者回報並附上截圖，四個頂層項目寬度明顯不一致；問題根源是 CSS flex 規則沒有跟著新增的 DOM 包裹層一起更新，屬於改版時遺漏的連動問題。
+59. **修正下拉選單展開後被裁切、要靠捲軸才看得到的問題**：`<nav class="flex-1 overflow-x-auto">` 的 `overflow-x-auto` 依 CSS Overflow 規範會讓 `overflow-y` 也一併被瀏覽器計算成 `auto`（而非維持 `visible`），使 nav 變成一個雙向裁切／捲動的容器，絕對定位展開的 `.tab-dropdown` 因此被關在這個框裡而非正常疊加在頁面上層。移除 nav 的 `overflow-x-auto`，只保留 `flex-1`。
+    原因：新版只剩4個頂層項目（含 icon-only 的行動裝置窄螢幕模式），寬度需求遠低於改版前的6個平行分頁，原本為橫向捲動保留的 `overflow-x-auto` 已非必要，直接移除是修正裁切問題風險最低的做法，避免另外用 JS 動態定位下拉選單增加複雜度。
+    驗證：用 headless Chrome 對正式 `index.html` 截圖確認四個頂層項目寬度平均分布；另外用一份會自動觸發 `toggleTabGroup()` 展開下拉選單的暫存測試頁（載入同目錄的真實 CSS/JS，測試後即刪除）截圖，確認下拉選單完整顯示在頁面上層、無捲軸裁切。

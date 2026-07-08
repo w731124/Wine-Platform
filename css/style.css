@@ -28,7 +28,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-s
 .panel{display:none}.panel.active{display:block}
 
 /* ── Tab nav dropdown groups ── */
-.tab-group{position:relative}
+.tab-group{position:relative;flex:1;display:flex}
 .tab-group-trigger{display:flex;align-items:center;gap:3px}
 .tab-caret{font-size:9px;transition:transform .18s;color:var(--txt4)}
 .tab-group-trigger.dd-open .tab-caret{transform:rotate(180deg)}
