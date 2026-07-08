@@ -49,3 +49,12 @@
     原因：據此調整實際施工範圍為「10 筆全套擴充＋1 筆半套（languedoc-roussillon 補 styleSummary/terroir/agingNote，history 不動）＋6 筆只補 agingNote」，避免不必要地重寫已經合格的內容；此發現已於動工前回報並取得使用者確認。
 15. **完成 B5（muscadet, vouvray, sancerre, pouilly-fume, chinon）、B6（hermitage, chateauneuf-du-pape, cote-rotie, condrieu, gigondas, cotes-du-rhone, languedoc-roussillon）、B7（barolo, barbaresco, chianti-classico, brunello-di-montalcino, etna）共 17 筆**，依上述調整後範圍分別處理。
     原因：使用者要求三個批次一次處理完，內容涵蓋的史實（如 Hermitage「hermitaged claret」典故、教皇新堡 1923 年 Baron Le Roy 規範、Barolo/Barbaresco 陳年月數與 Barolo Boys 現代派、Chianti Classico 1996 年獨立與 Gran Selezione、Brunello 由 Biondi-Santi 首創、Etna 的 contrada 與未嫁接老藤）皆為有把握的既有 WSET/產區知識；少數欄位（如 brunello.history 232字、etna.agingNote 139字）超出字數目標但未強行刪減，理由與先前批次一致——不影響版面、不需動程式碼即不強行湊數字。
+
+## 2026-07-08 產區描述擴充 B8+B9+B10+B11（義大利2＋西班牙＋德國/美國＋澳洲/紐西蘭，一併處理，B1-B11全數完成）
+
+16. **執行前依 B7 學到的教訓，先逐筆核對現況**：發現 valpolicella 同樣屬於未被追蹤的既有豐富內容（多行 terroir、styleSummary/history 已達標），只補 `agingNote`；其餘 14 筆（prosecco, soave, amarone-della-valpolicella, napa-valley, sonoma-coast, barossa-valley, margaret-river, rioja, ribera-del-duero, jerez, priorat, mosel, rheingau, central-otago）皆為原始短版本，需全套擴充。
+    原因：延續 B5-B7 發現的模式，動工前核對而非直接假設，避免重複已完成的工作。
+17. **完成 B8～B11 共 15 筆**，其中 rioja、priorat、mosel、rheingau、central-otago 的 `history` 欄位原文已達 150-200 字目標或以上（mosel/rheingau 原文甚至已達 255 字），故只新增 `agingNote` 並補 `styleSummary`/`terroir` 擴充，`history` 不強行改寫。
+    原因：與先前批次一致的判斷原則——已達標的內容不重寫，只補真正缺少的欄位；避免為了「統一動一次」而對已經合格的史實文字做無意義的編輯。
+18. **至此 B1～B11 全部 55 個產區的 `agingNote` 欄位皆已補齊**（`grep -c "agingNote:"` 與 `grep -c "wineColor:"` 皆為 55，一一對應），產區描述擴充工程主線正式完成。
+    原因：此為使用者原始批次計畫的最終里程碑；本次新增內容涉及的史實（如 Prosecco Cartizze 頂級園與 2019 UNESCO 世界遺產、Amarone 2010年升格DOCG、Napa Valley 1981年成為加州第一個AVA、Barossa Old Vine Charter 老藤分級、Margaret River 由 Gladstones 博士氣候報告催生、Vega Sicilia 1864年創立、Sherry 一名源自 Jerez 英語化拼寫、Rheingau 19世紀末建立熟度分級概念）皆為有把握內容，無不確定項目需使用者核實。
