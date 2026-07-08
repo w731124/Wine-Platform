@@ -41,7 +41,11 @@ const WINE_DB = {
       styleSummary: '波爾多左岸最富香氣與細膩感的村莊級 AOC，橫跨 Margaux、Cantenac 等五個村莊，表土砂礫較薄且更多元，賦予單寧如絲緞般柔滑、紫羅蘭與黑醋栗花果交織的優雅風格，素有「鐵拳藏於天鵝絨手套」之稱。',
       memoryHook: '波爾多女王：絲緞般的單寧，最具細緻芬芳的左岸',
       keyIdentifiers: ['Violet(紫羅蘭)', 'Cassis(黑醋栗)', 'Silky Tannin(絲質單寧)', 'Pencil Shavings(鉛筆屑)'],
-      terroir: { climate: '溫帶海洋性氣候，受吉倫特河與加隆河雙重調節，氣候相對溫和。', soil: '表土為顆粒較細的砂礫，下層混合石灰岩與黏土，較 Pauillac 淺薄。', elevation: '10–20 公尺' },
+      terroir: {
+        climate: '溫帶海洋性氣候，受吉倫特河與加隆河雙重調節，氣候相對溫和。',
+        soil: '表土為顆粒較細的砂礫，下層混合石灰岩與黏土，較 Pauillac 淺薄。',
+        elevation: '10–20 公尺'
+      },
       agingPotential: '15–35 年',
       agingNote: '細砂礫土壤搭配較高比例黏土，讓單寧顆粒更細緻但骨架略遜於 Pauillac，賦予酒液優雅芬芳卻不失陳年韌性；優秀年份如 Château Margaux 仍可陳放 30 年以上，但整體適飲窗口較左岸鄰居更早開啟。',
       famousEstates: ['Château Margaux', 'Château Palmer', 'Château Rauzan-Ségla'],
@@ -65,7 +69,11 @@ const WINE_DB = {
       styleSummary: '波爾多右岸梅洛與卡本內弗朗交融的核心產區，石灰岩台地與黏土坡地賦予酒液飽滿圓潤的紅李、黑巧克力與松露氣息，單寧細膩早熟，是右岸風格最具代表性且最早可親近的產區之一。',
       memoryHook: '右岸梅洛與卡本內弗朗的交融聖地，果實甜美圓潤',
       keyIdentifiers: ['Red Plum(紅李)', 'Chocolate(巧克力)', 'Soft Tannin(柔軟單寧)', 'Limestone(石灰岩)'],
-      terroir: { climate: '溫帶海洋性氣候，較左岸略溫暖，多爾多涅河調節晝夜溫差。', soil: '石灰岩台地、黏土緩坡與近波美侯的砂礫地塊並存，組成多樣。', elevation: '15–100 公尺' },
+      terroir: {
+        climate: '溫帶海洋性氣候，較左岸略溫暖，多爾多涅河調節晝夜溫差。',
+        soil: '石灰岩台地、黏土緩坡與近波美侯的砂礫地塊並存，組成多樣。',
+        elevation: '15–100 公尺'
+      },
       agingPotential: '10–25 年',
       agingNote: '黏土保水有助梅洛累積果實甜熟度，石灰岩台地則提供礦物骨架與細緻單寧，兩者結合使酒液早熟易飲、單寧圓潤，陳年曲線較左岸卡本內蘇維濃主導產區更短，多數酒款於 10 年內即進入適飲高峰。',
       famousEstates: ['Château Ausone', 'Château Cheval Blanc', 'Château Pavie'],
@@ -90,7 +98,11 @@ const WINE_DB = {
       styleSummary: '夏布利是最北端、最涼冷的夏多內白酒產區，Kimmeridgian 石灰岩與古代牡蠣化石賦予獨特燧石礦石感，高酸爽脆、幾乎不見橡木桶痕跡，是最能展現夏多內品種本色而非釀造工藝的經典範例。',
       memoryHook: '不需橡木桶的夏多內，礦石與生蠔的天然拍檔',
       keyIdentifiers: ['Flint Mineral(燧石礦石感)', 'Green Apple(青蘋果)', 'Lemon Zest(檸檬皮)', 'Oyster Shell(牡蠣殼)', 'Crisp High Acidity(高酸爽脆)'],
-      terroir: { climate: '涼冷大陸性氣候，春霜風險為勃根地之最，酒農需灑水防霜。', soil: 'Kimmeridgian 泥灰岩，富含侏儸紀牡蠣化石，賦予獨特礦石感。', elevation: '100–300 公尺' },
+      terroir: {
+        climate: '涼冷大陸性氣候，春霜風險為勃根地之最，酒農需灑水防霜。',
+        soil: 'Kimmeridgian 泥灰岩，富含侏儸紀牡蠣化石，賦予獨特礦石感。',
+        elevation: '100–300 公尺'
+      },
       agingPotential: '3–15 年（頂級園可達 20 年以上）',
       agingNote: '高酸與礦物骨架是陳年支撐的核心，不倚賴單寧或橡木；村莊級酒款宜早飲展現清新果香，特級園如 Les Clos、Blanchot 則能耐藏 15–20 年以上，逐漸發展出堅果與蜂蜜般的陳年複雜度。',
       famousEstates: ['Domaine Raveneau', 'Domaine Dauvissat', 'William Fèvre'],
@@ -114,7 +126,11 @@ const WINE_DB = {
       styleSummary: '全球黑皮諾表現力的最高殿堂，涵蓋 Gevrey-Chambertin、Vosne-Romanée 等傳奇村莊，玫瑰與紅櫻桃香氣細膩，單寧如絲綢般優雅；勃根地紅酒特級園幾乎全數集中於此，是地塊風土（Climat）概念發揮到極致的產區。',
       memoryHook: '黑皮諾的奧林帕斯，全球頂尖紅酒特級園的精華搖籃',
       keyIdentifiers: ['Rose(玫瑰花香)', 'Red Cherry(紅櫻桃)', 'Silky Tannin(絲質單寧)', 'Truffle & Wild Mushroom(松露與野蕈)'],
-      terroir: { climate: '溫帶大陸性氣候，日夜溫差顯著，有助累積香氣與保留酸度。', soil: '石灰岩與黏土質頁岩交錯，坡度與朝向決定地塊等級高低。', elevation: '225–400 公尺' },
+      terroir: {
+        climate: '溫帶大陸性氣候，日夜溫差顯著，有助累積香氣與保留酸度。',
+        soil: '石灰岩與黏土質頁岩交錯，坡度與朝向決定地塊等級高低。',
+        elevation: '225–400 公尺'
+      },
       agingPotential: '10–30 年',
       agingNote: '石灰岩賦予黑皮諾細緻單寧與礦物骨架，黏土比例較高地塊則增添結構與濃縮度；村莊級酒款約 5–8 年進入適飲期，特級園如 Chambertin、Musigny 憑藉優異酸度與骨架，陳年潛力可達 20–30 年以上。',
       famousEstates: ['DRC (Domaine de la Romanée-Conti)', 'Domaine Leroy', 'Domaine Armand Rousseau'],
@@ -138,7 +154,11 @@ const WINE_DB = {
       styleSummary: '金丘南段，以豐滿圓潤的頂級夏多內白酒聞名於世，Montrachet、Meursault 等村莊出產帶有奶油、烘烤榛果與蜂蠟香氣的飽滿酒體；南段同時也孕育 Pommard、Volnay 等優雅紅酒村莊，紅白兼美。',
       memoryHook: '勃根地最偉大的 Chardonnay 白酒之源，質地如同液體黃金',
       keyIdentifiers: ['Hazelnut Butter(榛果奶油)', 'Beeswax(蜂蠟香氣)', 'Yellow Apple(黃蘋果)', 'Full Body(飽滿酒體)'],
-      terroir: { climate: '溫帶大陸性氣候，較夜丘略溫暖，日照更為充足。', soil: '泥灰質石灰岩（marne）比例較高，特別利於夏多內生長。', elevation: '220–380 公尺' },
+      terroir: {
+        climate: '溫帶大陸性氣候，較夜丘略溫暖，日照更為充足。',
+        soil: '泥灰質石灰岩（marne）比例較高，特別利於夏多內生長。',
+        elevation: '220–380 公尺'
+      },
       agingPotential: '5–20 年',
       agingNote: '泥灰岩保水性佳、富含礦物質，賦予夏多內飽滿酒體與陳年所需的酸度骨架；頂級村莊如 Montrachet、Meursault 可陳放 15–20 年以上並發展出堅果與蜂蜜般的複雜香氣，南段紅酒村莊 Volnay、Pommard 則普遍陳放 10 年左右即達顛峰。',
       famousEstates: ['Domaine Leflaive', 'Domaine Coche-Dury', 'Domaine d\'Auvenay'],
