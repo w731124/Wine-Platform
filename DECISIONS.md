@@ -182,3 +182,17 @@
     驗證：用 headless Chrome 對正式 `index.html` 截圖確認四個頂層項目寬度平均分布；另外用一份會自動觸發 `toggleTabGroup()` 展開下拉選單的暫存測試頁（載入同目錄的真實 CSS/JS，測試後即刪除）截圖，確認下拉選單完整顯示在頁面上層、無捲軸裁切。
 60. **修正等寬後文字未置中、版面看起來仍分散不整齊的問題**：等寬修正（#58）只解決了容器寬度，容器內的文字沒有跟著置中——`.tab-btn` 本身沒有 `text-align:center`，`.tab-group-trigger` 雖是 `display:flex` 排列圖示與文字但沒有 `justify-content:center`，導致每個項目的內容仍貼齊各自容器左側，寬度一致但視覺仍不整齊。修正為 `.tab-btn` 加 `text-align:center`、`.tab-group-trigger` 加 `justify-content:center`。
     原因：使用者截圖回報等寬修好之後文字仍分散不齊，是 #58 等寬修正時遺漏的下一層問題（容器寬度與內容對齊是兩件事），用 headless Chrome 截圖確認四個項目文字皆置中後才回報完成。
+
+## 2026-07-08 新增「分級制度」頁面：法國／義大利舊世界分級系統首波內容
+
+61. **資料結構設計為 `WINE_DB.classifications[]`，用 `basis` 欄位標註分級邏輯（`estate`／`vineyard`／`region`）而非依國家分組**：每筆資料含 `country`／`region`／`name`／`basis`／`basisLabel`／`summary`／`tiers[]`（由高到低的分級層級，每級含 `name`＋`note`）／`history`／`crossNote`（跨區對照說明）。渲染時先依篩選器過濾 `basis`，再依 `country` 分組顯示。
+    原因：使用者明確提出「有些分級是By酒莊、有些By葡萄園、某些是By產區」是這個頁面要教的核心概念架構，因此把 `basis` 設計成第一層篩選維度而非隱藏欄位，讓分級邏輯本身變成可篩選、可比較的教學工具，而不只是附加標籤。
+62. **首波納入7套系統，法國3套＋義大利雙軌4套，每套都明確標註 basis 並在 `crossNote` 欄位互相對照**：法國——1855 Cru Classé（By酒莊）、Saint-Émilion Classification（By酒莊，但採每10年重評制，與1855形成「同邏輯不同治理哲學」對照）、Grand Cru/Premier Cru（By葡萄園）、Échelle des Crus（By產區/村莊）；義大利——DOCG/DOC/IGT/VdT金字塔（By產區）、Barolo/Barbaresco MGA（By葡萄園，與勃根地對照）、Chianti Classico Gran Selezione（By酒莊，與1855對照評選標準的主觀／客觀差異）。
+    原因：使用者要求「先介紹舊世界尤其是法國、義大利」，7套系統剛好覆蓋3種分級邏輯在兩國的對應與差異，且法義之間刻意安排了3組「同邏輯跨國對照」（By酒莊：1855 vs Gran Selezione；By葡萄園：勃根地 vs Barolo MGA；By產區：香檳村莊制 vs DOCG），這是撰寫 `crossNote` 時中途發現的敘事結構，比單純逐一介紹更能呼應使用者「列出這些不同國家、不同產區分級方式」的教學意圖，因此主動加強了跨區對照的份量，超出原本候選清單只是「列出7套系統」的最低要求。
+63. **`history` 欄位刻意保留具爭議性或反直覺的個案**（Saint-Émilion 重評制引發酒莊提告、Super Tuscan 因不符合傳統混調規定被迫標示最低階 VdT 卻催生 IGT 新等級）：這類個案雖然增加了資料筆數的撰寫時間，但比條列式規範說明更能幫助理解「為什麼」該分級制度長成現在的樣子。
+    原因：這是撰寫過程中主動的內容判斷，未經使用者事先要求，記錄理由以便使用者若覺得偏離「精省」原則可以要求砍掉——目前判斷這類個案屬於 WSET 教學脈絡下的高價值資訊，非贅述。
+64. **手風琴展開/收合直接重用 `core.js` 既有的 `toggleSATSection()` 函式，未另寫 `toggleClassificationCard()`**：確認該函式邏輯純粹操作 `nextElementSibling` 與 `.acc-arrow`，不依賴任何 SAT 頁面專屬的全域狀態後，判定可安全跨頁面重用。
+    原因：符合「非必要不做全檔重構」與避免重複造輪子的原則；與品種圖鑑的手風琴不同（品種圖鑑因為要銷毀 Chart.js 雷達圖實例、且要求同時只能展開一張，所以另有 `toggleGrapeCard()`），分級制度頁面沒有圖表資源需要銷毀，允許多張同時展開，因此可以共用最簡單版本的 toggle 邏輯。
+65. **篩選器沿用既有 `.fp` 按鈕樣式與單一 `set*Filter(value,btn)` 函式命名模式**（`setClassBasisFilter`），未新增篩選器專屬 CSS。
+    原因：延續本專案既有的「品種顏色篩選」「比較模式顏色篩選」慣例，維持視覺與程式碼模式一致，符合架構鐵律「新增邏輯時盡量將資料處理與 DOM 渲染區隔」——`classifications.js` 只負責讀取 `WINE_DB.classifications` 並輸出 HTML 字串，不直接操作篩選器以外的其他面板狀態。
+    驗證：用 headless Chrome 對正式 `index.html` 截圖三次——(1) 從導覽列點入分級制度頁面確認7套系統依國家分組正確顯示；(2) 點擊「By Vineyard」篩選器確認僅顯示勃根地與Barolo MGA兩套，義大利段落標題正確跟著篩選結果只顯示有符合項目的國家；(3) 展開Grand Cru/Premier Cru卡片確認分級層級、歷史背景、跨區對照三個區塊都正確渲染無破版。另外用 `--dump-dom` 確認新增 `data/wine-data.js` 的 `classifications` 陣列與新的 `js/classifications.js` 載入後頁面無 JS 錯誤，且用大括號／中括號配對計數確認 `wine-data.js` 新增內容後結構仍平衡（1014/1014、545/545）。

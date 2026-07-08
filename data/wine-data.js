@@ -2707,6 +2707,124 @@ const WINE_DB = {
     },
   ],
 
+  classifications: [
+    {
+      id: 'bordeaux-1855',
+      country: 'France(法國)',
+      region: 'Bordeaux(波爾多)',
+      name: '1855 Cru Classé(1855年分級制度)',
+      basis: 'estate',
+      basisLabel: 'Estate(酒莊)',
+      summary: '拿破崙三世為1855年巴黎世界博覽會下令制定，依酒莊當時的交易價格排名，一次性評定、極少更動，是波爾多左岸最具代表性的酒莊分級。',
+      tiers: [
+        { name: 'Premier Cru(一級酒莊)', note: '僅5家：Lafite、Latour、Margaux、Haut-Brion，以及1973年由二級升格的Mouton Rothschild——這是1855年至今唯一一次正式調整。' },
+        { name: 'Deuxième Cru(二級酒莊)', note: '14家，多集中於Margaux與Saint-Julien。' },
+        { name: 'Troisième Cru(三級酒莊)', note: '14家。' },
+        { name: 'Quatrième Cru(四級酒莊)', note: '10家。' },
+        { name: 'Cinquième Cru(五級酒莊)', note: '18家，包含近年表現常超越排名的Château Lynch-Bages等。' }
+      ],
+      history: '評選對象僅限Médoc（左岸）紅酒與Sauternes/Barsac貴腐甜白，Saint-Émilion與Pomerol當年並未納入，因此波爾多右岸至今仍無1855體系下的分級。Sauternes/Barsac同年另訂獨立的3級甜酒分級（Premier Cru Supérieur僅Château d\'Yquem一家、Premier Cru、Deuxième Cru），與Médoc系統平行但不互通。',
+      crossNote: '分級掛在「酒莊」這個法人實體上，即使酒莊日後賣掉部分葡萄園、甚至完全換了地塊，原本的等級仍會跟著酒莊名稱走——這是與勃根地「分級掛在土地上」最根本的邏輯差異。'
+    },
+    {
+      id: 'saint-emilion',
+      country: 'France(法國)',
+      region: 'Bordeaux(波爾多)',
+      name: 'Saint-Émilion Classification(聖艾米濃分級)',
+      basis: 'estate',
+      basisLabel: 'Estate(酒莊)',
+      summary: '1955年才制定，與1855體系互不隸屬，最大特色是明訂每10年依品質重新評選一次，酒莊有可能被降級或除名。',
+      tiers: [
+        { name: 'Premier Grand Cru Classé A(特級酒莊A)', note: '最高等級，目前僅4家，包含Château Angélus、Château Pavie等。' },
+        { name: 'Premier Grand Cru Classé B(特級酒莊B)', note: '約14家。' },
+        { name: 'Grand Cru Classé(特級酒莊)', note: '約85家。' }
+      ],
+      history: '2006年與2012年的重新評選都曾引發酒莊提告法院、要求撤銷結果的爭議事件，凸顯「定期複評」制度雖然立意在於維持品質動態淘汰，但實務執行上牽涉龐大商業利益，是波爾多分級史上最具爭議的一段。',
+      crossNote: '與1855體系同樣是「酒莊分級」，但「每10年重新評選」與1855「一次性、幾乎不變動」形成鮮明對比，可作為同一種分級邏輯（By 酒莊）下兩種截然不同治理哲學的對照範例。'
+    },
+    {
+      id: 'burgundy-cru',
+      country: 'France(法國)',
+      region: 'Burgundy(勃根地)',
+      name: 'Grand Cru / Premier Cru(特級園／一級園)',
+      basis: 'vineyard',
+      basisLabel: 'Vineyard(葡萄園)',
+      summary: '分級掛在葡萄園地塊（climat）本身，而非酒莊或生產者，同一片Grand Cru葡萄園常由數十位不同的家族酒農分別持有其中幾排葡萄藤。',
+      tiers: [
+        { name: 'Grand Cru(特級園)', note: '僅約33個地塊，佔勃根地總產量約1–2%，如Romanée-Conti、Montrachet。' },
+        { name: 'Premier Cru(一級園)', note: '約640個地塊，佔比約10%。' },
+        { name: 'Village(村莊級)', note: '以村莊名稱裝瓶，如Gevrey-Chambertin，佔比約37%。' },
+        { name: 'Régionale(大區級)', note: '標示Bourgogne等大區名稱，佔比過半，約半數以上產量。' }
+      ],
+      history: '此分級架構源自中世紀熙篤會（Cistercian）修士數百年間對不同地塊土壤、排水與日照差異的細膩觀察與紀錄，1936年由法國AOC制度正式法律化，是全世界「風土決定品質」（terroir）概念最極致的體現。',
+      crossNote: '與波爾多「By 酒莊」邏輯相反：同一位生產者可能同時擁有Grand Cru、Premier Cru與Village等級的地塊，同一年份不同等級的酒款品質落差主要來自土地而非釀酒師技術，這也是理解「By 葡萄園」分級的關鍵。'
+    },
+    {
+      id: 'champagne-echelle',
+      country: 'France(法國)',
+      region: 'Champagne(香檳區)',
+      name: 'Échelle des Crus(村莊分級制)',
+      basis: 'region',
+      basisLabel: 'Region(產區／村莊)',
+      summary: '以「村莊」為分級單位而非單一葡萄園或酒莊，源自20世紀初用來決定葡萄收購價格的百分比評級表。',
+      tiers: [
+        { name: 'Grand Cru(特級村)', note: '17個村莊，歷史評級為100%，多集中於Montagne de Reims與Côte des Blancs。' },
+        { name: 'Premier Cru(一級村)', note: '約42個村莊，評級介於90–99%。' },
+        { name: 'Cru(其餘村莊)', note: '香檳區其餘約260個村莊，評級低於90%。' }
+      ],
+      history: '官方的百分比訂價機制已於2010年正式廢止（改由市場自由議價），但Grand Cru／Premier Cru的村莊名聲分級至今仍普遍印在酒標與業界論述中，實質上已從「訂價工具」轉型為「行銷與品質參考標籤」。',
+      crossNote: '與義大利DOCG同屬「By 產區」邏輯：分級對象是一整個地理範圍（村莊／法定產區），而非個別酒莊或個別葡萄園，範圍內所有符合規範的生產者共享同一等級標示。'
+    },
+    {
+      id: 'italy-docg-pyramid',
+      country: 'Italy(義大利)',
+      region: 'Nationwide(全國)',
+      name: 'DOCG / DOC / IGT / VdT(法定產區品質金字塔)',
+      basis: 'region',
+      basisLabel: 'Region(產區)',
+      summary: '義大利全國性的四級法定產區制度，依「產區範圍的規範嚴謹度」（允許品種、產量上限、陳年規定、官方品鑑）由上而下分級，是理解義大利酒標的基礎骨架。',
+      tiers: [
+        { name: 'DOCG(法定保證產區)', note: 'Denominazione di Origine Controllata e Garantita，規範最嚴、需通過政府官方品鑑並加封政府擔保封條，如Barolo、Chianti Classico、Brunello di Montalcino。' },
+        { name: 'DOC(法定產區)', note: 'Denominazione di Origine Controllata，規範品種與產區範圍但無強制官方品鑑，數量遠多於DOCG。' },
+        { name: 'IGT(地理標示產區)', note: 'Indicazione Geografica Tipica，1992年新增，規範較寬鬆、允許使用非傳統品種或混調比例。' },
+        { name: 'VdT(日常餐酒)', note: 'Vino da Tavola，最基礎等級，幾乎無產區與品種規範。' }
+      ],
+      history: '著名的「Super Tuscan悖論」：1970至80年代部分托斯卡尼酒莊（如Sassicaia、Tignanello）因使用Cabernet Sauvignon等國際品種、不符合當時Chianti DOC的傳統混調規定，只能被迫標示為最低階的VdT——但品質與價格卻是全義大利頂尖，直接促成1992年IGT等級的誕生，用以收編這類「規則外的優秀酒款」。',
+      crossNote: '與香檳Échelle des Crus同屬「By 產區」邏輯，但義大利此制度是全國性、跨區域的四級架構，而非單一產區內的村莊分級，兩者可作為「產區分級」尺度大小的對照。'
+    },
+    {
+      id: 'barolo-mga',
+      country: 'Italy(義大利)',
+      region: 'Piedmont(皮蒙)',
+      name: 'MGA - Menzioni Geografiche Aggiuntive(附加地理標示)',
+      basis: 'vineyard',
+      basisLabel: 'Vineyard(葡萄園)',
+      summary: '在Barolo與Barbaresco兩個DOCG之上，官方正式劃定並命名約170個（Barolo）與66個（Barbaresco）單一葡萄園／次產區界線，酒標可選擇標示或不標示園名。',
+      tiers: [
+        { name: 'DOCG（未標示園名）', note: '可混調產區內多個地塊的果實，風格上通常追求跨園調配的均衡度。' },
+        { name: 'DOCG + MGA單一園標示', note: '如Cannubi、Brunate、Rabajà等，只能使用該界線內採收的果實，強調特定地塊的風土個性。' }
+      ],
+      history: 'MGA制度直到2010年才正式官方化立法（Barolo）、2007年（Barbaresco），比勃根地的葡萄園分級晚了近一世紀，反映義大利從「產區導向」逐步走向「地塊導向」的較晚近趨勢。',
+      crossNote: '與勃根地Grand Cru／Premier Cru同屬「By 葡萄園」邏輯，但MGA本身不再區分高低層級（沒有「特級園優於一級園」的官方位階），單純是官方認證的地塊名稱清單，實際聲望高低由市場長期評價自然形成，而非法規明訂。'
+    },
+    {
+      id: 'chianti-classico-gran-selezione',
+      country: 'Italy(義大利)',
+      region: 'Tuscany(托斯卡尼)',
+      name: 'Chianti Classico Gran Selezione(基安蒂經典特選)',
+      basis: 'estate',
+      basisLabel: 'Estate(酒莊)',
+      summary: '2013年在Chianti Classico DOCG既有的兩級之上新增的最高等級，要求須使用酒莊自有葡萄園（不可購買外部果實）並符合更長的陳年規定。',
+      tiers: [
+        { name: 'Chianti Classico Gran Selezione(特選)', note: '須自有葡萄園、陳年至少30個月，2013年新增。' },
+        { name: 'Chianti Classico Riserva(珍藏)', note: '陳年至少24個月。' },
+        { name: 'Chianti Classico(基本款)', note: '陳年至少12個月。' }
+      ],
+      history: '此三級制是在DOCG框架「內部」再疊加的酒莊／酒款分級，與DOCG本身（產區層級）是兩個不同維度：一瓶酒同時擁有「Chianti Classico DOCG」的產區身分，以及「Gran Selezione」的酒莊分級身分。',
+      crossNote: '與波爾多1855同屬「By 酒莊」邏輯，但差異在於Gran Selezione的評選標準是客觀的自有葡萄園與陳年規範，而非1855當年主觀的市場交易價格排名。'
+    }
+  ],
+
   vintages:{
     rows:[
       {id:'bordeaux-left', label:'Bordeaux Left Bank', sublabel:'波爾多左岸'},

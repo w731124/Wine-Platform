@@ -31,7 +31,7 @@
           <div class="tab-dropdown" id="dd-regions-group">
             <button class="tab-dropdown-item active" onclick="selectTabFromGroup(this,'regions',event)"><span>📋</span> 產區資料庫</button>
             <button class="tab-dropdown-item" onclick="selectTabFromGroup(this,'mapview',event)"><span>🌍</span> 地圖探索</button>
-            <button class="tab-dropdown-item" disabled title="即將推出"><span>🎖️</span> 分級制度（即將推出）</button>
+            <button class="tab-dropdown-item" onclick="selectTabFromGroup(this,'classifications',event)"><span>🎖️</span> 分級制度</button>
           </div>
         </div>
         <div class="tab-group" data-group="grapes-group">
@@ -216,6 +216,22 @@
   </div>
 </div>
 
+<!-- ╔══════════════════════════╗
+     ║  PANEL — 分級制度       ║
+     ╚══════════════════════════╝ -->
+<div id="panel-classifications" class="panel">
+  <div class="mb-4">
+    <h1 style="font-family:'Cinzel',serif;font-size:21px;font-weight:700;color:var(--burg);margin-bottom:3px;">分級制度 Classification Systems</h1>
+    <p style="font-size:12.5px;color:var(--txt3);">舊世界法定分級制度 · 依「分級對象」分為 By 酒莊／By 葡萄園／By 產區 三種邏輯</p>
+  </div>
+  <div class="flex flex-wrap gap-2 mb-4" id="class-basis-filters">
+    <button class="fp active" onclick="setClassBasisFilter('all',this)">全部 All</button>
+    <button class="fp" onclick="setClassBasisFilter('estate',this)">🏰 By Estate(酒莊)</button>
+    <button class="fp" onclick="setClassBasisFilter('vineyard',this)">🍇 By Vineyard(葡萄園)</button>
+    <button class="fp" onclick="setClassBasisFilter('region',this)">🗺️ By Region(產區)</button>
+  </div>
+  <div id="classification-container"></div>
+</div>
 
 <!-- ╔══════════════════════════╗
      ║  PANEL 3 — 年份矩陣     ║
@@ -683,5 +699,6 @@
 <script src="js/vintage.js"></script>
 <script src="js/compare.js"></script>
 <script src="js/grapes.js"></script>
+<script src="js/classifications.js"></script>
 </body>
 </html>

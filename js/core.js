@@ -208,6 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
   renderCompareColorFilters();
   populateCompareSelects();
   renderGrapePanel();
+  renderClassificationPanel();
   initMapTooltips();
   auditWineDB();
 });
