@@ -739,6 +739,7 @@ const WINE_DB = {
     /* ── Spain · Rioja & Castilla y León ── */
     {
       id: 'rioja',
+      coords: { lat: 42.5768922, lng: -2.8466768 },
       name: 'Rioja(里奧哈)',
       country: 'Spain(西班牙)',
       world: 'old-world',
@@ -765,6 +766,7 @@ const WINE_DB = {
     },
     {
       id: 'ribera-del-duero',
+      coords: { lat: 41.6715067, lng: -3.6851172 },
       name: 'Ribera del Duero(斗羅河岸)',
       country: 'Spain(西班牙)',
       world: 'old-world',
@@ -791,6 +793,7 @@ const WINE_DB = {
     },
     {
       id: 'jerez',
+      coords: { lat: 36.6816936, lng: -6.1377402 },
       name: 'Jerez(赫雷斯)',
       country: 'Spain(西班牙)',
       world: 'old-world',
@@ -817,6 +820,7 @@ const WINE_DB = {
     },
     {
       id: 'priorat',
+      coords: { lat: 41.1450982, lng: 0.8196237 },
       name: 'Priorat(普里奧拉)',
       country: 'Spain(西班牙)',
       world: 'old-world',
@@ -1579,6 +1583,7 @@ const WINE_DB = {
     /* ── Spain · Galicia ── */
     {
       id: 'rias-baixas',
+      coords: { lat: 42.5193232, lng: -8.797678 },
       name: 'Rías Baixas(下海灣)',
       country: 'Spain(西班牙)',
       world: 'old-world',
@@ -1661,6 +1666,7 @@ const WINE_DB = {
     /* ── Portugal ── */
     {
       id: 'douro',
+      coords: { lat: 41.1637043, lng: -7.7875821 },
       name: 'Douro(斗羅河谷)',
       country: 'Portugal(葡萄牙)',
       world: 'old-world',
@@ -1687,6 +1693,7 @@ const WINE_DB = {
     },
     {
       id: 'vinho-verde',
+      coords: { lat: 41.5510583, lng: -8.4280045 },
       name: 'Vinho Verde(青酒產區)',
       country: 'Portugal(葡萄牙)',
       world: 'old-world',
@@ -2177,6 +2184,7 @@ const WINE_DB = {
     /* ── Spain · Catalonia ── */
     {
       id: 'cava',
+      coords: { lat: 41.4244663, lng: 1.7863949 },
       name: 'Cava(卡瓦)',
       country: 'Spain(西班牙)',
       world: 'old-world',
@@ -2204,6 +2212,7 @@ const WINE_DB = {
     /* ── Spain · Castilla y León ── */
     {
       id: 'rueda',
+      coords: { lat: 41.4129785, lng: -4.9597533 },
       name: 'Rueda(魯埃達)',
       country: 'Spain(西班牙)',
       world: 'old-world',
@@ -2230,6 +2239,7 @@ const WINE_DB = {
     },
     {
       id: 'toro',
+      coords: { lat: 41.5216963, lng: -5.3939824 },
       name: 'Toro(托羅)',
       country: 'Spain(西班牙)',
       world: 'old-world',
@@ -2256,6 +2266,7 @@ const WINE_DB = {
     },
     {
       id: 'bierzo',
+      coords: { lat: 42.4984436, lng: -6.5663176 },
       name: 'Bierzo(比埃爾佐)',
       country: 'Spain(西班牙)',
       world: 'old-world',
@@ -2423,6 +2434,7 @@ const WINE_DB = {
     /* ── Spain · Murcia ── */
     {
       id: 'jumilla',
+      coords: { lat: 38.4735408, lng: -1.3285417 },
       name: 'Jumilla(胡米亞)',
       country: 'Spain(西班牙)',
       world: 'old-world',
@@ -2450,6 +2462,7 @@ const WINE_DB = {
     /* ── Spain · Navarra ── */
     {
       id: 'navarra',
+      coords: { lat: 42.815686, lng: -1.6522353 },
       name: 'Navarra(納瓦拉)',
       country: 'Spain(西班牙)',
       world: 'old-world',

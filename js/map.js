@@ -2,7 +2,7 @@
    MAP FUNCTIONS
 ════════════════════════════════════ */
 function selectRegion(r){
-  const n={bordeaux:'Bordeaux(波爾多)',burgundy:'Burgundy(勃根地)',loire:'Loire(羅亞爾河)',champagne:'Champagne(香檳)',alsace:'Alsace(阿爾薩斯)',rhone:'Rhône(隆河谷)',piedmont:'Piedmont(皮埃蒙特)',tuscany:'Tuscany(托斯卡尼)',veneto:'Veneto(威尼托)',sicily:'Sicily(西西里)',abruzzo:'Abruzzo(阿布魯佐)',puglia:'Puglia(普利亞)',lombardy:'Lombardy(倫巴底)',campania:'Campania(坎帕尼亞)',trentino:'Trentino-Alto Adige(特倫提諾-上阿迪傑)',emilia:'Emilia-Romagna(艾米利亞-羅馬涅)',friuli:'Friuli-Venezia Giulia(弗留利-威尼斯朱利亞)',marche:'Marche(馬爾凱)',umbria:'Umbria(溫布里亞)',rioja:'Rioja(里奧哈)','ribera-del-duero':'Ribera del Duero(斗羅河岸)',jerez:'Jerez(赫雷斯)'};
+  const n={bordeaux:'Bordeaux(波爾多)',burgundy:'Burgundy(勃根地)',loire:'Loire(羅亞爾河)',champagne:'Champagne(香檳)',alsace:'Alsace(阿爾薩斯)',rhone:'Rhône(隆河谷)',piedmont:'Piedmont(皮埃蒙特)',tuscany:'Tuscany(托斯卡尼)',veneto:'Veneto(威尼托)',sicily:'Sicily(西西里)',abruzzo:'Abruzzo(阿布魯佐)',puglia:'Puglia(普利亞)',lombardy:'Lombardy(倫巴底)',campania:'Campania(坎帕尼亞)',trentino:'Trentino-Alto Adige(特倫提諾-上阿迪傑)',emilia:'Emilia-Romagna(艾米利亞-羅馬涅)',friuli:'Friuli-Venezia Giulia(弗留利-威尼斯朱利亞)',marche:'Marche(馬爾凱)',umbria:'Umbria(溫布里亞)',rioja:'Rioja(里奧哈)','castilla-y-leon':'Castilla y León(卡斯提亞－萊昂)',andalusia:'Andalusia(安達魯西亞)',catalonia:'Catalonia(加泰隆尼亞)',galicia:'Galicia(加利西亞)',murcia:'Murcia(穆爾西亞)',navarra:'Navarra(納瓦拉)',douro:'Douro(杜羅河)','vinho-verde':'Vinho Verde(青酒產區)'};
   showMapIns(`<span class="tg tg-reg" style="font-size:13px;">${n[r]||r}</span><p style="font-size:12px;color:var(--txt3);margin-top:8px;">點擊金色圓點查看具體次產區資訊。</p>`);
 }
 function selectAppellation(id){
@@ -173,6 +173,46 @@ function renderItalyMarkers(){
   }).join('');
 }
 function renderItalyMarkerList(){ renderMarkerIndexList(getItalyAppellations()); }
+
+/* ════════════════════════════════════
+   IBERIA MAP：動態產生編號標記 + 側邊編號清單（西班牙＋葡萄牙）
+   投影參數對應 scripts/build-iberia-map.pl 產生 #iberia-svg 輪廓時使用的
+   同一套換算依據——若重新執行該腳本調整 viewBox，這裡也要同步更新。
+════════════════════════════════════ */
+const IBERIA_PROJECTION = {
+  minLng: -9.47973632812503, maxLng: 3.30673828125001,
+  minLat: 36.038818359375, maxLat: 43.78571943,
+  cosMid: 0.767027778945595, scale: 47.3103397854713,
+  offX: 28, offY: 46.7457390321493
+};
+function projectIberia(lng, lat){
+  const x = (lng - IBERIA_PROJECTION.minLng) * IBERIA_PROJECTION.cosMid * IBERIA_PROJECTION.scale + IBERIA_PROJECTION.offX;
+  const y = (IBERIA_PROJECTION.maxLat - lat) * IBERIA_PROJECTION.scale + IBERIA_PROJECTION.offY;
+  return [x.toFixed(1), y.toFixed(1)];
+}
+function getIberiaAppellations(){
+  return WINE_DB.appellations.filter(a => (a.country === 'Spain(西班牙)' || a.country === 'Portugal(葡萄牙)') && a.coords);
+}
+function renderIberiaMarkers(){
+  const g = document.getElementById('iberia-markers');
+  if (!g) return;
+  const list = getIberiaAppellations();
+  const points = list.map(a => {
+    const [x, y] = projectIberia(a.coords.lng, a.coords.lat);
+    return { x: Number(x), y: Number(y) };
+  });
+  declutterPoints(points, 17, 150);
+  g.innerHTML = list.map((a, i) => {
+    const num = i + 1;
+    const x = points[i].x.toFixed(1), y = points[i].y.toFixed(1);
+    return `<g class="pulse-marker" data-id="${a.id}" onclick="selectAppellation('${a.id}')">
+      <circle class="pulse-ring" cx="${x}" cy="${y}" r="8" fill="none" stroke="rgba(185,140,20,.5)" stroke-width="1.5"/>
+      <circle class="dot-inner" cx="${x}" cy="${y}" r="7.5" fill="#C5A228" stroke="#FFF" stroke-width="1.5"/>
+      <text x="${x}" y="${(points[i].y+2.5).toFixed(1)}" text-anchor="middle" font-size="7" font-weight="700" fill="#FFF" font-family="Inter,sans-serif" style="pointer-events:none;">${num}</text>
+    </g>`;
+  }).join('');
+}
+function renderIberiaMarkerList(){ renderMarkerIndexList(getIberiaAppellations()); }
 
 /* ════════════════════════════════════
    MAP TOOLTIPS
