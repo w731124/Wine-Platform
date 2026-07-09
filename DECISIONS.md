@@ -239,3 +239,11 @@
 77. **修正 `.ic` 卡片辨識度不足的問題，並移除「關鍵字 Key Terms」區塊**：#76 的 `.ic` 沿用預設背景 `var(--bg-el)`，但父層 `.acc-body` 的背景剛好也是 `var(--bg-el)`，導致卡片與底色顏色完全相同、等於沒有分隔——這是延用既有 class 時漏看的細節，直接在 `winestyles.js` 用行內樣式把四個 `.ic` 卡片背景改成更淺的 `var(--bg-card)`（白色），未更動 `.ic` 這個全站共用 class 本身（產區抽屜是掛在白色 `.drawer` 上，原本的 `--bg-el` 背景在那裡本來就有足夠對比，不能直接改全域 class）。同時使用者表示不需要「關鍵字」資訊，整段移除 `buildWineStyleCardHTML()` 的 Key Terms 區塊與 `termTags` 變數，並同步移除 `data/wine-data.js` 氣泡酒資料裡的 `keyTerms` 欄位，避免留下沒有畫面讀取的死資料。
     原因：#76 的卡片化在截圖驗證時因為 headless Chrome 的螢幕擷取與人眼實際感受色差判斷不完全一致（兩個非常相近的米色調在小尺寸截圖裡更難分辨），這次是使用者實際看畫面後才抓到的視覺問題，之後如果又要疊加卡片樣式在同樣是 `--bg-el` 底色的容器裡，要記得先檢查父層背景色是否會撞色，而非照抄既有 class 的預設值；移除 `keyTerms` 資料欄位而非只是不渲染，是延續本專案「不留無人讀取的死欄位」的一貫做法（如國旗 emoji 欄位、sensoryProfile/radarStats 的先例）。
     驗證：headless Chrome 截圖確認四個卡片（History/Grapes/Terroir/Production）呈白色背景、與淺褐色 `.acc-body` 底色清楚區隔，Key Terms 區塊已不存在，`--dump-dom` 確認無 JS 錯誤，`data/wine-data.js` 移除 `keyTerms` 欄位後大括號／中括號配對仍平衡（1015/1015、546/546）。
+
+## 2026-07-09 「釀造工藝」頁面補完：紅／白／粉紅／橘酒／強化酒五款（六大分類全部完成）
+
+78. **使用者確認氣泡酒範本（內容與視覺）皆OK後，依相同資料結構與卡片樣式一次補完其餘5款，`js/winestyles.js`／`index.html`／`js/core.js` 完全不需改動**：`WINE_DB.wineStyles[]` 依序新增 `red`／`white`／`rose`／`orange`／`fortified` 五筆，欄位結構（`oneLiner`／`history`／`grapes`／`terroir`／`production`）與字數區間比照氣泡酒，圖示分別為 🍷／🥂／🌸／🧡／🥃。
+    原因：既有渲染邏輯（`buildWineStyleCardHTML()`／`toggleWineStyleCard()`）與卡片樣式（#76、#77 已修正過的 `.ic` 白底卡片）是純資料驅動，本次擴充驗證了先前的架構設計沒有預留任何僅供單一酒款硬編碼的邏輯，符合「資料處理與 DOM 渲染區隔」的架構鐵律。
+79. **五款內容撰寫時遵循與氣泡酒相同的「有把握才寫」原則，關鍵事實逐一列出以利使用者核實**：紅酒——25–30°C發酵溫度、pigeage/remontage萃取工法、乳酸發酵（MLF）幾乎是紅酒標配；白酒——12–18°C低溫發酵、débourbage澄清、MLF在芳香品種常被刻意阻擋；粉紅酒——直接壓榨法／短時間浸皮法／放血法（Saignée）三種製法區分；橘酒——喬治亞qvevri傳統與Josko Gravner帶動的1990年代自然酒復興；強化酒——波特酒發酵中強化（19–22% abv）、雪莉酒發酵後強化並以15%為酒花（flor）存活分界、Solera逐年混調系統、馬德拉estufagem／canteiro加熱陳年。以上皆屬 WSET Level 2/3 標準教材內容，撰寫時未生成任何不確定的具體數字。
+    原因：延續 DECISIONS.md #75 的做法，確保六款酒的內容品質一致；強化酒因涵蓋波特/雪莉/馬德拉三個子傳統，`production` 欄位篇幅略高於其他四款（約426字），與氣泡酒因三種製程並列而超出目標字數的情況相同，皆屬事實密度使然的合理超字。
+    驗證：headless Chrome 截圖確認全部6張卡片正確顯示於同一份手風琴清單、單一展開收合行為正常（點擊任一卡片會自動收合其他已展開卡片，含跨越多張卡片的情境），紅酒與強化酒卡片展開內容逐區塊核對無破版；`--dump-dom` 確認無 JS 錯誤；`data/wine-data.js` 新增5筆後大括號／中括號配對仍平衡（1020/1020、546/546），`wineStyles` 陣列共6筆。
