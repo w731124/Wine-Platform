@@ -261,6 +261,7 @@ document.addEventListener('DOMContentLoaded', function() {
   populateCompareSelects();
   renderGrapePanel();
   renderClassificationPanel();
+  renderWineStylePanel();
   initMapTooltips();
   auditWineDB();
   auditCountryFlags();

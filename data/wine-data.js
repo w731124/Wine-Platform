@@ -2825,6 +2825,20 @@ const WINE_DB = {
     }
   ],
 
+  wineStyles: [
+    {
+      id: 'sparkling',
+      name: 'Sparkling Wine(氣泡酒)',
+      icon: '✨',
+      oneLiner: '把二次發酵鎖進瓶中或槽中，讓酵母化作酒液裡的萬千氣泡。',
+      history: '氣泡酒最早可追溯至17世紀香檳區——寒冷氣候讓發酵在冬天中斷，隔年春天瓶中殘糖意外引發二次發酵，產生氣泡與高壓，當時甚至造成大量爆瓶。本篤會修士Dom Pérignon常被通俗說法稱為「氣泡酒發明者」，但他真正的貢獻其實是改良調配與壓榨技術，而非發明氣泡本身。19世紀後，西班牙Cava與義大利Prosecco發展出各自風格路線；英格蘭南部因擁有與香檳區相近的白堊土，近三十年也崛起為傳統法氣泡酒新興產區。',
+      grapes: '香檳三大品種各司其職：Chardonnay貢獻花香與細緻酸度；Pinot Noir提供結構與紅果調性；Pinot Meunier帶來早熟果香與圓潤口感。Cava多用西班牙原生的Macabeo、Xarel·lo、Parellada混調；Prosecco則依賴Glera保留奔放的梨子與青蘋果香氣。',
+      terroir: '氣泡酒基酒最重視高酸度保留，因此偏好冷涼氣候：香檳區緯度偏北、年均溫低，葡萄成熟緩慢，糖度與風味成熟前已能維持銳利酸度，這正是支撐二次發酵與長期陳年的關鍵。香檳與英格蘭南部共享的白堊土排水佳且保水適中，賦予酒款特有的礦石感。新世界產區則多藉由高緯度或高海拔涼爽微氣候複製類似的酸度條件。',
+      production: '氣泡酒工藝核心在於二次發酵如何產生並保留氣泡，主要分三種製程。傳統法（香檳、Cava皆採此法）：裝瓶時加入含糖與酵母的liqueur de tirage，瓶中密封發酵，產生約1.2–1.3%酒精與約6大氣壓；酵母死亡形成酒渣，長期接觸產生autolysis（自溶），釋出吐司、堅果風味——香檳AOC規定無年份酒款至少陳年15個月（12個月以上在渣上），年份酒款則至少3年；再經remuage轉瓶集中酒渣至瓶頸，disgorgement急凍噴出沉澱，dosage補液定甜度。水槽法（Tank Method，Prosecco主流）：發酵改在密閉壓力槽進行，酒渣接觸僅數週，保留品種清新果香，過濾去渣後等壓裝瓶，成本時間遠低於傳統法。轉注法（Transfer Method）：同樣瓶中完成二次發酵，但整批倒入加壓槽過濾去渣、補液後重新裝瓶，多用於無法上轉瓶機的特殊瓶型。',
+      keyTerms: ['Méthode Traditionnelle', 'Liqueur de Tirage', 'Autolysis', 'Remuage (Riddling)', 'Disgorgement (Dégorgement)', 'Dosage', 'Tank Method (Charmat)', 'Transfer Method', 'Lees Contact']
+    }
+  ],
+
   vintages:{
     rows:[
       {id:'bordeaux-left', label:'Bordeaux Left Bank', sublabel:'波爾多左岸'},

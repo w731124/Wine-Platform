@@ -40,7 +40,7 @@
           </button>
           <div class="tab-dropdown" id="dd-grapes-group">
             <button class="tab-dropdown-item" onclick="selectTabFromGroup(this,'grapes',event)"><span>🍇</span> 品種圖鑑</button>
-            <button class="tab-dropdown-item" disabled title="即將推出"><span>🍷</span> 釀造工藝（即將推出）</button>
+            <button class="tab-dropdown-item" onclick="selectTabFromGroup(this,'winestyles',event)"><span>🍷</span> 釀造工藝</button>
           </div>
         </div>
         <button class="tab-btn" onclick="showPanel('tasting',this)"><span class="ti">👁</span><span class="tl">👁 品飲系統</span></button>
@@ -683,6 +683,17 @@
   <div id="grape-container"></div>
 </div>
 
+<!-- ╔══════════════════════════════════╗
+     ║  PANEL 8 — 釀造工藝 Winemaking Styles ║
+     ╚══════════════════════════════════╝ -->
+<div id="panel-winestyles" class="panel">
+  <div class="mb-4">
+    <h1 style="font-family:'Cinzel',serif;font-size:21px;font-weight:700;color:var(--burg);margin-bottom:3px;">釀造工藝 Winemaking Styles</h1>
+    <p style="font-size:12.5px;color:var(--txt3);">WSET Level 2 六大酒款分類 · 點擊卡片展開歷史文化／品種／風土／釀造方式</p>
+  </div>
+  <div id="winestyle-container"></div>
+</div>
+
 </main>
 
 <!-- Bottom Drawer -->
@@ -704,5 +715,6 @@
 <script src="js/compare.js"></script>
 <script src="js/grapes.js"></script>
 <script src="js/classifications.js"></script>
+<script src="js/winestyles.js"></script>
 </body>
 </html>

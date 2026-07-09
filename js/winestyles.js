@@ -1,0 +1,59 @@
+/* ════════════════════════════════════
+   WINEMAKING STYLES PANEL
+════════════════════════════════════ */
+function renderWineStylePanel() {
+  const cont = document.getElementById('winestyle-container');
+  if (!cont) return;
+  const list = WINE_DB.wineStyles || [];
+  cont.innerHTML = list.map(s => buildWineStyleCardHTML(s)).join('');
+}
+
+function buildWineStyleCardHTML(s) {
+  const termTags = (s.keyTerms || []).map(t => `<span class="tg tg-aroma">${t}</span>`).join('');
+
+  return `
+    <div class="acc-wrap mb-3">
+      <div class="acc-hdr" data-style-id="${s.id}" onclick="toggleWineStyleCard(this)">
+        <div class="flex items-center gap-3">
+          <span style="font-size:18px;">${s.icon}</span>
+          <div>
+            <div style="font-family:'Cinzel',serif;font-size:14px;font-weight:600;color:var(--burg);">${s.name}</div>
+            <div style="font-size:11.5px;color:var(--txt3);max-width:520px;">${s.oneLiner}</div>
+          </div>
+        </div>
+        <span class="acc-arrow">▼</span>
+      </div>
+      <div class="acc-body">
+        <p class="ins-lbl">歷史文化 History</p>
+        <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);margin-bottom:12px;">${s.history}</p>
+        <p class="ins-lbl">葡萄品種 Grapes</p>
+        <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);margin-bottom:12px;">${s.grapes}</p>
+        <p class="ins-lbl">風土 Terroir</p>
+        <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);margin-bottom:12px;">${s.terroir}</p>
+        <p class="ins-lbl">釀造方式 Production</p>
+        <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);margin-bottom:12px;">${s.production}</p>
+        <p class="ins-lbl">關鍵字 Key Terms</p>
+        <div class="flex flex-wrap gap-1">${termTags}</div>
+      </div>
+    </div>`;
+}
+
+function toggleWineStyleCard(hdr) {
+  const body = hdr.nextElementSibling;
+  const arrow = hdr.querySelector('.acc-arrow');
+  const isOpen = body.classList.contains('open');
+
+  // 手風琴行為：收合其他已展開卡片
+  document.querySelectorAll('#winestyle-container .acc-hdr.open').forEach(otherHdr => {
+    if (otherHdr === hdr) return;
+    const otherBody = otherHdr.nextElementSibling;
+    const otherArrow = otherHdr.querySelector('.acc-arrow');
+    if (otherBody) otherBody.classList.remove('open');
+    otherHdr.classList.remove('open');
+    if (otherArrow) { otherArrow.classList.remove('open'); otherArrow.textContent = '▼'; }
+  });
+
+  body.classList.toggle('open', !isOpen);
+  hdr.classList.toggle('open', !isOpen);
+  if (arrow) { arrow.classList.toggle('open', !isOpen); arrow.textContent = isOpen ? '▼' : '▲'; }
+}
