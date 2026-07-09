@@ -1,11 +1,24 @@
 function renderL1CountryFilters(){
-  const wrap=document.getElementById('l1-country-filters');
-  if (!wrap) return;
+  const bar=document.getElementById('l1-country-bar');
+  const cont=document.getElementById('l1-country-filters');
+  if (!bar || !cont) return;
+  if(curL1!=='old-world'&&curL1!=='new-world'){ bar.classList.remove('open'); cont.innerHTML=''; return; }
+
   const flagByCountry={};
-  WINE_DB.appellations.forEach(a=>{ if(!flagByCountry[a.country]) flagByCountry[a.country]=a.emoji; });
-  wrap.innerHTML=Object.keys(flagByCountry).map(country=>
-    `<button class="fp" data-l1="${country}">${flagByCountry[country]} ${country}</button>`
+  WINE_DB.appellations.filter(a=>a.world===curL1).forEach(a=>{ if(!flagByCountry[a.country]) flagByCountry[a.country]=a.emoji; });
+  cont.innerHTML=Object.keys(flagByCountry).map(country=>
+    `<button class="fp2 ${country===curL1?'active':''}" data-l1c="${country}">${flagByCountry[country]} ${country}</button>`
   ).join('');
+  bar.classList.add('open');
+  cont.onclick=e=>{
+    const btn=e.target.closest('.fp2');if(!btn)return;
+    cont.querySelectorAll('.fp2').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    curL1=btn.dataset.l1c;
+    curL2='all-regions';
+    renderL2Bar();
+    renderFilteredRegions();
+  };
 }
 
 function renderL2Bar(){

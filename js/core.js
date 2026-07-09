@@ -192,6 +192,7 @@ if (l1Filters) {
     btn.classList.add('active');
     curL1=btn.dataset.l1;
     curL2='all-regions';
+    renderL1CountryFilters();
     renderL2Bar();
     renderFilteredRegions();
   });
