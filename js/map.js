@@ -63,18 +63,51 @@ function projectFrance(lng, lat){
 function getFranceAppellations(){
   return WINE_DB.appellations.filter(a => a.country === 'France(法國)' && a.coords);
 }
+// 碰撞避讓：把距離過近（點不到）的標記點互相推開，直到彼此間距達到 minDist 或迭代上限。
+// 只調整視覺位置，不影響 WINE_DB 座標本身，孤立的點完全不受影響。
+function declutterPoints(points, minDist, maxIterations){
+  for (let iter = 0; iter < maxIterations; iter++) {
+    let moved = false;
+    for (let i = 0; i < points.length; i++) {
+      for (let j = i + 1; j < points.length; j++) {
+        let dx = points[j].x - points[i].x;
+        let dy = points[j].y - points[i].y;
+        let dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < minDist) {
+          moved = true;
+          if (dist < 0.01) { dx = 1; dy = 0; dist = 0.01; }
+          const push = (minDist - dist) / 2;
+          const ux = dx / dist, uy = dy / dist;
+          points[i].x -= ux * push; points[i].y -= uy * push;
+          points[j].x += ux * push; points[j].y += uy * push;
+        }
+      }
+    }
+    if (!moved) break;
+  }
+}
 function renderFranceMarkers(){
   const g = document.getElementById('france-markers');
   if (!g) return;
-  g.innerHTML = getFranceAppellations().map((a, i) => {
-    const num = i + 1;
+  const list = getFranceAppellations();
+  const points = list.map(a => {
     const [x, y] = projectFrance(a.coords.lng, a.coords.lat);
+    return { x: Number(x), y: Number(y) };
+  });
+  declutterPoints(points, 17, 150);
+  g.innerHTML = list.map((a, i) => {
+    const num = i + 1;
+    const x = points[i].x.toFixed(1), y = points[i].y.toFixed(1);
     return `<g class="pulse-marker" data-id="${a.id}" onclick="selectAppellation('${a.id}')">
       <circle class="pulse-ring" cx="${x}" cy="${y}" r="8" fill="none" stroke="rgba(185,140,20,.5)" stroke-width="1.5"/>
       <circle class="dot-inner" cx="${x}" cy="${y}" r="7.5" fill="#C5A228" stroke="#FFF" stroke-width="1.5"/>
-      <text x="${x}" y="${(Number(y)+2.5).toFixed(1)}" text-anchor="middle" font-size="7" font-weight="700" fill="#FFF" font-family="Inter,sans-serif" style="pointer-events:none;">${num}</text>
+      <text x="${x}" y="${(points[i].y+2.5).toFixed(1)}" text-anchor="middle" font-size="7" font-weight="700" fill="#FFF" font-family="Inter,sans-serif" style="pointer-events:none;">${num}</text>
     </g>`;
   }).join('');
+}
+function highlightFranceMarker(id, on){
+  const el = document.querySelector(`.pulse-marker[data-id="${id}"]`);
+  if (el) el.classList.toggle('list-hover', on);
 }
 function renderFranceMarkerList(){
   const ph = document.getElementById('inspector-placeholder');
@@ -90,7 +123,7 @@ function renderFranceMarkerList(){
       <div style="margin-bottom:10px;">
         <p style="font-size:10px;font-weight:700;letter-spacing:.05em;color:var(--txt4);text-transform:uppercase;margin-bottom:4px;">${region}</p>
         ${groups[region].map(({num, app}) => `
-          <div class="france-idx-item" onclick="selectAppellation('${app.id}')" style="display:flex;align-items:center;gap:6px;padding:3px 4px;font-size:12px;color:var(--txt2);cursor:pointer;border-radius:5px;">
+          <div class="france-idx-item" onclick="selectAppellation('${app.id}')" onmouseenter="highlightFranceMarker('${app.id}',true)" onmouseleave="highlightFranceMarker('${app.id}',false)" style="display:flex;align-items:center;gap:6px;padding:3px 4px;font-size:12px;color:var(--txt2);cursor:pointer;border-radius:5px;">
             <span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:#C5A228;color:#fff;font-size:9px;font-weight:700;flex-shrink:0;">${num}</span>
             <span>${app.name}</span>
           </div>`).join('')}

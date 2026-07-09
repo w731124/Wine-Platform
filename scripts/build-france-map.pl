@@ -15,7 +15,10 @@
 # ════════════════════════════════════════════════════════════════
 use strict;
 use warnings;
+use utf8;
 use JSON::PP;
+binmode(STDOUT, ':utf8');
+binmode(STDERR, ':utf8');
 
 # ---------- 設定：大產區 → 省份代碼分組（法國 INSEE department code）----------
 # 分組依據見 DECISIONS.md #81（已與使用者逐一確認過，含刻意擴充的省份）
@@ -30,6 +33,7 @@ my %REGIONS = (
 
 my $DEPT_URL  = 'https://cdn.jsdelivr.net/gh/gregoiredavid/france-geojson@master/departements-version-simplifiee.geojson';
 my $METRO_URL = 'https://cdn.jsdelivr.net/gh/gregoiredavid/france-geojson@master/metropole-version-simplifiee.geojson';
+my $RIVERS_URL = 'https://cdn.jsdelivr.net/gh/martynafford/natural-earth-geojson@master/50m/physical/ne_50m_rivers_lake_centerlines.json';
 my $WINE_DATA_FILE = 'data/wine-data.js';
 my $CACHE_DIR = 'scripts/.geo-cache';
 
@@ -46,10 +50,12 @@ sub fetch_cached {
   die "downloaded file is empty: $dest\n" if -z $dest;
 }
 mkdir $CACHE_DIR unless -d $CACHE_DIR;
-my $deptFile  = "$CACHE_DIR/departements-simple.geojson";
-my $metroFile = "$CACHE_DIR/metropole-simple.geojson";
+my $deptFile   = "$CACHE_DIR/departements-simple.geojson";
+my $metroFile  = "$CACHE_DIR/metropole-simple.geojson";
+my $riversFile = "$CACHE_DIR/rivers.json";
 fetch_cached($DEPT_URL, $deptFile);
 fetch_cached($METRO_URL, $metroFile);
+fetch_cached($RIVERS_URL, $riversFile);
 
 # ---------- 從 wine-data.js 直接讀取法國產區座標（單一資料來源，不手動抄）----------
 sub load_app_coords {
@@ -155,8 +161,46 @@ sub decimate {
 my @mainlandDecimated = decimate($mainlandRing, $MAINLAND_TARGET_POINTS);
 print STDERR '[outline] raw=' . scalar(@$mainlandRing) . ' decimated=' . scalar(@mainlandDecimated) . "\n";
 
-# ---------- 投影（全國輪廓／六產區形狀／產區座標共用同一套參數）----------
-my @allProjPts = (@mainlandDecimated, (map { @{$regionHull{$_}} } keys %regionHull), values %appCoords);
+# ---------- 河流（Natural Earth 1:50m rivers，僅取羅亞爾河/隆河/加隆河三條）----------
+# 資料集裡同名河流常拆成多個 LineString/MultiLineString 片段，以下的片段索引是
+# 針對這份資料集人工核對過的結果（見 DECISIONS.md 河流任務），非通用邏輯——
+# 如果之後 Natural Earth 更新資料集、片段順序改變，這裡需要重新核對。
+# 加隆河(Garonne)是波爾多左右岸分界的其中一條河，資料集裡查不到多爾多涅河(Dordogne)，
+# 因此無法完整畫出兩河匯流成吉倫特河口(Gironde)的示意，僅以加隆河概略標示分界位置。
+my $riversData = load_json($riversFile);
+my %riverFeaturesByName;
+for my $f (@{$riversData->{features}}) {
+  my $name = $f->{properties}{name};
+  next unless defined $name;
+  push @{$riverFeaturesByName{$name}}, $f;
+}
+
+sub multiline_segment {
+  my ($name, $segIdx) = @_;
+  my ($f) = grep { ($_->{geometry}{type} // '') eq 'MultiLineString' } @{$riverFeaturesByName{$name} || []};
+  die "no MultiLineString feature found for river '$name'\n" unless $f;
+  return $f->{geometry}{coordinates}[$segIdx];
+}
+sub single_line {
+  my ($name) = @_;
+  my ($f) = grep { ($_->{geometry}{type} // '') eq 'LineString' } @{$riverFeaturesByName{$name} || []};
+  die "no LineString feature found for river '$name'\n" unless $f;
+  return $f->{geometry}{coordinates};
+}
+
+my $loireSeg1 = multiline_segment('Loire', 1); # 中段→源頭(南)：與 seg0 共用中段起點，需反轉才能銜接
+my $loireSeg0 = multiline_segment('Loire', 0); # 中段→出海口(西，南特)
+my %riverLines = (
+  loire  => [ reverse(@$loireSeg1), @$loireSeg0 ],                                       # 源頭(南)→中段→出海口(西，南特)
+  rhone  => multiline_segment("Rh\x{f4}ne", 1),                                          # 日內瓦湖附近→隆河谷→三角洲
+  garonne => single_line('Garonne'),                                                     # 土魯斯附近→波爾多
+);
+for my $r (sort keys %riverLines) {
+  print STDERR "[river] $r points=" . scalar(@{$riverLines{$r}}) . "\n";
+}
+
+# ---------- 投影（全國輪廓／六產區形狀／產區座標／河流共用同一套參數）----------
+my @allProjPts = (@mainlandDecimated, (map { @{$regionHull{$_}} } keys %regionHull), values %appCoords, (map { @{$riverLines{$_}} } keys %riverLines));
 my ($minLng, $maxLng, $minLat, $maxLat);
 for my $p (@allProjPts) {
   my ($lng, $lat) = @$p;
@@ -203,4 +247,9 @@ for my $r (sort keys %regionHull) {
 print "\n=== APPELLATION MARKERS ===\n";
 for my $id (sort keys %appCoords) {
   print "$id: " . join(',', project(@{$appCoords{$id}})) . "\n";
+}
+
+print "\n=== RIVERS ===\n";
+for my $r (sort keys %riverLines) {
+  print "$r:\nM " . join(' L ', map { join(',', project(@$_)) } @{$riverLines{$r}}) . "\n\n";
 }
