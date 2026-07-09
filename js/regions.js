@@ -4,10 +4,9 @@ function renderL1CountryFilters(){
   if (!bar || !cont) return;
   if(curL1!=='old-world'&&curL1!=='new-world'){ bar.classList.remove('open'); cont.innerHTML=''; return; }
 
-  const flagByCountry={};
-  WINE_DB.appellations.filter(a=>a.world===curL1).forEach(a=>{ if(!flagByCountry[a.country]) flagByCountry[a.country]=a.emoji; });
-  cont.innerHTML=Object.keys(flagByCountry).map(country=>
-    `<button class="fp2 ${country===curL1?'active':''}" data-l1c="${country}">${flagByCountry[country]} ${country}</button>`
+  const countries=[...new Set(WINE_DB.appellations.filter(a=>a.world===curL1).map(a=>a.country))];
+  cont.innerHTML=countries.map(country=>
+    `<button class="fp2 ${country===curL1?'active':''}" data-l1c="${country}">${flagIconHTML(country)} ${country}</button>`
   ).join('');
   bar.classList.add('open');
   cont.onclick=e=>{
@@ -70,7 +69,7 @@ function renderFilteredRegions(){
   // 2. Group by region
   const groups={};
   list.forEach(a=>{
-    if(!groups[a.region]) groups[a.region]={region:a.region,country:a.country,emoji:a.emoji,apps:[]};
+    if(!groups[a.region]) groups[a.region]={region:a.region,country:a.country,apps:[]};
     groups[a.region].apps.push(a);
   });
 
@@ -90,7 +89,7 @@ function renderFilteredRegions(){
     hdr.className='acc-hdr';
     hdr.innerHTML=`
       <div style="display:flex;align-items:center;gap:10px;">
-        <span style="font-size:18px;">${grp.emoji}</span>
+        <span>${flagIconHTML(grp.country, 20)}</span>
         <div>
           <div style="font-family:'Cinzel',serif;font-size:14px;font-weight:600;color:var(--burg);">${grp.region}</div>
           <div style="font-size:11px;color:var(--txt3);">${grp.country} · ${grp.apps.length} 個次產區</div>
@@ -156,8 +155,8 @@ function renderFilteredRegions(){
 function openDrawer(app){
   const sp=app.profile||{acidity:6,tannin:6,body:6,alcohol:6,finish:6,aging:5,floral:5};
   const worldTag=app.world==='old-world'
-    ?`<span class="tg tg-co">${app.emoji} ${app.country}</span>`
-    :`<span class="tg tg-nw">${app.emoji} ${app.country}</span>`;
+    ?`<span class="tg tg-co">${flagIconHTML(app.country,16)} ${app.country}</span>`
+    :`<span class="tg tg-nw">${flagIconHTML(app.country,16)} ${app.country}</span>`;
   const kiH=(app.keyIdentifiers||[]).map(k=>`<span class="tg tg-reg">${k}</span>`).join(' ');
   const foodH=(app.foodPairingTags||[]).map(f=>`<span class="tg tg-food">${f}</span>`).join(' ');
   const estH=(app.famousEstates||[]).map(e=>`<li style="font-size:11.5px;padding:1.5px 0;color:var(--txt2);">• ${e}</li>`).join('');

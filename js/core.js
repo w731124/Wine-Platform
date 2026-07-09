@@ -6,6 +6,35 @@ let radarInst=null;
 let selMapMarker=null;
 
 /* ════════════════════════════════════
+   COUNTRY FLAG ICONS（自架 SVG，取代不受作業系統字型支援保證的國旗 emoji）
+   key 需與 wine-data.js 的 country 欄位值完全一致；value 為 ISO 3166-1 alpha-2 小寫國碼，
+   對應 assets/flags/{code}.svg 檔名。新增國家資料庫時記得同步在此補上對照，
+   否則 auditCountryFlags() 會在 console 輸出警告。
+════════════════════════════════════ */
+const COUNTRY_FLAG_CODE = {
+  'Argentina(阿根廷)': 'ar',
+  'Australia(澳洲)': 'au',
+  'Austria(奧地利)': 'at',
+  'Chile(智利)': 'cl',
+  'France(法國)': 'fr',
+  'Germany(德國)': 'de',
+  'Italy(義大利)': 'it',
+  'New Zealand(紐西蘭)': 'nz',
+  'Portugal(葡萄牙)': 'pt',
+  'South Africa(南非)': 'za',
+  'Spain(西班牙)': 'es',
+  'USA(美國)': 'us'
+};
+
+function flagIconHTML(country, sizePx){
+  sizePx = sizePx || 18;
+  const code = COUNTRY_FLAG_CODE[country];
+  if(!code) return '';
+  const h = Math.round(sizePx * 0.75);
+  return `<img src="assets/flags/${code}.svg" alt="${country}" width="${sizePx}" height="${h}" style="width:${sizePx}px;height:${h}px;object-fit:cover;border-radius:2px;vertical-align:middle;display:inline-block;">`;
+}
+
+/* ════════════════════════════════════
    LEGACY CELLAR CLEANUP（一次性）
    酒窖功能已移除，此處僅負責清除使用者瀏覽器中殘留的舊 localStorage 資料。
    確認所有使用者端資料清除完畢後，此函式與其呼叫可一併刪除。
@@ -73,6 +102,28 @@ function auditWineDB(){
   console.groupEnd();
 
   return report;
+}
+
+/* ════════════════════════════════════
+   COUNTRY FLAG AUDIT
+   確認 WINE_DB.appellations 內每個 country 都能對應到 COUNTRY_FLAG_CODE 的國碼，
+   且該國碼的 SVG 檔案實際可載入，避免擴充新國家時忘記補國旗圖示。
+════════════════════════════════════ */
+function auditCountryFlags(){
+  const countries = [...new Set(WINE_DB.appellations.map(a => a.country))];
+  const missingMapping = countries.filter(c => !COUNTRY_FLAG_CODE[c]);
+  if(missingMapping.length){
+    console.warn('❌ [Flag Audit] 以下 country 在 COUNTRY_FLAG_CODE 找不到對照的國碼:', missingMapping);
+  }
+  countries.filter(c => COUNTRY_FLAG_CODE[c]).forEach(c => {
+    const code = COUNTRY_FLAG_CODE[c];
+    const img = new Image();
+    img.onerror = () => console.warn(`❌ [Flag Audit] ${c} 對應的 assets/flags/${code}.svg 載入失敗（檔案可能遺失或路徑錯誤）`);
+    img.src = `assets/flags/${code}.svg`;
+  });
+  if(!missingMapping.length){
+    console.log('%c✅ 全部產區國家皆有對應的國碼', 'color:#1a7a1a;font-weight:bold;');
+  }
 }
 
 /* ════════════════════════════════════
@@ -212,6 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
   renderClassificationPanel();
   initMapTooltips();
   auditWineDB();
+  auditCountryFlags();
 });
 
 /* ════════════════════════════════════
