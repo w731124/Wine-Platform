@@ -2,7 +2,7 @@
    MAP FUNCTIONS
 ════════════════════════════════════ */
 function selectRegion(r){
-  const n={bordeaux:'Bordeaux(波爾多)',burgundy:'Burgundy(勃根地)',loire:'Loire(羅亞爾河)',champagne:'Champagne(香檳)',rhone:'Rhône(隆河谷)',piedmont:'Piedmont(皮埃蒙特)',tuscany:'Tuscany(托斯卡尼)',veneto:'Veneto(威尼托)',rioja:'Rioja(里奧哈)','ribera-del-duero':'Ribera del Duero(斗羅河岸)',jerez:'Jerez(赫雷斯)'};
+  const n={bordeaux:'Bordeaux(波爾多)',burgundy:'Burgundy(勃根地)',loire:'Loire(羅亞爾河)',champagne:'Champagne(香檳)',alsace:'Alsace(阿爾薩斯)',rhone:'Rhône(隆河谷)',piedmont:'Piedmont(皮埃蒙特)',tuscany:'Tuscany(托斯卡尼)',veneto:'Veneto(威尼托)',rioja:'Rioja(里奧哈)','ribera-del-duero':'Ribera del Duero(斗羅河岸)',jerez:'Jerez(赫雷斯)'};
   showMapIns(`<span class="tg tg-reg" style="font-size:13px;">${n[r]||r}</span><p style="font-size:12px;color:var(--txt3);margin-top:8px;">點擊金色圓點查看具體次產區資訊。</p>`);
 }
 function selectAppellation(id){
