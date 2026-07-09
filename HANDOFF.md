@@ -4,33 +4,35 @@
 
 ## 一、本次開發歷程
 
-**地圖探索重建全部完成：法國／義大利／伊比利三張地圖都已是真實地理邊界＋動態產區標記，取代了最早的手繪示意圖版本。**
+**地圖探索三張地圖（法國/義大利/伊比利）全部完成，本次額外處理使用者回報的「大區文字標籤呈現問題」，三張地圖各自的標籤問題都已修正並上線。**
 
-- **法國**（DECISIONS.md #80-96）：Stage 1-3＋標記碰撞避讓／真實河流／清單hover連動，全部完成並已 push。
-- **義大利**（DECISIONS.md #97-100）：真實13大區邊界（region欄位直接對應真實行政區，不需凸包）、波河、20筆座標、編號清單，已完成並已 push。
-- **伊比利**（本次完成，DECISIONS.md #101-104）：西班牙11筆＋葡萄牙2筆，西班牙／葡萄牙採兩種不同方法論並存，見下方。**尚未 push。**
+- **法國／義大利／伊比利地圖本體**（DECISIONS.md #80-104）：真實地理邊界＋動態產區標記，已完成並已 push。
+- **本次（大區標籤修正，DECISIONS.md #105-108）**：法國 Loire Valley 標籤跑出形狀外、義大利完全沒有大區標籤、伊比利標籤配色跟邊框顏色太接近難閱讀——三個問題都已修正。**使用者中途要求先暫停開發、把目前進度 commit+push，因此這次先完成當前這一批修正就收尾，若使用者之後还有其他標籤細節要調整（例如義大利 Lombardy/Piedmont 兩個標籤仍稍微靠近），屬於下一階段。**
 
-### 伊比利做了什麼
-1. **Stage 1（座標）**：13筆伊比利產區（西班牙11筆＋葡萄牙2筆）Nominatim 查詢，皆已交使用者確認表格後才寫入 `data/wine-data.js`。西班牙產區數量查詢前重新核實為11筆（原本記憶誤植為10筆，見下方技術債段落）。
-2. **Stage 2（真實邊界，西班牙／葡萄牙雙方法論並存）**：新增 `scripts/build-iberia-map.pl`。西班牙的 `region` 欄位值（Rioja/Castilla y León/Andalusia/Catalonia/Galicia/Murcia/Navarra）直接對應西班牙官方自治區，比照義大利模式直接抓真實邊界；葡萄牙的 `region` 欄位值（Douro/Vinho Verde）是產區概念不對應行政區，比照法國模式用 distrito 分組湊凸包（Douro=Vila Real+Bragança+Viseu，Vinho Verde=Viana do Castelo+Braga+Porto，方案已先與使用者確認）。邊界資料來源改用 `geoBoundaries`（`wmgeolab/geoBoundaries`）——義大利用的 `openpolis` 是義大利專屬、Natural Earth 的 admin-1 資料集試過兩個來源都只涵蓋少數大國不含西班牙/葡萄牙，最後確認 `geoBoundaries` 的 ESP-ADM1/PRT-ADM1 simplified GeoJSON 可用。全國輪廓＝西班牙+葡萄牙本土（各自抓最大環，排除 Canarias/Baleares/Azores/Madeira，無產區資料點）。河流：Duero/Ebro（Duero 這條線本身就橫跨西班牙內陸到葡萄牙出海口，同一條線同時代表西班牙 Duero 與葡萄牙 Douro，不需分開處理）。
-3. **新增大區標籤避讓演算法**：使用者明確要求「記得放上大區名，並避免像法國那樣被標記遮住」，因此伊比利是三張地圖裡唯一「有標籤且做過避讓運算」的版本（法國有標籤但沒避讓，已知瑕疵；義大利完全不加標籤）。在 `build-iberia-map.pl` 裡新增以標籤為可動點、標記為固定點的相互推擠演算法，推離所有產區標記與彼此，收斂後夾住畫布邊界。
-4. 地圖預覽（西班牙+葡萄牙輪廓、9個大區形狀、河流、9個避讓後標籤、13個標記）先發布 Artifact 讓使用者確認兩輪（第一輪標籤與標記重疊、調整避讓參數後第二輪通過）才整合進 `index.html`。
+### 本次做了什麼
+1. **三支建圖腳本（`build-france-map.pl`／`build-italy-map.pl`／`build-iberia-map.pl`）都補上「標籤避讓標記」演算法的強化版**：`label_halfwidth()` 改用「實際顯示文字」（含中文括號）估計寬度，而非先前用大區 key 長度概略估算（這個舊寫法會低估含中文的實際寬度，是後來 Rioja/Navarra 標籤擠在一起的根本原因）。
+2. **法國／伊比利改用「point-in-polygon 判斷＋跑出形狀外就沿線退回原始重心方向」的硬性容器約束**：這兩張地圖的大區形狀夠大，使用者確認「該區域內位置還夠擺放文字」，因此可以強制標籤留在形狀內。
+3. **義大利因13個大區普遍狹長窄小、多數放不下完整文字，改用「限制離原始重心的最大位移距離（58px）＋指示線」的折衷方案**：地圖上新增「標籤→大區重心」的細虛線＋小圓點，解決「標籤離實際產地太遠時看不出對應哪一塊」的問題（這是這次新增、使用者明確要求的功能）。
+4. **除錯 Rioja/Navarra 重疊時發現一個演算法動態問題**：「避讓運算跑完才一次性拉回形狀內」會導致兩個相鄰小形狀的標籤都被拉回各自重心附近而重新擠在一起；修正為「每一輪避讓運算後立即做位移限制」，讓相鄰小形狀的標籤能各自貼著離對方最遠的一側定住。伊比利額外把標記避讓權重從完整標籤半寬降到55%、標籤間互斥安全係數從1.05提高到1.3，Rioja/Navarra 中心距離從42px提升到約68px解決重疊。
+5. **三張地圖標籤配色統一改為「深色文字（#5C061C）＋白色描邊（`paint-order="stroke"`）」的高對比樣式**，取代伊比利先前「跟大區邊框顏色相近」的配色方式，同時套用到法國既有標籤（原本沒有這個閱讀性問題，但統一風格）。
+6. **建圖腳本重跑時的一個既有 bug 順帶浮現並修正**：`build-france-map.pl` 的座標讀取函式原本沒有依 `country` 欄位過濾，在義大利/伊比利也補上 `coords` 之前不會出錯，這次重跑腳本才發現它把三國68筆產區都當成法國資料、投影範圍被拉爆到涵蓋整個西歐。已改用跟另外兩支腳本一致的「先切物件邊界再比對 country」寫法，重新驗證後投影參數與既有 `FRANCE_PROJECTION`／現有地圖完全一致（純粹是腳本重跑時才會觸發，不影響已上線地圖）。
 
 ### 驗證方式
-Artifact 預覽確認伊比利半島輪廓可辨識、9個大區真實邊界/分組正確、Duero/Ebro河流流經正確位置、標籤不再被標記遮住；整合進 `index.html` 後 headless Chrome 截圖確認正式頁面呈現一致、13個編號標記地理位置吻合（rioja在北部、jerez在南部安達魯西亞、douro/vinho-verde在葡萄牙北部等）；直接量測13個標記兩兩間距，最近16.95px（與法國/義大利一致的碰撞避讓效果）；`--dump-dom` 確認頁面載入無 JS 錯誤，68個 `.pulse-marker`（35+20+13）數量與三國資料筆數相符。
+三支腳本重新執行後，用 Perl 組合出三張地圖的獨立預覽頁面（含實際 SVG 色塊、標記、河流、新標籤），發布 Artifact 讓使用者確認，經三輪調整（第一輪呈現問題現況＋說明義大利的形狀限制；第二輪加上容器約束＋指示線；第三輪修正 Rioja/Navarra 重疊、義大利避讓參數微調）後使用者確認「OK」；整合進 `index.html` 後 `--dump-dom` 確認頁面載入無 JS 錯誤、68個 `.pulse-marker` 數量不變（本次只調整靜態標籤與指示線，未動到動態標記渲染邏輯）。
 
-以上已完成但**尚未 commit、尚未 push**。**下一步：確認是否要 commit 並詢問是否 push。**
+**尚未做完整的「切到地圖分頁點擊確認視覺」的 headless 截圖驗證**（使用者中途要求先暫停 commit，中斷了原本要做的最後一輪視覺驗證），接手者建議先補做這一步再繼續下一階段工作。
+
+以上**已 commit，push 狀態請接手前先確認**（見下方「現況檢查提醒」）。
 
 ## 二、討論過但尚未執行的項目／下一步規劃
 
-- **是否要 commit 本次伊比利地圖異動，以及 commit 後是否要 push**，尚待使用者這次對話明確指示。
-- **義大利地圖沒有大區文字標籤**（刻意設計決定非疏漏，見 DECISIONS.md #99）——若使用者覺得少了文字標籤不好辨識，可考慮之後補一版簡短縮寫標籤（伊比利已有避讓演算法可直接沿用同一套邏輯）。
-- **法國地圖的大區文字標籤沒有做避讓運算**（已知瑕疵，DECISIONS.md #92 記錄過）——伊比利已經做出可用的避讓演算法（`build-iberia-map.pl` 裡），若使用者之後想補強法國，可以把同一套邏輯搬過去，不需要重新設計。
-- **`wine-data.js` 的 `emoji` 欄位清理**（產區資料裡的死欄位）——建議與下次技術債清理一併處理。
+- **義大利 Lombardy／Piedmont 兩個標籤仍稍微靠近**（西北角相鄰兩個中型大區，指示線有幫助辨識但兩個標籤文字框本身還是有點近）——如果使用者覺得還需要再調整，可以嘗試進一步調整 `build-italy-map.pl` 的 `MAX_DISPLACEMENT`／marker keepout 權重，但要注意先前測試過把 `MAX_DISPLACEMENT` 從58調到72時，部分標籤（如 Tuscany）會被推到地圖東側、跟自己的形狀距離變得很誇張，過猶不及，58是目前測試下來效果較平衡的數值。
+- **是否要 push 本次 commit**，尚待使用者這次對話明確指示（使用者已經要求先 commit，push 可能是下一步）。
 - **「分級制度」頁面下一步的候選擴充方向**（先前提出、使用者尚未確認）：新世界分級概念對照章節、Rioja、雙向跳轉連結。
 - **法國波爾多左右岸分界不完整**（缺 Dordogne，只用 Garonne 概略標示）——若使用者未來想要更完整的呈現需要另外找資料源。
+- **`wine-data.js` 的 `emoji` 欄位清理**（產區資料裡的死欄位）——建議與下次技術債清理一併處理。
 - `auditCountryFlags()` 的 console 警告輸出尚未手動複查過。
-- **`.claude/settings.json` 的 `permissions.defaultMode: acceptEdits` 異動從很早以前就一直是 unstaged 狀態**，每次 session 都刻意不 commit（使用者當初問過一次是否要 commit，之後沒有明確回覆，後續所有 commit 都刻意排除這個檔案）。接手時如果 `git status` 看到這個 modified 檔案是正常現象，不是這次 session 造成的，除非使用者明確指示才處理。
+- **`.claude/settings.json` 的 `permissions.defaultMode: acceptEdits` 異動從很早以前就一直是 unstaged 狀態**，每次 session 都刻意不 commit。接手時看到這個 modified 檔案是正常現象，除非使用者明確指示才處理。
 
 ## 三、我明確要求先記下來、之後再處理的內容
 
@@ -38,15 +40,15 @@ Artifact 預覽確認伊比利半島輪廓可辨識、9個大區真實邊界/分
 
 ## 四、現況檢查提醒
 
-- **push 狀態**：目前為止所有法國/義大利的 commit 應該都已 push（上次 session 收尾時使用者確認過 push），但本次伊比利的異動**連 commit 都還沒做**——**接手前先跑 `git status` 與 `git log --oneline origin/main..HEAD` 確認實際狀態**，不要直接假設。
-- **本次 session（伊比利）異動範圍**：`data/wine-data.js`（13筆伊比利產區新增 `coords`）、新增 `scripts/build-iberia-map.pl`、`index.html`（`#map-iberia` 內容全面替換，從舊手繪版本改為真實邊界+動態標記+大區標籤）、`js/map.js`（新增 `IBERIA_PROJECTION`／`projectIberia()`／`getIberiaAppellations()`／`renderIberiaMarkers()`／`renderIberiaMarkerList()`，`selectRegion()` 名稱對照表補上9個伊比利大區鍵值、移除舊版遺留的 `ribera-del-duero`/`jerez` 鍵值）、`js/core.js`（`showMap()` 新增 `iberia` 分支，`DOMContentLoaded` 加 `renderIberiaMarkers()`）、`DECISIONS.md`（#101-104）、`HANDOFF.md`。
-- **重要技術債（新發現）**：`geoBoundaries` 葡萄牙資料集裡 `BRAGANÇA` 這個地名的「Ç」字元是雙重 UTF-8 編碼（上游資料本身的瑕疵，不是我方解碼錯誤），比對時要用實際出現的雙重編碼形式 `\x{c3}\x{87}` 而非正常的 `\x{c7}`。這是繼義大利腳本已記錄的「比對中文字元要用 `:encoding(UTF-8)` 開檔」陷阱之外，另一種變形的編碼陷阱——**之後若再處理其他國家的地理資料，遇到比對永遠不成功但邏輯看起來沒錯時，要懷疑上游資料本身的編碼是否有瑕疵，直接印出實際位元組/碼位比對，不要預設自己的轉義字串一定是對的**。
-- **`IBERIA_PROJECTION` 常數同步風險**（比照法國/義大利的提醒）：`js/map.js` 這個常數數值是從 `scripts/build-iberia-map.pl` 手動複製過來的，之後重跑腳本要記得手動同步更新。
-- **地理資料來源記錄**：西班牙/葡萄牙自治區/distrito 邊界來自 `geoBoundaries`（`wmgeolab/geoBoundaries`，ESP-ADM1/PRT-ADM1 simplified GeoJSON，經 `www.geoboundaries.org/api/current/gbOpen/{ISO3}/ADM1/` 查詢 metadata 取得下載連結）；全球國界（含西班牙/葡萄牙）來自與法國/義大利共用的 `martynafford/natural-earth-geojson` 的 `ne_50m_admin_0_countries.json`；河流資料同樣共用 `ne_50m_rivers_lake_centerlines.json`（快取在 `scripts/.geo-cache/rivers.json`）。**注意**：Natural Earth 的 admin-1 states/provinces 資料集（不論是 `martynafford` 版本還是官方 `nvkelso/natural-earth-vector` 版本）都試過，只涵蓋少數大國（各100/294筆），不含西班牙/葡萄牙，之後若有其他小國需要行政區邊界，`geoBoundaries` 是比 Natural Earth admin-1 更可靠的候選來源（涵蓋全球每個國家，經 API 查詢即可取得下載連結）。
-- **地圖形狀方法論差異（三張地圖三種組合）**：法國六大區凸包近似（省份≠葡萄酒大區概念）；義大利13大區真實邊界直接使用（大區＝葡萄酒大區概念一致）；伊比利兩者並存（西班牙真實邊界、葡萄牙凸包近似）——同一個網站三種方法論並存是刻意且合理的，取決於底層行政區資料與葡萄酒產區概念是否一致，不是不一致的技術債。
-- **大區文字標籤現況（三張地圖三種處理）**：法國有標籤但沒避讓（已知瑕疵）；義大利完全不加標籤（刻意設計）；伊比利有標籤且有避讓演算法（本次新增，使用者驗收通過）——若之後要統一或補強，伊比利的避讓演算法是可直接沿用的現成邏輯。
-- **本機環境限制**：沒有 Node.js，`python3`／`python` 是 Windows Store 空殼（exit code 127 無法用），**真正可用的是 `awk` 與 `perl`**（Perl 內建 `JSON::PP`）。
+- **push 狀態**：本次（標籤修正）的 commit 尚待確認是否已 push——**接手前先跑 `git log --oneline origin/main..HEAD` 確認實際領先數量**，不要直接假設。使用者是在視覺驗證截圖跑到一半時要求「先暫停、全部 commit 之後 push」，所以這次的收尾動作是先 commit，push 可能緊接著發生也可能是下一輪對話才做，兩者都要用 git 指令實際確認、不要用猜的。
+- **本次 session（標籤修正）異動範圍**：`index.html`（法國6個標籤重新定位＋改配色、義大利新增13個標籤＋13條指示線、伊比利9個標籤重新定位＋改配色）、`scripts/build-france-map.pl`（新增 `label_halfwidth()`／point-in-polygon 容器約束、修正 `load_app_coords()` 缺少 country 過濾的既有 bug）、`scripts/build-italy-map.pl`（新增 `label_halfwidth()`／最大位移限制／指示線輸出）、`scripts/build-iberia-map.pl`（`label_halfwidth()` 改用實際顯示文字、新增「大區形狀自身半徑」動態位移上限取代固定值、標記避讓權重與標籤互斥係數調整）、`DECISIONS.md`（#105-108）、`HANDOFF.md`。
+- **重要：本次沒有動到 `js/map.js`／`js/core.js`**——大區標籤是靜態 SVG `<text>`／`<line>` 元素（在建圖腳本裡算好座標後手動寫入 `index.html`），不是像產區標記那樣由 JS 在執行期動態產生，所以修改範圍完全限定在 `index.html` 與三支 Perl 腳本。
+- **義大利大區標籤現況大幅改變**：先前 HANDOFF.md 記錄「義大利地圖沒有大區文字標籤是刻意設計決定」——這個決定本次已被使用者推翻（明確要求加上），現在義大利地圖有13個標籤＋13條指示線，未來接手者不要再參照舊決定以為義大利「刻意不加標籤」。
+- **三張地圖的標籤演算法現況**：法國/伊比利用「point-in-polygon 硬性容器約束」，義大利用「限制離重心最大位移距離（58px）＋指示線」——兩種做法並存是刻意的，取決於各地圖大區形狀是否大到放得下完整文字，不是不一致。
+- **Perl 雜湊迭代順序不固定的提醒（新發現）**：三支避讓演算法用 `for my $r (keys %labelPos)` 迭代，Perl 的雜湊鍵順序在不同執行之間會隨機化，導致同一支腳本重跑兩次可能收斂到「同樣合理但數值不同」的另一組標籤位置（座標會變、但視覺品質應該相近）。這不是 bug，但表示**每次重新執行建圖腳本後都要重新看過座標輸出、不能假設跟上次跑出來的數字一樣**。
+- **地理資料來源記錄**（延續先前記錄）：法國省份 `gregoiredavid/france-geojson`；義大利大區 `openpolis/geojson-italy`；西班牙/葡萄牙自治區/distrito `geoBoundaries`；全球國界與河流共用 `martynafford/natural-earth-geojson`（快取在 `scripts/.geo-cache/`）。
+- **本機環境限制**：沒有 Node.js，`python3`／`python` 是 Windows Store 空殼，**真正可用的是 `awk` 與 `perl`**（Perl 內建 `JSON::PP`）。
 - **手風琴函式現況**（延續先前記錄）：全站4個各自獨立、範圍鎖定各自面板的手風琴 toggle 函式，刻意不合併成共用函式。
 - **`.ic` 卡片套色提醒**（延續先前記錄）：`.ic` 預設背景 `var(--bg-el)`，疊加在同樣背景的容器裡要另外覆蓋成 `var(--bg-card)`。
-- **國旗擴充提醒**（延續先前記錄）：新增新國家時要同步補 `COUNTRY_FLAG_CODE` 對照與 `assets/flags/{國碼}.svg`（西班牙/葡萄牙國旗應該在更早的國旗任務就已經補齊，這次沒有再檢查）。
+- **國旗擴充提醒**（延續先前記錄）：新增新國家時要同步補 `COUNTRY_FLAG_CODE` 對照與 `assets/flags/{國碼}.svg`。
 - **接手的 Claude Code 務必實際開啟異動的檔案核對真實現況**，不要只憑這份 HANDOFF.md 的文字描述去猜測。

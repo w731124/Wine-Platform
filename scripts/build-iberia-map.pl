@@ -254,8 +254,41 @@ for my $r (sort keys %regionShape) {
 }
 
 # ---------- 大區文字標籤避讓（推離圓形標記與彼此，避免被蓋住，見與使用者確認的需求）----------
-# 只推標籤本身，標記點固定不動；標籤寬度用字數概略估算(半形字母/中文寬度不同，這裡的標籤全是
-# 英文，用固定每字元寬度粗估即可)，迭代互斥直到收斂或達上限。
+# 標籤實際顯示文字（比對 index.html 既有內容，含中文括號說明），比照法國/義大利腳本改用
+# 「實際顯示文字長度」而非「大區 key 長度」估計寬度——之前用 key 長度會嚴重低估寬度
+# （例如 key「rioja」5字元，但實際顯示「Rioja(里奧哈)」含中文視覺寬度大得多），
+# 這正是 Rioja/Navarra 兩個標籤先前會擠在一起的根本原因。
+my %LABEL_TEXT = (
+  rioja               => "Rioja(\x{91cc}\x{5967}\x{54c8})",
+  'castilla-y-leon'   => "Castilla y Le\x{f3}n(\x{5361}\x{65af}\x{63d0}\x{4e9e}\x{ff0d}\x{840a}\x{6606})",
+  andalusia           => "Andalusia(\x{5b89}\x{9054}\x{9b6f}\x{897f}\x{4e9e})",
+  catalonia           => "Catalonia(\x{52a0}\x{6cf0}\x{9686}\x{5c3c}\x{4e9e})",
+  galicia             => "Galicia(\x{52a0}\x{5229}\x{897f}\x{4e9e})",
+  murcia              => "Murcia(\x{7a46}\x{723e}\x{897f}\x{4e9e})",
+  navarra             => "Navarra(\x{7d0d}\x{74e6}\x{62c9})",
+  douro               => "Douro(\x{675c}\x{7f85}\x{6cb3})",
+  'vinho-verde'       => "Vinho Verde(\x{9752}\x{9152}\x{7522}\x{5340})",
+);
+sub label_halfwidth {
+  my $s = shift;
+  my $w = 0;
+  $w += (ord($_) > 0x2e80) ? 2 : 1 for split //, $s;
+  return $w * 3.0 + 2;
+}
+sub point_in_polygon {
+  my ($x, $y, $poly) = @_;
+  my $inside = 0;
+  my $n = scalar(@$poly);
+  for (my $i = 0, my $j = $n - 1; $i < $n; $j = $i++) {
+    my ($xi, $yi) = @{$poly->[$i]};
+    my ($xj, $yj) = @{$poly->[$j]};
+    if ((($yi > $y) != ($yj > $y)) && ($x < ($xj - $xi) * ($y - $yi) / ($yj - $yi) + $xi)) {
+      $inside = !$inside;
+    }
+  }
+  return $inside;
+}
+
 my %markerProj;
 for my $id (keys %appCoords) {
   my ($x, $y) = project(@{$appCoords{$id}});
@@ -264,12 +297,24 @@ for my $id (keys %appCoords) {
 my $MARKER_KEEPOUT = 17; # 標記圓半徑(7.5)+光暈環(8)再留一點緩衝
 
 my %labelPos;
+my %labelCentroid;
+my %labelPoly;
+my %labelRadius; # 每個大區形狀「重心到邊界的平均距離」，取代寫死的固定最大位移，
+                  # 讓 Castilla y León 這種大形狀可以移動較多、Rioja/Navarra 這種
+                  # 小形狀移動範圍自動跟著縮小，不會硬性要求「一定要留在形狀內」
+                  # 導致兩個相鄰小形狀的標籤怎麼推都被拉回重心附近而擠在一起。
 for my $r (sort keys %regionShape) {
   my @pts = @{$regionShape{$r}};
   my ($sx, $sy) = (0, 0);
   $sx += $_->[0], $sy += $_->[1] for @pts;
   my ($x, $y) = project($sx / scalar(@pts), $sy / scalar(@pts));
-  $labelPos{$r} = { x => $x + 0, y => $y + 0, halfw => length($r) * 3.3 + 2, halfh => 6 };
+  $labelPos{$r} = { x => $x + 0, y => $y + 0, halfw => label_halfwidth($LABEL_TEXT{$r} // $r) };
+  $labelCentroid{$r} = { x => $x + 0, y => $y + 0 };
+  my @polyProj = map { [ map { $_ + 0 } project(@$_) ] } @pts;
+  $labelPoly{$r} = \@polyProj;
+  my $sum = 0;
+  $sum += sqrt(($_->[0] - $x) ** 2 + ($_->[1] - $y) ** 2) for @polyProj;
+  $labelRadius{$r} = $sum / scalar(@polyProj);
 }
 
 for (my $iter = 0; $iter < 300; $iter++) {
@@ -282,7 +327,7 @@ for (my $iter = 0; $iter < 300; $iter++) {
       my $dx = $L->{x} - $M->{x};
       my $dy = $L->{y} - $M->{y};
       my $dist = sqrt($dx * $dx + $dy * $dy);
-      my $minDist = $MARKER_KEEPOUT + $L->{halfw};
+      my $minDist = $MARKER_KEEPOUT + $L->{halfw} * 0.55;
       if ($dist < $minDist) {
         $moved = 1;
         if ($dist < 0.01) { $dx = 1; $dy = 0; $dist = 0.01; }
@@ -298,7 +343,7 @@ for (my $iter = 0; $iter < 300; $iter++) {
       my $dx = $L->{x} - $L2->{x};
       my $dy = $L->{y} - $L2->{y};
       my $dist = sqrt($dx * $dx + $dy * $dy);
-      my $minDist = ($L->{halfw} + $L2->{halfw}) * 1.05;
+      my $minDist = ($L->{halfw} + $L2->{halfw}) * 1.3;
       if ($dist < $minDist) {
         $moved = 1;
         if ($dist < 0.01) { $dx = 1; $dy = 0; $dist = 0.01; }
@@ -308,6 +353,19 @@ for (my $iter = 0; $iter < 300; $iter++) {
         $L2->{x} -= ($dx / $dist) * $push;
         $L2->{y} -= ($dy / $dist) * $push;
       }
+    }
+    # 每一輪推完就立刻限制離自己重心的距離（用形狀本身的平均半徑*1.4，而非硬性
+    # 「必須在形狀內」），這樣 Castilla y León 這種大形狀可以移動較多、Rioja/Navarra
+    # 這種小形狀移動範圍自動跟著縮小但仍保留彈性，不會出現「怎麼推都被拉回重心
+    # 附近、導致兩個相鄰小形狀的標籤擠在一起」的問題。
+    my $C = $labelCentroid{$r};
+    my $maxDisp = $labelRadius{$r} * 2.2;
+    my $ddx = $L->{x} - $C->{x};
+    my $ddy = $L->{y} - $C->{y};
+    my $dd = sqrt($ddx * $ddx + $ddy * $ddy);
+    if ($dd > $maxDisp) {
+      $L->{x} = $C->{x} + $ddx / $dd * $maxDisp;
+      $L->{y} = $C->{y} + $ddy / $dd * $maxDisp;
     }
   }
   last unless $moved;
@@ -323,7 +381,7 @@ for my $r (keys %labelPos) {
   $L->{y} = $VBH - $MARGIN if $L->{y} > $VBH - $MARGIN;
 }
 
-print "=== REGION LABEL CENTROIDS (已避讓標記與彼此) ===\n";
+print "=== REGION LABEL CENTROIDS (已避讓標記與彼此，並保證落在形狀內) ===\n";
 for my $r (sort keys %labelPos) {
   printf "%s: %.1f,%.1f\n", $r, $labelPos{$r}{x}, $labelPos{$r}{y};
 }

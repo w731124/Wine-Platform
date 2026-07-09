@@ -188,12 +188,113 @@ for my $r (sort keys %regionShape) {
   print "$r:\nM " . join(' L ', map { join(',', project(@$_)) } @{$regionShape{$r}}) . " Z\n\n";
 }
 
-print "=== REGION LABEL CENTROIDS ===\n";
+# ---------- 大區文字標籤避讓（推離圓形標記與彼此；演算法與 build-iberia-map.pl 相同）----------
+# 顯示文字比對 js/map.js 的 selectRegion() 既有名稱對照表，維持全站用語一致。
+# 中文字視覺寬度概略是英文字母的2倍，用來估計文字實際寬度。
+my %LABEL_TEXT = (
+  piedmont => 'Piedmont(皮埃蒙特)', tuscany => 'Tuscany(托斯卡尼)', veneto => 'Veneto(威尼托)',
+  sicily => 'Sicily(西西里)', abruzzo => 'Abruzzo(阿布魯佐)', puglia => 'Puglia(普利亞)',
+  lombardy => 'Lombardy(倫巴底)', campania => 'Campania(坎帕尼亞)',
+  trentino => 'Trentino-Alto Adige(特倫提諾-上阿迪傑)', emilia => 'Emilia-Romagna(艾米利亞-羅馬涅)',
+  friuli => 'Friuli-Venezia Giulia(弗留利-威尼斯朱利亞)', marche => 'Marche(馬爾凱)',
+  umbria => 'Umbria(溫布里亞)',
+);
+sub label_halfwidth {
+  my $s = shift;
+  my $w = 0;
+  $w += (ord($_) > 0x2e80) ? 2 : 1 for split //, $s;
+  return $w * 3.0 + 2;
+}
+my %markerProj;
+for my $id (keys %appCoords) {
+  my ($x, $y) = project(@{$appCoords{$id}});
+  $markerProj{$id} = { x => $x + 0, y => $y + 0 };
+}
+my $MARKER_KEEPOUT = 17;
+# 義大利13個大區彼此緊鄰狹長，多數形狀窄到放不下完整文字（不像法國/伊比利可以強制夾回形狀內），
+# 改用「限制最大位移距離＋指示線」的折衷方案：避讓後若離原始重心超過 MAX_DISPLACEMENT，
+# 沿線拉回到剛好等於這個距離，確保標籤不會漂太遠；指示線最後另外輸出供 HTML 端畫細線連回重心，
+# 不管位移多寡都畫，讓每個標籤都能明確看出對應哪一塊。
+my $MAX_DISPLACEMENT = 58;
+
+my %labelPos;
+my %labelCentroid;
 for my $r (sort keys %regionShape) {
   my @pts = @{$regionShape{$r}};
   my ($sx, $sy) = (0, 0);
   $sx += $_->[0], $sy += $_->[1] for @pts;
-  print "$r: " . join(',', project($sx / scalar(@pts), $sy / scalar(@pts))) . "\n";
+  my ($x, $y) = project($sx / scalar(@pts), $sy / scalar(@pts));
+  $labelPos{$r} = { x => $x + 0, y => $y + 0, halfw => label_halfwidth($LABEL_TEXT{$r} // $r) };
+  $labelCentroid{$r} = { x => $x + 0, y => $y + 0 };
+}
+
+for (my $iter = 0; $iter < 300; $iter++) {
+  my $moved = 0;
+  for my $r (keys %labelPos) {
+    my $L = $labelPos{$r};
+    for my $id (keys %markerProj) {
+      my $M = $markerProj{$id};
+      my $dx = $L->{x} - $M->{x};
+      my $dy = $L->{y} - $M->{y};
+      my $dist = sqrt($dx * $dx + $dy * $dy);
+      my $minDist = $MARKER_KEEPOUT + $L->{halfw} * 0.75;
+      if ($dist < $minDist) {
+        $moved = 1;
+        if ($dist < 0.01) { $dx = 1; $dy = 0; $dist = 0.01; }
+        my $push = ($minDist - $dist);
+        $L->{x} += ($dx / $dist) * $push;
+        $L->{y} += ($dy / $dist) * $push;
+      }
+    }
+    for my $r2 (keys %labelPos) {
+      next if $r2 eq $r;
+      my $L2 = $labelPos{$r2};
+      my $dx = $L->{x} - $L2->{x};
+      my $dy = $L->{y} - $L2->{y};
+      my $dist = sqrt($dx * $dx + $dy * $dy);
+      my $minDist = ($L->{halfw} + $L2->{halfw}) * 1.2;
+      if ($dist < $minDist) {
+        $moved = 1;
+        if ($dist < 0.01) { $dx = 1; $dy = 0; $dist = 0.01; }
+        my $push = ($minDist - $dist) / 2;
+        $L->{x} += ($dx / $dist) * $push;
+        $L->{y} += ($dy / $dist) * $push;
+        $L2->{x} -= ($dx / $dist) * $push;
+        $L2->{y} -= ($dy / $dist) * $push;
+      }
+    }
+    # 每一輪都檢查一次最大位移，避免密集區域把標籤越推越遠、最後才夾回去導致擠成一團
+    my $C = $labelCentroid{$r};
+    my $ddx = $L->{x} - $C->{x};
+    my $ddy = $L->{y} - $C->{y};
+    my $dd = sqrt($ddx * $ddx + $ddy * $ddy);
+    if ($dd > $MAX_DISPLACEMENT) {
+      $L->{x} = $C->{x} + $ddx / $dd * $MAX_DISPLACEMENT;
+      $L->{y} = $C->{y} + $ddy / $dd * $MAX_DISPLACEMENT;
+    }
+  }
+  last unless $moved;
+}
+for my $r (keys %labelPos) {
+  my $L = $labelPos{$r};
+  my $lo = $MARGIN + $L->{halfw};
+  my $hi = $VBW - $MARGIN - $L->{halfw};
+  $L->{x} = $lo if $L->{x} < $lo;
+  $L->{x} = $hi if $L->{x} > $hi;
+  $L->{y} = $MARGIN if $L->{y} < $MARGIN;
+  $L->{y} = $VBH - $MARGIN if $L->{y} > $VBH - $MARGIN;
+}
+
+print "=== REGION LABEL CENTROIDS (已避讓標記與彼此，限制最大位移46px) ===\n";
+for my $r (sort keys %labelPos) {
+  printf "%s: %.1f,%.1f\n", $r, $labelPos{$r}{x}, $labelPos{$r}{y};
+}
+
+print "\n=== LABEL LEADER LINES (標籤→大區重心的指示線端點) ===\n";
+for my $r (sort keys %labelPos) {
+  my $L = $labelPos{$r};
+  my $C = $labelCentroid{$r};
+  printf "%s: %.1f,%.1f %.1f,%.1f\n", $r, $L->{x}, $L->{y}, $C->{x}, $C->{y};
 }
 
 print "\n=== APPELLATION MARKERS ===\n";

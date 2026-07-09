@@ -58,9 +58,14 @@ fetch_cached($METRO_URL, $metroFile);
 fetch_cached($RIVERS_URL, $riversFile);
 
 # ---------- 從 wine-data.js 直接讀取法國產區座標（單一資料來源，不手動抄）----------
-sub load_app_coords {
-  my $file = shift;
-  open(my $fh, '<', $file) or die "cannot open $file: $!";
+# 明確用 :encoding(UTF-8) 解碼＋country 欄位過濾（比照義大利/伊比利腳本的寫法）：
+# 這支腳本原本沒有過濾 country，當時 appellations[] 裡只有法國有 coords 欄位不會出錯，
+# 但義大利/伊比利也都補上 coords 之後，不過濾會把三國全部產區都當成法國資料，
+# 導致投影範圍被拉爆到涵蓋整個西歐——此處修正為與 build-italy-map.pl／
+# build-iberia-map.pl 相同的「先切物件邊界再比對 country」寫法。
+sub load_app_coords_for_country {
+  my ($file, $country) = @_;
+  open(my $fh, '<:encoding(UTF-8)', $file) or die "cannot open $file: $!";
   local $/;
   my $content = <$fh>;
   close $fh;
@@ -68,13 +73,18 @@ sub load_app_coords {
     or die "could not locate appellations[] array in $file — file structure may have changed\n";
   my $block = $1;
   my %coords;
-  while ($block =~ /id:\s*'([a-z0-9-]+)'.*?coords:\s*\{\s*lat:\s*([\-0-9.]+),\s*lng:\s*([\-0-9.]+)\s*\}/gs) {
-    $coords{$1} = [$3 + 0, $2 + 0]; # 存成 [lng,lat]
+  my @objs = split /\n    \{\n/, $block;
+  for my $obj (@objs) {
+    next unless $obj =~ /id:\s*'([a-z0-9-]+)'/;
+    my $id = $1;
+    next unless $obj =~ /country:\s*'\Q$country\E'/;
+    next unless $obj =~ /coords:\s*\{\s*lat:\s*([\-0-9.]+),\s*lng:\s*([\-0-9.]+)\s*\}/;
+    $coords{$id} = [$2 + 0, $1 + 0]; # 存成 [lng,lat]
   }
   return %coords;
 }
-my %appCoords = load_app_coords($WINE_DATA_FILE);
-print STDERR '[info] loaded ' . scalar(keys %appCoords) . " appellation coords from $WINE_DATA_FILE\n";
+my %appCoords = load_app_coords_for_country($WINE_DATA_FILE, "France(\x{6cd5}\x{570b})");
+print STDERR '[info] loaded ' . scalar(keys %appCoords) . " France appellation coords from $WINE_DATA_FILE\n";
 
 # ---------- 載入 GeoJSON，取出各省份的邊界點（排除離島小多邊形，只取主體）----------
 sub load_json {
@@ -236,12 +246,126 @@ for my $r (sort keys %regionHull) {
   print "$r:\nM " . join(' L ', map { join(',', project(@$_)) } @{$regionHull{$r}}) . " Z\n\n";
 }
 
-print "=== REGION LABEL CENTROIDS ===\n";
+# ---------- 大區文字標籤避讓（推離圓形標記與彼此，避免被蓋住；演算法與 build-iberia-map.pl 相同）----------
+# 標籤實際顯示文字（比對 index.html 既有內容），中文字視覺寬度概略是英文字母的2倍，
+# 用來估計文字實際寬度（而非用大區 key 的長度概略估算，避免像 loire 這種顯示文字
+# 比 key 長很多的情況低估寬度）。
+my %LABEL_TEXT = (
+  bordeaux  => "Bordeaux(\x{6ce2}\x{723e}\x{591a})",
+  burgundy  => "Burgundy(\x{52c3}\x{6839}\x{5730})",
+  champagne => "Champagne(\x{9999}\x{6ac3})",
+  alsace    => "Alsace(\x{963f}\x{723e}\x{85a9}\x{65af})",
+  loire     => "Loire Valley(\x{7f85}\x{4e9e}\x{723e}\x{6cb3}\x{8c37})",
+  rhone     => "Rh\x{f4}ne(\x{9686}\x{6cb3}\x{8c37})",
+);
+sub label_halfwidth {
+  my $s = shift;
+  my $w = 0;
+  $w += (ord($_) > 0x2e80) ? 2 : 1 for split //, $s;
+  return $w * 3.0 + 2;
+}
+my %markerProj;
+for my $id (keys %appCoords) {
+  my ($x, $y) = project(@{$appCoords{$id}});
+  $markerProj{$id} = { x => $x + 0, y => $y + 0 };
+}
+my $MARKER_KEEPOUT = 17;
+
+sub point_in_polygon {
+  my ($x, $y, $poly) = @_;
+  my $inside = 0;
+  my $n = scalar(@$poly);
+  for (my $i = 0, my $j = $n - 1; $i < $n; $j = $i++) {
+    my ($xi, $yi) = @{$poly->[$i]};
+    my ($xj, $yj) = @{$poly->[$j]};
+    if ((($yi > $y) != ($yj > $y)) && ($x < ($xj - $xi) * ($y - $yi) / ($yj - $yi) + $xi)) {
+      $inside = !$inside;
+    }
+  }
+  return $inside;
+}
+
+my %labelPos;
+my %labelCentroid; # 避讓運算前的原始重心（投影後座標），用來做「跑出形狀外就退回」的保底
+my %labelPoly;      # 大區形狀投影後的座標，用來做點是否在形狀內的判斷
 for my $r (sort keys %regionHull) {
   my @pts = @{$regionHull{$r}};
   my ($sx, $sy) = (0, 0);
   $sx += $_->[0], $sy += $_->[1] for @pts;
-  print "$r: " . join(',', project($sx / scalar(@pts), $sy / scalar(@pts))) . "\n";
+  my ($x, $y) = project($sx / scalar(@pts), $sy / scalar(@pts));
+  $labelPos{$r} = { x => $x + 0, y => $y + 0, halfw => label_halfwidth($LABEL_TEXT{$r} // $r) };
+  $labelCentroid{$r} = { x => $x + 0, y => $y + 0 };
+  $labelPoly{$r} = [ map { [ map { $_ + 0 } project(@$_) ] } @pts ];
+}
+
+for (my $iter = 0; $iter < 300; $iter++) {
+  my $moved = 0;
+  for my $r (keys %labelPos) {
+    my $L = $labelPos{$r};
+    for my $id (keys %markerProj) {
+      my $M = $markerProj{$id};
+      my $dx = $L->{x} - $M->{x};
+      my $dy = $L->{y} - $M->{y};
+      my $dist = sqrt($dx * $dx + $dy * $dy);
+      my $minDist = $MARKER_KEEPOUT + $L->{halfw};
+      if ($dist < $minDist) {
+        $moved = 1;
+        if ($dist < 0.01) { $dx = 1; $dy = 0; $dist = 0.01; }
+        my $push = ($minDist - $dist);
+        $L->{x} += ($dx / $dist) * $push;
+        $L->{y} += ($dy / $dist) * $push;
+      }
+    }
+    for my $r2 (keys %labelPos) {
+      next if $r2 eq $r;
+      my $L2 = $labelPos{$r2};
+      my $dx = $L->{x} - $L2->{x};
+      my $dy = $L->{y} - $L2->{y};
+      my $dist = sqrt($dx * $dx + $dy * $dy);
+      my $minDist = ($L->{halfw} + $L2->{halfw}) * 1.05;
+      if ($dist < $minDist) {
+        $moved = 1;
+        if ($dist < 0.01) { $dx = 1; $dy = 0; $dist = 0.01; }
+        my $push = ($minDist - $dist) / 2;
+        $L->{x} += ($dx / $dist) * $push;
+        $L->{y} += ($dy / $dist) * $push;
+        $L2->{x} -= ($dx / $dist) * $push;
+        $L2->{y} -= ($dy / $dist) * $push;
+      }
+    }
+  }
+  last unless $moved;
+}
+for my $r (keys %labelPos) {
+  my $L = $labelPos{$r};
+  my $lo = $MARGIN + $L->{halfw};
+  my $hi = $VBW - $MARGIN - $L->{halfw};
+  $L->{x} = $lo if $L->{x} < $lo;
+  $L->{x} = $hi if $L->{x} > $hi;
+  $L->{y} = $MARGIN if $L->{y} < $MARGIN;
+  $L->{y} = $VBH - $MARGIN if $L->{y} > $VBH - $MARGIN;
+}
+# 強制夾回大區形狀內：避讓運算可能把標籤推出該大區的形狀範圍（尤其鄰近大區標記
+# 較密集時），沿著「避讓後位置→原始重心」這條線往回退，直到落回形狀內為止
+# （原始重心一定在形狀內，保證找得到落點）。使用者要求「該區域內位置還夠擺放
+# 文字」時，這個保底比單純的邊界夾制更重要，故放在邊界夾制之後執行。
+for my $r (keys %labelPos) {
+  my $L = $labelPos{$r};
+  next if point_in_polygon($L->{x}, $L->{y}, $labelPoly{$r});
+  my $C = $labelCentroid{$r};
+  for (my $t = 0.95; $t >= 0; $t -= 0.05) {
+    my $tx = $L->{x} * $t + $C->{x} * (1 - $t);
+    my $ty = $L->{y} * $t + $C->{y} * (1 - $t);
+    if (point_in_polygon($tx, $ty, $labelPoly{$r})) {
+      $L->{x} = $tx; $L->{y} = $ty;
+      last;
+    }
+  }
+}
+
+print "=== REGION LABEL CENTROIDS (已避讓標記與彼此，並保證落在形狀內) ===\n";
+for my $r (sort keys %labelPos) {
+  printf "%s: %.1f,%.1f\n", $r, $labelPos{$r}{x}, $labelPos{$r}{y};
 }
 
 print "\n=== APPELLATION MARKERS ===\n";
