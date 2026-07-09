@@ -4,46 +4,44 @@
 
 ## 一、本次開發歷程
 
-上次階段完成「釀造工藝」頁面的氣泡酒試點卡片並經兩輪視覺修正確認（DECISIONS.md #74-77）。本次接續：**使用者確認氣泡酒範本OK後，一次補完其餘5款（紅／白／粉紅／橘酒／強化酒），「釀造工藝」六大分類全部完成**（DECISIONS.md #78-79）。
+上次階段完成「釀造工藝」六大分類全部內容並 push（DECISIONS.md #78-79）。本次開始**地圖探索法國面板重建（試點，範圍限定只做法國，義大利/伊比利面板不動）**，這是一個明確分三階段、每階段都要停下來給使用者確認的大型任務：
 
-### 做了什麼
-- **僅異動 `data/wine-data.js`**：`WINE_DB.wineStyles[]` 依序新增 `red`／`white`／`rose`／`orange`／`fortified` 五筆，欄位結構（`oneLiner`／`history`／`grapes`／`terroir`／`production`）與字數區間比照氣泡酒，圖示分別為 🍷／🥂／🌸／🧡／🥃。
-- **`js/winestyles.js`／`index.html`／`js/core.js` 完全不需改動**——渲染邏輯（`buildWineStyleCardHTML()`／`toggleWineStyleCard()`）與卡片樣式（先前已修正過的 `.ic` 白底卡片）純資料驅動，驗證了架構設計沒有預留單一酒款硬編碼的邏輯。
+- **Stage 1（本次已完成，DECISIONS.md #80）**：35筆法國產區新增 `coords:{lat,lng}` 經緯度欄位。
+- **Stage 2（尚未開始）**：取得法國國家輪廓＋大產區（Bordeaux/Burgundy/Loire/Champagne/Rhône等）以「省」（département）層級的真實 GeoJSON 邊界資料，用地圖投影轉換為 SVG 座標，取代 `index.html` 裡 `#france-svg` 現有手繪的 `<path>`。**使用者要求先看過每個產區實際涵蓋哪些省份的分組清單，確認無誤後才進行形狀生成，不要自行假設分組。**
+- **Stage 3（尚未開始）**：移除 `pulse-marker` 上寫死的 `<text>` 名稱標籤，改用 JS 自動產生數字編號徽章＋側邊編號清單（取代 `#inspector-placeholder` 目前的靜態文字），清單點擊複用既有 `selectAppellation(id)`。
 
-### 內容涵蓋的關鍵事實（供之後核實或延伸）
-- 紅酒：25–30°C發酵溫度、pigeage/remontage萃取工法、乳酸發酵（MLF）幾乎是標配。
-- 白酒：12–18°C低溫發酵、débourbage澄清、MLF在芳香品種常被刻意阻擋以保留酸度。
-- 粉紅酒：直接壓榨法／短時間浸皮法／放血法（Saignée）三種製法區分。
-- 橘酒：喬治亞qvevri傳統、Josko Gravner帶動的1990年代自然酒復興。
-- 強化酒：波特酒發酵中強化（19–22% abv）、雪莉酒發酵後強化並以約15%為酒花（flor）存活分界、Solera逐年混調系統、馬德拉estufagem／canteiro加熱陳年。
-- 以上皆屬 WSET Level 2/3 標準教材內容，撰寫時未生成任何不確定的具體數字（延續氣泡酒試點「沒把握就明講」的原則）。
+### Stage 1 做了什麼
+- **`data/wine-data.js`**：35筆法國產區物件新增 `coords:{lat,lng}`。座標來源是 OpenStreetMap Nominatim 地理編碼服務的一次性本機查詢（純研究用途，非網站執行期請求，符合使用者「最終部署必須純靜態」的鎖定慣例）——對每個產區挑一個代表性城鎮／村莊送出查詢，21筆是「產區本身即該城鎮」的精確匹配，14筆是大區級產區（涵蓋多個村莊）取代表點的近似值，其中 **Hautes-Côtes de Nuits／Beaune 兩筆額外標註為低信心**（零散丘陵地帶無明顯單一地標，任選一村莊代表）。完整座標表已交使用者逐筆確認過才寫入。
+- 寫入方式：用 Perl 腳本依 `id` 精準比對插入（避免手動編輯35筆出錯，也避免誤傷 `classifications[]` 裡同名的 `saint-emilion` 條目——已用行範圍限定只在 `appellations[]` 陣列內插入），寫入前備份原檔。
 
 ### 驗證方式
-headless Chrome 截圖確認全部6張卡片正確顯示於同一份手風琴清單、單一展開收合行為正常（跨卡片切換會自動收合前一張），紅酒與強化酒卡片展開內容逐區塊核對無破版；`--dump-dom` 確認無 JS 錯誤；`data/wine-data.js` 新增5筆後大括號／中括號配對仍平衡（1020/1020、546/546），`wineStyles` 陣列共6筆。
+`data/wine-data.js` 新增35個 `coords` 欄位後大括號／中括號配對仍平衡（1055/1055、546/546），`--dump-dom` 確認頁面載入無 JS 錯誤。**本階段僅新增資料欄位，未修改任何渲染邏輯，地圖畫面尚未改變**——座標資料要等 Stage 2 的投影轉換才會實際用於畫面呈現。
 
-以上已 commit，**尚未 push**。**「釀造工藝」六大分類（紅/白/粉紅/橘酒/氣泡酒/強化酒）內容至此全部完成。**
+以上已 commit，**尚未 push**。**已停下等待使用者對 Stage 1 的確認，確認後才會開始 Stage 2（GeoJSON 邊界資料＋省份分組清單，同樣會先給使用者確認分組再動工）。**
 
 ## 二、討論過但尚未執行的項目／下一步規劃
 
+- **地圖探索法國面板重建 Stage 2／Stage 3**——見上方，是本次任務的核心，尚未開始，且 Stage 2 明確要求「先列出省份分組給使用者看、確認無誤後才進行下一步」，不要自行假設分組跳過確認直接產生形狀。
+- **義大利／伊比利地圖面板**——使用者明確要求「這次只做法國試點，不要自動套用」，法國效果確認後才會是下一個要討論的項目，不要主動擴充。
 - **`wine-data.js` 的 `emoji` 欄位清理**（產區資料裡的死欄位）——建議與下次技術債清理一併處理。
-- **「分級制度」頁面下一步的候選擴充方向**（先前提出、使用者尚未確認）：新世界分級概念對照章節、Rioja（第4種分級邏輯）、雙向跳轉連結。
-- 地圖探索分頁座標覆蓋缺口（判定為功能規模缺口非技術債）——仍未處理。
+- **「分級制度」頁面下一步的候選擴充方向**（先前提出、使用者尚未確認）：新世界分級概念對照章節、Rioja、雙向跳轉連結。
 - `auditCountryFlags()` 的 console 警告輸出尚未手動複查過。
-- 「釀造工藝」六款卡片彼此之間目前沒有交叉連結（例如粉紅酒/橘酒可提及「與紅白酒工藝的差異對照」），若使用者未來想強化教學脈絡可考慮比照 `classifications.js` 的 `crossNote` 欄位模式補上，但這是未經確認的推測方向，不要自行動工。
 - 是否要 push 本次 commit，尚待使用者這次對話明確指示。
 
 ## 三、我明確要求先記下來、之後再處理的內容
 
-- 目前沒有新的「先記下來、之後處理」項目——「釀造工藝」的範圍界線（先做氣泡酒試點、確認後才擴充）已在本次完成，不再是待處理項目。
+- **Stage 2 的省份分組清單必須先給使用者確認，不得自行假設**——這是使用者在本次任務規格裡明講的硬性要求，不是我自行判斷的謹慎做法。
+- **地圖投影參數（viewBox、投影中心點）必須與 Stage 1 的產區座標共用同一套換算依據**，不能各自獨立處理導致點位跟輪廓對不上——這是使用者在規格裡特別強調的技術風險點，Stage 2 動工時要優先設計好這個共用換算層。
 
 ## 四、現況檢查提醒
 
 - **push 狀態**：本次 session 的 commit 尚未 push——**接手前先跑 `git log --oneline origin/main..HEAD` 確認實際領先數量**，不要直接假設。
-- **本次 session 異動範圍**：僅 `data/wine-data.js`（`wineStyles[]` 從1筆補到6筆）、`DECISIONS.md`、`HANDOFF.md`。
-- **資料完整性**：`data/wine-data.js` 大括號 1020/1020、中括號 546/546 配對平衡；`appellations` 91筆、`grapes` 23筆、`classifications` 7筆、`wineStyles` 6筆（紅/白/粉紅/橘酒/氣泡酒/強化酒，皆無 `keyTerms` 欄位）。
-- **手風琴函式現況**：全站現有4個各自獨立、範圍鎖定各自面板的手風琴 toggle 函式——`toggleSATSection()`(`#panel-tasting`)、`toggleGrapeCard()`(`#grape-container`，另處理Chart.js銷毀)、`toggleClassCard()`(`#classification-container`)、`toggleWineStyleCard()`(`#winestyle-container`)。都是單開邏輯，刻意不合併成共用函式（教訓見 DECISIONS.md #66）。
-- **中文字數核對指令範本**：`export LC_ALL=C.UTF-8` 後再用 `printf '%s' "$content" | wc -m`，不要漏掉 locale 設定，否則字數會被誤算成位元組數。
-- **`.ic` 卡片套色提醒**：`.ic` 的預設背景是 `var(--bg-el)`，如果要疊加在同樣是 `--bg-el` 背景的容器裡（例如 `.acc-body`），會完全撞色看不出卡片邊界，需要另外用行內樣式覆蓋成 `var(--bg-card)`（白色）；`.ic` 在產區抽屜（`.drawer`，白底）上不會有這個問題，套用前先確認父層背景色。
-- **國旗擴充提醒**（延續先前記錄）：新增新國家的產區資料時，要同步在 `js/core.js` 的 `COUNTRY_FLAG_CODE` 補上對照，並把對應的 `{國碼}.svg` 放進 `assets/flags/`。
-- **已知限制／未完成的驗證**：本機環境沒有 Node.js、Python 也無法執行，所有驗證都是 headless Chrome `--dump-dom`／`--screenshot`／獨立測試頁 `.click()` 模擬，需要接手者實際操作頁面複查；本次5款新內容的技術細節雖遵循「有把握才寫」原則，但未經使用者逐款像氣泡酒那樣的第一輪／第二輪內容審核，接手前建議提醒使用者確認。
+- **本次 session 異動範圍**：僅 `data/wine-data.js`（35筆法國產區新增 `coords` 欄位）、`DECISIONS.md`、`HANDOFF.md`。**`js/map.js`／`index.html` 的地圖相關內容尚未異動**，Stage 2 才會動到。
+- **資料完整性**：`data/wine-data.js` 大括號 1055/1055、中括號 546/546 配對平衡；`appellations` 91筆（35筆法國產區皆有 `coords`，其餘56筆非法國產區目前沒有）、`grapes` 23筆、`classifications` 7筆、`wineStyles` 6筆。
+- **座標精確度提醒**：14筆大區級產區的座標是代表點近似值，2筆（Hautes-Côtes de Nuits／Beaune）是低信心任選村莊代表——Stage 2/3 使用這些座標畫標記點時，如果使用者對這兩筆有更熟悉的建議地標，可以隨時要求更新，不需要視為已定案。
+- **地理資料來源記錄**：法國省份層級 GeoJSON 邊界資料已確認可從 `cdn.jsdelivr.net/gh/gregoiredavid/france-geojson@master/departements.geojson`（約3.4MB，完整精度，Stage 2 會需要簡化）取得；經緯度查詢用 `nominatim.openstreetmap.org`（需遵守 1 req/sec 速率限制＋自訂 User-Agent）。兩者皆為 Stage 1 研究階段已測試過可正常連線的來源，Stage 2 可直接沿用。
+- **本機環境限制**：沒有 Node.js，`python3`／`python` 指令在 PATH 裡雖然存在但只是 Windows Store 的空殼（實際執行會 exit code 127 無法用），**真正可用的腳本語言是 `awk` 與 `perl`**（皆已驗證可正常運作，Stage 1 座標插入即用 Perl 完成）。Stage 2 的地圖投影數學運算（含三角函數）建議用 `awk`（內建 sin/cos/atan2/sqrt）或 `perl` 處理，不要嘗試用 `python3`。
+- **手風琴函式現況**（延續先前記錄）：全站4個各自獨立、範圍鎖定各自面板的手風琴 toggle 函式，刻意不合併成共用函式。
+- **`.ic` 卡片套色提醒**（延續先前記錄）：`.ic` 預設背景 `var(--bg-el)`，疊加在同樣背景的容器裡要另外覆蓋成 `var(--bg-card)`。
+- **國旗擴充提醒**（延續先前記錄）：新增新國家時要同步補 `COUNTRY_FLAG_CODE` 對照與 `assets/flags/{國碼}.svg`。
 - **接手的 Claude Code 務必實際開啟異動的檔案核對真實現況**，不要只憑這份 HANDOFF.md 的文字描述去猜測。

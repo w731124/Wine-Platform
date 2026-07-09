@@ -3,6 +3,7 @@ const WINE_DB = {
     /* ── France · Bordeaux ── */
     {
       id: 'pauillac',
+      coords: { lat: 45.1996, lng: -0.7485 },
       name: 'Pauillac(普伊勒)',
       country: 'France(法國)',
       world: 'old-world',
@@ -29,6 +30,7 @@ const WINE_DB = {
     },
     {
       id: 'margaux',
+      coords: { lat: 45.0463, lng: -0.6729 },
       name: 'Margaux(瑪歌)',
       country: 'France(法國)',
       world: 'old-world',
@@ -55,6 +57,7 @@ const WINE_DB = {
     },
     {
       id: 'saint-emilion',
+      coords: { lat: 44.8931, lng: -0.1561 },
       name: 'Saint-Émilion(聖愛美濃)',
       country: 'France(法國)',
       world: 'old-world',
@@ -82,6 +85,7 @@ const WINE_DB = {
     /* ── France · Burgundy ── */
     {
       id: 'chablis',
+      coords: { lat: 47.8152, lng: 3.8002 },
       name: 'Chablis(夏布利)',
       country: 'France(法國)',
       world: 'old-world',
@@ -108,6 +112,7 @@ const WINE_DB = {
     },
     {
       id: 'cote-de-nuits',
+      coords: { lat: 47.1368, lng: 4.9489 },
       name: 'Côte de Nuits(夜丘)',
       country: 'France(法國)',
       world: 'old-world',
@@ -134,6 +139,7 @@ const WINE_DB = {
     },
     {
       id: 'cote-de-beaune',
+      coords: { lat: 47.0239, lng: 4.838 },
       name: 'Côte de Beaune(伯恩丘)',
       country: 'France(法國)',
       world: 'old-world',
@@ -161,6 +167,7 @@ const WINE_DB = {
     /* ── France · Rhône ── */
     {
       id: 'hermitage',
+      coords: { lat: 45.0713, lng: 4.8371 },
       name: 'Hermitage(埃米塔日)',
       country: 'France(法國)',
       world: 'old-world',
@@ -187,6 +194,7 @@ const WINE_DB = {
     },
     {
       id: 'chateauneuf-du-pape',
+      coords: { lat: 44.056, lng: 4.8317 },
       name: 'Châteauneuf-du-Pape(教皇新堡)',
       country: 'France(法國)',
       world: 'old-world',
@@ -214,6 +222,7 @@ const WINE_DB = {
     /* ── France · Champagne ── */
     {
       id: 'montagne-de-reims',
+      coords: { lat: 49.1594, lng: 4.1443 },
       name: 'Montagne de Reims(蘭斯山)',
       country: 'France(法國)',
       world: 'old-world',
@@ -240,6 +249,7 @@ const WINE_DB = {
     },
     {
       id: 'vallee-de-la-marne',
+      coords: { lat: 49.0488, lng: 4.0018 },
       name: 'Vallée de la Marne(馬恩河谷)',
       country: 'France(法國)',
       world: 'old-world',
@@ -266,6 +276,7 @@ const WINE_DB = {
     },
     {
       id: 'cote-des-blancs',
+      coords: { lat: 48.9722, lng: 4.0101 },
       name: 'Côte des Blancs(白丘)',
       country: 'France(法國)',
       world: 'old-world',
@@ -293,6 +304,7 @@ const WINE_DB = {
     /* ── France · Loire Valley ── */
     {
       id: 'muscadet',
+      coords: { lat: 47.161, lng: -1.2657 },
       name: 'Muscadet(慕斯卡德)',
       country: 'France(法國)',
       world: 'old-world',
@@ -319,6 +331,7 @@ const WINE_DB = {
     },
     {
       id: 'vouvray',
+      coords: { lat: 47.4137, lng: 0.7998 },
       name: 'Vouvray(武夫賴)',
       country: 'France(法國)',
       world: 'old-world',
@@ -345,6 +358,7 @@ const WINE_DB = {
     },
     {
       id: 'sancerre',
+      coords: { lat: 47.3307, lng: 2.839 },
       name: 'Sancerre(桑塞爾)',
       country: 'France(法國)',
       world: 'old-world',
@@ -372,6 +386,7 @@ const WINE_DB = {
     /* ── France · Alsace ── */
     {
       id: 'alsace',
+      coords: { lat: 48.0778, lng: 7.358 },
       name: 'Alsace(阿爾薩斯)',
       country: 'France(法國)',
       world: 'old-world',
@@ -821,6 +836,7 @@ const WINE_DB = {
     /* ── France · Languedoc-Roussillon ── */
     {
       id: 'languedoc-roussillon',
+      coords: { lat: 43.1838, lng: 3.0042 },
       name: 'Languedoc-Roussillon(朗格多克-胡西雍)',
       country: 'France(法國)',
       world: 'old-world',
@@ -953,6 +969,7 @@ const WINE_DB = {
     /* ── France · Bordeaux · Left Bank & Right Bank 補全 (Batch 1) ── */
     {
       id: 'medoc',
+      coords: { lat: 45.3082, lng: -0.9379 },
       name: 'Médoc(梅多克)',
       country: 'France(法國)',
       world: 'old-world',
@@ -979,6 +996,7 @@ const WINE_DB = {
     },
     {
       id: 'haut-medoc',
+      coords: { lat: 45.1516, lng: -0.8217 },
       name: 'Haut-Médoc(上梅多克)',
       country: 'France(法國)',
       world: 'old-world',
@@ -1005,6 +1023,7 @@ const WINE_DB = {
     },
     {
       id: 'pessac-leognan',
+      coords: { lat: 44.7294, lng: -0.5997 },
       name: 'Pessac-Léognan(佩薩克-雷奧良)',
       country: 'France(法國)',
       world: 'old-world',
@@ -1031,6 +1050,7 @@ const WINE_DB = {
     },
     {
       id: 'graves',
+      coords: { lat: 44.5531, lng: -0.2449 },
       name: 'Graves(格拉夫)',
       country: 'France(法國)',
       world: 'old-world',
@@ -1057,6 +1077,7 @@ const WINE_DB = {
     },
     {
       id: 'pomerol',
+      coords: { lat: 44.9311, lng: -0.2 },
       name: 'Pomerol(波美侯)',
       country: 'France(法國)',
       world: 'old-world',
@@ -1083,6 +1104,7 @@ const WINE_DB = {
     },
     {
       id: 'sauternes',
+      coords: { lat: 44.5328, lng: -0.3414 },
       name: 'Sauternes(蘇玳)',
       country: 'France(法國)',
       world: 'old-world',
@@ -1109,6 +1131,7 @@ const WINE_DB = {
     },
     {
       id: 'barsac',
+      coords: { lat: 44.605, lng: -0.322 },
       name: 'Barsac(巴薩克)',
       country: 'France(法國)',
       world: 'old-world',
@@ -1135,6 +1158,7 @@ const WINE_DB = {
     },
     {
       id: 'entre-deux-mers',
+      coords: { lat: 44.7747, lng: -0.3483 },
       name: 'Entre-Deux-Mers(兩海之間)',
       country: 'France(法國)',
       world: 'old-world',
@@ -1163,6 +1187,7 @@ const WINE_DB = {
     /* ── France · Burgundy 補全 (Batch 2) ── */
     {
       id: 'cote-chalonnaise',
+      coords: { lat: 46.8397, lng: 4.7189 },
       name: 'Côte Chalonnaise(夏隆內丘)',
       country: 'France(法國)',
       world: 'old-world',
@@ -1189,6 +1214,7 @@ const WINE_DB = {
     },
     {
       id: 'maconnais',
+      coords: { lat: 46.3037, lng: 4.8322 },
       name: 'Mâconnais(馬貢內)',
       country: 'France(法國)',
       world: 'old-world',
@@ -1215,6 +1241,7 @@ const WINE_DB = {
     },
     {
       id: 'hautes-cotes-de-nuits',
+      coords: { lat: 47.1699, lng: 4.8885 },
       name: 'Hautes-Côtes de Nuits(上夜丘)',
       country: 'France(法國)',
       world: 'old-world',
@@ -1241,6 +1268,7 @@ const WINE_DB = {
     },
     {
       id: 'hautes-cotes-de-beaune',
+      coords: { lat: 47.0322, lng: 4.7594 },
       name: 'Hautes-Côtes de Beaune(上伯恩丘)',
       country: 'France(法國)',
       world: 'old-world',
@@ -1267,6 +1295,7 @@ const WINE_DB = {
     },
     {
       id: 'pouilly-fume',
+      coords: { lat: 47.2814, lng: 2.9584 },
       name: 'Pouilly-Fumé(普伊-富美)',
       country: 'France(法國)',
       world: 'old-world',
@@ -1293,6 +1322,7 @@ const WINE_DB = {
     },
     {
       id: 'chinon',
+      coords: { lat: 47.1667, lng: 0.2402 },
       name: 'Chinon(希農)',
       country: 'France(法國)',
       world: 'old-world',
@@ -1321,6 +1351,7 @@ const WINE_DB = {
     /* ── France · Rhône 補全 (Batch 3) ── */
     {
       id: 'cote-rotie',
+      coords: { lat: 45.4889, lng: 4.8112 },
       name: 'Côte-Rôtie(羅帝丘)',
       country: 'France(法國)',
       world: 'old-world',
@@ -1347,6 +1378,7 @@ const WINE_DB = {
     },
     {
       id: 'condrieu',
+      coords: { lat: 45.4624, lng: 4.7676 },
       name: 'Condrieu(孔德里約)',
       country: 'France(法國)',
       world: 'old-world',
@@ -1373,6 +1405,7 @@ const WINE_DB = {
     },
     {
       id: 'gigondas',
+      coords: { lat: 44.1641, lng: 5.0051 },
       name: 'Gigondas(吉恭達斯)',
       country: 'France(法國)',
       world: 'old-world',
@@ -1399,6 +1432,7 @@ const WINE_DB = {
     },
     {
       id: 'cotes-du-rhone',
+      coords: { lat: 44.1371, lng: 4.8079 },
       name: 'Côtes du Rhône(隆河丘)',
       country: 'France(法國)',
       world: 'old-world',
@@ -1508,6 +1542,7 @@ const WINE_DB = {
     /* ── France · Beaujolais ── */
     {
       id: 'beaujolais',
+      coords: { lat: 45.9865, lng: 4.7266 },
       name: 'Beaujolais(薄酒萊)',
       country: 'France(法國)',
       world: 'old-world',
