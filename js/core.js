@@ -262,6 +262,8 @@ document.addEventListener('DOMContentLoaded', function() {
   renderGrapePanel();
   renderClassificationPanel();
   renderWineStylePanel();
+  renderFranceMarkers();
+  renderFranceMarkerList();
   initMapTooltips();
   auditWineDB();
   auditCountryFlags();

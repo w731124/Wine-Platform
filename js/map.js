@@ -44,6 +44,60 @@ const dims=[{k:'acidity',l:'酸度',c:'#3A6EA8'},{k:'tannin',l:'單寧',c:'#5C06
     <button onclick="openDrawer(WINE_DB.appellations.find(a=>a.id==='${app.id}'))" style="width:100%;background:var(--burg);color:#fff;border:none;border-radius:8px;padding:8px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;">完整詳情 →</button>`;
 }
 /* ════════════════════════════════════
+   FRANCE MAP：動態產生編號標記 + 側邊編號清單
+   投影參數對應 scripts/build-france-map.pl 產生 #france-svg 輪廓時使用的
+   同一套換算依據——若重新執行該腳本調整省份分組或 viewBox，這裡也要同步更新，
+   否則標記點位置會跟底圖對不上。
+════════════════════════════════════ */
+const FRANCE_PROJECTION = {
+  minLng: -4.79490980371592, maxLng: 8.23283621603897,
+  minLat: 42.3468077211805, maxLat: 51.0434905836422,
+  cosMid: 0.685879966084986, scale: 58.0681172335003,
+  offX: 30.5670403042436, offY: 30
+};
+function projectFrance(lng, lat){
+  const x = (lng - FRANCE_PROJECTION.minLng) * FRANCE_PROJECTION.cosMid * FRANCE_PROJECTION.scale + FRANCE_PROJECTION.offX;
+  const y = (FRANCE_PROJECTION.maxLat - lat) * FRANCE_PROJECTION.scale + FRANCE_PROJECTION.offY;
+  return [x.toFixed(1), y.toFixed(1)];
+}
+function getFranceAppellations(){
+  return WINE_DB.appellations.filter(a => a.country === 'France(法國)' && a.coords);
+}
+function renderFranceMarkers(){
+  const g = document.getElementById('france-markers');
+  if (!g) return;
+  g.innerHTML = getFranceAppellations().map((a, i) => {
+    const num = i + 1;
+    const [x, y] = projectFrance(a.coords.lng, a.coords.lat);
+    return `<g class="pulse-marker" data-id="${a.id}" onclick="selectAppellation('${a.id}')">
+      <circle class="pulse-ring" cx="${x}" cy="${y}" r="8" fill="none" stroke="rgba(185,140,20,.5)" stroke-width="1.5"/>
+      <circle class="dot-inner" cx="${x}" cy="${y}" r="7.5" fill="#C5A228" stroke="#FFF" stroke-width="1.5"/>
+      <text x="${x}" y="${(Number(y)+2.5).toFixed(1)}" text-anchor="middle" font-size="7" font-weight="700" fill="#FFF" font-family="Inter,sans-serif" style="pointer-events:none;">${num}</text>
+    </g>`;
+  }).join('');
+}
+function renderFranceMarkerList(){
+  const ph = document.getElementById('inspector-placeholder');
+  if (!ph) return;
+  const groups = {}; const order = [];
+  getFranceAppellations().forEach((a, i) => {
+    if (!groups[a.region]) { groups[a.region] = []; order.push(a.region); }
+    groups[a.region].push({ num: i + 1, app: a });
+  });
+  ph.innerHTML = `
+    <p style="font-weight:600;font-size:12.5px;color:var(--burg);margin-bottom:10px;">📍 全部產區 Index（點擊列表或地圖上的編號）</p>
+    ${order.map(region => `
+      <div style="margin-bottom:10px;">
+        <p style="font-size:10px;font-weight:700;letter-spacing:.05em;color:var(--txt4);text-transform:uppercase;margin-bottom:4px;">${region}</p>
+        ${groups[region].map(({num, app}) => `
+          <div class="france-idx-item" onclick="selectAppellation('${app.id}')" style="display:flex;align-items:center;gap:6px;padding:3px 4px;font-size:12px;color:var(--txt2);cursor:pointer;border-radius:5px;">
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:#C5A228;color:#fff;font-size:9px;font-weight:700;flex-shrink:0;">${num}</span>
+            <span>${app.name}</span>
+          </div>`).join('')}
+      </div>`).join('')}`;
+}
+
+/* ════════════════════════════════════
    MAP TOOLTIPS
 ════════════════════════════════════ */
 function initMapTooltips(){

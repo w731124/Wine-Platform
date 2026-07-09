@@ -128,6 +128,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-s
 .pulse-marker.selected .dot-inner{fill:var(--burg)}
 .pulse-marker.selected .pulse-ring{animation:none;opacity:1;stroke:var(--burg);stroke-width:2}
 .map-tooltip{position:absolute;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:9px 13px;font-size:12px;pointer-events:none;z-index:100;min-width:150px;max-width:210px;box-shadow:var(--sh2);display:none}
+.france-idx-item:hover{background:rgba(92,6,28,.06)}
 .ins-map{background:var(--bg-card);border:1px solid var(--border);border-radius:14px;box-shadow:var(--sh);position:sticky;top:76px;max-height:calc(100vh - 96px);overflow-y:auto}
 
 /* ── Score badge ── */
