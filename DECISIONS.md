@@ -219,3 +219,9 @@
 72. **新增 `auditCountryFlags()`，在 `DOMContentLoaded` 時與既有的 `auditWineDB()` 一起執行**：先同步檢查 `WINE_DB.appellations` 內每個 `country` 是否都能在 `COUNTRY_FLAG_CODE` 找到對照的國碼（找不到就 `console.warn`），再對有對照到的國碼用 `new Image()` 非同步驗證該 SVG 檔案實際可載入（`onerror` 時 `console.warn`），兩種失效模式（忘了補對照表、對照表寫對但檔案沒放進去或路徑打錯）都能個別捕捉到。
     原因：使用者明確要求「避免之後擴充新國家資料庫時忘記補國旗圖示」——只檢查對照表存在與否無法抓到「對照表寫了但檔案忘記放」這種更隱蔽的失誤，因此額外加上實際載入驗證，這是規格沒有明講、但符合「稽核要能真正抓到會發生的錯誤」意圖的判斷。
     驗證：headless Chrome 截圖確認國家下拉、大產區分組標題、抽屜國家標籤三處皆正確顯示對應向量國旗（無破圖圖示、無退化成 emoji 文字），並用 `--dump-dom` 確認頁面載入無 JS 錯誤。
+
+## 2026-07-09 SAT 品飲系統四張卡片改為手風琴互斥收合
+
+73. **`toggleSATSection()` 加入收合其他已展開卡片的邏輯，查詢範圍鎖定 `#panel-tasting .acc-hdr.open`**：直接比照 `grapes.js` 的 `toggleGrapeCard()` 寫法搬過來，差別只在不需要 `grapeRadarInsts.destroy()` 那段（SAT卡片沒有圖表資源要銷毀）。
+    原因：使用者已在需求裡明確指定「不需要重新設計，`toggleGrapeCard()` 已經是現成範本」，屬於機械式移植而非新設計判斷；`toggleSATSection()` 同時也是 `classifications.js`（分級制度頁面，DECISIONS.md #66 已改用自己的 `toggleClassCard()`）過去曾短暫誤用過的函式，這次修改後 `toggleSATSection()` 的查詢範圍明確鎖定 `#panel-tasting`，即使未來又有其他頁面手滑重用這個函式，也不會影響到 SAT 以外的頁面（但仍建議新頁面依 #66 記取的教訓另外評估是否該共用）。
+    驗證：用 headless Chrome 模擬依序點擊卡片0與卡片2，確認卡片0自動收合、卡片2維持展開，並將每張卡片的 open 狀態即時印在頁面上核對截圖無誤。

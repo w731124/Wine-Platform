@@ -273,6 +273,17 @@ function toggleSATSection(hdr){
   const body = hdr.nextElementSibling;
   const arrow = hdr.querySelector('.acc-arrow');
   const isOpen = body.classList.contains('open');
+
+  // 手風琴行為：收合其他已展開卡片
+  document.querySelectorAll('#panel-tasting .acc-hdr.open').forEach(otherHdr => {
+    if (otherHdr === hdr) return;
+    const otherBody = otherHdr.nextElementSibling;
+    const otherArrow = otherHdr.querySelector('.acc-arrow');
+    if (otherBody) otherBody.classList.remove('open');
+    otherHdr.classList.remove('open');
+    if (otherArrow) { otherArrow.classList.remove('open'); otherArrow.textContent = '▼'; }
+  });
+
   body.classList.toggle('open', !isOpen);
   hdr.classList.toggle('open', !isOpen);
   if(arrow){
