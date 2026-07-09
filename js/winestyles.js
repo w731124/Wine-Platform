@@ -24,16 +24,26 @@ function buildWineStyleCardHTML(s) {
         <span class="acc-arrow">▼</span>
       </div>
       <div class="acc-body">
-        <p class="ins-lbl">歷史文化 History</p>
-        <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);margin-bottom:12px;">${s.history}</p>
-        <p class="ins-lbl">葡萄品種 Grapes</p>
-        <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);margin-bottom:12px;">${s.grapes}</p>
-        <p class="ins-lbl">風土 Terroir</p>
-        <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);margin-bottom:12px;">${s.terroir}</p>
-        <p class="ins-lbl">釀造方式 Production</p>
-        <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);margin-bottom:12px;">${s.production}</p>
-        <p class="ins-lbl">關鍵字 Key Terms</p>
-        <div class="flex flex-wrap gap-1">${termTags}</div>
+        <div class="ic mb-3">
+          <p class="ins-lbl" style="color:var(--burg);font-size:11px;">📜 歷史文化 History</p>
+          <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${s.history}</p>
+        </div>
+        <div class="ic mb-3">
+          <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🍇 葡萄品種 Grapes</p>
+          <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${s.grapes}</p>
+        </div>
+        <div class="ic mb-3">
+          <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🌍 風土 Terroir</p>
+          <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${s.terroir}</p>
+        </div>
+        <div class="ic mb-3">
+          <p class="ins-lbl" style="color:var(--burg);font-size:11px;">⚗️ 釀造方式 Production</p>
+          <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${s.production}</p>
+        </div>
+        <div class="ic">
+          <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🏷️ 關鍵字 Key Terms</p>
+          <div class="flex flex-wrap gap-1">${termTags}</div>
+        </div>
       </div>
     </div>`;
 }
