@@ -336,3 +336,12 @@
 108. **建圖腳本重跑時的一個既有 bug 順帶浮現並修正：`build-france-map.pl` 的 `load_app_coords()` 原本沒有依 `country` 欄位過濾，在義大利/伊比利也補上 `coords` 欄位之前不會出錯，但這次為了算法國標籤位置重跑腳本時，才發現它把三國全部68筆產區都當成法國資料，導致投影範圍被拉爆到涵蓋整個西歐**。已改用與 `build-italy-map.pl`／`build-iberia-map.pl` 相同的「先切物件邊界、比對 `country` 欄位」寫法，重新驗證後投影參數與現有 `FRANCE_PROJECTION`／既有地圖完全一致，確認純粹是腳本重跑時才會觸發的問題，不影響已經上線的地圖本身。
     原因：純技術債修正，發現時機是本次任務的副產品（不是使用者要求的範圍），但因為直接卡住本次任務（沒修好就無法正確算出法國新標籤位置），屬於任務執行必要的前置修正，不算擴大稽核範圍。
     驗證：三支腳本重新執行後用 Perl 組合出三張地圖的獨立預覽頁面（含實際 SVG 色塊、標記、河流、新標籤），發布 Artifact 供使用者確認，經三輪調整（第一輪：呈現三個問題現況＋義大利限制說明；第二輪：法國/伊比利加上形狀容器約束＋義大利加指示線；第三輪：修正 Rioja/Navarra 重疊、義大利避讓參數微調）後使用者確認「OK」；整合進 `index.html` 後 `--dump-dom` 確認頁面載入無 JS 錯誤、68個 `.pulse-marker` 數量不變（本次只調整靜態標籤與指示線，未動態標記渲染邏輯）。
+
+## 2026-07-10 換裝置後三項收尾：本機 acceptEdits、emoji 死欄位清理、國旗稽核複查
+
+109. **`.claude/settings.local.json` 新增 `permissions.defaultMode: "acceptEdits"`，寫入 local（未版控）檔案而非 `settings.json`**：與先前裝置的既定做法一致（DECISIONS.md #11：`settings.local.json` 本來就是各裝置自行維護、不共用的執行期設定），使用者只要求「這台裝置也套用」，不是要讓全部裝置共用同一個 defaultMode，因此不動 `settings.json`。
+    原因：維持「共用規則進 `settings.json`、機器個別偏好進 `settings.local.json`」的既有分工，避免把單一裝置的操作模式偏好強制推給其他裝置。
+110. **刪除 `data/wine-data.js` 全部91筆產區資料的 `emoji:` 欄位**：動工前先用 `grep -rn "\.emoji\b"` 核對全站 `js/*.js`／`index.html`，確認唯一比對到的 `meta.emoji`（`compare.js`）是完全獨立的 `WINE_COLOR_META` 常數（酒色圖示，紅/白/粉紅/氣泡），與產區資料的 `emoji` 欄位（國旗 emoji，DECISIONS.md #71 已標記為死欄位）無關，確認91行皆為單行完整格式（`      emoji: '...',`）後用 `sed` 一次刪除，刪除前備份原檔。
+    原因：延續 DECISIONS.md #71 標記但當時保留未處理的死欄位，這次一併清除；91行格式一致，機械式刪除風險低，刪除前後大括號/中括號配對計數一致（1088/1088、546/546）確認結構完整，`--dump-dom` 確認頁面載入無 JS 錯誤、`auditCountryFlags()` 仍正常輸出「全部產區國家皆有對應的國碼」。
+111. **`auditCountryFlags()` console 警告複查結果：目前無任何警告**：用 headless Chrome 載入正式 `index.html` 並以 `--enable-logging=stderr --v=1` 擷取 console 輸出，確認 12 個國家與 `COUNTRY_FLAG_CODE` 對照表、`assets/flags/` 的 12 個 SVG 檔案三方完全一致，無缺漏也無載入失敗。
+    原因：使用者要求複查，純檢查性質不涉及程式碼修改；複查過程中連帶看到 console 另外印出兩則範圍外的既有警告（23個新產區缺地圖座標、6個法國產區未綁定年份矩陣），這兩項是 HANDOFF.md 已記錄的已知功能缺口，非本次任務範圍，僅附註不處理。
