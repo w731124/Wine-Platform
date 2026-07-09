@@ -9,8 +9,6 @@ function renderWineStylePanel() {
 }
 
 function buildWineStyleCardHTML(s) {
-  const termTags = (s.keyTerms || []).map(t => `<span class="tg tg-aroma">${t}</span>`).join('');
-
   return `
     <div class="acc-wrap mb-3">
       <div class="acc-hdr" data-style-id="${s.id}" onclick="toggleWineStyleCard(this)">
@@ -24,25 +22,21 @@ function buildWineStyleCardHTML(s) {
         <span class="acc-arrow">▼</span>
       </div>
       <div class="acc-body">
-        <div class="ic mb-3">
+        <div class="ic mb-3" style="background:var(--bg-card);">
           <p class="ins-lbl" style="color:var(--burg);font-size:11px;">📜 歷史文化 History</p>
           <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${s.history}</p>
         </div>
-        <div class="ic mb-3">
+        <div class="ic mb-3" style="background:var(--bg-card);">
           <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🍇 葡萄品種 Grapes</p>
           <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${s.grapes}</p>
         </div>
-        <div class="ic mb-3">
+        <div class="ic mb-3" style="background:var(--bg-card);">
           <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🌍 風土 Terroir</p>
           <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${s.terroir}</p>
         </div>
-        <div class="ic mb-3">
+        <div class="ic" style="background:var(--bg-card);">
           <p class="ins-lbl" style="color:var(--burg);font-size:11px;">⚗️ 釀造方式 Production</p>
           <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${s.production}</p>
-        </div>
-        <div class="ic">
-          <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🏷️ 關鍵字 Key Terms</p>
-          <div class="flex flex-wrap gap-1">${termTags}</div>
         </div>
       </div>
     </div>`;
