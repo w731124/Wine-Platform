@@ -20,7 +20,12 @@
 ### 驗證方式
 Perl 腳本產生的 SVG 先發布成 Artifact 讓使用者視覺確認（法國輪廓可辨識、六產區相對位置正確、扁平示意圖風格未被破壞），確認後才寫入 `index.html`。寫入後 `--dump-dom` 確認無 JS 錯誤；直接呼叫 `selectRegion('alsace')`／`selectAppellation('chablis')` 確認邏輯正確（headless 環境對 SVG 元素的合成 `.click()` 事件有已知限制，改用直接函式呼叫驗證，真實瀏覽器滑鼠點擊不受影響）；截圖確認正式頁面視覺與 Artifact 預覽一致。
 
-以上已 commit，**尚未 push**。**已完成 Stage 2，接下來會開始 Stage 3（標記文字改為編號徽章＋側邊清單），除非使用者另有指示。**
+以上已 commit，**尚未 push**。
+
+### 中途插入的工具化任務：`scripts/build-france-map.pl`（DECISIONS.md #87-88）
+使用者要求把 Stage 2 那種「抓 GeoJSON→凸包運算→投影→輸出」的多段式 bash/perl 操作整合成單一腳本，減少每個小步驟都要等確認的中斷感。新增 `scripts/build-france-map.pl`：設定（省份分組／viewBox／快取路徑）集中在檔案頂部，直接從 `data/wine-data.js` 讀座標（不再手動複製貼上），GeoJSON 下載結果快取在 `scripts/.geo-cache/`（已加入 `.gitignore`）。首次執行時發現一個 regex 邊界抓取 bug（誤判 `appellations[]` 陣列結尾跟 `grapes:` 之間有空行，實際沒有）並當場修正，重跑後輸出與已寫入 `index.html` 的 Stage 2 座標完全一致，確認腳本可靠。**這支腳本本身是唯讀工具（只印出結果到 stdout，不會自動改 `index.html`），之後如果要重新產生地圖座標（例如調整省份分組，或未來義大利/伊比利地圖重建參考同一套方法論），可以直接重跑這支腳本，不需要重新手動走一次 Stage 2 的步驟。**
+
+**接下來會開始 Stage 3（標記文字改為編號徽章＋側邊清單），除非使用者另有指示。**
 
 ## 二、討論過但尚未執行的項目／下一步規劃
 
