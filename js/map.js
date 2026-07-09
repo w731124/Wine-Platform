@@ -2,7 +2,7 @@
    MAP FUNCTIONS
 ════════════════════════════════════ */
 function selectRegion(r){
-  const n={bordeaux:'Bordeaux(波爾多)',burgundy:'Burgundy(勃根地)',loire:'Loire(羅亞爾河)',champagne:'Champagne(香檳)',alsace:'Alsace(阿爾薩斯)',rhone:'Rhône(隆河谷)',piedmont:'Piedmont(皮埃蒙特)',tuscany:'Tuscany(托斯卡尼)',veneto:'Veneto(威尼托)',rioja:'Rioja(里奧哈)','ribera-del-duero':'Ribera del Duero(斗羅河岸)',jerez:'Jerez(赫雷斯)'};
+  const n={bordeaux:'Bordeaux(波爾多)',burgundy:'Burgundy(勃根地)',loire:'Loire(羅亞爾河)',champagne:'Champagne(香檳)',alsace:'Alsace(阿爾薩斯)',rhone:'Rhône(隆河谷)',piedmont:'Piedmont(皮埃蒙特)',tuscany:'Tuscany(托斯卡尼)',veneto:'Veneto(威尼托)',sicily:'Sicily(西西里)',abruzzo:'Abruzzo(阿布魯佐)',puglia:'Puglia(普利亞)',lombardy:'Lombardy(倫巴底)',campania:'Campania(坎帕尼亞)',trentino:'Trentino-Alto Adige(特倫提諾-上阿迪傑)',emilia:'Emilia-Romagna(艾米利亞-羅馬涅)',friuli:'Friuli-Venezia Giulia(弗留利-威尼斯朱利亞)',marche:'Marche(馬爾凱)',umbria:'Umbria(溫布里亞)',rioja:'Rioja(里奧哈)','ribera-del-duero':'Ribera del Duero(斗羅河岸)',jerez:'Jerez(赫雷斯)'};
   showMapIns(`<span class="tg tg-reg" style="font-size:13px;">${n[r]||r}</span><p style="font-size:12px;color:var(--txt3);margin-top:8px;">點擊金色圓點查看具體次產區資訊。</p>`);
 }
 function selectAppellation(id){
@@ -105,15 +105,18 @@ function renderFranceMarkers(){
     </g>`;
   }).join('');
 }
-function highlightFranceMarker(id, on){
+// 通用（法國／義大利／伊比利共用）：側邊清單 hover 時對應地圖圓點同步亮起。
+// 用獨立 class 而非重用 .selected，避免滑鼠移出清單時誤清除使用者已點擊選取的狀態。
+function highlightMapMarker(id, on){
   const el = document.querySelector(`.pulse-marker[data-id="${id}"]`);
   if (el) el.classList.toggle('list-hover', on);
 }
-function renderFranceMarkerList(){
+// 通用：依「大區分組＋編號徽章」樣式產生側邊清單，寫入 #inspector-placeholder。
+function renderMarkerIndexList(list){
   const ph = document.getElementById('inspector-placeholder');
   if (!ph) return;
   const groups = {}; const order = [];
-  getFranceAppellations().forEach((a, i) => {
+  list.forEach((a, i) => {
     if (!groups[a.region]) { groups[a.region] = []; order.push(a.region); }
     groups[a.region].push({ num: i + 1, app: a });
   });
@@ -123,12 +126,53 @@ function renderFranceMarkerList(){
       <div style="margin-bottom:10px;">
         <p style="font-size:10px;font-weight:700;letter-spacing:.05em;color:var(--txt4);text-transform:uppercase;margin-bottom:4px;">${region}</p>
         ${groups[region].map(({num, app}) => `
-          <div class="france-idx-item" onclick="selectAppellation('${app.id}')" onmouseenter="highlightFranceMarker('${app.id}',true)" onmouseleave="highlightFranceMarker('${app.id}',false)" style="display:flex;align-items:center;gap:6px;padding:3px 4px;font-size:12px;color:var(--txt2);cursor:pointer;border-radius:5px;">
+          <div class="france-idx-item" onclick="selectAppellation('${app.id}')" onmouseenter="highlightMapMarker('${app.id}',true)" onmouseleave="highlightMapMarker('${app.id}',false)" style="display:flex;align-items:center;gap:6px;padding:3px 4px;font-size:12px;color:var(--txt2);cursor:pointer;border-radius:5px;">
             <span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:#C5A228;color:#fff;font-size:9px;font-weight:700;flex-shrink:0;">${num}</span>
             <span>${app.name}</span>
           </div>`).join('')}
       </div>`).join('')}`;
 }
+function renderFranceMarkerList(){ renderMarkerIndexList(getFranceAppellations()); }
+
+/* ════════════════════════════════════
+   ITALY MAP：動態產生編號標記 + 側邊編號清單
+   投影參數對應 scripts/build-italy-map.pl 產生 #italy-svg 輪廓時使用的
+   同一套換算依據——若重新執行該腳本調整 viewBox，這裡也要同步更新。
+════════════════════════════════════ */
+const ITALY_PROJECTION = {
+  minLng: 6.62773437500004, maxLng: 18.5165724719284,
+  minLat: 36.6666711797673, maxLat: 47.0780434569092,
+  cosMid: 0.744633659290215, scale: 41.568632953446,
+  offX: 26, offY: 53.606743634902
+};
+function projectItaly(lng, lat){
+  const x = (lng - ITALY_PROJECTION.minLng) * ITALY_PROJECTION.cosMid * ITALY_PROJECTION.scale + ITALY_PROJECTION.offX;
+  const y = (ITALY_PROJECTION.maxLat - lat) * ITALY_PROJECTION.scale + ITALY_PROJECTION.offY;
+  return [x.toFixed(1), y.toFixed(1)];
+}
+function getItalyAppellations(){
+  return WINE_DB.appellations.filter(a => a.country === 'Italy(義大利)' && a.coords);
+}
+function renderItalyMarkers(){
+  const g = document.getElementById('italy-markers');
+  if (!g) return;
+  const list = getItalyAppellations();
+  const points = list.map(a => {
+    const [x, y] = projectItaly(a.coords.lng, a.coords.lat);
+    return { x: Number(x), y: Number(y) };
+  });
+  declutterPoints(points, 17, 150);
+  g.innerHTML = list.map((a, i) => {
+    const num = i + 1;
+    const x = points[i].x.toFixed(1), y = points[i].y.toFixed(1);
+    return `<g class="pulse-marker" data-id="${a.id}" onclick="selectAppellation('${a.id}')">
+      <circle class="pulse-ring" cx="${x}" cy="${y}" r="8" fill="none" stroke="rgba(185,140,20,.5)" stroke-width="1.5"/>
+      <circle class="dot-inner" cx="${x}" cy="${y}" r="7.5" fill="#C5A228" stroke="#FFF" stroke-width="1.5"/>
+      <text x="${x}" y="${(points[i].y+2.5).toFixed(1)}" text-anchor="middle" font-size="7" font-weight="700" fill="#FFF" font-family="Inter,sans-serif" style="pointer-events:none;">${num}</text>
+    </g>`;
+  }).join('');
+}
+function renderItalyMarkerList(){ renderMarkerIndexList(getItalyAppellations()); }
 
 /* ════════════════════════════════════
    MAP TOOLTIPS

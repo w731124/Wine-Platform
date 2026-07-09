@@ -414,6 +414,7 @@ const WINE_DB = {
     /* ── Italy ── */
     {
       id: 'barolo',
+      coords: { lat: 44.6147, lng: 7.9394 },
       name: 'Barolo(巴羅洛)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -440,6 +441,7 @@ const WINE_DB = {
     },
     {
       id: 'barbaresco',
+      coords: { lat: 44.7193, lng: 8.0769 },
       name: 'Barbaresco(巴巴瑞斯科)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -466,6 +468,7 @@ const WINE_DB = {
     },
     {
       id: 'chianti-classico',
+      coords: { lat: 43.6069, lng: 11.332 },
       name: 'Chianti Classico(古典奇揚第)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -492,6 +495,7 @@ const WINE_DB = {
     },
     {
       id: 'brunello-di-montalcino',
+      coords: { lat: 43.0576, lng: 11.4903 },
       name: 'Brunello di Montalcino(布魯內羅蒙塔奇諾)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -519,6 +523,7 @@ const WINE_DB = {
     /* ── Italy · Veneto ── */
     {
       id: 'prosecco',
+      coords: { lat: 45.9163, lng: 12.0274 },
       name: 'Prosecco(普羅賽克)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -545,6 +550,7 @@ const WINE_DB = {
     },
     {
       id: 'soave',
+      coords: { lat: 45.4359, lng: 11.2425 },
       name: 'Soave(蘇瓦韋)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -571,6 +577,7 @@ const WINE_DB = {
     },
     {
       id: 'amarone-della-valpolicella',
+      coords: { lat: 45.581, lng: 10.8841 },
       name: 'Amarone della Valpolicella(阿瑪羅內)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -598,6 +605,7 @@ const WINE_DB = {
     /* ── Italy · Sicily ── */
     {
       id: 'etna',
+      coords: { lat: 37.8779, lng: 14.9462 },
       name: 'Etna(埃特納)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -1461,6 +1469,7 @@ const WINE_DB = {
     /* ── Italy · Veneto 補全 (Batch 3) ── */
     {
       id: 'valpolicella',
+      coords: { lat: 45.581, lng: 10.8841 },
       name: 'Valpolicella(瓦波利切拉)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -1624,6 +1633,7 @@ const WINE_DB = {
     /* ── Italy · Piedmont (Asti) ── */
     {
       id: 'asti',
+      coords: { lat: 44.826, lng: 8.2027 },
       name: 'Asti(阿斯提)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -2027,6 +2037,7 @@ const WINE_DB = {
     /* ── Italy · Abruzzo ── */
     {
       id: 'montepulciano-dabruzzo',
+      coords: { lat: 42.1027, lng: 14.4159 },
       name: "Montepulciano d'Abruzzo(阿布魯佐蒙鐵布奇亞諾)",
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -2054,6 +2065,7 @@ const WINE_DB = {
     /* ── Italy · Puglia ── */
     {
       id: 'primitivo-di-manduria',
+      coords: { lat: 40.4018, lng: 17.6335 },
       name: 'Primitivo di Manduria(普利亞普里米蒂沃)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -2081,6 +2093,7 @@ const WINE_DB = {
     /* ── Italy · Lombardy ── */
     {
       id: 'franciacorta',
+      coords: { lat: 45.5985, lng: 9.9722 },
       name: 'Franciacorta(法蘭齊亞柯達)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -2108,6 +2121,7 @@ const WINE_DB = {
     /* ── Italy · Campania ── */
     {
       id: 'taurasi',
+      coords: { lat: 41.0084, lng: 14.9574 },
       name: 'Taurasi(陶拉西)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -2135,6 +2149,7 @@ const WINE_DB = {
     /* ── Italy · Trentino-Alto Adige ── */
     {
       id: 'alto-adige',
+      coords: { lat: 46.6559, lng: 11.2302 },
       name: 'Alto Adige(上阿迪傑)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -2268,6 +2283,7 @@ const WINE_DB = {
     /* ── Italy · Sicily (2nd) ── */
     {
       id: 'cerasuolo-di-vittoria',
+      coords: { lat: 36.9515, lng: 14.5305 },
       name: 'Cerasuolo di Vittoria(維多利亞櫻桃紅)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -2295,6 +2311,7 @@ const WINE_DB = {
     /* ── Italy · Emilia-Romagna ── */
     {
       id: 'lambrusco',
+      coords: { lat: 44.5385, lng: 10.936 },
       name: 'Lambrusco(蘭布魯斯科)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -2322,6 +2339,7 @@ const WINE_DB = {
     /* ── Italy · Friuli-Venezia Giulia ── */
     {
       id: 'collio',
+      coords: { lat: 45.9546, lng: 13.462 },
       name: 'Collio(科里歐)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -2349,6 +2367,7 @@ const WINE_DB = {
     /* ── Italy · Marche ── */
     {
       id: 'verdicchio-dei-castelli-di-jesi',
+      coords: { lat: 43.5234, lng: 13.256 },
       name: 'Verdicchio dei Castelli di Jesi(維爾帝奇歐)',
       country: 'Italy(義大利)',
       world: 'old-world',
@@ -2376,6 +2395,7 @@ const WINE_DB = {
     /* ── Italy · Umbria ── */
     {
       id: 'sagrantino-di-montefalco',
+      coords: { lat: 42.8919, lng: 12.6501 },
       name: 'Sagrantino di Montefalco(薩格蘭蒂諾)',
       country: 'Italy(義大利)',
       world: 'old-world',

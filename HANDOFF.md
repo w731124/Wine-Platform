@@ -4,31 +4,30 @@
 
 ## 一、本次開發歷程
 
-**地圖探索法國面板重建（試點，只做法國，義大利/伊比利面板不動）：三階段＋收尾修正全部完成：**
+**地圖探索重建，法國已全部完成，義大利本次完成，伊比利（西班牙+葡萄牙）是下一步：**
 
-- **Stage 1（DECISIONS.md #80）**：35筆法國產區新增 `coords:{lat,lng}` 經緯度欄位。
-- **Stage 2（DECISIONS.md #81-86）**：真實省份邊界資料＋投影運算，六大產區形狀改用凸包（convex hull）。
-- **工具化（DECISIONS.md #87-88）**：整合成 `scripts/build-france-map.pl`，可重跑。
-- **Stage 3（DECISIONS.md #89-92）**：標記文字改為編號徽章＋側邊產區索引清單，擴大到全部35筆。
-- **收尾修正（本次完成，DECISIONS.md #93-96）**：標記碰撞避讓、真實河流、側邊清單 hover 連動地圖。
+- **法國**（DECISIONS.md #80-96）：Stage 1-3＋標記碰撞避讓／真實河流／清單hover連動，全部完成並已 push。
+- **義大利**（本次完成，DECISIONS.md #97-100）：真實13大區邊界（比法國更單純，region欄位直接對應真實行政區）、波河、20筆座標、編號清單，一次完成不再分3階段（因為不需要凸包近似這一關）。
+- **伊比利**（尚未開始）：西班牙10筆＋葡萄牙2筆，使用者已確認「兩國都做」＋「加河流」。
 
-### 本次做了什麼
-1. **標記碰撞避讓**：使用者回報「部分產區重疊過高，某些產地無法點擊」（35筆擴大後波爾多群集才浮現的問題）。`js/map.js` 新增 `declutterPoints()`，在 `renderFranceMarkers()` 投影完座標、渲染前用簡單相互推擠演算法把距離小於17px的標記推開（最多150輪迭代），只調整視覺位置不動 `WINE_DB` 原始座標。驗證後最近兩點間距16.96px，確認所有35個標記都能個別點擊。
-2. **真實河流**：`scripts/build-france-map.pl` 新增抓取 Loire／Rhône／Garonne 河道資料（來源 Natural Earth 1:50m，`martynafford/natural-earth-geojson` 專案），用同一套 `FRANCE_PROJECTION` 投影後貼進 `index.html`。**已明確告知使用者**：資料源查不到 Dordogne，波爾多左右岸分界僅用 Garonne 概略標示，非完整的兩河匯流示意；使用者確認接受此簡化。過程中發現並修正一個資料串接 bug（Loire 的兩個原始線段共用同一個起點，直接串接會產生跳線，修正為先反轉一段再串接）。
-3. **側邊清單 hover 連動地圖**：新增 `highlightFranceMarker(id, on)` 與 CSS class `.pulse-marker.list-hover`，清單項目加上 `onmouseenter`/`onmouseleave`。刻意用獨立的 `list-hover` class 而非重用 `selected` class——如果直接切換 `selected`，滑鼠移出清單時會誤清除使用者原本點擊選取的狀態。
+### 義大利做了什麼
+1. **Stage 1（座標）**：20筆義大利產區 Nominatim 查詢，12筆精確、8筆近似（大區/子產區取代表城鎮），無低信心項目，使用者確認表格後才寫入 `data/wine-data.js`。
+2. **Stage 2（真實邊界，比法國單純）**：新增 `scripts/build-italy-map.pl`。義大利 `region` 欄位（Piedmont/Tuscany/Veneto等13個）直接對應真實義大利行政大區，不需要像法國那樣拿省份湊凸包——直接抓 `openpolis/geojson-italy` 的真實大區邊界。全國輪廓取本土+西西里（`martynafford/natural-earth-geojson`，排除薩丁尼亞/小島，因為只有 Etna/Cerasuolo di Vittoria 兩筆產區在西西里，其餘離島無資料點）。波河（Po）取自與法國共用的同一份河流資料集（快取共用不重複下載）。地圖預覽先發布 Artifact 給使用者確認才整合進 `index.html`。
+3. **設計取捨：義大利地圖沒有大區文字標籤**（法國六大區有）——13個大區緊鄰且狹長，疊加文字會嚴重重疊，改由側邊清單的分組標題呈現大區名稱。
+4. **程式碼重構**：`js/map.js` 的 `highlightFranceMarker()`／`renderFranceMarkerList()` 抽成通用的 `highlightMapMarker()`／`renderMarkerIndexList(list)`，法國/義大利共用同一套側邊清單邏輯，`renderFranceMarkerList()`／`renderItalyMarkerList()` 變成薄包裝。`js/core.js` 的 `showMap(id,btn)` 新增依 `id` 切換側邊清單＋重置 inspector（因為三個國家分頁共用同一個 `#inspector-placeholder` DOM 元素）。
 
 ### 驗證方式
-河流疊圖先用 Artifact/截圖預覽核對走向正確（流經對應產區形狀）才寫入正式檔案；`declutterPoints` 效果用 JS 遍歷全部標記量測最近兩點間距（16.96px）確認碰撞已解決；`highlightFranceMarker` 直接呼叫確認正確加上 `list-hover` class；`--dump-dom` 確認無 JS 錯誤；截圖確認波爾多群集標記清楚分散、河流正確顯示。
+Artifact 預覽確認義大利靴子形狀可辨識、13大區真實邊界正確、波河流經北部；整合進 `index.html` 後 headless Chrome 截圖確認正式頁面呈現一致；直接量測20個標記兩兩間距，最近16.95px（碰撞避讓對義大利同樣有效）；直接呼叫 `selectAppellation('barolo')` 確認動態標記相容；`--dump-dom` 確認無 JS 錯誤；資料結構配對平衡（1075/1075、546/546）。
 
-以上已 commit，**尚未 push**。**法國地圖重建（含收尾修正）全部完成，等使用者確認整體效果後再決定下一步。**
+以上已 commit，**尚未 push**。**接下來要做伊比利（西班牙+葡萄牙+河流），完成後再詢問是否 push。**
 
 ## 二、討論過但尚未執行的項目／下一步規劃
 
-- **義大利／伊比利地圖面板**——使用者明確要求「這次只做法國試點」，法國全部完成、使用者確認後才會是下一個討論項目，不要主動擴充。義大利/西班牙的省界＋河流開放資料集屆時需要另外尋找。
-- **波爾多左右岸分界不完整**（見上方）——目前只用 Garonne 概略標示，若使用者未來想要更完整的呈現（含 Dordogne、真正的 Gironde 河口匯流示意），需要另外尋找資料源，目前這份 Natural Earth 1:50m 資料集查不到。
-- **已知次要視覺瑕疵**：勃根地／羅亞爾河谷的六大區文字標籤（Stage 2 產物）跟密集標記點仍有些微重疊——不在本次修正範圍內（本次只處理使用者明確提出的兩個問題），使用者若在意可之後要求微調。
+- **伊比利地圖（下一步）**：使用者已確認「西班牙+葡萄牙都做」＋「加河流」。西班牙10筆產區（Rioja、Castilla y León系列、Andalusia、Catalonia、Galicia）、葡萄牙2筆（Douro、Vinho Verde，目前地圖上只有文字佔位沒有實際內容）。河流候選需要另外研究（例如西班牙的Douro/Duero河貫穿Ribera del Duero與葡萄牙Douro產區，可能是最值得加的一條，埃布羅河Ebro流經Rioja也可考慮）。地理資料來源：義大利用的 `openpolis` 是義大利專屬，西班牙/葡萄牙的行政區邊界需要另外找（可先嘗試 Natural Earth admin-1 states/provinces 資料集是否涵蓋，該資料集是全球性的，可能一份資料就能同時涵蓋西班牙自治區與葡萄牙行政區，值得優先嘗試而非另外找兩份國別資料）。
+- **義大利地圖沒有大區文字標籤**（見上方，刻意設計決定非疏漏）——若使用者覺得少了文字標籤不好辨識，可考慮之後補一版簡短縮寫標籤。
 - **`wine-data.js` 的 `emoji` 欄位清理**（產區資料裡的死欄位）——建議與下次技術債清理一併處理。
 - **「分級制度」頁面下一步的候選擴充方向**（先前提出、使用者尚未確認）：新世界分級概念對照章節、Rioja、雙向跳轉連結。
+- **法國波爾多左右岸分界不完整**（缺 Dordogne，只用 Garonne 概略標示）——若使用者未來想要更完整的呈現需要另外找資料源。
 - `auditCountryFlags()` 的 console 警告輸出尚未手動複查過。
 - 是否要 push 本次 commit，尚待使用者這次對話明確指示。
 
@@ -39,14 +38,13 @@
 ## 四、現況檢查提醒
 
 - **push 狀態**：本次 session 的 commit 尚未 push——**接手前先跑 `git log --oneline origin/main..HEAD` 確認實際領先數量**，不要直接假設。
-- **本次 session 異動範圍**：`scripts/build-france-map.pl`（新增河流抓取邏輯＋UTF-8處理）、`index.html`（新增河流 `<path>`）、`js/map.js`（新增 `declutterPoints()`／`highlightFranceMarker()`，`renderFranceMarkers()` 內插入避讓邏輯）、`css/style.css`（新增 `.pulse-marker.list-hover`）、`DECISIONS.md`、`HANDOFF.md`。**`data/wine-data.js`／`js/core.js` 本次未異動**。
-- **`FRANCE_PROJECTION` 常數同步風險**（延續 Stage 3 記錄，仍然成立）：`js/map.js` 的這個常數數值是從 `scripts/build-france-map.pl` 手動複製過來的，兩者沒有自動同步機制。之後重跑該腳本（例如調整省份分組、viewBox，或要補河流資料）要記得手動同步更新。
-- **碰撞避讓參數提醒**：`declutterPoints(points, 17, 150)` 的 `17`（最小間距px）與 `150`（最大迭代次數）是憑經驗選的值，如果未來標記數量再增加（例如義大利/伊比利也擴充到全部產區）或發現某些點還是太擠，可以調整這兩個參數，不需要重新設計演算法。
-- **河流資料完整性限制**：目前只有 Loire／Rhône／Garonne 三條，且 Garonne 用來概略標示波爾多左右岸分界並不完整（缺 Dordogne，見上方）。資料來源快取在 `scripts/.geo-cache/rivers.json`。
-- **地圖座標精確度提醒**（延續 Stage 1 記錄）：14筆大區級產區座標是代表點近似值，2筆（Hautes-Côtes de Nuits／Beaune）是低信心任選村莊代表。
-- **地圖形狀方法論限制**（延續 Stage 2 記錄）：六個產區形狀是凸包不是精確省界聯集，比真實省界略外擴。
-- **地理資料來源記錄**：省界／國界 GeoJSON 來自 `gregoiredavid/france-geojson`；河流來自 `martynafford/natural-earth-geojson`（皆透過 jsdelivr CDN）；經緯度查詢用 `nominatim.openstreetmap.org`（1 req/sec 限制＋自訂 User-Agent）。
-- **本機環境限制**：沒有 Node.js，`python3`／`python` 是 Windows Store 空殼（exit code 127 無法用），**真正可用的是 `awk` 與 `perl`**（Perl 內建 `JSON::PP` 可解析 GeoJSON；處理含重音字元的資料比對時記得 `use utf8;`＋`binmode(STDOUT/STDERR,':utf8')`＋來源檔案用 `<:raw` 讀取，避免雙重解碼或比對失敗，這是本次河流比對時踩過的坑）。
+- **本次 session（義大利）異動範圍**：`data/wine-data.js`（20筆義大利產區新增 `coords`）、新增 `scripts/build-italy-map.pl`、`index.html`（`#map-italy` 內容全面替換）、`js/map.js`（新增 `ITALY_PROJECTION`／`projectItaly()`／`getItalyAppellations()`／`renderItalyMarkers()`／`renderItalyMarkerList()`，重構出通用的 `highlightMapMarker()`／`renderMarkerIndexList()`，`selectRegion()` 名稱對照表補上10個義大利大區）、`js/core.js`（`showMap()` 新增清單切換邏輯，`DOMContentLoaded` 加 `renderItalyMarkers()`）、`DECISIONS.md`、`HANDOFF.md`。
+- **重要技術債**：`scripts/build-italy-map.pl` 開發過程中踩過一個 Perl Unicode 坑——比對檔案裡的中文/重音字元時，讀檔案的 filehandle 如果沒有明確用 `:encoding(UTF-8)`，讀到的是未解碼的原始位元組字串，跟 `\x{...}` 轉義產生的已解碼 Unicode 字串比對永遠不會相符（正則會用 Latin-1 假設硬升級位元組字串，導致比對失敗但不會報錯，容易誤以為邏輯本身有問題而非編碼問題）。**這個坑之後寫伊比利的腳本時要記得避開**：需要跟中文/重音字元比對的地方，開檔案要用 `open($fh, '<:encoding(UTF-8)', $file)`；純粹餵給 `decode_json()` 的 GeoJSON 檔案則維持不加編碼層讀取原始位元組（`decode_json` 自己會處理 UTF-8 解碼），兩種用途不能混用同一種開檔方式。
+- **`ITALY_PROJECTION` 常數同步風險**（比照法國 `FRANCE_PROJECTION` 的提醒）：`js/map.js` 這個常數數值是從 `scripts/build-italy-map.pl` 手動複製過來的，之後重跑腳本要記得手動同步更新。
+- **義大利地圖沒有大區文字標籤**：這是刻意的設計決定（見上方），不是遺漏，不要在後續工作中「順手」補上而沒有先跟使用者確認。
+- **地理資料來源記錄**：義大利大區邊界來自 `openpolis/geojson-italy`；全球國界（含義大利）來自 `martynafford/natural-earth-geojson` 的 `ne_50m_admin_0_countries.json`；河流資料與法國共用同一份 `ne_50m_rivers_lake_centerlines.json`（快取在 `scripts/.geo-cache/rivers.json`）。
+- **地圖形狀方法論差異**：法國六大區是凸包近似（因為法國省份跟葡萄酒大區概念不一致），義大利13大區是真實邊界直接使用（因為義大利行政大區跟葡萄酒大區概念一致）——兩種方法論並存於同一個網站是刻意且合理的，不是不一致，因為底層資料特性本來就不同。
+- **本機環境限制**：沒有 Node.js，`python3`／`python` 是 Windows Store 空殼（exit code 127 無法用），**真正可用的是 `awk` 與 `perl`**（Perl 內建 `JSON::PP`）。
 - **手風琴函式現況**（延續先前記錄）：全站4個各自獨立、範圍鎖定各自面板的手風琴 toggle 函式，刻意不合併成共用函式。
 - **`.ic` 卡片套色提醒**（延續先前記錄）：`.ic` 預設背景 `var(--bg-el)`，疊加在同樣背景的容器裡要另外覆蓋成 `var(--bg-card)`。
 - **國旗擴充提醒**（延續先前記錄）：新增新國家時要同步補 `COUNTRY_FLAG_CODE` 對照與 `assets/flags/{國碼}.svg`。

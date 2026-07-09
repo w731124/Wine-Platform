@@ -300,3 +300,15 @@
 96. **新增 `highlightFranceMarker(id, on)` 與 CSS `.pulse-marker.list-hover`，側邊清單項目加上 `onmouseenter`/`onmouseleave`，hover 時對應地圖圓點同步以「點擊後選取」的視覺樣式亮起（重用 `.selected` 已有的顏色變化邏輯，另立一個 class 而非直接套用 `.selected`，避免 hover 結束時誤清除使用者原本點擊選取的狀態）**。
     原因：使用者明確要求「除了列表項目本身的底色效果外，地圖上對應的圓點也要在 hover 時亮起，不用等點擊」，這是提升「側邊清單」與「地圖標記」兩者關聯性的體驗改善；用獨立的 `list-hover` class 而非重用 `selected` class 是刻意的設計決定——如果直接切換 `selected`，滑鼠移出清單項目時會清除掉使用者原本已經點擊選中的產區狀態，兩種語意（暫時性 hover 提示 vs. 持久性選取狀態）必須用不同 class 才不會互相干擾。
     驗證：headless Chrome 截圖確認波爾多群集標記彼此可辨識分散、河流正確流經對應產區；直接呼叫 `declutterPoints` 邏輯後遍歷全部標記量測得最近兩點間距 16.96px，確認碰撞避讓生效；直接呼叫 `highlightFranceMarker('condrieu', true)` 確認對應標記正確帶上 `list-hover` class；`--dump-dom` 確認頁面載入無 JS 錯誤。
+
+## 2026-07-09 義大利地圖重建：真實大區邊界、波河、20筆產區座標與編號清單
+
+97. **義大利改用真實行政大區（regioni）邊界直接繪製，不需要像法國那樣用凸包近似**：`WINE_DB.appellations` 裡義大利產區的 `region` 欄位（Piedmont、Tuscany、Veneto等13個）本身就直接對應義大利官方20個行政大區裡的其中13個，新增 `scripts/build-italy-map.pl`（省份分組來源 `openpolis/geojson-italy` 的 `limits_IT_regions.geojson`，13個大區邊界各自 decimate 至60個點），全國輪廓則取本土+西西里（`martynafford/natural-earth-geojson` 的 `ne_50m_admin_0_countries.json`，排除薩丁尼亞與小島——薩丁尼亞沒有任何產區資料點，比照法國排除科西嘉的既有先例），波河（Po）河道取自與法國共用的同一份 Natural Earth 河流資料集（快取共用，未重複下載）。
+    原因：這是使用者確認「先做義大利、義大利更單純因為 region 欄位直接對應真實行政區」後採用的技術路徑，比法國省份湊凸包更準確（直接是真實邊界而非近似形狀），且西西里納入輪廓是因為 Etna、Cerasuolo di Vittoria 兩筆產區資料點都在西西里，若比照法國排除離島會漏掉這兩個真實產區的地理位置。
+98. **20筆義大利產區座標經 Nominatim 一次性查詢，12筆精確匹配（產區即該城鎮）、8筆近似值（大區/子產區範圍取代表城鎮），皆已交使用者確認過才寫入 `data/wine-data.js`**，無低信心項目（不像法國 Hautes-Côtes 系列那樣零散丘陵無明顯地標，義大利20筆都能找到明確對應的核心城鎮）。
+    原因：延續法國 Stage 1 的方法論與「不要憑空捏造座標」的要求，本次未出現需要特別標註低信心的個案，可能是義大利葡萄酒產區普遍以特定城鎮命名（Barolo、Barbaresco、Montalcino、Manduria等）而非像法國部分次產區是純地理概念（如Hautes-Côtes上夜丘）。
+99. **義大利地圖刻意不加大區文字標籤（法國版本的六大區有文字標籤，義大利13個大區沒有）**：只用色塊區分13個大區、不疊加文字，區域名稱改為透過側邊清單分組標題呈現。
+    原因：義大利13個大區彼此緊鄰、形狀狹長（尤其中部到南部半島段特別窄），若沿用法國的做法疊加13個文字標籤，在有限的420×540 viewBox裡會嚴重互相重疊、難以辨識；側邊清單本來就會依大區分組並顯示大區名稱，文字標籤在地圖上重複呈現的邊際效益不足以抵銷造成的視覺雜訊，因此判斷省略地圖上的大區文字標籤是更好的取捨，而非單純為了省事偷工。
+100. **`js/map.js` 的 `highlightFranceMarker()`／`renderFranceMarkerList()` 重構為通用版本 `highlightMapMarker()`／`renderMarkerIndexList(list)`，法國與義大利共用同一套側邊清單產生邏輯與 hover 連動邏輯，不重複實作**：`renderFranceMarkerList()`／`renderItalyMarkerList()` 現在只是分別傳入對應國家的產區清單呼叫通用函式的薄包裝。`js/core.js` 的 `showMap(id,btn)` 新增依 `id` 切換對應側邊清單（並呼叫 `clearInspector()` 重置成清單檢視，避免切換國家分頁時殘留上一個國家已選取產區的詳情面板）。
+    原因：義大利的側邊清單需求與法國完全相同（依 `region` 分組＋編號徽章＋hover連動），在動工前就看出這是可以抽共用邏輯的重複情境，避免複製貼上兩份幾乎一樣的函式；`showMap()` 需要同步切換清單是因為側邊 `#inspector-placeholder` 是三個國家分頁共用的同一個 DOM 元素（不是各自獨立的容器），不處理的話切換到義大利分頁還會顯示法國的清單。
+    驗證：headless Chrome 截圖確認義大利分頁正確顯示13個真實大區邊界（色塊清楚可辨識、無需文字標籤）、波河正確流經北部、20個編號標記與側邊清單編號一致；直接量測全部20個標記兩兩間距，最近16.95px（barbaresco/asti），確認碰撞避讓對義大利同樣有效；直接呼叫 `selectAppellation('barolo')` 確認動態產生的義大利標記正確帶上 `selected` class；`--dump-dom` 確認頁面載入無 JS 錯誤；`data/wine-data.js` 新增20個 `coords` 欄位後大括號／中括號配對仍平衡（1075/1075、546/546）。地圖預覽（真實邊界＋波河＋20個座標點）已先發布 Artifact 供使用者確認後才整合進正式頁面。

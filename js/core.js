@@ -229,6 +229,9 @@ function showMap(id,btn){
   document.querySelectorAll('.map-tab').forEach(b=>b.classList.remove('active'));
   document.getElementById('map-'+id).classList.add('active');
   btn.classList.add('active');
+  clearInspector();
+  if (id === 'france') renderFranceMarkerList();
+  else if (id === 'italy') renderItalyMarkerList();
 }
 
 /* ════════════════════════════════════
@@ -264,6 +267,7 @@ document.addEventListener('DOMContentLoaded', function() {
   renderWineStylePanel();
   renderFranceMarkers();
   renderFranceMarkerList();
+  renderItalyMarkers();
   initMapTooltips();
   auditWineDB();
   auditCountryFlags();
