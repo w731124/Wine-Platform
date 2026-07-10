@@ -2799,6 +2799,92 @@ const WINE_DB = {
       ],
       history: '此三級制是在DOCG框架「內部」再疊加的酒莊／酒款分級，與DOCG本身（產區層級）是兩個不同維度：一瓶酒同時擁有「Chianti Classico DOCG」的產區身分，以及「Gran Selezione」的酒莊分級身分。',
       crossNote: '與波爾多1855同屬「By 酒莊」邏輯，但差異在於Gran Selezione的評選標準是客觀的自有葡萄園與陳年規範，而非1855當年主觀的市場交易價格排名。'
+    },
+    {
+      id: 'vdp-lagen',
+      country: 'Germany(德國)',
+      region: 'Nationwide(全國)',
+      name: 'VDP Lagenklassifikation(VDP單一葡萄園分級)',
+      basis: 'vineyard',
+      basisLabel: 'Vineyard(葡萄園)',
+      summary: 'VDP（德國優質酒莊協會）仿效勃根地邏輯建立的私人葡萄園分級系統，並非政府法律規定，但已成為德國葡萄酒品質的實質共識標準。',
+      tiers: [
+        { name: 'Grosse Lage(特級園)', note: '約佔會員酒莊葡萄園面積5%，對應勃根地Grand Cru，若釀成干型則標示為Grosses Gewächs(GG)。' },
+        { name: 'Erste Lage(一級園)', note: '對應勃根地Premier Cru，允許範圍較Grosse Lage寬鬆。' },
+        { name: 'Ortswein(村莊級)', note: '以村莊名稱裝瓶，對應勃根地Village。' },
+        { name: 'Gutswein(莊園基本款)', note: '酒莊自有葡萄園釀造的入門款，對應勃根地Régionale。' }
+      ],
+      history: 'VDP前身可追溯至1910年成立的德國葡萄酒拍賣協會，2012年正式確立現行四級架構，是繼勃根地之後全世界第二個完整移植「風土分級」邏輯的重要案例；因為不是政府法律，非VDP會員酒莊即使葡萄園條件相當，也無法使用Grosse Lage標示。',
+      crossNote: '與勃根地Grand Cru／Premier Cru同屬「By 葡萄園」邏輯的直接對照，但關鍵差異在於VDP是民間協會標準而非政府立法——這點反而類似波爾多1855分級最初也是民間商會評定，凸顯「法定」與「約定俗成但具公信力」兩種分級正當性來源的差異。'
+    },
+    {
+      id: 'germany-praedikatswein',
+      country: 'Germany(德國)',
+      region: 'Nationwide(全國)',
+      name: 'Prädikatswein 成熟度分級(法定甜度金字塔)',
+      basis: 'region',
+      basisLabel: 'Region(產區)',
+      summary: '德國法定四級酒款品質架構最高層，依葡萄採收時的天然糖度（Oechsle度數）由低到高分為六個等級，與「甜度」高低是兩回事——高等級只代表採收時糖分潛力高，實際成品可製成不甜(trocken)到極甜的各種風格。',
+      tiers: [
+        { name: 'Kabinett(小房酒)', note: '成熟度門檻最低，風格通常清爽淡雅。' },
+        { name: 'Spätlese(晚摘)', note: '比一般採收期晚摘，糖度與濃縮度較高。' },
+        { name: 'Auslese(精選)', note: '嚴選單串葡萄，常有貴腐影響。' },
+        { name: 'Beerenauslese(BA，逐粒精選)', note: '嚴選單顆貴腐或極熟果粒，產量極少。' },
+        { name: 'Trockenbeerenauslese(TBA，逐粒枯萄精選)', note: '嚴選幾近葡萄乾化的貴腐果粒，是最高甜度等級。' },
+        { name: 'Eiswein(冰酒)', note: '與BA同等成熟度門檻，但須在葡萄自然結凍狀態下採收壓榨，走獨立分支而非糖度線性排列。' }
+      ],
+      history: 'Prädikatswein是1971年德國葡萄酒法（Weingesetz）建立的Deutscher Wein／Landwein／Qualitätswein／Prädikatswein四級國家架構的最高一級，六個Prädikat子級距完全依採收當下的天然糖度（Oechsle）科學測量分級，是全世界少數用「客觀物理量測」而非「人為評鑑」決定等級門檻的法定分級制度。',
+      crossNote: '與義大利DOCG/DOC/IGT/VdT同屬全國性「By 產區」架構下的品質階梯，但義大利四級的核心判準是「產區規範嚴謹度」，德國六個Prädikat子級距則是「採收糖度」，兩者是完全不同的分級哲學——這也是為什麼德國Prädikatswein常被誤會為「越高級越甜」，實際上等級只反映採收糖度潛力，成品甜度另由酒標trocken(不甜)/halbtrocken(半甜)/lieblich(微甜)/süss(甜)標示決定。'
+    },
+    {
+      id: 'spain-do-pyramid',
+      country: 'Spain(西班牙)',
+      region: 'Nationwide(全國)',
+      name: 'DO／DOCa 法定產區金字塔',
+      basis: 'region',
+      basisLabel: 'Region(產區)',
+      summary: '西班牙全國性四級法定產區制度，依產區規範嚴謹度與長期品質穩定紀錄由上而下分級，DOCa是目前僅兩個產區達到的最高榮譽。',
+      tiers: [
+        { name: 'DOCa/DOQ(法定優質產區)', note: 'Denominación de Origen Calificada，目前僅Rioja（1991年）與Priorat（2003年，加泰隆尼亞語稱DOQ）達到此等級，須維持長期穩定的高品質紀錄。' },
+        { name: 'DO(法定產區)', note: 'Denominación de Origen，西班牙絕大多數知名產區所在等級，如Ribera del Duero、Rías Baixas。' },
+        { name: 'Vino de la Tierra(VdlT，地區餐酒)', note: '規範較寬鬆，類似法國Vin de Pays。' },
+        { name: 'Vino de Mesa(日常餐酒)', note: '最基礎等級，幾乎無產區與品種規範。' }
+      ],
+      history: 'DOCa等級的門檻並非單純「產區範圍規範」，而是額外要求「至少10年持續維持高於一般DO的品質水準」，因此即使Ribera del Duero、Priorat（早年）等產區聲望已相當高，仍需經過長時間觀察才能升格，是西班牙分級制度中刻意設計的「時間篩選」機制。',
+      crossNote: '與義大利DOCG/DOC/IGT/VdT、德國Deutscher Wein四級架構同屬「By 產區」邏輯的全國性金字塔，三者可互相對照理解「法定產區分級」在不同國家的共通骨架；但西班牙DOCa的「長期品質觀察期」門檻，在義大利/德國的對應等級中並無直接對應機制。'
+    },
+    {
+      id: 'rioja-aging',
+      country: 'Spain(西班牙)',
+      region: 'Rioja(里奧哈)',
+      name: 'Crianza／Reserva／Gran Reserva(陳年分級)',
+      basis: 'estate',
+      basisLabel: 'Estate(酒莊)',
+      summary: '依裝瓶前的橡木桶與瓶中陳年時間長短分級，是Rioja（以及西班牙其他DO產區普遍援用）最廣為人知的酒標分級，但嚴格來說判準是「陳年時間」而非酒莊身分或地塊——比較接近「By 酒款」的邏輯，這裡歸類在Estate僅為配合現有三分類架構的權宜安排。',
+      tiers: [
+        { name: 'Gran Reserva(特級陳釀)', note: '僅在頂尖年份釀造，最低須桶陳24個月＋瓶陳36個月，總計上市前至少陳年5年。' },
+        { name: 'Reserva(陳釀)', note: '最低須陳年3年，其中至少1年桶陳。' },
+        { name: 'Crianza(基本陳年)', note: '最低須陳年2年，其中至少1年（白酒/粉紅酒為6個月）桶陳。' },
+        { name: 'Genérico/Joven(無陳年標示/年輕酒)', note: '不受陳年時間規範，強調果香新鮮度，通常上市即飲用。' }
+      ],
+      history: '此陳年分級架構源自19世紀波爾多釀酒技術傳入Rioja後發展出的傳統，早年美國橡木桶的普遍使用也是Rioja風格區別於法國同業的重要特徵；近年部分指標酒莊（如Artadi）主動退出Rioja DOCa體系，改標示更低階的Vino de España，正是因為認為陳年時間分級無法反映其地塊風土訴求，是「By 酒款陳年時間」與「By 葡萄園風土」兩種分級哲學路線之爭的著名案例。',
+      crossNote: '與Chianti Classico的Riserva/Gran Selezione三級制看似相似（都用「陳年時間」疊加於產區之上），但關鍵差異在於Gran Selezione額外要求「須使用酒莊自有葡萄園」（因此歸類為By 酒莊具備依據），Rioja的Crianza/Reserva/Gran Reserva則完全不涉及葡萄來源限制，純粹是陳年時間門檻——這正是本表把Rioja歸類在Estate、卻特別加註「並不完美對應」的原因。'
+    },
+    {
+      id: 'portugal-doc-pyramid',
+      country: 'Portugal(葡萄牙)',
+      region: 'Nationwide(全國)',
+      name: 'DOC／Vinho Regional 法定產區金字塔',
+      basis: 'region',
+      basisLabel: 'Region(產區)',
+      summary: '葡萄牙全國性法定產區制度，架構上仿效歐盟共通的DOP/IGP兩層邏輯，Douro與Vinho Verde等知名產區皆座落於DOC層級。',
+      tiers: [
+        { name: 'DOC(法定產區)', note: 'Denominação de Origem Controlada，規範最嚴，如Douro、Vinho Verde、Dão，波特酒(Port)產區Douro同時另受獨立的分級規範。' },
+        { name: 'Vinho Regional(地區餐酒)', note: '規範較寬鬆，允許使用非傳統品種，如Vinho Regional Alentejano。' },
+        { name: 'Vinho(日常餐酒)', note: '最基礎等級，前身為Vinho de Mesa。' }
+      ],
+      history: '葡萄牙擁有超過250個原生葡萄品種，是全世界品種多樣性密度最高的產酒國之一，DOC規範中對「傳統品種」的認定範圍也因此格外複雜，這是Vinho Regional等級在葡萄牙特別活躍、常吸引指標酒莊主動選用（換取混調自由度）的重要背景。',
+      crossNote: '與義大利、西班牙、德國的全國性金字塔同屬「By 產區」邏輯，四國對照可看出歐盟DOP（受保護原產地名稱，對應DOC/DO/DOCG等）／IGP（受保護地理標示，對應Vinho Regional/IGT/VdlT等）的共通二層架構，是理解歐盟整體葡萄酒法規邏輯的最佳入門對照組。'
     }
   ],
 

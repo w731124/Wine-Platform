@@ -493,3 +493,12 @@
 153. **`data/wine-data.js` 的 `vintages.detail` 全部130筆年份的 `summary`（年份總結）與 `climate`（氣候成因）文字，依使用者要求各自擴寫約一倍字數，維持原有敘事邏輯與既有事實（分數、香氣、侍酒建議等其餘欄位不動）**：先以 Bordeaux Left Bank 2010／2005兩筆做示範定調文字風格與長度，經使用者確認「文字擴寫沒問題」後，依10個產區分組（Bordeaux Left/Right、Burgundy Red/White、Rhône North/South、Loire、Alsace、Champagne、Languedoc-Roussillon）逐筆擴寫。
      原因：使用者回報部分年份卡片文字內容單薄，希望比照現有分類邏輯（年份總結、氣候成因）各自增加約一倍字數，讓深度分析更充實；動工前用示範筆確認風格方向，避免大規模擴寫後才發現方向不符需要整批重做。
      驗證：`grep` 確認 `vintages.detail` 區塊內 `finish:` 數量與 `status:` 筆數皆為130、完全對應；用 Perl 統計全檔案大括號開合數量一致（1088/1088），確認130筆逐一手動編輯過程中沒有破壞 JSON 物件結構；headless Chrome 實際載入 `index.html` 用 `--dump-dom` 確認頁面渲染無 JS 錯誤，並截圖 Bordeaux Left Bank 2010 卡片確認擴寫後的年份總結／氣候成因文字、以及新增的餘韻長條圖（9.5/10）皆正確顯示。
+
+## 2026-07-10 分級制度新增德國／西班牙／葡萄牙共5筆法定分級制度
+
+154. **`data/wine-data.js` 的 `classifications` 陣列從7筆擴增到12筆，新增德國（VDP Lagenklassifikation／Prädikatswein成熟度分級）、西班牙（DO／DOCa全國金字塔／Rioja Crianza-Reserva-Gran Reserva陳年分級）、葡萄牙（DOC／Vinho Regional金字塔）共5筆**，補齊「分級制度」小標「舊世界法定分級制度」原本只有法國、義大利兩國兌現的落差；`js/classifications.js` 的 `CLASS_BASIS_META`（estate/vineyard/region 三個 key）不用改動，純資料層新增即可套用既有 UI。
+     原因：使用者要求擴增分級制度頁面內容，比對「產區資料庫」已有德國/西班牙/葡萄牙產區資料、但分級制度頁面完全缺席這三國的落差後，確認以「新增國家」而非「既有7筆文字加長」的方向擴充；具體清單（5筆制度＋各自 basis 分類）先提出並經使用者兩輪確認（先確認大方向、後確認清單細節）才動工，避免分類邏輯（尤其 Rioja 陳年分級要歸類哪一種 basis）方向錯誤導致重寫。
+155. **`rioja-aging`（Rioja陳年分級）刻意歸類為 `basis: 'estate'`，但在 `summary` 與 `crossNote` 誠實註記這是「三者中最不完美對應的分類」**：Crianza/Reserva/Gran Reserva 實際判準是裝瓶前的陳年時間長短，跟酒莊所有權或地塊完全無關，比較接近「By 酒款」的第四種邏輯，但現有 UI 篩選只有 estate/vineyard/region 三個按鈕，勉強塞進 estate 類別。
+     原因：與其為了讓資料「看起來乾淨」而模糊帶過分類邏輯上的落差，選擇忠實記錄這個不完美對應、讓使用者/未來讀者理解「這裡的 By 酒莊只是權宜安排」，這是動工前與使用者確認清單時就已經明講、取得同意的處理方式，非事後補救。
+156. **`Prädikatswein` 成熟度分級的 `summary` 特別澄清「等級高低不等於甜度高低」的常見誤解**：德國六個 Prädikat 子級距完全依採收時的天然糖度（Oechsle）分級，屬於「潛力」而非「成品」，成品實際甜度另由酒標 trocken/halbtrocken/lieblich/süss 標示決定，這個對照容易被誤解為單純的甜度階梯，因此在資料內容裡主動點出。
+     驗證：headless Chrome 截圖確認「分級制度」頁面新增德國／西班牙／葡萄牙三個國家分組（原本只有France/Italy兩組），共12張卡片正確依國家分組顯示；展開 `rioja-aging` 卡片確認4個陳年分級層級、歷史背景、跨區對照皆正確渲染；`--dump-dom` 確認頁面載入無 JS 錯誤；Perl 統計全檔案大括號／中括號開合數量一致（1114/1114、551/551），確認新增5筆物件結構完整無誤。
