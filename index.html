@@ -64,9 +64,15 @@
      ║  PANEL 1 — 產區資料庫 (4-Layer) ║
      ╚══════════════════════════════════╝ -->
 <div id="panel-regions" class="panel active">
-  <div class="mb-4">
-    <h1 style="font-family:'Cinzel',serif;font-size:21px;font-weight:700;color:var(--burg);margin-bottom:3px;">產區資料庫 Region Database</h1>
-    <p style="font-size:12.5px;color:var(--txt3);">四層漸進式導覽：國家 → 大產區摺疊面板 → 次產區卡片 → 底部詳情</p>
+  <div class="mb-4 flex items-start justify-between gap-4">
+    <div>
+      <h1 style="font-family:'Cinzel',serif;font-size:21px;font-weight:700;color:var(--burg);margin-bottom:3px;">產區資料庫 Region Database</h1>
+      <p style="font-size:12.5px;color:var(--txt3);">四層漸進式導覽：國家 → 大產區摺疊面板 → 次產區卡片 → 底部詳情</p>
+    </div>
+    <div style="position:relative;display:inline-block;flex-shrink:0;">
+      <span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--txt4);">🔍</span>
+      <input type="text" id="region-search" placeholder="搜尋產區名稱…" style="padding:7px 12px 7px 28px;border:1px solid var(--border);border-radius:10px;background:var(--bg-card);color:var(--txt);font-size:12.5px;outline:none;width:240px;font-family:'Inter',sans-serif;">
+    </div>
   </div>
 
   <!-- L1 filter -->
@@ -84,14 +90,6 @@
   <!-- L2 dynamic bar -->
   <div class="l2-bar mb-3" id="l2-bar">
     <div class="flex flex-wrap gap-1.5 pt-2 pb-1 pl-1" id="l2-filters"></div>
-  </div>
-
-  <!-- Search -->
-  <div class="mb-4 flex items-center gap-3">
-    <div style="position:relative;display:inline-block;">
-      <span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--txt4);">🔍</span>
-      <input type="text" id="region-search" placeholder="搜尋產區名稱…" style="padding:7px 12px 7px 28px;border:1px solid var(--border);border-radius:10px;background:var(--bg-card);color:var(--txt);font-size:12.5px;outline:none;width:240px;font-family:'Inter',sans-serif;">
-    </div>
   </div>
 
   <!-- Accordion container (L2→L3) -->
