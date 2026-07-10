@@ -90,13 +90,14 @@ function renderFranceMarkers(){
   const g = document.getElementById('france-markers');
   if (!g) return;
   const list = getFranceAppellations();
+  const { numById } = computeGroupedNumbering(list);
   const points = list.map(a => {
     const [x, y] = projectFrance(a.coords.lng, a.coords.lat);
     return { x: Number(x), y: Number(y) };
   });
   declutterPoints(points, 17, 150);
   g.innerHTML = list.map((a, i) => {
-    const num = i + 1;
+    const num = numById[a.id];
     const x = points[i].x.toFixed(1), y = points[i].y.toFixed(1);
     return `<g class="pulse-marker" data-id="${a.id}" onclick="selectAppellation('${a.id}')">
       <circle class="pulse-ring" cx="${x}" cy="${y}" r="8" fill="none" stroke="rgba(185,140,20,.5)" stroke-width="1.5"/>
@@ -111,23 +112,33 @@ function highlightMapMarker(id, on){
   const el = document.querySelector(`.pulse-marker[data-id="${id}"]`);
   if (el) el.classList.toggle('list-hover', on);
 }
+// 通用：依「大區分組後、列表由上到下顯示的順序」重新編號（而非沿用 list 在
+// WINE_DB.appellations 裡的原始資料撰寫順序），讓側邊清單的編號永遠是連續的
+// 1,2,3,4...；地圖上的標記編號也讀這份對照表，確保兩邊編號一致。
+function computeGroupedNumbering(list){
+  const groups = {}; const order = [];
+  list.forEach(a => {
+    if (!groups[a.region]) { groups[a.region] = []; order.push(a.region); }
+    groups[a.region].push(a);
+  });
+  const numById = {};
+  let n = 0;
+  order.forEach(region => { groups[region].forEach(a => { numById[a.id] = ++n; }); });
+  return { order, groups, numById };
+}
 // 通用：依「大區分組＋編號徽章」樣式產生側邊清單，寫入 #inspector-placeholder。
 function renderMarkerIndexList(list){
   const ph = document.getElementById('inspector-placeholder');
   if (!ph) return;
-  const groups = {}; const order = [];
-  list.forEach((a, i) => {
-    if (!groups[a.region]) { groups[a.region] = []; order.push(a.region); }
-    groups[a.region].push({ num: i + 1, app: a });
-  });
+  const { order, groups, numById } = computeGroupedNumbering(list);
   ph.innerHTML = `
     <p style="font-weight:600;font-size:12.5px;color:var(--burg);margin-bottom:10px;">📍 全部產區 Index（點擊列表或地圖上的編號）</p>
     ${order.map(region => `
       <div style="margin-bottom:10px;">
         <p style="font-size:10px;font-weight:700;letter-spacing:.05em;color:var(--txt4);text-transform:uppercase;margin-bottom:4px;">${region}</p>
-        ${groups[region].map(({num, app}) => `
+        ${groups[region].map(app => `
           <div class="france-idx-item" onclick="selectAppellation('${app.id}')" onmouseenter="highlightMapMarker('${app.id}',true)" onmouseleave="highlightMapMarker('${app.id}',false)" style="display:flex;align-items:center;gap:6px;padding:3px 4px;font-size:12px;color:var(--txt2);cursor:pointer;border-radius:5px;">
-            <span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:#C5A228;color:#fff;font-size:9px;font-weight:700;flex-shrink:0;">${num}</span>
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:#C5A228;color:#fff;font-size:9px;font-weight:700;flex-shrink:0;">${numById[app.id]}</span>
             <span>${app.name}</span>
           </div>`).join('')}
       </div>`).join('')}`;
@@ -157,13 +168,14 @@ function renderItalyMarkers(){
   const g = document.getElementById('italy-markers');
   if (!g) return;
   const list = getItalyAppellations();
+  const { numById } = computeGroupedNumbering(list);
   const points = list.map(a => {
     const [x, y] = projectItaly(a.coords.lng, a.coords.lat);
     return { x: Number(x), y: Number(y) };
   });
   declutterPoints(points, 17, 150);
   g.innerHTML = list.map((a, i) => {
-    const num = i + 1;
+    const num = numById[a.id];
     const x = points[i].x.toFixed(1), y = points[i].y.toFixed(1);
     return `<g class="pulse-marker" data-id="${a.id}" onclick="selectAppellation('${a.id}')">
       <circle class="pulse-ring" cx="${x}" cy="${y}" r="8" fill="none" stroke="rgba(185,140,20,.5)" stroke-width="1.5"/>
@@ -197,13 +209,14 @@ function renderIberiaMarkers(){
   const g = document.getElementById('iberia-markers');
   if (!g) return;
   const list = getIberiaAppellations();
+  const { numById } = computeGroupedNumbering(list);
   const points = list.map(a => {
     const [x, y] = projectIberia(a.coords.lng, a.coords.lat);
     return { x: Number(x), y: Number(y) };
   });
   declutterPoints(points, 17, 150);
   g.innerHTML = list.map((a, i) => {
-    const num = i + 1;
+    const num = numById[a.id];
     const x = points[i].x.toFixed(1), y = points[i].y.toFixed(1);
     return `<g class="pulse-marker" data-id="${a.id}" onclick="selectAppellation('${a.id}')">
       <circle class="pulse-ring" cx="${x}" cy="${y}" r="8" fill="none" stroke="rgba(185,140,20,.5)" stroke-width="1.5"/>
