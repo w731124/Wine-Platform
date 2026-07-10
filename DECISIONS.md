@@ -431,3 +431,6 @@
 136. **`renderFilteredRegions()` 新增門檻：只有 `curL1` 是實際某個國家（非 `all`/`old-world`/`new-world`）、或使用者已輸入搜尋關鍵字時，才渲染大產區手風琴列表；否則顯示「請先選擇上方的國家」置中提示，取代原本一進頁就列出全部/該世界所有大產區的行為**，搜尋框刻意設計成不受此門檻限制——只要有輸入關鍵字就直接跨國顯示比對結果，不強制使用者先選國家才能搜尋。
      原因：使用者回報預設「全部」按鈕會一次列出全部大產區、資訊量過大，希望改成「先選世界（全部/舊世界/新世界）→ 選國家 → 才展開該國大產區」的漸進式瀏覽，讓「全部」按鈕的定位從「攤平顯示全部資料」改成「顯示全部12國的國家清單入口」；搜尋框維持全域可用是為了不讓明確指名搜尋的使用者被迫多走一層選擇。
      驗證：headless Chrome 分別截圖「預設進頁」（僅國家清單＋提示文字，無大產區列表）、「點擊舊世界」（國家清單收斂為6個舊世界國家，仍無大產區列表）、「點擊France」（大區篩選列＋8個大產區手風琴正確展開）、「輸入pauillac搜尋」（未選國家下仍直接顯示比對到的Bordeaux）四種狀態，確認行為符合預期；另外用 `--dump-dom` 核對 L1 世界按鈕的 `active` class 在點擊後確實正確切換（screenshot 畫面色彩因截圖壓縮較難肉眼判斷，改用 DOM 屬性直接確認）。
+137. **`curL1==='all'` 時的國家清單，改成依 `world` 欄位拆成「舊世界一排、新世界一排」兩排各自置中顯示**（`renderL1CountryFilters()` 新增 `buildRow()` helper，各排用 Tailwind `flex flex-wrap justify-center`），`index.html` 對應的 `#l1-country-filters` 外層容器 class 從 `flex flex-wrap`（單排靠左）改成 `flex flex-col`（垂直堆疊兩排）；單一世界模式（已點舊世界/新世界，只有一排）同步改為置中，不再靠左對齊。
+     原因：使用者回報目前12國混在一起靠左排列不易辨識舊世界／新世界分組，且視覺上偏一側不好看，要求依世界分兩排並置中。
+     驗證：headless Chrome 截圖確認「全部」狀態下第一排為6個舊世界國家（France/Italy/Spain/Germany/Austria/Portugal）、第二排為6個新世界國家（USA/Australia/New Zealand/Argentina/Chile/South Africa），兩排皆置中對齊。

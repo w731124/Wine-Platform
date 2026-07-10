@@ -4,11 +4,18 @@ function renderL1CountryFilters(){
   if (!bar || !cont) return;
   if(curL1!=='all'&&curL1!=='old-world'&&curL1!=='new-world'){ bar.classList.remove('open'); cont.innerHTML=''; return; }
 
-  const pool = curL1==='all' ? WINE_DB.appellations : WINE_DB.appellations.filter(a=>a.world===curL1);
-  const countries=[...new Set(pool.map(a=>a.country))];
-  cont.innerHTML=countries.map(country=>
+  const buildRow=(list)=>`<div class="flex flex-wrap justify-center gap-1.5">${list.map(country=>
     `<button class="fp2 ${country===curL1?'active':''}" data-l1c="${country}">${flagIconHTML(country)} ${country}</button>`
-  ).join('');
+  ).join('')}</div>`;
+
+  if(curL1==='all'){
+    const oldWorld=[...new Set(WINE_DB.appellations.filter(a=>a.world==='old-world').map(a=>a.country))];
+    const newWorld=[...new Set(WINE_DB.appellations.filter(a=>a.world==='new-world').map(a=>a.country))];
+    cont.innerHTML=buildRow(oldWorld)+buildRow(newWorld);
+  } else {
+    const countries=[...new Set(WINE_DB.appellations.filter(a=>a.world===curL1).map(a=>a.country))];
+    cont.innerHTML=buildRow(countries);
+  }
   bar.classList.add('open');
   cont.onclick=e=>{
     const btn=e.target.closest('.fp2');if(!btn)return;
