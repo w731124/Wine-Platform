@@ -536,3 +536,14 @@
 165. **`css/style.css` 新增 `.fp-basis`（深綠 `#1A6A4A` 實心，套用在分級制度的By酒莊/葡萄園/產區篩選）與 `.fp2-region`（紫 `#7A44A8` 淺色調，套用在產區資料庫的L2大區篩選）兩個修飾用 class，`.fp2` 預設色同步從淺酒紅改為藍 `#3A6EA8`（國家篩選，含產區資料庫L1國家列與分級制度國家列，兩者原本就共用 `.fp2` 不用額外加class）**：`js/regions.js` 的 `renderL2Bar()` 按鈕新增 `fp2-region` class，`index.html` 分級制度的4個By篩選按鈕新增 `fp-basis` class。
      原因：使用者觀察到3個分頁的不同篩選功能按鈕群沒有統一的顏色邏輯，要求依性質分類配色；顏色選用沿用網站既有的雷達圖/標籤色系（藍、紫、深綠皆為先前已使用過的既有色碼），不新增品牌鎖定色以外的新顏色。
      驗證：headless Chrome 截圖確認產區資料庫「舊世界」（酒紅）→「France(法國)」（藍，國家層級）→「全部大區」（紫，大區層級）三層顏色層次分明；分級制度「By Estate(酒莊)」啟用時正確顯示深綠實心，與頂部國家按鈕列的藍色調清楚區隔。
+
+## 2026-07-10 修正年份矩陣稽核誤判 cote-chalonnaise／maconnais 未綁定的問題
+
+166. **`js/core.js` 的 `auditWineDB()` 內 `vintageKeywords` 對照表，`burgundy-red` 補上 `Côte Chalonnaise`／`夏隆內丘`、`burgundy-white` 補上 `Mâconnais`／`馬貢內` 關鍵字**：這兩個既有勃根地次產區（Côte Chalonnaise、Mâconnais）先前因關鍵字清單沒涵蓋其 `subRegion` 名稱，被稽核誤判為「未綁定年份矩陣」，但地理上兩者皆屬勃根地同一氣候帶，實際已由 `burgundy-red`／`burgundy-white` 兩列年份資料涵蓋，純粹是關鍵字比對遺漏、非真的缺少年份資料。
+     原因：使用者直接指出這是既有稽核關鍵字清單的遺漏，提供明確的修改前/後對照內容；動工前依使用者要求先用 `view` 核對現況與描述一致，確認無誤後才套用，純字串陣列擴充、不涉及資料本身或其他檔案。
+
+## 2026-07-10 年份矩陣新增波爾多／勃根地／隆河分組標題列
+
+167. **`js/vintage.js` 的 `buildVintageMatrix()` 新增 `vmGroupHeaders` 對照表與插入邏輯，在 `bordeaux-left`／`burgundy-red`／`rhone-north` 三列前各自插入一列跨欄（`colspan` 動態計算涵蓋目前展開狀態下的總欄數）的純視覺分組標題（波爾多/勃根地/隆河），其餘4個獨立產區（Loire/Alsace/Champagne/Languedoc-Roussillon）不強加分組**：`css/style.css` 新增 `.vm-region-group-hdr`（Cinzel serif、11px、酒紅字、`var(--bg-sub)` 底色置左），與既有可點擊的年份區間表頭 `.vm-group-hdr`（hover/open 會有酒紅暈染）視覺語言一致但更低調、不可點擊，避免使用者誤以為這兩種標題都能互動。
+     原因：使用者要求在波爾多/勃根地/隆河各自的左右岸或南北隆河兩列之間，用分組標題視覺上把同一大產區的兩列連結在一起，方便瀏覽；動工前依使用者提供的精確程式碼片段核對現有 `buildVintageMatrix()` 內容一致後才套用，`totalCols` 計算沿用既有 `groups`／`vmOpenGroup` 邏輯確保收合／展開狀態下 `colspan` 都正確涵蓋整列。
+     驗證：headless Chrome 截圖確認預設全部收合狀態下3個分組標題正確顯示在對應列前、跨欄寬度涵蓋整個表格；額外展開「2011–2015」年份組後重新截圖，確認分組標題的 `colspan` 隨欄數增加同步正確調整，未出現跑版或欄位錯位。

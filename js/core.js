@@ -57,8 +57,8 @@ function auditWineDB(){
   const vintageKeywords = {
     'bordeaux-left': ['Left Bank','Médoc','左岸','Pauillac','Margaux'],
     'bordeaux-right': ['Right Bank','右岸','Saint-Émilion','Pomerol'],
-    'burgundy-red': ['Côte de Nuits','夜丘'],
-    'burgundy-white': ['Côte de Beaune','Chablis','伯恩丘','夏布利'],
+    'burgundy-red': ['Côte de Nuits','夜丘','Côte Chalonnaise','夏隆內丘'],
+    'burgundy-white': ['Côte de Beaune','Chablis','伯恩丘','夏布利','Mâconnais','馬貢內'],
     'rhone-north': ['Northern Rhône','北隆河','Hermitage'],
     'rhone-south': ['Southern Rhône','南隆河','Châteauneuf'],
     'loire': ['Loire','羅亞爾','Muscadet','Vouvray','Sancerre'],
