@@ -73,12 +73,13 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-s
 /* ── Tags ── */
 .tg{display:inline-flex;align-items:center;border-radius:20px;font-size:10.5px;padding:2px 8px;font-weight:500;white-space:nowrap}
 .tg-grape{background:rgba(42,122,88,.08);border:1px solid rgba(42,122,88,.22);color:var(--em)}
-.tg-reg{background:rgba(197,168,128,.12);border:1px solid rgba(197,168,128,.35);color:var(--gold-dk)}
+.tg-reg{background:rgba(122,68,168,.08);border:1px solid rgba(122,68,168,.25);color:#7A44A8}
+.tg-trait{background:rgba(122,13,38,.07);border:1px solid rgba(122,13,38,.2);color:var(--burg-mid)}
 .tg-co{background:rgba(92,6,28,.07);border:1px solid rgba(92,6,28,.18);color:var(--burg)}
-.tg-nw{background:rgba(42,122,88,.07);border:1px solid rgba(42,122,88,.2);color:var(--em)}
-.tg-aroma{background:rgba(197,168,128,.10);border:1px solid rgba(197,168,128,.25);color:var(--gold-dk);font-size:10px;padding:1.5px 7px}
-.tg-food{background:rgba(42,122,88,.07);border:1px solid rgba(42,122,88,.18);color:var(--em);font-size:10px;padding:1.5px 7px}
-.tg-match{background:rgba(92,6,28,.07);border:1px solid rgba(92,6,28,.18);color:var(--burg);font-size:11px;padding:3px 10px}
+.tg-nw{background:rgba(58,110,168,.07);border:1px solid rgba(58,110,168,.2);color:#3A6EA8}
+.tg-aroma{background:rgba(168,74,122,.08);border:1px solid rgba(168,74,122,.25);color:#A84A7A;font-size:10px;padding:1.5px 7px}
+.tg-food{background:rgba(26,106,74,.08);border:1px solid rgba(26,106,74,.22);color:#1A6A4A;font-size:10px;padding:1.5px 7px}
+.tg-match{background:rgba(155,26,53,.07);border:1px solid rgba(155,26,53,.2);color:var(--burg-lt);font-size:11px;padding:3px 10px}
 
 /* ── Bottom Drawer (L4) ── */
 .drawer-ov{position:fixed;inset:0;background:rgba(28,25,23,.42);z-index:199;opacity:0;transition:opacity .3s;pointer-events:none}

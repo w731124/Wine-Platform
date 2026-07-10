@@ -157,7 +157,7 @@ function openDrawer(app){
   const worldTag=app.world==='old-world'
     ?`<span class="tg tg-co">${flagIconHTML(app.country,16)} ${app.country}</span>`
     :`<span class="tg tg-nw">${flagIconHTML(app.country,16)} ${app.country}</span>`;
-  const kiH=(app.keyIdentifiers||[]).map(k=>`<span class="tg tg-reg">${k}</span>`).join(' ');
+  const kiH=(app.keyIdentifiers||[]).map(k=>`<span class="tg tg-trait">${k}</span>`).join(' ');
   const foodH=(app.foodPairingTags||[]).map(f=>`<span class="tg tg-food">${f}</span>`).join(' ');
   const estH=(app.famousEstates||[]).map(e=>`<li style="font-size:11.5px;padding:1.5px 0;color:var(--txt2);">• ${e}</li>`).join('');
   const dims=[{k:'acidity',l:'酸度',c:'#3A6EA8'},{k:'tannin',l:'單寧',c:'#5C061C'},{k:'body',l:'酒體',c:'#A88A60'},{k:'alcohol',l:'酒精',c:'#7A44A8'},{k:'finish',l:'餘韻',c:'#2A7A58'},{k:'aging',l:'陳年潛力',c:'#1A6A4A'},{k:'floral',l:'花香/草本',c:'#A84A7A'}];
