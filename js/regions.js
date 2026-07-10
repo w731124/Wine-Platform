@@ -35,7 +35,7 @@ function renderL2Bar(){
   if(curL1==='all'||curL1==='old-world'||curL1==='new-world'){bar.classList.remove('open');cont.innerHTML='';return;}
   const regions=[...new Set(WINE_DB.appellations.filter(a=>a.country===curL1).map(a=>a.region))];
   const cfg=[{val:'all-regions',label:'全部大區'}, ...regions.map(r=>({val:r,label:r}))];
-  cont.innerHTML=cfg.map(i=>`<button class="fp2 ${i.val===curL2?'active':''}" data-l2="${i.val}">${i.label}</button>`).join('');
+  cont.innerHTML=cfg.map(i=>`<button class="fp2 fp2-region ${i.val===curL2?'active':''}" data-l2="${i.val}">${i.label}</button>`).join('');
   bar.classList.add('open');
   cont.onclick=e=>{
     const btn=e.target.closest('.fp2');if(!btn)return;

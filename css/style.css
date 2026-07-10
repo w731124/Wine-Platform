@@ -44,13 +44,15 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-s
 .fp{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;color:var(--txt3);font-size:12px;padding:5px 13px;cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif;white-space:nowrap}
 .fp:hover{border-color:var(--gold-dk);color:var(--txt)}
 .fp.active{background:var(--burg);border-color:var(--burg);color:#fff;font-weight:500}
+.fp-basis.active{background:#1A6A4A;border-color:#1A6A4A;color:#fff;font-weight:500}
 
 /* ── L2 slide bar ── */
 .l2-bar{overflow:hidden;transition:max-height .3s ease,opacity .3s ease;max-height:0;opacity:0}
 .l2-bar.open{max-height:70px;opacity:1}
 .fp2{background:var(--bg-el);border:1px solid var(--border-lt);border-radius:16px;color:var(--txt3);font-size:11.5px;padding:4px 12px;cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif;white-space:nowrap}
 .fp2:hover{border-color:var(--gold-dk);color:var(--txt)}
-.fp2.active{background:rgba(92,6,28,.08);border-color:var(--burg-lt);color:var(--burg);font-weight:600}
+.fp2.active{background:rgba(58,110,168,.10);border-color:#3A6EA8;color:#3A6EA8;font-weight:600}
+.fp2-region.active{background:rgba(122,68,168,.10);border-color:#7A44A8;color:#7A44A8;font-weight:600}
 
 /* ── Accordion ── */
 .acc-wrap{border:1px solid var(--border-lt);border-radius:14px;overflow:hidden;box-shadow:var(--sh);margin-bottom:14px}
