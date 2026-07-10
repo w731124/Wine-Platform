@@ -2,7 +2,8 @@
    CLASSIFICATION SYSTEMS PANEL
 ════════════════════════════════════ */
 let curClassBasis = 'all';
-let curClassCountry = null; // null = 尚未選定國家，不顯示卡片
+let curClassCountry = null; // null = 尚未選定國家
+let classInteracted = false; // 是否已經點過任一篩選（國家或By類型），尚未點擊前不顯示卡片
 
 const CLASS_BASIS_META = {
   estate: { icon: '🏰', label: 'Estate(酒莊)' },
@@ -23,12 +24,26 @@ function renderClassCountryFilters() {
     cont.querySelectorAll('.fp2').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     curClassCountry = btn.dataset.classCountry;
+    classInteracted = true;
+    // 國家與 By 分類是各自獨立的篩選模式，點國家後 By 篩選重設為「全部」
+    curClassBasis = 'all';
+    const basisWrap = document.getElementById('class-basis-filters');
+    if (basisWrap) {
+      basisWrap.querySelectorAll('.fp').forEach(b => b.classList.remove('active'));
+      const allBtn = basisWrap.querySelector('.fp');
+      if (allBtn) allBtn.classList.add('active');
+    }
     renderClassificationPanel();
   };
 }
 
 function setClassBasisFilter(basis, btn) {
   curClassBasis = basis;
+  classInteracted = true;
+  // 國家與 By 分類是各自獨立的篩選模式，點 By 篩選後國家選擇重設
+  curClassCountry = null;
+  const countryWrap = document.getElementById('class-country-filters');
+  if (countryWrap) countryWrap.querySelectorAll('.fp2').forEach(b => b.classList.remove('active'));
   const wrap = document.getElementById('class-basis-filters');
   if (wrap) wrap.querySelectorAll('.fp').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
@@ -39,12 +54,14 @@ function renderClassificationPanel() {
   const cont = document.getElementById('classification-container');
   if (!cont) return;
 
-  if (!curClassCountry) {
-    cont.innerHTML = '<div style="text-align:center;padding:64px 0;"><p style="font-size:32px;margin-bottom:12px;">🎖️</p><p style="font-size:13px;color:var(--txt3);">請先選擇上方的國家，即可瀏覽該國法定分級制度</p></div>';
+  if (!classInteracted) {
+    cont.innerHTML = '<div style="text-align:center;padding:64px 0;"><p style="font-size:32px;margin-bottom:12px;">🎖️</p><p style="font-size:13px;color:var(--txt3);">請先選擇上方的國家，或直接選擇分級邏輯（By 酒莊／葡萄園／產區）</p></div>';
     return;
   }
 
-  const list = (WINE_DB.classifications || []).filter(c => c.country === curClassCountry && (curClassBasis === 'all' || c.basis === curClassBasis));
+  const list = curClassCountry
+    ? (WINE_DB.classifications || []).filter(c => c.country === curClassCountry)
+    : (WINE_DB.classifications || []).filter(c => curClassBasis === 'all' || c.basis === curClassBasis);
 
   const groups = {};
   list.forEach(c => {
