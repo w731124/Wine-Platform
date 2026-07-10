@@ -1,9 +1,13 @@
 {
   "permissions": {
+    "defaultMode": "auto",
     "allow": [
-      "Bash(git push *)",
       "Bash(git fetch *)",
       "Bash(git pull *)"
+    ],
+    "deny": [
+      "Bash(git push *)",
+      "Bash(rm -rf *)"
     ]
   }
 }
