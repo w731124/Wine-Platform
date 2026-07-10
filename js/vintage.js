@@ -2,28 +2,51 @@
    VINTAGE MATRIX
 ════════════════════════════════════ */
 const stMap={l:'vs-l',o:'vs-o',e:'vs-e',g:'vs-g',a:'vs-a',p:'vs-p'};
+let vmOpenGroup = null; // null = 全部收合；否則為展開中的年份組別 index
+
+function toggleVMGroup(gi){
+  vmOpenGroup = (vmOpenGroup===gi) ? null : gi;
+  buildVintageMatrix();
+}
+
 function buildVintageMatrix(){
-  const years=Array.from({length:26},(_,i)=>2000+i);
-  
+  const years=Array.from({length:25},(_,i)=>2001+i); // 2001–2025，2000年資料不再顯示
+  const GROUP_SIZE = 5;
+  const groups = [];
+  for (let i=0;i<years.length;i+=GROUP_SIZE) groups.push(years.slice(i,i+GROUP_SIZE));
+
   const thead = document.getElementById('vm-thead');
+  const thead2 = document.getElementById('vm-thead2');
   if (thead) {
-    thead.innerHTML = '<th class="rh">產區 Region</th>' + years.map(y=>`<th>${String(y).slice(2)}</th>`).join('');
+    thead.innerHTML = '<th class="rh" rowspan="2">產區 Region</th>' + groups.map((g,gi)=>{
+      const isOpen = gi===vmOpenGroup;
+      return `<th colspan="${isOpen?g.length:1}" class="vm-group-hdr ${isOpen?'open':''}" onclick="toggleVMGroup(${gi})">${g[0]}–${g[g.length-1]} ${isOpen?'▾':'▸'}</th>`;
+    }).join('');
   }
-  
+  if (thead2) {
+    thead2.innerHTML = groups.map((g,gi)=> gi===vmOpenGroup ? g.map(y=>`<th>${String(y).slice(2)}</th>`).join('') : '').join('');
+  }
+
   const tb = document.getElementById('vm-tbody');
   if (tb) {
     tb.innerHTML = '';
     WINE_DB.vintages.rows.forEach(row=>{
-      const sc = WINE_DB.vintages.scores[row.id] || [];
+      const sc = (WINE_DB.vintages.scores[row.id] || []).slice(1); // 對齊拿掉2000年後的年份陣列
       const tr = document.createElement('tr');
-      
-      const cells = years.map((y,i)=>{
-        const d = sc[i] || {s:0,st:'x'};
-        if(!d.s) return `<td><div class="vc" style="background:transparent;border:1px dashed var(--border-lt);"><span class="sc" style="color:var(--txt4);font-size:10px;">—</span></div></td>`;
-        const cls = stMap[d.st] || 'vs-a';
-        return `<td><div class="vc ${cls}" onclick="openVMI('${row.id}','${y}',${d.s},'${d.st}')"><span class="sc">${d.s}</span></div></td>`;
+
+      const cells = groups.map((g,gi)=>{
+        if (gi!==vmOpenGroup) {
+          return `<td class="vm-collapsed-cell" onclick="toggleVMGroup(${gi})"><span style="font-size:10px;">⋯</span></td>`;
+        }
+        return g.map(y=>{
+          const idx = years.indexOf(y);
+          const d = sc[idx] || {s:0,st:'x'};
+          if(!d.s) return `<td><div class="vc" style="background:transparent;border:1px dashed var(--border-lt);"><span class="sc" style="color:var(--txt4);font-size:10px;">—</span></div></td>`;
+          const cls = stMap[d.st] || 'vs-a';
+          return `<td><div class="vc ${cls}" onclick="openVMI('${row.id}','${y}',${d.s},'${d.st}')"><span class="sc">${d.s}</span></div></td>`;
+        }).join('');
       }).join('');
-      
+
       tr.innerHTML = `<td class="rl"><div>${row.label}</div><div class="sub">${row.sublabel}</div></td>` + cells;
       tb.appendChild(tr);
     });

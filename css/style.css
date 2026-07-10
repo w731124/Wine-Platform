@@ -93,7 +93,12 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-s
 
 /* ── Vintage matrix ── */
 .vm-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.vm-tbl{border-collapse:separate;border-spacing:0;min-width:1040px;width:100%}
+.vm-tbl{border-collapse:separate;border-spacing:0;width:100%}
+.vm-group-hdr{cursor:pointer;transition:background .15s}
+.vm-group-hdr:hover{background:rgba(92,6,28,.06)}
+.vm-group-hdr.open{background:rgba(92,6,28,.08);color:var(--burg)}
+.vm-collapsed-cell{cursor:pointer;color:var(--txt4);transition:background .15s}
+.vm-collapsed-cell:hover{background:rgba(92,6,28,.04)}
 .vm-tbl th{font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--txt3);padding:9px 3px;background:var(--bg-el);border-bottom:2px solid var(--border);white-space:nowrap;text-align:center;position:sticky;top:0;z-index:2}
 .vm-tbl th.rh{text-align:left;min-width:188px;position:sticky;left:0;z-index:3;padding-left:12px}
 .vm-tbl td{padding:2.5px;border-bottom:1px solid var(--border-lt);text-align:center}
