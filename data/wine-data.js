@@ -2692,16 +2692,16 @@ const WINE_DB = {
       name: '1855 Cru Classé(1855年分級制度)',
       basis: 'estate',
       basisLabel: 'Estate(酒莊)',
-      summary: '拿破崙三世為1855年巴黎世界博覽會下令制定，依酒莊當時的交易價格排名，一次性評定、極少更動，是波爾多左岸最具代表性的酒莊分級。',
+      summary: '拿破崙三世為1855年巴黎世界博覽會下令制定，委託波爾多商會依酒莊當時的市場交易價格排名，是史上第一個具官方色彩的酒莊分級，一次性評定、極少更動，至今仍是波爾多左岸最具代表性、國際辨識度最高的酒莊分級系統。',
       tiers: [
         { name: 'Premier Cru(一級酒莊)', note: '僅5家：Lafite、Latour、Margaux、Haut-Brion，以及1973年由二級升格的Mouton Rothschild——這是1855年至今唯一一次正式調整。' },
-        { name: 'Deuxième Cru(二級酒莊)', note: '14家，多集中於Margaux與Saint-Julien。' },
-        { name: 'Troisième Cru(三級酒莊)', note: '14家。' },
-        { name: 'Quatrième Cru(四級酒莊)', note: '10家。' },
+        { name: 'Deuxième Cru(二級酒莊)', note: '14家，多集中於Margaux與Saint-Julien，包含Château Léoville Las Cases、Château Cos d Estournel等常年表現逼近一級的名莊。' },
+        { name: 'Troisième Cru(三級酒莊)', note: '14家，包含Château Palmer等近年評價明顯高於官方排名、被視為「事實上一級」的酒莊。' },
+        { name: 'Quatrième Cru(四級酒莊)', note: '10家，包含Château Beychevelle、Château Lafon-Rochet等。' },
         { name: 'Cinquième Cru(五級酒莊)', note: '18家，包含近年表現常超越排名的Château Lynch-Bages等。' }
       ],
-      history: '評選對象僅限Médoc（左岸）紅酒與Sauternes/Barsac貴腐甜白，Saint-Émilion與Pomerol當年並未納入，因此波爾多右岸至今仍無1855體系下的分級。Sauternes/Barsac同年另訂獨立的3級甜酒分級（Premier Cru Supérieur僅Château d\'Yquem一家、Premier Cru、Deuxième Cru），與Médoc系統平行但不互通。',
-      crossNote: '分級掛在「酒莊」這個法人實體上，即使酒莊日後賣掉部分葡萄園、甚至完全換了地塊，原本的等級仍會跟著酒莊名稱走——這是與勃根地「分級掛在土地上」最根本的邏輯差異。'
+      history: '評選對象僅限Médoc（左岸）紅酒與Sauternes/Barsac貴腐甜白，Saint-Émilion與Pomerol當年並未納入，因此波爾多右岸至今仍無1855體系下的分級，這也是右岸酒莊必須另外仰賴Saint-Émilion Classification等獨立制度的根本原因。Sauternes/Barsac同年另訂獨立的3級甜酒分級（Premier Cru Supérieur僅Château d\'Yquem一家、Premier Cru、Deuxième Cru），與Médoc系統平行但不互通，兩套系統等級名稱雖然相同，實際評選對象與標準卻完全獨立。',
+      crossNote: '分級掛在「酒莊」這個法人實體上，即使酒莊日後賣掉部分葡萄園、甚至完全換了地塊，原本的等級仍會跟著酒莊名稱走——這是與勃根地「分級掛在土地上」最根本的邏輯差異，也解釋了為什麼波爾多酒莊熱衷於購地擴張（等級不受影響），而勃根地酒農即使聲望再高，也無法讓新購入的地塊借用原有葡萄園的特級園身分。'
     },
     {
       id: 'saint-emilion',
@@ -2710,14 +2710,14 @@ const WINE_DB = {
       name: 'Saint-Émilion Classification(聖艾米濃分級)',
       basis: 'estate',
       basisLabel: 'Estate(酒莊)',
-      summary: '1955年才制定，與1855體系互不隸屬，最大特色是明訂每10年依品質重新評選一次，酒莊有可能被降級或除名。',
+      summary: '1955年才制定，與1855體系互不隸屬、評選範圍也不重疊（僅限右岸聖艾米濃），最大特色是明訂每10年依品質重新評選一次，酒莊有可能被降級或除名，是波爾多兩大分級系統中唯一具備「動態淘汰」機制的一套。',
       tiers: [
-        { name: 'Premier Grand Cru Classé A(特級酒莊A)', note: '最高等級，目前僅4家，包含Château Angélus、Château Pavie等。' },
-        { name: 'Premier Grand Cru Classé B(特級酒莊B)', note: '約14家。' },
-        { name: 'Grand Cru Classé(特級酒莊)', note: '約85家。' }
+        { name: 'Premier Grand Cru Classé A(特級酒莊A)', note: '最高等級，目前4家，包含Château Angélus、Château Pavie等，2012年評選後從原本僅2家（Château Ausone、Château Cheval Blanc）擴增至4家。' },
+        { name: 'Premier Grand Cru Classé B(特級酒莊B)', note: '約14家，包含Château Canon、Château Figeac等，是A級的主要後備名單。' },
+        { name: 'Grand Cru Classé(特級酒莊)', note: '約85家，涵蓋聖艾米濃絕大多數具一定聲望的酒莊。' }
       ],
-      history: '2006年與2012年的重新評選都曾引發酒莊提告法院、要求撤銷結果的爭議事件，凸顯「定期複評」制度雖然立意在於維持品質動態淘汰，但實務執行上牽涉龐大商業利益，是波爾多分級史上最具爭議的一段。',
-      crossNote: '與1855體系同樣是「酒莊分級」，但「每10年重新評選」與1855「一次性、幾乎不變動」形成鮮明對比，可作為同一種分級邏輯（By 酒莊）下兩種截然不同治理哲學的對照範例。'
+      history: '2006年與2012年的重新評選都曾引發酒莊提告法院、要求撤銷結果的爭議事件——2006年評選甚至一度遭法院裁定結果無效、暫時恢復1996年舊名單，凸顯「定期複評」制度雖然立意在於維持品質動態淘汰，但實務執行上牽涉龐大商業利益與莊園身價，是波爾多分級史上最具爭議的一段歷史。',
+      crossNote: '與1855體系同樣是「酒莊分級」，但「每10年重新評選」與1855「一次性、幾乎不變動」形成鮮明對比，可作為同一種分級邏輯（By 酒莊）下兩種截然不同治理哲學的對照範例——1855用「凍結歷史排名」換取穩定性與可預期性，聖艾米濃則用「定期複評」換取品質代表性，兩者各有支持者與批評者。'
     },
     {
       id: 'burgundy-cru',
@@ -2726,15 +2726,15 @@ const WINE_DB = {
       name: 'Grand Cru / Premier Cru(特級園／一級園)',
       basis: 'vineyard',
       basisLabel: 'Vineyard(葡萄園)',
-      summary: '分級掛在葡萄園地塊（climat）本身，而非酒莊或生產者，同一片Grand Cru葡萄園常由數十位不同的家族酒農分別持有其中幾排葡萄藤。',
+      summary: '分級掛在葡萄園地塊（climat）本身，而非酒莊或生產者，同一片Grand Cru葡萄園常由數十位不同的家族酒農分別持有其中幾排葡萄藤，是全世界地塊分割最細碎、也最徹底體現「風土優先於人」精神的分級系統。',
       tiers: [
-        { name: 'Grand Cru(特級園)', note: '僅約33個地塊，佔勃根地總產量約1–2%，如Romanée-Conti、Montrachet。' },
-        { name: 'Premier Cru(一級園)', note: '約640個地塊，佔比約10%。' },
-        { name: 'Village(村莊級)', note: '以村莊名稱裝瓶，如Gevrey-Chambertin，佔比約37%。' },
-        { name: 'Régionale(大區級)', note: '標示Bourgogne等大區名稱，佔比過半，約半數以上產量。' }
+        { name: 'Grand Cru(特級園)', note: '僅約33個地塊，佔勃根地總產量約1–2%，如Romanée-Conti、Montrachet，部分地塊（如La Romanée）面積不到1公頃，是全世界單位面積酒價最高的葡萄園之一。' },
+        { name: 'Premier Cru(一級園)', note: '約640個地塊，佔比約10%，同一村莊內不同一級園之間的價格與風格差異可能極大。' },
+        { name: 'Village(村莊級)', note: '以村莊名稱裝瓶，如Gevrey-Chambertin，佔比約37%，部分村莊為借用鄰近知名特級園聲望，會在村名後加註園名。' },
+        { name: 'Régionale(大區級)', note: '標示Bourgogne等大區名稱，佔比過半，是勃根地入門酒款的主力來源。' }
       ],
-      history: '此分級架構源自中世紀熙篤會（Cistercian）修士數百年間對不同地塊土壤、排水與日照差異的細膩觀察與紀錄，1936年由法國AOC制度正式法律化，是全世界「風土決定品質」（terroir）概念最極致的體現。',
-      crossNote: '與波爾多「By 酒莊」邏輯相反：同一位生產者可能同時擁有Grand Cru、Premier Cru與Village等級的地塊，同一年份不同等級的酒款品質落差主要來自土地而非釀酒師技術，這也是理解「By 葡萄園」分級的關鍵。'
+      history: '此分級架構源自中世紀熙篤會（Cistercian）修士數百年間對不同地塊土壤、排水與日照差異的細膩觀察與紀錄，1936年由法國AOC制度正式法律化，是全世界「風土決定品質」（terroir）概念最極致的體現；1789年法國大革命後教會與貴族地產被強制分割拍賣、加上拿破崙法典規定遺產須諸子均分，是造成今日地塊持有極度細碎化的兩大歷史推手。',
+      crossNote: '與波爾多「By 酒莊」邏輯相反：同一位生產者可能同時擁有Grand Cru、Premier Cru與Village等級的地塊，同一年份不同等級的酒款品質落差主要來自土地而非釀酒師技術，這也是理解「By 葡萄園」分級的關鍵——品飲勃根地時，「誰種的」與「種在哪」同樣重要，甚至後者往往更受行家重視。'
     },
     {
       id: 'champagne-echelle',
@@ -2743,14 +2743,14 @@ const WINE_DB = {
       name: 'Échelle des Crus(村莊分級制)',
       basis: 'region',
       basisLabel: 'Region(產區／村莊)',
-      summary: '以「村莊」為分級單位而非單一葡萄園或酒莊，源自20世紀初用來決定葡萄收購價格的百分比評級表。',
+      summary: '以「村莊」為分級單位而非單一葡萄園或酒莊，源自20世紀初用來決定葡萄收購價格的百分比評級表，是香檳區獨有、介於「產區」與「葡萄園」之間的中尺度分級邏輯。',
       tiers: [
-        { name: 'Grand Cru(特級村)', note: '17個村莊，歷史評級為100%，多集中於Montagne de Reims與Côte des Blancs。' },
-        { name: 'Premier Cru(一級村)', note: '約42個村莊，評級介於90–99%。' },
-        { name: 'Cru(其餘村莊)', note: '香檳區其餘約260個村莊，評級低於90%。' }
+        { name: 'Grand Cru(特級村)', note: '17個村莊，歷史評級為100%，多集中於Montagne de Reims與Côte des Blancs，如Aÿ、Bouzy、Cramant等指標性村莊皆在其列。' },
+        { name: 'Premier Cru(一級村)', note: '約42個村莊，評級介於90–99%，是香檳區產量與品質兼具的中堅力量。' },
+        { name: 'Cru(其餘村莊)', note: '香檳區其餘約260個村莊，評級低於90%，仍可能出產優質香檳，僅代表歷史訂價評級較低。' }
       ],
-      history: '官方的百分比訂價機制已於2010年正式廢止（改由市場自由議價），但Grand Cru／Premier Cru的村莊名聲分級至今仍普遍印在酒標與業界論述中，實質上已從「訂價工具」轉型為「行銷與品質參考標籤」。',
-      crossNote: '與義大利DOCG同屬「By 產區」邏輯：分級對象是一整個地理範圍（村莊／法定產區），而非個別酒莊或個別葡萄園，範圍內所有符合規範的生產者共享同一等級標示。'
+      history: '官方的百分比訂價機制已於2010年正式廢止（改由市場自由議價），但Grand Cru／Premier Cru的村莊名聲分級至今仍普遍印在酒標與業界論述中，實質上已從「訂價工具」轉型為「行銷與品質參考標籤」；近年興起的「單一園香檳」與「小農香檳」浪潮，某種程度上正是對這套「以村莊而非地塊」評級邏輯過於粗略的反動。',
+      crossNote: '與義大利DOCG同屬「By 產區」邏輯：分級對象是一整個地理範圍（村莊／法定產區），而非個別酒莊或個別葡萄園，範圍內所有符合規範的生產者共享同一等級標示——但香檳的「村莊」尺度遠小於DOCG的「產區」尺度，介於勃根地「葡萄園」與傳統「產區」概念的中間地帶，是三種By分類尺度大小的絕佳對照案例。'
     },
     {
       id: 'italy-docg-pyramid',
@@ -2759,15 +2759,15 @@ const WINE_DB = {
       name: 'DOCG / DOC / IGT / VdT(法定產區品質金字塔)',
       basis: 'region',
       basisLabel: 'Region(產區)',
-      summary: '義大利全國性的四級法定產區制度，依「產區範圍的規範嚴謹度」（允許品種、產量上限、陳年規定、官方品鑑）由上而下分級，是理解義大利酒標的基礎骨架。',
+      summary: '義大利全國性的四級法定產區制度，依「產區範圍的規範嚴謹度」（允許品種、產量上限、陳年規定、官方品鑑）由上而下分級，是理解義大利酒標的基礎骨架，全國目前已有超過400個DOC與逾70個DOCG。',
       tiers: [
-        { name: 'DOCG(法定保證產區)', note: 'Denominazione di Origine Controllata e Garantita，規範最嚴、需通過政府官方品鑑並加封政府擔保封條，如Barolo、Chianti Classico、Brunello di Montalcino。' },
-        { name: 'DOC(法定產區)', note: 'Denominazione di Origine Controllata，規範品種與產區範圍但無強制官方品鑑，數量遠多於DOCG。' },
-        { name: 'IGT(地理標示產區)', note: 'Indicazione Geografica Tipica，1992年新增，規範較寬鬆、允許使用非傳統品種或混調比例。' },
-        { name: 'VdT(日常餐酒)', note: 'Vino da Tavola，最基礎等級，幾乎無產區與品種規範。' }
+        { name: 'DOCG(法定保證產區)', note: 'Denominazione di Origine Controllata e Garantita，規範最嚴、需通過政府官方品鑑並加封政府擔保封條（瓶頸貼紙），如Barolo、Chianti Classico、Brunello di Montalcino。' },
+        { name: 'DOC(法定產區)', note: 'Denominazione di Origine Controllata，規範品種與產區範圍但無強制官方品鑑，數量遠多於DOCG，是義大利法定產區的主體。' },
+        { name: 'IGT(地理標示產區)', note: 'Indicazione Geografica Tipica，1992年新增，規範較寬鬆、允許使用非傳統品種或混調比例，Super Tuscan等指標酒款多選擇留在此等級而非升格DOC/DOCG。' },
+        { name: 'VdT(日常餐酒)', note: 'Vino da Tavola，最基礎等級，幾乎無產區與品種規範，僅標示「義大利葡萄酒」。' }
       ],
-      history: '著名的「Super Tuscan悖論」：1970至80年代部分托斯卡尼酒莊（如Sassicaia、Tignanello）因使用Cabernet Sauvignon等國際品種、不符合當時Chianti DOC的傳統混調規定，只能被迫標示為最低階的VdT——但品質與價格卻是全義大利頂尖，直接促成1992年IGT等級的誕生，用以收編這類「規則外的優秀酒款」。',
-      crossNote: '與香檳Échelle des Crus同屬「By 產區」邏輯，但義大利此制度是全國性、跨區域的四級架構，而非單一產區內的村莊分級，兩者可作為「產區分級」尺度大小的對照。'
+      history: '著名的「Super Tuscan悖論」：1970至80年代部分托斯卡尼酒莊（如Sassicaia、Tignanello）因使用Cabernet Sauvignon等國際品種、不符合當時Chianti DOC的傳統混調規定，只能被迫標示為最低階的VdT——但品質與價格卻是全義大利頂尖，直接促成1992年IGT等級的誕生，用以收編這類「規則外的優秀酒款」。有趣的是，即使日後升級的大門已經敞開，Sassicaia等酒莊至今仍選擇留在較低等級，反映「等級」與「品質／價格」在義大利酒標系統裡從一開始就未必對等的深層矛盾。',
+      crossNote: '與香檳Échelle des Crus同屬「By 產區」邏輯，但義大利此制度是全國性、跨區域的四級架構，而非單一產區內的村莊分級，兩者可作為「產區分級」尺度大小的對照；與後續新增的西班牙DO/DOCa、德國Prädikatswein、葡萄牙DOC金字塔並列，可看出歐盟各國法定產區制度雖然名稱各異，骨架卻高度相似。'
     },
     {
       id: 'barolo-mga',
@@ -2776,13 +2776,13 @@ const WINE_DB = {
       name: 'MGA - Menzioni Geografiche Aggiuntive(附加地理標示)',
       basis: 'vineyard',
       basisLabel: 'Vineyard(葡萄園)',
-      summary: '在Barolo與Barbaresco兩個DOCG之上，官方正式劃定並命名約170個（Barolo）與66個（Barbaresco）單一葡萄園／次產區界線，酒標可選擇標示或不標示園名。',
+      summary: '在Barolo與Barbaresco兩個DOCG之上，官方正式劃定並命名約170個（Barolo）與66個（Barbaresco）單一葡萄園／次產區界線，酒標可選擇標示或不標示園名，是義大利少數具備勃根地式「地塊導向」精神的分級制度。',
       tiers: [
-        { name: 'DOCG（未標示園名）', note: '可混調產區內多個地塊的果實，風格上通常追求跨園調配的均衡度。' },
-        { name: 'DOCG + MGA單一園標示', note: '如Cannubi、Brunate、Rabajà等，只能使用該界線內採收的果實，強調特定地塊的風土個性。' }
+        { name: 'DOCG（未標示園名）', note: '可混調產區內多個地塊的果實，風格上通常追求跨園調配的均衡度，是傳統上多數酒莊的主力款式。' },
+        { name: 'DOCG + MGA單一園標示', note: '如Cannubi、Brunate、Rabajà等，只能使用該界線內採收的果實，強調特定地塊的風土個性，近年逐漸成為指標酒莊展現實力的旗艦款式。' }
       ],
-      history: 'MGA制度直到2010年才正式官方化立法（Barolo）、2007年（Barbaresco），比勃根地的葡萄園分級晚了近一世紀，反映義大利從「產區導向」逐步走向「地塊導向」的較晚近趨勢。',
-      crossNote: '與勃根地Grand Cru／Premier Cru同屬「By 葡萄園」邏輯，但MGA本身不再區分高低層級（沒有「特級園優於一級園」的官方位階），單純是官方認證的地塊名稱清單，實際聲望高低由市場長期評價自然形成，而非法規明訂。'
+      history: 'MGA制度直到2010年才正式官方化立法（Barolo）、2007年（Barbaresco），比勃根地的葡萄園分級晚了近一世紀，反映義大利從「產區導向」逐步走向「地塊導向」的較晚近趨勢；劃界過程本身也充滿爭議，部分歷史知名地塊因周邊酒莊角力，界線範圍一度大幅擴張又縮減，凸顯地塊劃界背後的商業與政治張力並不亞於品質考量。',
+      crossNote: '與勃根地Grand Cru／Premier Cru同屬「By 葡萄園」邏輯，但MGA本身不再區分高低層級（沒有「特級園優於一級園」的官方位階），單純是官方認證的地塊名稱清單，實際聲望高低由市場長期評價自然形成，而非法規明訂——這與德國VDP的Erste Lage／Grosse Lage仍保留官方位階高低形成鮮明對比，可作為「By 葡萄園」邏輯下「有無官方位階」兩種設計哲學的對照。'
     },
     {
       id: 'chianti-classico-gran-selezione',
@@ -2791,14 +2791,14 @@ const WINE_DB = {
       name: 'Chianti Classico Gran Selezione(基安蒂經典特選)',
       basis: 'estate',
       basisLabel: 'Estate(酒莊)',
-      summary: '2013年在Chianti Classico DOCG既有的兩級之上新增的最高等級，要求須使用酒莊自有葡萄園（不可購買外部果實）並符合更長的陳年規定。',
+      summary: '2013年在Chianti Classico DOCG既有的兩級之上新增的最高等級，要求須使用酒莊自有葡萄園（不可購買外部果實）並符合更長的陳年規定，是義大利少數同時結合「自有葡萄園」與「陳年時間」雙重客觀門檻的分級案例。',
       tiers: [
-        { name: 'Chianti Classico Gran Selezione(特選)', note: '須自有葡萄園、陳年至少30個月，2013年新增。' },
-        { name: 'Chianti Classico Riserva(珍藏)', note: '陳年至少24個月。' },
-        { name: 'Chianti Classico(基本款)', note: '陳年至少12個月。' }
+        { name: 'Chianti Classico Gran Selezione(特選)', note: '須自有葡萄園、陳年至少30個月，2013年新增，目前僅占Chianti Classico總產量的個位數百分比。' },
+        { name: 'Chianti Classico Riserva(珍藏)', note: '陳年至少24個月，是進階但門檻相對親民的等級。' },
+        { name: 'Chianti Classico(基本款)', note: '陳年至少12個月，佔絕大多數市場流通量。' }
       ],
-      history: '此三級制是在DOCG框架「內部」再疊加的酒莊／酒款分級，與DOCG本身（產區層級）是兩個不同維度：一瓶酒同時擁有「Chianti Classico DOCG」的產區身分，以及「Gran Selezione」的酒莊分級身分。',
-      crossNote: '與波爾多1855同屬「By 酒莊」邏輯，但差異在於Gran Selezione的評選標準是客觀的自有葡萄園與陳年規範，而非1855當年主觀的市場交易價格排名。'
+      history: '此三級制是在DOCG框架「內部」再疊加的酒莊／酒款分級，與DOCG本身（產區層級）是兩個不同維度：一瓶酒同時擁有「Chianti Classico DOCG」的產區身分，以及「Gran Selezione」的酒莊分級身分；此設計某種程度上是對前述「Super Tuscan悖論」的間接回應——透過在DOCG內部再造一個更嚴謹的頂級門檻，讓堅持傳統Sangiovese混調規定的酒莊，也能有機會生產與國際名莊分庭抗禮的頂級款式。',
+      crossNote: '與波爾多1855同屬「By 酒莊」邏輯，但差異在於Gran Selezione的評選標準是客觀的自有葡萄園與陳年規範，而非1855當年主觀的市場交易價格排名，也因此Gran Selezione理論上任何符合條件的酒莊都能申請晉升，不像1855幾乎已是永久凍結的歷史名單。'
     },
     {
       id: 'vdp-lagen',
@@ -2807,15 +2807,15 @@ const WINE_DB = {
       name: 'VDP Lagenklassifikation(VDP單一葡萄園分級)',
       basis: 'vineyard',
       basisLabel: 'Vineyard(葡萄園)',
-      summary: 'VDP（德國優質酒莊協會）仿效勃根地邏輯建立的私人葡萄園分級系統，並非政府法律規定，但已成為德國葡萄酒品質的實質共識標準。',
+      summary: 'VDP（德國優質酒莊協會）仿效勃根地邏輯建立的私人葡萄園分級系統，並非政府法律規定，但憑藉會員酒莊長期一致的高品質表現，已成為德國葡萄酒品質的實質共識標準，會員資格本身即帶有品質保證意味。',
       tiers: [
-        { name: 'Grosse Lage(特級園)', note: '約佔會員酒莊葡萄園面積5%，對應勃根地Grand Cru，若釀成干型則標示為Grosses Gewächs(GG)。' },
-        { name: 'Erste Lage(一級園)', note: '對應勃根地Premier Cru，允許範圍較Grosse Lage寬鬆。' },
-        { name: 'Ortswein(村莊級)', note: '以村莊名稱裝瓶，對應勃根地Village。' },
-        { name: 'Gutswein(莊園基本款)', note: '酒莊自有葡萄園釀造的入門款，對應勃根地Régionale。' }
+        { name: 'Grosse Lage(特級園)', note: '約佔會員酒莊葡萄園面積5%，對應勃根地Grand Cru，若釀成干型則標示為Grosses Gewächs(GG)，是德國近年國際評價成長最快的酒款類別之一。' },
+        { name: 'Erste Lage(一級園)', note: '對應勃根地Premier Cru，允許範圍較Grosse Lage寬鬆，是介於頂級與村莊級之間的重要橋樑。' },
+        { name: 'Ortswein(村莊級)', note: '以村莊名稱裝瓶，對應勃根地Village，強調村莊風格的一致性。' },
+        { name: 'Gutswein(莊園基本款)', note: '酒莊自有葡萄園釀造的入門款，對應勃根地Régionale，通常是酒莊的日常餐搭主力。' }
       ],
-      history: 'VDP前身可追溯至1910年成立的德國葡萄酒拍賣協會，2012年正式確立現行四級架構，是繼勃根地之後全世界第二個完整移植「風土分級」邏輯的重要案例；因為不是政府法律，非VDP會員酒莊即使葡萄園條件相當，也無法使用Grosse Lage標示。',
-      crossNote: '與勃根地Grand Cru／Premier Cru同屬「By 葡萄園」邏輯的直接對照，但關鍵差異在於VDP是民間協會標準而非政府立法——這點反而類似波爾多1855分級最初也是民間商會評定，凸顯「法定」與「約定俗成但具公信力」兩種分級正當性來源的差異。'
+      history: 'VDP前身可追溯至1910年成立的德國葡萄酒拍賣協會，2012年正式確立現行四級架構，是繼勃根地之後全世界第二個完整移植「風土分級」邏輯的重要案例；因為不是政府法律，非VDP會員酒莊即使葡萄園條件相當，也無法使用Grosse Lage標示，這也讓「加入VDP」本身成為許多優質德國酒莊的重要目標，形成一種民間自律凌駕官方法規的特殊局面。',
+      crossNote: '與勃根地Grand Cru／Premier Cru同屬「By 葡萄園」邏輯的直接對照，但關鍵差異在於VDP是民間協會標準而非政府立法——這點反而類似波爾多1855分級最初也是民間商會評定，凸顯「法定」與「約定俗成但具公信力」兩種分級正當性來源的差異；與義大利MGA相比，VDP更進一步保留了官方（協會內部）位階高低，而非單純的地塊名稱清單。'
     },
     {
       id: 'germany-praedikatswein',
@@ -2824,17 +2824,17 @@ const WINE_DB = {
       name: 'Prädikatswein 成熟度分級(法定甜度金字塔)',
       basis: 'region',
       basisLabel: 'Region(產區)',
-      summary: '德國法定四級酒款品質架構最高層，依葡萄採收時的天然糖度（Oechsle度數）由低到高分為六個等級，與「甜度」高低是兩回事——高等級只代表採收時糖分潛力高，實際成品可製成不甜(trocken)到極甜的各種風格。',
+      summary: '德國法定四級酒款品質架構最高層，依葡萄採收時的天然糖度（Oechsle度數）由低到高分為六個等級，與「甜度」高低是兩回事——高等級只代表採收時糖分潛力高，實際成品可製成不甜(trocken)到極甜的各種風格，是全世界最容易被外國消費者誤解的分級制度之一。',
       tiers: [
-        { name: 'Kabinett(小房酒)', note: '成熟度門檻最低，風格通常清爽淡雅。' },
-        { name: 'Spätlese(晚摘)', note: '比一般採收期晚摘，糖度與濃縮度較高。' },
-        { name: 'Auslese(精選)', note: '嚴選單串葡萄，常有貴腐影響。' },
-        { name: 'Beerenauslese(BA，逐粒精選)', note: '嚴選單顆貴腐或極熟果粒，產量極少。' },
-        { name: 'Trockenbeerenauslese(TBA，逐粒枯萄精選)', note: '嚴選幾近葡萄乾化的貴腐果粒，是最高甜度等級。' },
-        { name: 'Eiswein(冰酒)', note: '與BA同等成熟度門檻，但須在葡萄自然結凍狀態下採收壓榨，走獨立分支而非糖度線性排列。' }
+        { name: 'Kabinett(小房酒)', note: '成熟度門檻最低，風格通常清爽淡雅，是德國麗絲玲最經典、最能展現產區風土的入門等級。' },
+        { name: 'Spätlese(晚摘)', note: '比一般採收期晚摘，糖度與濃縮度較高，字面意思即為「遲摘」。' },
+        { name: 'Auslese(精選)', note: '嚴選單串葡萄，常有貴腐影響，介於一般晚摘與極端貴腐甜酒之間的過渡等級。' },
+        { name: 'Beerenauslese(BA，逐粒精選)', note: '嚴選單顆貴腐或極熟果粒，產量極少，採收與揀選成本極高。' },
+        { name: 'Trockenbeerenauslese(TBA，逐粒枯萄精選)', note: '嚴選幾近葡萄乾化的貴腐果粒，是最高甜度等級，全世界最昂貴的甜酒類別之一。' },
+        { name: 'Eiswein(冰酒)', note: '與BA同等成熟度門檻，但須在葡萄自然結凍狀態下採收壓榨，走獨立分支而非糖度線性排列，近年因暖化導致符合條件的年份日益稀少。' }
       ],
-      history: 'Prädikatswein是1971年德國葡萄酒法（Weingesetz）建立的Deutscher Wein／Landwein／Qualitätswein／Prädikatswein四級國家架構的最高一級，六個Prädikat子級距完全依採收當下的天然糖度（Oechsle）科學測量分級，是全世界少數用「客觀物理量測」而非「人為評鑑」決定等級門檻的法定分級制度。',
-      crossNote: '與義大利DOCG/DOC/IGT/VdT同屬全國性「By 產區」架構下的品質階梯，但義大利四級的核心判準是「產區規範嚴謹度」，德國六個Prädikat子級距則是「採收糖度」，兩者是完全不同的分級哲學——這也是為什麼德國Prädikatswein常被誤會為「越高級越甜」，實際上等級只反映採收糖度潛力，成品甜度另由酒標trocken(不甜)/halbtrocken(半甜)/lieblich(微甜)/süss(甜)標示決定。'
+      history: 'Prädikatswein是1971年德國葡萄酒法（Weingesetz）建立的Deutscher Wein／Landwein／Qualitätswein／Prädikatswein四級國家架構的最高一級，六個Prädikat子級距完全依採收當下的天然糖度（Oechsle）科學測量分級，是全世界少數用「客觀物理量測」而非「人為評鑑」決定等級門檻的法定分級制度；也正因為門檻完全客觀，近年氣候暖化使得原本稀有的Spätlese、Auslese等級愈趨容易達成，反而讓部分堅持傳統風格的頂尖酒莊主動選擇不申報Prädikat等級、改用VDP等自訂系統標示酒款。',
+      crossNote: '與義大利DOCG/DOC/IGT/VdT同屬全國性「By 產區」架構下的品質階梯，但義大利四級的核心判準是「產區規範嚴謹度」，德國六個Prädikat子級距則是「採收糖度」，兩者是完全不同的分級哲學——這也是為什麼德國Prädikatswein常被誤會為「越高級越甜」，實際上等級只反映採收糖度潛力，成品甜度另由酒標trocken(不甜)/halbtrocken(半甜)/lieblich(微甜)/süss(甜)標示決定，這也解釋了為什麼同樣標示Kabinett的酒款，市面上可以同時看到干型與微甜兩種風格。'
     },
     {
       id: 'spain-do-pyramid',
@@ -2843,15 +2843,15 @@ const WINE_DB = {
       name: 'DO／DOCa 法定產區金字塔',
       basis: 'region',
       basisLabel: 'Region(產區)',
-      summary: '西班牙全國性四級法定產區制度，依產區規範嚴謹度與長期品質穩定紀錄由上而下分級，DOCa是目前僅兩個產區達到的最高榮譽。',
+      summary: '西班牙全國性四級法定產區制度，依產區規範嚴謹度與長期品質穩定紀錄由上而下分級，DOCa是目前僅兩個產區達到的最高榮譽，凸顯西班牙分級制度格外重視「持續穩定表現」而非一次性評定。',
       tiers: [
-        { name: 'DOCa/DOQ(法定優質產區)', note: 'Denominación de Origen Calificada，目前僅Rioja（1991年）與Priorat（2003年，加泰隆尼亞語稱DOQ）達到此等級，須維持長期穩定的高品質紀錄。' },
-        { name: 'DO(法定產區)', note: 'Denominación de Origen，西班牙絕大多數知名產區所在等級，如Ribera del Duero、Rías Baixas。' },
-        { name: 'Vino de la Tierra(VdlT，地區餐酒)', note: '規範較寬鬆，類似法國Vin de Pays。' },
-        { name: 'Vino de Mesa(日常餐酒)', note: '最基礎等級，幾乎無產區與品種規範。' }
+        { name: 'DOCa/DOQ(法定優質產區)', note: 'Denominación de Origen Calificada，目前僅Rioja（1991年）與Priorat（2003年，加泰隆尼亞語稱DOQ）達到此等級，須維持長期穩定的高品質紀錄，升格審核過程往往長達數年。' },
+        { name: 'DO(法定產區)', note: 'Denominación de Origen，西班牙絕大多數知名產區所在等級，如Ribera del Duero、Rías Baixas，全國已有近70個DO。' },
+        { name: 'Vino de la Tierra(VdlT，地區餐酒)', note: '規範較寬鬆，類似法國Vin de Pays，允許更大的混調與品種彈性。' },
+        { name: 'Vino de Mesa(日常餐酒)', note: '最基礎等級，幾乎無產區與品種規範，日常餐酒的主要來源。' }
       ],
-      history: 'DOCa等級的門檻並非單純「產區範圍規範」，而是額外要求「至少10年持續維持高於一般DO的品質水準」，因此即使Ribera del Duero、Priorat（早年）等產區聲望已相當高，仍需經過長時間觀察才能升格，是西班牙分級制度中刻意設計的「時間篩選」機制。',
-      crossNote: '與義大利DOCG/DOC/IGT/VdT、德國Deutscher Wein四級架構同屬「By 產區」邏輯的全國性金字塔，三者可互相對照理解「法定產區分級」在不同國家的共通骨架；但西班牙DOCa的「長期品質觀察期」門檻，在義大利/德國的對應等級中並無直接對應機制。'
+      history: 'DOCa等級的門檻並非單純「產區範圍規範」，而是額外要求「至少10年持續維持高於一般DO的品質水準」，因此即使Ribera del Duero、Priorat（早年）等產區聲望已相當高，仍需經過長時間觀察才能升格，是西班牙分級制度中刻意設計的「時間篩選」機制；Priorat取得DOQ資格前，1980年代一批年輕釀酒師重新開墾當地陡峭的llicorella板岩梯田，是這個產區得以在短短二十年內從默默無聞躍升至西班牙最高等級的關鍵推手。',
+      crossNote: '與義大利DOCG/DOC/IGT/VdT、德國Deutscher Wein四級架構同屬「By 產區」邏輯的全國性金字塔，三者可互相對照理解「法定產區分級」在不同國家的共通骨架；但西班牙DOCa的「長期品質觀察期」門檻，在義大利/德國的對應等級中並無直接對應機制，反而更接近前述聖艾米濃「定期複評」的精神，只是複評對象換成整個產區而非個別酒莊。'
     },
     {
       id: 'rioja-aging',
@@ -2860,15 +2860,15 @@ const WINE_DB = {
       name: 'Crianza／Reserva／Gran Reserva(陳年分級)',
       basis: 'estate',
       basisLabel: 'Estate(酒莊)',
-      summary: '依裝瓶前的橡木桶與瓶中陳年時間長短分級，是Rioja（以及西班牙其他DO產區普遍援用）最廣為人知的酒標分級，但嚴格來說判準是「陳年時間」而非酒莊身分或地塊——比較接近「By 酒款」的邏輯，這裡歸類在Estate僅為配合現有三分類架構的權宜安排。',
+      summary: '依裝瓶前的橡木桶與瓶中陳年時間長短分級，是Rioja（以及西班牙其他DO產區普遍援用）最廣為人知的酒標分級，但嚴格來說判準是「陳年時間」而非酒莊身分或地塊——比較接近「By 酒款」的邏輯，這裡歸類在Estate僅為配合現有三分類架構的權宜安排，實際使用時建議理解為獨立於三大邏輯之外的第四種分級哲學。',
       tiers: [
-        { name: 'Gran Reserva(特級陳釀)', note: '僅在頂尖年份釀造，最低須桶陳24個月＋瓶陳36個月，總計上市前至少陳年5年。' },
-        { name: 'Reserva(陳釀)', note: '最低須陳年3年，其中至少1年桶陳。' },
-        { name: 'Crianza(基本陳年)', note: '最低須陳年2年，其中至少1年（白酒/粉紅酒為6個月）桶陳。' },
-        { name: 'Genérico/Joven(無陳年標示/年輕酒)', note: '不受陳年時間規範，強調果香新鮮度，通常上市即飲用。' }
+        { name: 'Gran Reserva(特級陳釀)', note: '僅在頂尖年份釀造，最低須桶陳24個月＋瓶陳36個月，總計上市前至少陳年5年，是傳統派Rioja愛好者心中的旗艦等級。' },
+        { name: 'Reserva(陳釀)', note: '最低須陳年3年，其中至少1年桶陳，是市面上最常見的高階Rioja款式。' },
+        { name: 'Crianza(基本陳年)', note: '最低須陳年2年，其中至少1年（白酒/粉紅酒為6個月）桶陳，是進入陳年等級的入門門檻。' },
+        { name: 'Genérico/Joven(無陳年標示/年輕酒)', note: '不受陳年時間規範，強調果香新鮮度，通常上市即飲用，近年隨新一代酒莊崛起而愈趨受到重視。' }
       ],
-      history: '此陳年分級架構源自19世紀波爾多釀酒技術傳入Rioja後發展出的傳統，早年美國橡木桶的普遍使用也是Rioja風格區別於法國同業的重要特徵；近年部分指標酒莊（如Artadi）主動退出Rioja DOCa體系，改標示更低階的Vino de España，正是因為認為陳年時間分級無法反映其地塊風土訴求，是「By 酒款陳年時間」與「By 葡萄園風土」兩種分級哲學路線之爭的著名案例。',
-      crossNote: '與Chianti Classico的Riserva/Gran Selezione三級制看似相似（都用「陳年時間」疊加於產區之上），但關鍵差異在於Gran Selezione額外要求「須使用酒莊自有葡萄園」（因此歸類為By 酒莊具備依據），Rioja的Crianza/Reserva/Gran Reserva則完全不涉及葡萄來源限制，純粹是陳年時間門檻——這正是本表把Rioja歸類在Estate、卻特別加註「並不完美對應」的原因。'
+      history: '此陳年分級架構源自19世紀波爾多釀酒技術傳入Rioja後發展出的傳統，當時波爾多根瘤蚜蟲害肆虐，法國釀酒師大量移居Rioja，也把橡木桶陳年工藝一併帶入；早年美國橡木桶的普遍使用（相對於法國橡木桶更明顯的椰子與香草氣息）也是Rioja風格區別於法國同業的重要特徵。近年部分指標酒莊主動退出Rioja DOCa體系，改標示更低階的Vino de España，正是因為認為陳年時間分級無法反映其地塊風土訴求，是「By 酒款陳年時間」與「By 葡萄園風土」兩種分級哲學路線之爭的著名案例。',
+      crossNote: '與Chianti Classico的Riserva/Gran Selezione三級制看似相似（都用「陳年時間」疊加於產區之上），但關鍵差異在於Gran Selezione額外要求「須使用酒莊自有葡萄園」（因此歸類為By 酒莊具備依據），Rioja的Crianza/Reserva/Gran Reserva則完全不涉及葡萄來源限制，純粹是陳年時間門檻——這正是本表把Rioja歸類在Estate、卻特別加註「並不完美對應」的原因；近年西班牙也開始出現類似Rioja自家的Viñedos Singulares（單一葡萄園標示，2017年新增）等地塊導向的新制度，某種程度上正是對這套傳統陳年分級的補充與反思。'
     },
     {
       id: 'portugal-doc-pyramid',
@@ -2877,14 +2877,14 @@ const WINE_DB = {
       name: 'DOC／Vinho Regional 法定產區金字塔',
       basis: 'region',
       basisLabel: 'Region(產區)',
-      summary: '葡萄牙全國性法定產區制度，架構上仿效歐盟共通的DOP/IGP兩層邏輯，Douro與Vinho Verde等知名產區皆座落於DOC層級。',
+      summary: '葡萄牙全國性法定產區制度，架構上仿效歐盟共通的DOP/IGP兩層邏輯，Douro與Vinho Verde等知名產區皆座落於DOC層級，是歐盟葡萄酒法規架構在南歐小國的典型體現。',
       tiers: [
-        { name: 'DOC(法定產區)', note: 'Denominação de Origem Controlada，規範最嚴，如Douro、Vinho Verde、Dão，波特酒(Port)產區Douro同時另受獨立的分級規範。' },
-        { name: 'Vinho Regional(地區餐酒)', note: '規範較寬鬆，允許使用非傳統品種，如Vinho Regional Alentejano。' },
-        { name: 'Vinho(日常餐酒)', note: '最基礎等級，前身為Vinho de Mesa。' }
+        { name: 'DOC(法定產區)', note: 'Denominação de Origem Controlada，規範最嚴，如Douro、Vinho Verde、Dão，其中Douro同時另受波特酒(Port)獨立的分級規範，是全世界少數同一產區並存兩套分級系統的特殊案例。' },
+        { name: 'Vinho Regional(地區餐酒)', note: '規範較寬鬆，允許使用非傳統品種，如Vinho Regional Alentejano，近年愈來愈多指標酒莊主動選用此等級以換取更大的混調自由度。' },
+        { name: 'Vinho(日常餐酒)', note: '最基礎等級，前身為Vinho de Mesa，2009年歐盟法規改革後統一更名。' }
       ],
-      history: '葡萄牙擁有超過250個原生葡萄品種，是全世界品種多樣性密度最高的產酒國之一，DOC規範中對「傳統品種」的認定範圍也因此格外複雜，這是Vinho Regional等級在葡萄牙特別活躍、常吸引指標酒莊主動選用（換取混調自由度）的重要背景。',
-      crossNote: '與義大利、西班牙、德國的全國性金字塔同屬「By 產區」邏輯，四國對照可看出歐盟DOP（受保護原產地名稱，對應DOC/DO/DOCG等）／IGP（受保護地理標示，對應Vinho Regional/IGT/VdlT等）的共通二層架構，是理解歐盟整體葡萄酒法規邏輯的最佳入門對照組。'
+      history: '葡萄牙擁有超過250個原生葡萄品種，是全世界品種多樣性密度最高的產酒國之一，DOC規範中對「傳統品種」的認定範圍也因此格外複雜，這是Vinho Regional等級在葡萄牙特別活躍、常吸引指標酒莊主動選用（換取混調自由度）的重要背景；Douro產區更是全世界最早（1756年）建立官方法定產區邊界的葡萄酒產區之一，早於法國波爾多與勃根地的正式分級近兩百年，是葡萄牙葡萄酒史上經常被低估的先驅地位。',
+      crossNote: '與義大利、西班牙、德國的全國性金字塔同屬「By 產區」邏輯，四國對照可看出歐盟DOP（受保護原產地名稱，對應DOC/DO/DOCG等）／IGP（受保護地理標示，對應Vinho Regional/IGT/VdlT等）的共通二層架構，是理解歐盟整體葡萄酒法規邏輯的最佳入門對照組——這也意味著即使名稱與細節門檻各國互異，「By 產區」邏輯背後的歐盟法規骨架其實高度統一，遠比酒莊分級或葡萄園分級來得標準化。'
     }
   ],
 
