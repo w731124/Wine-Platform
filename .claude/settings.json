@@ -6,7 +6,6 @@
       "Bash(git pull *)"
     ],
     "deny": [
-      "Bash(git push *)",
       "Bash(rm -rf *)"
     ]
   }
