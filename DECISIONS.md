@@ -547,3 +547,9 @@
 167. **`js/vintage.js` 的 `buildVintageMatrix()` 新增 `vmGroupHeaders` 對照表與插入邏輯，在 `bordeaux-left`／`burgundy-red`／`rhone-north` 三列前各自插入一列跨欄（`colspan` 動態計算涵蓋目前展開狀態下的總欄數）的純視覺分組標題（波爾多/勃根地/隆河），其餘4個獨立產區（Loire/Alsace/Champagne/Languedoc-Roussillon）不強加分組**：`css/style.css` 新增 `.vm-region-group-hdr`（Cinzel serif、11px、酒紅字、`var(--bg-sub)` 底色置左），與既有可點擊的年份區間表頭 `.vm-group-hdr`（hover/open 會有酒紅暈染）視覺語言一致但更低調、不可點擊，避免使用者誤以為這兩種標題都能互動。
      原因：使用者要求在波爾多/勃根地/隆河各自的左右岸或南北隆河兩列之間，用分組標題視覺上把同一大產區的兩列連結在一起，方便瀏覽；動工前依使用者提供的精確程式碼片段核對現有 `buildVintageMatrix()` 內容一致後才套用，`totalCols` 計算沿用既有 `groups`／`vmOpenGroup` 邏輯確保收合／展開狀態下 `colspan` 都正確涵蓋整列。
      驗證：headless Chrome 截圖確認預設全部收合狀態下3個分組標題正確顯示在對應列前、跨欄寬度涵蓋整個表格；額外展開「2011–2015」年份組後重新截圖，確認分組標題的 `colspan` 隨欄數增加同步正確調整，未出現跑版或欄位錯位。
+
+## 2026-07-11 年份矩陣新增第4個分組標題「其他法定產區（各自獨立）」於Loire列前
+
+168. **`js/vintage.js` 的 `vmGroupHeaders` 新增第4筆 `'loire': '其他法定產區（各自獨立）Other AOC Regions (Independent)'`，標題文字刻意選用「中性斷點標籤」而非任何集合式分類名稱（例如不寫成「羅亞爾／阿爾薩斯／香檳／朗格多克」或其他暗示性名稱）**：波爾多/勃根地/隆河3個既有分組標題，各自對應的是「同一大產區底下真正有地理與風土關聯的兩個次產區」（左右岸、南北隆河、夜丘伯恩丘），但 Loire／Alsace／Champagne／Languedoc-Roussillon 這4個獨立法定產區彼此之間地理位置分散、氣候風土互不相關，唯一共同點只是「表格排版上剛好排在一起、需要一個視覺斷點跟前面的隆河分組區隔開」。若沿用前3組「地名＋地名」的集合式命名邏輯，容易讓使用者誤以為這4個產區有實質關聯性，因此改用刻意中性、不指涉任何地理分類的「其他法定產區（各自獨立）」措辭，並加註英文「(Independent)」強化「各自獨立、非同一分組」的語意。
+     原因：使用者明確要求新增此標題時，特別指定要說明「中性斷點標籤」相對於「集合式分類名稱」的取捨理由，避免暗示這4個獨立產區有關聯性，此為動工前即確認的措辭原則。
+     驗證：headless Chrome 截圖確認「其他法定產區（各自獨立）Other AOC Regions (Independent)」標題列正確顯示在 Loire Valley 列之前，視覺樣式（Cinzel字體、酒紅字、`var(--bg-sub)` 底色）與前3個既有分組標題一致，`colspan` 跨欄寬度正確涵蓋整列；確認 Alsace／Champagne／Languedoc-Roussillon 三列如預期緊接在 Loire 列之後、未再另外出現多餘的分組標題列，符合「僅在每組第一列前插入一次標題」的既有邏輯。

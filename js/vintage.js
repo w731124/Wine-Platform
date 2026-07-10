@@ -20,6 +20,7 @@ function buildVintageMatrix(){
     'bordeaux-left': '波爾多 Bordeaux',
     'burgundy-red': '勃根地 Burgundy',
     'rhone-north': '隆河 Rhône',
+    'loire': '其他法定產區（各自獨立）Other AOC Regions (Independent)',
   };
 
   const thead = document.getElementById('vm-thead');
