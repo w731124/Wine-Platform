@@ -364,3 +364,9 @@
 117. **`js/map.js` 新增共用函式 `computeGroupedNumbering(list)`，把編號依據從「該產區在 `WINE_DB.appellations` 陣列裡的原始資料撰寫順序」改為「側邊清單依大區分組後、由上到下顯示的順序」**：`renderMarkerIndexList()`（側邊清單）與 `renderFranceMarkers()`／`renderItalyMarkers()`／`renderIberiaMarkers()`（地圖上的編號標記）三者都改讀同一份 `numById` 對照表，確保清單編號永遠是連續的 1,2,3,4...，且地圖上同一個產區的標記數字與清單上的數字保持一致。
      原因：使用者回報側邊列表編號順序很亂，詢問該用「地圖座標由左上到右下」還是「清單顯示順序」編號；因為清單本身就是依大區分組顯示，若採座標排序，組內編號仍會不連續、達不到使用者想要的「清單讀起來就是1,2,3,4」效果，因此建議並採用清單顯示順序編號，大區在地理上通常本來就聚集，同大區內連號在地圖上也會相對靠近，間接兼顧空間直覺性。
      驗證：寫測試頁載入真實 `data/wine-data.js`／`js/map.js`，確認法國清單编号為連續 1-35；另外交叉比對三張地圖的地圖標記編號與清單編號，逐一產區 id 比對無任何不一致。
+
+## 2026-07-10 修正義大利地圖 Abruzzo／Marche／Tuscany／Emilia-Romagna 四個標籤位置
+
+118. **`index.html` 的 `#italy-svg`：Tuscany／Emilia-Romagna 兩個 `<text>` 座標直接互換（各自指示線起點跟著換，終點維持指向各自大區重心不變）；Abruzzo／Marche 則依使用者提供的截圖標紅位置，分別移到內陸空白區（195,295）與東側海域空白區（330,208）**。
+     原因：使用者截圖標出四個標籤目前的重疊/擁擠問題與期望位置，其中 Tuscany/Emilia-Romagna 是明確的「直接對調」指令，Abruzzo/Marche 則是依截圖標紅位置的視覺估計（截圖非精確座標標註，採合理估計後以 headless Chrome 實際渲染比對確認）。
+     驗證：headless Chrome 截圖比對使用者提供的參考圖，確認 Marche 移至東側空白海域、Abruzzo 移至托斯卡尼/溫布里亞之間的空白內陸區，Tuscany/Emilia-Romagna 位置正確互換，四個標籤與其餘大區文字、編號標記均無重疊，視覺呈現與使用者參考圖吻合。
