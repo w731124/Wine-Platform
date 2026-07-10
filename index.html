@@ -76,7 +76,7 @@
   </div>
 
   <!-- L1 filter -->
-  <div class="flex flex-wrap gap-2 mb-2" id="l1-filters">
+  <div class="flex flex-wrap justify-center gap-2 mb-2" id="l1-filters">
     <button class="fp active" data-l1="all">全部 All</button>
     <button class="fp" data-l1="old-world">舊世界</button>
     <button class="fp" data-l1="new-world">新世界</button>
@@ -106,9 +106,9 @@
     <p style="font-size:12.5px;color:var(--txt3);">真實地理邊界地圖 · 點擊金色圓點查看次產區 · 點擊色塊查看大產區</p>
   </div>
   <div class="flex flex-wrap gap-2 mb-4">
-    <button class="map-tab active" onclick="showMap('france',this)">🇫🇷 France(法國)</button>
-    <button class="map-tab" onclick="showMap('italy',this)">🇮🇹 Italy(義大利)</button>
-    <button class="map-tab" onclick="showMap('iberia',this)">🇪🇸 Iberia(伊比利)</button>
+    <button class="map-tab active" onclick="showMap('france',this)"><img src="assets/flags/fr.svg" alt="France(法國)" width="18" height="14" style="width:18px;height:14px;object-fit:cover;border-radius:2px;vertical-align:middle;display:inline-block;"> France(法國)</button>
+    <button class="map-tab" onclick="showMap('italy',this)"><img src="assets/flags/it.svg" alt="Italy(義大利)" width="18" height="14" style="width:18px;height:14px;object-fit:cover;border-radius:2px;vertical-align:middle;display:inline-block;"> Italy(義大利)</button>
+    <button class="map-tab" onclick="showMap('iberia',this)"><img src="assets/flags/es.svg" alt="Spain(西班牙)" width="18" height="14" style="width:18px;height:14px;object-fit:cover;border-radius:2px;vertical-align:middle;display:inline-block;margin-right:2px;"><img src="assets/flags/pt.svg" alt="Portugal(葡萄牙)" width="18" height="14" style="width:18px;height:14px;object-fit:cover;border-radius:2px;vertical-align:middle;display:inline-block;"> Iberia(伊比利)</button>
   </div>
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
     <div class="lg:col-span-2">
@@ -275,7 +275,7 @@
     <p style="font-size:12.5px;color:var(--txt3);">舊世界法定分級制度 · 依「分級對象」分為 By 酒莊／By 葡萄園／By 產區 三種邏輯</p>
   </div>
   <div class="flex flex-wrap justify-center gap-1.5 mb-3" id="class-country-filters"></div>
-  <div class="flex flex-wrap gap-2 mb-4" id="class-basis-filters">
+  <div class="flex flex-wrap justify-center gap-2 mb-4" id="class-basis-filters">
     <button class="fp active" onclick="setClassBasisFilter('all',this)">全部 All</button>
     <button class="fp" onclick="setClassBasisFilter('estate',this)">🏰 By Estate(酒莊)</button>
     <button class="fp" onclick="setClassBasisFilter('vineyard',this)">🍇 By Vineyard(葡萄園)</button>
