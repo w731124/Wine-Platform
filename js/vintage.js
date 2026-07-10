@@ -63,7 +63,7 @@ function openVMI(rid,year,score,st){
   const sbCls={l:'sbl',o:'sbo',e:'sbe',g:'sbg'}[st]||'sbg';
   let h=`<div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;"><div class="sbadge ${sbCls}">${score}</div><div><div style="font-family:'Cinzel',serif;font-size:19px;font-weight:700;color:var(--burg);">${year}</div><div style="font-size:11px;color:var(--txt3);">${row.label}(${row.sublabel})</div></div></div>`;
   if(d){
-    const dims=[{k:'acidity',l:'酸度'},{k:'tannin',l:'單寧'},{k:'body',l:'酒體'},{k:'alcohol',l:'酒精度'}];
+    const dims=[{k:'acidity',l:'酸度'},{k:'tannin',l:'單寧'},{k:'body',l:'酒體'},{k:'alcohol',l:'酒精度'},{k:'finish',l:'餘韻'}];
     const bH=dims.map(dm=>{const v=d.structure[dm.k]??0;return`<div style="margin-bottom:5px;"><div style="display:flex;justify-content:space-between;font-size:10.5px;margin-bottom:2px;"><span style="color:var(--txt3);">${dm.l}</span><span style="color:var(--burg);font-weight:600;">${v}/10</span></div><div class="stat-bg"><div class="stat-fill" style="width:${v*10}%;background:linear-gradient(90deg,var(--burg),var(--gold));"></div></div></div>`}).join('');
     h+=`<div class="ic mb-3" style="background:var(--bg-card);"><p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">📝 年份總結 Summary</p><p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${d.summary}</p></div>
     <div class="ic mb-3" style="background:var(--bg-card);"><p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🌦️ 氣候成因 Climate</p><p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${d.climate}</p></div>
