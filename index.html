@@ -228,18 +228,30 @@
               <path d="M 269.0,134.6 L 279.8,138.3 L 283.3,140.8 L 283.3,143.4 L 284.1,146.0 L 286.5,149.9 L 281.3,153.9 L 277.0,154.6 L 271.9,153.6 L 268.0,153.5 L 265.5,154.5 L 261.7,153.7 L 256.8,151.2 L 248.2,148.6 L 236.2,146.0 L 229.0,145.8 L 226.8,147.9 L 221.5,148.7 L 213.3,148.3 L 202.1,150.5 L 187.8,155.4 L 179.4,156.6 L 176.8,154.1 L 171.8,153.6 L 164.2,155.0 L 160.2,155.3 L 158.3,156.1 L 155.3,155.3 L 150.9,152.9 L 147.8,152.5 L 145.4,154.1 L 143.8,157.0 L 139.6,160.8 L 133.7,164.2 L 129.2,168.4 L 126.1,173.4 L 122.2,175.6 L 117.6,174.8 L 114.9,173.2 L 114.2,170.7 L 109.1,169.6 L 94.4,170.0 L 73.2,174.2 L 66.3,174.6 L 61.5,172.5 L 57.2,171.2"/>
               <path d="M 220.0,83.4 L 223.1,83.8 L 224.9,86.2 L 226.2,90.5 L 228.2,92.2 L 230.8,91.3 L 233.3,91.4 L 235.7,92.6 L 237.4,91.8 L 238.6,89.2 L 240.4,88.7 L 244.2,91.2 L 246.8,93.1 L 250.9,93.8 L 257.5,94.0 L 262.7,95.5 L 266.6,98.3 L 268.8,100.8 L 269.6,102.8 L 272.0,104.8 L 276.2,106.7 L 279.0,107.2 L 280.5,106.3 L 285.1,106.9 L 292.8,109.2 L 299.6,112.7 L 308.6,120.1 L 321.0,132.3 L 331.7,140.6 L 344.8,149.1 L 352.9,155.9 L 355.9,160.8 L 361.1,163.9 L 368.5,165.1 L 373.5,164.1 L 376.0,160.8 L 378.1,159.1 L 379.6,159.0 L 381.5,159.7 L 384.0,161.1 L 385.1,163.0 L 384.9,165.3 L 385.2,166.4 L 386.3,166.5 L 391.1,166.8 L 393.4,168.1 L 394.9,170.7 L 395.7,172.9 L 395.7,174.6 L 394.3,176.8 L 391.5,179.4 L 390.8,183.1 L 392.0,187.9 L 395.6,190.6 L 404.3,191.7"/>
             </g>
-            <!-- 大區標籤：位置已用避讓演算法推離標記與彼此、並依各大區形狀自身大小限制最大位移
-                 （scripts/build-iberia-map.pl），配色統一改為深色文字＋白色描邊，避免像先前那樣
-                 跟色塊邊框顏色太接近難以閱讀 -->
-            <text x="286.3" y="129.4" text-anchor="middle" font-size="10" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="3" paint-order="stroke" font-family="Inter,sans-serif">Rioja(里奧哈)</text>
-            <text x="203.9" y="117.5" text-anchor="middle" font-size="10" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="3" paint-order="stroke" font-family="Inter,sans-serif">Castilla y León(卡斯提亞－萊昂)</text>
-            <text x="197.9" y="348.5" text-anchor="middle" font-size="10" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="3" paint-order="stroke" font-family="Inter,sans-serif">Andalusia(安達魯西亞)</text>
-            <text x="430.3" y="126.2" text-anchor="middle" font-size="10" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="3" paint-order="stroke" font-family="Inter,sans-serif">Catalonia(加泰隆尼亞)</text>
-            <text x="75.2" y="79.9" text-anchor="middle" font-size="10" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="3" paint-order="stroke" font-family="Inter,sans-serif">Galicia(加利西亞)</text>
-            <text x="325.8" y="329.5" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="2.8" paint-order="stroke" font-family="Inter,sans-serif">Murcia(穆爾西亞)</text>
-            <text x="341.6" y="90.3" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="2.8" paint-order="stroke" font-family="Inter,sans-serif">Navarra(納瓦拉)</text>
-            <text x="115.7" y="169.8" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="2.8" paint-order="stroke" font-family="Inter,sans-serif">Douro(杜羅河)</text>
-            <text x="63.0" y="164.0" text-anchor="middle" font-size="9" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="2.8" paint-order="stroke" font-family="Inter,sans-serif">Vinho Verde(青酒產區)</text>
+            <!-- 大區標籤：依形狀大小分流（scripts/build-iberia-map.pl）——Andalusia/Castilla y León/
+                 Catalonia/Douro/Galicia 形狀夠大，用「跑出形狀外就沿線退回重心方向」的硬性容器約束
+                 （比照法國）；Murcia/Navarra/Rioja/Vinho Verde 形狀過窄過小放不下完整文字，改用彈性
+                 位移上限＋指示線標示對應大區重心（比照義大利）。配色統一深色文字＋白色描邊。 -->
+            <g stroke="#5C061C" stroke-width="0.8" stroke-dasharray="2,2" opacity=".55" fill="#5C061C">
+              <line x1="201.7" y1="343.1" x2="197.9" y2="348.5"/><circle cx="197.9" cy="348.5" r="1.6"/>
+              <line x1="198.9" y1="68.0" x2="203.7" y2="137.3"/><circle cx="203.7" cy="137.3" r="1.6"/>
+              <line x1="427.0" y1="156.7" x2="433.8" y2="143.6"/><circle cx="433.8" cy="143.6" r="1.6"/>
+              <line x1="129.3" y1="219.1" x2="97.8" y2="170.4"/><circle cx="97.8" cy="170.4" r="1.6"/>
+              <line x1="81.0" y1="44.5" x2="71.1" y2="88.9"/><circle cx="71.1" cy="88.9" r="1.6"/>
+              <line x1="350.8" y1="354.3" x2="325.8" y2="329.5"/><circle cx="325.8" cy="329.5" r="1.6"/>
+              <line x1="365.7" y1="78.7" x2="311.1" y2="98.3"/><circle cx="311.1" cy="98.3" r="1.6"/>
+              <line x1="316.9" y1="173.2" x2="281.8" y2="118.0"/><circle cx="281.8" cy="118.0" r="1.6"/>
+              <line x1="93.0" y1="182.2" x2="62.6" y2="148.0"/><circle cx="62.6" cy="148.0" r="1.6"/>
+            </g>
+            <text x="316.9" y="173.2" text-anchor="middle" font-size="10" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="3" paint-order="stroke" font-family="Inter,sans-serif">Rioja(里奧哈)</text>
+            <text x="198.9" y="68.0" text-anchor="middle" font-size="10" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="3" paint-order="stroke" font-family="Inter,sans-serif">Castilla y León(卡斯提亞－萊昂)</text>
+            <text x="201.7" y="343.1" text-anchor="middle" font-size="10" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="3" paint-order="stroke" font-family="Inter,sans-serif">Andalusia(安達魯西亞)</text>
+            <text x="427.0" y="156.7" text-anchor="middle" font-size="10" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="3" paint-order="stroke" font-family="Inter,sans-serif">Catalonia(加泰隆尼亞)</text>
+            <text x="81.0" y="44.5" text-anchor="middle" font-size="10" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="3" paint-order="stroke" font-family="Inter,sans-serif">Galicia(加利西亞)</text>
+            <text x="350.8" y="354.3" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="2.8" paint-order="stroke" font-family="Inter,sans-serif">Murcia(穆爾西亞)</text>
+            <text x="365.7" y="78.7" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="2.8" paint-order="stroke" font-family="Inter,sans-serif">Navarra(納瓦拉)</text>
+            <text x="129.3" y="219.1" text-anchor="middle" font-size="9.5" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="2.8" paint-order="stroke" font-family="Inter,sans-serif">Douro(杜羅河)</text>
+            <text x="93.0" y="182.2" text-anchor="middle" font-size="9" font-weight="700" fill="#5C061C" stroke="#FFFFFF" stroke-width="2.8" paint-order="stroke" font-family="Inter,sans-serif">Vinho Verde(青酒產區)</text>
             <!-- Pulse markers：由 js/map.js 的 renderIberiaMarkers() 依 WINE_DB.appellations 動態產生編號徽章 -->
             <g id="iberia-markers"></g>
             <g transform="translate(485,38)"><circle r="20" fill="rgba(255,255,255,.9)" stroke="#B8A898" stroke-width="1"/><polygon points="0,-13 3,0 0,4 -3,0" fill="#5C061C"/><polygon points="0,14 3,0 0,-4 -3,0" fill="#B8A898"/><text x="0" y="-16" text-anchor="middle" font-size="10" font-weight="700" fill="#5C061C" font-family="Inter,sans-serif">N</text></g>

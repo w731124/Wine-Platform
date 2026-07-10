@@ -259,15 +259,15 @@ for my $r (sort keys %regionShape) {
 # （例如 key「rioja」5字元，但實際顯示「Rioja(里奧哈)」含中文視覺寬度大得多），
 # 這正是 Rioja/Navarra 兩個標籤先前會擠在一起的根本原因。
 my %LABEL_TEXT = (
-  rioja               => "Rioja(\x{91cc}\x{5967}\x{54c8})",
-  'castilla-y-leon'   => "Castilla y Le\x{f3}n(\x{5361}\x{65af}\x{63d0}\x{4e9e}\x{ff0d}\x{840a}\x{6606})",
-  andalusia           => "Andalusia(\x{5b89}\x{9054}\x{9b6f}\x{897f}\x{4e9e})",
-  catalonia           => "Catalonia(\x{52a0}\x{6cf0}\x{9686}\x{5c3c}\x{4e9e})",
-  galicia             => "Galicia(\x{52a0}\x{5229}\x{897f}\x{4e9e})",
-  murcia              => "Murcia(\x{7a46}\x{723e}\x{897f}\x{4e9e})",
-  navarra             => "Navarra(\x{7d0d}\x{74e6}\x{62c9})",
-  douro               => "Douro(\x{675c}\x{7f85}\x{6cb3})",
-  'vinho-verde'       => "Vinho Verde(\x{9752}\x{9152}\x{7522}\x{5340})",
+  'Rioja'                        => "Rioja(\x{91cc}\x{5967}\x{54c8})",
+  "Castilla y Le\x{f3}n"         => "Castilla y Le\x{f3}n(\x{5361}\x{65af}\x{63d0}\x{4e9e}\x{ff0d}\x{840a}\x{6606})",
+  'Andalusia'                    => "Andalusia(\x{5b89}\x{9054}\x{9b6f}\x{897f}\x{4e9e})",
+  'Catalonia'                    => "Catalonia(\x{52a0}\x{6cf0}\x{9686}\x{5c3c}\x{4e9e})",
+  'Galicia'                      => "Galicia(\x{52a0}\x{5229}\x{897f}\x{4e9e})",
+  'Murcia'                       => "Murcia(\x{7a46}\x{723e}\x{897f}\x{4e9e})",
+  'Navarra'                      => "Navarra(\x{7d0d}\x{74e6}\x{62c9})",
+  'Douro'                        => "Douro(\x{675c}\x{7f85}\x{6cb3})",
+  'Vinho Verde'                  => "Vinho Verde(\x{9752}\x{9152}\x{7522}\x{5340})",
 );
 sub label_halfwidth {
   my $s = shift;
@@ -307,17 +307,54 @@ for my $r (sort keys %regionShape) {
   my @pts = @{$regionShape{$r}};
   my ($sx, $sy) = (0, 0);
   $sx += $_->[0], $sy += $_->[1] for @pts;
-  my ($x, $y) = project($sx / scalar(@pts), $sy / scalar(@pts));
-  $labelPos{$r} = { x => $x + 0, y => $y + 0, halfw => label_halfwidth($LABEL_TEXT{$r} // $r) };
-  $labelCentroid{$r} = { x => $x + 0, y => $y + 0 };
+  my ($cx, $cy) = project($sx / scalar(@pts), $sy / scalar(@pts));
+  $cx += 0; $cy += 0;
+  my $halfw = label_halfwidth($LABEL_TEXT{$r} // $r);
+  $labelCentroid{$r} = { x => $cx, y => $cy };
   my @polyProj = map { [ map { $_ + 0 } project(@$_) ] } @pts;
   $labelPoly{$r} = \@polyProj;
   my $sum = 0;
-  $sum += sqrt(($_->[0] - $x) ** 2 + ($_->[1] - $y) ** 2) for @polyProj;
+  $sum += sqrt(($_->[0] - $cx) ** 2 + ($_->[1] - $cy) ** 2) for @polyProj;
   $labelRadius{$r} = $sum / scalar(@polyProj);
+
+  # 初始位置預設為重心，但若重心本身就落在某個產區標記的安全距離內，先沿
+  # 「重心→該標記」反方向做一次性偏移（加總全部衝突標記的推力向量）再開始
+  # 迭代。這是為了解決 Vinho Verde 這類「大區重心與同名產區標記幾乎重合
+  # （僅約5.8px）」的簡併起點問題：從幾乎疊在標記上的位置開始迭代，即使推力
+  # 方向正確，仍容易收斂到還是太近的位置，先給一個非簡併的起點可以讓後續
+  # 迭代更穩定地收斂到真正不重疊的位置。
+  my ($x, $y) = ($cx, $cy);
+  my ($nudgeX, $nudgeY) = (0, 0);
+  for my $id (keys %markerProj) {
+    my $M = $markerProj{$id};
+    my $dx = $x - $M->{x}; my $dy = $y - $M->{y};
+    my $dist = sqrt($dx * $dx + $dy * $dy);
+    my $minDist = $MARKER_KEEPOUT + $halfw * 0.75;
+    if ($dist < $minDist) {
+      if ($dist < 0.01) { $dx = 0; $dy = -1; $dist = 1; }
+      my $push = $minDist - $dist;
+      $nudgeX += ($dx / $dist) * $push;
+      $nudgeY += ($dy / $dist) * $push;
+    }
+  }
+  $x += $nudgeX; $y += $nudgeY;
+  $labelPos{$r} = { x => $x + 0, y => $y + 0, halfw => $halfw };
+  print STDERR "[label-radius] $r = " . sprintf('%.1f', $labelRadius{$r}) . " halfw=$halfw"
+    . (($nudgeX || $nudgeY) ? sprintf(" nudge=(%.1f,%.1f)", $nudgeX, $nudgeY) : '') . "\n";
 }
 
-for (my $iter = 0; $iter < 300; $iter++) {
+# ---------- 依形狀大小分流：夠大的大區比照法國用硬性容器約束（point-in-polygon），
+# 過窄過小的大區（文字寬度接近或超過形狀半徑，怎麼推都放不下完整文字）比照義大利
+# 改用彈性位移上限＋指示線。分類依「重心到邊界平均距離 ÷ 標籤半寬」比值判斷，
+# 而非憑印象寫死清單，避免地理資料調整後分類就跟著過時。----------
+my %LARGE_REGION;
+for my $r (keys %labelRadius) {
+  $LARGE_REGION{$r} = ($labelRadius{$r} / $labelPos{$r}{halfw} >= 1.5) ? 1 : 0;
+}
+print STDERR '[classification] 大形狀(硬性容器約束)=' . join(',', grep { $LARGE_REGION{$_} } sort keys %LARGE_REGION) . "\n";
+print STDERR '[classification] 小形狀(位移上限+指示線)=' . join(',', grep { !$LARGE_REGION{$_} } sort keys %LARGE_REGION) . "\n";
+
+for (my $iter = 0; $iter < 600; $iter++) {
   my $moved = 0;
   for my $r (keys %labelPos) {
     my $L = $labelPos{$r};
@@ -327,7 +364,7 @@ for (my $iter = 0; $iter < 300; $iter++) {
       my $dx = $L->{x} - $M->{x};
       my $dy = $L->{y} - $M->{y};
       my $dist = sqrt($dx * $dx + $dy * $dy);
-      my $minDist = $MARKER_KEEPOUT + $L->{halfw} * 0.55;
+      my $minDist = $MARKER_KEEPOUT + $L->{halfw} * ($LARGE_REGION{$r} ? 0.55 : 0.75);
       if ($dist < $minDist) {
         $moved = 1;
         if ($dist < 0.01) { $dx = 1; $dy = 0; $dist = 0.01; }
@@ -354,12 +391,15 @@ for (my $iter = 0; $iter < 300; $iter++) {
         $L2->{y} -= ($dy / $dist) * $push;
       }
     }
-    # 每一輪推完就立刻限制離自己重心的距離（用形狀本身的平均半徑*1.4，而非硬性
-    # 「必須在形狀內」），這樣 Castilla y León 這種大形狀可以移動較多、Rioja/Navarra
-    # 這種小形狀移動範圍自動跟著縮小但仍保留彈性，不會出現「怎麼推都被拉回重心
-    # 附近、導致兩個相鄰小形狀的標籤擠在一起」的問題。
+    # 每一輪推完就立刻限制離自己重心的距離，避免密集區域把標籤越推越遠、最後才
+    # 夾回去導致擠成一團。大形狀給較寬鬆的暫時上限（*4，最終交給下面的
+    # point-in-polygon 硬性拉回收斂），小形狀維持原本的彈性上限（*2.2）。
     my $C = $labelCentroid{$r};
-    my $maxDisp = $labelRadius{$r} * 2.2;
+    # 小形狀改用固定像素上限（比照義大利 MAX_DISPLACEMENT=58），而非重心半徑的倍數：
+    # 修正 LABEL_TEXT 對照表的 key 不一致 bug 後，標籤實際寬度（含中文括號）比先前
+    # 估計大上許多，若仍用半徑倍數會讓 Castilla y León 這種大形狀的標籤被推到離
+    # 重心100px以上、指示線橫跨大半個地圖，固定上限才能讓指示線長度維持合理範圍。
+    my $maxDisp = $LARGE_REGION{$r} ? $labelRadius{$r} * 4 : 58;
     my $ddx = $L->{x} - $C->{x};
     my $ddy = $L->{y} - $C->{y};
     my $dd = sqrt($ddx * $ddx + $ddy * $ddy);
@@ -369,6 +409,25 @@ for (my $iter = 0; $iter < 300; $iter++) {
     }
   }
   last unless $moved;
+}
+# 大形狀的最終保底：若避讓運算後仍落在形狀外，沿著「目前位置→重心」的線段
+# 逐步退回，取第一個落在形狀內的點（比照法國的硬性容器約束做法）。
+for my $r (keys %labelPos) {
+  next unless $LARGE_REGION{$r};
+  my $L = $labelPos{$r};
+  my $C = $labelCentroid{$r};
+  my $poly = $labelPoly{$r};
+  next if point_in_polygon($L->{x}, $L->{y}, $poly);
+  my $STEPS = 40;
+  for my $i (1 .. $STEPS) {
+    my $t = $i / $STEPS;
+    my $tx = $L->{x} + ($C->{x} - $L->{x}) * $t;
+    my $ty = $L->{y} + ($C->{y} - $L->{y}) * $t;
+    if (point_in_polygon($tx, $ty, $poly)) {
+      $L->{x} = $tx; $L->{y} = $ty;
+      last;
+    }
+  }
 }
 # 夾住邊界，避免標籤被推出畫布外
 for my $r (keys %labelPos) {
@@ -381,9 +440,17 @@ for my $r (keys %labelPos) {
   $L->{y} = $VBH - $MARGIN if $L->{y} > $VBH - $MARGIN;
 }
 
-print "=== REGION LABEL CENTROIDS (已避讓標記與彼此，並保證落在形狀內) ===\n";
+print "=== REGION LABEL CENTROIDS (大形狀已保證落在形狀內，小形狀為避讓後最佳位置) ===\n";
 for my $r (sort keys %labelPos) {
   printf "%s: %.1f,%.1f\n", $r, $labelPos{$r}{x}, $labelPos{$r}{y};
+}
+
+print "\n=== LABEL LEADER LINES (僅小形狀：標籤→大區重心，比照義大利指示線) ===\n";
+for my $r (sort keys %labelPos) {
+  next if $LARGE_REGION{$r};
+  my $L = $labelPos{$r};
+  my $C = $labelCentroid{$r};
+  printf "%s: %.1f,%.1f %.1f,%.1f\n", $r, $L->{x}, $L->{y}, $C->{x}, $C->{y};
 }
 
 print "\n=== APPELLATION MARKERS ===\n";
