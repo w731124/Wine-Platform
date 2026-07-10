@@ -195,29 +195,29 @@ function openDrawer(app){
 
 <!-- Grid: sensory bars + tag groups -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
-        <div class="ic">
-          <p style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:8px;">物理結構量化</p>
+        <div class="ic" style="background:var(--bg-card);">
+          <p class="ins-lbl" style="color:var(--burg);font-size:11px;">📊 物理結構量化 Structure</p>
           ${barsH}
         </div>
-        <div class="ic" style="display:flex;flex-direction:column;gap:12px;">
+        <div class="ic" style="background:var(--bg-card);display:flex;flex-direction:column;gap:12px;">
           <div>
-            <p style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:6px;">核心風味 Aroma Wheel</p>
+            <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🌸 核心風味 Aroma Wheel</p>
             <div style="display:flex;flex-wrap:wrap;gap:5px;">${(app.aromaWheel||[]).map(a=>`<span class="tg tg-aroma">${a}</span>`).join('')}</div>
           </div>
           <div>
-            <p style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:6px;">辨識特徵</p>
+            <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🔑 辨識特徵 Key Identifiers</p>
             <div style="display:flex;flex-wrap:wrap;gap:4px;">${kiH}</div>
           </div>
           <div>
-            <p style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:6px;">餐酒配對結構</p>
+            <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🍽️ 餐酒配對結構 Food Pairing</p>
             <div style="display:flex;flex-wrap:wrap;gap:4px;">${foodH}</div>
           </div>
         </div>
       </div>
 
       <!-- Terroir -->
-      <div class="ic" style="margin-bottom:12px;">
-        <p style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:8px;">TERROIR 風土</p>
+      <div class="ic mb-3" style="background:var(--bg-card);">
+        <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🌍 風土 Terroir</p>
         <div style="display:flex;flex-direction:column;gap:5px;">
           <div style="display:flex;gap:8px;font-size:12px;"><span style="color:var(--txt4);min-width:32px;">氣候</span><span style="color:var(--txt);">${app.terroir.climate}</span></div>
           <div style="display:flex;gap:8px;font-size:12px;"><span style="color:var(--txt4);min-width:32px;">土壤</span><span style="color:var(--txt);">${app.terroir.soil}</span></div>
@@ -226,24 +226,24 @@ function openDrawer(app){
       </div>
 
       <!-- Estates -->
-      <div style="margin-bottom:12px;">
-        <p style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:6px;">代表酒莊</p>
+      <div class="ic mb-3" style="background:var(--bg-card);">
+        <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🏰 代表酒莊 Famous Estates</p>
         <ul>${estH}</ul>
       </div>
 
       <!-- History -->
-      <div class="ic" style="margin-bottom:10px;">
-        <p style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:6px;">歷史背景</p>
-        <p style="font-size:11.5px;line-height:1.7;color:var(--txt3);">${app.history}</p>
+      <div class="ic mb-3" style="background:var(--bg-card);">
+        <p class="ins-lbl" style="color:var(--burg);font-size:11px;">📜 歷史背景 History</p>
+        <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${app.history}</p>
       </div>
       <div style="display:flex;justify-content:space-between;font-size:12px;">
         <span style="color:var(--txt4);">陳年潛力</span>
         <span style="color:var(--burg);font-weight:600;">${app.agingPotential}</span>
       </div>
       ${app.agingNote ? `
-      <div class="ic" style="margin-top:10px;">
-        <p style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:6px;">陳年潛力解析</p>
-        <p style="font-size:11.5px;line-height:1.7;color:var(--txt3);">${app.agingNote}</p>
+      <div class="ic mb-3" style="background:var(--bg-card);margin-top:10px;">
+        <p class="ins-lbl" style="color:var(--burg);font-size:11px;">⏳ 陳年潛力解析 Aging Note</p>
+        <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${app.agingNote}</p>
       </div>` : ''}`;
   }
 
