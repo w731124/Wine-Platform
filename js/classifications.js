@@ -2,12 +2,30 @@
    CLASSIFICATION SYSTEMS PANEL
 ════════════════════════════════════ */
 let curClassBasis = 'all';
+let curClassCountry = null; // null = 尚未選定國家，不顯示卡片
 
 const CLASS_BASIS_META = {
   estate: { icon: '🏰', label: 'Estate(酒莊)' },
   vineyard: { icon: '🍇', label: 'Vineyard(葡萄園)' },
   region: { icon: '🗺️', label: 'Region(產區)' }
 };
+
+function renderClassCountryFilters() {
+  const cont = document.getElementById('class-country-filters');
+  if (!cont) return;
+  const countries = [...new Set((WINE_DB.classifications || []).map(c => c.country))];
+  cont.innerHTML = countries.map(country =>
+    `<button class="fp2 ${country === curClassCountry ? 'active' : ''}" data-class-country="${country}">${flagIconHTML(country)} ${country}</button>`
+  ).join('');
+  cont.onclick = e => {
+    const btn = e.target.closest('.fp2');
+    if (!btn) return;
+    cont.querySelectorAll('.fp2').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    curClassCountry = btn.dataset.classCountry;
+    renderClassificationPanel();
+  };
+}
 
 function setClassBasisFilter(basis, btn) {
   curClassBasis = basis;
@@ -21,7 +39,12 @@ function renderClassificationPanel() {
   const cont = document.getElementById('classification-container');
   if (!cont) return;
 
-  const list = (WINE_DB.classifications || []).filter(c => curClassBasis === 'all' || c.basis === curClassBasis);
+  if (!curClassCountry) {
+    cont.innerHTML = '<div style="text-align:center;padding:64px 0;"><p style="font-size:32px;margin-bottom:12px;">🎖️</p><p style="font-size:13px;color:var(--txt3);">請先選擇上方的國家，即可瀏覽該國法定分級制度</p></div>';
+    return;
+  }
+
+  const list = (WINE_DB.classifications || []).filter(c => c.country === curClassCountry && (curClassBasis === 'all' || c.basis === curClassBasis));
 
   const groups = {};
   list.forEach(c => {

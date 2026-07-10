@@ -264,6 +264,7 @@ document.addEventListener('DOMContentLoaded', function() {
   renderCompareColorFilters();
   populateCompareSelects();
   renderGrapePanel();
+  renderClassCountryFilters();
   renderClassificationPanel();
   renderWineStylePanel();
   renderFranceMarkers();
