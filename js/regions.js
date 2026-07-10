@@ -2,9 +2,10 @@ function renderL1CountryFilters(){
   const bar=document.getElementById('l1-country-bar');
   const cont=document.getElementById('l1-country-filters');
   if (!bar || !cont) return;
-  if(curL1!=='old-world'&&curL1!=='new-world'){ bar.classList.remove('open'); cont.innerHTML=''; return; }
+  if(curL1!=='all'&&curL1!=='old-world'&&curL1!=='new-world'){ bar.classList.remove('open'); cont.innerHTML=''; return; }
 
-  const countries=[...new Set(WINE_DB.appellations.filter(a=>a.world===curL1).map(a=>a.country))];
+  const pool = curL1==='all' ? WINE_DB.appellations : WINE_DB.appellations.filter(a=>a.world===curL1);
+  const countries=[...new Set(pool.map(a=>a.country))];
   cont.innerHTML=countries.map(country=>
     `<button class="fp2 ${country===curL1?'active':''}" data-l1c="${country}">${flagIconHTML(country)} ${country}</button>`
   ).join('');
@@ -52,6 +53,13 @@ if (rs) {
 function renderFilteredRegions(){
   const cont=document.getElementById('region-container');
   if(!cont) return;
+
+  // 尚未選定特定國家、也沒有搜尋關鍵字時，不列出大產區，等使用者點擊國家後才展開
+  const hasCountry = curL1!=='all'&&curL1!=='old-world'&&curL1!=='new-world';
+  if(!hasCountry && !srchQ){
+    cont.innerHTML='<div style="text-align:center;padding:64px 0;"><p style="font-size:32px;margin-bottom:12px;">🌍</p><p style="font-size:13px;color:var(--txt3);">請先選擇上方的國家，即可瀏覽該國所有大產區</p></div>';
+    return;
+  }
 
   // 1. Filter
   let list=WINE_DB.appellations.filter(a=>{
