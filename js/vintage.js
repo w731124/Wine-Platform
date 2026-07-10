@@ -15,6 +15,13 @@ function buildVintageMatrix(){
   const groups = [];
   for (let i=0;i<years.length;i+=GROUP_SIZE) groups.push(years.slice(i,i+GROUP_SIZE));
 
+  // 純視覺分組標題：僅對成對的3組加標題，其餘4個獨立產區（Loire/Alsace/Champagne/Languedoc-Roussillon）不強加分組
+  const vmGroupHeaders = {
+    'bordeaux-left': '波爾多 Bordeaux',
+    'burgundy-red': '勃根地 Burgundy',
+    'rhone-north': '隆河 Rhône',
+  };
+
   const thead = document.getElementById('vm-thead');
   const thead2 = document.getElementById('vm-thead2');
   if (thead) {
@@ -30,7 +37,13 @@ function buildVintageMatrix(){
   const tb = document.getElementById('vm-tbody');
   if (tb) {
     tb.innerHTML = '';
+    const totalCols = 1 + groups.reduce((sum,g,gi)=> sum + (gi===vmOpenGroup ? g.length : 1), 0);
     WINE_DB.vintages.rows.forEach(row=>{
+      if (vmGroupHeaders[row.id]) {
+        const gtr = document.createElement('tr');
+        gtr.innerHTML = `<td colspan="${totalCols}" class="vm-region-group-hdr">${vmGroupHeaders[row.id]}</td>`;
+        tb.appendChild(gtr);
+      }
       const sc = (WINE_DB.vintages.scores[row.id] || []).slice(1); // 對齊拿掉2000年後的年份陣列
       const tr = document.createElement('tr');
 
