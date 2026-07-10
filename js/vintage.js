@@ -24,7 +24,7 @@ function buildVintageMatrix(){
     }).join('');
   }
   if (thead2) {
-    thead2.innerHTML = groups.map((g,gi)=> gi===vmOpenGroup ? g.map(y=>`<th>${String(y).slice(2)}</th>`).join('') : '').join('');
+    thead2.innerHTML = groups.map((g,gi)=> gi===vmOpenGroup ? g.map(y=>`<th>${String(y).slice(2)}</th>`).join('') : '<th></th>').join('');
   }
 
   const tb = document.getElementById('vm-tbody');
