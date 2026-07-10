@@ -43,6 +43,8 @@ function buildVintageMatrix(){
           const d = sc[idx] || {s:0,st:'x'};
           if(!d.s) return `<td><div class="vc" style="background:transparent;border:1px dashed var(--border-lt);"><span class="sc" style="color:var(--txt4);font-size:10px;">—</span></div></td>`;
           const cls = stMap[d.st] || 'vs-a';
+          const hasDetail = !!WINE_DB.vintages.detail[row.id+'_'+y];
+          if(!hasDetail) return `<td><div class="vc ${cls} vc-static"><span class="sc">${d.s}</span></div></td>`;
           return `<td><div class="vc ${cls}" onclick="openVMI('${row.id}','${y}',${d.s},'${d.st}')"><span class="sc">${d.s}</span></div></td>`;
         }).join('');
       }).join('');
