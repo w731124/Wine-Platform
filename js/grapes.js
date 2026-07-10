@@ -51,20 +51,20 @@ function buildGrapeCardHTML(g) {
         </div>
         <span class="acc-arrow">▼</span>
       </div>
-      <div class="acc-body">
+      <div class="acc-body" style="background:var(--bg-sub);">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="ic" style="background:var(--bg-card);">
-            <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🌸 關鍵香氣 Key Aromas</p>
+            <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🌸 關鍵香氣 Key Aromas</p>
             <div class="flex flex-wrap gap-1 mb-3">${aromaTags}</div>
-            <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🗺️ 代表產區 Regions</p>
+            <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🗺️ 代表產區 Regions</p>
             <div class="flex flex-wrap gap-1 mb-3">${regionTags}</div>
-            <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🌡️ 適飲溫度 Serving Temp</p>
+            <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🌡️ 適飲溫度 Serving Temp</p>
             <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);margin-bottom:12px;">${g.servingTemp}</p>
-            <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🍽️ 餐酒搭配 Food Pairing</p>
+            <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🍽️ 餐酒搭配 Food Pairing</p>
             <div class="flex flex-wrap gap-1">${foodTags}</div>
           </div>
           <div class="ic flex flex-col items-center justify-center" style="background:var(--bg-card);">
-            <p class="ins-lbl mb-2" style="color:var(--burg);font-size:11px;">📈 7 維雷達圖 Radar Chart</p>
+            <p class="ins-lbl mb-2" style="color:var(--gold-dk);font-size:11px;">📈 7 維雷達圖 Radar Chart</p>
             <div style="position:relative;width:100%;max-width:260px;height:230px;">
               <canvas id="grape-radar-${g.id}"></canvas>
             </div>

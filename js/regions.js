@@ -196,20 +196,20 @@ function openDrawer(app){
 <!-- Grid: sensory bars + tag groups -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
         <div class="ic" style="background:var(--bg-card);">
-          <p class="ins-lbl" style="color:var(--burg);font-size:11px;">📊 物理結構量化 Structure</p>
+          <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">📊 物理結構量化 Structure</p>
           ${barsH}
         </div>
         <div class="ic" style="background:var(--bg-card);display:flex;flex-direction:column;gap:12px;">
           <div>
-            <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🌸 核心風味 Aroma Wheel</p>
+            <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🌸 核心風味 Aroma Wheel</p>
             <div style="display:flex;flex-wrap:wrap;gap:5px;">${(app.aromaWheel||[]).map(a=>`<span class="tg tg-aroma">${a}</span>`).join('')}</div>
           </div>
           <div>
-            <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🔑 辨識特徵 Key Identifiers</p>
+            <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🔑 辨識特徵 Key Identifiers</p>
             <div style="display:flex;flex-wrap:wrap;gap:4px;">${kiH}</div>
           </div>
           <div>
-            <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🍽️ 餐酒配對結構 Food Pairing</p>
+            <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🍽️ 餐酒配對結構 Food Pairing</p>
             <div style="display:flex;flex-wrap:wrap;gap:4px;">${foodH}</div>
           </div>
         </div>
@@ -217,7 +217,7 @@ function openDrawer(app){
 
       <!-- Terroir -->
       <div class="ic mb-3" style="background:var(--bg-card);">
-        <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🌍 風土 Terroir</p>
+        <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🌍 風土 Terroir</p>
         <div style="display:flex;flex-direction:column;gap:5px;">
           <div style="display:flex;gap:8px;font-size:12px;"><span style="color:var(--txt4);min-width:32px;">氣候</span><span style="color:var(--txt);">${app.terroir.climate}</span></div>
           <div style="display:flex;gap:8px;font-size:12px;"><span style="color:var(--txt4);min-width:32px;">土壤</span><span style="color:var(--txt);">${app.terroir.soil}</span></div>
@@ -227,13 +227,13 @@ function openDrawer(app){
 
       <!-- Estates -->
       <div class="ic mb-3" style="background:var(--bg-card);">
-        <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🏰 代表酒莊 Famous Estates</p>
+        <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🏰 代表酒莊 Famous Estates</p>
         <ul>${estH}</ul>
       </div>
 
       <!-- History -->
       <div class="ic mb-3" style="background:var(--bg-card);">
-        <p class="ins-lbl" style="color:var(--burg);font-size:11px;">📜 歷史背景 History</p>
+        <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">📜 歷史背景 History</p>
         <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${app.history}</p>
       </div>
       <div style="display:flex;justify-content:space-between;font-size:12px;">
@@ -242,7 +242,7 @@ function openDrawer(app){
       </div>
       ${app.agingNote ? `
       <div class="ic mb-3" style="background:var(--bg-card);margin-top:10px;">
-        <p class="ins-lbl" style="color:var(--burg);font-size:11px;">⏳ 陳年潛力解析 Aging Note</p>
+        <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">⏳ 陳年潛力解析 Aging Note</p>
         <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${app.agingNote}</p>
       </div>` : ''}`;
   }

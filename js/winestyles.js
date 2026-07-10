@@ -21,21 +21,21 @@ function buildWineStyleCardHTML(s) {
         </div>
         <span class="acc-arrow">▼</span>
       </div>
-      <div class="acc-body">
+      <div class="acc-body" style="background:var(--bg-sub);">
         <div class="ic mb-3" style="background:var(--bg-card);">
-          <p class="ins-lbl" style="color:var(--burg);font-size:11px;">📜 歷史文化 History</p>
+          <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">📜 歷史文化 History</p>
           <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${s.history}</p>
         </div>
         <div class="ic mb-3" style="background:var(--bg-card);">
-          <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🍇 葡萄品種 Grapes</p>
+          <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🍇 葡萄品種 Grapes</p>
           <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${s.grapes}</p>
         </div>
         <div class="ic mb-3" style="background:var(--bg-card);">
-          <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🌍 風土 Terroir</p>
+          <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🌍 風土 Terroir</p>
           <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${s.terroir}</p>
         </div>
         <div class="ic" style="background:var(--bg-card);">
-          <p class="ins-lbl" style="color:var(--burg);font-size:11px;">⚗️ 釀造方式 Production</p>
+          <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">⚗️ 釀造方式 Production</p>
           <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${s.production}</p>
         </div>
       </div>

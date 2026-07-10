@@ -87,11 +87,11 @@ function buildClassificationCardHTML(c) {
         </div>
         <span class="acc-arrow">▼</span>
       </div>
-      <div class="acc-body">
-        <p class="ins-lbl" style="color:var(--burg);font-size:11px;">🎖️ 分級層級 Tiers（由高至低）</p>
+      <div class="acc-body" style="background:var(--bg-sub);">
+        <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🎖️ 分級層級 Tiers（由高至低）</p>
         <div class="flex flex-col gap-2 mb-3">${tiersHTML}</div>
-        ${c.history ? `<div class="ic mb-3" style="background:var(--bg-card);"><p class="ins-lbl" style="color:var(--burg);font-size:11px;">📜 歷史背景 History</p><p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${c.history}</p></div>` : ''}
-        ${c.crossNote ? `<div class="ic" style="background:var(--bg-card);"><p class="ins-lbl" style="color:var(--burg);font-size:11px;">🔗 跨區對照 Cross-reference</p><p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${c.crossNote}</p></div>` : ''}
+        ${c.history ? `<div class="ic mb-3" style="background:var(--bg-card);"><p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">📜 歷史背景 History</p><p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${c.history}</p></div>` : ''}
+        ${c.crossNote ? `<div class="ic" style="background:var(--bg-card);"><p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🔗 跨區對照 Cross-reference</p><p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${c.crossNote}</p></div>` : ''}
       </div>
     </div>`;
 }
