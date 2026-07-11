@@ -640,4 +640,14 @@
      原因：使用者要求新分頁視覺「完全比照現有品飲系統頁面的卡片樣式，不要另創新的視覺語言」；4個區塊內容與文字為使用者於任務描述中逐字提供。
      驗證：headless Chrome 截圖確認導覽下拉展開後正確顯示「品飲系統」「食物搭配」兩子項；點擊「食物搭配」後正確切換面板、頂部導覽觸發鈕正確高亮為「品飲與搭餐」；4個區塊完整渲染（互補/對比雙色塊、SAT要素4色塊配色與SAT頁呼應、常見地雷4項紅色警示條、產地不分家5個範例列），版面與既有SAT頁視覺語言一致無違和；`--dump-dom` 確認頁面載入無 JS 錯誤。此為兩階段任務的階段一，待使用者提供階段二內容。
 
+## 2026-07-11 「食物搭配原則」階段二：品種反查工具＋修正Seafood標籤用字不一致
+
+188. **修正 `data/wine-data.js` 的 `pessac-leognan`（line 1020）與 `hautes-cotes-de-beaune`（line 1256）兩筆產區的 `foodPairingTags`，`Seafood(白酒海鮮)` 統一改為 `Seafood(海鮮)`**，與全站其餘32筆用法一致，陣列內其他標籤不動。
+     原因：使用者發現這是全站91個產區中僅有的2筆例外用字，要求統一；動工前已依要求先view這2筆完整資料核對id與欄位內容無誤後才修改，改完後 `grep` 確認全檔案已無 `Seafood(白酒海鮮)` 殘留。
+189. **新增 `js/foodpairing.js`，建立9大分類對照表 `FOOD_CATEGORY_MAP`（key／雙語label／對應tags陣列），並實作品種反查工具**：使用者選擇食物大類後，比對 `WINE_DB.grapes`（23筆）各品種的 `foodPairingTags` 欄位，列出符合的品種、可點擊透過既有 `jumpToGrapeById()` 跳轉至品種圖鑑對應卡片。分類按鈕沿用分級制度頁「By酒莊/葡萄園/產區」既有的 `.fp.fp-basis` 深綠色樣式（零新CSS），品種結果沿用既有 `.tg-food` 標籤樣式（同樣是全站既定的餐酒搭配深綠色，強化「這是食物搭配情境」的視覺語意）。9個分類的雙語標籤文字採用使用者指定的「English(中文)」格式（如 `Red Meat & Game(紅肉與野味)`）。比照其他panel各自獨立JS檔案的既有慣例，新檔案不與既有 `js/grapes.js`／`js/compare.js` 混用。`index.html` 新增對應 `<script>` 引入，並在「食物搭配原則」頁新增第5區塊「🔎 品種反查工具」容器；`js/core.js` 的 `DOMContentLoaded` 新增一行 `renderFoodCategoryFilters();` 初始化呼叫。
+     原因：使用者要求新增反查小工具，動工前已核對使用者提供的46+標籤分類表（涵蓋產區+品種114筆資料的完整詞彙）與 `WINE_DB.grapes` 實際使用的37個標籤，確認範圍後回報實作計畫並取得確認。
+190. **`Cream Sauce(奶油醬汁)`、`Tomato Acid(番茄酸香)` 兩個標籤刻意不映射到任何分類**：這2個標籤存在於品種資料但不屬於使用者提供的9大分類、也不屬於「純烹調方式/油脂強度」排除清單（High/Moderate/Light Fat、Grilled、BBQ、Roasted），動工前已逐一核對23筆品種資料，確認每筆品種都至少有其他標籤落在某個分類內，故這2個標籤不映射不會導致任何品種在反查工具中完全消失，視同與排除清單同一性質處理。
+     原因：使用者提供的分類表未涵蓋全部詞彙，動工前已主動核對範圍缺口並回報、取得使用者確認後才動工，避免逕行假設處理方式。
+     驗證：headless Chrome 以真實 `.click()` 模擬互動：確認9個分類按鈕正確渲染、雙語文字格式正確；點擊「Red Meat & Game(紅肉與野味)」正確列出9個符合品種（Cabernet Sauvignon、Merlot、Pinot Noir、Syrah/Shiraz、Tempranillo、Sangiovese、Nebbiolo、Grenache/Garnacha、Malbec、Zinfandel/Primitivo）；點擊品種連結正確跳轉至品種圖鑑分頁、頂部導覽高亮同步、對應卡片自動展開；`grep` 確認 `Seafood(白酒海鮮)` 全檔案殘留為0筆；`--dump-dom` 確認頁面載入無 JS 錯誤。至此「食物搭配原則」兩階段任務全數完成。
+
 
