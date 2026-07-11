@@ -623,3 +623,12 @@
 183. **`js/grapes.js` 的 `buildGrapeCardHTML()` 未再修改**：試點階段已完成的條件式渲染（`g.history ? ... : ''`）本身就能正確處理全部23個品種皆有資料的情況，不需要額外程式碼異動，純粹是 `data/wine-data.js` 的資料補齊。
      原因：驗證試點階段的渲染設計具備良好擴展性，批次填入資料時不需要回頭修改渲染邏輯，符合「資料處理與DOM渲染區隔」的架構傾向。
      驗證：`grep` 統計確認 `grapes` 陣列區塊內 `history`／`confusionNote` 欄位皆為23筆（與品種總數一致）；Perl統計全檔案大括號/中括號開合數一致（1114/1114、551/551），確認22筆逐一手動編輯未破壞JSON結構；額外檢查全檔案無新增的雙反斜線跳脫錯誤（`\\'` 誤用），僅有既有資料原本正確的單反斜線 `\'` 用法；headless Chrome 展開 Nebbiolo（批次品種代表）卡片截圖確認「品種身世」「易混淆品種」正確渲染、樣式與試點的Cabernet Sauvignon一致；`--dump-dom` 確認頁面載入無 JS 錯誤。至此品種圖鑑23個品種全數具備品種身世與易混淆品種兩項新內容。
+
+## 2026-07-11 比較模式新增「品種比較」模式，與既有「產地比較」共用同一面板
+
+184. **`index.html` PANEL 4（比較模式）新增「產地比較 Region／品種比較 Grape」切換鈕**：既有的酒色篩選＋三層連動下拉選單（國家/大產區/次產區）＋雷達圖＋identity卡片整段包進 `#cm-mode-appellation`，內容本身逐字不動；新增 `#cm-mode-grape` 區塊，結構比照既有區塊但簡化為單層品種下拉選單（品種無國家/大產區/次產區三層結構），副標題文字同步從「選擇酒色分類後再選產區」改為「選擇酒色分類後再選比較對象」以涵蓋兩種比較對象。`js/compare.js` 新增 `switchCompareMode()` 控制兩個模式容器的顯示切換與按鈕啟用態視覺，新增 `renderCompareGrapeColorFilters()`／`populateCompareGrapeSelects()`／`onCompareGrapeChange()`／`renderCompareGrapeRadar()` 四個函式，資料源改為 `WINE_DB.grapes`、雷達圖沿用與既有產地比較、`js/grapes.js` 個別品種卡片完全相同的7維度（tannin/acidity/body/alcohol/finish/aging/floral）。`js/core.js` 的 `DOMContentLoaded` 新增一行 `renderCompareGrapeColorFilters();` 初始化呼叫。
+     原因：使用者要求新增品種對品種的比較功能，與既有產地比較共用同一比較模式面板與雷達圖規格，讓兩種比較邏輯在使用者心智模型中維持一致；動工前已依使用者提供的精確HTML/JS程式碼核對 `index.html` PANEL 4、`js/compare.js`、`js/core.js` 三處現況一致後才套用。
+185. **驗證階段發現並修正一個函式命名衝突的實際功能性bug**：新增的顏色篩選函式若直接沿用使用者原始命名 `setGrapeColorFilter`，會與 `js/grapes.js`（品種圖鑑頁既有、`<script>` 載入順序在 `js/compare.js` 之後）的同名函式衝突——瀏覽器全域作用域下後載入的定義會覆蓋先載入的，導致點擊品種比較的顏色篩選鈕時實際執行的是品種圖鑑頁的篩選邏輯（更新 `curGrapeColor` 並呼叫 `renderGrapePanel()`），而非比較模式預期的 `curGrapeColorFilter`／`populateCompareGrapeSelects()`，使下拉選單永遠不會被填入品種清單。改名為 `setCompareGrapeColorFilter` 後解決，函式內部邏輯與使用者原始提供的程式碼完全相同，僅函式名稱改變。
+     原因：此為使用者要求的驗證步驟（「品種比較選色後下拉選單正確帶出對應顏色的品種清單」）過程中發現的阻斷性bug，直接影響本次新增功能能否運作，屬任務範圍內必須修正的問題，非範圍外的順手改動。
+     驗證：headless Chrome 以真實 `.click()` 與 `dispatchEvent(new Event('change'))` 模擬使用者互動（避免用解析 `onclick` 屬性字串的方式誤判，該方式在除錯過程中一度誤導判斷方向）：確認品種比較模式切換鈕正確顯示/隱藏兩個容器；選擇酒色後下拉選單正確帶出13筆紅葡萄品種清單；選定 Cabernet Sauvignon／Merlot 後雷達圖與兩張identity卡片正確渲染；點擊「完整詳情」正確跳轉至品種圖鑑分頁、頂部導覽高亮同步、對應品種卡片自動展開並捲動至可見範圍。回歸測試確認原有產地比較模式（Pauillac三層連動選單、雷達圖、identity卡片）完全不受影響。`--dump-dom` 確認頁面載入無 JS 錯誤。
+

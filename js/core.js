@@ -263,6 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
   buildVintageMatrix();
   renderCompareColorFilters();
   populateCompareSelects();
+  renderCompareGrapeColorFilters();
   renderGrapePanel();
   renderClassCountryFilters();
   renderClassificationPanel();
