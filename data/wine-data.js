@@ -2405,6 +2405,8 @@ const WINE_DB = {
       originCountry: 'France(法國)',
       wsetLevel: 2,
       styleSummary: '厚實高單寧的晚熟品種，黑醋栗與雪松骨架鮮明，適應多元氣候並具備極佳陳年潛力。',
+      history: '卡本內蘇維濃是波爾多西部18世紀的自然雜交品種，經DNA鑑定（1996年，加州大學戴維斯分校Carole Meredith團隊）證實親本為卡本內弗朗與白蘇維濃——一紅一白的意外配對，長期被誤認是血統純正的古老品種。厚實果皮與晚熟特性使其特別適應波爾多左岸的礫石台地，19世紀隨波爾多國際聲望擴散至新世界，如今已是全球種植面積最廣的頂級紅酒品種之一，從納帕谷、庫納瓦拉到智利馬波河谷都有代表性演繹。',
+      confusionNote: '最容易與其父本卡本內弗朗（Cabernet Franc）及常見混調搭檔梅洛（Merlot）混淆，三者常同時出現在波爾多混調配方中。卡本內蘇維濃單寧最緊實、晚熟、黑醋栗與石墨氣息主導；卡本內弗朗顏色較淺、青椒與覆盆莓氣息更明顯、單寧較柔和；梅洛早熟、單寧圓潤、紅李與巧克力調性突出。混調時卡本內蘇維濃通常負責提供骨架與陳年潛力，而非果香奔放度。',
       aromaWheel: ['Blackcurrant(黑醋栗)', 'Cedar(雪松)', 'Graphite(石墨)', 'Mint(薄荷)'],
       representativeRegions: ['pauillac', 'margaux', 'medoc', 'haut-medoc', 'pessac-leognan', 'graves', 'napa-valley', 'margaret-river', 'mendoza', 'maipo-valley', 'stellenbosch', 'columbia-valley', 'paso-robles'],
       servingTemp: '16–18°C',

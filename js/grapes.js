@@ -52,6 +52,8 @@ function buildGrapeCardHTML(g) {
         <span class="acc-arrow">▼</span>
       </div>
       <div class="acc-body" style="background:var(--bg-sub);">
+        ${g.history ? `<div class="ic mb-3" style="background:var(--bg-card);"><p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">📜 品種身世 History</p><p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${g.history}</p></div>` : ''}
+        ${g.confusionNote ? `<div class="ic mb-3" style="background:var(--bg-card);"><p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🔍 易混淆品種 Similar Grapes</p><p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${g.confusionNote}</p></div>` : ''}
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="ic" style="background:var(--bg-card);">
             <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🌸 關鍵香氣 Key Aromas</p>
