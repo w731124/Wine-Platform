@@ -286,8 +286,9 @@ function toggleSATSection(hdr){
   const arrow = hdr.querySelector('.acc-arrow');
   const isOpen = body.classList.contains('open');
 
-  // 手風琴行為：收合其他已展開卡片
-  document.querySelectorAll('#panel-tasting .acc-hdr.open').forEach(otherHdr => {
+  // 手風琴行為：收合同一個panel內其他已展開卡片（用closest('.panel')而非寫死單一分頁id，讓多個分頁可共用此函式）
+  const panelEl = hdr.closest('.panel');
+  (panelEl ? panelEl.querySelectorAll('.acc-hdr.open') : []).forEach(otherHdr => {
     if (otherHdr === hdr) return;
     const otherBody = otherHdr.nextElementSibling;
     const otherArrow = otherHdr.querySelector('.acc-arrow');
