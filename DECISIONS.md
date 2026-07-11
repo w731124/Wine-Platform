@@ -615,3 +615,11 @@
 181. **`data/wine-data.js` 的 `cabernet-sauvignon` 品種物件新增 `history`（品種身世，約185字）與 `confusionNote`（易混淆品種辨識，約165字，比較 Cabernet Franc 與 Merlot）兩個新欄位；`js/grapes.js` 的 `buildGrapeCardHTML()` 在 `.acc-body` 頂部（既有「關鍵香氣/代表產區/雷達圖」2欄網格之前）新增條件式渲染的兩個全寬 `.ic` 卡片區塊，欄位不存在時不渲染（`g.history ? ... : ''`），沿用先前 `agingNote` 欄位漸進式導入的既定模式**：品種圖鑑先前只有單句 `styleSummary`（40-90字），沒有任何敘事性長文字欄位，明顯薄於已擴寫過的產區資料庫（summary/history/terroir/agingNote）與分級制度（summary/history/crossNote）。
      原因：使用者要求擴增品種圖鑑內容，經 `AskUserQuestion` 確認範圍鎖定「品種身世/歷史」與「與相似品種的辨識/易混淆點」兩類（栽培特性、styleSummary加長本次不做），並確認採「先示範1個品種再批次擴充」的節奏，比照先前分級制度/年份矩陣擴寫的既定流程。
      驗證：headless Chrome 展開 Cabernet Sauvignon 卡片截圖確認「📜 品種身世 History」「🔍 易混淆品種 Similar Grapes」兩區塊正確顯示在卡片頂部、樣式與既有 `.ic` 卡片一致（白底、金色小標題），其後「關鍵香氣/代表產區/適飲溫度/餐酒搭配」與雷達圖不受影響；其餘22個未擴充品種（Merlot、Pinot Noir等）因條件式渲染維持原樣、無空白欄位或版面異常；`--dump-dom` 確認頁面載入無 JS 錯誤。此為試點，待批次套用其餘22個品種。
+
+## 2026-07-11 品種圖鑑批次套用「品種身世」「易混淆品種」欄位，23個品種全數完成
+
+182. **`data/wine-data.js` 剩餘22個品種（Merlot 至 Muscat/Moscato）依試點格式補齊 `history`（品種身世，約150-230字）與 `confusionNote`（易混淆品種辨識，約100-170字）**：內容涵蓋品種起源、命名由來、關鍵歷史事件（如黑皮諾與熙篤會修士、加美被1395年勃根地公爵法令逐出勃根地、金芬黛2001年DNA身世確認、維歐尼耶1960年代瀕危史、卡本內蘇維濃/夏多內/卡本內弗朗DNA親緣關係）等有把握的既有WSET/品種學知識；`confusionNote` 針對每個品種挑選1-2個最容易混淆的近緣或同源異名品種（如Zinfandel/Primitivo同物異名、Pinot Grigio/Pinot Gris同品種兩極風格、Tempranillo各產區地方別名），具體點出可辨識的風格差異而非僅列品種名稱。
+     原因：使用者確認試點效果後要求「請繼續」套用其餘22個品種，延續試點定調的風格、篇幅與內容深度，一次性完成批次擴充。
+183. **`js/grapes.js` 的 `buildGrapeCardHTML()` 未再修改**：試點階段已完成的條件式渲染（`g.history ? ... : ''`）本身就能正確處理全部23個品種皆有資料的情況，不需要額外程式碼異動，純粹是 `data/wine-data.js` 的資料補齊。
+     原因：驗證試點階段的渲染設計具備良好擴展性，批次填入資料時不需要回頭修改渲染邏輯，符合「資料處理與DOM渲染區隔」的架構傾向。
+     驗證：`grep` 統計確認 `grapes` 陣列區塊內 `history`／`confusionNote` 欄位皆為23筆（與品種總數一致）；Perl統計全檔案大括號/中括號開合數一致（1114/1114、551/551），確認22筆逐一手動編輯未破壞JSON結構；額外檢查全檔案無新增的雙反斜線跳脫錯誤（`\\'` 誤用），僅有既有資料原本正確的單反斜線 `\'` 用法；headless Chrome 展開 Nebbiolo（批次品種代表）卡片截圖確認「品種身世」「易混淆品種」正確渲染、樣式與試點的Cabernet Sauvignon一致；`--dump-dom` 確認頁面載入無 JS 錯誤。至此品種圖鑑23個品種全數具備品種身世與易混淆品種兩項新內容。
