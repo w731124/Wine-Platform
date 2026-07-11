@@ -650,4 +650,10 @@
      原因：使用者提供的分類表未涵蓋全部詞彙，動工前已主動核對範圍缺口並回報、取得使用者確認後才動工，避免逕行假設處理方式。
      驗證：headless Chrome 以真實 `.click()` 模擬互動：確認9個分類按鈕正確渲染、雙語文字格式正確；點擊「Red Meat & Game(紅肉與野味)」正確列出9個符合品種（Cabernet Sauvignon、Merlot、Pinot Noir、Syrah/Shiraz、Tempranillo、Sangiovese、Nebbiolo、Grenache/Garnacha、Malbec、Zinfandel/Primitivo）；點擊品種連結正確跳轉至品種圖鑑分頁、頂部導覽高亮同步、對應卡片自動展開；`grep` 確認 `Seafood(白酒海鮮)` 全檔案殘留為0筆；`--dump-dom` 確認頁面載入無 JS 錯誤。至此「食物搭配原則」兩階段任務全數完成。
 
+## 2026-07-11 地圖探索法國地圖：波爾多左右岸圓點視覺偏移，露出河流分界
+
+191. **`js/map.js` 的 `renderFranceMarkers()` 新增 `BORDEAUX_VISUAL_OFFSET` 對照表，對11個波爾多產區圓點套用手動視覺偏移（左岸產區往西推、右岸產區往東推）**，在既有的 `declutterPoints()` 防重疊邏輯之前套用；只調整圓點的SVG視覺座標，`WINE_DB.appellations` 的真實經緯度資料完全不動。修正後左岸核心產區（Médoc、Haut-Médoc、Pauillac、Margaux）與右岸核心產區（Saint-Émilion、Pomerol）之間露出約30個SVG單位的間隙，Garonne河線清楚可見地穿過其中，兩岸不再被金色圓點（含pulse ring半徑8px）直接遮蓋。
+     原因：使用者回報波爾多圓點太大幾乎蓋住河流、左右岸完全分不出來，並明確表示「不用縮小圓點，可以讓圓點稍微偏離真實地理位置」；動工前已詢問並確認範圍——不嘗試補齊Dordogne河的真實地理資料（現有註解已載明資料源查不到，且使用者明確表示此地圖精確度非重點，整體相對位置的概念才是目的）。
+     驗證：透過注入探測腳本讀取渲染後的實際SVG座標（`.dot-inner` 的 cx/cy），確認左岸核心4點x座標落在168.8–190.0、右岸2點（Pomerol、Saint-Émilion）x座標落在220.3–226.6，兩群間有清楚間隙；headless Chrome 對波爾多區域局部viewBox放大截圖，目視確認河流藍線在放大後清楚穿過左右岸圓點之間的空隙；`--dump-dom` 確認頁面載入無 JS 錯誤，且本次改動未觸及其他大區（勃根地、隆河、香檳等）的圓點渲染，回歸風險低。Graves／Sauternes／Barsac／Entre-Deux-Mers這4個非核心左右岸identity的產區，因彼此仍緊密相鄰、經 `declutterPoints` 二次調整後彼此邊界仍略模糊，但使用者已表示此圖以核心相對位置概念為主、非個別點位精確度，故不再進一步微調。
+
 

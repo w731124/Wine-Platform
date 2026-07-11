@@ -86,6 +86,21 @@ function declutterPoints(points, minDist, maxIterations){
     if (!moved) break;
   }
 }
+// 波爾多左右岸圓點視覺偏移：Garonne河線穿過波爾多產區群集中央，圓點（含pulse ring半徑8px）
+// 常常直接壓在河線上，左右岸完全分不清楚。這裡讓左岸產區往西推、右岸產區往東推，
+// 露出河線缺口以便肉眼辨別左右岸；純視覺調整，不影響 WINE_DB 的真實經緯度座標。
+const BORDEAUX_VISUAL_OFFSET = {
+  'medoc':           { dx: -11, dy: -2 },
+  'haut-medoc':      { dx: -10, dy: -1 },
+  'pauillac':        { dx: -9,  dy: -3 },
+  'margaux':         { dx: -8,  dy: -1 },
+  'pessac-leognan':  { dx: -11, dy: 1 },
+  'graves':          { dx: -9,  dy: 2 },
+  'sauternes':       { dx: -8,  dy: 3 },
+  'barsac':          { dx: -8,  dy: 1 },
+  'saint-emilion':   { dx: 9,   dy: -1 },
+  'pomerol':         { dx: 9,   dy: -3 },
+};
 function renderFranceMarkers(){
   const g = document.getElementById('france-markers');
   if (!g) return;
@@ -93,7 +108,8 @@ function renderFranceMarkers(){
   const { numById } = computeGroupedNumbering(list);
   const points = list.map(a => {
     const [x, y] = projectFrance(a.coords.lng, a.coords.lat);
-    return { x: Number(x), y: Number(y) };
+    const off = BORDEAUX_VISUAL_OFFSET[a.id];
+    return { x: Number(x) + (off ? off.dx : 0), y: Number(y) + (off ? off.dy : 0) };
   });
   declutterPoints(points, 17, 150);
   g.innerHTML = list.map((a, i) => {
