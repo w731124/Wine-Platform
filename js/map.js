@@ -3,14 +3,14 @@
 ════════════════════════════════════ */
 function selectRegion(r){
   const n={bordeaux:'Bordeaux(波爾多)',burgundy:'Burgundy(勃根地)',loire:'Loire(羅亞爾河)',champagne:'Champagne(香檳)',alsace:'Alsace(阿爾薩斯)',rhone:'Rhône(隆河谷)',piedmont:'Piedmont(皮埃蒙特)',tuscany:'Tuscany(托斯卡尼)',veneto:'Veneto(威尼托)',sicily:'Sicily(西西里)',abruzzo:'Abruzzo(阿布魯佐)',puglia:'Puglia(普利亞)',lombardy:'Lombardy(倫巴底)',campania:'Campania(坎帕尼亞)',trentino:'Trentino-Alto Adige(特倫提諾-上阿迪傑)',emilia:'Emilia-Romagna(艾米利亞-羅馬涅)',friuli:'Friuli-Venezia Giulia(弗留利-威尼斯朱利亞)',marche:'Marche(馬爾凱)',umbria:'Umbria(溫布里亞)',rioja:'Rioja(里奧哈)','castilla-y-leon':'Castilla y León(卡斯提亞－萊昂)',andalusia:'Andalusia(安達魯西亞)',catalonia:'Catalonia(加泰隆尼亞)',galicia:'Galicia(加利西亞)',murcia:'Murcia(穆爾西亞)',navarra:'Navarra(納瓦拉)',douro:'Douro(杜羅河)','vinho-verde':'Vinho Verde(青酒產區)'};
-  showMapIns(`<span class="tg tg-reg" style="font-size:13px;">${n[r]||r}</span><p style="font-size:12px;color:var(--txt3);margin-top:8px;">點擊金色圓點查看具體次產區資訊。</p>`);
+  showMapIns(`<span class="tg tg-reg" style="font-size:13px;">${n[r]||r}</span><p style="font-size:var(--fs-base);color:var(--txt2);margin-top:8px;">點擊金色圓點查看具體次產區資訊。</p>`);
 }
 function selectAppellation(id){
   if(selMapMarker) selMapMarker.classList.remove('selected');
   const el=document.querySelector(`.pulse-marker[data-id="${id}"]`);
   if(el){el.classList.add('selected');selMapMarker=el;}
   const app=WINE_DB.appellations.find(a=>a.id===id);
-  if(!app){showMapIns(`<p style="font-size:12px;color:var(--txt3);">資料建置中</p>`);return;}
+  if(!app){showMapIns(`<p style="font-size:var(--fs-base);color:var(--txt2);">資料建置中</p>`);return;}
   if(window.innerWidth<768) openDrawer(app);
   else showMapIns(buildMapInsHTML(app));
 }
@@ -33,13 +33,13 @@ function buildMapInsHTML(app){
   const sp=app.profile||{};
 const dims=[{k:'acidity',l:'酸度',c:'#3A6EA8'},{k:'tannin',l:'單寧',c:'#5C061C'},{k:'body',l:'酒體',c:'#A88A60'},{k:'alcohol',l:'酒精',c:'#7A44A8'},{k:'finish',l:'餘韻',c:'#2A7A58'},{k:'aging',l:'陳年潛力',c:'#1A6A4A'},{k:'floral',l:'花香/草本',c:'#A84A7A'}];
   const bH=dims.map(d=>{const v=sp[d.k]??0;return`<div style="margin-bottom:5px;"><div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:2px;"><span style="color:var(--txt3);">${d.l}</span><span style="color:${d.c};font-weight:700;">${v}/10</span></div><div class="stat-bg"><div class="stat-fill" style="width:${v*10}%;background:${d.c};"></div></div></div>`}).join('');
-  return `<div style="margin-bottom:10px;"><h3 style="font-size:14px;font-weight:700;color:var(--txt);">${app.name}</h3><p style="font-size:11px;color:var(--txt3);">${app.region}</p></div>
+  return `<div style="margin-bottom:10px;"><h3 style="font-family:'Cinzel',serif;font-size:var(--fs-card-title);font-weight:700;color:var(--burg);">${app.name}</h3><p style="font-size:11px;color:var(--txt3);">${app.region}</p></div>
     <div class="mh" style="margin-bottom:10px;"><p style="font-size:11px;font-style:italic;color:var(--burg);">「${app.memoryHook}」</p></div>
     <div style="display:flex;flex-wrap:wrap;gap:3px;margin-bottom:8px;">${app.primaryGrapes.map(g=>`<span class="tg tg-grape">${g}</span>`).join('')}</div>
-    <p style="font-size:11.5px;line-height:1.6;color:var(--txt2);margin-bottom:10px;">${app.styleSummary}</p>
-    <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:6px;">感官結構</div>
+    <p style="font-size:var(--fs-base);line-height:1.6;color:var(--txt2);margin-bottom:10px;">${app.styleSummary}</p>
+    <div style="font-size:var(--fs-lg);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin-bottom:6px;">感官結構</div>
     ${bH}
-    <div style="font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin:10px 0 5px;">風味</div>
+    <div style="font-size:var(--fs-lg);font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--txt4);margin:10px 0 5px;">風味</div>
     <div style="display:flex;flex-wrap:wrap;gap:3px;margin-bottom:10px;">${(app.aromaWheel||[]).map(a=>`<span class="tg tg-aroma">${a}</span>`).join('')}</div>
     <button onclick="openDrawer(WINE_DB.appellations.find(a=>a.id==='${app.id}'))" style="width:100%;background:var(--burg);color:#fff;border:none;border-radius:8px;padding:8px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;">完整詳情 →</button>`;
 }
@@ -148,10 +148,10 @@ function renderMarkerIndexList(list){
   if (!ph) return;
   const { order, groups, numById } = computeGroupedNumbering(list);
   ph.innerHTML = `
-    <p style="font-weight:600;font-size:12.5px;color:var(--burg);margin-bottom:10px;">📍 全部產區 Index（點擊列表或地圖上的編號）</p>
+    <p style="font-weight:600;font-size:var(--fs-lg);color:var(--burg);margin-bottom:10px;">📍 全部產區 Index（點擊列表或地圖上的編號）</p>
     ${order.map(region => `
       <div style="margin-bottom:10px;">
-        <p style="font-size:10px;font-weight:700;letter-spacing:.05em;color:var(--txt4);text-transform:uppercase;margin-bottom:4px;">${region}</p>
+        <p style="font-size:var(--fs-lg);font-weight:700;letter-spacing:.05em;color:var(--txt4);text-transform:uppercase;margin-bottom:4px;">${region}</p>
         ${groups[region].map(app => `
           <div class="france-idx-item" onclick="selectAppellation('${app.id}')" onmouseenter="highlightMapMarker('${app.id}',true)" onmouseleave="highlightMapMarker('${app.id}',false)" style="display:flex;align-items:center;gap:6px;padding:3px 4px;font-size:12px;color:var(--txt2);cursor:pointer;border-radius:5px;">
             <span style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;background:#C5A228;color:#fff;font-size:9px;font-weight:700;flex-shrink:0;">${numById[app.id]}</span>

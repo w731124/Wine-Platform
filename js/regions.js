@@ -106,7 +106,7 @@ function renderFilteredRegions(){
       <div style="display:flex;align-items:center;gap:10px;">
         <span>${flagIconHTML(grp.country, 20)}</span>
         <div>
-          <div style="font-family:'Cinzel',serif;font-size:14px;font-weight:600;color:var(--burg);">${grp.region}</div>
+          <div style="font-family:'Cinzel',serif;font-size:var(--fs-2xl);font-weight:600;color:var(--burg);">${grp.region}</div>
           <div style="font-size:11px;color:var(--txt3);">${grp.country} · ${grp.apps.length} 個次產區</div>
         </div>
       </div>
@@ -135,7 +135,7 @@ function renderFilteredRegions(){
         <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px;">
           ${app.primaryGrapes.map(g=>`<span class="tg tg-grape">${g}</span>`).join('')}
         </div>
-        <p style="font-size:11.5px;line-height:1.6;color:var(--txt3);margin-bottom:8px;">${app.styleSummary}</p>
+        <p style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;margin-bottom:8px;">${app.styleSummary}</p>
         <div style="display:flex;gap:4px;flex-wrap:wrap;">
           ${(app.aromaWheel||[]).map(a=>`<span class="tg tg-aroma">${a}</span>`).join('')}
         </div>`;
@@ -174,7 +174,7 @@ function openDrawer(app){
     :`<span class="tg tg-nw">${flagIconHTML(app.country,16)} ${app.country}</span>`;
   const kiH=(app.keyIdentifiers||[]).map(k=>`<span class="tg tg-trait">${k}</span>`).join(' ');
   const foodH=(app.foodPairingTags||[]).map(f=>`<span class="tg tg-food">${f}</span>`).join(' ');
-  const estH=(app.famousEstates||[]).map(e=>`<li style="font-size:11.5px;padding:1.5px 0;color:var(--txt2);">• ${e}</li>`).join('');
+  const estH=(app.famousEstates||[]).map(e=>`<li style="font-size:var(--fs-base);padding:1.5px 0;color:var(--txt2);">• ${e}</li>`).join('');
   const dims=[{k:'acidity',l:'酸度',c:'#3A6EA8'},{k:'tannin',l:'單寧',c:'#5C061C'},{k:'body',l:'酒體',c:'#A88A60'},{k:'alcohol',l:'酒精',c:'#7A44A8'},{k:'finish',l:'餘韻',c:'#2A7A58'},{k:'aging',l:'陳年潛力',c:'#1A6A4A'},{k:'floral',l:'花香/草本',c:'#A84A7A'}];
   const barsH=dims.map(d=>{
     const v=sp[d.k]??0, pct=v*10;
@@ -206,25 +206,25 @@ function openDrawer(app){
             : `<span class="tg tg-grape">${g}</span>`;
         }).join('')}
       </div>
-      <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);margin-bottom:14px;">${app.styleSummary}</p>
+      <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);margin-bottom:14px;">${app.styleSummary}</p>
 
 <!-- Grid: sensory bars + tag groups -->
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;">
         <div class="ic" style="background:var(--bg-card);">
-          <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">📊 物理結構量化 Structure</p>
+          <p class="ins-lbl">📊 物理結構量化 Structure</p>
           ${barsH}
         </div>
         <div class="ic" style="background:var(--bg-card);display:flex;flex-direction:column;gap:12px;">
           <div>
-            <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🌸 核心風味 Aroma Wheel</p>
+            <p class="ins-lbl">🌸 核心風味 Aroma Wheel</p>
             <div style="display:flex;flex-wrap:wrap;gap:5px;">${(app.aromaWheel||[]).map(a=>`<span class="tg tg-aroma">${a}</span>`).join('')}</div>
           </div>
           <div>
-            <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🔑 辨識特徵 Key Identifiers</p>
+            <p class="ins-lbl">🔑 辨識特徵 Key Identifiers</p>
             <div style="display:flex;flex-wrap:wrap;gap:4px;">${kiH}</div>
           </div>
           <div>
-            <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🍽️ 餐酒配對結構 Food Pairing</p>
+            <p class="ins-lbl">🍽️ 餐酒配對結構 Food Pairing</p>
             <div style="display:flex;flex-wrap:wrap;gap:4px;">${foodH}</div>
           </div>
         </div>
@@ -232,33 +232,33 @@ function openDrawer(app){
 
       <!-- Terroir -->
       <div class="ic mb-3" style="background:var(--bg-card);">
-        <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🌍 風土 Terroir</p>
+        <p class="ins-lbl">🌍 風土 Terroir</p>
         <div style="display:flex;flex-direction:column;gap:5px;">
-          <div style="display:flex;gap:8px;font-size:12px;"><span style="color:var(--txt4);min-width:32px;">氣候</span><span style="color:var(--txt);">${app.terroir.climate}</span></div>
-          <div style="display:flex;gap:8px;font-size:12px;"><span style="color:var(--txt4);min-width:32px;">土壤</span><span style="color:var(--txt);">${app.terroir.soil}</span></div>
-          <div style="display:flex;gap:8px;font-size:12px;"><span style="color:var(--txt4);min-width:32px;">海拔</span><span style="color:var(--txt);">${app.terroir.elevation}</span></div>
+          <div style="display:flex;gap:8px;font-size:var(--fs-base);"><span style="color:var(--txt4);min-width:32px;">氣候</span><span style="color:var(--txt);">${app.terroir.climate}</span></div>
+          <div style="display:flex;gap:8px;font-size:var(--fs-base);"><span style="color:var(--txt4);min-width:32px;">土壤</span><span style="color:var(--txt);">${app.terroir.soil}</span></div>
+          <div style="display:flex;gap:8px;font-size:var(--fs-base);"><span style="color:var(--txt4);min-width:32px;">海拔</span><span style="color:var(--txt);">${app.terroir.elevation}</span></div>
         </div>
       </div>
 
       <!-- Estates -->
       <div class="ic mb-3" style="background:var(--bg-card);">
-        <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🏰 代表酒莊 Famous Estates</p>
+        <p class="ins-lbl">🏰 代表酒莊 Famous Estates</p>
         <ul>${estH}</ul>
       </div>
 
       <!-- History -->
       <div class="ic mb-3" style="background:var(--bg-card);">
-        <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">📜 歷史背景 History</p>
-        <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${app.history}</p>
+        <p class="ins-lbl">📜 歷史背景 History</p>
+        <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">${app.history}</p>
       </div>
-      <div style="display:flex;justify-content:space-between;font-size:12px;">
+      <div style="display:flex;justify-content:space-between;font-size:var(--fs-base);">
         <span style="color:var(--txt4);">陳年潛力</span>
         <span style="color:var(--burg);font-weight:600;">${app.agingPotential}</span>
       </div>
       ${app.agingNote ? `
       <div class="ic mb-3" style="background:var(--bg-card);margin-top:10px;">
-        <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">⏳ 陳年潛力解析 Aging Note</p>
-        <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${app.agingNote}</p>
+        <p class="ins-lbl">⏳ 陳年潛力解析 Aging Note</p>
+        <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">${app.agingNote}</p>
       </div>` : ''}`;
   }
 

@@ -19,7 +19,7 @@ function renderCompareColorFilters() {
   const colors = [...new Set(WINE_DB.appellations.map(a => a.wineColor))];
   wrap.innerHTML = colors.map(c => {
     const meta = WINE_COLOR_META[c] || { emoji: '', label: c };
-    return `<button class="color-filter-btn" onclick="setColorFilter('${c}',this)" style="padding:5px 14px;border-radius:20px;border:1px solid #D6CFC8;background:#fff;color:#44403C;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;">${meta.emoji} ${meta.label}</button>`;
+    return `<button class="color-filter-btn" onclick="setColorFilter('${c}',this)" style="padding:5px 14px;border-radius:20px;border:1px solid #D6CFC8;background:#fff;color:#44403C;font-size:var(--fs-base);cursor:pointer;font-family:'Inter',sans-serif;">${meta.emoji} ${meta.label}</button>`;
   }).join('');
 }
 
@@ -109,9 +109,9 @@ function renderCompareRadar() {
   const appB = WINE_DB.appellations.find(a=>a.id===idB);
 
   const caInfo = document.getElementById('ca-info');
-  if(caInfo) caInfo.innerHTML=appA?`<p style="font-size:12.5px;font-weight:600;color:var(--burg);margin-bottom:4px;">${appA.name}</p><p style="font-size:11px;color:var(--txt3);">${appA.styleSummary}</p>`:'<p style="font-size:11px;text-align:center;color:var(--txt4);">請選擇</p>';
+  if(caInfo) caInfo.innerHTML=appA?`<p style="font-size:var(--fs-lg);font-weight:600;color:var(--burg);margin-bottom:4px;">${appA.name}</p><p style="font-size:var(--fs-base);color:var(--txt2);">${appA.styleSummary}</p>`:'<p style="font-size:var(--fs-lg);text-align:center;color:var(--txt4);">請選擇</p>';
   const cbInfo = document.getElementById('cb-info');
-  if(cbInfo) cbInfo.innerHTML=appB?`<p style="font-size:12.5px;font-weight:600;color:var(--gold-dk);margin-bottom:4px;">${appB.name}</p><p style="font-size:11px;color:var(--txt3);">${appB.styleSummary}</p>`:'<p style="font-size:11px;text-align:center;color:var(--txt4);">請選擇</p>';
+  if(cbInfo) cbInfo.innerHTML=appB?`<p style="font-size:var(--fs-lg);font-weight:600;color:var(--gold-dk);margin-bottom:4px;">${appB.name}</p><p style="font-size:var(--fs-base);color:var(--txt2);">${appB.styleSummary}</p>`:'<p style="font-size:var(--fs-lg);text-align:center;color:var(--txt4);">請選擇</p>';
 
   const rph = document.getElementById('radar-placeholder');
   const ci = document.getElementById('compare-identity');
@@ -154,10 +154,10 @@ function renderCompareRadar() {
     ci.innerHTML = [appA,appB].map((a,i)=>{
       const c = i===0 ? 'var(--burg)' : 'var(--gold-dk)';
       return `<div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:12px;padding:14px;box-shadow:var(--sh);">
-        <h4 style="font-size:13.5px;font-weight:600;color:${c};margin-bottom:3px;">${a.name}</h4>
+        <h4 style="font-size:var(--fs-lg);font-weight:600;color:${c};margin-bottom:3px;">${a.name}</h4>
         <p style="font-size:11px;color:var(--txt3);margin-bottom:8px;">${a.subRegion}</p>
         <div class="mh" style="margin-bottom:10px;"><p style="font-size:10.5px;font-style:italic;color:${c};">「${a.memoryHook}」</p></div>
-        <button onclick="openDrawer(WINE_DB.appellations.find(a=>a.id==='${a.id}'))" style="width:100%;background:var(--burg);color:#fff;border:none;border-radius:8px;padding:7px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;margin-top:4px;">完整詳情 →</button>
+        <button onclick="openDrawer(WINE_DB.appellations.find(a=>a.id==='${a.id}'))" style="width:100%;background:var(--burg);color:#fff;border:none;border-radius:8px;padding:7px;font-size:var(--fs-base);cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;margin-top:4px;">完整詳情 →</button>
       </div>`;
     }).join('');
   }
@@ -188,7 +188,7 @@ function renderCompareGrapeColorFilters() {
   const colors = [...new Set((WINE_DB.grapes || []).map(g => g.skinColor))];
   wrap.innerHTML = colors.map(c => {
     const meta = WINE_COLOR_META[c] || { emoji: '', label: c };
-    return `<button class="color-filter-btn" onclick="setCompareGrapeColorFilter('${c}',this)" style="padding:5px 14px;border-radius:20px;border:1px solid #D6CFC8;background:#fff;color:#44403C;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;">${meta.emoji} ${meta.label}</button>`;
+    return `<button class="color-filter-btn" onclick="setCompareGrapeColorFilter('${c}',this)" style="padding:5px 14px;border-radius:20px;border:1px solid #D6CFC8;background:#fff;color:#44403C;font-size:var(--fs-base);cursor:pointer;font-family:'Inter',sans-serif;">${meta.emoji} ${meta.label}</button>`;
   }).join('');
 }
 
@@ -223,9 +223,9 @@ function renderCompareGrapeRadar() {
   const gB = (WINE_DB.grapes || []).find(g=>g.id===idB);
 
   const cgaInfo = document.getElementById('cga-info');
-  if (cgaInfo) cgaInfo.innerHTML = gA?`<p style="font-size:12.5px;font-weight:600;color:var(--burg);margin-bottom:4px;">${gA.name}</p><p style="font-size:11px;color:var(--txt3);">${gA.styleSummary}</p>`:'<p style="font-size:11px;text-align:center;color:var(--txt4);">請選擇</p>';
+  if (cgaInfo) cgaInfo.innerHTML = gA?`<p style="font-size:var(--fs-lg);font-weight:600;color:var(--burg);margin-bottom:4px;">${gA.name}</p><p style="font-size:var(--fs-base);color:var(--txt2);">${gA.styleSummary}</p>`:'<p style="font-size:var(--fs-lg);text-align:center;color:var(--txt4);">請選擇</p>';
   const cgbInfo = document.getElementById('cgb-info');
-  if (cgbInfo) cgbInfo.innerHTML = gB?`<p style="font-size:12.5px;font-weight:600;color:var(--gold-dk);margin-bottom:4px;">${gB.name}</p><p style="font-size:11px;color:var(--txt3);">${gB.styleSummary}</p>`:'<p style="font-size:11px;text-align:center;color:var(--txt4);">請選擇</p>';
+  if (cgbInfo) cgbInfo.innerHTML = gB?`<p style="font-size:var(--fs-lg);font-weight:600;color:var(--gold-dk);margin-bottom:4px;">${gB.name}</p><p style="font-size:var(--fs-base);color:var(--txt2);">${gB.styleSummary}</p>`:'<p style="font-size:var(--fs-lg);text-align:center;color:var(--txt4);">請選擇</p>';
 
   const rph = document.getElementById('grape-radar-placeholder');
   const ci = document.getElementById('compare-grape-identity');
@@ -268,9 +268,9 @@ function renderCompareGrapeRadar() {
     ci.innerHTML = [gA,gB].map((g,i)=>{
       const c = i===0 ? 'var(--burg)' : 'var(--gold-dk)';
       return `<div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:12px;padding:14px;box-shadow:var(--sh);">
-        <h4 style="font-size:13.5px;font-weight:600;color:${c};margin-bottom:3px;">${g.name}</h4>
+        <h4 style="font-size:var(--fs-lg);font-weight:600;color:${c};margin-bottom:3px;">${g.name}</h4>
         <p style="font-size:11px;color:var(--txt3);margin-bottom:8px;">${g.skinColor==='red'?'紅葡萄品種':'白葡萄品種'}</p>
-        <button onclick="jumpToGrapeById('${g.id}')" style="width:100%;background:var(--burg);color:#fff;border:none;border-radius:8px;padding:7px;font-size:12px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;margin-top:4px;">完整詳情 →</button>
+        <button onclick="jumpToGrapeById('${g.id}')" style="width:100%;background:var(--burg);color:#fff;border:none;border-radius:8px;padding:7px;font-size:var(--fs-base);cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;margin-top:4px;">完整詳情 →</button>
       </div>`;
     }).join('');
   }

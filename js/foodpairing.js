@@ -36,13 +36,13 @@ function renderFoodPairingResults() {
   const resultWrap = document.getElementById('fp-grape-results');
   if (!resultWrap) return;
   if (!curFoodCategory) {
-    resultWrap.innerHTML = '<p style="font-size:11.5px;color:var(--txt4);">請先選擇上方的食物大類。</p>';
+    resultWrap.innerHTML = '<p style="font-size:var(--fs-base);color:var(--txt2);">請先選擇上方的食物大類。</p>';
     return;
   }
   const tags = FOOD_CATEGORY_MAP[curFoodCategory].tags;
   const matches = (WINE_DB.grapes || []).filter(g => (g.foodPairingTags || []).some(t => tags.includes(t)));
   if (matches.length === 0) {
-    resultWrap.innerHTML = '<p style="font-size:11.5px;color:var(--txt4);">目前沒有符合的品種。</p>';
+    resultWrap.innerHTML = '<p style="font-size:var(--fs-base);color:var(--txt2);">目前沒有符合的品種。</p>';
     return;
   }
   resultWrap.innerHTML = matches.map(g =>

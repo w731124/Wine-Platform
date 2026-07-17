@@ -74,8 +74,8 @@
 <div id="panel-regions" class="panel active">
   <div class="mb-4 flex items-start justify-between gap-4">
     <div>
-      <h1 style="font-family:'Cinzel',serif;font-size:21px;font-weight:700;color:var(--burg);margin-bottom:3px;">產區資料庫 Region Database</h1>
-      <p style="font-size:12.5px;color:var(--txt3);">四層漸進式導覽：國家 → 大產區摺疊面板 → 次產區卡片 → 底部詳情</p>
+      <h1 style="font-family:'Cinzel',serif;font-size:var(--fs-h1);font-weight:700;color:var(--burg);margin-bottom:3px;">產區資料庫 Region Database</h1>
+      <p style="font-size:var(--fs-lg);color:var(--txt3);">四層漸進式導覽：國家 → 大產區摺疊面板 → 次產區卡片 → 底部詳情</p>
     </div>
     <div style="position:relative;display:inline-block;flex-shrink:0;">
       <span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:11px;color:var(--txt4);">🔍</span>
@@ -110,8 +110,8 @@
      ╚════════════════════════════╝ -->
 <div id="panel-mapview" class="panel">
   <div class="mb-4">
-    <h1 style="font-family:'Cinzel',serif;font-size:21px;font-weight:700;color:var(--burg);margin-bottom:3px;">地圖探索 Interactive Map</h1>
-    <p style="font-size:12.5px;color:var(--txt3);">真實地理邊界地圖 · 點擊金色圓點查看次產區 · 點擊色塊查看大產區</p>
+    <h1 style="font-family:'Cinzel',serif;font-size:var(--fs-h1);font-weight:700;color:var(--burg);margin-bottom:3px;">地圖探索 Interactive Map</h1>
+    <p style="font-size:var(--fs-lg);color:var(--txt3);">真實地理邊界地圖 · 點擊金色圓點查看次產區 · 點擊色塊查看大產區</p>
   </div>
   <div class="flex flex-wrap gap-2 mb-4">
     <button class="map-tab active" onclick="showMap('france',this)"><img src="assets/flags/fr.svg" alt="France(法國)" width="18" height="14" style="width:18px;height:14px;object-fit:cover;border-radius:2px;vertical-align:middle;display:inline-block;"> France(法國)</button>
@@ -279,8 +279,8 @@
      ╚══════════════════════════╝ -->
 <div id="panel-classifications" class="panel">
   <div class="mb-4">
-    <h1 style="font-family:'Cinzel',serif;font-size:21px;font-weight:700;color:var(--burg);margin-bottom:3px;">分級制度 Classification Systems</h1>
-    <p style="font-size:12.5px;color:var(--txt3);">舊世界法定分級制度 · 依「分級對象」分為 By 酒莊／By 葡萄園／By 產區 三種邏輯</p>
+    <h1 style="font-family:'Cinzel',serif;font-size:var(--fs-h1);font-weight:700;color:var(--burg);margin-bottom:3px;">分級制度 Classification Systems</h1>
+    <p style="font-size:var(--fs-lg);color:var(--txt3);">舊世界法定分級制度 · 依「分級對象」分為 By 酒莊／By 葡萄園／By 產區 三種邏輯</p>
   </div>
   <div class="flex flex-wrap justify-center gap-1.5 mb-3" id="class-country-filters"></div>
   <div class="flex flex-wrap justify-center gap-2 mb-4" id="class-basis-filters">
@@ -297,8 +297,8 @@
      ╚══════════════════════════╝ -->
 <div id="panel-vintage" class="panel">
   <div class="mb-4">
-    <h1 style="font-family:'Cinzel',serif;font-size:21px;font-weight:700;color:var(--burg);margin-bottom:3px;">法國年份矩陣 Vintage Matrix</h1>
-    <p style="font-size:12.5px;color:var(--txt3);">France(法國) 2001–2025 · 點擊年份區間展開，再點擊格子查看深度分析</p>
+    <h1 style="font-family:'Cinzel',serif;font-size:var(--fs-h1);font-weight:700;color:var(--burg);margin-bottom:3px;">法國年份矩陣 Vintage Matrix</h1>
+    <p style="font-size:var(--fs-lg);color:var(--txt3);">France(法國) 2001–2025 · 點擊年份區間展開，再點擊格子查看深度分析</p>
   </div>
   <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;">
     <div style="display:flex;align-items:center;gap:5px;"><div style="width:13px;height:13px;border-radius:3px;background:linear-gradient(135deg,#F8D0D0,#F0A8A8);border:1.5px solid #C23B3B;"></div><span style="font-size:11px;color:var(--txt3);">傳奇 98+</span></div>
@@ -339,16 +339,16 @@
      ╚══════════════════════════╝ -->
 <div id="panel-compare" class="panel">
   <div class="mb-4">
-    <h1 style="font-family:'Cinzel',serif;font-size:21px;font-weight:700;color:var(--burg);margin-bottom:3px;">比較模式 Compare Mode</h1>
-    <p style="font-size:12.5px;color:var(--txt3);">選擇酒色分類後再選比較對象，避免紅白酒混合比較</p>
+    <h1 style="font-family:'Cinzel',serif;font-size:var(--fs-h1);font-weight:700;color:var(--burg);margin-bottom:3px;">比較模式 Compare Mode</h1>
+    <p style="font-size:var(--fs-lg);color:var(--txt3);">選擇酒色分類後再選比較對象，避免紅白酒混合比較</p>
   </div>
   <div style="display:flex;gap:8px;margin-bottom:16px;">
-    <button id="cm-toggle-appellation" onclick="switchCompareMode('appellation')" style="padding:6px 16px;border-radius:20px;border:1px solid var(--burg);background:var(--burg);color:#fff;font-size:12.5px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">產地比較 Region</button>
-    <button id="cm-toggle-grape" onclick="switchCompareMode('grape')" style="padding:6px 16px;border-radius:20px;border:1px solid #D6CFC8;background:#fff;color:#44403C;font-size:12.5px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">品種比較 Grape</button>
+    <button id="cm-toggle-appellation" onclick="switchCompareMode('appellation')" style="padding:6px 16px;border-radius:20px;border:1px solid var(--burg);background:var(--burg);color:#fff;font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">產地比較 Region</button>
+    <button id="cm-toggle-grape" onclick="switchCompareMode('grape')" style="padding:6px 16px;border-radius:20px;border:1px solid #D6CFC8;background:#fff;color:#44403C;font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">品種比較 Grape</button>
   </div>
   <div id="cm-mode-appellation">
   <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;align-items:center;">
-    <span style="font-size:12px;color:var(--txt3);font-weight:600;">酒色篩選：</span>
+    <span style="font-size:var(--fs-base);color:var(--txt2);font-weight:600;">酒色篩選：</span>
     <div id="compare-color-filters" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
   </div>
   <div id="cm-appellation">
@@ -356,27 +356,27 @@
       <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:16px;box-shadow:var(--sh);">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
           <span style="width:12px;height:12px;border-radius:50%;background:#5C061C;display:inline-block;"></span>
-          <span style="font-size:13px;font-weight:600;color:var(--burg);">產區 A</span>
+          <span style="font-size:var(--fs-lg);font-weight:600;color:var(--burg);">產區 A</span>
         </div>
         <select class="csel" id="compare-a-country" onchange="onCompareCountryChange('a')" style="margin-bottom:8px;"></select>
         <select class="csel" id="compare-a-region" onchange="onCompareRegionChange('a')" style="margin-bottom:8px;" disabled></select>
         <select class="csel" id="compare-a-sub" onchange="onCompareSubChange('a')" style="margin-bottom:12px;" disabled></select>
-        <div id="ca-info" class="ic" style="min-height:90px;"><p style="font-size:11px;text-align:center;color:var(--text-dim);">請選擇</p></div>
+        <div id="ca-info" class="ic" style="min-height:90px;"><p style="font-size:var(--fs-lg);text-align:center;color:var(--txt4);">請選擇</p></div>
       </div>
       <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:16px;box-shadow:var(--sh);">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
           <span style="width:12px;height:12px;border-radius:50%;background:#C5A228;display:inline-block;"></span>
-          <span style="font-size:13px;font-weight:600;color:var(--gold-dk);">產區 B</span>
+          <span style="font-size:var(--fs-lg);font-weight:600;color:var(--gold-dk);">產區 B</span>
         </div>
         <select class="csel" id="compare-b-country" onchange="onCompareCountryChange('b')" style="margin-bottom:8px;"></select>
         <select class="csel" id="compare-b-region" onchange="onCompareRegionChange('b')" style="margin-bottom:8px;" disabled></select>
         <select class="csel" id="compare-b-sub" onchange="onCompareSubChange('b')" style="margin-bottom:12px;" disabled></select>
-        <div id="cb-info" class="ic" style="min-height:90px;"><p style="font-size:11px;text-align:center;color:var(--text-dim);">請選擇</p></div>
+        <div id="cb-info" class="ic" style="min-height:90px;"><p style="font-size:var(--fs-lg);text-align:center;color:var(--txt4);">請選擇</p></div>
       </div>
     </div>
     <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:16px;box-shadow:var(--sh);margin-bottom:16px;">
-      <p style="font-size:13px;font-weight:600;color:var(--burg);margin-bottom:12px;">7維度雷達圖 Radar Chart</p>
-      <div id="radar-placeholder" style="text-align:center;padding:28px;"><p style="font-size:12px;color:var(--txt4);">選擇兩個次產區後，雷達圖將自動呈現</p></div>
+      <p style="font-size:var(--fs-lg);font-weight:600;color:var(--burg);margin-bottom:12px;">7維度雷達圖 Radar Chart</p>
+      <div id="radar-placeholder" style="text-align:center;padding:28px;"><p style="font-size:var(--fs-base);color:var(--txt2);">選擇兩個次產區後，雷達圖將自動呈現</p></div>
       <div style="position:relative;max-width:400px;margin:0 auto;height:320px;"><canvas id="compare-radar-chart"></canvas></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" id="compare-identity"></div>
@@ -385,30 +385,30 @@
 
   <div id="cm-mode-grape" style="display:none;">
     <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;align-items:center;">
-      <span style="font-size:12px;color:var(--txt3);font-weight:600;">酒色篩選：</span>
+      <span style="font-size:var(--fs-base);color:var(--txt2);font-weight:600;">酒色篩選：</span>
       <div id="compare-grape-color-filters" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
       <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:16px;box-shadow:var(--sh);">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
           <span style="width:12px;height:12px;border-radius:50%;background:#5C061C;display:inline-block;"></span>
-          <span style="font-size:13px;font-weight:600;color:var(--burg);">品種 A</span>
+          <span style="font-size:var(--fs-lg);font-weight:600;color:var(--burg);">品種 A</span>
         </div>
         <select class="csel" id="compare-grape-a" onchange="onCompareGrapeChange('a')" style="margin-bottom:12px;" disabled></select>
-        <div id="cga-info" class="ic" style="min-height:90px;"><p style="font-size:11px;text-align:center;color:var(--text-dim);">請選擇</p></div>
+        <div id="cga-info" class="ic" style="min-height:90px;"><p style="font-size:var(--fs-lg);text-align:center;color:var(--txt4);">請選擇</p></div>
       </div>
       <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:16px;box-shadow:var(--sh);">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
           <span style="width:12px;height:12px;border-radius:50%;background:#C5A228;display:inline-block;"></span>
-          <span style="font-size:13px;font-weight:600;color:var(--gold-dk);">品種 B</span>
+          <span style="font-size:var(--fs-lg);font-weight:600;color:var(--gold-dk);">品種 B</span>
         </div>
         <select class="csel" id="compare-grape-b" onchange="onCompareGrapeChange('b')" style="margin-bottom:12px;" disabled></select>
-        <div id="cgb-info" class="ic" style="min-height:90px;"><p style="font-size:11px;text-align:center;color:var(--text-dim);">請選擇</p></div>
+        <div id="cgb-info" class="ic" style="min-height:90px;"><p style="font-size:var(--fs-lg);text-align:center;color:var(--txt4);">請選擇</p></div>
       </div>
     </div>
     <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:16px;box-shadow:var(--sh);margin-bottom:16px;">
-      <p style="font-size:13px;font-weight:600;color:var(--burg);margin-bottom:12px;">7維度雷達圖 Radar Chart</p>
-      <div id="grape-radar-placeholder" style="text-align:center;padding:28px;"><p style="font-size:12px;color:var(--txt4);">選擇兩個品種後，雷達圖將自動呈現</p></div>
+      <p style="font-size:var(--fs-lg);font-weight:600;color:var(--burg);margin-bottom:12px;">7維度雷達圖 Radar Chart</p>
+      <div id="grape-radar-placeholder" style="text-align:center;padding:28px;"><p style="font-size:var(--fs-base);color:var(--txt2);">選擇兩個品種後，雷達圖將自動呈現</p></div>
       <div style="position:relative;max-width:400px;margin:0 auto;height:320px;"><canvas id="compare-grape-radar-chart"></canvas></div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" id="compare-grape-identity"></div>
@@ -422,8 +422,8 @@
      ╚══════════════════════════════════╝ -->
 <div id="panel-tasting" class="panel">
   <div class="mb-4">
-    <h1 style="font-family:'Cinzel',serif;font-size:21px;font-weight:700;color:var(--burg);margin-bottom:3px;">系統化品鑑技巧 SAT</h1>
-    <p style="font-size:12.5px;color:var(--txt3);">WSET Level 2 系統化品飲方式（SAT）· 外觀 · 嗅覺 · 味覺 · 結論</p>
+    <h1 style="font-family:'Cinzel',serif;font-size:var(--fs-h1);font-weight:700;color:var(--burg);margin-bottom:3px;">系統化品鑑技巧 SAT</h1>
+    <p style="font-size:var(--fs-lg);color:var(--txt3);">WSET Level 2 系統化品飲方式（SAT）· 外觀 · 嗅覺 · 味覺 · 結論</p>
   </div>
 
   <div style="display:flex;gap:10px;align-items:flex-start;background:rgba(92,6,28,.05);border:1px solid rgba(92,6,28,.15);border-radius:12px;padding:14px 18px;font-size:12.5px;color:var(--burg);margin-bottom:20px;">
@@ -436,7 +436,7 @@
       <div style="display:flex;align-items:center;gap:12px;">
         <div style="width:38px;height:38px;border-radius:10px;background:rgba(58,110,168,.10);display:flex;align-items:center;justify-content:center;font-size:20px;">👁</div>
         <div>
-          <div style="font-size:15px;font-weight:600;color:var(--txt);">1. 外觀 Appearance</div>
+          <div style="font-size:var(--fs-2xl);font-weight:600;color:var(--txt);">1. 外觀 Appearance</div>
         </div>
       </div>
       <span class="acc-arrow">▼</span>
@@ -445,62 +445,62 @@
       <div style="display:flex;flex-direction:column;gap:10px;">
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;">
-          <div style="font-size:11.5px;font-weight:700;color:var(--gold-dk);letter-spacing:.04em;margin-bottom:10px;">🔍 澄清度 Clarity</div>
+          <div class="ins-lbl">🔍 澄清度 Clarity</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.08);border:1px solid rgba(58,110,168,.22);color:#1A3A6A;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">清澈 Clear</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">酒液透亮無懸浮物，光線可完全穿透；是絕大多數市售酒款應有的正常外觀。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.08);border:1px solid rgba(58,110,168,.22);color:#1A3A6A;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">清澈 Clear</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">酒液透亮無懸浮物，光線可完全穿透；是絕大多數市售酒款應有的正常外觀。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(168,138,96,.10);border:1px solid rgba(168,138,96,.30);color:var(--gold-dk);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">混濁 Hazy</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">光線穿透受阻、可能帶有懸浮微粒；除刻意不過濾的自然酒／橘酒外，也可能是酵母再發酵或穩定性不佳的警訊，須搭配純淨度一併判斷。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(168,138,96,.10);border:1px solid rgba(168,138,96,.30);color:var(--gold-dk);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">混濁 Hazy</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">光線穿透受阻、可能帶有懸浮微粒；除刻意不過濾的自然酒／橘酒外，也可能是酵母再發酵或穩定性不佳的警訊，須搭配純淨度一併判斷。</span>
             </div>
           </div>
         </div>
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;">
-          <div style="font-size:11.5px;font-weight:700;color:var(--gold-dk);letter-spacing:.04em;margin-bottom:10px;">🎨 濃度 Intensity</div>
+          <div class="ins-lbl">🎨 濃度 Intensity</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.06);border:1px solid rgba(58,110,168,.18);color:#1A3A6A;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">淡 Pale</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">杯緣與杯心色差不明顯，光線幾乎可完全穿透；常見於清淡型白酒（如Muscadet）或薄酒萊等果皮萃取少的紅酒。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.06);border:1px solid rgba(58,110,168,.18);color:#1A3A6A;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">淡 Pale</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">杯緣與杯心色差不明顯，光線幾乎可完全穿透；常見於清淡型白酒（如Muscadet）或薄酒萊等果皮萃取少的紅酒。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.12);border:1px solid rgba(58,110,168,.28);color:#1A3A6A;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">中 Medium</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">杯心顏色明顯但仍可透光辨識文字；多數市售酒款的常見表現。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.12);border:1px solid rgba(58,110,168,.28);color:#1A3A6A;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">中 Medium</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">杯心顏色明顯但仍可透光辨識文字；多數市售酒款的常見表現。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.20);border:1px solid rgba(58,110,168,.40);color:#0E2448;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">深 Deep</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">杯心近乎不透光、顏色濃重；常見於卡本內蘇維濃、希哈等厚皮品種，或日照充足產區的酒款。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.20);border:1px solid rgba(58,110,168,.40);color:#0E2448;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">深 Deep</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">杯心近乎不透光、顏色濃重；常見於卡本內蘇維濃、希哈等厚皮品種，或日照充足產區的酒款。</span>
             </div>
           </div>
         </div>
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;">
-          <div style="font-size:11.5px;font-weight:700;color:var(--gold-dk);letter-spacing:.04em;margin-bottom:10px;">🌈 顏色</div>
+          <div class="ins-lbl">🌈 顏色</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-              <span style="font-size:11px;color:var(--txt4);min-width:46px;">白酒</span>
-              <span style="background:#FEFCE4;border:1px solid #D4C96A;color:#7A6800;border-radius:20px;padding:3px 11px;font-size:12px;font-weight:500;">檸檬 Lemon</span>
-              <span style="background:#FEF3C0;border:1px solid #D4A800;color:#7A5800;border-radius:20px;padding:3px 11px;font-size:12px;font-weight:500;">金黃 Gold</span>
-              <span style="background:#FDE8A0;border:1px solid #C47800;color:#7A4000;border-radius:20px;padding:3px 11px;font-size:12px;font-weight:500;">琥珀 Amber</span>
+              <span style="font-size:var(--fs-base);color:var(--txt4);min-width:46px;">白酒</span>
+              <span style="background:#FEFCE4;border:1px solid #D4C96A;color:#7A6800;border-radius:20px;padding:3px 11px;font-size:var(--fs-base);font-weight:500;">檸檬 Lemon</span>
+              <span style="background:#FEF3C0;border:1px solid #D4A800;color:#7A5800;border-radius:20px;padding:3px 11px;font-size:var(--fs-base);font-weight:500;">金黃 Gold</span>
+              <span style="background:#FDE8A0;border:1px solid #C47800;color:#7A4000;border-radius:20px;padding:3px 11px;font-size:var(--fs-base);font-weight:500;">琥珀 Amber</span>
             </div>
-            <p style="font-size:10.5px;color:var(--txt4);line-height:1.6;margin:0;">色調由淺至深，一般傾向對應年輕→成熟／經橡木桶或瓶陳→氧化或刻意氧化風格（如雪莉），僅供參考，仍須與品種及釀造方式合併判讀。</p>
+            <p style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;margin:0;">色調由淺至深，一般傾向對應年輕→成熟／經橡木桶或瓶陳→氧化或刻意氧化風格（如雪莉），僅供參考，仍須與品種及釀造方式合併判讀。</p>
             <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-              <span style="font-size:11px;color:var(--txt4);min-width:46px;">粉紅酒</span>
-              <span style="background:#FEE8EC;border:1px solid #E8A0AA;color:#8A2030;border-radius:20px;padding:3px 11px;font-size:12px;font-weight:500;">粉紅色 Pink</span>
-              <span style="background:#FDDDD0;border:1px solid #E09070;color:#8A3818;border-radius:20px;padding:3px 11px;font-size:12px;font-weight:500;">粉橘色 Salmon</span>
-              <span style="background:#FDD0B0;border:1px solid #D87030;color:#8A3800;border-radius:20px;padding:3px 11px;font-size:12px;font-weight:500;">橘色 Orange</span>
+              <span style="font-size:var(--fs-base);color:var(--txt4);min-width:46px;">粉紅酒</span>
+              <span style="background:#FEE8EC;border:1px solid #E8A0AA;color:#8A2030;border-radius:20px;padding:3px 11px;font-size:var(--fs-base);font-weight:500;">粉紅色 Pink</span>
+              <span style="background:#FDDDD0;border:1px solid #E09070;color:#8A3818;border-radius:20px;padding:3px 11px;font-size:var(--fs-base);font-weight:500;">粉橘色 Salmon</span>
+              <span style="background:#FDD0B0;border:1px solid #D87030;color:#8A3800;border-radius:20px;padding:3px 11px;font-size:var(--fs-base);font-weight:500;">橘色 Orange</span>
             </div>
-            <p style="font-size:10.5px;color:var(--txt4);line-height:1.6;margin:0;">色調深淺主要反映果皮接觸時間長短，橘色調常見於延長皮接觸的橘酒風格，非陳年指標。</p>
+            <p style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;margin:0;">色調深淺主要反映果皮接觸時間長短，橘色調常見於延長皮接觸的橘酒風格，非陳年指標。</p>
             <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-              <span style="font-size:11px;color:var(--txt4);min-width:46px;">紅酒</span>
-              <span style="background:#EDE0F8;border:1px solid #9A60C8;color:#3A0878;border-radius:20px;padding:3px 11px;font-size:12px;font-weight:500;">紫紅 Purple</span>
-              <span style="background:#F8D0D0;border:1px solid #C84040;color:#6A0808;border-radius:20px;padding:3px 11px;font-size:12px;font-weight:500;">紅寶石 Ruby</span>
-              <span style="background:#F0C8B8;border:1px solid #B85030;color:#6A1808;border-radius:20px;padding:3px 11px;font-size:12px;font-weight:500;">石榴紅 Garnet</span>
-              <span style="background:#E8C8A0;border:1px solid #A07030;color:#5A3000;border-radius:20px;padding:3px 11px;font-size:12px;font-weight:500;">茶色 Tawny</span>
+              <span style="font-size:var(--fs-base);color:var(--txt4);min-width:46px;">紅酒</span>
+              <span style="background:#EDE0F8;border:1px solid #9A60C8;color:#3A0878;border-radius:20px;padding:3px 11px;font-size:var(--fs-base);font-weight:500;">紫紅 Purple</span>
+              <span style="background:#F8D0D0;border:1px solid #C84040;color:#6A0808;border-radius:20px;padding:3px 11px;font-size:var(--fs-base);font-weight:500;">紅寶石 Ruby</span>
+              <span style="background:#F0C8B8;border:1px solid #B85030;color:#6A1808;border-radius:20px;padding:3px 11px;font-size:var(--fs-base);font-weight:500;">石榴紅 Garnet</span>
+              <span style="background:#E8C8A0;border:1px solid #A07030;color:#5A3000;border-radius:20px;padding:3px 11px;font-size:var(--fs-base);font-weight:500;">茶色 Tawny</span>
             </div>
-            <p style="font-size:10.5px;color:var(--txt4);line-height:1.6;margin:0;">年輕酒款多偏紫紅或紅寶石，隨陳年逐漸轉為石榴紅甚至茶色，此為色調隨時間演變的一般傾向，非絕對規則。</p>
+            <p style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;margin:0;">年輕酒款多偏紫紅或紅寶石，隨陳年逐漸轉為石榴紅甚至茶色，此為色調隨時間演變的一般傾向，非絕對規則。</p>
           </div>
         </div>
 
@@ -514,7 +514,7 @@
       <div style="display:flex;align-items:center;gap:12px;">
         <div style="width:38px;height:38px;border-radius:10px;background:rgba(92,6,28,.08);display:flex;align-items:center;justify-content:center;font-size:20px;">👃</div>
         <div>
-          <div style="font-size:15px;font-weight:600;color:var(--txt);">2. 嗅覺 Nose</div>
+          <div style="font-size:var(--fs-2xl);font-weight:600;color:var(--txt);">2. 嗅覺 Nose</div>
         </div>
       </div>
       <span class="acc-arrow">▼</span>
@@ -523,79 +523,79 @@
       <div style="display:flex;flex-direction:column;gap:10px;">
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;">
-          <div style="font-size:11.5px;font-weight:700;color:var(--gold-dk);letter-spacing:.04em;margin-bottom:10px;">✨ 純淨度 Clean</div>
+          <div class="ins-lbl">✨ 純淨度 Clean</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(42,122,88,.08);border:1px solid rgba(42,122,88,.25);color:var(--em);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">純淨 Clean</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">香氣與風味未帶有異常氣息，是判斷酒款是否有缺陷的第一步。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(42,122,88,.08);border:1px solid rgba(42,122,88,.25);color:var(--em);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">純淨 Clean</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">香氣與風味未帶有異常氣息，是判斷酒款是否有缺陷的第一步。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(184,64,64,.08);border:1px solid rgba(184,64,64,.25);color:#8A1010;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">帶缺陷 Faulty</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">出現不屬於正常釀造應有的氣味（如濕紙板、臭雞蛋、指甲油等），需進一步比對具體缺陷類型判斷成因，可對照下方常見缺陷清單快速比對。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(184,64,64,.08);border:1px solid rgba(184,64,64,.25);color:#8A1010;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">帶缺陷 Faulty</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">出現不屬於正常釀造應有的氣味（如濕紙板、臭雞蛋、指甲油等），需進一步比對具體缺陷類型判斷成因，可對照下方常見缺陷清單快速比對。</span>
             </div>
           </div>
         </div>
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;">
-          <div style="font-size:11.5px;font-weight:700;color:var(--gold-dk);letter-spacing:.04em;margin-bottom:10px;">⚠️ 常見酒缺陷 Common Wine Faults</div>
+          <div class="ins-lbl">⚠️ 常見酒缺陷 Common Wine Faults</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
 
             <div style="background:rgba(184,64,64,.04);border:1px solid rgba(184,64,64,.15);border-left:4px solid #B84040;padding:10px 14px;border-radius:4px 10px 10px 4px;">
-              <div style="font-size:12px;font-weight:700;color:#8A1010;margin-bottom:3px;">軟木塞污染 Cork Taint (TCA)</div>
-              <div style="font-size:11px;color:var(--txt4);line-height:1.55;"><span style="color:#8A1010;font-weight:600;">線索：</span>濕紙板、濕狗毛、發霉地窖氣味，果香被明顯壓抑</div>
-              <div style="font-size:11px;color:var(--txt4);line-height:1.55;"><span style="color:#8A1010;font-weight:600;">成因：</span>軟木塞遭TCA化合物污染</div>
+              <div style="font-size:var(--fs-base);font-weight:700;color:#8A1010;margin-bottom:3px;">軟木塞污染 Cork Taint (TCA)</div>
+              <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#8A1010;font-weight:600;">線索：</span>濕紙板、濕狗毛、發霉地窖氣味，果香被明顯壓抑</div>
+              <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#8A1010;font-weight:600;">成因：</span>軟木塞遭TCA化合物污染</div>
             </div>
 
             <div style="background:rgba(168,138,96,.06);border:1px solid rgba(168,138,96,.18);border-left:4px solid #A88A60;padding:10px 14px;border-radius:4px 10px 10px 4px;">
-              <div style="font-size:12px;font-weight:700;color:#7C6341;margin-bottom:3px;">氧化 Oxidation</div>
-              <div style="font-size:11px;color:var(--txt4);line-height:1.55;"><span style="color:#7C6341;font-weight:600;">線索：</span>蘋果／堅果氧化味、顏色偏深偏棕（白酒尤其明顯）、果香減弱</div>
-              <div style="font-size:11px;color:var(--txt4);line-height:1.55;"><span style="color:#7C6341;font-weight:600;">成因：</span>過度接觸氧氣，常見於封瓶不良或儲存不當</div>
+              <div style="font-size:var(--fs-base);font-weight:700;color:#7C6341;margin-bottom:3px;">氧化 Oxidation</div>
+              <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#7C6341;font-weight:600;">線索：</span>蘋果／堅果氧化味、顏色偏深偏棕（白酒尤其明顯）、果香減弱</div>
+              <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#7C6341;font-weight:600;">成因：</span>過度接觸氧氣，常見於封瓶不良或儲存不當</div>
             </div>
 
             <div style="background:rgba(92,6,28,.04);border:1px solid rgba(92,6,28,.15);border-left:4px solid #5C061C;padding:10px 14px;border-radius:4px 10px 10px 4px;">
-              <div style="font-size:12px;font-weight:700;color:#5C061C;margin-bottom:3px;">揮發性酸過高 Volatile Acidity</div>
-              <div style="font-size:11px;color:var(--txt4);line-height:1.55;"><span style="color:#5C061C;font-weight:600;">線索：</span>指甲油去光水、醋味</div>
-              <div style="font-size:11px;color:var(--txt4);line-height:1.55;"><span style="color:#5C061C;font-weight:600;">成因：</span>醋酸菌活動過度，產生過量乙酸與乙酸乙酯</div>
+              <div style="font-size:var(--fs-base);font-weight:700;color:#5C061C;margin-bottom:3px;">揮發性酸過高 Volatile Acidity</div>
+              <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#5C061C;font-weight:600;">線索：</span>指甲油去光水、醋味</div>
+              <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#5C061C;font-weight:600;">成因：</span>醋酸菌活動過度，產生過量乙酸與乙酸乙酯</div>
             </div>
 
             <div style="background:rgba(42,122,88,.04);border:1px solid rgba(42,122,88,.15);border-left:4px solid #2A7A58;padding:10px 14px;border-radius:4px 10px 10px 4px;">
-              <div style="font-size:12px;font-weight:700;color:#1E573E;margin-bottom:3px;">還原 Reduction</div>
-              <div style="font-size:11px;color:var(--txt4);line-height:1.55;"><span style="color:#1E573E;font-weight:600;">線索：</span>臭雞蛋、煮熟包心菜、燃燒橡膠味</div>
-              <div style="font-size:11px;color:var(--txt4);line-height:1.55;"><span style="color:#1E573E;font-weight:600;">成因：</span>發酵過程缺氧、硫化物過度累積；部分情況搖晃醒酒可稍微改善</div>
+              <div style="font-size:var(--fs-base);font-weight:700;color:#1E573E;margin-bottom:3px;">還原 Reduction</div>
+              <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#1E573E;font-weight:600;">線索：</span>臭雞蛋、煮熟包心菜、燃燒橡膠味</div>
+              <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#1E573E;font-weight:600;">成因：</span>發酵過程缺氧、硫化物過度累積；部分情況搖晃醒酒可稍微改善</div>
             </div>
 
             <div style="background:rgba(58,110,168,.04);border:1px solid rgba(58,110,168,.15);border-left:4px solid #3A6EA8;padding:10px 14px;border-radius:4px 10px 10px 4px;">
-              <div style="font-size:12px;font-weight:700;color:#1A3A6A;margin-bottom:3px;">過量二氧化硫 Excess SO2</div>
-              <div style="font-size:11px;color:var(--txt4);line-height:1.55;"><span style="color:#1A3A6A;font-weight:600;">線索：</span>點燃火柴的刺鼻氣味，鼻腔有刺激感</div>
-              <div style="font-size:11px;color:var(--txt4);line-height:1.55;"><span style="color:#1A3A6A;font-weight:600;">成因：</span>添加的SO2用量過高、未充分揮發</div>
+              <div style="font-size:var(--fs-base);font-weight:700;color:#1A3A6A;margin-bottom:3px;">過量二氧化硫 Excess SO2</div>
+              <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#1A3A6A;font-weight:600;">線索：</span>點燃火柴的刺鼻氣味，鼻腔有刺激感</div>
+              <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#1A3A6A;font-weight:600;">成因：</span>添加的SO2用量過高、未充分揮發</div>
             </div>
 
           </div>
         </div>
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;">
-          <div style="font-size:11.5px;font-weight:700;color:var(--gold-dk);letter-spacing:.04em;margin-bottom:10px;">💨 香氣濃度 Aroma Intensity</div>
+          <div class="ins-lbl">💨 香氣濃度 Aroma Intensity</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(92,6,28,.05);border:1px solid rgba(92,6,28,.15);color:var(--burg);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">淡 Light</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">需要多次搖杯、湊近杯口才能捕捉到香氣，強度微弱。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(92,6,28,.05);border:1px solid rgba(92,6,28,.15);color:var(--burg);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">淡 Light</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">需要多次搖杯、湊近杯口才能捕捉到香氣，強度微弱。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(92,6,28,.10);border:1px solid rgba(92,6,28,.25);color:var(--burg);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">中等 Medium</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">搖杯後香氣自然浮現，無須刻意湊近即可聞到。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(92,6,28,.10);border:1px solid rgba(92,6,28,.25);color:var(--burg);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">中等 Medium</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">搖杯後香氣自然浮現，無須刻意湊近即可聞到。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(92,6,28,.18);border:1px solid rgba(92,6,28,.38);color:var(--burg);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">濃郁 Pronounced</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">未搖杯即可聞到明顯香氣，甚至隔著一段距離也能察覺。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(92,6,28,.18);border:1px solid rgba(92,6,28,.38);color:var(--burg);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">濃郁 Pronounced</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">未搖杯即可聞到明顯香氣，甚至隔著一段距離也能察覺。</span>
             </div>
           </div>
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;display:flex;align-items:flex-start;gap:14px;">
-          <div style="min-width:70px;font-size:11.5px;font-weight:700;color:var(--gold-dk);letter-spacing:.04em;padding-top:2px;">🏷️ 香氣特徵</div>
+          <div class="ins-lbl" style="min-width:70px;padding-top:2px;margin-bottom:0;">🏷️ 香氣特徵</div>
           <div style="display:flex;flex-wrap:wrap;gap:6px;">
-            <span style="background:rgba(92,6,28,.07);border:1px solid rgba(92,6,28,.18);color:var(--burg);border-radius:20px;padding:3px 11px;font-size:12px;font-weight:500;">🍇 一類 Primary：品種特性</span>
-            <span style="background:rgba(42,122,88,.07);border:1px solid rgba(42,122,88,.20);color:var(--em);border-radius:20px;padding:3px 11px;font-size:12px;font-weight:500;">🧪 二類 Secondary：釀造過程</span>
-            <span style="background:rgba(168,138,96,.10);border:1px solid rgba(168,138,96,.28);color:var(--gold-dk);border-radius:20px;padding:3px 11px;font-size:12px;font-weight:500;">⏳ 三類 Tertiary：陳年熟成</span>
+            <span style="background:rgba(92,6,28,.07);border:1px solid rgba(92,6,28,.18);color:var(--burg);border-radius:20px;padding:3px 11px;font-size:var(--fs-badge);font-weight:500;">🍇 一類 Primary：品種特性</span>
+            <span style="background:rgba(42,122,88,.07);border:1px solid rgba(42,122,88,.20);color:var(--em);border-radius:20px;padding:3px 11px;font-size:var(--fs-badge);font-weight:500;">🧪 二類 Secondary：釀造過程</span>
+            <span style="background:rgba(168,138,96,.10);border:1px solid rgba(168,138,96,.28);color:var(--gold-dk);border-radius:20px;padding:3px 11px;font-size:var(--fs-badge);font-weight:500;">⏳ 三類 Tertiary：陳年熟成</span>
           </div>
         </div>
 
@@ -606,48 +606,48 @@
         <div style="background:rgba(92,6,28,.04);border:1px solid rgba(92,6,28,.15);border-left:4px solid #5C061C;padding:14px 16px;border-radius:4px 10px 10px 4px;">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
             <span style="font-size:14px;">🍇</span>
-            <span style="font-size:13px;font-weight:700;color:#5C061C;">一類香氣和味道（Primary）</span>
+            <span style="font-size:var(--fs-lg);font-weight:700;color:#5C061C;">一類香氣和味道（Primary）</span>
           </div>
-          <div style="font-size:11.5px;color:#7A0D26;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed rgba(92,6,28,.15);">葡萄品種及酒精發酵所帶來的香氣和味道</div>
+          <div style="font-size:var(--fs-base);color:#7A0D26;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed rgba(92,6,28,.15);">葡萄品種及酒精發酵所帶來的香氣和味道</div>
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:6px;">
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">花香</span><span style="font-size:12px;color:var(--txt2);">花叢、玫瑰、紫羅蘭</span></div>
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">綠色水果</span><span style="font-size:12px;color:var(--txt2);">蘋果、西洋梨、醋栗、葡萄</span></div>
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">柑橘類水果</span><span style="font-size:12px;color:var(--txt2);">葡萄柚、檸檬、萊姆（青檸）、柳橙</span></div>
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">帶核水果</span><span style="font-size:12px;color:var(--txt2);">水蜜桃、杏桃、油桃</span></div>
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">熱帶水果</span><span style="font-size:12px;color:var(--txt2);">香蕉、荔枝、芒果、香瓜（哈蜜瓜）、百香果、鳳梨</span></div>
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">紅色水果</span><span style="font-size:12px;color:var(--txt2);">紅醋栗、蔓越莓、覆盆子、草莓、紅櫻桃、紅李</span></div>
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">黑色水果</span><span style="font-size:12px;color:var(--txt2);">黑醋栗、黑莓、藍莓、黑櫻桃、黑李</span></div>
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">草本植物</span><span style="font-size:12px;color:var(--txt2);">青椒、青草、蕃茄葉、蘆筍</span></div>
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">香草植物</span><span style="font-size:12px;color:var(--txt2);">尤加利樹、薄荷、茴香、蒔蘿、乾燥香料</span></div>
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">香料</span><span style="font-size:12px;color:var(--txt2);">黑／白胡椒、甘草</span></div>
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">水果成熟度</span><span style="font-size:12px;color:var(--txt2);">未熟水果、成熟水果、水果乾、煮熟的水果</span></div>
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">其他</span><span style="font-size:12px;color:var(--txt2);">濕石頭、糖果</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">花香</span><span style="font-size:var(--fs-base);color:var(--txt2);">花叢、玫瑰、紫羅蘭</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">綠色水果</span><span style="font-size:var(--fs-base);color:var(--txt2);">蘋果、西洋梨、醋栗、葡萄</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">柑橘類水果</span><span style="font-size:var(--fs-base);color:var(--txt2);">葡萄柚、檸檬、萊姆（青檸）、柳橙</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">帶核水果</span><span style="font-size:var(--fs-base);color:var(--txt2);">水蜜桃、杏桃、油桃</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">熱帶水果</span><span style="font-size:var(--fs-base);color:var(--txt2);">香蕉、荔枝、芒果、香瓜（哈蜜瓜）、百香果、鳳梨</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">紅色水果</span><span style="font-size:var(--fs-base);color:var(--txt2);">紅醋栗、蔓越莓、覆盆子、草莓、紅櫻桃、紅李</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">黑色水果</span><span style="font-size:var(--fs-base);color:var(--txt2);">黑醋栗、黑莓、藍莓、黑櫻桃、黑李</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">草本植物</span><span style="font-size:var(--fs-base);color:var(--txt2);">青椒、青草、蕃茄葉、蘆筍</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">香草植物</span><span style="font-size:var(--fs-base);color:var(--txt2);">尤加利樹、薄荷、茴香、蒔蘿、乾燥香料</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">香料</span><span style="font-size:var(--fs-base);color:var(--txt2);">黑／白胡椒、甘草</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">水果成熟度</span><span style="font-size:var(--fs-base);color:var(--txt2);">未熟水果、成熟水果、水果乾、煮熟的水果</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#5C061C;display:block;margin-bottom:2px;">其他</span><span style="font-size:var(--fs-base);color:var(--txt2);">濕石頭、糖果</span></div>
           </div>
         </div>
 
         <div style="background:rgba(42,122,88,.04);border:1px solid rgba(42,122,88,.15);border-left:4px solid #2A7A58;padding:14px 16px;border-radius:4px 10px 10px 4px;">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
             <span style="font-size:14px;">🧪</span>
-            <span style="font-size:13px;font-weight:700;color:#2A7A58;">二類香氣和味道（Secondary）</span>
+            <span style="font-size:var(--fs-lg);font-weight:700;color:#2A7A58;">二類香氣和味道（Secondary）</span>
           </div>
-          <div style="font-size:11.5px;color:#1E573E;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed rgba(42,122,88,.15);">釀造過程中發酵後所產生的香氣和味道</div>
+          <div style="font-size:var(--fs-base);color:#1E573E;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed rgba(42,122,88,.15);">釀造過程中發酵後所產生的香氣和味道</div>
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:6px;">
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#2A7A58;display:block;margin-bottom:2px;">酵母（酒渣、酵母自溶、酒花）</span><span style="font-size:12px;color:var(--txt2);">餅乾、酥皮點心、麵包、烤麵包、麵包麵糰、起司、優格（乳酪）</span></div>
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#2A7A58;display:block;margin-bottom:2px;">蘋果酸乳酸轉化</span><span style="font-size:12px;color:var(--txt2);">奶油、鮮奶油、起司</span></div>
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#2A7A58;display:block;margin-bottom:2px;">橡木</span><span style="font-size:12px;color:var(--txt2);">香草、丁香、椰子、雪松、焦炭、煙燻、巧克力、咖啡</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#2A7A58;display:block;margin-bottom:2px;">酵母（酒渣、酵母自溶、酒花）</span><span style="font-size:var(--fs-base);color:var(--txt2);">餅乾、酥皮點心、麵包、烤麵包、麵包麵糰、起司、優格（乳酪）</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#2A7A58;display:block;margin-bottom:2px;">蘋果酸乳酸轉化</span><span style="font-size:var(--fs-base);color:var(--txt2);">奶油、鮮奶油、起司</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#2A7A58;display:block;margin-bottom:2px;">橡木</span><span style="font-size:var(--fs-base);color:var(--txt2);">香草、丁香、椰子、雪松、焦炭、煙燻、巧克力、咖啡</span></div>
           </div>
         </div>
 
         <div style="background:rgba(168,138,96,.06);border:1px solid rgba(168,138,96,.18);border-left:4px solid #A88A60;padding:14px 16px;border-radius:4px 10px 10px 4px;">
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
             <span style="font-size:14px;">⏳</span>
-            <span style="font-size:13px;font-weight:700;color:#A88A60;">三類香氣和味道（Tertiary）</span>
+            <span style="font-size:var(--fs-lg);font-weight:700;color:#A88A60;">三類香氣和味道（Tertiary）</span>
           </div>
-          <div style="font-size:11.5px;color:#7C6341;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed rgba(168,138,96,.15);">陳年過程中所產生的香氣和味道</div>
+          <div style="font-size:var(--fs-base);color:#7C6341;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed rgba(168,138,96,.15);">陳年過程中所產生的香氣和味道</div>
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:6px;">
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#A88A60;display:block;margin-bottom:2px;">紅酒</span><span style="font-size:12px;color:var(--txt2);">水果乾、皮革、泥土、蘑菇、肉味、菸草、濕樹葉、森林地、焦糖</span></div>
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#A88A60;display:block;margin-bottom:2px;">白酒</span><span style="font-size:12px;color:var(--txt2);">水果乾、橘子果醬、汽油、肉桂、生薑、肉豆蔻、杏仁、榛果、蜂蜜、焦糖</span></div>
-            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:#A88A60;display:block;margin-bottom:2px;">刻意氧化的葡萄酒</span><span style="font-size:12px;color:var(--txt2);">杏仁、榛果、核桃、巧克力、咖啡、焦糖</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#A88A60;display:block;margin-bottom:2px;">紅酒</span><span style="font-size:var(--fs-base);color:var(--txt2);">水果乾、皮革、泥土、蘑菇、肉味、菸草、濕樹葉、森林地、焦糖</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#A88A60;display:block;margin-bottom:2px;">白酒</span><span style="font-size:var(--fs-base);color:var(--txt2);">水果乾、橘子果醬、汽油、肉桂、生薑、肉豆蔻、杏仁、榛果、蜂蜜、焦糖</span></div>
+            <div style="background:rgba(255,255,255,.6);border-radius:8px;padding:8px 12px;"><span style="font-size:var(--fs-base);font-weight:700;color:#A88A60;display:block;margin-bottom:2px;">刻意氧化的葡萄酒</span><span style="font-size:var(--fs-base);color:var(--txt2);">杏仁、榛果、核桃、巧克力、咖啡、焦糖</span></div>
           </div>
         </div>
 
@@ -661,7 +661,7 @@
       <div style="display:flex;align-items:center;gap:12px;">
         <div style="width:38px;height:38px;border-radius:10px;background:rgba(42,122,88,.08);display:flex;align-items:center;justify-content:center;font-size:20px;">👅</div>
         <div>
-          <div style="font-size:15px;font-weight:600;color:var(--txt);">3. 味覺 Palate</div>
+          <div style="font-size:var(--fs-2xl);font-weight:600;color:var(--txt);">3. 味覺 Palate</div>
         </div>
       </div>
       <span class="acc-arrow">▼</span>
@@ -670,149 +670,149 @@
       <div style="display:flex;flex-direction:column;gap:10px;">
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;">
-          <div style="font-size:11.5px;font-weight:700;color:var(--gold-dk);letter-spacing:.04em;margin-bottom:10px;">🍯 甜度 Sweetness</div>
+          <div class="ins-lbl">🍯 甜度 Sweetness</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:#FEFAF0;border:1px solid #D4B840;color:#7A6000;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">干 Dry</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">舌尖幾乎感受不到甜味，殘糖極低；多數日常餐酒的常見風格。</span>
+              <span style="flex-shrink:0;min-width:64px;background:#FEFAF0;border:1px solid #D4B840;color:#7A6000;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">干 Dry</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">舌尖幾乎感受不到甜味，殘糖極低；多數日常餐酒的常見風格。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:#FEF4D0;border:1px solid #C8A030;color:#7A5000;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">微甜 Off-dry</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">帶有隱約甜感但不明顯，常見於部分德國麗絲玲或阿爾薩斯白酒。</span>
+              <span style="flex-shrink:0;min-width:64px;background:#FEF4D0;border:1px solid #C8A030;color:#7A5000;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">微甜 Off-dry</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">帶有隱約甜感但不明顯，常見於部分德國麗絲玲或阿爾薩斯白酒。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:#FDE8A8;border:1px solid #C08020;color:#7A4000;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">中 Medium</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">甜味清楚可辨但不厚重，常見於部分晚摘或貴腐風格較輕的酒款。</span>
+              <span style="flex-shrink:0;min-width:64px;background:#FDE8A8;border:1px solid #C08020;color:#7A4000;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">中 Medium</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">甜味清楚可辨但不厚重，常見於部分晚摘或貴腐風格較輕的酒款。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:#FCD880;border:1px solid #B87010;color:#6A3000;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">甜 Sweet</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">甜味濃厚明顯，常見於貴腐甜酒、冰酒或加烈甜酒。</span>
+              <span style="flex-shrink:0;min-width:64px;background:#FCD880;border:1px solid #B87010;color:#6A3000;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">甜 Sweet</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">甜味濃厚明顯，常見於貴腐甜酒、冰酒或加烈甜酒。</span>
             </div>
           </div>
         </div>
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;">
-          <div style="font-size:11.5px;font-weight:700;color:var(--gold-dk);letter-spacing:.04em;margin-bottom:10px;">🍋 酸度 Acidity</div>
+          <div class="ins-lbl">🍋 酸度 Acidity</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(42,122,88,.05);border:1px solid rgba(42,122,88,.18);color:var(--em);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">低 Low</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">口中幾乎不分泌唾液，觸感圓潤扁平；常見於溫暖產區的濃郁白酒或多數日常餐酒。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(42,122,88,.05);border:1px solid rgba(42,122,88,.18);color:var(--em);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">低 Low</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">口中幾乎不分泌唾液，觸感圓潤扁平；常見於溫暖產區的濃郁白酒或多數日常餐酒。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(42,122,88,.12);border:1px solid rgba(42,122,88,.28);color:var(--em);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">中 Medium</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">舌側兩頰有適度生津感，清新但不刺激；多數優質紅、白酒的酸度落在此區間。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(42,122,88,.12);border:1px solid rgba(42,122,88,.28);color:var(--em);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">中 Medium</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">舌側兩頰有適度生津感，清新但不刺激；多數優質紅、白酒的酸度落在此區間。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(42,122,88,.22);border:1px solid rgba(42,122,88,.42);color:#0E4828;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">高 High</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">入口即引發持續性唾液分泌、口腔兩側明顯緊實甚至微刺痛；常見於夏布利、香檳、麗絲玲等冷涼產區酒款。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(42,122,88,.22);border:1px solid rgba(42,122,88,.42);color:#0E4828;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">高 High</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">入口即引發持續性唾液分泌、口腔兩側明顯緊實甚至微刺痛；常見於夏布利、香檳、麗絲玲等冷涼產區酒款。</span>
             </div>
           </div>
         </div>
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;">
-          <div style="font-size:11.5px;font-weight:700;color:var(--gold-dk);letter-spacing:.04em;margin-bottom:10px;">🍂 單寧 Tannin</div>
+          <div class="ins-lbl">🍂 單寧 Tannin</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(92,6,28,.05);border:1px solid rgba(92,6,28,.15);color:var(--burg);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">低 Low</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">口腔幾乎無收斂感，觸感圓潤柔順；常見於黑皮諾、加美等薄皮品種。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(92,6,28,.05);border:1px solid rgba(92,6,28,.15);color:var(--burg);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">低 Low</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">口腔幾乎無收斂感，觸感圓潤柔順；常見於黑皮諾、加美等薄皮品種。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(92,6,28,.11);border:1px solid rgba(92,6,28,.26);color:var(--burg);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">中 Medium</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">牙齦與口腔兩側有適度乾澀感，但不影響整體順口度。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(92,6,28,.11);border:1px solid rgba(92,6,28,.26);color:var(--burg);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">中 Medium</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">牙齦與口腔兩側有適度乾澀感，但不影響整體順口度。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(92,6,28,.20);border:1px solid rgba(92,6,28,.40);color:#3A0010;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">高 High</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">牙齦明顯乾澀收斂，甚至產生類似喝濃茶後的粗糙感；常見於年輕的內比歐露、希哈或卡本內蘇維濃。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(92,6,28,.20);border:1px solid rgba(92,6,28,.40);color:#3A0010;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">高 High</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">牙齦明顯乾澀收斂，甚至產生類似喝濃茶後的粗糙感；常見於年輕的內比歐露、希哈或卡本內蘇維濃。</span>
             </div>
           </div>
         </div>
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;">
-          <div style="font-size:11.5px;font-weight:700;color:var(--gold-dk);letter-spacing:.04em;margin-bottom:10px;">🥃 酒精 Alcohol</div>
+          <div class="ins-lbl">🥃 酒精 Alcohol</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(122,68,168,.05);border:1px solid rgba(122,68,168,.18);color:#3A1A5A;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">低 Low</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">口腔後段幾乎無溫熱感；常見於德國麗絲玲、義大利莫斯卡托等清爽風格。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(122,68,168,.05);border:1px solid rgba(122,68,168,.18);color:#3A1A5A;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">低 Low</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">口腔後段幾乎無溫熱感；常見於德國麗絲玲、義大利莫斯卡托等清爽風格。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(122,68,168,.11);border:1px solid rgba(122,68,168,.28);color:#3A1A5A;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">中 Medium</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">有溫和的溫熱感但不刺激，多數餐酒落在此區間。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(122,68,168,.11);border:1px solid rgba(122,68,168,.28);color:#3A1A5A;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">中 Medium</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">有溫和的溫熱感但不刺激，多數餐酒落在此區間。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(122,68,168,.20);border:1px solid rgba(122,68,168,.40);color:#28085A;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">高 High</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">喉頭與口腔後段有明顯灼熱感；常見於溫暖產區的濃郁紅酒或加烈酒。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(122,68,168,.20);border:1px solid rgba(122,68,168,.40);color:#28085A;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">高 High</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">喉頭與口腔後段有明顯灼熱感；常見於溫暖產區的濃郁紅酒或加烈酒。</span>
             </div>
           </div>
         </div>
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;">
-          <div style="font-size:11.5px;font-weight:700;color:var(--gold-dk);letter-spacing:.04em;margin-bottom:10px;">💪 酒體 Body</div>
+          <div class="ins-lbl">💪 酒體 Body</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.06);border:1px solid rgba(58,110,168,.20);color:#1A3A6A;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">輕盈 Light</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">質地近似脫脂牛奶，口感清爽；常見於清淡型白酒或黑皮諾等薄皮紅酒。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.06);border:1px solid rgba(58,110,168,.20);color:#1A3A6A;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">輕盈 Light</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">質地近似脫脂牛奶，口感清爽；常見於清淡型白酒或黑皮諾等薄皮紅酒。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.13);border:1px solid rgba(58,110,168,.30);color:#1A3A6A;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">中等 Medium</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">質地近似全脂牛奶，飽滿度適中，多數酒款的常見表現。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.13);border:1px solid rgba(58,110,168,.30);color:#1A3A6A;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">中等 Medium</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">質地近似全脂牛奶，飽滿度適中，多數酒款的常見表現。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.22);border:1px solid rgba(58,110,168,.42);color:#0E2448;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">飽滿 Full</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">質地近似鮮奶油，濃稠厚重；常見於高酒精、高萃取的濃郁紅酒。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.22);border:1px solid rgba(58,110,168,.42);color:#0E2448;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">飽滿 Full</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">質地近似鮮奶油，濃稠厚重；常見於高酒精、高萃取的濃郁紅酒。</span>
             </div>
           </div>
         </div>
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;">
-          <div style="font-size:11.5px;font-weight:700;color:var(--gold-dk);letter-spacing:.04em;margin-bottom:10px;">🌊 味道濃度 Flavour Intensity</div>
+          <div class="ins-lbl">🌊 味道濃度 Flavour Intensity</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(168,138,96,.07);border:1px solid rgba(168,138,96,.22);color:var(--gold-dk);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">淡 Light</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">入口風味清淡，需細品才能察覺明確特徵。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(168,138,96,.07);border:1px solid rgba(168,138,96,.22);color:var(--gold-dk);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">淡 Light</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">入口風味清淡，需細品才能察覺明確特徵。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(168,138,96,.14);border:1px solid rgba(168,138,96,.32);color:var(--gold-dk);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">中 Medium</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">風味清晰可辨，強度適中。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(168,138,96,.14);border:1px solid rgba(168,138,96,.32);color:var(--gold-dk);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">中 Medium</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">風味清晰可辨，強度適中。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(168,138,96,.24);border:1px solid rgba(168,138,96,.45);color:#6A4A10;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">濃 Pronounced</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">入口風味強烈飽滿，特徵明顯且持久。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(168,138,96,.24);border:1px solid rgba(168,138,96,.45);color:#6A4A10;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">濃 Pronounced</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">入口風味強烈飽滿，特徵明顯且持久。</span>
             </div>
           </div>
         </div>
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;">
-          <div style="font-size:11.5px;font-weight:700;color:var(--gold-dk);letter-spacing:.04em;margin-bottom:10px;">🏷️ 味道特徵 Flavour Characteristics</div>
+          <div class="ins-lbl">🏷️ 味道特徵 Flavour Characteristics</div>
           <div style="display:flex;flex-direction:column;gap:6px;">
             <div style="background:rgba(92,6,28,.04);border-left:3px solid var(--burg);border-radius:0 6px 6px 0;padding:6px 10px;">
-              <span style="font-size:11px;font-weight:700;color:var(--burg);">🍇 一類 Primary</span>
-              <span style="font-size:11px;color:var(--txt4);margin-left:6px;">入口後與嗅覺一致的果香／花香直接感受</span>
+              <span style="font-size:var(--fs-base);font-weight:700;color:var(--burg);">🍇 一類 Primary</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);margin-left:6px;">入口後與嗅覺一致的果香／花香直接感受</span>
             </div>
             <div style="background:rgba(42,122,88,.04);border-left:3px solid var(--em);border-radius:0 6px 6px 0;padding:6px 10px;">
-              <span style="font-size:11px;font-weight:700;color:var(--em);">🧪 二類 Secondary</span>
-              <span style="font-size:11px;color:var(--txt4);margin-left:6px;">奶油、烤麵包、香草等釀造工序帶來的味覺印象</span>
+              <span style="font-size:var(--fs-base);font-weight:700;color:var(--em);">🧪 二類 Secondary</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);margin-left:6px;">奶油、烤麵包、香草等釀造工序帶來的味覺印象</span>
             </div>
             <div style="background:rgba(168,138,96,.06);border-left:3px solid var(--gold-dk);border-radius:0 6px 6px 0;padding:6px 10px;">
-              <span style="font-size:11px;font-weight:700;color:var(--gold-dk);">⏳ 三類 Tertiary</span>
-              <span style="font-size:11px;color:var(--txt4);margin-left:6px;">堅果、蜂蜜、皮革等陳年熟成才會出現的味覺尾韻</span>
+              <span style="font-size:var(--fs-base);font-weight:700;color:var(--gold-dk);">⏳ 三類 Tertiary</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);margin-left:6px;">堅果、蜂蜜、皮革等陳年熟成才會出現的味覺尾韻</span>
             </div>
           </div>
         </div>
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;">
-          <div style="font-size:11.5px;font-weight:700;color:var(--gold-dk);letter-spacing:.04em;margin-bottom:10px;">⏱️ 餘味 Finish</div>
+          <div class="ins-lbl">⏱️ 餘味 Finish</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.06);border:1px solid rgba(58,110,168,.20);color:#1A3A6A;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">短 Short</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">吞嚥或吐酒後，風味迅速消失，餘韻不明顯。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.06);border:1px solid rgba(58,110,168,.20);color:#1A3A6A;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">短 Short</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">吞嚥或吐酒後，風味迅速消失，餘韻不明顯。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.13);border:1px solid rgba(58,110,168,.30);color:#1A3A6A;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">中 Medium</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">風味在口中持續一段時間後才逐漸淡去，是多數酒款的常見表現。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.13);border:1px solid rgba(58,110,168,.30);color:#1A3A6A;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">中 Medium</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">風味在口中持續一段時間後才逐漸淡去，是多數酒款的常見表現。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.22);border:1px solid rgba(58,110,168,.42);color:#0E2448;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">長 Long</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">風味持續明顯較久，通常對應結構紮實、濃縮度高的酒款。</span>
+              <span style="flex-shrink:0;min-width:64px;background:rgba(58,110,168,.22);border:1px solid rgba(58,110,168,.42);color:#0E2448;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">長 Long</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">風味持續明顯較久，通常對應結構紮實、濃縮度高的酒款。</span>
             </div>
           </div>
         </div>
@@ -827,7 +827,7 @@
       <div style="display:flex;align-items:center;gap:12px;">
         <div style="width:38px;height:38px;border-radius:10px;background:rgba(197,168,128,.10);display:flex;align-items:center;justify-content:center;font-size:20px;">🏆</div>
         <div>
-          <div style="font-size:15px;font-weight:600;color:var(--txt);">4. 結論 Conclusion</div>
+          <div style="font-size:var(--fs-2xl);font-weight:600;color:var(--txt);">4. 結論 Conclusion</div>
         </div>
       </div>
       <span class="acc-arrow">▼</span>
@@ -836,61 +836,61 @@
       <div style="display:flex;flex-direction:column;gap:10px;">
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:14px 16px;">
-          <div style="font-size:11.5px;font-weight:700;color:var(--gold-dk);letter-spacing:.04em;margin-bottom:6px;">⭐ 品質評估 Quality Assessment</div>
-          <p style="font-size:10.5px;color:var(--txt4);line-height:1.6;margin:0 0 10px;">綜合平衡感、濃郁度、餘韻長度與複雜度四項標準進行整體判斷，是客觀架構評分，而非單純依個人喜好高低評定。</p>
+          <div class="ins-lbl" style="margin-bottom:6px;">⭐ 品質評估 Quality Assessment</div>
+          <p style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;margin:0 0 10px;">綜合平衡感、濃郁度、餘韻長度與複雜度四項標準進行整體判斷，是客觀架構評分，而非單純依個人喜好高低評定。</p>
           <div style="display:flex;flex-direction:column;gap:8px;">
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:74px;background:rgba(184,64,64,.07);border:1px solid rgba(184,64,64,.22);color:#8A1010;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">差 Poor</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">帶有明顯缺陷、或結構嚴重失衡，已達不宜飲用的程度。</span>
+              <span style="flex-shrink:0;min-width:74px;background:rgba(184,64,64,.07);border:1px solid rgba(184,64,64,.22);color:#8A1010;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">差 Poor</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">帶有明顯缺陷、或結構嚴重失衡，已達不宜飲用的程度。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:74px;background:rgba(168,138,96,.09);border:1px solid rgba(168,138,96,.26);color:var(--gold-dk);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">可接受</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">無明顯缺陷但結構普通、缺乏個性，屬於「喝得下去但不特別」的日常水準。</span>
+              <span style="flex-shrink:0;min-width:74px;background:rgba(168,138,96,.09);border:1px solid rgba(168,138,96,.26);color:var(--gold-dk);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">可接受</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">無明顯缺陷但結構普通、缺乏個性，屬於「喝得下去但不特別」的日常水準。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:74px;background:rgba(42,122,88,.08);border:1px solid rgba(42,122,88,.22);color:var(--em);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">好 Good</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">結構平衡、風味清晰，具備一定濃郁度與餘韻長度，多數中價位酒款的合理表現。</span>
+              <span style="flex-shrink:0;min-width:74px;background:rgba(42,122,88,.08);border:1px solid rgba(42,122,88,.22);color:var(--em);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">好 Good</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">結構平衡、風味清晰，具備一定濃郁度與餘韻長度，多數中價位酒款的合理表現。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:74px;background:rgba(42,122,88,.15);border:1px solid rgba(42,122,88,.32);color:#0E4828;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">很好</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">平衡度佳、風味濃郁且有一定複雜度，餘韻明顯較長，能感受到產區或品種的典型特徵。</span>
+              <span style="flex-shrink:0;min-width:74px;background:rgba(42,122,88,.15);border:1px solid rgba(42,122,88,.32);color:#0E4828;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">很好</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">平衡度佳、風味濃郁且有一定複雜度，餘韻明顯較長，能感受到產區或品種的典型特徵。</span>
             </div>
             <div style="display:flex;gap:10px;align-items:flex-start;">
-              <span style="flex-shrink:0;min-width:74px;background:rgba(92,6,28,.12);border:1px solid rgba(92,6,28,.28);color:var(--burg);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:500;text-align:center;">極好</span>
-              <span style="font-size:11px;color:var(--txt4);line-height:1.6;padding-top:2px;">平衡、濃郁度、餘韻與複雜度四項全數表現卓越，且帶有獨特個性，是該類型中的頂尖水準。</span>
+              <span style="flex-shrink:0;min-width:74px;background:rgba(92,6,28,.12);border:1px solid rgba(92,6,28,.28);color:var(--burg);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">極好</span>
+              <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">平衡、濃郁度、餘韻與複雜度四項全數表現卓越，且帶有獨特個性，是該類型中的頂尖水準。</span>
             </div>
           </div>
         </div>
 
 <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:14px 16px;">
-          <div style="font-size:11.5px;font-weight:700;color:var(--gold-dk);letter-spacing:.04em;margin-bottom:10px;">⏳ 陳年潛力 Aging Potential</div>
+          <div class="ins-lbl">⏳ 陳年潛力 Aging Potential</div>
           <div style="display:flex;flex-direction:column;gap:6px;">
             <div style="display:flex;align-items:center;gap:8px;">
               <span style="width:8px;height:8px;border-radius:50%;background:#3A6EA8;flex-shrink:0;"></span>
               <div style="display:flex;flex-direction:column;gap:2px;">
-                <span style="font-size:12px;color:var(--txt2);">過於年輕 <span style="color:var(--txt4);">Too Young</span></span>
-                <span style="font-size:10.5px;color:var(--txt4);line-height:1.5;">單寧或酸度仍生硬突出、尚未融合，果香為主、缺乏陳年後才出現的三級香氣。</span>
+                <span style="font-size:var(--fs-base);color:var(--txt2);">過於年輕 <span style="color:var(--txt4);">Too Young</span></span>
+                <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.5;">單寧或酸度仍生硬突出、尚未融合，果香為主、缺乏陳年後才出現的三級香氣。</span>
               </div>
             </div>
             <div style="display:flex;align-items:center;gap:8px;">
               <span style="width:8px;height:8px;border-radius:50%;background:#2A7A58;flex-shrink:0;"></span>
               <div style="display:flex;flex-direction:column;gap:2px;">
-                <span style="font-size:12px;color:var(--txt2);">已能飲用並有陳年潛力 <span style="color:var(--txt4);">Can drink now, but has potential for ageing</span></span>
-                <span style="font-size:10.5px;color:var(--txt4);line-height:1.5;">結構已達平衡、風味成熟討喜，但酸度／單寧仍有餘裕支撐繼續陳放發展。</span>
+                <span style="font-size:var(--fs-base);color:var(--txt2);">已能飲用並有陳年潛力 <span style="color:var(--txt4);">Can drink now, but has potential for ageing</span></span>
+                <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.5;">結構已達平衡、風味成熟討喜，但酸度／單寧仍有餘裕支撐繼續陳放發展。</span>
               </div>
             </div>
             <div style="display:flex;align-items:center;gap:8px;">
               <span style="width:8px;height:8px;border-radius:50%;background:#C5A228;flex-shrink:0;"></span>
               <div style="display:flex;flex-direction:column;gap:2px;">
-                <span style="font-size:12px;color:var(--txt2);">儘快飲用，不宜陳年 <span style="color:var(--txt4);">Drink now, not suitable for ageing</span></span>
-                <span style="font-size:10.5px;color:var(--txt4);line-height:1.5;">結構較簡單、缺乏足夠酸度或單寧支撐，續放不會提升品質，趁新鮮飲用風味最佳。</span>
+                <span style="font-size:var(--fs-base);color:var(--txt2);">儘快飲用，不宜陳年 <span style="color:var(--txt4);">Drink now, not suitable for ageing</span></span>
+                <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.5;">結構較簡單、缺乏足夠酸度或單寧支撐，續放不會提升品質，趁新鮮飲用風味最佳。</span>
               </div>
             </div>
             <div style="display:flex;align-items:center;gap:8px;">
               <span style="width:8px;height:8px;border-radius:50%;background:#B84040;flex-shrink:0;"></span>
               <div style="display:flex;flex-direction:column;gap:2px;">
-                <span style="font-size:12px;color:var(--txt2);">已過適飲期 <span style="color:var(--txt4);">Too Old</span></span>
-                <span style="font-size:10.5px;color:var(--txt4);line-height:1.5;">果香明顯衰退、氧化調性過重，甚至出現酒體鬆散或風味乾枯的跡象，已超過理想飲用時機。</span>
+                <span style="font-size:var(--fs-base);color:var(--txt2);">已過適飲期 <span style="color:var(--txt4);">Too Old</span></span>
+                <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.5;">果香明顯衰退、氧化調性過重，甚至出現酒體鬆散或風味乾枯的跡象，已超過理想飲用時機。</span>
               </div>
             </div>
           </div>
@@ -906,8 +906,8 @@
      ╚══════════════════════════════════╝ -->
 <div id="panel-foodpairing" class="panel">
   <div class="mb-4">
-    <h1 style="font-family:'Cinzel',serif;font-size:21px;font-weight:700;color:var(--burg);margin-bottom:3px;">食物搭配原則 Food Pairing Principles</h1>
-    <p style="font-size:12.5px;color:var(--txt3);">葡萄酒與食物的搭配邏輯 · 互補與對比 · SAT結構要素 · 常見地雷 · 產地不分家</p>
+    <h1 style="font-family:'Cinzel',serif;font-size:var(--fs-h1);font-weight:700;color:var(--burg);margin-bottom:3px;">食物搭配原則 Food Pairing Principles</h1>
+    <p style="font-size:var(--fs-lg);color:var(--txt3);">葡萄酒與食物的搭配邏輯 · 互補與對比 · SAT結構要素 · 常見地雷 · 產地不分家</p>
   </div>
 
   <div style="display:flex;gap:10px;align-items:flex-start;background:rgba(92,6,28,.05);border:1px solid rgba(92,6,28,.15);border-radius:12px;padding:14px 18px;font-size:12.5px;color:var(--burg);margin-bottom:20px;">
@@ -919,7 +919,7 @@
       <div style="display:flex;align-items:center;gap:12px;">
         <div style="width:38px;height:38px;border-radius:10px;background:rgba(92,6,28,.08);display:flex;align-items:center;justify-content:center;font-size:20px;">⚖️</div>
         <div>
-          <div style="font-size:15px;font-weight:600;color:var(--txt);">1. 核心邏輯：互補與對比 Congruent vs Complementary</div>
+          <div style="font-size:var(--fs-2xl);font-weight:600;color:var(--txt);">1. 核心邏輯：互補與對比 Congruent vs Complementary</div>
         </div>
       </div>
       <span class="acc-arrow">▼</span>
@@ -927,12 +927,12 @@
     <div class="acc-body" style="background:var(--bg-sub);">
       <div style="display:flex;flex-direction:column;gap:10px;">
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:8px;padding:10px 14px;">
-          <div style="font-size:12px;font-weight:700;color:var(--gold-dk);margin-bottom:3px;">互補 Congruent</div>
-          <div style="font-size:11.5px;color:var(--txt);line-height:1.65;">酒與菜共享某個特徵，兩者疊加強化該風味印象。例如經橡木桶陳年的圓潤白酒配奶油醬汁料理，兩者的濃郁質地互相呼應。</div>
+          <div style="font-size:var(--fs-lg);font-weight:700;color:var(--gold-dk);margin-bottom:3px;">互補 Congruent</div>
+          <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.65;">酒與菜共享某個特徵，兩者疊加強化該風味印象。例如經橡木桶陳年的圓潤白酒配奶油醬汁料理，兩者的濃郁質地互相呼應。</div>
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:8px;padding:10px 14px;">
-          <div style="font-size:12px;font-weight:700;color:var(--gold-dk);margin-bottom:3px;">對比 Complementary</div>
-          <div style="font-size:11.5px;color:var(--txt);line-height:1.65;">酒與菜的特徵互補彼此不足之處，創造反差層次。例如Sauternes貴腐甜酒配藍紋起司——甜酒的甜度中和起司的鹹與辛辣，形成經典的甜鹹對比。</div>
+          <div style="font-size:var(--fs-lg);font-weight:700;color:var(--gold-dk);margin-bottom:3px;">對比 Complementary</div>
+          <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.65;">酒與菜的特徵互補彼此不足之處，創造反差層次。例如Sauternes貴腐甜酒配藍紋起司——甜酒的甜度中和起司的鹹與辛辣，形成經典的甜鹹對比。</div>
         </div>
       </div>
     </div>
@@ -943,7 +943,7 @@
       <div style="display:flex;align-items:center;gap:12px;">
         <div style="width:38px;height:38px;border-radius:10px;background:rgba(58,110,168,.10);display:flex;align-items:center;justify-content:center;font-size:20px;">🧭</div>
         <div>
-          <div style="font-size:15px;font-weight:600;color:var(--txt);">2. 依SAT結構要素討論搭配邏輯 Pairing by SAT Structure</div>
+          <div style="font-size:var(--fs-2xl);font-weight:600;color:var(--txt);">2. 依SAT結構要素討論搭配邏輯 Pairing by SAT Structure</div>
         </div>
       </div>
       <span class="acc-arrow">▼</span>
@@ -952,27 +952,27 @@
       <div style="display:flex;flex-direction:column;gap:10px;">
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:8px;padding:10px 14px;">
-          <div style="font-size:12px;font-weight:700;color:var(--gold-dk);margin-bottom:3px;">🍋 酸度 Acidity</div>
-          <div style="font-size:11.5px;color:var(--txt);line-height:1.65;margin-bottom:6px;">高酸度酒款能有效切開油脂與奶油醬汁的厚重感，達到解膩效果；也適合搭配本身帶酸的料理（如檸檬汁、油醋醬沙拉），避免酒的酸度被食物比下去顯得寡淡。</div>
-          <div style="font-size:11px;color:var(--txt);"><span style="color:var(--txt);font-weight:600;">經典範例：</span>香檳配炸物（天婦羅）——高酸度＋氣泡雙重解膩；Sancerre配山羊起司，兩者酸度互相呼應。</div>
+          <div style="font-size:var(--fs-lg);font-weight:700;color:var(--gold-dk);margin-bottom:3px;">🍋 酸度 Acidity</div>
+          <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.65;margin-bottom:6px;">高酸度酒款能有效切開油脂與奶油醬汁的厚重感，達到解膩效果；也適合搭配本身帶酸的料理（如檸檬汁、油醋醬沙拉），避免酒的酸度被食物比下去顯得寡淡。</div>
+          <div style="font-size:var(--fs-base);color:var(--txt2);"><span style="color:var(--txt);font-weight:600;">經典範例：</span>香檳配炸物（天婦羅）——高酸度＋氣泡雙重解膩；Sancerre配山羊起司，兩者酸度互相呼應。</div>
         </div>
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:8px;padding:10px 14px;">
-          <div style="font-size:12px;font-weight:700;color:var(--gold-dk);margin-bottom:3px;">🍂 單寧 Tannin</div>
-          <div style="font-size:11.5px;color:var(--txt);line-height:1.65;margin-bottom:6px;">單寧會與蛋白質、脂肪結合軟化收斂感，高單寧紅酒適合搭配紅肉、油脂豐富的料理；單寧遇辣食會放大灼熱刺激感，遇鹹味也會顯得更加乾澀，兩者都應避免。</div>
-          <div style="font-size:11px;color:var(--txt);"><span style="color:var(--txt);font-weight:600;">經典範例：</span>波爾多左岸卡本內混調配牛排；忌搭配川菜等高辣度料理。</div>
+          <div style="font-size:var(--fs-lg);font-weight:700;color:var(--gold-dk);margin-bottom:3px;">🍂 單寧 Tannin</div>
+          <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.65;margin-bottom:6px;">單寧會與蛋白質、脂肪結合軟化收斂感，高單寧紅酒適合搭配紅肉、油脂豐富的料理；單寧遇辣食會放大灼熱刺激感，遇鹹味也會顯得更加乾澀，兩者都應避免。</div>
+          <div style="font-size:var(--fs-base);color:var(--txt2);"><span style="color:var(--txt);font-weight:600;">經典範例：</span>波爾多左岸卡本內混調配牛排；忌搭配川菜等高辣度料理。</div>
         </div>
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:8px;padding:10px 14px;">
-          <div style="font-size:12px;font-weight:700;color:var(--gold-dk);margin-bottom:3px;">🍯 甜度 Sweetness</div>
-          <div style="font-size:11.5px;color:var(--txt);line-height:1.65;margin-bottom:6px;">黃金原則是「酒的甜度必須等於或高於菜的甜度」，否則酒會顯得寡淡甚至偏酸；甜酒也常用來對比鹹辛食物創造層次。</div>
-          <div style="font-size:11px;color:var(--txt);"><span style="color:var(--txt);font-weight:600;">經典範例：</span>貴腐甜酒配鵝肝；甜點應搭配比甜點本身更甜的酒（如冰酒配水果塔）。</div>
+          <div style="font-size:var(--fs-lg);font-weight:700;color:var(--gold-dk);margin-bottom:3px;">🍯 甜度 Sweetness</div>
+          <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.65;margin-bottom:6px;">黃金原則是「酒的甜度必須等於或高於菜的甜度」，否則酒會顯得寡淡甚至偏酸；甜酒也常用來對比鹹辛食物創造層次。</div>
+          <div style="font-size:var(--fs-base);color:var(--txt2);"><span style="color:var(--txt);font-weight:600;">經典範例：</span>貴腐甜酒配鵝肝；甜點應搭配比甜點本身更甜的酒（如冰酒配水果塔）。</div>
         </div>
 
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:8px;padding:10px 14px;">
-          <div style="font-size:12px;font-weight:700;color:var(--gold-dk);margin-bottom:3px;">🥃 酒精 Alcohol</div>
-          <div style="font-size:11.5px;color:var(--txt);line-height:1.65;margin-bottom:6px;">高酒精濃度會放大辣度的灼熱感，應避免搭配辣食；高酒精也會讓味覺對鹹味更敏感。</div>
-          <div style="font-size:11px;color:var(--txt);"><span style="color:var(--txt);font-weight:600;">經典範例：</span>辣食建議搭配低酒精、微甜、高酸度白酒（如德國微甜麗絲玲）而非高酒精紅酒。</div>
+          <div style="font-size:var(--fs-lg);font-weight:700;color:var(--gold-dk);margin-bottom:3px;">🥃 酒精 Alcohol</div>
+          <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.65;margin-bottom:6px;">高酒精濃度會放大辣度的灼熱感，應避免搭配辣食；高酒精也會讓味覺對鹹味更敏感。</div>
+          <div style="font-size:var(--fs-base);color:var(--txt2);"><span style="color:var(--txt);font-weight:600;">經典範例：</span>辣食建議搭配低酒精、微甜、高酸度白酒（如德國微甜麗絲玲）而非高酒精紅酒。</div>
         </div>
 
       </div>
@@ -984,7 +984,7 @@
       <div style="display:flex;align-items:center;gap:12px;">
         <div style="width:38px;height:38px;border-radius:10px;background:rgba(184,64,64,.10);display:flex;align-items:center;justify-content:center;font-size:20px;">⚠️</div>
         <div>
-          <div style="font-size:15px;font-weight:600;color:var(--txt);">3. 常見地雷組合 Common Pairing Pitfalls</div>
+          <div style="font-size:var(--fs-2xl);font-weight:600;color:var(--txt);">3. 常見地雷組合 Common Pairing Pitfalls</div>
         </div>
       </div>
       <span class="acc-arrow">▼</span>
@@ -992,16 +992,16 @@
     <div class="acc-body" style="background:var(--bg-sub);">
       <div style="display:flex;flex-direction:column;gap:8px;">
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:8px;padding:8px 14px;">
-          <span style="font-size:11.5px;font-weight:700;color:var(--gold-dk);">朝鮮薊、蘆筍</span><span style="font-size:11.5px;color:var(--txt);">：含特殊化合物，會讓多數酒款喝起來偏苦、帶金屬感</span>
+          <span style="font-size:var(--fs-base);font-weight:700;color:var(--gold-dk);">朝鮮薊、蘆筍</span><span style="font-size:var(--fs-base);color:var(--txt2);">：含特殊化合物，會讓多數酒款喝起來偏苦、帶金屬感</span>
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:8px;padding:8px 14px;">
-          <span style="font-size:11.5px;font-weight:700;color:var(--gold-dk);">辣食＋高單寧或高酒精紅酒</span><span style="font-size:11.5px;color:var(--txt);">：辣感與澀感/灼熱感彼此加乘</span>
+          <span style="font-size:var(--fs-base);font-weight:700;color:var(--gold-dk);">辣食＋高單寧或高酒精紅酒</span><span style="font-size:var(--fs-base);color:var(--txt2);">：辣感與澀感/灼熱感彼此加乘</span>
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:8px;padding:8px 14px;">
-          <span style="font-size:11.5px;font-weight:700;color:var(--gold-dk);">生蠔等生食海鮮＋重橡木陳年紅酒</span><span style="font-size:11.5px;color:var(--txt);">：橡木單寧與海鮮的腥味互相放大</span>
+          <span style="font-size:var(--fs-base);font-weight:700;color:var(--gold-dk);">生蠔等生食海鮮＋重橡木陳年紅酒</span><span style="font-size:var(--fs-base);color:var(--txt2);">：橡木單寧與海鮮的腥味互相放大</span>
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:8px;padding:8px 14px;">
-          <span style="font-size:11.5px;font-weight:700;color:var(--gold-dk);">高酸度油醋醬沙拉＋低酸度圓潤酒款</span><span style="font-size:11.5px;color:var(--txt);">：酒的酸度被比下去，喝起來寡淡</span>
+          <span style="font-size:var(--fs-base);font-weight:700;color:var(--gold-dk);">高酸度油醋醬沙拉＋低酸度圓潤酒款</span><span style="font-size:var(--fs-base);color:var(--txt2);">：酒的酸度被比下去，喝起來寡淡</span>
         </div>
       </div>
     </div>
@@ -1012,28 +1012,28 @@
       <div style="display:flex;align-items:center;gap:12px;">
         <div style="width:38px;height:38px;border-radius:10px;background:rgba(197,168,128,.14);display:flex;align-items:center;justify-content:center;font-size:20px;">🗺️</div>
         <div>
-          <div style="font-size:15px;font-weight:600;color:var(--txt);">4. 「產地不分家」原則 What Grows Together, Goes Together</div>
+          <div style="font-size:var(--fs-2xl);font-weight:600;color:var(--txt);">4. 「產地不分家」原則 What Grows Together, Goes Together</div>
         </div>
       </div>
       <span class="acc-arrow">▼</span>
     </div>
     <div class="acc-body" style="background:var(--bg-sub);">
-      <p style="font-size:11.5px;color:var(--txt3);line-height:1.65;margin-bottom:12px;">同一地區發展出的飲食傳統與葡萄酒風格，往往經過數百年互相調適演變、氣候風土同時形塑了當地的食材與酒款風格，是最容易上手、失敗率最低的搭配邏輯之一。</p>
+      <p style="font-size:var(--fs-base);color:var(--txt2);line-height:1.65;margin-bottom:12px;">同一地區發展出的飲食傳統與葡萄酒風格，往往經過數百年互相調適演變、氣候風土同時形塑了當地的食材與酒款風格，是最容易上手、失敗率最低的搭配邏輯之一。</p>
       <div style="display:flex;flex-direction:column;gap:8px;">
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:8px;padding:9px 14px;">
-          <span style="font-size:11.5px;font-weight:600;color:var(--gold-dk);">香檳區生蠔配夏布利</span><span style="font-size:11px;color:var(--txt);margin-left:6px;">同屬法國東北部冷涼礦物調白酒產區，天生呼應當地海鮮</span>
+          <span style="font-size:var(--fs-base);font-weight:600;color:var(--gold-dk);">香檳區生蠔配夏布利</span><span style="font-size:var(--fs-base);color:var(--txt2);margin-left:6px;">同屬法國東北部冷涼礦物調白酒產區，天生呼應當地海鮮</span>
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:8px;padding:9px 14px;">
-          <span style="font-size:11.5px;font-weight:600;color:var(--gold-dk);">托斯卡尼油封番茄燉肉配Chianti</span><span style="font-size:11px;color:var(--txt);margin-left:6px;">高酸度Sangiovese正好切開當地紅醬的酸與油脂</span>
+          <span style="font-size:var(--fs-base);font-weight:600;color:var(--gold-dk);">托斯卡尼油封番茄燉肉配Chianti</span><span style="font-size:var(--fs-base);color:var(--txt2);margin-left:6px;">高酸度Sangiovese正好切開當地紅醬的酸與油脂</span>
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:8px;padding:9px 14px;">
-          <span style="font-size:11.5px;font-weight:600;color:var(--gold-dk);">西班牙里奧哈伊比利火腿與臘腸配當地Tempranillo</span><span style="font-size:11px;color:var(--txt);margin-left:6px;">單寧與煙燻鹹香的傳統搭配</span>
+          <span style="font-size:var(--fs-base);font-weight:600;color:var(--gold-dk);">西班牙里奧哈伊比利火腿與臘腸配當地Tempranillo</span><span style="font-size:var(--fs-base);color:var(--txt2);margin-left:6px;">單寧與煙燻鹹香的傳統搭配</span>
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:8px;padding:9px 14px;">
-          <span style="font-size:11.5px;font-weight:600;color:var(--gold-dk);">阿爾薩斯酸菜白肉鍋配當地微甜/干型Riesling</span><span style="font-size:11px;color:var(--txt);margin-left:6px;">高酸度白酒平衡油膩與酸菜的酸</span>
+          <span style="font-size:var(--fs-base);font-weight:600;color:var(--gold-dk);">阿爾薩斯酸菜白肉鍋配當地微甜/干型Riesling</span><span style="font-size:var(--fs-base);color:var(--txt2);margin-left:6px;">高酸度白酒平衡油膩與酸菜的酸</span>
         </div>
         <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:8px;padding:9px 14px;">
-          <span style="font-size:11.5px;font-weight:600;color:var(--gold-dk);">德國麗絲玲配德式香腸與芥末</span><span style="font-size:11px;color:var(--txt);margin-left:6px;">冷涼產區高酸度酒天生適合當地醃漬/煙燻飲食傳統</span>
+          <span style="font-size:var(--fs-base);font-weight:600;color:var(--gold-dk);">德國麗絲玲配德式香腸與芥末</span><span style="font-size:var(--fs-base);color:var(--txt2);margin-left:6px;">冷涼產區高酸度酒天生適合當地醃漬/煙燻飲食傳統</span>
         </div>
       </div>
     </div>
@@ -1044,13 +1044,13 @@
       <div style="display:flex;align-items:center;gap:12px;">
         <div style="width:38px;height:38px;border-radius:10px;background:rgba(42,122,88,.10);display:flex;align-items:center;justify-content:center;font-size:20px;">🔎</div>
         <div>
-          <div style="font-size:15px;font-weight:600;color:var(--txt);">5. 品種反查工具 Grape Finder by Food</div>
+          <div style="font-size:var(--fs-2xl);font-weight:600;color:var(--txt);">5. 品種反查工具 Grape Finder by Food</div>
         </div>
       </div>
       <span class="acc-arrow">▼</span>
     </div>
     <div class="acc-body" style="background:var(--bg-sub);">
-      <p style="font-size:11px;color:var(--txt3);margin-bottom:10px;">選擇一種食物大類，找出風格上適合搭配的品種</p>
+      <p style="font-size:var(--fs-base);color:var(--txt2);margin-bottom:10px;">選擇一種食物大類，找出風格上適合搭配的品種</p>
       <div id="fp-category-filters" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px;"></div>
       <div id="fp-grape-results" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
     </div>
@@ -1062,8 +1062,8 @@
      ╚══════════════════════════════════╝ -->
 <div id="panel-grapes" class="panel">
   <div class="mb-4">
-    <h1 style="font-family:'Cinzel',serif;font-size:21px;font-weight:700;color:var(--burg);margin-bottom:3px;">品種圖鑑 Grape Varieties</h1>
-    <p style="font-size:12.5px;color:var(--txt3);">WSET Level 2 核心品種與其他重要品種 · 點擊卡片展開風味結構與 7 維雷達圖</p>
+    <h1 style="font-family:'Cinzel',serif;font-size:var(--fs-h1);font-weight:700;color:var(--burg);margin-bottom:3px;">品種圖鑑 Grape Varieties</h1>
+    <p style="font-size:var(--fs-lg);color:var(--txt3);">WSET Level 2 核心品種與其他重要品種 · 點擊卡片展開風味結構與 7 維雷達圖</p>
   </div>
   <div class="flex flex-wrap gap-2 mb-4" id="grape-color-filters">
     <button class="fp active" onclick="setGrapeColorFilter('all',this)">全部 All</button>
@@ -1078,8 +1078,8 @@
      ╚══════════════════════════════════╝ -->
 <div id="panel-winestyles" class="panel">
   <div class="mb-4">
-    <h1 style="font-family:'Cinzel',serif;font-size:21px;font-weight:700;color:var(--burg);margin-bottom:3px;">釀造工藝 Winemaking Styles</h1>
-    <p style="font-size:12.5px;color:var(--txt3);">WSET Level 2 六大酒款分類 · 點擊卡片展開歷史文化／品種／風土／釀造方式</p>
+    <h1 style="font-family:'Cinzel',serif;font-size:var(--fs-h1);font-weight:700;color:var(--burg);margin-bottom:3px;">釀造工藝 Winemaking Styles</h1>
+    <p style="font-size:var(--fs-lg);color:var(--txt3);">WSET Level 2 六大酒款分類 · 點擊卡片展開歷史文化／品種／風土／釀造方式</p>
   </div>
   <div id="winestyle-container"></div>
 </div>

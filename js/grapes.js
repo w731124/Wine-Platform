@@ -42,31 +42,31 @@ function buildGrapeCardHTML(g) {
           <span style="font-size:18px;">${g.skinColor === 'red' ? '🍷' : '🥂'}</span>
           <div>
             <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
-              <div style="font-family:'Cinzel',serif;font-size:14px;font-weight:600;color:var(--burg);">${g.name}</div>
+              <div style="font-family:'Cinzel',serif;font-size:var(--fs-card-title);font-weight:600;color:var(--burg);">${g.name}</div>
               ${g.originCountry ? `<span class="tg tg-co" style="font-size:9.5px;padding:1px 7px;">${g.originCountry}</span>` : ''}
               ${g.wsetLevel === 2 ? `<span class="tg-match" style="font-size:9.5px;padding:1px 7px;">WSET L2</span>` : ''}
             </div>
-            <div style="font-size:11.5px;color:var(--txt3);max-width:480px;">${g.styleSummary}</div>
+            <div style="font-size:var(--fs-base);color:var(--txt2);max-width:480px;">${g.styleSummary}</div>
           </div>
         </div>
         <span class="acc-arrow">▼</span>
       </div>
       <div class="acc-body" style="background:var(--bg-sub);">
-        ${g.history ? `<div class="ic mb-3" style="background:var(--bg-card);"><p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">📜 品種身世 History</p><p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${g.history}</p></div>` : ''}
-        ${g.confusionNote ? `<div class="ic mb-3" style="background:var(--bg-card);"><p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🔍 易混淆品種 Similar Grapes</p><p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${g.confusionNote}</p></div>` : ''}
+        ${g.history ? `<div class="ic mb-3" style="background:var(--bg-card);"><p class="ins-lbl">📜 品種身世 History</p><p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">${g.history}</p></div>` : ''}
+        ${g.confusionNote ? `<div class="ic mb-3" style="background:var(--bg-card);"><p class="ins-lbl">🔍 易混淆品種 Similar Grapes</p><p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">${g.confusionNote}</p></div>` : ''}
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div class="ic" style="background:var(--bg-card);">
-            <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🌸 關鍵香氣 Key Aromas</p>
+            <p class="ins-lbl">🌸 關鍵香氣 Key Aromas</p>
             <div class="flex flex-wrap gap-1 mb-3">${aromaTags}</div>
-            <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🗺️ 代表產區 Regions</p>
+            <p class="ins-lbl">🗺️ 代表產區 Regions</p>
             <div class="flex flex-wrap gap-1 mb-3">${regionTags}</div>
-            <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🌡️ 適飲溫度 Serving Temp</p>
-            <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);margin-bottom:12px;">${g.servingTemp}</p>
-            <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🍽️ 餐酒搭配 Food Pairing</p>
+            <p class="ins-lbl">🌡️ 適飲溫度 Serving Temp</p>
+            <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);margin-bottom:12px;">${g.servingTemp}</p>
+            <p class="ins-lbl">🍽️ 餐酒搭配 Food Pairing</p>
             <div class="flex flex-wrap gap-1">${foodTags}</div>
           </div>
           <div class="ic flex flex-col items-center justify-center" style="background:var(--bg-card);">
-            <p class="ins-lbl mb-2" style="color:var(--gold-dk);font-size:11px;">📈 7 維雷達圖 Radar Chart</p>
+            <p class="ins-lbl mb-2">📈 7 維雷達圖 Radar Chart</p>
             <div style="position:relative;width:100%;max-width:260px;height:230px;">
               <canvas id="grape-radar-${g.id}"></canvas>
             </div>

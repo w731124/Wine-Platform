@@ -15,28 +15,28 @@ function buildWineStyleCardHTML(s) {
         <div class="flex items-center gap-3">
           <span style="font-size:18px;">${s.icon}</span>
           <div>
-            <div style="font-family:'Cinzel',serif;font-size:14px;font-weight:600;color:var(--burg);">${s.name}</div>
-            <div style="font-size:11.5px;color:var(--txt3);max-width:520px;">${s.oneLiner}</div>
+            <div style="font-family:'Cinzel',serif;font-size:var(--fs-card-title);font-weight:600;color:var(--burg);">${s.name}</div>
+            <div style="font-size:var(--fs-base);color:var(--txt2);max-width:520px;">${s.oneLiner}</div>
           </div>
         </div>
         <span class="acc-arrow">▼</span>
       </div>
       <div class="acc-body" style="background:var(--bg-sub);">
         <div class="ic mb-3" style="background:var(--bg-card);">
-          <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">📜 歷史文化 History</p>
-          <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${s.history}</p>
+          <p class="ins-lbl">📜 歷史文化 History</p>
+          <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">${s.history}</p>
         </div>
         <div class="ic mb-3" style="background:var(--bg-card);">
-          <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🍇 葡萄品種 Grapes</p>
-          <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${s.grapes}</p>
+          <p class="ins-lbl">🍇 葡萄品種 Grapes</p>
+          <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">${s.grapes}</p>
         </div>
         <div class="ic mb-3" style="background:var(--bg-card);">
-          <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">🌍 風土 Terroir</p>
-          <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${s.terroir}</p>
+          <p class="ins-lbl">🌍 風土 Terroir</p>
+          <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">${s.terroir}</p>
         </div>
         <div class="ic" style="background:var(--bg-card);">
-          <p class="ins-lbl" style="color:var(--gold-dk);font-size:11px;">⚗️ 釀造方式 Production</p>
-          <p style="font-size:12.5px;line-height:1.65;color:var(--txt2);">${s.production}</p>
+          <p class="ins-lbl">⚗️ 釀造方式 Production</p>
+          <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">${s.production}</p>
         </div>
       </div>
     </div>`;
