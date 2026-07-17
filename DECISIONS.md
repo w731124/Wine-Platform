@@ -709,3 +709,10 @@
 206. **執行 `auditWineDB()` 確認新資料未觸發任何新增類型的警告**：兩筆新資料的 `profile` 七維欄位完整，通過比較模式檢查；「缺少地圖座標」警告清單中兩筆新id確實出現，但這與 `maipo-valley`、`stellenbosch`、`mendoza` 等25筆既有new-world產區屬於同一既有已知情況（智利/美國/南非等國本身就沒有GeoJSON地圖，非本次新增造成的新問題）；`auditCountryFlags()` 沒有回報Chile國碼缺失。
      原因：使用者要求確認稽核邏輯沒有觸發「既有的資料完整性警告」，需先弄清楚哪些警告是這2筆資料獨有的新問題、哪些是智利這個國家本身既有、所有既有智利產區都共享的已知限制，兩者不可混為一談。
      驗證：headless Chrome 截圖確認產區資料庫頁面Chile分頁新增了「Aconcagua(阿空加瓜)」「Rapel Valley(拉佩爾谷)」兩個新的L2大區手風琴群組（各自僅含新增的1筆次產區），與既有「Central Valley(中央山谷)」的Maipo Valley並列；分別展開Casablanca Valley與Colchagua Valley的底部詳情抽屜，確認品種標籤、styleSummary、物理結構量化7項、核心風味、辨識特徵、餐酒配對、風土、代表酒莊、歷史背景、陳年潛力解析等全部欄位皆正確渲染、無undefined或缺漏，呈現效果與既有產區一致。
+
+## 2026-07-18 產區資料庫擴充：新世界六國高優先度清單，新增USA/Australia/Argentina/South Africa共9筆
+
+207. **`data/wine-data.js` 的 `WINE_DB.appellations` 新增9筆產區，皆插入至對應國家/大區既有區塊最後一筆之後**：USA·California新增 `russian-river-valley`（俄羅斯河谷，冷涼黑皮諾/夏多內）與 `sta-rita-hills`（聖塔麗塔丘，東西走向山谷冷涼黑皮諾），插入於paso-robles之後；Australia·South Australia新增 `mclaren-vale`（麥拉倫谷，希哈/GSM混調）、`coonawarra`（庫納瓦拉，terra rossa紅土卡本內蘇維濃）、`adelaide-hills`（阿德雷德山，高海拔冷涼白酒），插入於clare-valley之後；Argentina·Mendoza新增 `lujan-de-cuyo`（盧漢德庫約，馬爾貝克精神原鄉）與 `valle-de-uco`（烏科谷，破1500公尺高海拔新興產區），插入於mendoza之後；South Africa·Western Cape新增 `swartland`（斯瓦特蘭，自然派老藤白詩楠重鎮）與 `constantia`（康斯坦提亞，南非酒業發源地、Vin de Constance傳奇貴腐甜酒），插入於stellenbosch之後。動工前已逐一view四國既有區塊最後一筆的確切結尾行號，確認插入位置後才動工。
+     原因：使用者提供新世界六國高優先度擴充清單（USA/Australia/Argentina/South Africa各自新增，紐西蘭經核實三大產區已完整覆蓋、無需新增），欄位格式逐字比照已驗證通過的casablanca-valley/colchagua-valley結構順序，內容由使用者提供、未自行增刪。
+     驗證：Perl統計全檔案大括號/中括號開合數一致（1158/1158、606/606），確認9筆逐一插入未破壞JSON結構；`grep` 確認9個新id皆存在、無同陣列內重複id（僅發現appellations/classifications兩個不同陣列間的既有正常同名`saint-emilion`，非本次新增造成）；`auditWineDB()` 主控台輸出確認64/102完全通過、「缺少地圖座標」清單新增9個新id但性質與既有USA/Australia/Argentina/南非產區相同（此四國本身無GeoJSON互動地圖，非新問題）、「法國產區未綁定年份矩陣」清單未出現任何新id（9筆皆非法國產區，不受影響）；headless Chrome分別展開California（6個次產區，含2筆新增）、South Australia（5個次產區，含3筆新增）、Mendoza（3個次產區，含2筆新增）、Western Cape（3個次產區，含2筆新增）四個手風琴群組截圖確認全部9張新卡片完整渲染（品種標籤、風格摘要、風味輪標籤皆正確顯示），無undefined或版面異常。coords欄位依指示僅作資料預留，不需地圖驗證。
+
