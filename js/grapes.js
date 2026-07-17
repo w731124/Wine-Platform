@@ -43,8 +43,8 @@ function buildGrapeCardHTML(g) {
           <div>
             <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
               <div style="font-family:'Cinzel',serif;font-size:var(--fs-card-title);font-weight:600;color:var(--burg);">${g.name}</div>
-              ${g.originCountry ? `<span class="tg tg-co" style="font-size:9.5px;padding:1px 7px;">${g.originCountry}</span>` : ''}
-              ${g.wsetLevel === 2 ? `<span class="tg-match" style="font-size:9.5px;padding:1px 7px;">WSET L2</span>` : ''}
+              ${g.originCountry ? `<span class="tg tg-co">${g.originCountry}</span>` : ''}
+              ${g.wsetLevel === 2 ? `<span class="tg-match">WSET L2</span>` : ''}
             </div>
             <div style="font-size:var(--fs-base);color:var(--txt2);max-width:480px;">${g.styleSummary}</div>
           </div>
@@ -67,7 +67,7 @@ function buildGrapeCardHTML(g) {
           </div>
           <div class="ic flex flex-col items-center justify-center" style="background:var(--bg-card);">
             <p class="ins-lbl mb-2">📈 7 維雷達圖 Radar Chart</p>
-            <div style="position:relative;width:100%;max-width:260px;height:230px;">
+            <div style="position:relative;width:100%;max-width:340px;height:290px;">
               <canvas id="grape-radar-${g.id}"></canvas>
             </div>
             <div style="display:flex;gap:10px;justify-content:center;margin-top:6px;font-size:10px;color:var(--txt3);">
@@ -159,7 +159,7 @@ function buildGrapeRadar(id) {
           angleLines: { color: 'rgba(0,0,0,.09)' },
           pointLabels: {
             color: (ctx) => DIMS[ctx.index].genetic ? '#44403C' : '#A8A29E',
-            font: { size: 9, family: 'Inter' }
+            font: { size: 13, family: 'Inter' }
           }
         }
       }

@@ -145,7 +145,7 @@ function renderCompareRadar() {
       options: {
         responsive:true, maintainAspectRatio:false,
         plugins:{ legend:{ position:'bottom', labels:{ color:'#1C1917', font:{size:12,family:'Inter'}, padding:14 } } },
-        scales:{ r:{ min:0, max:10, ticks:{stepSize:2,color:'#A8A29E',font:{size:10},backdropColor:'transparent'}, grid:{color:'rgba(0,0,0,.07)'}, angleLines:{color:'rgba(0,0,0,.09)'}, pointLabels:{color:'#44403C',font:{size:11,family:'Inter'}} } }
+        scales:{ r:{ min:0, max:10, ticks:{stepSize:2,color:'#A8A29E',font:{size:10},backdropColor:'transparent'}, grid:{color:'rgba(0,0,0,.07)'}, angleLines:{color:'rgba(0,0,0,.09)'}, pointLabels:{color:'#44403C',font:{size:13,family:'Inter'}} } }
       }
     });
   }
@@ -155,8 +155,8 @@ function renderCompareRadar() {
       const c = i===0 ? 'var(--burg)' : 'var(--gold-dk)';
       return `<div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:12px;padding:14px;box-shadow:var(--sh);">
         <h4 style="font-size:var(--fs-lg);font-weight:600;color:${c};margin-bottom:3px;">${a.name}</h4>
-        <p style="font-size:11px;color:var(--txt3);margin-bottom:8px;">${a.subRegion}</p>
-        <div class="mh" style="margin-bottom:10px;"><p style="font-size:10.5px;font-style:italic;color:${c};">「${a.memoryHook}」</p></div>
+        <p style="font-size:var(--fs-base);color:var(--txt3);margin-bottom:8px;">${a.subRegion}</p>
+        <div class="mh" style="margin-bottom:10px;"><p style="font-size:var(--fs-base);font-style:italic;color:${c};">「${a.memoryHook}」</p></div>
         <button onclick="openDrawer(WINE_DB.appellations.find(a=>a.id==='${a.id}'))" style="width:100%;background:var(--burg);color:#fff;border:none;border-radius:8px;padding:7px;font-size:var(--fs-base);cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;margin-top:4px;">完整詳情 →</button>
       </div>`;
     }).join('');
@@ -259,7 +259,7 @@ function renderCompareGrapeRadar() {
       options: {
         responsive:true, maintainAspectRatio:false,
         plugins:{ legend:{ position:'bottom', labels:{ color:'#1C1917', font:{size:12,family:'Inter'}, padding:14 } } },
-        scales:{ r:{ min:0, max:10, ticks:{stepSize:2,color:'#A8A29E',font:{size:10},backdropColor:'transparent'}, grid:{color:'rgba(0,0,0,.07)'}, angleLines:{color:'rgba(0,0,0,.09)'}, pointLabels:{color:'#44403C',font:{size:11,family:'Inter'}} } }
+        scales:{ r:{ min:0, max:10, ticks:{stepSize:2,color:'#A8A29E',font:{size:10},backdropColor:'transparent'}, grid:{color:'rgba(0,0,0,.07)'}, angleLines:{color:'rgba(0,0,0,.09)'}, pointLabels:{color:'#44403C',font:{size:13,family:'Inter'}} } }
       }
     });
   }
@@ -269,7 +269,7 @@ function renderCompareGrapeRadar() {
       const c = i===0 ? 'var(--burg)' : 'var(--gold-dk)';
       return `<div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:12px;padding:14px;box-shadow:var(--sh);">
         <h4 style="font-size:var(--fs-lg);font-weight:600;color:${c};margin-bottom:3px;">${g.name}</h4>
-        <p style="font-size:11px;color:var(--txt3);margin-bottom:8px;">${g.skinColor==='red'?'紅葡萄品種':'白葡萄品種'}</p>
+        <p style="font-size:var(--fs-base);color:var(--txt3);margin-bottom:8px;">${g.skinColor==='red'?'紅葡萄品種':'白葡萄品種'}</p>
         <button onclick="jumpToGrapeById('${g.id}')" style="width:100%;background:var(--burg);color:#fff;border:none;border-radius:8px;padding:7px;font-size:var(--fs-base);cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;margin-top:4px;">完整詳情 →</button>
       </div>`;
     }).join('');

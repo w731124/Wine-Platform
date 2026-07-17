@@ -179,7 +179,7 @@ function openDrawer(app){
   const barsH=dims.map(d=>{
     const v=sp[d.k]??0, pct=v*10;
     return `<div style="margin-bottom:8px;">
-      <div style="display:flex;justify-content:space-between;font-size:11px;margin-bottom:3px;">
+      <div style="display:flex;justify-content:space-between;font-size:var(--fs-base);margin-bottom:3px;">
         <span style="color:var(--txt3);">${d.l}</span>
         <span style="font-weight:600;color:${d.c};">${v}/10</span>
       </div>

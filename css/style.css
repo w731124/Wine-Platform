@@ -74,15 +74,15 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-s
 .app-card:hover::before{opacity:1}
 
 /* ── Tags ── */
-.tg{display:inline-flex;align-items:center;border-radius:20px;font-size:10.5px;padding:2px 8px;font-weight:500;white-space:nowrap}
+.tg{display:inline-flex;align-items:center;border-radius:20px;font-size:var(--fs-base);padding:4px 12px;font-weight:500;white-space:nowrap}
 .tg-grape{background:rgba(42,122,88,.08);border:1px solid rgba(42,122,88,.22);color:var(--em)}
 .tg-reg{background:rgba(122,68,168,.08);border:1px solid rgba(122,68,168,.25);color:#7A44A8}
 .tg-trait{background:rgba(122,13,38,.07);border:1px solid rgba(122,13,38,.2);color:var(--burg-mid)}
 .tg-co{background:rgba(92,6,28,.07);border:1px solid rgba(92,6,28,.18);color:var(--burg)}
 .tg-nw{background:rgba(58,110,168,.07);border:1px solid rgba(58,110,168,.2);color:#3A6EA8}
-.tg-aroma{background:rgba(168,74,122,.08);border:1px solid rgba(168,74,122,.25);color:#A84A7A;font-size:10px;padding:1.5px 7px}
-.tg-food{background:rgba(26,106,74,.08);border:1px solid rgba(26,106,74,.22);color:#1A6A4A;font-size:10px;padding:1.5px 7px}
-.tg-match{background:rgba(155,26,53,.07);border:1px solid rgba(155,26,53,.2);color:var(--burg-lt);font-size:11px;padding:3px 10px}
+.tg-aroma{background:rgba(168,74,122,.08);border:1px solid rgba(168,74,122,.25);color:#A84A7A}
+.tg-food{background:rgba(26,106,74,.08);border:1px solid rgba(26,106,74,.22);color:#1A6A4A}
+.tg-match{background:rgba(155,26,53,.07);border:1px solid rgba(155,26,53,.2);color:var(--burg-lt);display:inline-flex;align-items:center;border-radius:20px;font-size:var(--fs-base);padding:4px 12px;font-weight:500;white-space:nowrap}
 
 /* ── Bottom Drawer (L4) ── */
 .drawer-ov{position:fixed;inset:0;background:rgba(28,25,23,.42);z-index:199;opacity:0;transition:opacity .3s;pointer-events:none}
@@ -102,12 +102,12 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-s
 .vm-tbl th.vm-group-hdr.open{background:rgba(92,6,28,.10);color:var(--burg);border-color:var(--burg);font-weight:700}
 .vm-collapsed-cell{cursor:pointer;color:var(--txt4);transition:background .15s;height:40px;display:table-cell;vertical-align:middle}
 .vm-collapsed-cell:hover{background:rgba(92,6,28,.04)}
-.vm-region-group-hdr{font-family:'Cinzel',serif;font-size:11px;font-weight:600;color:var(--burg);background:var(--bg-sub);text-align:left;padding:6px 12px;border-bottom:1px solid var(--border-lt);}
-.vm-tbl th{font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--txt3);padding:9px 3px;background:var(--bg-el);border-bottom:2px solid var(--border);white-space:nowrap;text-align:center;position:sticky;top:0;z-index:2}
+.vm-region-group-hdr{font-family:'Cinzel',serif;font-size:var(--fs-2xl);font-weight:600;color:var(--burg);background:var(--bg-sub);text-align:left;padding:6px 12px;border-bottom:1px solid var(--border-lt);}
+.vm-tbl th{font-size:var(--fs-base);font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--txt3);padding:9px 3px;background:var(--bg-el);border-bottom:2px solid var(--border);white-space:nowrap;text-align:center;position:sticky;top:0;z-index:2}
 .vm-tbl th.rh{text-align:left;min-width:188px;position:sticky;left:0;z-index:3;padding-left:12px}
 .vm-tbl td{padding:2.5px;border-bottom:1px solid var(--border-lt);text-align:center}
-.vm-tbl td.rl{font-size:11.5px;font-weight:600;color:var(--txt);padding:7px 12px;text-align:left;background:var(--bg-el);position:sticky;left:0;z-index:1;border-right:2px solid var(--border)}
-.vm-tbl td.rl .sub{font-size:10px;color:var(--txt3);font-weight:400}
+.vm-tbl td.rl{font-size:var(--fs-base);font-weight:600;color:var(--txt);padding:7px 12px;text-align:left;background:var(--bg-el);position:sticky;left:0;z-index:1;border-right:2px solid var(--border)}
+.vm-tbl td.rl .sub{font-size:var(--fs-base);color:var(--txt3);font-weight:400}
 .vc{width:42px;height:36px;border-radius:7px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s;margin:2px auto;font-size:11px;font-weight:700}
 .vc:hover{transform:scale(1.15);box-shadow:var(--sh2);z-index:10;position:relative}
 .vc.vc-static{cursor:default}

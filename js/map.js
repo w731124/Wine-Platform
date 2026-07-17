@@ -3,7 +3,7 @@
 ════════════════════════════════════ */
 function selectRegion(r){
   const n={bordeaux:'Bordeaux(波爾多)',burgundy:'Burgundy(勃根地)',loire:'Loire(羅亞爾河)',champagne:'Champagne(香檳)',alsace:'Alsace(阿爾薩斯)',rhone:'Rhône(隆河谷)',piedmont:'Piedmont(皮埃蒙特)',tuscany:'Tuscany(托斯卡尼)',veneto:'Veneto(威尼托)',sicily:'Sicily(西西里)',abruzzo:'Abruzzo(阿布魯佐)',puglia:'Puglia(普利亞)',lombardy:'Lombardy(倫巴底)',campania:'Campania(坎帕尼亞)',trentino:'Trentino-Alto Adige(特倫提諾-上阿迪傑)',emilia:'Emilia-Romagna(艾米利亞-羅馬涅)',friuli:'Friuli-Venezia Giulia(弗留利-威尼斯朱利亞)',marche:'Marche(馬爾凱)',umbria:'Umbria(溫布里亞)',rioja:'Rioja(里奧哈)','castilla-y-leon':'Castilla y León(卡斯提亞－萊昂)',andalusia:'Andalusia(安達魯西亞)',catalonia:'Catalonia(加泰隆尼亞)',galicia:'Galicia(加利西亞)',murcia:'Murcia(穆爾西亞)',navarra:'Navarra(納瓦拉)',douro:'Douro(杜羅河)','vinho-verde':'Vinho Verde(青酒產區)'};
-  showMapIns(`<span class="tg tg-reg" style="font-size:13px;">${n[r]||r}</span><p style="font-size:var(--fs-base);color:var(--txt2);margin-top:8px;">點擊金色圓點查看具體次產區資訊。</p>`);
+  showMapIns(`<span class="tg tg-reg">${n[r]||r}</span><p style="font-size:var(--fs-base);color:var(--txt2);margin-top:8px;">點擊金色圓點查看具體次產區資訊。</p>`);
 }
 function selectAppellation(id){
   if(selMapMarker) selMapMarker.classList.remove('selected');

@@ -119,8 +119,8 @@ function buildClassificationCardHTML(c) {
           <div>
             <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
               <div style="font-family:'Cinzel',serif;font-size:var(--fs-card-title);font-weight:600;color:var(--burg);">${c.name}</div>
-              <span class="tg tg-reg" style="font-size:9.5px;padding:1px 7px;">${c.region}</span>
-              <span class="tg-match" style="font-size:9.5px;padding:1px 7px;">${meta.icon || ''} ${c.basisLabel}</span>
+              <span class="tg tg-reg">${c.region}</span>
+              <span class="tg-match">${meta.icon || ''} ${c.basisLabel}</span>
             </div>
             <div style="font-size:var(--fs-base);color:var(--txt2);max-width:560px;">${c.summary}</div>
           </div>
