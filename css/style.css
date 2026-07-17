@@ -36,6 +36,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-s
 .tab-dropdown{position:absolute;top:calc(100% + 6px);left:0;min-width:190px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;box-shadow:var(--sh3);padding:5px;z-index:60;display:none;flex-direction:column;gap:2px}
 .tab-dropdown.open{display:flex}
 .tab-dropdown-item{display:flex;align-items:center;gap:7px;padding:7px 10px;border-radius:7px;border:none;background:transparent;color:var(--txt2);font-size:12.5px;font-family:'Inter',sans-serif;cursor:pointer;text-align:left;white-space:nowrap;transition:background .15s}
+.tab-dropdown-item span:first-child{display:inline-flex;align-items:center;justify-content:center;width:18px;flex-shrink:0}
 .tab-dropdown-item:hover{background:rgba(92,6,28,.06)}
 .tab-dropdown-item.active{background:rgba(92,6,28,.08);color:var(--burg);font-weight:600}
 .tab-dropdown-item:disabled{cursor:not-allowed;color:var(--txt4);opacity:.55}
