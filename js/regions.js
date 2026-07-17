@@ -149,9 +149,17 @@ function renderFilteredRegions(){
     });
     body.appendChild(grid);
 
-    // Toggle accordion
+    // Toggle accordion：手風琴行為，展開前先收合同容器內其他已展開的群組
     hdr.addEventListener('click',()=>{
       const open=body.classList.contains('open');
+      document.querySelectorAll('#region-container .acc-hdr.open').forEach(otherHdr=>{
+        if(otherHdr===hdr) return;
+        const otherBody=otherHdr.nextElementSibling;
+        if(otherBody) otherBody.classList.remove('open');
+        otherHdr.classList.remove('open');
+        const otherArr=otherHdr.querySelector('.acc-arrow');
+        if(otherArr){ otherArr.classList.remove('open'); otherArr.textContent='▼'; }
+      });
       body.classList.toggle('open',!open);
       hdr.classList.toggle('open',!open);
       const arr=document.getElementById('arr-'+gi);

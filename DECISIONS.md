@@ -716,3 +716,9 @@
      原因：使用者提供新世界六國高優先度擴充清單（USA/Australia/Argentina/South Africa各自新增，紐西蘭經核實三大產區已完整覆蓋、無需新增），欄位格式逐字比照已驗證通過的casablanca-valley/colchagua-valley結構順序，內容由使用者提供、未自行增刪。
      驗證：Perl統計全檔案大括號/中括號開合數一致（1158/1158、606/606），確認9筆逐一插入未破壞JSON結構；`grep` 確認9個新id皆存在、無同陣列內重複id（僅發現appellations/classifications兩個不同陣列間的既有正常同名`saint-emilion`，非本次新增造成）；`auditWineDB()` 主控台輸出確認64/102完全通過、「缺少地圖座標」清單新增9個新id但性質與既有USA/Australia/Argentina/南非產區相同（此四國本身無GeoJSON互動地圖，非新問題）、「法國產區未綁定年份矩陣」清單未出現任何新id（9筆皆非法國產區，不受影響）；headless Chrome分別展開California（6個次產區，含2筆新增）、South Australia（5個次產區，含3筆新增）、Mendoza（3個次產區，含2筆新增）、Western Cape（3個次產區，含2筆新增）四個手風琴群組截圖確認全部9張新卡片完整渲染（品種標籤、風格摘要、風味輪標籤皆正確顯示），無undefined或版面異常。coords欄位依指示僅作資料預留，不需地圖驗證。
 
+
+## 2026-07-18 修正產區資料庫L2大區手風琴可同時多開的問題
+
+208. **`js/regions.js` 的 `renderFilteredRegions()` 內L2大區（如USA底下的California/Oregon/Washington）手風琴點擊邏輯，展開前新增收合 `#region-container` 內其他已展開群組的邏輯**，比照 `toggleGrapeCard`／`toggleClassCard`／`toggleWineStyleCard` 等全站其他手風琴函式的既定寫法（單開手風琴、展開新項目前先收合同容器內所有已展開項目），只改這段點擊處理，不動渲染邏輯與其他檔案。
+     原因：使用者回報L2大區折疊面板可以同時展開多個，一次只該呈現一個；此頁是全站唯一沒有套用單開手風琴收合邏輯的手風琴容器（其餘品種圖鑑/分級制度/釀造工藝/SAT/食物搭配頁皆已是單開），屬於既有的行為不一致，補齊使其與全站一致。
+     驗證：注入探測腳本實測點擊California展開後再點擊Oregon，確認同時展開數維持1（California自動收合、Oregon展開）；headless Chrome截圖視覺確認California卡片正確收合回收合狀態（箭頭▼、無展開內容），Oregon正確展開顯示Willamette Valley卡片；`--dump-dom` 確認頁面載入無 JS 錯誤。
