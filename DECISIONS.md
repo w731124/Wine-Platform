@@ -722,3 +722,9 @@
 208. **`js/regions.js` 的 `renderFilteredRegions()` 內L2大區（如USA底下的California/Oregon/Washington）手風琴點擊邏輯，展開前新增收合 `#region-container` 內其他已展開群組的邏輯**，比照 `toggleGrapeCard`／`toggleClassCard`／`toggleWineStyleCard` 等全站其他手風琴函式的既定寫法（單開手風琴、展開新項目前先收合同容器內所有已展開項目），只改這段點擊處理，不動渲染邏輯與其他檔案。
      原因：使用者回報L2大區折疊面板可以同時展開多個，一次只該呈現一個；此頁是全站唯一沒有套用單開手風琴收合邏輯的手風琴容器（其餘品種圖鑑/分級制度/釀造工藝/SAT/食物搭配頁皆已是單開），屬於既有的行為不一致，補齊使其與全站一致。
      驗證：注入探測腳本實測點擊California展開後再點擊Oregon，確認同時展開數維持1（California自動收合、Oregon展開）；headless Chrome截圖視覺確認California卡片正確收合回收合狀態（箭頭▼、無展開內容），Oregon正確展開顯示Willamette Valley卡片；`--dump-dom` 確認頁面載入無 JS 錯誤。
+
+## 2026-07-18 年份矩陣頁改為上下堆疊版面，表格全寬呈現
+
+209. **`index.html` PANEL 3（年份矩陣）容器從左右並排的 `grid grid-cols-1 xl:grid-cols-3`（表格佔2/3、年份資訊卡佔1/3）改為上下堆疊的 `flex flex-col`，表格與資訊卡皆為全寬**，移除兩個子容器原本的 `xl:col-span-2`／`xl:col-span-1`；只調整外層容器與直接子容器的class，元素id（`vm-table`／`vintage-inspector`／`vmi-placeholder`／`vmi-content`／`vmi-body`等）與所有JS邏輯完全不動。
+     原因：使用者希望表格能向右延伸取得更寬的呈現空間，原本左右並排的版面把表格壓縮在2/3寬度內；將年份資訊卡移到表格下方後，兩者皆可全寬呈現，年份矩陣本身橫向欄位多、最受益於寬版面。
+     驗證：headless Chrome 於1400px寬視窗下截圖確認表格明顯變寬、資訊卡正確移至表格下方且同樣全寬呈現；展開年份區間並點擊格子開啟年份詳情卡，確認內容（年份總結/氣候成因/結構量化/侍酒師建議/風味輪廓）皆正常渲染；`--dump-dom` 確認頁面載入無 JS 錯誤。
