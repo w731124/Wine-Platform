@@ -701,3 +701,11 @@
 204. **全站 `.tg-*` 標籤家族（.tg基礎class + tg-aroma/tg-food/tg-match等變體）統一放大為 `var(--fs-base)`、padding調整為4px 12px**，並清除 `classifications.js`／`grapes.js`／`map.js` 共5處疊加在標籤上、原本會覆蓋class設定的inline字級（9.5px/13px）。`.tg-match` 原本standalone使用時缺少 `display:inline-flex`/`border-radius`/`white-space`（僅在與`.tg`並用時才成立），這次一併補上完整的膠囊樣式屬性，使其不與`.tg`並用時也能正確顯示為圓角膠囊。
      原因：使用者要求「全站所有標籤」統一放大；`.tg-match`的standalone缺陷屬於同一行內順手發現的既有小bug，非擴大稽核範圍。
      驗證：年份矩陣（表格全貌+展開詳情）、比較模式（雷達圖+兩張identity卡片）、產區資料庫抽屜（物理結構量化7項+全部標籤）、品種圖鑑（雷達圖修正前後對比+全部標籤）、分級制度（tg-reg與tg-match標籤）皆以headless Chrome截圖確認：文字全部放大、無裁切、雷達圖標籤完整顯示、標籤膠囊圓角視覺一致。
+
+## 2026-07-17（續）產區資料庫擴充：新增智利 Casablanca Valley、Colchagua Valley 兩筆產區
+
+205. **`data/wine-data.js` 的 `WINE_DB.appellations` 智利區塊（`maipo-valley`之後、南非區塊之前）新增 `casablanca-valley`（Aconcagua產區、白蘇維濃為主的沿海冷涼產區）與`colchagua-valley`（Rapel Valley產區、卡本內蘇維濃/卡門內爾為主的頂級紅酒產區）兩筆完整資料**，動工前先view `maipo-valley` 現有19個欄位的完整順序逐一核對，確認新資料僅多了一個`coords`欄位（現有智利／整個new-world區塊目前皆無此欄位，僅France/Italy/Iberia這3個有GeoJSON地圖的old-world國家才有），其餘欄位順序與結構完全比照。
+     原因：使用者明確表示`coords`是為未來智利地圖擴充預留的資料欄位，非本次疏漏，故依原樣插入而不移除；動工前的欄位核對正是為了在插入前就先抓出這類差異並回報，而非插入後才發現。
+206. **執行 `auditWineDB()` 確認新資料未觸發任何新增類型的警告**：兩筆新資料的 `profile` 七維欄位完整，通過比較模式檢查；「缺少地圖座標」警告清單中兩筆新id確實出現，但這與 `maipo-valley`、`stellenbosch`、`mendoza` 等25筆既有new-world產區屬於同一既有已知情況（智利/美國/南非等國本身就沒有GeoJSON地圖，非本次新增造成的新問題）；`auditCountryFlags()` 沒有回報Chile國碼缺失。
+     原因：使用者要求確認稽核邏輯沒有觸發「既有的資料完整性警告」，需先弄清楚哪些警告是這2筆資料獨有的新問題、哪些是智利這個國家本身既有、所有既有智利產區都共享的已知限制，兩者不可混為一談。
+     驗證：headless Chrome 截圖確認產區資料庫頁面Chile分頁新增了「Aconcagua(阿空加瓜)」「Rapel Valley(拉佩爾谷)」兩個新的L2大區手風琴群組（各自僅含新增的1筆次產區），與既有「Central Valley(中央山谷)」的Maipo Valley並列；分別展開Casablanca Valley與Colchagua Valley的底部詳情抽屜，確認品種標籤、styleSummary、物理結構量化7項、核心風味、辨識特徵、餐酒配對、風土、代表酒莊、歷史背景、陳年潛力解析等全部欄位皆正確渲染、無undefined或缺漏，呈現效果與既有產區一致。
