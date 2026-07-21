@@ -759,3 +759,21 @@
 
 217. **`index.html` PANEL 6「一類香氣和味道」表格的「其他」分類方塊，標題改為「其他（含礦物調）」，內容由「濕石頭、糖果」擴充為「濕石頭、燧石、石墨、白堊、糖果」**，只改這一個方塊的文字內容，不動其他分類、不動表格結構。
      原因：使用者查證發現全站 `WINE_DB.grapes`／`WINE_DB.appellations` 的 `aromaWheel` 大量使用石墨（11次）、燧石（4次）等礦物調詞彙，但SAT頁做為全站官方詞彙參考表卻沒收錄，是明顯缺口；使用者提供逐字的現有/改後內容，動工前已核對現況一致。
+
+## 2026-07-21 統一aromaWheel欄位154個詞條中的同義詞混用
+
+218. **依先前逐一核對過的清單，統一 `WINE_DB.grapes`／`WINE_DB.appellations` 的 `aromaWheel` 欄位中文譯名，只改中文部分、不動英文標籤與`keyIdentifiers`等其他欄位**，完整取代清單：
+     - `Raspberry(覆盆莓)` → `Raspberry(覆盆子)`　10處：`chinon`、`beaujolais`、`willamette-valley`、`yarra-valley`、`baden`、`lambrusco`、`grapes:pinot-noir`、`grapes:grenache`、`grapes:cabernet-franc`、`grapes:gamay`（統一採用SAT頁「一類水果」既有官方詞彙）
+     - `Peach(蜜桃)` → `Peach(水蜜桃)`　4處：`vallee-de-la-marne`、`rias-baixas`、`gisborne`、`grapes:albarino`（統一採用SAT頁「帶核水果」既有官方詞彙）
+     - `White Peach(水蜜桃)` → `White Peach(白桃)`　2處：`condrieu`、`grapes:viognier`；`White Peach(白桃)`維持不動3處：`maconnais`、`adelaide-hills`、`grapes:pinot-gris`
+     - `Red Berry(紅莓果)` → `Red Berry(紅莓)`　2處：`chateauneuf-du-pape`、`cotes-du-rhone`
+     - `Strawberry(紅酒草莓)` → `Strawberry(草莓)`　1處：`hautes-cotes-de-beaune`（統一採用SAT頁「紅色水果」既有官方詞彙）
+     - `Dried Cherry(乾櫻桃)`／`Dried Cherry(乾燥櫻桃)` → 統一為 `Dried Cherry(櫻桃乾)`　各1處：`grapes:nebbiolo`、`brunello-di-montalcino`
+     - `Dried Herb(乾草本)` → `Dried Herb(乾燥香草)`　1處：`grapes:sangiovese`；`mclaren-vale`原本就是`乾燥香草`，維持不動
+     - `Eucalyptus Mint(尤加利薄荷)` → `Eucalyptus Mint(尤加利薄荷感)`　1處：`margaret-river`；`maipo-valley`／`coonawarra`原本就是`尤加利薄荷感`，維持不動
+     - `Beeswax(蜂蠟)`／`Beeswax(白酒版蜂蠟)` 不動，判斷為刻意的語境註記非譯名混用
+
+     **Peach／White Peach 不合併的判斷理由**：上一輪分析報告曾建議把兩者都統一成「水蜜桃」，但使用者指出 Peach 與 White Peach 是兩個不同的英文標籤，合併成同一個中文詞會讓兩者在資料層失去區隔（即使目前網站前端沒有直接顯示英文標籤，統一寫死同一中文字會讓未來想恢復區隔時無從辨識）；正確做法是保留兩個英文標籤各自對應的獨立中文譯名——Peach 統一採用SAT頁官方詞「水蜜桃」，White Peach 則統一為「白桃」以維持與 Peach 的區隔，而不是讓 White Peach 也跟著用「水蜜桃」。
+
+     原因：解決全站154個aromaWheel詞條中同一具體事物用不同中文譯名的內部不一致問題，優先採用SAT頁已使用的官方詞彙（覆盆子/水蜜桃/草莓），SAT頁沒有的詞則統一為站內其他詞條already established的命名慣例（如「櫻桃乾」比照「草莓乾/杏桃乾/無花果乾」的水果乾字尾慣例）。動工前已逐一核對24處現況與清單完全相符才動工。
+     驗證：`grep` 確認 aromaWheel 欄位內舊詞彙（覆盆莓/紅莓果/紅酒草莓/乾櫻桃/乾燥櫻桃/乾草本/尤加利薄荷（不含感）/White Peach(水蜜桃)）皆已清除為0筆，且`keyIdentifiers`欄位裡外觀相同的舊詞彙（因非本次任務範圍）確認完全未被誤改。`auditWineDB()` 執行結果：102筆總數不變、`missingCompare`為空、`missingMap`與`franceUnboundToVintage`兩項既有警告清單內容與本次改動前完全相同（此稽核函式本就不檢查aromaWheel欄位，理論上不受影響，此為驗證性確認而非預期會改變）。
