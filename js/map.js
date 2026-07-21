@@ -2,7 +2,7 @@
    MAP FUNCTIONS
 ════════════════════════════════════ */
 function selectRegion(r){
-  const n={bordeaux:'Bordeaux(波爾多)',burgundy:'Burgundy(勃根地)',loire:'Loire(羅亞爾河)',champagne:'Champagne(香檳)',alsace:'Alsace(阿爾薩斯)',rhone:'Rhône(隆河谷)',piedmont:'Piedmont(皮埃蒙特)',tuscany:'Tuscany(托斯卡尼)',veneto:'Veneto(威尼托)',sicily:'Sicily(西西里)',abruzzo:'Abruzzo(阿布魯佐)',puglia:'Puglia(普利亞)',lombardy:'Lombardy(倫巴底)',campania:'Campania(坎帕尼亞)',trentino:'Trentino-Alto Adige(特倫提諾-上阿迪傑)',emilia:'Emilia-Romagna(艾米利亞-羅馬涅)',friuli:'Friuli-Venezia Giulia(弗留利-威尼斯朱利亞)',marche:'Marche(馬爾凱)',umbria:'Umbria(溫布里亞)',rioja:'Rioja(里奧哈)','castilla-y-leon':'Castilla y León(卡斯提亞－萊昂)',andalusia:'Andalusia(安達魯西亞)',catalonia:'Catalonia(加泰隆尼亞)',galicia:'Galicia(加利西亞)',murcia:'Murcia(穆爾西亞)',navarra:'Navarra(納瓦拉)',douro:'Douro(杜羅河)','vinho-verde':'Vinho Verde(青酒產區)'};
+  const n={bordeaux:'Bordeaux(波爾多)',burgundy:'Burgundy(勃根地)',loire:'Loire(羅亞爾河)',champagne:'Champagne(香檳)',alsace:'Alsace(阿爾薩斯)',rhone:'Rhône(隆河谷)',piedmont:'Piedmont(皮埃蒙特)',tuscany:'Tuscany(托斯卡尼)',veneto:'Veneto(威尼托)',sicily:'Sicily(西西里)',abruzzo:'Abruzzo(阿布魯佐)',puglia:'Puglia(普利亞)',lombardy:'Lombardy(倫巴底)',campania:'Campania(坎帕尼亞)',trentino:'Trentino-Alto Adige(特倫提諾-上阿迪傑)',emilia:'Emilia-Romagna(艾米利亞-羅馬涅)',friuli:'Friuli-Venezia Giulia(弗留利-威尼斯朱利亞)',marche:'Marche(馬爾凱)',umbria:'Umbria(溫布里亞)',rioja:'Rioja(里奧哈)','castilla-y-leon':'Castilla y León(卡斯提亞－萊昂)',andalusia:'Andalusia(安達魯西亞)',catalonia:'Catalonia(加泰隆尼亞)',galicia:'Galicia(加利西亞)',murcia:'Murcia(穆爾西亞)',navarra:'Navarra(納瓦拉)',douro:'Douro(杜羅河)','vinho-verde':'Vinho Verde(青酒產區)',mosel:'Mosel(摩澤爾)',rheingau:'Rheingau(萊茵高)',pfalz:'Pfalz(普法爾茲)',baden:'Baden(巴登)'};
   showMapIns(`<span class="tg tg-reg">${n[r]||r}</span><p style="font-size:var(--fs-base);color:var(--txt2);margin-top:8px;">點擊金色圓點查看具體次產區資訊。</p>`);
 }
 function selectAppellation(id){
@@ -242,6 +242,47 @@ function renderIberiaMarkers(){
   }).join('');
 }
 function renderIberiaMarkerList(){ renderMarkerIndexList(getIberiaAppellations()); }
+
+/* ════════════════════════════════════
+   GERMANY MAP：動態產生編號標記 + 側邊編號清單
+   投影參數對應 scripts/build-germany-map.pl 產生 #germany-svg 輪廓時使用的
+   同一套換算依據——若重新執行該腳本調整縣分組或 viewBox，這裡也要同步更新。
+════════════════════════════════════ */
+const GERMANY_PROJECTION = {
+  minLng: 4.98536014145742, maxLng: 15.0166015625,
+  minLat: 47.313427734375, maxLat: 54.901123046875,
+  cosMid: 0.627864231644983, scale: 64.1447238363518,
+  offX: 28, offY: 51.6446898126522
+};
+function projectGermany(lng, lat){
+  const x = (lng - GERMANY_PROJECTION.minLng) * GERMANY_PROJECTION.cosMid * GERMANY_PROJECTION.scale + GERMANY_PROJECTION.offX;
+  const y = (GERMANY_PROJECTION.maxLat - lat) * GERMANY_PROJECTION.scale + GERMANY_PROJECTION.offY;
+  return [x.toFixed(1), y.toFixed(1)];
+}
+function getGermanyAppellations(){
+  return WINE_DB.appellations.filter(a => a.country === 'Germany(德國)' && a.coords);
+}
+function renderGermanyMarkers(){
+  const g = document.getElementById('germany-markers');
+  if (!g) return;
+  const list = getGermanyAppellations();
+  const { numById } = computeGroupedNumbering(list);
+  const points = list.map(a => {
+    const [x, y] = projectGermany(a.coords.lng, a.coords.lat);
+    return { x: Number(x), y: Number(y) };
+  });
+  declutterPoints(points, 17, 150);
+  g.innerHTML = list.map((a, i) => {
+    const num = numById[a.id];
+    const x = points[i].x.toFixed(1), y = points[i].y.toFixed(1);
+    return `<g class="pulse-marker" data-id="${a.id}" onclick="selectAppellation('${a.id}')">
+      <circle class="pulse-ring" cx="${x}" cy="${y}" r="8" fill="none" stroke="rgba(185,140,20,.5)" stroke-width="1.5"/>
+      <circle class="dot-inner" cx="${x}" cy="${y}" r="7.5" fill="#C5A228" stroke="#FFF" stroke-width="1.5"/>
+      <text x="${x}" y="${(points[i].y+2.5).toFixed(1)}" text-anchor="middle" font-size="7" font-weight="700" fill="#FFF" font-family="Inter,sans-serif" style="pointer-events:none;">${num}</text>
+    </g>`;
+  }).join('');
+}
+function renderGermanyMarkerList(){ renderMarkerIndexList(getGermanyAppellations()); }
 
 /* ════════════════════════════════════
    MAP TOOLTIPS

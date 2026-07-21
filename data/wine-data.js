@@ -844,6 +844,7 @@ const WINE_DB = {
     /* ── Germany · Mosel ── */
     {
       id: 'mosel',
+      coords: { lat: 49.9161, lng: 7.0694 },
       name: 'Mosel(摩澤爾)',
       country: 'Germany(德國)',
       world: 'old-world',
@@ -870,6 +871,7 @@ const WINE_DB = {
     /* ── Germany · Rheingau ── */
     {
       id: 'rheingau',
+      coords: { lat: 49.9833, lng: 7.9306 },
       name: 'Rheingau(萊茵高)',
       country: 'Germany(德國)',
       world: 'old-world',
@@ -2203,6 +2205,7 @@ const WINE_DB = {
     /* ── Germany · Pfalz ── */
     {
       id: 'pfalz',
+      coords: { lat: 49.4078, lng: 8.1845 },
       name: 'Pfalz(普法爾茲)',
       country: 'Germany(德國)',
       world: 'old-world',
@@ -2229,6 +2232,7 @@ const WINE_DB = {
     /* ── Germany · Baden ── */
     {
       id: 'baden',
+      coords: { lat: 48.0440, lng: 7.6484 },
       name: 'Baden(巴登)',
       country: 'Germany(德國)',
       world: 'old-world',

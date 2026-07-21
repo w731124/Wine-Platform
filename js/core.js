@@ -233,6 +233,7 @@ function showMap(id,btn){
   if (id === 'france') renderFranceMarkerList();
   else if (id === 'italy') renderItalyMarkerList();
   else if (id === 'iberia') renderIberiaMarkerList();
+  else if (id === 'germany') renderGermanyMarkerList();
 }
 
 /* ════════════════════════════════════
@@ -273,6 +274,7 @@ document.addEventListener('DOMContentLoaded', function() {
   renderFranceMarkerList();
   renderItalyMarkers();
   renderIberiaMarkers();
+  renderGermanyMarkers();
   initMapTooltips();
   auditWineDB();
   auditCountryFlags();
