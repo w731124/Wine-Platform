@@ -2,15 +2,15 @@
    FOOD PAIRING — 品種反查工具
 ════════════════════════════════════ */
 const FOOD_CATEGORY_MAP = {
-  'red-meat':    { label: 'Red Meat & Game(紅肉與野味)', tags: ['Red Meat(紅肉)', 'Lamb(羊肉)', 'Game(野味)', 'Duck(鴨肉)'] },
-  'white-meat':  { label: 'White Meat & Poultry(白肉與禽肉)', tags: ['White Meat(白肉)', 'Poultry(禽肉)', 'Pork(豬肉)', 'Roasted Poultry(烤禽肉)'] },
-  'seafood':     { label: 'Seafood(海鮮)', tags: ['Seafood(海鮮)', 'Shellfish(甲殼海鮮)', 'Oysters(生蠔)', 'Roasted Salmon(烤鮭魚)'] },
-  'cheese':      { label: 'Cheese(起司)', tags: ['Cheese(起司)', 'Hard Cheese(硬質起司)', 'Soft Cheese(軟質起司)', 'Blue Cheese(藍紋起司)', 'Goat Cheese(山羊起司)'] },
-  'vegetable':   { label: 'Vegetable & Mushroom(蔬食與菇蕈)', tags: ['Vegetable(蔬食)', 'Salad(沙拉)', 'Light Salad(清爽沙拉)', 'Asparagus(蘆筍)', 'Mushroom(蘑菇)', 'Mushroom Umami(蕈菇鮮味)', 'Truffle(松露)', 'Risotto(燉飯)'] },
-  'charcuterie': { label: 'Charcuterie & Appetizer(醃肉與開胃菜)', tags: ['Charcuterie(醃肉拼盤)', 'Cured Meat(醃肉)', 'Appetizer(開胃菜)', 'Light Appetizer(清淡開胃菜)', 'Tapas(西班牙小吃)', 'Nuts(堅果)'] },
-  'asian-spicy':  { label: 'Asian & Spicy Cuisine(亞洲與辛香料理)', tags: ['Asian Cuisine(亞洲料理)', 'Spicy Asian(亞洲辛香料理)', 'Spicy(辛香料)', 'Light Spicy(微辣)'] },
-  'dessert':     { label: 'Dessert & Fruit(甜點與水果)', tags: ['Fruit Dessert(水果甜點)', 'Light Dessert(清爽甜點)', 'Dark Chocolate(黑巧克力)', 'Fruit(水果)'] },
-  'umami':       { label: 'Umami & Special Ingredients(鮮味與特殊食材)', tags: ['Foie Gras(鵝肝)', 'Umami(鮮味)', 'Salty(鹹鮮)', 'Pizza(披薩)'] },
+  'red-meat':    { label: 'Red Meat & Game(紅肉與野味)', desc: '牛排、羊排、烤鴨、野味燉煮、紅酒燉牛肉', tags: ['Red Meat(紅肉)', 'Lamb(羊肉)', 'Game(野味)', 'Duck(鴨肉)'] },
+  'white-meat':  { label: 'White Meat & Poultry(白肉與禽肉)', desc: '烤雞、豬排、火雞、白酒燴豬肉、烤乳豬', tags: ['White Meat(白肉)', 'Poultry(禽肉)', 'Pork(豬肉)', 'Roasted Poultry(烤禽肉)'] },
+  'seafood':     { label: 'Seafood(海鮮)', desc: '生蠔、烤鮭魚、蝦蟹料理、白酒蒸蛤蜊、握壽司', tags: ['Seafood(海鮮)', 'Shellfish(甲殼海鮮)', 'Oysters(生蠔)', 'Roasted Salmon(烤鮭魚)'] },
+  'cheese':      { label: 'Cheese(起司)', desc: '藍紋起司、山羊起司、切達起司、布里起司拼盤', tags: ['Cheese(起司)', 'Hard Cheese(硬質起司)', 'Soft Cheese(軟質起司)', 'Blue Cheese(藍紋起司)', 'Goat Cheese(山羊起司)'] },
+  'vegetable':   { label: 'Vegetable & Mushroom(蔬食與菇蕈)', desc: '烤蘆筍、野菇燉飯、松露料理、田園沙拉', tags: ['Vegetable(蔬食)', 'Salad(沙拉)', 'Light Salad(清爽沙拉)', 'Asparagus(蘆筍)', 'Mushroom(蘑菇)', 'Mushroom Umami(蕈菇鮮味)', 'Truffle(松露)', 'Risotto(燉飯)'] },
+  'charcuterie': { label: 'Charcuterie & Appetizer(醃肉與開胃菜)', desc: '生火腿、西班牙Tapas、堅果拼盤、醃漬冷肉', tags: ['Charcuterie(醃肉拼盤)', 'Cured Meat(醃肉)', 'Appetizer(開胃菜)', 'Light Appetizer(清淡開胃菜)', 'Tapas(西班牙小吃)', 'Nuts(堅果)'] },
+  'asian-spicy':  { label: 'Asian & Spicy Cuisine(亞洲與辛香料理)', desc: '泰式打拋豬、川菜、印度咖哩、韓式辣炒年糕', tags: ['Asian Cuisine(亞洲料理)', 'Spicy Asian(亞洲辛香料理)', 'Spicy(辛香料)', 'Light Spicy(微辣)'] },
+  'dessert':     { label: 'Dessert & Fruit(甜點與水果)', desc: '水果塔、提拉米蘇、黑巧克力甜點、莓果類甜點', tags: ['Fruit Dessert(水果甜點)', 'Light Dessert(清爽甜點)', 'Dark Chocolate(黑巧克力)', 'Fruit(水果)'] },
+  'umami':       { label: 'Umami & Special Ingredients(鮮味與特殊食材)', desc: '鵝肝、瑪格麗特披薩、味噌燉煮料理', tags: ['Foie Gras(鵝肝)', 'Umami(鮮味)', 'Salty(鹹鮮)', 'Pizza(披薩)'] },
 };
 
 let curFoodCategory = null;
@@ -20,7 +20,10 @@ function renderFoodCategoryFilters() {
   if (!wrap) return;
   wrap.innerHTML = Object.keys(FOOD_CATEGORY_MAP).map(key => {
     const cat = FOOD_CATEGORY_MAP[key];
-    return `<button class="fp fp-basis" onclick="setFoodCategory('${key}',this)">${cat.label}</button>`;
+    return `<button class="fp fp-basis fp-card" onclick="setFoodCategory('${key}',this)">
+      <div class="food-cat-label">${cat.label}</div>
+      <div class="food-cat-desc">${cat.desc}</div>
+    </button>`;
   }).join('');
 }
 

@@ -43,10 +43,14 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-s
 .tab-dropdown-item:disabled:hover{background:transparent}
 
 /* ── Filter pills ── */
-.fp{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;color:var(--txt3);font-size:12px;padding:5px 13px;cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif;white-space:nowrap}
+.fp{background:var(--bg-card);border:1px solid var(--border);border-radius:20px;color:var(--txt3);font-size:var(--fs-base);padding:5px 13px;cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif;white-space:nowrap}
 .fp:hover{border-color:var(--gold-dk);color:var(--txt)}
 .fp.active{background:var(--burg);border-color:var(--burg);color:#fff;font-weight:500}
 .fp-basis.active{background:#1A6A4A;border-color:#1A6A4A;color:#fff;font-weight:500}
+.fp-card{display:block;white-space:normal;text-align:left;padding:12px 14px}
+.fp-card .food-cat-label{font-size:var(--fs-base);font-weight:600;margin-bottom:4px}
+.fp-card .food-cat-desc{font-size:var(--fs-sm);color:var(--txt3);font-weight:400;line-height:1.5}
+.fp-basis.active .food-cat-desc{color:rgba(255,255,255,.85)}
 
 /* ── L2 slide bar ── */
 .l2-bar{overflow:hidden;transition:max-height .3s ease,opacity .3s ease;max-height:0;opacity:0}

@@ -734,3 +734,9 @@
 210. **`css/style.css` 新增 `.tab-dropdown-item span:first-child{display:inline-flex;align-items:center;justify-content:center;width:18px;flex-shrink:0}` 規則**，將下拉選單子項目的emoji圖示欄固定為18px寬並置中，不修改任何HTML結構或文字內容，只新增這一條CSS規則。
      原因：使用者提供「產區與分級」下拉選單截圖，回報📋/🌍/🎖️等不同emoji的實際渲染寬度不一，導致後面的文字起始位置參差不齊；全站4個下拉選單（產區與分級、品種與釀造、品飲與搭餐、工具）共9個子項目皆共用同一個 `.tab-dropdown-item` class，屬同一根因，一次性修正即可全部解決，不需逐項調整。
      驗證：因測試檔案需放在專案根目錄才能正確載入相對路徑的 `css/style.css`／`js/*.js`（放在系統暫存資料夾會導致樣式表載入失敗、渲染成無樣式的破版狀態，此為驗證過程中的插曲，非本次改動造成），改於專案根目錄建立臨時測試副本並於頁面載入後注入腳本強制展開個別下拉選單，以headless Chrome截圖分別確認「產區與分級」（📋/🌍/🎖️）與「工具」（📅/⚖️）兩組不同emoji寬度的下拉選單，皆呈現文字對齊一致的結果；測試副本使用後已刪除。
+
+## 2026-07-21 食物搭配原則頁品種反查工具改為卡片版型＋`.fp`字級變數化
+
+211. **`css/style.css` 的 `.fp` class 字級從寫死的 `12px` 改為 `var(--fs-base)`（同時影響食物搭配頁9個分類按鈕與分級制度頁「By Estate／By Vineyard／By Region」3個按鈕，兩處共用同一class屬預期範圍），新增 `.fp-card`／`.fp-card .food-cat-label`／`.fp-card .food-cat-desc`／`.fp-basis.active .food-cat-desc` 四條疊加規則**（僅在食物搭配頁的分類按鈕額外套用`fp-card`修飾class，不影響.fp原有pill版型）；`js/foodpairing.js` 的 `FOOD_CATEGORY_MAP` 9個分類各新增 `desc` 欄位（具體食材/菜餚描述，內容由使用者逐字提供），`renderFoodCategoryFilters()` 改為渲染「標籤+描述」兩行式卡片；`index.html` 的 `#fp-category-filters` 容器由 `flex flex-wrap` 改為 `grid grid-template-columns:repeat(auto-fill,minmax(220px,1fr))`。`setFoodCategory()`／`renderFoodPairingResults()` 篩選與選取邏輯完全不動。
+     原因：使用者要求純文字pill太單薄、看不出各分類涵蓋哪些具體食材，改為卡片版型可承載描述文字；`.fp`字級變數化是使用者主動指名要處理的既有孤兒像素數字，非本次任務意外發現。動工前已依憲法第五條要求先view `.fp`／`.fp-basis`／`.fp.active`／`.fp-basis.active`四處CSS與`js/foodpairing.js`現況，確認與使用者描述一致後才動工。
+     驗證：本機無node/python可直接執行（`python`/`node`皆非真實安裝），改用PowerShell內建`System.Net.HttpListener`起靜態伺服器＋`System.Net.WebSockets.ClientWebSocket`手動驅動headless Chrome DevTools Protocol（無CDP函式庫可用時的替代做法），以此對頁面下達`switchToPanel`/`toggleSATSection`/`click`等操作。截圖確認：食物搭配頁第5區塊9張卡片正確grid排列、字級明顯放大、描述文字正確顯示；點擊卡片後active深綠色背景下描述文字（`rgba(255,255,255,.85)`）清晰可讀；點擊品種結果正確跳轉品種圖鑑（`panel-grapes`轉為active）；分級制度頁By Vineyard按鈕點擊後篩選功能與pill版型皆未受影響，僅字級放大。驗證完成後已停止背景伺服器與headless Chrome程序。
