@@ -1,39 +1,37 @@
 # HANDOFF
 
-> 本檔案每次 session 結束時覆蓋重寫，不累加舊內容。最後更新：2026-07-11。
+> 本檔案每次 session 結束時覆蓋重寫，不累加舊內容。最後更新：2026-07-18。
 
 ## 一、本次開發歷程
 
-**本次 session 涵蓋兩大主題：年份矩陣的互動細節修正、品飲系統（SAT）13個欄位的級距描述文字全面深化。全部已 commit 並 push，`git status` 為 clean（DECISIONS.md #168-175）。使用者已明確表示本階段開發告一段落，目前沒有待執行的下一步項目。**
+**本次涵蓋範圍：全站字體大小與內文顏色系統重構（含事後兩輪補洞）、產區資料庫新增智利2筆＋新世界四國9筆、以及3個獨立小bug修正。全部已 commit 並 push，`git status` 為 clean，本機已與 `origin/main` 完全同步（見四、現況檢查提醒的重要說明）。**
 
-### 1. 年份矩陣（Vintage Matrix）互動細節修正（DECISIONS.md #168-171）
-- 新增第4個分組標題「其他法定產區（各自獨立）Other AOC Regions (Independent)」於 Loire 列前，涵蓋 Loire/Alsace/Champagne/Languedoc-Roussillon 這4個地理上互不相關的獨立產區；標題文字刻意用中性斷點措辭，不採集合式地名，避免暗示這4個產區有關聯性。
-- **修正點選年份群時的表格跳動感（分兩層根因）**：(1) `.vm-collapsed-cell` 收合儲存格高度補到與展開後的 `.vc` 分數方塊一致（40px）；(2) 真正主因其實是 `#vm-thead2` 第二列表頭——收合時的空 `<th></th>` 沒有文字，瀏覽器不建立行框，展開出現年份數字後才被撐高，改用 `<th>&nbsp;</th>` 佔位解決。這是使用者用截圖精確定位、分兩次來回才抓到的真正原因，值得注意：**第一層修正沒解決問題不代表方向錯，可能只是還有第二個根因沒挖到**。
-- 年份群按鈕（2001-2005等）靜止狀態原本沒有背景/外框，只有hover極淡粉紅色，難以辨識為可點擊按鈕；改為靜止態就有淺酒紅底色+外框的方塊，且每個按鈕自帶邊框天然形成群組間分隔線。
+### 1. 全站字體大小與內文顏色系統重構（DECISIONS.md #197-204，commit `ab88ff0` + `7d77e4b`）
+- **背景**：`:root` 新增8個 `--fs-*` 字級變數（badge12/sm13/label14/base16/lg17/card-title18/2xl20/h1 26px），`.ins-lbl` class 重寫（拿掉大寫/底線，改用變數）。先在「產區資料庫」「品飲系統SAT頁」試點，內文說明文字統一 `font-size:var(--fs-base);color:var(--txt2)`，其餘角色（badge/pill/卡片標題/分組標題/H1/副標題）對應不同`--fs-*`變數，再套用到其餘7個分頁（地圖探索/分級制度/年份矩陣/比較模式/品種圖鑑/釀造工藝/食物搭配）。
+- **CLAUDE.md 新增兩條規則**：「字級層級鐵則」（任何結構層級的標題／副標都必須≥其內文字級）與「字體樣式規則」（一律用`--fs-*`變數、內文說明用`var(--txt2)`、新分頁複用`.ins-lbl`）。這是使用者實測發現多處標題比內文小之後，明確要求訂一條可自我檢查的絕對規則，而非逐次補洞。
+- **回頭稽核發現的系統性違規**：`.ins-lbl`（原14px）與試點頁副標題（原14px）本身就小於內文（16px），違反剛訂的鐵則，已改為`var(--fs-lg)`（17px）；`--fs-label`變數因此保留但目前**無任何使用處**。
+- **事後第二輪追加**（使用者主動指名放大先前判斷為「圖表元件維持原狀」的部分）：年份矩陣表格本身（`.vm-tbl th`／`.vm-region-group-hdr`／`.rl`/`.sub`）、年份詳情卡與產區抽屜的「結構量化」label+數值文字、比較模式與品種圖鑑的Chart.js雷達圖`pointLabels.font.size`（11/9→13，Chart.js吃像素數字無法套CSS變數）、全站`.tg-*`標籤家族（統一放大為`var(--fs-base)`、padding調為4px 12px）。品種圖鑑雷達圖容器因字級放大後長標籤被裁切，一併把canvas容器從260×230px放大到340×290px。
+- **順手修正的既有小bug**：`compare.js`用了全站未定義的`var(--text-dim)`（改為`var(--txt4)`）；`.l2-bar{max-height:70px}`固定高度容器因字級放大被裁切（改為160px）；`.tg-match` standalone使用時原本缺`display:inline-flex`等膠囊樣式屬性，一併補上。
+- **過程中的插曲**：一次perl批量取代誤把`compare.js`裡的JS模板字串`${c}`當成未定義的Perl變數吃空，造成兩處`<h4>`顏色失效，已發現並用Edit工具修復，事後對全檔案掃描確認無其他同類殘留。
 
-### 2. 品飲系統（SAT）13個欄位級距描述文字全面深化（DECISIONS.md #172-175，本次主力工作）
-- **流程：先試點2欄（酸度、味道特徵）→確認效果→套用剩餘11欄**。這是使用者主動要求的分階段模式，先驗證排版與可讀性再擴大範圍，值得作為未來類似大範圍文字擴充任務的參考模式。
-- 外觀（澄清度/濃度/顏色）、嗅覺（純淨度/香氣濃度）、味覺（甜度/單寧/酒精/酒體/味道濃度/餘味/酸度/味道特徵）、結論（品質評估/陳年潛力）**全部13個欄位**，格式從「pill橫排＋底下一句共用說明」改為「pill＋各自對應一行描述」，逐一補上每個級距的具體感官描述與代表酒款/品種舉例。WSET L2 原有的2/3/4/5級量表本身未變動。
-- 顏色、陳年潛力兩欄結構特殊（既有色票/圓點+雙語標籤），維持原結構不動、僅在每行下方插入一行新說明，不重新設計版面。
-- **新增「⚠️ 常見酒缺陷 Common Wine Faults」卡片**（純淨度與香氣濃度之間），收錄5項WSET核心缺陷（軟木塞污染TCA、氧化、揮發性酸過高、還原、過量SO2），各附「線索」與「成因」。Brett（酒香酵母異味）刻意不收錄，因判定較主觀且屬WSET L3+內容。同步把純淨度欄位「完整缺陷對照表將於後續版本補充」這句先前埋下的未兌現承諾，改為指向本次新增的實際內容。
-- **修正嗅覺分類4張白卡（純淨度/常見酒缺陷/香氣濃度/香氣特徵）間距為0的排版遺漏**：根因是這4張卡片直接放在 `.acc-body` 下沒有外層 `flex-direction:column;gap:10px` 包裹容器（外觀/味覺/結論都有），補上後與其餘3分類間距一致。此為擴充SAT內容前就存在的既有排版問題，非本次新增卡片造成。
+### 2. 產區資料庫擴充（DECISIONS.md #205-207，commit `e5729ef` + `20ce19f`）
+- 新增智利 `casablanca-valley`（Aconcagua，沿海冷涼白酒）、`colchagua-valley`（Rapel Valley，頂級紅酒），欄位比照`maipo-valley`結構，僅多一個使用者刻意保留給未來地圖擴充的`coords`欄位。
+- 接著新增新世界四國共9筆：USA·California（russian-river-valley、sta-rita-hills）、Australia·South Australia（mclaren-vale、coonawarra、adelaide-hills）、Argentina·Mendoza（lujan-de-cuyo、valle-de-uco）、South Africa·Western Cape（swartland、constantia）。紐西蘭經核實三大產區已完整覆蓋、判斷無需新增。
+- 每次新增後都執行`auditWineDB()`確認沒有觸發「新增類型」的警告（「缺少地圖座標」清單會自然納入新id，但這是該國本身無GeoJSON地圖的既有已知情況，非新問題）。
 
-### 驗證方式
-本次每個階段性修改都用 headless Chrome（`chrome.exe --headless=new --screenshot` / `--dump-dom`）截圖或檢查 DOM 屬性驗證，年份矩陣的跳動感修正額外用「收合/展開兩態截圖比對逐列像素位置」的方式驗證。全部改動皆已 commit 且 push。
+### 3. 三個獨立小bug修正（DECISIONS.md #208-210）
+- 產區資料庫L2大區手風琴補上單開收合邏輯（此頁原是全站唯一沒套用此邏輯的手風琴容器）。
+- 年份矩陣PANEL容器從左右並排改為上下堆疊，表格與年份資訊卡皆全寬呈現。
+- 頂部導覽4個下拉選單的emoji圖示欄固定18px寬並置中，解決不同emoji寬度導致文字對齊參差的問題。
 
 ## 二、討論過但尚未執行的項目／下一步規劃
 
-**目前沒有待執行的下一步項目**——使用者已表示本階段開發告一段落。
+**目前沒有已經和使用者討論過、但擱置未做的具體項目。**
 
-其餘先前記錄、仍未處理的既有事項（延續自更早的 HANDOFF，非本次新增，優先度較低）：
-- 義大利 Lombardy／Piedmont 兩個地圖標籤仍稍微靠近（`MAX_DISPLACEMENT` 58px 是目前測試下來效果較平衡的數值）。
-- 法國波爾多左右岸分界不完整（缺 Dordogne，只用 Garonne 概略標示）。
-- 其他分頁（品種圖鑑、比較模式）是否也要比照分級制度／年份矩陣／品飲系統做內容深度擴寫，尚未討論。
-
-**接手時建議先問使用者想從哪個主題繼續**，例如：
-- 是否要延續「先試點再擴大」的模式，對品種圖鑑或比較模式做類似深化？
-- 地圖探索的既有小瑕疵（Lombardy/Piedmont 標籤、波爾多左右岸分界）是否要處理？
-- 是否有全新功能方向？
+唯一浮現的線索：產區資料庫目前已擴充智利（3筆）、USA/Australia/Argentina/South Africa（各自新增）、紐西蘭（核實無需新增）。**接手時可以主動問使用者**：
+- 新世界六國清單裡還有沒有國家/大區沒擴充到？（例如本次沒提到的其他新世界國家）
+- 舊世界（法國/義大利/西班牙/德國/奧地利/葡萄牙）是否也要比照做高優先度擴充？
+- 除了產區資料庫，其他分頁（品種圖鑑、比較模式）的內容深度擴寫是否要繼續？
 
 ## 三、我明確要求先記下來、之後再處理的內容
 
@@ -41,12 +39,10 @@
 
 ## 四、現況檢查提醒
 
-- **push 狀態**：本次 session 所有 commit 皆已 push，`git status` 為 clean，`git log --oneline origin/main..HEAD` 應為空。接手前仍建議實際跑一次指令確認，不要假設。
-- **除錯經驗（重要）：跳動感/視覺bug若使用者回報「修了但沒完全解決」，先假設還有第二個根因、而非重做第一個修正**。本次年份矩陣跳動感就是先修了表格內容格（`.vm-collapsed-cell`）沒解決，使用者附截圖精確定位後才發現真正主因在表頭列（`#vm-thead2`）。遇到類似情況，優先要求使用者提供前後對比截圖，比自己重新猜測更快定位。
-- **SAT欄位格式現況（重要，本次新建立的慣例）**：`index.html` PANEL 6 的13個欄位目前統一是「pill（`min-width:64px`，特殊欄位如品質評估用`74px`）＋逐行對應描述」的直向排列格式，取代舊有的「pill橫排＋底下一句共用說明」。未來如果要新增品飲系統欄位，應該比照這個新格式，不要沿用舊格式。
-- **標籤色盤現況**：全站標籤（`.tg-*`）8種語意色、`.ins-lbl` 小標題固定 `var(--gold-dk)`；本次「常見酒缺陷」卡片的5個左框色（紅/褐/酒紅/綠/藍）是新增的，僅限缺陷卡片情境使用，未併入全站標籤色盤規範。
-- **年份矩陣資料結構現況**：`WINE_DB.vintages.detail` 的 `structure` 物件是5個key（`acidity`/`tannin`/`body`/`alcohol`/`finish`），跟「產區資料庫」`app.profile` 的7個key不同，這是刻意設計不是漏加。`vmGroupHeaders`（`js/vintage.js`）目前有4筆（bordeaux-left/burgundy-red/rhone-north/loire），對應波爾多/勃根地/隆河3組成對次產區＋1個涵蓋4個獨立產區的中性斷點標題。
-- **分級制度資料結構現況**：`classifications` 陣列12筆的 `basis` 欄位只有三種值（`estate`/`vineyard`/`region`），`rioja-aging` 勉強歸類在 `estate` 但實際判準是陳年時間，未來如需新增類似案例建議考慮是否該新增第四種 basis 類別。
-- **JS 字串跳脫提醒**：在 `data/wine-data.js` 這類單引號字串陣列裡寫入英文內容時，絕對不要用英文所有格縮寫（如 `vigneron's`），曾因跳脫符號寫錯直接讓 JS 語法炸掉，最保險做法是直接避開英文所有格用詞。
-- **本機環境限制**：沒有 Node.js，`python3`／`python` 是 Windows Store 空殼，實際可用的是 `awk` 與 `perl`；headless Chrome 路徑固定在 `C:\Program Files\Google\Chrome\Application\chrome.exe`，Windows 路徑轉 file:// URL 要用 `cygpath -w` 再把反斜線換成正斜線（`${WINPATH//\\//}`），不能直接用 bash 的 POSIX 路徑。手風琴類分頁（品飲系統SAT）驗證展開狀態時，`toggleSATSection()` 是單開手風琴（會自動收合其他已展開項目），要驗證特定分類必須用 `document.querySelectorAll('.acc-hdr')[index]` 精確指定該分類的header元素，不能對多個header跑forEach（會只留最後一個展開）。
-- **接手的 Claude Code 務必實際開啟異動的檔案核對真實現況**，不要只憑這份 HANDOFF.md 的文字描述去猜測。
+- **push/pull 狀態（重要）**：本次session結束時執行`git fetch`發現本機**落後origin/main 4個commit**（`20ce19f`/`eadaceb`/`8f57c53`/`d5bdec3`，即上方「2、3」的內容）——這代表在本次對話進行期間，**另有一個獨立的session／裝置對同一repo做了工作並push到GitHub**，本機這份checkout一直沒同步到。已確認本機working tree乾淨、純fast-forward無衝突，已執行`git pull --ff-only`同步。**接手時務必先跑`git fetch && git status -sb`確認目前是否又有落後，不要假設本機一定是最新狀態**——如果使用者同時開著另一台裝置或另一個對話視窗在改同一個repo，這種情況會重複發生。
+- **`--fs-label`變數目前保留但無使用處**：`.ins-lbl`與所有H1副標題都因「標題≥內文」鐵則改用`var(--fs-lg)`，`--fs-label`(14px)暫時是個孤兒變數，不算bug，未來若有需要比內文小的次要標題角色可以重新啟用。
+- **Chart.js雷達圖字級是手動像素數字**（`pointLabels.font.size:13`），無法用`--fs-*`CSS變數，未來若全站字級系統再調整，記得同步手動改這兩處（`compare.js`兩個雷達圖 + `grapes.js`一個雷達圖）。
+- **年份矩陣表格與各頁chart圖例/stat bars的字級判斷基準**：目前只放大了使用者明確點名的部分（表格標題/年份數字/大產區/次產區文字、結構量化5/7項label文字），表格內的分數方塊（`.vc`/`.sc`）本身**沒有**放大，如果之後要動這塊需要重新確認使用者範圍。
+- **測試檔案路徑限制（新發現，來自另一session的DECISIONS.md #210）**：臨時測試用的debug html副本**必須放在專案根目錄**才能正確載入相對路徑的`css/style.css`／`js/*.js`；放在系統暫存資料夾（如本session慣用的scratchpad）會導致樣式表載入失敗、渲染成無樣式的破版畫面。本session這幾輪的截圖驗證都是在專案根目錄建立`index.debug.html`副本、驗證後刪除，這個做法是對的，接手者應延續。
+- **本機環境限制（沿用既往）**：沒有Node.js，`python3`/`python`是Windows Store空殼，可用`awk`/`perl`；headless Chrome路徑固定在`C:\Program Files\Google\Chrome\Application\chrome.exe`；Windows路徑轉`file://`URL要用`pwd -W`轉換。手風琴類分頁驗證展開狀態時，多數頁面的toggle函式是單開手風琴（點新項目會自動收合其他已展開項目），要驗證特定項目須用`document.querySelectorAll('.acc-hdr')[index]`精確指定，不能對多個header跑forEach。
+- **接手的 Claude Code 務必實際開啟異動的檔案核對真實現況**，不要只憑這份 HANDOFF.md 的文字描述去猜測，尤其是git同步狀態這件事本次就證明了「假設本機是最新」會出錯。
