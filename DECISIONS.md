@@ -754,3 +754,8 @@
 216. **`index.html` 新增 `#map-germany` 面板（含 `#germany-svg`、`#germany-markers`）與對應的 `map-tab` 按鈕（使用既有 `assets/flags/de.svg`）；`js/map.js` 新增 `GERMANY_PROJECTION`／`projectGermany()`／`getGermanyAppellations()`／`renderGermanyMarkers()`／`renderGermanyMarkerList()`，並在 `selectRegion()` 的地名對照表新增4個德國產區條目；`js/core.js` 的 `showMap()`／`DOMContentLoaded` 各補上一行呼叫**，寫法完全比照France/Italy/Iberia既有的三段式（HTML靜態色塊與標籤／JS動態產生編號標記與側邊清單／進入分頁時重繪清單）架構，不引入新的抽象或渲染模式。
      原因：這是全站第4張地圖，維持與前3張完全一致的架構是既有的「模組化不可逆決策」鐵律要求。
      驗證：本機無node/python（`python`/`node`皆非真實安裝），沿用PowerShell HttpListener靜態伺服器＋手動WebSocket驅動headless Chrome DevTools Protocol的既有做法。headless Chrome截圖確認：4個產區色塊（Baden紅／Mosel藍／Pfalz紫／Rheingau橙）與編號標記(1-4)正確渲染於地圖探索頁Germany分頁；Baden形狀狹長橫跨全圖但文字標籤正確落在形狀內（大形狀硬性約束生效）；Mosel/Pfalz/Rheingau三個小形狀標籤皆帶指示虛線正確指回各自產區（小形狀位移+指示線邏輯生效）；側邊清單正確分4組顯示、點擊清單項目與點擊地圖編號標記皆能開啟對應產區完整詳情卡（品種標籤/風味輪/感官結構長條圖）；點擊色塊正確跳出大產區簡短說明；hover標記觸發tooltip顯示品種與名稱（JS層級核實position/content/display皆正確）；切換回分級制度頁重新檢查By Estate/Vineyard/Region三顆按鈕未受影響（沿用先前驗證，本次未重工）。已知瑕疵誠實記錄：萊茵河線段涵蓋不到Baden最南端（近Bodensee/巴塞爾段），與France的Garonne河缺Dordogne段屬同一類「資料源限制、不外插」的既有先例，非本次疏漏。
+
+## 2026-07-21 SAT頁詞彙表「其他」分類補上礦物調詞彙
+
+217. **`index.html` PANEL 6「一類香氣和味道」表格的「其他」分類方塊，標題改為「其他（含礦物調）」，內容由「濕石頭、糖果」擴充為「濕石頭、燧石、石墨、白堊、糖果」**，只改這一個方塊的文字內容，不動其他分類、不動表格結構。
+     原因：使用者查證發現全站 `WINE_DB.grapes`／`WINE_DB.appellations` 的 `aromaWheel` 大量使用石墨（11次）、燧石（4次）等礦物調詞彙，但SAT頁做為全站官方詞彙參考表卻沒收錄，是明顯缺口；使用者提供逐字的現有/改後內容，動工前已核對現況一致。
