@@ -130,6 +130,11 @@ function buildGrapeRadar(id) {
   const labels = DIMS.map(d => d.label);
   const data = DIMS.map(d => p[d.key] || 0);
   const color = g.skinColor === 'red' ? '#5C061C' : '#C5A228';
+  // 容器在窄螢幕卡片內會被壓縮到遠小於340px的設計寬度（見DECISIONS.md #203），
+  // 此時固定13px的pointLabels在圓周邊緣的可用空間不足，「Acidity」「Body」等右側
+  // 標籤會被畫出canvas邊界外造成裁切；改為依實際容器寬度動態縮小字級。
+  const containerWidth = ctx.parentElement ? ctx.parentElement.clientWidth : 340;
+  const pointLabelSize = containerWidth < 300 ? 10 : 13;
 
   grapeRadarInsts[id] = new Chart(ctx.getContext('2d'), {
     type: 'radar',
@@ -159,7 +164,7 @@ function buildGrapeRadar(id) {
           angleLines: { color: 'rgba(0,0,0,.09)' },
           pointLabels: {
             color: (ctx) => DIMS[ctx.index].genetic ? '#44403C' : '#A8A29E',
-            font: { size: 13, family: 'Inter' }
+            font: { size: pointLabelSize, family: 'Inter' }
           }
         }
       }

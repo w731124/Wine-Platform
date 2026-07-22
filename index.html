@@ -72,7 +72,7 @@
      ║  PANEL 1 — 產區資料庫 (4-Layer) ║
      ╚══════════════════════════════════╝ -->
 <div id="panel-regions" class="panel active">
-  <div class="mb-4 flex items-start justify-between gap-4">
+  <div class="mb-4 flex items-start justify-between gap-4" id="regions-header-row">
     <div>
       <h1 style="font-family:'Cinzel',serif;font-size:var(--fs-h1);font-weight:700;color:var(--burg);margin-bottom:3px;">產區資料庫 Region Database</h1>
       <p style="font-size:var(--fs-lg);color:var(--txt3);">四層漸進式導覽：國家 → 大產區摺疊面板 → 次產區卡片 → 底部詳情</p>
@@ -385,7 +385,7 @@
     <div id="compare-color-filters" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
   </div>
   <div id="cm-appellation">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
+    <div class="cm-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
       <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:16px;box-shadow:var(--sh);">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
           <span style="width:12px;height:12px;border-radius:50%;background:#5C061C;display:inline-block;"></span>
@@ -412,7 +412,7 @@
       <div id="radar-placeholder" style="text-align:center;padding:28px;"><p style="font-size:var(--fs-base);color:var(--txt2);">選擇兩個次產區後，雷達圖將自動呈現</p></div>
       <div style="position:relative;max-width:400px;margin:0 auto;height:320px;"><canvas id="compare-radar-chart"></canvas></div>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" id="compare-identity"></div>
+    <div class="cm-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" id="compare-identity"></div>
   </div>
   </div>
 
@@ -421,7 +421,7 @@
       <span style="font-size:var(--fs-base);color:var(--txt2);font-weight:600;">酒色篩選：</span>
       <div id="compare-grape-color-filters" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
+    <div class="cm-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
       <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:16px;box-shadow:var(--sh);">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
           <span style="width:12px;height:12px;border-radius:50%;background:#5C061C;display:inline-block;"></span>
@@ -444,7 +444,7 @@
       <div id="grape-radar-placeholder" style="text-align:center;padding:28px;"><p style="font-size:var(--fs-base);color:var(--txt2);">選擇兩個品種後，雷達圖將自動呈現</p></div>
       <div style="position:relative;max-width:400px;margin:0 auto;height:320px;"><canvas id="compare-grape-radar-chart"></canvas></div>
     </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" id="compare-grape-identity"></div>
+    <div class="cm-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" id="compare-grape-identity"></div>
   </div>
 </div>
 

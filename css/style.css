@@ -108,6 +108,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-s
 .vm-collapsed-cell{cursor:pointer;color:var(--txt4);transition:background .15s;height:40px;display:table-cell;vertical-align:middle}
 .vm-collapsed-cell:hover{background:rgba(92,6,28,.04)}
 .vm-region-group-hdr{font-family:'Cinzel',serif;font-size:var(--fs-2xl);font-weight:600;color:var(--burg);background:var(--bg-sub);text-align:left;padding:6px 12px;border-bottom:1px solid var(--border-lt);}
+.vm-region-group-hdr-fill{background:var(--bg-sub);border-bottom:1px solid var(--border-lt);}
 .vm-tbl th{font-size:var(--fs-base);font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--txt3);padding:9px 3px;background:var(--bg-el);border-bottom:2px solid var(--border);white-space:nowrap;text-align:center;position:sticky;top:0;z-index:2}
 .vm-tbl th.rh{text-align:left;min-width:188px;position:sticky;left:0;z-index:3;padding-left:12px}
 .vm-tbl td{padding:2.5px;border-bottom:1px solid var(--border-lt);text-align:center}
@@ -170,3 +171,22 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-s
 @media(max-width:768px){.ins-pnl,.ins-map{position:relative;top:auto;max-height:none}}
 @media(max-width:768px){.tab-btn .tl{display:none}.tab-btn .ti{display:inline}}
 @media(min-width:769px){.tab-btn .ti{display:none}}
+
+/* ── 響應式修復（見DECISIONS.md #219）── */
+@media(max-width:600px){
+  #regions-header-row{flex-wrap:wrap}
+  #region-search{width:100%}
+}
+@media(max-width:768px){
+  #l2-bar.open{max-height:none;overflow-x:auto;overflow-y:hidden;padding-bottom:4px;-webkit-overflow-scrolling:touch}
+  #l2-bar::-webkit-scrollbar{height:4px}
+  #l2-filters{flex-wrap:nowrap}
+  #l2-filters .fp2{flex-shrink:0}
+  .vm-region-group-hdr{position:sticky;left:0;z-index:1}
+  .vm-wrap{position:relative}
+  .vm-wrap.has-overflow::after{content:'';position:absolute;top:0;right:0;bottom:0;width:24px;background:linear-gradient(to right,transparent,rgba(0,0,0,.14));pointer-events:none;opacity:1;transition:opacity .2s ease}
+  .vm-wrap.scrolled-end::after{opacity:0}
+}
+@media(max-width:520px){
+  .cm-two-col{grid-template-columns:1fr!important}
+}

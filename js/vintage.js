@@ -42,7 +42,13 @@ function buildVintageMatrix(){
     WINE_DB.vintages.rows.forEach(row=>{
       if (vmGroupHeaders[row.id]) {
         const gtr = document.createElement('tr');
-        gtr.innerHTML = `<td colspan="${totalCols}" class="vm-region-group-hdr">${vmGroupHeaders[row.id]}</td>`;
+        // 拆成兩個td（第1欄不跨欄＋其餘欄colspan填滿）而非單一colspan="全部欄位"的儲存格，
+        // 是因為瀏覽器的table sticky實作對「跨滿全部欄位的colspan儲存格」不會套用position:sticky
+        // （實測驗證：.rl／.rh這種未跨欄的儲存格sticky正常，換成跨滿全部欄位的colspan儲存格
+        // 無論是td本身或td內的inline-block子元素都完全不會固定，捲動後隨內容一起位移），
+        // 拆開後第1欄與.rl同寬、不跨欄，才能讓「波爾多 BORDEAUX」這類大區標題文字比照
+        // 區域名稱欄的sticky效果、捲動後仍固定於左側可讀。
+        gtr.innerHTML = `<td class="vm-region-group-hdr">${vmGroupHeaders[row.id]}</td><td colspan="${totalCols-1}" class="vm-region-group-hdr-fill"></td>`;
         tb.appendChild(gtr);
       }
       const sc = (WINE_DB.vintages.scores[row.id] || []).slice(1); // 對齊拿掉2000年後的年份陣列
@@ -66,6 +72,24 @@ function buildVintageMatrix(){
       tr.innerHTML = `<td class="rl"><div>${row.label}</div><div class="sub">${row.sublabel}</div></td>` + cells;
       tb.appendChild(tr);
     });
+  }
+  updateVMScrollHint();
+}
+
+// 窄螢幕下 .vm-wrap 需要橫向捲動才能看到全部年份欄位，這裡在有溢出時顯示右側漸層陰影提示，
+// 捲到底（或內容本來就沒溢出）時隱藏。內容寬度會隨手風琴展開/收合變動，因此每次
+// buildVintageMatrix() 重繪後都要重新判斷一次。
+function updateVMScrollHint(){
+  const wrap = document.querySelector('.vm-wrap');
+  if (!wrap) return;
+  const check = () => {
+    wrap.classList.toggle('has-overflow', wrap.scrollWidth > wrap.clientWidth + 2);
+    wrap.classList.toggle('scrolled-end', wrap.scrollLeft + wrap.clientWidth >= wrap.scrollWidth - 2);
+  };
+  check();
+  if (!wrap.dataset.scrollHintBound) {
+    wrap.addEventListener('scroll', check);
+    wrap.dataset.scrollHintBound = '1';
   }
 }
 

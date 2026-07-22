@@ -116,6 +116,7 @@ function renderFranceMarkers(){
     const num = numById[a.id];
     const x = points[i].x.toFixed(1), y = points[i].y.toFixed(1);
     return `<g class="pulse-marker" data-id="${a.id}" onclick="selectAppellation('${a.id}')">
+      <circle class="tap-target" cx="${x}" cy="${y}" r="22" fill="transparent"/>
       <circle class="pulse-ring" cx="${x}" cy="${y}" r="8" fill="none" stroke="rgba(185,140,20,.5)" stroke-width="1.5"/>
       <circle class="dot-inner" cx="${x}" cy="${y}" r="7.5" fill="#C5A228" stroke="#FFF" stroke-width="1.5"/>
       <text x="${x}" y="${(points[i].y+2.5).toFixed(1)}" text-anchor="middle" font-size="7" font-weight="700" fill="#FFF" font-family="Inter,sans-serif" style="pointer-events:none;">${num}</text>
@@ -194,6 +195,7 @@ function renderItalyMarkers(){
     const num = numById[a.id];
     const x = points[i].x.toFixed(1), y = points[i].y.toFixed(1);
     return `<g class="pulse-marker" data-id="${a.id}" onclick="selectAppellation('${a.id}')">
+      <circle class="tap-target" cx="${x}" cy="${y}" r="22" fill="transparent"/>
       <circle class="pulse-ring" cx="${x}" cy="${y}" r="8" fill="none" stroke="rgba(185,140,20,.5)" stroke-width="1.5"/>
       <circle class="dot-inner" cx="${x}" cy="${y}" r="7.5" fill="#C5A228" stroke="#FFF" stroke-width="1.5"/>
       <text x="${x}" y="${(points[i].y+2.5).toFixed(1)}" text-anchor="middle" font-size="7" font-weight="700" fill="#FFF" font-family="Inter,sans-serif" style="pointer-events:none;">${num}</text>
@@ -235,6 +237,7 @@ function renderIberiaMarkers(){
     const num = numById[a.id];
     const x = points[i].x.toFixed(1), y = points[i].y.toFixed(1);
     return `<g class="pulse-marker" data-id="${a.id}" onclick="selectAppellation('${a.id}')">
+      <circle class="tap-target" cx="${x}" cy="${y}" r="22" fill="transparent"/>
       <circle class="pulse-ring" cx="${x}" cy="${y}" r="8" fill="none" stroke="rgba(185,140,20,.5)" stroke-width="1.5"/>
       <circle class="dot-inner" cx="${x}" cy="${y}" r="7.5" fill="#C5A228" stroke="#FFF" stroke-width="1.5"/>
       <text x="${x}" y="${(points[i].y+2.5).toFixed(1)}" text-anchor="middle" font-size="7" font-weight="700" fill="#FFF" font-family="Inter,sans-serif" style="pointer-events:none;">${num}</text>
@@ -276,6 +279,7 @@ function renderGermanyMarkers(){
     const num = numById[a.id];
     const x = points[i].x.toFixed(1), y = points[i].y.toFixed(1);
     return `<g class="pulse-marker" data-id="${a.id}" onclick="selectAppellation('${a.id}')">
+      <circle class="tap-target" cx="${x}" cy="${y}" r="22" fill="transparent"/>
       <circle class="pulse-ring" cx="${x}" cy="${y}" r="8" fill="none" stroke="rgba(185,140,20,.5)" stroke-width="1.5"/>
       <circle class="dot-inner" cx="${x}" cy="${y}" r="7.5" fill="#C5A228" stroke="#FFF" stroke-width="1.5"/>
       <text x="${x}" y="${(points[i].y+2.5).toFixed(1)}" text-anchor="middle" font-size="7" font-weight="700" fill="#FFF" font-family="Inter,sans-serif" style="pointer-events:none;">${num}</text>
