@@ -45,6 +45,7 @@ function buildGrapeCardHTML(g) {
               <div style="font-family:'Cinzel',serif;font-size:var(--fs-card-title);font-weight:600;color:var(--burg);">${g.name}</div>
               ${g.originCountry ? `<span class="tg tg-co">${g.originCountry}</span>` : ''}
               ${g.wsetLevel === 2 ? `<span class="tg-match">WSET L2</span>` : ''}
+              ${g.wsetLevel === '2-regional' ? `<span class="tg tg-lo4">WSET L2·LO4</span>` : ''}
             </div>
             <div style="font-size:var(--fs-base);color:var(--txt2);max-width:480px;">${g.styleSummary}</div>
           </div>

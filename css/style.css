@@ -90,6 +90,7 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-s
 .tg-aroma{background:rgba(168,74,122,.08);border:1px solid rgba(168,74,122,.25);color:#A84A7A}
 .tg-food{background:rgba(26,106,74,.08);border:1px solid rgba(26,106,74,.22);color:#1A6A4A}
 .tg-match{background:rgba(155,26,53,.07);border:1px solid rgba(155,26,53,.2);color:var(--burg-lt);display:inline-flex;align-items:center;border-radius:20px;font-size:var(--fs-base);padding:4px 12px;font-weight:500;white-space:nowrap}
+.tg-lo4{background:rgba(197,168,128,.18);border:1px solid rgba(197,168,128,.45);color:var(--gold-dk)}
 
 /* ── Bottom Drawer (L4) ── */
 .drawer-ov{position:fixed;inset:0;background:rgba(28,25,23,.42);z-index:199;opacity:0;transition:opacity .3s;pointer-events:none}

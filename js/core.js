@@ -18,6 +18,7 @@ const COUNTRY_FLAG_CODE = {
   'Chile(智利)': 'cl',
   'France(法國)': 'fr',
   'Germany(德國)': 'de',
+  'Hungary(匈牙利)': 'hu',
   'Italy(義大利)': 'it',
   'New Zealand(紐西蘭)': 'nz',
   'Portugal(葡萄牙)': 'pt',
