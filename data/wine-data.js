@@ -3335,7 +3335,7 @@ const WINE_DB = {
       icon: '✨',
       oneLiner: '把二次發酵鎖進瓶中或槽中，讓酵母化作酒液裡的萬千氣泡。',
       history: '氣泡酒最早可追溯至17世紀香檳區——寒冷氣候讓發酵在冬天中斷，隔年春天瓶中殘糖意外引發二次發酵，產生氣泡與高壓，當時甚至造成大量爆瓶。本篤會修士Dom Pérignon常被通俗說法稱為「氣泡酒發明者」，但他真正的貢獻其實是改良調配與壓榨技術，而非發明氣泡本身。19世紀後，西班牙Cava與義大利Prosecco發展出各自風格路線；英格蘭南部因擁有與香檳區相近的白堊土，近三十年也崛起為傳統法氣泡酒新興產區。',
-      grapes: '香檳三大品種各司其職：<span class="grape-inline-link" onclick="jumpToGrapeById(\'chardonnay\')">Chardonnay</span>貢獻花香與細緻酸度；<span class="grape-inline-link" onclick="jumpToGrapeById(\'pinot-noir\')">Pinot Noir</span>提供結構與紅果調性；Pinot Meunier帶來早熟果香與圓潤口感。Cava多用西班牙原生的Macabeo、Xarel·lo、Parellada混調；Prosecco則依賴Glera保留奔放的梨子與青蘋果香氣。',
+      grapes: '香檳三大品種各司其職：<span class="grape-inline-link" onclick="jumpToGrapeById(\'chardonnay\')">Chardonnay</span>貢獻花香與細緻酸度；<span class="grape-inline-link" onclick="jumpToGrapeById(\'pinot-noir\')">Pinot Noir</span>提供結構與紅果調性；Pinot Meunier帶來早熟果香與圓潤口感。Cava多用西班牙原生的Macabeo、Xarel·lo、Parellada混調；Prosecco則依賴Glera保留奔放的梨子與青蘋果香氣。Asti／Moscato d\'Asti則是完全不同的思路：以芳香的<span class="grape-inline-link" onclick="jumpToGrapeById(\'muscat\')">Moscato</span>（Moscato Bianco）為原料，僅進行一次發酵並提前以冷卻、過濾方式中止，藉此保留大量天然糖分與品種本身濃郁的葡萄香、荔枝、橙花氣息，酒精度也遠低於傳統法或水槽法氣泡酒（通常僅5–6% abv），是氣泡酒家族裡唯一不靠「二次發酵」產生氣泡的例外做法。',
       terroir: '氣泡酒基酒最重視高酸度保留，因此偏好冷涼氣候：香檳區緯度偏北、年均溫低，葡萄成熟緩慢，糖度與風味成熟前已能維持銳利酸度，這正是支撐二次發酵與長期陳年的關鍵。香檳與英格蘭南部共享的白堊土排水佳且保水適中，賦予酒款特有的礦石感。新世界產區則多藉由高緯度或高海拔涼爽微氣候複製類似的酸度條件。',
       productionType: 'table',
       productionTable: {
