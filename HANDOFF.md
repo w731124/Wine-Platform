@@ -4,53 +4,55 @@
 
 ## 一、本次開發歷程
 
-**本次涵蓋範圍（接續 2026-07-22 HANDOFF，該版由commit `a75550e`寫入、但寫入時機過早——見四、現況檢查提醒的教訓說明）：響應式問題修復、產區資料庫擴充奧地利/葡萄牙、釀造工藝頁production欄位結構化重構、以及移除linkedGrapes改為正文行內品種連結，共4批工作。`git fetch`確認本機領先`origin/main` 2個commit（`62e117b`、`16063d4`尚未push），其餘皆已同步，無落後。**
+**本次涵蓋範圍（接續上一版 HANDOFF，該版由commit `da0a595`寫入、涵蓋至#222）：CLAUDE.md新增HANDOFF覆寫時機規則、4項技術債清理、新增「儲存與侍酒」頁面、分級制度/釀造工藝兩頁的WSET官方規格核對、sparkling補寫Moscato/Asti、品種資料庫擴充WSET L2 LO4的10個缺席品種，共6批工作。`git fetch`確認本機領先`origin/main` 8個commit，即將push。**
 
-### 1. 響應式問題修復（DECISIONS.md #219，commit `1c6123c`）
-- 依上一輪響應式檢測報告，修復2項「阻礙使用」＋4項「影響美觀但堪用」共6項問題，全部改動加在既有4個`@media`查詢之後的新增區塊，不改動桌面版樣式：
-  1. 產區資料庫標題+搜尋框擠壓 → `#regions-header-row`加`flex-wrap:wrap`，搜尋框窄螢幕下改滿版寬度獨立一行。
-  2. L2大區篩選列裁切 → 從`max-height`裁切隱藏改為單行橫向捲動（`overflow-x:auto`+`flex-wrap:nowrap`）。
-  3. 地圖標記觸控熱區偏小 → 4張地圖的每個標記疊加`r=22`透明`<circle>`擴大熱區，視覺不變。
-  4. 年份矩陣捲動提示＋欄名稱裁切 → 新增`updateVMScrollHint()`顯示捲動陰影提示；**根因診斷推翻了報告初稿的假設**：實測證實不是`.rl`的sticky失效，而是Chrome對「跨滿全部欄位的colspan儲存格」完全不支援`position:sticky`，改用拆分儲存格（不跨欄的sticky欄+colspan填滿的裝飾欄）解決。
-  5. 比較模式品種下拉選單截斷 → 原提案選擇器因兩種模式DOM深度不一致而失效，改用共用class`cm-two-col`，窄螢幕下改單欄堆疊。
-  6. 品種圖鑑雷達圖標籤裁切 → 依實際容器寬度（<300px）動態縮小`pointLabels.font.size`。
-- 驗證：headless Chrome於375/390/768px+1280px桌面寬度逐項截圖+DOM量測確認修復生效且桌面版無回歸。
+### 1. CLAUDE.md新增規則：HANDOFF.md覆寫時機（DECISIONS.md #224，commit `3e30b59`）
+- 使用者採用提案：HANDOFF.md的覆寫必須是該次session最後一個git commit的一部分，不得在session中途、預期後續仍有其他改動時提前寫入並視為完成。此規則的採用背景見上一版HANDOFF記載的「教訓」。
 
-### 2. 產區資料庫擴充：奧地利/葡萄牙（DECISIONS.md #220，commit `317d726`）
-- 新增4筆產區：Austria的`kamptal`／`burgenland`（插入於`wachau`之後），Portugal的`dao`／`alentejo`（插入於`vinho-verde`之後）。欄位格式比照`wachau`/`douro`既有結構。
-- **意外發現**：Portugal的`dao`/`alentejo`雖無專屬地圖，但因與西班牙共用Iberia地圖，新增座標後自動以編號12/13顯示在既有Iberia地圖上（非刻意實作，是既有渲染邏輯的正確反應）；Austria兩筆則因四張地圖皆不含奧地利，維持既有「缺少地圖座標」狀態。
-- `auditWineDB()`驗證106/106通過，無新增類型警告。
+### 2. 技術債清理：4項候選技術債逐一核對後修復（DECISIONS.md #225-226，commit `46940d1`）
+- 比照#51方法論，逐項核對現況是否仍成立而非照單直接動工：
+  1. `--fs-label`CSS變數——確認仍是孤兒（全站僅`:root`定義本身一處），已刪除。
+  2. France/Italy/Iberia建置腳本CRLF正規式錯誤——確認仍存在且可重現（實際執行`build-france-map.pl`得到exit 255），3支腳本正規式比照`build-germany-map.pl`改為`\r?\n`，改完重新執行皆exit 0。
+  3. `WINE_DB.wineStyles`的`production`備份欄位——確認仍是死欄位且與`productionSteps`/`productionTable`無語意分歧，使用者裁定直接刪除，6個物件的`production:`欄位全數移除。
+  4. 響應式報告「3項輕微瑕疵」——**核對發現報告本身計數（寫3）與實際內容（僅2項）不一致**：地圖探索標題375px換行、年份詳情卡2欄/3欄grid窄螢幕換行，這2項原判定「非阻塞可接受」，使用者確認後仍予以修復（`index.html`媒體查詢+`.vmi-grid2`/`.vmi-grid3`class）。
+- 過程中發現`_devserver.ps1`因缺少UTF-8 BOM、導致Windows PowerShell 5.1用系統ANSI codepage誤讀腳本裡的CJK路徑字面量而全部回傳404，已修復（改用`Set-Content -Encoding UTF8`加回BOM）。
 
-### 3. 釀造工藝頁production欄位結構化重構（DECISIONS.md #221，commit `62e117b`）
-- `WINE_DB.wineStyles`6個物件新增`productionType`（'table'或'steps'）／`productionSteps`或`productionTable`／`tags`／`linkedGrapes`欄位，原`production`純文字欄位完整保留（不渲染，僅作備份）。sparkling/rosé/fortified用對照表版型，red/white/orange用編號流程版型。
-- 新增`js/winestyles.js`的`buildProductionTableHTML()`/`buildProductionStepsHTML()`：table版型深酒紅標題列，steps版型深酒紅圓底白字編號（與`classifications.js`的tiers金色編號刻意區隔）。
-- **此批新增的`linkedGrapes`欄位與其獨立卡片渲染，在下一批（#222）又被移除**，是同一場對話裡先做後改的決策，非兩次獨立需求。
+### 3. 新增「儲存與侍酒」頁面＋品飲系統頁補熱害卡片（DECISIONS.md #227-228，commit `74fcf6f`）
+- 依WSET L2 LO6新增`#panel-storage`（比照07-11食物搭配面板做法，`switchToPanel`通用邏輯不需修改），5張手風琴卡片：理想儲存條件、開瓶後保存方式、建議侍酒溫度（業界慣用具體區間，官方規格僅定性描述）、開瓶與醒酒程序、常見酒缺陷關聯。
+- 核對發現品飲系統頁「常見酒缺陷」清單缺少「熱害」項目，與需求前提不符，取得確認後同步新增第6項缺陷卡片，並新增`js/core.js`的`jumpToFaultById()`建立兩頁雙向捲動連結。
 
-### 4. 移除linkedGrapes獨立區塊，改為正文行內品種連結（DECISIONS.md #222，commit `16063d4`）
-- 移除#221剛新增的`linkedGrapes`欄位與獨立卡片，改為在`history`/`grapes`/`terroir`/`productionSteps`/`productionTable`文字裡，把符合`WINE_DB.grapes`23個品種名稱的文字直接改成行內連結（`.grape-inline-link`，深酒紅粗體點狀底線，hover轉金色）。
-- 動工前逐一比對找出18處確定符合的品種提及，1處邊界案例（fortified的「Moscatel」拼法與資料庫不完全相符）由使用者裁定不轉連結、維持純文字。
-- `tags`（工法標籤，如Autolysis/Remuage）完全不受影響。
-- 驗證：全站`.grape-inline-link`元素總數18，與比對清單一致；點擊測試確認跳轉品種圖鑑正常；orange/fortified確認無linkedGrapes殘留卡片。
+### 4. 分級制度頁／釀造工藝頁WSET官方規格核對（純核對，未寫入獨立commit，結果已於對話中提供）
+- 分級制度頁對WSET 25項標籤術語核對：已涵蓋7項／部分涵蓋7項／完全缺漏11項，缺漏集中在氣泡酒/加烈酒風格標示（Brut/Demi-Sec/Fino-PX/Ruby-Tawny全數缺漏）與各國陳年/風格副標示（Old Vine、Late Harvest、Classico等）。
+- 釀造工藝頁6款式字數現況：`history`156–203字、`grapes`131–155字（後因#231變動）、`terroir`97–149字，DECISIONS.md並未留下如產區資料庫「150-200字」般的明確數字基準；sparkling/fortified技術覆蓋率比對LO5：fortified完整涵蓋，sparkling原本缺Moscato/Asti風格（已於#231補上）。
+
+### 5. sparkling補上Moscato/Asti段落（DECISIONS.md #231，commit `df70103`）
+- 使用者裁定不統一terroir字數基準，但確認補寫#230抓到的內容缺口：sparkling的`grapes`欄位新增Moscato d'Asti品種與單次發酵風格說明，連結既有`muscat`品種卡片。
+
+### 6. 品種資料庫擴充：WSET L2 LO4「區域重要品種」10個缺席品種（DECISIONS.md #232-235，commit `66d49bc`）
+- 核對10個候選品種對應產區現況，**發現3項與原始清單描述不符**：Montepulciano d'Abruzzo與Verdicchio dei Castelli di Jesi其實已存在（非預期的「完全缺席」）、Carménère既有拼法是雙重音符而非單一重音符。避免了重複新增已存在的產區。
+- 新增10筆品種資料（`WINE_DB.grapes` 23→33）、4筆產區資料（`WINE_DB.appellations` 106→110：Barbera d'Asti/Gavi/Fiano di Avellino/Tokaj），Tokaj是網站首筆匈牙利資料，同步新增`assets/flags/hu.svg`與`COUNTRY_FLAG_CODE`。
+- 新增`wsetLevel:'2-regional'`欄位＋金色「WSET L2·LO4」徽章區分LO3/LO4品種（使用者在「新增語意欄位」vs「不區分」兩選項中選前者）。
+- `auditWineDB()`驗證：義大利3筆新產區因既有動態座標投影邏輯自動標記於Italy地圖（比照#220葡萄牙案例，非刻意實作），僅Tokaj因無地圖覆蓋落入「缺少地圖座標」清單（預期內、非新類型警告）。
 
 ## 二、討論過但尚未執行的項目／下一步規劃
 
-**已重新核對現況（不是照抄舊版假設）：**
+**已重新核對現況：**
 
-- **響應式報告的3項「輕微瑕疵」（regions/mapview標題換行、年份詳情卡grid稍嫌壓迫）仍未處理**——上一批(#219)修復範圍明確只涵蓋「2項阻礙使用+4項影響美觀但堪用」共6項，這3項輕微瑕疵當初報告就判定「非阻塞、可接受」，本次也不在任務範圍內，**目前仍是原樣未動**。接手時可以問使用者是否要順手處理，或維持現狀。
-- **產區資料庫擴充討論部分推進**：本次新增了Austria（2筆）與Portugal（2筆），舊世界六國清單裡的法國/義大利/西班牙/德國目前**沒有新進展**（沿用07-18/07-22 HANDOFF遺留的問題）。接手時可以問使用者：
-  - 舊世界剩餘4國（France/Italy/Spain/Germany）是否要繼續比照高優先度擴充？
-  - 新世界是否還有國家/大區沒擴充到？
+- **上一版記載的「響應式報告3項輕微瑕疵」已解決**：本次確認實際只有2項具體案例（非3項，報告本身計數有誤），且這2項（地圖標題換行、年份詳情卡grid）皆已於本次#226修復，此項不再是待辦。
+- **分級制度頁的11項完全缺漏標籤術語（氣泡酒/加烈酒風格標示、Old Vine等）目前僅止於核對回報，尚未動工修復**——是否要擴充分級制度頁的分類邏輯（例如新增「By 甜度/風格」第4種分類）或另闢新頁面承接這些不屬於現有「By酒莊/葡萄園/產區」三分類的標籤，需要使用者決定方向後才能動工。
+- **現有23筆品種裡先前擴增的15個非LO3品種，尚未逐一核對哪些屬於官方LO4其餘12個品種而應一併回溯標記`wsetLevel:'2-regional'`**——這是#233明確記錄的任務範圍外缺口，本次選擇不擴大稽核，留待日後單獨處理。
+- **舊世界產區擴充（France/Italy/Spain/Germany）持續有零星進展但未系統化**：本次因LO4品種任務新增了3筆義大利產區（Barbera d'Asti/Gavi/Fiano di Avellino），法國/西班牙/德國目前仍無新進展。
 
 ## 三、我明確要求先記下來、之後再處理的內容
 
-- 核對本次4批工作的完整對話紀錄，**沒有發現使用者提出「先記下來、之後處理」但尚未處理的擱置項目**。
+- 核對本次6批工作的完整對話紀錄，沒有發現使用者提出「先記下來、之後處理」但尚未處理的擱置項目（上述二、的3個項目皆已在回報時明確定調為「範圍外/待決定方向」，非「已承諾之後處理」）。
 
 ## 四、現況檢查提醒
 
-- **push狀態（重要）**：本次session結束時本機**領先**`origin/main` 2個commit（`62e117b`、`16063d4`），尚未push。**接手時務必先跑`git fetch && git status -sb`確認目前的落後/領先狀態**，不要假設本機一定是最新或一定已同步。
-- **★ HANDOFF.md 曾經失準的教訓（本次修復的起因）**：上一份HANDOFF.md（commit `a75550e`，標註2026-07-22）在寫入當下內容正確，但**寫入之後同一個session又繼續做了響應式問題修復（commit `1c6123c`）**，之後的session又接續做了產區擴充與釀造工藝重構（`317d726`/`62e117b`/`16063d4`），HANDOFF.md卻從未再更新，導致它與DECISIONS.md記載矛盾長達4批工作、約一週的落差（該檔案錯誤宣稱「響應式檢測尚未執行任何修復」，實際上早已修復並驗證通過）。**教訓：覆寫HANDOFF.md必須是收尾動作的最後一步，在該次session最後一次commit之後才寫、且該次commit本身也要被涵蓋進HANDOFF.md的敘述裡；不能在session中途、預期後面還有其他改動時就提前寫死內容。** 是否要把這條規則正式寫進CLAUDE.md，已另外提案給使用者確認（見對話紀錄），尚未定案。
-- **本機環境限制（沿用既往）**：沒有Node.js，`python3`/`python`是Windows Store空殼；headless Chrome路徑固定在`C:\Program Files\Google\Chrome\Application\chrome.exe`。UI驗證方式：PowerShell內建`System.Net.HttpListener`起靜態伺服器 + `System.Net.WebSockets.ClientWebSocket`手動驅動headless Chrome DevTools Protocol（`Emulation.setDeviceMetricsOverride`可模擬裝置寬度），這是目前最穩定的做法，建議後續session延用。
-- **`--fs-label`變數目前仍是孤兒**（沒有使用處），舊有已知情況，非本次造成。
-- **`data/wine-data.js`是CRLF換行**：France/Italy/Iberia三支舊建置腳本的正規表示式只認`\n`，理論上重新執行會失敗（Germany腳本已用`\r?\n`正確處理）。如果之後要重跑舊腳本，記得先修正這個問題。
-- **`project-snapshot.md`目前已經過時**：仍含12處`linkedGrapes`殘留文字、完全沒有`grape-inline-link`（#222剛新增的class），代表這份快取檔是在#221之後、#222之前產生的。這份檔案**每次有新commit後都會過時**，如果使用者需要更新版本要重新產生，不要假設現有內容反映最新狀態。
-- **接手的Claude Code務必實際開啟異動的檔案核對真實現況**，不要只憑這份HANDOFF.md的文字描述去猜測——這次HANDOFF.md本身失準的教訓正是最好的示範。
+- **push狀態（重要）**：本次session結束時本機**領先**`origin/main` 8個commit（`3e30b59`→`66d49bc`，即將push）。**接手時務必先跑`git fetch && git status -sb`確認目前的落後/領先狀態**，不要假設本機一定是最新或一定已同步。
+- **本機環境限制（沿用既往，本次新增一項教訓）**：沒有Node.js，`python3`/`python`是Windows Store空殼；headless Chrome路徑固定在`C:\Program Files\Google\Chrome\Application\chrome.exe`。驗證方式：PowerShell內建`System.Net.HttpListener`起靜態伺服器＋`System.Net.WebSockets.ClientWebSocket`手動驅動headless Chrome DevTools Protocol。**新教訓：`_devserver.ps1`這類含CJK路徑字面量的.ps1腳本，檔案本身必須帶UTF-8 BOM，否則Windows PowerShell 5.1會用系統ANSI codepage誤讀而導致路徑全部讀錯（本次因此排查了一段時間才發現是編碼問題而非邏輯錯誤）**，scratchpad裡的`_devserver.ps1`已修復並帶BOM，之後直接沿用即可。
+- **`--fs-label`孤兒變數已刪除**（本次#225清理），若之後又看到類似`--fs-*`變數零使用情況，可比照本次方法核對後清理。
+- **3支建置腳本（France/Italy/Iberia）的CRLF regex已修復**（本次#225），與`build-germany-map.pl`一致使用`\r?\n`，之後重跑舊腳本不會再因換行符不符而失敗。
+- **分級制度頁對WSET官方25項標籤術語的核對結果（7項已涵蓋/7項部分涵蓋/11項完全缺漏）已回報但未修復**，接手時可主動詢問使用者是否要排入優先序。
+- **`project-snapshot.md`目前已經過時**：本次多批工作皆未重新產生此檔案，快取內容明顯落後於當前程式碼。這份檔案每次有新commit後都會過時，如果使用者需要更新版本要重新產生，不要假設現有內容反映最新狀態。
+- **接手的Claude Code務必實際開啟異動的檔案核對真實現況**，不要只憑這份HANDOFF.md的文字描述去猜測。
