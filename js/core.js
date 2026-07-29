@@ -218,6 +218,16 @@ function jumpToGrapeById(id){
   }, 50);
 }
 
+function jumpToFaultById(id){
+  switchToPanel('tasting');
+  const hdr = document.getElementById('sat-nose-hdr');
+  if (hdr && !hdr.classList.contains('open')) toggleSATSection(hdr);
+  setTimeout(() => {
+    const el = document.querySelector(`[data-fault-id="${id}"]`);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 50);
+}
+
 function jumpToRegionById(id){
   const app = WINE_DB.appellations.find(a => a.id === id);
   if (!app) return;

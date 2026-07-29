@@ -50,6 +50,7 @@
           <div class="tab-dropdown" id="dd-tasting-group">
             <button class="tab-dropdown-item" onclick="selectTabFromGroup(this,'tasting',event)"><span>👁</span> 品飲系統</button>
             <button class="tab-dropdown-item" onclick="selectTabFromGroup(this,'foodpairing',event)"><span>🍽️</span> 食物搭配</button>
+            <button class="tab-dropdown-item" onclick="selectTabFromGroup(this,'storage',event)"><span>📦</span> 儲存與侍酒</button>
           </div>
         </div>
         <div class="tab-group" data-group="tools-group">
@@ -543,7 +544,7 @@
 
   <!-- ── 2. 嗅覺 ── -->
   <div class="acc-wrap" style="margin-bottom:14px;">
-    <div class="acc-hdr" onclick="toggleSATSection(this)">
+    <div class="acc-hdr" id="sat-nose-hdr" onclick="toggleSATSection(this)">
       <div style="display:flex;align-items:center;gap:12px;">
         <div style="width:38px;height:38px;border-radius:10px;background:rgba(92,6,28,.08);display:flex;align-items:center;justify-content:center;font-size:20px;">👃</div>
         <div>
@@ -573,13 +574,13 @@
           <div class="ins-lbl">⚠️ 常見酒缺陷 Common Wine Faults</div>
           <div style="display:flex;flex-direction:column;gap:8px;">
 
-            <div style="background:rgba(184,64,64,.04);border:1px solid rgba(184,64,64,.15);border-left:4px solid #B84040;padding:10px 14px;border-radius:4px 10px 10px 4px;">
+            <div data-fault-id="cork-taint" style="background:rgba(184,64,64,.04);border:1px solid rgba(184,64,64,.15);border-left:4px solid #B84040;padding:10px 14px;border-radius:4px 10px 10px 4px;">
               <div style="font-size:var(--fs-base);font-weight:700;color:#8A1010;margin-bottom:3px;">軟木塞污染 Cork Taint (TCA)</div>
               <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#8A1010;font-weight:600;">線索：</span>濕紙板、濕狗毛、發霉地窖氣味，果香被明顯壓抑</div>
               <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#8A1010;font-weight:600;">成因：</span>軟木塞遭TCA化合物污染</div>
             </div>
 
-            <div style="background:rgba(168,138,96,.06);border:1px solid rgba(168,138,96,.18);border-left:4px solid #A88A60;padding:10px 14px;border-radius:4px 10px 10px 4px;">
+            <div data-fault-id="oxidation" style="background:rgba(168,138,96,.06);border:1px solid rgba(168,138,96,.18);border-left:4px solid #A88A60;padding:10px 14px;border-radius:4px 10px 10px 4px;">
               <div style="font-size:var(--fs-base);font-weight:700;color:#7C6341;margin-bottom:3px;">氧化 Oxidation</div>
               <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#7C6341;font-weight:600;">線索：</span>蘋果／堅果氧化味、顏色偏深偏棕（白酒尤其明顯）、果香減弱</div>
               <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#7C6341;font-weight:600;">成因：</span>過度接觸氧氣，常見於封瓶不良或儲存不當</div>
@@ -601,6 +602,12 @@
               <div style="font-size:var(--fs-base);font-weight:700;color:#1A3A6A;margin-bottom:3px;">過量二氧化硫 Excess SO2</div>
               <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#1A3A6A;font-weight:600;">線索：</span>點燃火柴的刺鼻氣味，鼻腔有刺激感</div>
               <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#1A3A6A;font-weight:600;">成因：</span>添加的SO2用量過高、未充分揮發</div>
+            </div>
+
+            <div data-fault-id="heat-damage" style="background:rgba(212,128,26,.05);border:1px solid rgba(212,128,26,.18);border-left:4px solid #D4801A;padding:10px 14px;border-radius:4px 10px 10px 4px;">
+              <div style="font-size:var(--fs-base);font-weight:700;color:#A85F10;margin-bottom:3px;">熱害 Heat Damage (Maderisation)</div>
+              <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#A85F10;font-weight:600;">線索：</span>煮熟水果、焦糖甚至醬油般的氧化熟成味；瓶身可能有液體滲出或軟木塞被輕微推出瓶口</div>
+              <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;"><span style="color:#A85F10;font-weight:600;">成因：</span>長期暴露於過高溫度或劇烈溫度波動下（如運輸／存放環境不當），加速酒液氧化與化學變化，詳見<span class="grape-inline-link" onclick="switchToPanel('storage')">儲存與侍酒</span>頁</div>
             </div>
 
           </div>
@@ -1086,6 +1093,182 @@
       <p style="font-size:var(--fs-base);color:var(--txt2);margin-bottom:10px;">選擇一種食物大類，找出風格上適合搭配的品種</p>
       <div id="fp-category-filters" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-bottom:14px;"></div>
       <div id="fp-grape-results" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ╔══════════════════════════════════╗
+     ║  PANEL — 儲存與侍酒 Storage & Service ║
+     ╚══════════════════════════════════╝ -->
+<div id="panel-storage" class="panel">
+  <div class="mb-4">
+    <h1 style="font-family:'Cinzel',serif;font-size:var(--fs-h1);font-weight:700;color:var(--burg);margin-bottom:3px;">儲存與侍酒 Storage &amp; Service</h1>
+    <p style="font-size:var(--fs-lg);color:var(--txt3);">WSET Level 2 儲存條件 · 開瓶侍酒溫度 · 醒酒程序 · 常見缺陷關聯</p>
+  </div>
+
+  <div class="acc-wrap" style="margin-bottom:14px;">
+    <div class="acc-hdr" onclick="toggleSATSection(this)">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(58,110,168,.10);display:flex;align-items:center;justify-content:center;font-size:20px;">🌡️</div>
+        <div>
+          <div style="font-size:var(--fs-2xl);font-weight:600;color:var(--txt);">1. 理想儲存條件 Ideal Storage Conditions</div>
+        </div>
+      </div>
+      <span class="acc-arrow">▼</span>
+    </div>
+    <div class="acc-body" style="background:var(--bg-sub);">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="ic" style="background:var(--bg-card);">
+          <p class="ins-lbl">🌡️ 溫度 Temperature</p>
+          <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">理想儲存溫度約10–15°C，且「穩定」比「精確數值」更重要——溫度反覆劇烈波動（即使仍在合理範圍內來回震盪）比單純溫度偏高更容易加速酒液氧化，也會讓軟木塞因熱脹冷縮反覆變形而逐漸失去密封彈性；長期存放建議使用恆溫酒櫃，避免放在廚房、車庫等溫差劇烈的空間。</p>
+        </div>
+        <div class="ic" style="background:var(--bg-card);">
+          <p class="ins-lbl">💡 光線 Light</p>
+          <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">紫外線與強光曝曬會引發「光害 Lightstrike」，尤其裝在透明或淺色玻璃瓶（如粉紅酒、部分白酒常用瓶）的酒款更為敏感，會產生類似濕羊毛、大蒜的異味並破壞香氣；建議存放於陰暗處，或選用深色玻璃瓶、避免長期日照直射。</p>
+        </div>
+        <div class="ic" style="background:var(--bg-card);">
+          <p class="ins-lbl">🍾 瓶身擺放方向 Bottle Orientation</p>
+          <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">軟木塞封瓶的酒款建議平躺存放，讓酒液持續浸潤軟木塞、防止其乾縮變硬而失去密封彈性、讓過量氧氣滲入；旋蓋（screwcap）或合成塞封瓶則無此需求，直立存放即可。</p>
+        </div>
+        <div class="ic" style="background:var(--bg-card);">
+          <p class="ins-lbl">💧 濕度 Humidity</p>
+          <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">相對濕度建議維持在50–80%之間，濕度過低同樣會使軟木塞乾燥龜裂，濕度過高則可能導致標籤發霉，但對酒液本身的直接影響不如溫度與光線來得關鍵。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-wrap" style="margin-bottom:14px;">
+    <div class="acc-hdr" onclick="toggleSATSection(this)">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(42,122,88,.10);display:flex;align-items:center;justify-content:center;font-size:20px;">🔄</div>
+        <div>
+          <div style="font-size:var(--fs-2xl);font-weight:600;color:var(--txt);">2. 開瓶後保存方式 Preservation After Opening</div>
+        </div>
+      </div>
+      <span class="acc-arrow">▼</span>
+    </div>
+    <div class="acc-body" style="background:var(--bg-sub);">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="ic" style="background:var(--bg-card);">
+          <p class="ins-lbl">🔽 真空系統 Vacuum Pump</p>
+          <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">如Vacu Vin：用專用瓶塞搭配手動幫浦抽出瓶內空氣，降低氧氣含量以延緩氧化，成本低、操作簡單，但無法完全排除氧氣，通常只能延長開瓶後風味賞味期約1–3天。</p>
+        </div>
+        <div class="ic" style="background:var(--bg-card);">
+          <p class="ins-lbl">💨 惰性氣體系統 Inert Gas</p>
+          <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">如Private Preserve、Coravin：噴入比空氣重的惰性氣體（氬氣／氮氣混合）覆蓋酒液表面、隔絕氧氣接觸；Coravin更進一步用細針穿刺軟木塞取酒，同時注入氬氣填補取出的酒液空間，全程不需拔出軟木塞即可多次取用，能將高單價酒款的開瓶後賞味期延長至數週甚至數月。</p>
+        </div>
+        <div class="ic" style="background:var(--bg-card);">
+          <p class="ins-lbl">❄️ 輔助做法 Additional Tip</p>
+          <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">開瓶後盡快冷藏能有效減緩氧化與細菌活動速度，即使是紅酒也建議冷藏保存、飲用前再回溫即可，這點常被誤以為「紅酒不能冰」而忽略。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-wrap" style="margin-bottom:14px;">
+    <div class="acc-hdr" onclick="toggleSATSection(this)">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(92,6,28,.08);display:flex;align-items:center;justify-content:center;font-size:20px;">🧊</div>
+        <div>
+          <div style="font-size:var(--fs-2xl);font-weight:600;color:var(--txt);">3. 建議侍酒溫度 Serving Temperatures</div>
+        </div>
+      </div>
+      <span class="acc-arrow">▼</span>
+    </div>
+    <div class="acc-body" style="background:var(--bg-sub);">
+      <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;">
+        <div class="ins-lbl">🍷 依酒款類型分級 By Style</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <span style="flex-shrink:0;min-width:80px;background:rgba(58,110,168,.08);border:1px solid rgba(58,110,168,.22);color:#1A3A6A;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">6–8°C</span>
+            <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">氣泡酒 Sparkling——低溫抑制氣泡過快散失、維持清爽口感</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <span style="flex-shrink:0;min-width:80px;background:rgba(58,110,168,.06);border:1px solid rgba(58,110,168,.18);color:#1A3A6A;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">7–10°C</span>
+            <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">清淡不甜白酒／粉紅酒 Light-bodied White &amp; Rosé（如Sauvignon Blanc、多數粉紅酒）；不甜型加烈酒 Dry Fortified（如Fino、Manzanilla雪莉）亦適用此區間</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <span style="flex-shrink:0;min-width:80px;background:rgba(58,110,168,.12);border:1px solid rgba(58,110,168,.28);color:#0E2448;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">10–13°C</span>
+            <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">濃郁型／經橡木桶白酒 Full-bodied/Oaked White（如白布根地、多數Chardonnay）</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <span style="flex-shrink:0;min-width:80px;background:rgba(92,6,28,.06);border:1px solid rgba(92,6,28,.18);color:var(--burg);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">13–15°C</span>
+            <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">清淡型紅酒 Light-bodied Red（如Pinot Noir、薄酒萊Gamay）</span>
+          </div>
+          <div style="display:flex;gap:10px;align-items:flex-start;">
+            <span style="flex-shrink:0;min-width:80px;background:rgba(92,6,28,.14);border:1px solid rgba(92,6,28,.32);color:var(--burg);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">16–18°C</span>
+            <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">濃郁型紅酒 Full-bodied Red（如Cabernet Sauvignon、Syrah）；甜型加烈酒 Sweet Fortified（如Port、Cream Sherry）亦適用此區間，皆為微涼室溫而非現代中央空調房間的實際室溫</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-wrap" style="margin-bottom:14px;">
+    <div class="acc-hdr" onclick="toggleSATSection(this)">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(168,138,96,.12);display:flex;align-items:center;justify-content:center;font-size:20px;">🍾</div>
+        <div>
+          <div style="font-size:var(--fs-2xl);font-weight:600;color:var(--txt);">4. 開瓶與醒酒程序 Opening &amp; Decanting</div>
+        </div>
+      </div>
+      <span class="acc-arrow">▼</span>
+    </div>
+    <div class="acc-body" style="background:var(--bg-sub);">
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div class="ic" style="background:var(--bg-card);">
+          <p class="ins-lbl">🍷 靜態酒開瓶 Still Wine</p>
+          <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">先用刀刃沿瓶口凸緣下方切開錫箔，避免殘留錫箔接觸酒液；轉入螺旋錐時力道穩定居中，避免鑽穿或斷裂在瓶頸內；緩慢平穩拔出軟木塞，不需要壓力式的巨大聲響；開瓶後先聞軟木塞氣味，若有濕紙板／發霉味即是軟木塞污染的警訊之一。</p>
+        </div>
+        <div class="ic" style="background:var(--bg-card);">
+          <p class="ins-lbl">🍾 氣泡酒開瓶 Sparkling Wine</p>
+          <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">開瓶前避免搖晃；撕除瓶口錫箔、鬆開鐵絲籠時全程用手掌壓住軟木塞，因瓶內壓力可能隨時將塞子噴出；瓶身傾斜45度角，轉動的是「瓶身」而非軟木塞，讓內部壓力緩慢釋放、軟木塞應發出輕柔的「嘆息聲」而非巨大砰聲——後者除了讓大量氣泡瞬間散失，塞子高速飛出也有安全疑慮。</p>
+        </div>
+        <div class="ic" style="background:var(--bg-card);">
+          <p class="ins-lbl">⏳ 醒酒時機 Decanting Timing</p>
+          <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">醒酒有兩種目的：分離陳年老酒瓶底沉澱物（開瓶前直立靜置讓沉澱物沉底，倒酒動作放輕並就著光源觀察，避免攪動沉澱），或為年輕單寧緊澀的酒款換氣、讓香氣打開並軟化單寧。老酒香氣脆弱易散失，建議臨飲用前才醒酒且時間宜短；年輕高單寧紅酒則可提前數小時甚至更早醒酒。</p>
+        </div>
+        <div class="ic" style="background:var(--bg-card);">
+          <p class="ins-lbl">👁️ 杯型與外觀氣味檢查 Glassware &amp; Inspection</p>
+          <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">鬱金香杯型（杯口略窄於杯身）能聚攏香氣分子、加強嗅覺體驗；紅酒杯通常較大以利更多香氣揮發，白酒杯較小以維持冰鎮溫度，氣泡酒則用笛型或鬱金香杯減緩氣泡散失。倒酒後應先觀察外觀（澄清度、濃淡、色調）並聞香確認純淨無缺陷，再入口評估，這正是SAT系統化品飲的第一步。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc-wrap" style="margin-bottom:14px;">
+    <div class="acc-hdr" onclick="toggleSATSection(this)">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div style="width:38px;height:38px;border-radius:10px;background:rgba(184,64,64,.10);display:flex;align-items:center;justify-content:center;font-size:20px;">⚠️</div>
+        <div>
+          <div style="font-size:var(--fs-2xl);font-weight:600;color:var(--txt);">5. 常見酒缺陷關聯 Related Wine Faults</div>
+        </div>
+      </div>
+      <span class="acc-arrow">▼</span>
+    </div>
+    <div class="acc-body" style="background:var(--bg-sub);">
+      <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:10px;padding:12px 16px;">
+        <div class="ins-lbl">⚠️ 儲存與侍酒不當可能誘發的缺陷</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+
+          <div style="background:rgba(184,64,64,.04);border:1px solid rgba(184,64,64,.15);border-left:4px solid #B84040;padding:10px 14px;border-radius:4px 10px 10px 4px;">
+            <div style="font-size:var(--fs-base);font-weight:700;color:#8A1010;margin-bottom:3px;">軟木塞污染 Cork Taint (TCA)</div>
+            <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;">軟木塞若因儲存濕度不足而乾裂，或本身受TCA化合物污染，開瓶時即可能出現此缺陷——<span class="grape-inline-link" onclick="jumpToFaultById('cork-taint')">前往品飲系統頁查看完整線索／成因</span></div>
+          </div>
+
+          <div style="background:rgba(168,138,96,.06);border:1px solid rgba(168,138,96,.18);border-left:4px solid #A88A60;padding:10px 14px;border-radius:4px 10px 10px 4px;">
+            <div style="font-size:var(--fs-base);font-weight:700;color:#7C6341;margin-bottom:3px;">封瓶失效 Closure Failure</div>
+            <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;">泛指軟木塞或旋蓋因老化、瑕疵或儲存不當（如瓶身直立導致軟木塞乾燥龜裂）而密封失效、氧氣提前滲入酒液，是造成「氧化」缺陷最常見的成因之一——<span class="grape-inline-link" onclick="jumpToFaultById('oxidation')">前往品飲系統頁查看完整線索／成因</span></div>
+          </div>
+
+          <div style="background:rgba(212,128,26,.05);border:1px solid rgba(212,128,26,.18);border-left:4px solid #D4801A;padding:10px 14px;border-radius:4px 10px 10px 4px;">
+            <div style="font-size:var(--fs-base);font-weight:700;color:#A85F10;margin-bottom:3px;">熱害 Heat Damage (Maderisation)</div>
+            <div style="font-size:var(--fs-base);color:var(--txt2);line-height:1.55;">酒液長期暴露於過高溫度或劇烈溫度波動下（如運輸／存放環境不當），會加速氧化與化學變化，產生煮熟水果、焦糖甚至醬油般的氣味，瓶身可能因內部壓力上升而滲出液體或軟木塞被輕微推出瓶口——<span class="grape-inline-link" onclick="jumpToFaultById('heat-damage')">前往品飲系統頁查看完整線索／成因</span></div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </div>
 </div>
