@@ -3335,7 +3335,7 @@ const WINE_DB = {
       icon: '✨',
       oneLiner: '把二次發酵鎖進瓶中或槽中，讓酵母化作酒液裡的萬千氣泡。',
       history: '氣泡酒最早可追溯至17世紀香檳區——寒冷氣候讓發酵在冬天中斷，隔年春天瓶中殘糖意外引發二次發酵，產生氣泡與高壓，當時甚至造成大量爆瓶。本篤會修士Dom Pérignon常被通俗說法稱為「氣泡酒發明者」，但他真正的貢獻其實是改良調配與壓榨技術，而非發明氣泡本身。19世紀後，西班牙Cava與義大利Prosecco發展出各自風格路線；英格蘭南部因擁有與香檳區相近的白堊土，近三十年也崛起為傳統法氣泡酒新興產區。',
-      grapes: '香檳三大品種各司其職：Chardonnay貢獻花香與細緻酸度；Pinot Noir提供結構與紅果調性；Pinot Meunier帶來早熟果香與圓潤口感。Cava多用西班牙原生的Macabeo、Xarel·lo、Parellada混調；Prosecco則依賴Glera保留奔放的梨子與青蘋果香氣。',
+      grapes: '香檳三大品種各司其職：<span class="grape-inline-link" onclick="jumpToGrapeById(\'chardonnay\')">Chardonnay</span>貢獻花香與細緻酸度；<span class="grape-inline-link" onclick="jumpToGrapeById(\'pinot-noir\')">Pinot Noir</span>提供結構與紅果調性；Pinot Meunier帶來早熟果香與圓潤口感。Cava多用西班牙原生的Macabeo、Xarel·lo、Parellada混調；Prosecco則依賴Glera保留奔放的梨子與青蘋果香氣。',
       terroir: '氣泡酒基酒最重視高酸度保留，因此偏好冷涼氣候：香檳區緯度偏北、年均溫低，葡萄成熟緩慢，糖度與風味成熟前已能維持銳利酸度，這正是支撐二次發酵與長期陳年的關鍵。香檳與英格蘭南部共享的白堊土排水佳且保水適中，賦予酒款特有的礦石感。新世界產區則多藉由高緯度或高海拔涼爽微氣候複製類似的酸度條件。',
       production: '氣泡酒工藝核心在於二次發酵如何產生並保留氣泡，主要分三種製程。傳統法（香檳、Cava皆採此法）：裝瓶時加入含糖與酵母的liqueur de tirage，瓶中密封發酵，產生約1.2–1.3%酒精與約6大氣壓；酵母死亡形成酒渣，長期接觸產生autolysis（自溶），釋出吐司、堅果風味——香檳AOC規定無年份酒款至少陳年15個月（12個月以上在渣上），年份酒款則至少3年；再經remuage轉瓶集中酒渣至瓶頸，disgorgement急凍噴出沉澱，dosage補液定甜度。水槽法（Tank Method，Prosecco主流）：發酵改在密閉壓力槽進行，酒渣接觸僅數週，保留品種清新果香，過濾去渣後等壓裝瓶，成本時間遠低於傳統法。轉注法（Transfer Method）：同樣瓶中完成二次發酵，但整批倒入加壓槽過濾去渣、補液後重新裝瓶，多用於無法上轉瓶機的特殊瓶型。',
       productionType: 'table',
@@ -3350,7 +3350,6 @@ const WINE_DB = {
         ]
       },
       tags: ['Autolysis(酒渣自溶)', 'Remuage(轉瓶)', 'Dosage(補液)', 'High Acidity(高酸度基酒)'],
-      linkedGrapes: [{name:'Chardonnay(夏多內)', id:'chardonnay'}, {name:'Pinot Noir(黑皮諾)', id:'pinot-noir'}],
     },
     {
       id: 'red',
@@ -3358,7 +3357,7 @@ const WINE_DB = {
       icon: '🍷',
       oneLiner: '帶皮發酵讓單寧與色素融入酒液，賦予紅酒骨架與陳年潛力。',
       history: '紅酒的釀造史幾乎與人類文明同齡，喬治亞出土的陶罐（qvevri）證據可追溯至西元前6000年，帶皮發酵的技術本身自古已存在。羅馬帝國時期葡萄種植隨軍事擴張傳遍地中海沿岸，奠定日後歐洲產區的基礎。19世紀巴斯德確立發酵是酵母作用而非自然發生，加上20世紀溫控發酵技術普及，讓紅酒釀造從仰賴經驗轉為可精確控制的科學。',
-      grapes: '紅酒品種的皮厚薄與色素／單寧含量差異極大：Cabernet Sauvignon皮厚多酚類，賦予深色與高單寧；Pinot Noir皮薄色素少，即使延長泡皮也難達到深色重酒體；Syrah、Grenache等地中海品種則介於兩者之間，混調時常利用這種差異調整酒款結構。',
+      grapes: '紅酒品種的皮厚薄與色素／單寧含量差異極大：<span class="grape-inline-link" onclick="jumpToGrapeById(\'cabernet-sauvignon\')">Cabernet Sauvignon</span>皮厚多酚類，賦予深色與高單寧；<span class="grape-inline-link" onclick="jumpToGrapeById(\'pinot-noir\')">Pinot Noir</span>皮薄色素少，即使延長泡皮也難達到深色重酒體；<span class="grape-inline-link" onclick="jumpToGrapeById(\'syrah-shiraz\')">Syrah</span>、<span class="grape-inline-link" onclick="jumpToGrapeById(\'grenache\')">Grenache</span>等地中海品種則介於兩者之間，混調時常利用這種差異調整酒款結構。',
       terroir: '紅酒品種普遍需要比白酒品種更長的生長季與更多日照，以達到酚類成熟（單寧與色素同步成熟，而非只有糖分成熟）：溫暖氣候有利單寧軟化、避免青澀感；但過度炎熱又會導致酒精過高、酸度流失，因此中等偏溫暖、日夜溫差明顯的氣候最受青睞。',
       production: '紅酒與白酒最大工藝差異在於帶皮發酵：破皮去梗後，果皮、果肉、種籽一同進入發酵槽，酒精發酵過程中同步進行浸皮（maceration），色素與單寧隨酒精濃度上升逐漸溶出。發酵溫度通常控制在25–30°C，較白酒更高以利萃取；期間需以踩皮（pigeage）或淋皮（remontage）打散浮起的果皮酒帽（cap），確保萃取均勻並避免揮發酸過高。發酵完成後可延長泡皮（extended maceration）數週以柔化單寧，再壓榨分離自流酒（free-run）與較澀的壓榨酒（press wine）。幾乎所有紅酒都會經過乳酸發酵（malolactic fermentation），將尖銳的蘋果酸轉化為柔和的乳酸，同時常伴隨奶油、堅果等風味副產物；隨後視風格選擇是否進行橡木桶陳年。',
       productionType: 'steps',
@@ -3371,15 +3370,14 @@ const WINE_DB = {
         { step:6, title:'橡木桶陳年（依風格）', desc:'視酒款定位選擇是否進行，影響單寧結構與香氣複雜度。' }
       ],
       tags: ['Maceration(浸皮)', 'Pigeage/Remontage(踩皮淋皮)', 'MLF(乳酸發酵)', 'Extended Maceration(延長泡皮)'],
-      linkedGrapes: [{name:'Cabernet Sauvignon(卡本內蘇維濃)', id:'cabernet-sauvignon'}, {name:'Pinot Noir(黑皮諾)', id:'pinot-noir'}, {name:'Syrah(希哈)', id:'syrah-shiraz'}, {name:'Grenache(格納希)', id:'grenache'}],
     },
     {
       id: 'white',
       name: 'White Wine(白酒)',
       icon: '🥂',
       oneLiner: '去皮取汁快速壓榨，鎖住清新果香與明亮酸度。',
-      history: '白酒歷史與紅酒同樣悠久，但長期受限於氧化與微生物污染問題，品質不穩定。20世紀中葉不鏽鋼發酵槽與溫控冷發酵技術普及，才讓白酒得以穩定保留細緻果香與清新酸度，這項技術革新也直接催生了紐西蘭Sauvignon Blanc、澳洲Chardonnay等新世界白酒產區在20世紀後半的崛起。德國自中世紀起發展出的Riesling種植傳統，則是少數在技術革新前就已建立高品質白酒聲譽的例外。',
-      grapes: '白葡萄品種依香氣強度可概分兩類：Sauvignon Blanc、Riesling、Muscat等芳香品種帶有品種本身強烈的香氣化合物（硫醇、萜烯），即使簡單釀造也香氣奔放；Chardonnay則屬中性品種，本身香氣較內斂，最終風格高度取決於產地氣候與釀造工法，因此同一品種可以釀出風格迥異的酒款。',
+      history: '白酒歷史與紅酒同樣悠久，但長期受限於氧化與微生物污染問題，品質不穩定。20世紀中葉不鏽鋼發酵槽與溫控冷發酵技術普及，才讓白酒得以穩定保留細緻果香與清新酸度，這項技術革新也直接催生了紐西蘭<span class="grape-inline-link" onclick="jumpToGrapeById(\'sauvignon-blanc\')">Sauvignon Blanc</span>、澳洲<span class="grape-inline-link" onclick="jumpToGrapeById(\'chardonnay\')">Chardonnay</span>等新世界白酒產區在20世紀後半的崛起。德國自中世紀起發展出的<span class="grape-inline-link" onclick="jumpToGrapeById(\'riesling\')">Riesling</span>種植傳統，則是少數在技術革新前就已建立高品質白酒聲譽的例外。',
+      grapes: '白葡萄品種依香氣強度可概分兩類：<span class="grape-inline-link" onclick="jumpToGrapeById(\'sauvignon-blanc\')">Sauvignon Blanc</span>、<span class="grape-inline-link" onclick="jumpToGrapeById(\'riesling\')">Riesling</span>、<span class="grape-inline-link" onclick="jumpToGrapeById(\'muscat\')">Muscat</span>等芳香品種帶有品種本身強烈的香氣化合物（硫醇、萜烯），即使簡單釀造也香氣奔放；<span class="grape-inline-link" onclick="jumpToGrapeById(\'chardonnay\')">Chardonnay</span>則屬中性品種，本身香氣較內斂，最終風格高度取決於產地氣候與釀造工法，因此同一品種可以釀出風格迥異的酒款。',
       terroir: '白酒品種普遍偏好冷涼氣候，以保留支撐酒款結構的明亮酸度與細緻香氣分子——過熟或高溫環境容易使香氣物質分解、酸度流失。沿海、高緯度或高海拔產區因日夜溫差大、生長季氣溫緩和，特別適合白酒品種，例如紐西蘭馬爾堡的海洋型氣候、阿爾薩斯受孚日山脈屏蔽的乾燥涼爽環境。',
       production: '白酒工藝的核心是去皮取汁以避免萃取單寧與色素：葡萄採收後通常整串壓榨（whole bunch pressing）或簡單破皮後立即壓榨分離果汁與果皮，果皮接觸時間極短（skin contact），多數風格僅維持數小時甚至不接觸。榨出的果汁先靜置澄清（débourbage）去除粗大固形物，再於12–18°C低溫發酵，較紅酒更低以保留細緻果香與新鮮感，多數使用不鏽鋼槽維持中性風味，但部分風格（如頂級Chardonnay、白布根地）採橡木桶發酵並搭配攪桶（bâtonnage，攪動酒渣增添質地與圓潤口感）。乳酸發酵並非白酒標配：Chardonnay等品種常刻意進行以增添奶油、榛果風味；Riesling、Sauvignon Blanc等芳香或高酸品種則多半刻意阻擋乳酸發酵，以保留品種特有的銳利酸度與純淨果香。',
       productionType: 'steps',
@@ -3387,10 +3385,9 @@ const WINE_DB = {
         { step:1, title:'整串壓榨或破皮即榨', desc:'避免萃取單寧與色素，果皮接觸時間極短，多數僅數小時甚至不接觸。' },
         { step:2, title:'靜置澄清（Débourbage）', desc:'去除粗大固形物，讓果汁乾淨清澈後再發酵。' },
         { step:3, title:'低溫發酵', desc:'12–18°C發酵，較紅酒更低溫，以保留細緻果香與新鮮感，多數使用不鏽鋼槽維持中性風味。' },
-        { step:4, title:'風格選擇：MLF與攪桶（可選）', desc:'Chardonnay等品種常刻意進行MLF與攪桶（bâtonnage）增添奶油質地；Riesling、Sauvignon Blanc等芳香品種則多半刻意阻擋MLF，保留銳利酸度。' }
+        { step:4, title:'風格選擇：MLF與攪桶（可選）', desc:'<span class="grape-inline-link" onclick="jumpToGrapeById(\'chardonnay\')">Chardonnay</span>等品種常刻意進行MLF與攪桶（bâtonnage）增添奶油質地；<span class="grape-inline-link" onclick="jumpToGrapeById(\'riesling\')">Riesling</span>、<span class="grape-inline-link" onclick="jumpToGrapeById(\'sauvignon-blanc\')">Sauvignon Blanc</span>等芳香品種則多半刻意阻擋MLF，保留銳利酸度。' }
       ],
       tags: ['Débourbage(靜置澄清)', 'Cold Fermentation(低溫發酵)', 'Bâtonnage(攪桶)', 'Aromatic vs Neutral(芳香/中性品種)'],
-      linkedGrapes: [{name:'Sauvignon Blanc(白蘇維濃)', id:'sauvignon-blanc'}, {name:'Riesling(麗絲玲)', id:'riesling'}, {name:'Chardonnay(夏多內)', id:'chardonnay'}, {name:'Muscat(蜜思嘉)', id:'muscat'}],
     },
     {
       id: 'rose',
@@ -3398,7 +3395,7 @@ const WINE_DB = {
       icon: '🌸',
       oneLiner: '短暫接觸果皮，萃取一抹色澤卻不留下厚重單寧。',
       history: '粉紅酒的釀造傳統可追溯至西元前600年左右腓尼基人與希臘人將葡萄種植引入普羅旺斯，是地中海地區最古老的酒款風格之一。長期以來粉紅酒被視為紅酒的簡化版或副產品，品質形象並不突出。直到1990年代後，普羅旺斯確立淡雅乾型粉紅酒的風格定位並大力行銷，才讓粉紅酒在近二十年躍升為全球性的高端飲用趨勢，不再只是紅酒的邊緣產物。',
-      grapes: '粉紅酒幾乎全數以紅葡萄品種釀造，品種選擇直接影響色澤深淺與風味：普羅旺斯經典配方以Grenache、Cinsault等薄皮品種為主，色素釋出溫和，適合釀出招牌的淡鮭魚粉色；Syrah、Mourvèdre等厚皮品種則用於增添色澤深度與結構，多用於風格較飽滿的粉紅酒混調。',
+      grapes: '粉紅酒幾乎全數以紅葡萄品種釀造，品種選擇直接影響色澤深淺與風味：普羅旺斯經典配方以<span class="grape-inline-link" onclick="jumpToGrapeById(\'grenache\')">Grenache</span>、Cinsault等薄皮品種為主，色素釋出溫和，適合釀出招牌的淡鮭魚粉色；<span class="grape-inline-link" onclick="jumpToGrapeById(\'syrah-shiraz\')">Syrah</span>、Mourvèdre等厚皮品種則用於增添色澤深度與結構，多用於風格較飽滿的粉紅酒混調。',
       terroir: '粉紅酒對風土的要求介於紅白酒之間：地中海型氣候提供充足日照發展基本果味與色素，但葡萄農通常會提早採收，避免糖度與單寧發展過度，以保留粉紅酒講究的清爽酸度與淡雅口感，而非追求紅酒等級的酚類成熟度。',
       production: '粉紅酒主要有三種製法。直接壓榨法（Direct Pressing）：紅葡萄採收後如白酒般直接壓榨，僅短暫接觸果皮數小時，色素釋出量最少，是普羅旺斯淡雅風格的主流做法。短時間浸皮法：刻意讓果皮與果汁接觸數小時至一兩天後才壓榨分離，色澤與風味較直接壓榨法濃郁，是專門釀造粉紅酒的作法。放血法（Saignée）：目的其實是濃縮紅酒——在紅酒發酵初期放出部分粉紅色果汁以提高剩餘醪液的果皮／果汁比例，抽出的果汁再單獨發酵成粉紅酒，屬於紅酒釀造的副產品而非主動追求的粉紅酒風格。無論何種製法，果汁分離後皆比照白酒工藝於低溫（12–18°C）在不鏽鋼槽中發酵，以保留新鮮果香與明亮酸度。',
       productionType: 'table',
@@ -3411,7 +3408,6 @@ const WINE_DB = {
         ]
       },
       tags: ['Direct Pressing(直接壓榨)', 'Saignée(放血法)', 'Salmon Pink(鮭魚粉)', 'Early Harvest(提早採收)'],
-      linkedGrapes: [{name:'Grenache(格納希)', id:'grenache'}, {name:'Syrah(希哈)', id:'syrah-shiraz'}],
     },
     {
       id: 'orange',
@@ -3430,7 +3426,6 @@ const WINE_DB = {
         { step:4, title:'低介入裝瓶', desc:'多採野生酵母發酵、極少或不添加SO2、不過濾，是自然酒哲學的核心體現。' }
       ],
       tags: ['Extended Skin Contact(長時間帶皮發酵)', 'Qvevri/Amphora(陶罐)', 'Low Intervention(低介入)', 'Amber Colour(琥珀色澤)'],
-      linkedGrapes: [],
     },
     {
       id: 'fortified',
@@ -3452,7 +3447,6 @@ const WINE_DB = {
         ]
       },
       tags: ['Fortification(中途/完全發酵後強化)', 'Flor(酒花)', 'Solera System(索雷拉系統)', 'Estufagem(加熱陳年)'],
-      linkedGrapes: [],
     }
   ],
 

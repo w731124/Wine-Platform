@@ -36,14 +36,6 @@ function buildWineStyleCardHTML(s) {
     ? buildProductionTableHTML(s.productionTable)
     : buildProductionStepsHTML(s.productionSteps);
   const tagsH = (s.tags || []).map(t => `<span class="tg tg-trait">${t}</span>`).join(' ');
-  const grapesLinkH = (s.linkedGrapes || []).length
-    ? `<div class="ic mb-3" style="background:var(--bg-card);">
-         <p class="ins-lbl">🔗 相關品種 Linked Grapes</p>
-         <div style="display:flex;flex-wrap:wrap;gap:4px;">
-           ${s.linkedGrapes.map(g => `<span class="tg tg-grape" style="cursor:pointer;text-decoration:underline;" onclick="jumpToGrapeById('${g.id}')">${g.name}</span>`).join('')}
-         </div>
-       </div>`
-    : '';
   return `
     <div class="acc-wrap mb-3">
       <div class="acc-hdr" data-style-id="${s.id}" onclick="toggleWineStyleCard(this)">
@@ -77,7 +69,6 @@ function buildWineStyleCardHTML(s) {
           <p class="ins-lbl">🏷️ 工藝標籤 Tags</p>
           <div style="display:flex;flex-wrap:wrap;gap:4px;">${tagsH}</div>
         </div>
-        ${grapesLinkH}
       </div>
     </div>`;
 }

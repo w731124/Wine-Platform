@@ -81,6 +81,8 @@ body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-s
 /* ── Tags ── */
 .tg{display:inline-flex;align-items:center;border-radius:20px;font-size:var(--fs-base);padding:4px 12px;font-weight:500;white-space:nowrap}
 .tg-grape{background:rgba(42,122,88,.08);border:1px solid rgba(42,122,88,.22);color:var(--em)}
+.grape-inline-link{color:var(--burg);font-weight:600;cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:2px}
+.grape-inline-link:hover{color:var(--gold-dk)}
 .tg-reg{background:rgba(122,68,168,.08);border:1px solid rgba(122,68,168,.25);color:#7A44A8}
 .tg-trait{background:rgba(122,13,38,.07);border:1px solid rgba(122,13,38,.2);color:var(--burg-mid)}
 .tg-co{background:rgba(92,6,28,.07);border:1px solid rgba(92,6,28,.18);color:var(--burg)}

@@ -807,3 +807,12 @@
      原因：使用者要求把大段落文字改為結構化呈現以提升可讀性，同時新增品種交叉連結強化「品種↔釀造工藝↔產區」三個分頁間的導覽動線；保留原始`production`文字是為了不遺失既有完整敘述、僅改變呈現方式。
      **已知缺口（非本次疏漏）**：orange款提到的Rkatsiteli、Ribolla Gialla，以及fortified款提到的Touriga Nacional、Palomino、Pedro Ximénez、Sercial/Verdelho/Bual/Malmsey，這些品種目前都不在`WINE_DB.grapes`資料庫裡，因此這兩款式的`linkedGrapes`留空陣列；動工前已逐一核對這8個linkedGrapes實際引用的品種id（chardonnay/pinot-noir/cabernet-sauvignon/syrah-shiraz/grenache/sauvignon-blanc/riesling/muscat）皆存在於`WINE_DB.grapes`，沒有虛構不存在的品種id。
      驗證：headless Chrome展開全部6個款式，逐一截圖確認：sparkling（table，5列×3欄）、rosé（table，3列×3欄）、fortified（table，4列×3欄）三款對照表皆正確以深酒紅標題列呈現；red（steps，6步）、white（steps，4步）、orange（steps，4步）三款流程皆正確以深酒紅圓底白字編號呈現；6款tags皆正確顯示為`tg-trait`pill；有linkedGrapes的4款（sparkling/red/white/rosé）皆正確顯示可點擊品種連結，點擊Chardonnay連結後確認正確跳轉品種圖鑑分頁並展開對應卡片（`switchToPanel`+`toggleGrapeCard`皆正確觸發）；orange／fortified兩款畫面確認「相關品種」區塊完全不出現，無空白異常區塊或遺留標題。
+
+## 2026-07-29 釀造工藝頁移除linkedGrapes獨立區塊，改為history/grapes/terroir/productionSteps/productionTable內的行內品種連結
+
+222. **移除 `WINE_DB.wineStyles` 6個物件的 `linkedGrapes` 欄位，改為在 `history`／`grapes`／`terroir`／`productionSteps`／`productionTable` 文字裡，把符合 `WINE_DB.grapes` 現有23個品種名稱的英文字直接改成行內可點擊連結**（`<span class="grape-inline-link" onclick="jumpToGrapeById('id')">品種名稱</span>`），新增 `css/style.css` 的 `.grape-inline-link` 樣式（深酒紅色、粗體、點狀底線，hover轉金色）；`js/winestyles.js` 移除原本渲染「相關品種 Linked Grapes」獨立卡片的程式碼區塊。`tags`（工法技術特徵標籤，如Autolysis/Remuage/Fortification等）完全不動。
+     - **動工前逐一比對6個wineStyle物件的相關欄位文字，找出18處確定符合的品種提及**（依品種彙總：Chardonnay×4、Sauvignon Blanc×3、Riesling×3、Pinot Noir×2、Syrah×2、Grenache×2、Cabernet Sauvignon×1、Muscat×1），完整比對清單先回報使用者確認後才動工。
+     - **1處邊界案例交由使用者裁定**：`fortified.grapes` 欄位的「Moscatel」語意上屬Muscat/Moscato家族但拼法與品種資料庫`name`欄位不完全相符，使用者決定**不轉連結、維持純文字**，避免過度擴張連結範圍。
+     - orange款（Rkatsiteli、Ribolla Gialla）與fortified款其餘品種（Touriga Nacional、Palomino、Pedro Ximénez、Sercial/Verdelho/Bual/Malmsey）確認皆不在`WINE_DB.grapes`裡，維持純文字不變，這是既有資料庫缺口、非本次疏漏。
+     原因：使用者認為獨立的「相關品種」卡片/標籤區塊與正文分離，不如直接在敘述文字中把提到品種的地方變成連結，閱讀動線更自然；同時避免tags（工法標籤）與品種連結兩種不同性質的資訊被使用者混淆。
+     驗證：Perl統計全檔案大括號/中括號開合數一致（1207/1207、653/653），`grep`確認`linkedGrapes`已完全從`data/wine-data.js`移除（0筆）；headless Chrome展開全部6個款式，確認全站`.grape-inline-link`元素總數為18（與比對清單完全一致）；抽查red（4個行內連結：Cabernet Sauvignon/Pinot Noir/Syrah/Grenache）與white（10個行內連結，含history/grapes/productionSteps三個欄位）畫面確認連結樣式正確（深酒紅粗體點狀底線）、與周圍敘述文字融合自然；點擊Grenache連結確認正確跳轉品種圖鑑分頁並展開對應卡片；orange／fortified兩款確認畫面上「相關品種」卡片已完全消失，fortified的「Moscatel」正確維持純文字未被連結，`tags`工法標籤區塊在全部6款皆正常顯示、未受影響。
