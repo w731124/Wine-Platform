@@ -3448,6 +3448,53 @@ const WINE_DB = {
       crossNote: '與義大利DOCG同屬「By 產區」邏輯：分級對象是一整個地理範圍（村莊／法定產區），而非個別酒莊或個別葡萄園，範圍內所有符合規範的生產者共享同一等級標示——但香檳的「村莊」尺度遠小於DOCG的「產區」尺度，介於勃根地「葡萄園」與傳統「產區」概念的中間地帶，是三種By分類尺度大小的絕佳對照案例。'
     },
     {
+      id: 'france-aoc-pyramid',
+      country: 'France(法國)',
+      region: 'Nationwide(全國)',
+      name: 'AOC/AOP · IGP · Vin de France(法定產區品質金字塔)',
+      basis: 'region',
+      basisLabel: 'Region(產區)',
+      summary: '法國全國性三級法定產區制度，是全世界最早建立法定產區觀念的國家（INAO成立於1935年），2009年歐盟法規改革後在傳統AOC之上疊加AOP作為官方歐盟用語，兩者實質等同、法規效力相同，僅用語新舊之別。',
+      tiers: [
+        { name: 'AOC/AOP(法定產區)', note: "Appellation d'Origine Contrôlée／Appellation d'Origine Protégée，兩者為同一等級的新舊稱呼（2009年起AOP是官方歐盟用語，但AOC仍廣泛使用且具同等法律效力），規範產區範圍、允許品種、產量上限與釀造工藝，是波爾多／勃根地／香檳等經典產區的所在等級。" },
+        { name: 'IGP(地理標示產區)', note: 'Indication Géographique Protégée，2009年由舊制Vin de Pays（地區餐酒）更名而來，規範較AOC寬鬆，允許使用非傳統品種與更大的混調彈性，是許多追求品種標示彈性的現代酒莊偏好的等級。' },
+        { name: 'Vin de France(日常餐酒)', note: '2009年由舊制Vin de Table（日常餐酒）更名，最基礎等級，幾乎無產區與品種限制，可混調不同年份與產區的酒液，酒標僅能標示「法國葡萄酒」與品種（若標示品種）。' }
+      ],
+      history: '法國是全世界最早建立法定產區（Appellation d\'Origine）觀念的國家，1935年成立INAO（國家原產地名稱局）並開始劃定AOC產區邊界，是後續義大利DOC/DOCG、西班牙DO/DOCa等歐洲法定產區制度的原型範本。2009年歐盟農業法規改革要求全體會員國統一為PDO（受保護原產地名稱）/PGI（受保護地理標示）兩層架構，法國因此新增AOP作為AOC的官方歐盟對應用語、Vin de Pays更名為IGP、Vin de Table更名為Vin de France，但法規本質與各等級規範門檻並未實質改變，僅是名稱與歐盟用語接軌。',
+      crossNote: '與義大利DOCG/DOC/IGT/VdT、西班牙DOCa/DO/VdlT/VdM、德國Prädikatswein等其餘全國性金字塔同屬「By 產區」邏輯的歐盟共通二層架構（AOP對應DOCG/DOC/DOCa/DO，IGP對應IGT/VdlT）；法國的獨特之處在於AOC/AOP底下還疊加了勃根地Grand Cru/Premier Cru、波爾多1855等眾多獨立的By葡萄園/By酒莊分級，這張全國性金字塔僅是最基礎的骨架，經典法定產區幾乎都在AOC/AOP這一層再往上疊加更精細的分級。'
+    },
+    {
+      id: 'bordeaux-basic-hierarchy',
+      country: 'France(法國)',
+      region: 'Bordeaux(波爾多)',
+      name: 'Bordeaux AOC · Cru Bourgeois(波爾多基礎分級)',
+      basis: 'region',
+      basisLabel: 'Region(產區)',
+      summary: '波爾多最基礎的地理分級骨架，從全區通用的Bordeaux AOC到品質門檻略高的Bordeaux Supérieur AOC，再到僅適用於Médoc（左岸）、以酒莊品質認證構成的Cru Bourgeois——與1855分級／Saint-Émilion分級並非互斥競爭關係，而是分屬不同地理範圍與評選邏輯的並存體系。',
+      tiers: [
+        { name: 'Bordeaux AOC(基礎法定產區)', note: '波爾多全區通用的入門法定產區，涵蓋左右岸與衛星產區，允許範圍最廣，是波爾多產量最大的等級。' },
+        { name: 'Bordeaux Supérieur AOC(超級波爾多)', note: '與Bordeaux AOC地理範圍重疊，但要求更低產量上限與更長的最低陳年時間，品質門檻略高於基礎款。' },
+        { name: 'Cru Bourgeois(布爾喬亞級酒莊)', note: '僅適用於Médoc（左岸），是1855分級之外、為未入選頂尖酒莊設立的品質認證，現行分為Cru Bourgeois／Cru Bourgeois Supérieur／Cru Bourgeois Exceptionnel三級（沿革見下方歷史說明）。' }
+      ],
+      history: 'Bordeaux AOC與Bordeaux Supérieur AOC是波爾多最基礎的地理分級，任何位於波爾多產區邊界內、符合基本規範的酒莊皆可標示，兩者差異僅在於產量上限與陳年時間門檻。Cru Bourgeois則源自Médoc地區，是為1855分級未能納入的眾多優質酒莊設立的品質認證：2003年官方首次公布正式分級名單，隨即遭落選酒莊興訟，2007年法院以評選過程欠缺透明為由判決撤銷該分級；此後Cru Bourgeois一度改為不分位階、逐年份重新認證的品質標章。近年官方已重新引入Cru Bourgeois／Cru Bourgeois Supérieur／Cru Bourgeois Exceptionnel三級位階制度，但確切現行細則（如評選週期、最新適用年份）建議以官方最新公告為準，此處不做具體年份陳述。',
+      crossNote: '與1855分級（Grand Cru Classé，僅Médoc/Sauternes-Barsac約60家頂尖酒莊）及Saint-Émilion分級（僅限右岸聖艾米濃）並非互斥或競爭關係，而是分屬不同地理範圍與評選邏輯的並存體系：1855分級是「凍結於1855年、極少更動」的歷史名單，僅涵蓋Médoc最頂尖的少數酒莊；Cru Bourgeois則是1855分級之外、Médoc其餘優質酒莊的品質認證，理論上任何符合條件的酒莊皆可申請，兩者對象完全不重疊。消費者選購時應理解：一瓶Médoc酒款若未列名1855分級，仍可能是聲譽優良的Cru Bourgeois酒莊；此表把Cru Bourgeois歸類在Region僅為配合現有三分類架構的權宜安排，實際上Cru Bourgeois是掛在個別酒莊身上的品質認證，性質上更接近By 酒莊邏輯。'
+    },
+    {
+      id: 'alsace-grand-cru',
+      country: 'France(法國)',
+      region: 'Alsace(阿爾薩斯)',
+      name: 'Alsace Grand Cru(阿爾薩斯特級園)',
+      basis: 'vineyard',
+      basisLabel: 'Vineyard(葡萄園)',
+      summary: '阿爾薩斯唯一的官方葡萄園分級，1975年起陸續劃定51個個別葡萄園地塊，僅限特定品種（主要為Riesling／Gewürztraminer／Pinot Gris／Muscat四大貴族品種）並符合更嚴格產量上限規範者才能標示Grand Cru，是法國少數品種與地塊雙重限制並存的葡萄園分級。',
+      tiers: [
+        { name: 'Alsace Grand Cru(特級園)', note: '51個官方劃定地塊（如Schlossberg、Rangen等），原則上僅限四大貴族品種（Riesling/Gewürztraminer/Pinot Gris/Muscat）並符合更嚴格產量上限，個別地塊風土差異極大，酒標可標示個別地塊名稱。' },
+        { name: 'Alsace AOC(基礎法定產區)', note: '阿爾薩斯全區通用的入門等級，允許品種範圍更廣、產量上限更寬鬆，是本區日常餐酒的主力來源。' }
+      ],
+      history: '阿爾薩斯Grand Cru分級始於1975年，是法國少數以「品種＋地塊」雙重限制並行的葡萄園分級——與勃根地Grand Cru可涵蓋多個品種不同，阿爾薩斯Grand Cru原則上僅限四大貴族品種（少數地塊如Zotzenberg允許Sylvaner例外），且產量上限較基礎Alsace AOC更嚴格。51個地塊陸續分批劃定完成，個別地塊因地質（花崗岩、石灰岩、片岩等多元地質）差異極大，風格辨識度也隨之不同。',
+      crossNote: '與勃根地Grand Cru／Premier Cru同屬「By 葡萄園」邏輯，但阿爾薩斯Grand Cru額外疊加了「限定品種」這項勃根地沒有的門檻（勃根地Grand Cru可用Pinot Noir或Chardonnay等多種品種），是「By 葡萄園」邏輯下另一種設計哲學的對照案例；阿爾薩斯同時也是法國少數以品種標示為主流（而非產區名稱）的產區，即使基礎Alsace AOC等級的酒標，通常也會直接標示品種名稱。'
+    },
+    {
       id: 'italy-docg-pyramid',
       country: 'Italy(義大利)',
       region: 'Nationwide(全國)',
@@ -3494,6 +3541,21 @@ const WINE_DB = {
       ],
       history: '此三級制是在DOCG框架「內部」再疊加的酒莊／酒款分級，與DOCG本身（產區層級）是兩個不同維度：一瓶酒同時擁有「Chianti Classico DOCG」的產區身分，以及「Gran Selezione」的酒莊分級身分；此設計某種程度上是對前述「Super Tuscan悖論」的間接回應——透過在DOCG內部再造一個更嚴謹的頂級門檻，讓堅持傳統Sangiovese混調規定的酒莊，也能有機會生產與國際名莊分庭抗禮的頂級款式。',
       crossNote: '與波爾多1855同屬「By 酒莊」邏輯，但差異在於Gran Selezione的評選標準是客觀的自有葡萄園與陳年規範，而非1855當年主觀的市場交易價格排名，也因此Gran Selezione理論上任何符合條件的酒莊都能申請晉升，不像1855幾乎已是永久凍結的歷史名單。'
+    },
+    {
+      id: 'veneto-classico',
+      country: 'Italy(義大利)',
+      region: 'Veneto(威尼托)',
+      name: 'Classico標示(瓦波利切拉／蘇瓦韋經典產區)',
+      basis: 'region',
+      basisLabel: 'Region(產區)',
+      summary: 'Classico標示在Valpolicella與Soave皆代表「歷史核心產區範圍」而非品質等級高低，是義大利酒標中經常被誤解的標示之一——與Chianti Classico的Classico用法邏輯相通（皆指歷史核心地理範圍），但Valpolicella/Soave的Classico並非獨立DOCG等級，僅是DOC/DOCG內部的地理子產區標示。',
+      tiers: [
+        { name: 'Valpolicella Classico(瓦波利切拉經典產區)', note: '歷史最早劃定的核心丘陵地塊（涵蓋Fumane、Marano、Negrar等村莊），土壤與地形條件普遍優於後期擴增的平原區，酒標可加註Classico字樣，Amarone/Recioto della Valpolicella亦可標示。' },
+        { name: 'Soave Classico(蘇瓦韋經典產區)', note: '歷史最早劃定的火山岩丘陵核心區，與東側擴增的平原沖積土產區風味落差明顯，Classico核心區普遍被視為品質更穩定的指標範圍。' }
+      ],
+      history: 'Valpolicella與Soave皆在20世紀後期因市場需求擴大而將產區邊界擴增至周邊平原地帶，「Classico」標示因此誕生，用以區隔最早劃定、通常品質條件更優越的歷史核心丘陵地塊與後期擴增的平原區域；兩者的Classico範圍皆對應各自產區最初劃定時的邊界。',
+      crossNote: '與Chianti Classico的「Classico」用法邏輯相通——兩者皆指「歷史最早劃定的核心產區範圍」而非品質分級——但關鍵差異在於Chianti Classico本身已獨立發展出自己的DOCG地位（不同於外圍的一般Chianti DOCG），而Valpolicella/Soave的Classico僅是同一個DOC/DOCG內部的地理子產區標示，未獨立升格為不同等級，選購時不應假設「有Classico字樣＝品質分級更高」，僅代表產區地理範圍不同。'
     },
     {
       id: 'vdp-lagen',
@@ -3560,7 +3622,7 @@ const WINE_DB = {
         { name: 'Gran Reserva(特級陳釀)', note: '僅在頂尖年份釀造，最低須桶陳24個月＋瓶陳36個月，總計上市前至少陳年5年，是傳統派Rioja愛好者心中的旗艦等級。' },
         { name: 'Reserva(陳釀)', note: '最低須陳年3年，其中至少1年桶陳，是市面上最常見的高階Rioja款式。' },
         { name: 'Crianza(基本陳年)', note: '最低須陳年2年，其中至少1年（白酒/粉紅酒為6個月）桶陳，是進入陳年等級的入門門檻。' },
-        { name: 'Genérico/Joven(無陳年標示/年輕酒)', note: '不受陳年時間規範，強調果香新鮮度，通常上市即飲用，近年隨新一代酒莊崛起而愈趨受到重視。' }
+        { name: 'Joven/Genérico(無陳年標示/年輕酒)', note: '不受陳年時間規範，強調果香新鮮度，通常上市即飲用，近年隨新一代酒莊崛起而愈趨受到重視。' }
       ],
       history: '此陳年分級架構源自19世紀波爾多釀酒技術傳入Rioja後發展出的傳統，當時波爾多根瘤蚜蟲害肆虐，法國釀酒師大量移居Rioja，也把橡木桶陳年工藝一併帶入；早年美國橡木桶的普遍使用（相對於法國橡木桶更明顯的椰子與香草氣息）也是Rioja風格區別於法國同業的重要特徵。近年部分指標酒莊主動退出Rioja DOCa體系，改標示更低階的Vino de España，正是因為認為陳年時間分級無法反映其地塊風土訴求，是「By 酒款陳年時間」與「By 葡萄園風土」兩種分級哲學路線之爭的著名案例。',
       crossNote: '與Chianti Classico的Riserva/Gran Selezione三級制看似相似（都用「陳年時間」疊加於產區之上），但關鍵差異在於Gran Selezione額外要求「須使用酒莊自有葡萄園」（因此歸類為By 酒莊具備依據），Rioja的Crianza/Reserva/Gran Reserva則完全不涉及葡萄來源限制，純粹是陳年時間門檻——這正是本表把Rioja歸類在Estate、卻特別加註「並不完美對應」的原因；近年西班牙也開始出現類似Rioja自家的Viñedos Singulares（單一葡萄園標示，2017年新增）等地塊導向的新制度，某種程度上正是對這套傳統陳年分級的補充與反思。'

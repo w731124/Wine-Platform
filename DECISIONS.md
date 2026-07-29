@@ -862,3 +862,19 @@
 235. **新增10筆品種資料，欄位格式完全比照現有23筆結構**（`skinColor`/`originCountry`/`wsetLevel`/`styleSummary`/`history`/`confusionNote`/`aromaWheel`/`representativeRegions`/`servingTemp`/`foodPairingTags`/`profile`），內容涵蓋各品種的WSET標準教材事實（如Montepulciano品種與托斯卡尼「Vino Nobile di Montepulciano」地名的經典命名陷阱、Carménère與梅洛混淆的1994年DNA鑑定歷史、Pinotage 1925年Perold教授雜交培育史、Tokaj的Puttonyos甜度分級與1737年法定邊界）：`representativeRegions`依核對結果連結既有或新增的產區id，找不到對應產區的情況本次未發生（10個品種皆已有明確連結對象）。
      原因：內容撰寫遵循「有把握才寫」原則，不確定的細節（如Tokaji Aszú現行歐盟法規對Puttonyos最低等級的最新修訂）刻意不列入，僅描述傳統3–6 Puttonyos分級架構等有把握的標準教材事實。
      驗證：`WINE_DB.grapes.length`確認為33（23+10）、`WINE_DB.appellations.length`確認為110（106+4）；全域大括號/中括號配對平衡（1243/1243、703/703）；執行`auditWineDB()`確認警告類別與既有已知警告一致——「缺少地圖座標」新增`tokaj`一項（因4張地圖皆不含匈牙利，比照#220奧地利的既有已知狀態，非新類型問題），且**義大利3筆新產區（Barbera d'Asti/Gavi/Fiano di Avellino）因`country`為Italy並提供`coords`欄位，自動被既有Italy地圖的動態座標投影邏輯正確標記於地圖上（非刻意實作，比照#220葡萄牙案例的既有渲染邏輯反應）**，並未落入缺少地圖座標清單；「法國產區未綁定年份矩陣」清單無變化（4筆皆與本次新增內容無關）。headless Chrome截圖確認Italy地圖新增的4/5號標記（Barbera d'Asti/Gavi）與皮埃蒙特既有標記群集無重疊問題；Hungary國旗於Tokaj抽屜正確顯示；點擊Furmint/Barbera等新品種的`representativeRegions`連結與品種卡片內互連皆正常運作；新舊`WSET L2`／`WSET L2·LO4`徽章並存顯示無視覺衝突。
+
+## 2026-07-29 分級制度頁新增4張品質階層卡片，修正rioja-aging的Joven/Genérico詞序
+
+236. **動工前核對現況，確認Alsace/Valpolicella/Soave三個產區皆已存在於`WINE_DB.appellations`（`alsace`/`valpolicella`/`soave`），但`WINE_DB.classifications`完全沒有對應分級卡**，4張新卡皆為全新新增、不修改既有12張卡的任何欄位；`italy-docg-pyramid`／`spain-do-pyramid`的欄位結構（`id`/`country`/`region`/`name`/`basis`/`basisLabel`/`summary`/`tiers[{name,note}]`/`history`/`crossNote`）確認為本次新卡沿用的格式基準。
+     原因：延續「先核對現況再動工」的既定方法論，避免誤判Alsace/Valpolicella/Soave尚不存在而重複建立產區資料。
+237. **Cru Bourgeois現行沿革的不確定之處，動工前明確告知使用者並取得處理方式指示**：對2003年首次官方分級→落選酒莊興訟→2007年法院撤銷→改制為不分位階的年度認證→近年重新引入三級位階這條主線有把握，但對「現行三級制重新引入的確切年份」與「是否仍維持5年一次重新評選週期」沒有十足把握。使用者選擇：僅寫確定的歷史脈絡，最新細則以「建議以官方最新公告為準」帶過、不寫死具體年份。
+     原因：延續DECISIONS.md #75「沒有把握的技術細節不生成看似專業但可能失真的內容」原則；本次是動工前主動核對並取得使用者指示，而非事後才發現內容有誤。
+238. **新增4張分級卡，格式完全比照既有12張卡結構**：
+     - `france-aoc-pyramid`——法國全國性AOC/AOP/IGP/Vin de France三級金字塔，說明2009年歐盟法規改革後AOP/IGP/Vin de France分別對應舊制AOC/Vin de Pays/Vin de Table的新舊稱呼關係。
+     - `bordeaux-basic-hierarchy`——Bordeaux AOC→Bordeaux Supérieur AOC→Cru Bourgeois三級，`crossNote`明確說明Cru Bourgeois與1855分級／Saint-Émilion分級並非互斥競爭關係，而是分屬不同地理範圍（僅Médoc其餘酒莊）與評選邏輯的並存體系；`basis`歸類為`region`但於`crossNote`加註Cru Bourgeois本身性質上更接近By酒莊邏輯，比照`rioja-aging`既有的「不完美對應」處理手法。
+     - `alsace-grand-cru`——阿爾薩斯51個Grand Cru地塊採整體概述而非逐一列舉，`crossNote`點出與勃根地Grand Cru的關鍵差異（阿爾薩斯額外疊加「限定品種」門檻）。
+     - `veneto-classico`——Valpolicella／Soave的Classico標示合併為一張卡，`summary`與`crossNote`明確點出Classico在此代表「歷史核心產區範圍」而非品質分級，並與Chianti Classico的用法異同做出對照（Chianti Classico已獨立成不同DOCG，Valpolicella/Soave的Classico僅是同DOC/DOCG內部地理子產區標示），避免使用者誤解為品質分級。
+     原因：使用者要求4張卡不創新格式，完全比照現有12張卡的資料結構與視覺呈現；`veneto-classico`的tiers以兩個平行產區（而非單一產區的高低分級）呈現，是既有`tiers`欄位在「非嚴格階層」情境下的延伸用法，於`summary`已明確說明兩者並非高低分級關係。
+239. **修正`rioja-aging`卡片Joven級別的詞序**：`Genérico/Joven(無陳年標示/年輕酒)` → `Joven/Genérico(無陳年標示/年輕酒)`，僅調整tier名稱字串的詞語順序以符合官方規格原文，`note`內容與其餘tiers陣列結構完全不動。
+     原因：使用者核對後確認原詞序與官方規格文字順序不符，屬於精確度修正而非新增缺漏內容。
+     驗證：`WINE_DB.classifications.length`確認為16（12+4）；全域大括號/中括號配對平衡（1257/1257、707/707）；headless Chrome依國家篩選確認France顯示7張卡（含3張新卡）、Italy顯示4張卡（含`veneto-classico`）；展開`bordeaux-basic-hierarchy`截圖確認視覺與既有卡片一致；`rioja-aging`展開後DOM文字確認含「Joven/Genérico」且不再含舊詞序「Genérico/Joven」；執行`auditWineDB()`確認兩類既有警告（缺少地圖座標33筆、法國產區未綁定年份矩陣4筆）完全無變化，因本次僅修改`WINE_DB.classifications`、未觸及`WINE_DB.appellations`。
