@@ -816,3 +816,10 @@
      - orange款（Rkatsiteli、Ribolla Gialla）與fortified款其餘品種（Touriga Nacional、Palomino、Pedro Ximénez、Sercial/Verdelho/Bual/Malmsey）確認皆不在`WINE_DB.grapes`裡，維持純文字不變，這是既有資料庫缺口、非本次疏漏。
      原因：使用者認為獨立的「相關品種」卡片/標籤區塊與正文分離，不如直接在敘述文字中把提到品種的地方變成連結，閱讀動線更自然；同時避免tags（工法標籤）與品種連結兩種不同性質的資訊被使用者混淆。
      驗證：Perl統計全檔案大括號/中括號開合數一致（1207/1207、653/653），`grep`確認`linkedGrapes`已完全從`data/wine-data.js`移除（0筆）；headless Chrome展開全部6個款式，確認全站`.grape-inline-link`元素總數為18（與比對清單完全一致）；抽查red（4個行內連結：Cabernet Sauvignon/Pinot Noir/Syrah/Grenache）與white（10個行內連結，含history/grapes/productionSteps三個欄位）畫面確認連結樣式正確（深酒紅粗體點狀底線）、與周圍敘述文字融合自然；點擊Grenache連結確認正確跳轉品種圖鑑分頁並展開對應卡片；orange／fortified兩款確認畫面上「相關品種」卡片已完全消失，fortified的「Moscatel」正確維持純文字未被連結，`tags`工法標籤區塊在全部6款皆正常顯示、未受影響。
+
+## 2026-07-29 修復HANDOFF.md過時內容，並在CLAUDE.md新增HANDOFF.md覆寫時機規則
+
+223. **HANDOFF.md（commit `a75550e`寫入，標註2026-07-22）內容過時且與DECISIONS.md矛盾**：該版宣稱「響應式檢測尚未執行任何修復」，但同一/後續session其實已完成#219-#222共4批工作（響應式修復、奧地利/葡萄牙產區擴充、釀造工藝頁重構、移除linkedGrapes改行內連結），HANDOFF.md卻從未再更新，造成內容與實況矛盾約一週。動工前實際執行`git fetch && git status -sb`（確認本機領先origin/main 2個commit、無落後）與逐條核對DECISIONS.md #219-#222對應的4個commit hash，確認DECISIONS.md本身編號連續無缺漏（純粹是HANDOFF.md沒跟上，不是決策記錄本身有洞）。已依四段式結構完整覆寫（非追加）HANDOFF.md，補上4批工作內容、重新核實「二、討論項目」現況（響應式報告3項輕微瑕疵仍未處理、產區擴充討論部分推進）、並在「四、現況檢查提醒」記錄此次教訓與連帶發現`project-snapshot.md`同樣過時。
+     原因：使用者發現HANDOFF.md與DECISIONS.md矛盾，要求先核對現況、列出缺漏清單取得確認後才覆寫，避免又一次是憑印象腦補內容。
+224. **`CLAUDE.md`「六、工作流程規則」新增一條：HANDOFF.md的覆寫必須是該次session最後一個git commit的一部分**（同一次commit內完成，或HANDOFF.md更新本身就是收尾的最後一次commit），不得在session中途、預期後續仍有其他改動時提前寫入並視為完成。
+     原因：使用者指出「session結束時覆寫HANDOFF.md」這條既有協定本身沒有任何強制檢查點，這次失效正是因為中途寫了、之後沒再回頭補；把「是否為最後一次commit」變成可檢查的規則本身，取代仰賴記憶判斷「這次是不是真的結束了」。使用者已審閱建議寫法並採用，非我單方面逕行修改治理文件。
