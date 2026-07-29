@@ -85,11 +85,11 @@ sub load_app_coords_for_country {
   local $/;
   my $content = <$fh>;
   close $fh;
-  $content =~ /appellations:\s*\[(.*?)\n  \],\n  grapes:/s
+  $content =~ /appellations:\s*\[(.*?)\r?\n  \],\r?\n  grapes:/s
     or die "could not locate appellations[] array in $file\n";
   my $block = $1;
   my %coords;
-  my @objs = split /\n    \{\n/, $block;
+  my @objs = split /\r?\n    \{\r?\n/, $block;
   for my $obj (@objs) {
     next unless $obj =~ /id:\s*'([a-z0-9-]+)'/;
     my $id = $1;

@@ -80,13 +80,13 @@ sub load_app_coords_for_country {
   local $/;
   my $content = <$fh>;
   close $fh;
-  $content =~ /appellations:\s*\[(.*?)\n  \],\n  grapes:/s
+  $content =~ /appellations:\s*\[(.*?)\r?\n  \],\r?\n  grapes:/s
     or die "could not locate appellations[] array in $file\n";
   my $block = $1;
   # 用 country 欄位切開每個大物件的邊界較複雜，改用「往回找最近的 id」的方式：
   # 掃過整段文字，遇到 id 記住，遇到同一物件的 country 若符合才收進結果。
   my %coords;
-  my @objs = split /\n    \{\n/, $block;
+  my @objs = split /\r?\n    \{\r?\n/, $block;
   for my $obj (@objs) {
     next unless $obj =~ /id:\s*'([a-z0-9-]+)'/;
     my $id = $1;

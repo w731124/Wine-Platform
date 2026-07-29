@@ -823,3 +823,15 @@
      原因：使用者發現HANDOFF.md與DECISIONS.md矛盾，要求先核對現況、列出缺漏清單取得確認後才覆寫，避免又一次是憑印象腦補內容。
 224. **`CLAUDE.md`「六、工作流程規則」新增一條：HANDOFF.md的覆寫必須是該次session最後一個git commit的一部分**（同一次commit內完成，或HANDOFF.md更新本身就是收尾的最後一次commit），不得在session中途、預期後續仍有其他改動時提前寫入並視為完成。
      原因：使用者指出「session結束時覆寫HANDOFF.md」這條既有協定本身沒有任何強制檢查點，這次失效正是因為中途寫了、之後沒再回頭補；把「是否為最後一次commit」變成可檢查的規則本身，取代仰賴記憶判斷「這次是不是真的結束了」。使用者已審閱建議寫法並採用，非我單方面逕行修改治理文件。
+
+## 2026-07-29 技術債清理：4項候選技術債逐一核對現況後修復
+
+225. **核對4筆候選技術債清單，逐項確認現況是否仍成立而非照單直接動工**（比照#51方法論）：
+     - `--fs-label` CSS變數——**確認仍是孤兒**，`grep`全站css/js/html僅`css/style.css:10`的`:root`定義本身一處出現，無任何實際引用，直接從`:root`刪除該行。
+     - France/Italy/Iberia建置腳本CRLF正規式錯誤——**確認仍存在且可重現**：`data/wine-data.js`仍為CRLF換行，`build-france-map.pl`／`build-italy-map.pl`／`build-iberia-map.pl`的擷取正規式（`appellations:\s*\[(.*?)\n  \],\n  grapes:`與`split /\n    \{\n/`）皆只吃`\n`，與已修正的`build-germany-map.pl`（用`\r?\n`）不同；實際執行`perl scripts/build-france-map.pl`得到`exit 255`、`could not locate appellations[] array`錯誤，證實非僅理論風險。3支腳本各2處正規式比照Germany腳本改為`\r?\n`，改完重新執行3支腳本皆`exit 0`。
+     - `WINE_DB.wineStyles`的`production`備份欄位——**確認仍完整殘留於6個物件、且仍是死欄位**（`grep -rn "\.production\b" js/ index.html`為0），逐一比對6款`production`文字與對應`productionSteps`/`productionTable`內容後**確認無語意分歧**（後者是#221當初的忠實摘要改寫，非後續編輯造成偏差）；使用者裁定直接刪除，6個物件的`production:`欄位全數移除。
+     - 響應式報告「3項輕微瑕疵」——**核對原報告發現報告本身的計數與內容不一致**：統計卡片寫「3」，但內文實際僅條列2項具體案例（地圖探索標題+國家分頁鈕375px下換行；年份詳情卡2欄/3欄grid窄螢幕下換行但不裁切），本地備份`響應式檢測報告.html`已不存在、改用先前發布的Claude.ai Artifact復原內容確認此落差；逐一核對現行程式碼確認這2項皆維持原樣未修（原報告當初就判定「非阻塞、可接受」，不在#219修復範圍內）。
+     原因：延續「先逐項核對現況是否仍成立，再動工，不可假設清單描述等於現況」的既有方法論；本次核對本身就抓到2處清單描述與實況的落差（責任範圍分工需求誤解＋報告自身計數矛盾），證明重新核對而非照單全收的必要性。
+226. **修復地圖探索標題與年份詳情卡grid的響應式問題**：`index.html`的`#panel-mapview h1`在≤600px時透過新增媒體查詢改用`var(--fs-2xl)!important`（20px，仍大於同區塊副標`--fs-lg`17px與其餘內文`--fs-base`16px，符合CLAUDE.md字級層級鐵則），縮小2行換行造成的壓迫感；`js/vintage.js`的`openVMI()`把「侍酒師建議」2欄grid與「風味輪廓」3欄grid分別加上`.vmi-grid2`/`.vmi-grid3`class，`css/style.css`在既有`@media(max-width:520px)`區塊比照`.cm-two-col`加入`grid-template-columns:1fr!important`使其窄螢幕下改單欄堆疊。
+     原因：這2項在原始報告中被判定為「非阻塞、可接受」的輕微瑕疵，本次使用者確認後才動手修復，非強制修復項目；修復手法延續#219既有的「加在既有媒體查詢區塊後、不動桌面版樣式」慣例，維持最小改動範圍。
+     驗證：修復`_devserver.ps1`因缺少UTF-8 BOM、導致Windows PowerShell 5.1用系統ANSI codepage誤讀腳本裡的CJK路徑字面量（`HarryWang王亨`亂碼），造成所有請求404的環境問題後，用headless Chrome於375px寬度下實測：`winestyles`面板（含刪除`production`欄位後）各6款卡片正常渲染無異常；`mapview`面板`h1`實際computed font-size為20px、`body.scrollWidth`無溢出；`vintage`面板展開年份組、點擊有詳情的年份格，`.vmi-grid2`/`.vmi-grid3`實際computed `grid-template-columns`皆收縮為單欄（272px）；1280px桌面寬度下重新檢查`h1`維持26px、年份詳情grid維持雙欄，確認無回歸。
