@@ -888,3 +888,18 @@
      - fortified款：在既有`productionTable`新增一列「常見風格標示」，利用表格本來就有的波特/雪莉/馬德拉三欄，波特欄列出Ruby/Reserve Ruby/LBV/Vintage/Tawny五個風格，雪莉欄列出Fino/Amontillado/Oloroso/Pale Cream/Medium/Cream/PX七個風格，選擇擴充表格而非`tags`是因為12個術語分屬兩種不同酒種，塞進單一`tags`陣列會混淆不清，既有表格欄位結構恰好能自然分組。
      原因：使用者要求先核對LO5技術正確性再視需要擴充官方標籤術語；呈現方式選擇的判斷依據是「術語是否對應既有欄位的分類維度」——能對應欄位的用表格擴充，無法對應的用標籤呈現，兩種手法皆為既有結構的延伸而非新創格式。
      驗證：全域大括號/中括號配對平衡（1258/1258、708/708）；headless Chrome確認sparkling卡片展開後`tags`區塊顯示9個標籤（4個既有+5個新增）、無版面溢出；fortified卡片`productionTable`確認為5列（4列既有+1列新增），三欄內容正確對應波特/雪莉/馬德拉；執行`auditWineDB()`確認警告數量無變化（本次僅修改`WINE_DB.wineStyles`，該陣列不在`auditWineDB()`稽核範圍內）。
+
+## 2026-07-29 品種圖鑑資料組織重構：LO4徽章回溯標記＋分級篩選列＋三層排序
+
+242. **動工前grep核對現況，確認12個候選品種id與現況完全一致，無需回報任何出入**：`wsetLevel:2`（LO3核心8品種：cabernet-sauvignon/merlot/pinot-noir/syrah-shiraz/chardonnay/pinot-gris/sauvignon-blanc/riesling）與`wsetLevel:'2-regional'`（既有10個LO4品種）現況與#233記載完全相符；15個非原始品種裡的12個候選id（tempranillo/sangiovese/nebbiolo/grenache/malbec/zinfandel-primitivo/gamay/chenin-blanc/gewurztraminer/viognier/semillon/albarino）逐一grep確認皆存在且目前確實無`wsetLevel`標記，排除的3個（cabernet-franc/gruner-veltliner/muscat）也逐一確認存在、維持不標記的判斷正確。
+     原因：延續「先核對再動工」的既定方法論；本次核對結果與任務描述完全吻合是刻意詳細記錄的正面案例（並非每次核對都會找到落差），避免日後誤以為核對步驟只在抓到問題時才有意義。
+243. **12個品種新增`wsetLevel:'2-regional'`欄位（比照#233既有語意），欄位插入位置固定在`originCountry`之後、`styleSummary`之前，與既有10個LO4品種及8個LO3品種的欄位順序一致**：黑葡萄7個（tempranillo/sangiovese/nebbiolo/grenache/malbec/zinfandel-primitivo/gamay）、白葡萄5個（chenin-blanc/gewurztraminer/viognier/semillon/albarino）。
+     原因：使用者要求比照既有LO4欄位語意回溯標記，欄位插入位置刻意與既有寫法一致以維持資料結構規律性，方便日後閱讀與再次核對。
+     驗證：`grep -c "wsetLevel: 2,"`＝8、`grep -c "wsetLevel: '2-regional'"`＝22（10既有+12新增），與任務要求的驗證數字完全相符；全域大括號/中括號配對平衡（1258/1258、708/708）。
+244. **`js/grapes.js`徽章文字更名＋新增分級篩選列＋三層排序，三者依序整合**：
+     - 徽章文字：`wsetLevel:2`從「WSET L2」改為「WSET L2·主要品種」（沿用`.tg-match`紅色系）；`wsetLevel:'2-regional'`從「WSET L2·LO4」改為「WSET L2·區域重要品種」（沿用`.tg-lo4`金色系），僅改文字內容，class與顏色邏輯完全不動。
+     - 新增`grapeTierOf(g)`輔助函式統一分類判斷（`main`/`regional`/`other`），避免三處篩選/排序/計數各自重複判斷邏輯而日後改一處漏改其他處。
+     - 新增第二列獨立篩選`#grape-tier-filters`（`index.html`新增空容器，`renderGrapeTierFilters()`於`js/core.js`的`DOMContentLoaded`初始化時渲染），選項「全部/主要品種/區域重要品種/其他」的數字皆用`WINE_DB.grapes.filter(...).length`即時動態計算、未寫死數字；視覺與互動模式（`.fp`/`active`狀態）完全比照既有酒色篩選列，未新創樣式。
+     - `renderGrapePanel()`改為酒色篩選（`curGrapeColor`）與分級篩選（`curGrapeTier`）AND邏輯先篩選，篩選結果再套用`sortGrapesDefault()`三層排序（分級類別→酒色紅/白→英文品種名`localeCompare`字母序），篩選與排序邏輯分離、篩選後的任何子集皆套用同一套排序規則。
+     原因：使用者明確要求分級篩選列的數字必須動態計算、不可寫死，避免未來新增品種時數字跟著過時；三層排序刻意獨立於篩選邏輯之外實作（`sortGrapesDefault()`對篩選後的`filtered`陣列運作，而非對`WINE_DB.grapes`全域排序後再篩選），確保「篩選決定顯示範圍、排序決定呈現順序」兩者概念不混淆。
+     驗證：headless Chrome確認`#grape-tier-filters`顯示「全部All(33)／WSET L2·主要品種(8)／WSET L2·區域重要品種(22)／其他(3)」，數字與#243驗證結果一致；預設列表33張卡片id順序逐一核對，8個LO3品種依紅(4)白(4)各自字母序排列於最前、22個LO4品種依紅(12)白(10)各自字母序排列於中段、3個「其他」依紅(1)白(2)字母序排列於最後，三層排序規則完全符合預期；紅+區域重要品種組合篩選測試回傳12張卡片、順序與未篩選時的對應子集完全一致，證實篩選與排序邏輯確實獨立運作；`cabernet-sauvignon`/`tempranillo`/`muscat`三個代表案例的徽章文字分別確認為「WSET L2·主要品種」／「WSET L2·區域重要品種」／無徽章；執行`auditWineDB()`確認兩類既有警告（缺少地圖座標33筆、法國產區未綁定年份矩陣4筆）完全無變化。

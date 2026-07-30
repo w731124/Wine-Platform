@@ -2,6 +2,7 @@
    GRAPE VARIETIES PANEL
 ════════════════════════════════════ */
 let curGrapeColor = 'all';
+let curGrapeTier = 'all';
 let grapeRadarInsts = {};
 
 function setGrapeColorFilter(color, btn) {
@@ -10,6 +11,54 @@ function setGrapeColorFilter(color, btn) {
   if (wrap) wrap.querySelectorAll('.fp').forEach(b => b.classList.remove('active'));
   if (btn) btn.classList.add('active');
   renderGrapePanel();
+}
+
+function setGrapeTierFilter(tier, btn) {
+  curGrapeTier = tier;
+  const wrap = document.getElementById('grape-tier-filters');
+  if (wrap) wrap.querySelectorAll('.fp').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderGrapePanel();
+}
+
+function grapeTierOf(g) {
+  if (g.wsetLevel === 2) return 'main';
+  if (g.wsetLevel === '2-regional') return 'regional';
+  return 'other';
+}
+
+// 分級篩選列數字為即時動態計算（依 WINE_DB.grapes 實際 wsetLevel 分布），不寫死數字避免未來新增品種時過時
+function renderGrapeTierFilters() {
+  const wrap = document.getElementById('grape-tier-filters');
+  if (!wrap) return;
+  const all = WINE_DB.grapes || [];
+  const mainCount = all.filter(g => grapeTierOf(g) === 'main').length;
+  const regionalCount = all.filter(g => grapeTierOf(g) === 'regional').length;
+  const otherCount = all.filter(g => grapeTierOf(g) === 'other').length;
+  const opts = [
+    { key: 'all', label: `全部 All (${all.length})` },
+    { key: 'main', label: `WSET L2·主要品種 (${mainCount})` },
+    { key: 'regional', label: `WSET L2·區域重要品種 (${regionalCount})` },
+    { key: 'other', label: `其他 (${otherCount})` }
+  ];
+  wrap.innerHTML = opts.map(o =>
+    `<button class="fp ${o.key === curGrapeTier ? 'active' : ''}" onclick="setGrapeTierFilter('${o.key}',this)">${o.label}</button>`
+  ).join('');
+}
+
+// 三層排序：①分級類別（主要品種→區域重要品種→其他）②酒色（紅→白）③英文品種名字母順序（A→Z）
+const GRAPE_TIER_RANK = { main: 0, regional: 1, other: 2 };
+const GRAPE_COLOR_RANK = { red: 0, white: 1 };
+function sortGrapesDefault(list) {
+  return [...list].sort((a, b) => {
+    const tierDiff = GRAPE_TIER_RANK[grapeTierOf(a)] - GRAPE_TIER_RANK[grapeTierOf(b)];
+    if (tierDiff !== 0) return tierDiff;
+    const colorDiff = (GRAPE_COLOR_RANK[a.skinColor] ?? 9) - (GRAPE_COLOR_RANK[b.skinColor] ?? 9);
+    if (colorDiff !== 0) return colorDiff;
+    const nameA = a.name.split('(')[0].trim();
+    const nameB = b.name.split('(')[0].trim();
+    return nameA.localeCompare(nameB);
+  });
 }
 
 function renderGrapePanel() {
@@ -21,7 +70,12 @@ function renderGrapePanel() {
     if (grapeRadarInsts[id]) { grapeRadarInsts[id].destroy(); delete grapeRadarInsts[id]; }
   });
 
-  const list = (WINE_DB.grapes || []).filter(g => curGrapeColor === 'all' || g.skinColor === curGrapeColor);
+  // 酒色篩選與分級篩選為AND邏輯，篩選後仍套用同一套三層排序規則
+  const filtered = (WINE_DB.grapes || []).filter(g =>
+    (curGrapeColor === 'all' || g.skinColor === curGrapeColor) &&
+    (curGrapeTier === 'all' || grapeTierOf(g) === curGrapeTier)
+  );
+  const list = sortGrapesDefault(filtered);
   cont.innerHTML = list.map(g => buildGrapeCardHTML(g)).join('');
 }
 
@@ -44,8 +98,8 @@ function buildGrapeCardHTML(g) {
             <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap;">
               <div style="font-family:'Cinzel',serif;font-size:var(--fs-card-title);font-weight:600;color:var(--burg);">${g.name}</div>
               ${g.originCountry ? `<span class="tg tg-co">${g.originCountry}</span>` : ''}
-              ${g.wsetLevel === 2 ? `<span class="tg-match">WSET L2</span>` : ''}
-              ${g.wsetLevel === '2-regional' ? `<span class="tg tg-lo4">WSET L2·LO4</span>` : ''}
+              ${g.wsetLevel === 2 ? `<span class="tg-match">WSET L2·主要品種</span>` : ''}
+              ${g.wsetLevel === '2-regional' ? `<span class="tg tg-lo4">WSET L2·區域重要品種</span>` : ''}
             </div>
             <div style="font-size:var(--fs-base);color:var(--txt2);max-width:480px;">${g.styleSummary}</div>
           </div>
