@@ -183,6 +183,8 @@ function openDrawer(app){
   const kiH=(app.keyIdentifiers||[]).map(k=>`<span class="tg tg-trait">${k}</span>`).join(' ');
   const foodH=(app.foodPairingTags||[]).map(f=>`<span class="tg tg-food">${f}</span>`).join(' ');
   const estH=(app.famousEstates||[]).map(e=>`<li style="font-size:var(--fs-base);padding:1.5px 0;color:var(--txt2);">• ${e}</li>`).join('');
+  const relatedClasses=(WINE_DB.classifications||[]).filter(c=>(c.relatedAppellations||[]).includes(app.id));
+  const classH=relatedClasses.map(c=>`<span class="tg tg-reg" style="cursor:pointer;text-decoration:underline;" onclick="jumpToClassificationById('${c.id}')">${c.name}</span>`).join('');
   const dims=[{k:'acidity',l:'酸度',c:'#3A6EA8'},{k:'tannin',l:'單寧',c:'#5C061C'},{k:'body',l:'酒體',c:'#A88A60'},{k:'alcohol',l:'酒精',c:'#7A44A8'},{k:'finish',l:'餘韻',c:'#2A7A58'},{k:'aging',l:'陳年潛力',c:'#1A6A4A'},{k:'floral',l:'花香/草本',c:'#A84A7A'}];
   const barsH=dims.map(d=>{
     const v=sp[d.k]??0, pct=v*10;
@@ -267,6 +269,11 @@ function openDrawer(app){
       <div class="ic mb-3" style="background:var(--bg-card);margin-top:10px;">
         <p class="ins-lbl">⏳ 陳年潛力解析 Aging Note</p>
         <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">${app.agingNote}</p>
+      </div>` : ''}
+      ${classH ? `
+      <div class="ic" style="background:var(--bg-card);margin-top:10px;">
+        <p class="ins-lbl">🎖 查看分級制度 Related Classifications</p>
+        <div class="flex flex-wrap gap-1">${classH}</div>
       </div>` : ''}`;
   }
 

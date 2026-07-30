@@ -235,6 +235,29 @@ function jumpToRegionById(id){
   switchToPanel('regions');
   openDrawer(app);
 }
+
+function jumpToClassificationById(id){
+  const c = (WINE_DB.classifications || []).find(x => x.id === id);
+  if (!c) return;
+  switchToPanel('classifications');
+  classInteracted = true;
+  curClassCountry = c.country;
+  curClassBasis = 'all';
+  const countryWrap = document.getElementById('class-country-filters');
+  if (countryWrap) {
+    countryWrap.querySelectorAll('.fp2').forEach(b => b.classList.remove('active'));
+    const btn = countryWrap.querySelector(`[data-class-country="${c.country}"]`);
+    if (btn) btn.classList.add('active');
+  }
+  renderClassificationPanel();
+  setTimeout(() => {
+    const hdr = document.querySelector(`.acc-hdr[data-class-id="${id}"]`);
+    if (hdr) {
+      hdr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (!hdr.classList.contains('open')) toggleClassCard(hdr);
+    }
+  }, 50);
+}
 function showMap(id,btn){
   document.querySelectorAll('.map-subpanel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.map-tab').forEach(b=>b.classList.remove('active'));

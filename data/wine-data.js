@@ -64,7 +64,7 @@ const WINE_DB = {
       primaryGrapes: ['Merlot', 'Cabernet Franc'],
       styleSummary: '波爾多右岸梅洛與卡本內弗朗交融的核心產區，石灰岩台地與黏土坡地賦予酒液飽滿圓潤的紅李、黑巧克力與松露氣息，單寧細膩早熟，是右岸風格最具代表性且最早可親近的產區之一。',
       memoryHook: '右岸梅洛與卡本內弗朗的交融聖地，果實甜美圓潤',
-      keyIdentifiers: ['Red Plum(紅李)', 'Chocolate(巧克力)', 'Soft Tannin(柔軟單寧)', 'Limestone(石灰岩)'],
+      keyIdentifiers: ['Red Plum(紅李)', 'Chocolate(巧克力)', 'Soft Tannin(柔順單寧)', 'Limestone(石灰岩)'],
       terroir: {
         climate: '溫帶海洋性氣候，較左岸略溫暖，多爾多涅河調節晝夜溫差。',
         soil: '石灰岩台地、黏土緩坡與近波美侯的砂礫地塊並存，組成多樣。',
@@ -117,7 +117,7 @@ const WINE_DB = {
       primaryGrapes: ['Pinot Noir'],
       styleSummary: '全球黑皮諾表現力的最高殿堂，涵蓋 Gevrey-Chambertin、Vosne-Romanée 等傳奇村莊，玫瑰與紅櫻桃香氣細膩，單寧如絲綢般優雅；勃根地紅酒特級園幾乎全數集中於此，是地塊風土（Climat）概念發揮到極致的產區。',
       memoryHook: '黑皮諾的奧林帕斯，全球頂尖紅酒特級園的精華搖籃',
-      keyIdentifiers: ['Rose(玫瑰花香)', 'Red Cherry(紅櫻桃)', 'Silky Tannin(絲質單寧)', 'Truffle & Wild Mushroom(松露與野蕈)'],
+      keyIdentifiers: ['Rose(玫瑰花)', 'Red Cherry(紅櫻桃)', 'Silky Tannin(絲質單寧)', 'Truffle & Wild Mushroom(松露與野蕈)'],
       terroir: {
         climate: '溫帶大陸性氣候，日夜溫差顯著，有助累積香氣與保留酸度。',
         soil: '石灰岩與黏土質頁岩交錯，坡度與朝向決定地塊等級高低。',
@@ -143,7 +143,7 @@ const WINE_DB = {
       primaryGrapes: ['Chardonnay', 'Pinot Noir'],
       styleSummary: '金丘南段，以豐滿圓潤的頂級夏多內白酒聞名於世，Montrachet、Meursault 等村莊出產帶有奶油、烘烤榛果與蜂蠟香氣的飽滿酒體；南段同時也孕育 Pommard、Volnay 等優雅紅酒村莊，紅白兼美。',
       memoryHook: '勃根地最偉大的 Chardonnay 白酒之源，質地如同液體黃金',
-      keyIdentifiers: ['Hazelnut Butter(榛果奶油)', 'Beeswax(蜂蠟香氣)', 'Yellow Apple(黃蘋果)', 'Full Body(飽滿酒體)'],
+      keyIdentifiers: ['Hazelnut Butter(榛果奶油)', 'Beeswax(蜂蠟)', 'Yellow Apple(黃蘋果)', 'Full Body(飽滿酒體)'],
       terroir: {
         climate: '溫帶大陸性氣候，較夜丘略溫暖，日照更為充足。',
         soil: '泥灰質石灰岩（marne）比例較高，特別利於夏多內生長。',
@@ -460,7 +460,7 @@ const WINE_DB = {
       primaryGrapes: ['Sangiovese'],
       styleSummary: '托斯卡尼紅酒核心，酸櫻桃、乾草本、番茄葉與皮革香交織，高酸美味。1996 年從更廣域的 Chianti DOCG 獨立出來，法定 Sangiovese 佔比須在 80% 以上，標誌為象徵佛羅倫斯共和國的「黑公雞（Gallo Nero）」。',
       memoryHook: '古典黑公雞徽章：托斯卡尼的番茄葉、酸莓與硬派骨架',
-      keyIdentifiers: ['Sour Cherry(酸櫻桃)', 'Tomato Leaf(番茄葉)', 'Leather(皮革香)', 'Crisp High Acidity(高爽脆酸度)'],
+      keyIdentifiers: ['Sour Cherry(酸櫻桃)', 'Tomato Leaf(番茄葉)', 'Leather(皮革)', 'Crisp High Acidity(高酸爽脆)'],
       terroir: {
         climate: '溫和的地中海型氣候，丘陵海拔調節晝夜溫差，日照充足。',
         soil: 'Galestro 頁岩與 Alberese 石灰泥灰土為主，提供絕妙天然酸度。',
@@ -539,7 +539,7 @@ const WINE_DB = {
       primaryGrapes: ['Garganega'],
       styleSummary: '義大利最具代表性的火山岩白酒，杏仁、白花與礦石感，價格親民、品質扎實。Classico 核心區為古老火山玄武岩坡地，與東側平原的石灰岩沖積土形成鮮明品質落差，選購時建議認明 Classico 標示。',
       memoryHook: '威尼托白酒代表：火山岩土壤賦予的杏仁與礦石風味',
-      keyIdentifiers: ['Almond(杏仁)', 'White Flower(白花)', 'Lemon(檸檬)', 'Volcanic Mineral(火山岩礦石感)'],
+      keyIdentifiers: ['Almond(杏仁)', 'White Flower(白花)', 'Lemon(檸檬)', 'Volcanic Mineral(火山礦石感)'],
       terroir: {
         climate: '溫帶大陸性氣候，受 Garda 湖調節，日夜溫差有助保留酸度。',
         soil: 'Classico 核心區為古老火山玄武岩，東側平原則為石灰岩沖積土。',
@@ -880,7 +880,7 @@ const WINE_DB = {
       primaryGrapes: ['Riesling', 'Spätburgunder'],
       styleSummary: '萊茵河北岸南向坡地，日照條件優於 Mosel，麗絲玲風格更飽滿干型，是德國干型麗絲玲的精神領袖產區。19世紀末本區率先建立的葡萄熟度分級概念，日後演變為全德國通用的 Prädikatswein 系統。',
       memoryHook: '德國干型麗絲玲之都：萊茵河畔南向坡地，陽光更充足、酒體更飽滿、干型風格更主流',
-      keyIdentifiers: ['Yellow Apple(黃蘋果)', 'Apricot(杏桃)', 'Beeswax(蜂蠟感)', 'Full-Bodied Dry Style(飽滿干型酒體)', 'Aged Petrol(陳年汽油感)'],
+      keyIdentifiers: ['Yellow Apple(黃蘋果)', 'Apricot(杏桃)', 'Beeswax(蜂蠟)', 'Full-Bodied Dry(飽滿干型)', 'Aged Petrol(陳年汽油感)'],
       terroir: {
         climate: '溫帶大陸性氣候，較 Mosel 溫暖，寬闊萊茵河水域調節溫度並反射日照。',
         soil: '石英岩、片岩為主，部分區域覆蓋黃土層，排水良好且蓄熱佳。',
@@ -906,7 +906,7 @@ const WINE_DB = {
       primaryGrapes: ['Sauvignon Blanc', 'Pinot Noir'],
       styleSummary: '全球白蘇維濃的代名詞，以奔放的百香果、醋栗與青草香氣聞名，是紐西蘭種植面積最大、最具代表性的產區。Wairau Valley 與 Awatere Valley 因日夜溫差不同，分別發展出果味奔放與礦石緊實風格。',
       memoryHook: '世界白蘇維濃之都：強烈日照配合夜間涼冷，百香果與醋栗香氣的教科書範例',
-      keyIdentifiers: ['Passion Fruit(百香果)', 'Gooseberry(醋栗)', 'Grass(青草)', 'Crisp High Acidity(高酸爽脆)', 'Bell Pepper(青椒，賽美容素風味)'],
+      keyIdentifiers: ['Passionfruit(百香果)', 'Gooseberry(醋栗)', 'Grass(青草)', 'Crisp High Acidity(高酸爽脆)', 'Bell Pepper(青椒，賽美容素風味)'],
       terroir: { climate: '涼冷海洋性氣候，南阿爾卑斯山脈屏蔽降雨，日照時數居紐西蘭之冠，日夜溫差大。', soil: 'Wairau Valley 為沖積礫石土、排水極佳；Awatere Valley 較涼，黏土比例略高', elevation: '0–150 公尺' },
       agingPotential: '1–4 年（白蘇維濃以年輕新鮮飲用為主）',
       agingNote: '本區白蘇維濃的香氣主要來自硫醇類化合物（如 3-MH），這類物質會隨時間迅速消散；加上多採不鏽鋼槽發酵、不經橡木桶與乳酸發酵，缺乏單寧與氧化骨架支撐陳年，故適合開瓶後 1–4 年內盡早飲用。',
@@ -928,7 +928,7 @@ const WINE_DB = {
       primaryGrapes: ['Pinot Noir'],
       styleSummary: '全球最南緯精品產區之一，高海拔大陸性氣候造就濃郁果香與細緻單寧並存的黑皮諾風格。地處南緯45度，是全球商業化葡萄種植緯度最南的產區之一，1990年代才開始大規模發展，是紐西蘭成長最快的精品產區。',
       memoryHook: '世界最南端的黑皮諾秘境：內陸高海拔大陸性氣候，日夜溫差打造濃縮卻優雅的果味',
-      keyIdentifiers: ['Black Cherry(黑櫻桃)', 'Plum(李子)', 'Spice(香料)', 'Silky Tannin(絲滑單寧)', 'High-Altitude Mineral(高海拔礦石感)'],
+      keyIdentifiers: ['Black Cherry(黑櫻桃)', 'Plum(李子)', 'Spice(香料)', 'Silky Tannin(絲質單寧)', 'High-Altitude Mineral(高海拔礦石感)'],
       terroir: {
         climate: '紐西蘭唯一的大陸性氣候產區，遠離海洋調節，日夜溫差極大、年雨量低。',
         soil: '冰河沖積土、黃土與片岩混合，排水極佳，部分山坡地塊海拔逾400公尺。',
@@ -1138,7 +1138,7 @@ const WINE_DB = {
       primaryGrapes: ['Sauvignon Blanc', 'Sémillon', 'Muscadelle'],
       styleSummary: '夾於加龍河與多爾多涅河之間的廣大丘陵地帶，是波爾多面積最大的次產區之一，AOC 法規僅允許出產干白酒，以白蘇維濃為主導、賽美容輔助，風格清新易飲、果香直接，是認識波爾多干白最平易近人的入門產區。',
       memoryHook: '兩河之間只產干白：波爾多最大產區，白蘇維濃清爽風格的性價比之王',
-      keyIdentifiers: ['Grass(青草)', 'Gooseberry(醋栗)', 'White Flower(白花)', 'Crisp High Acidity(清爽高酸)', 'Early-Drinking Style(早飲型)'],
+      keyIdentifiers: ['Grass(青草)', 'Gooseberry(醋栗)', 'White Flower(白花)', 'Crisp High Acidity(高酸爽脆)', 'Early-Drinking Style(早飲型)'],
       terroir: {
         climate: '溫帶海洋性氣候，丘陵起伏地形使微氣候差異顯著，日照條件多樣。',
         soil: '石灰岩、黏土與礫石混合的丘陵地，土壤組成隨地塊變化明顯。',
@@ -1244,7 +1244,7 @@ const WINE_DB = {
       primaryGrapes: ['Pinot Noir', 'Chardonnay'],
       styleSummary: '伯恩丘西側山背後的高地，紅白兼產，夏多內白酒清新易飲、蘋果與白花香氣顯著，黑皮諾則呈現輕盈花香的早飲魅力，隨氣候暖化成熟度逐漸改善，是勃根地平易近人的入門後院產區。',
       memoryHook: '伯恩丘的高地後花園：紅白兼宜，清新花香型勃根地的低調好選擇',
-      keyIdentifiers: ['White Flower(白花)', 'Green Apple(清新蘋果，白酒)', 'Strawberry(草莓紅果，紅酒)', 'Light Body(輕盈酒體)', 'Crisp Acidity(清爽酸度)'],
+      keyIdentifiers: ['White Flower(白花)', 'Green Apple(青蘋果)', 'Strawberry(草莓)', 'Light Body(輕盈酒體)', 'Crisp Acidity(清爽酸度)'],
       terroir: {
         climate: '溫帶大陸性氣候，高海拔氣候涼爽，有助夏多內保持天然酸度。',
         soil: '石灰岩高地，表土較淺，有機質含量有限，蓄熱能力較弱。',
@@ -1350,7 +1350,7 @@ const WINE_DB = {
       primaryGrapes: ['Viognier'],
       styleSummary: '全球維歐尼耶白酒的最高殿堂，100% 單一品種，桃子、杏桃與忍冬花香馥郁奔放，酒體飽滿而酸度偏低，風格奢華獨特。',
       memoryHook: '維歐尼耶的唯一聖地：桃子與忍冬花的奢華白酒，酸度低但香氣無與倫比',
-      keyIdentifiers: ['White Peach(水蜜桃)', 'Apricot(杏桃)', 'Honeysuckle(忍冬花)', 'Ginger Spice(薑香)', 'Oily Body(油脂感酒體)'],
+      keyIdentifiers: ['White Peach(白桃)', 'Apricot(杏桃)', 'Honeysuckle(忍冬花)', 'Ginger Spice(薑香)', 'Oily Body(油脂感酒體)'],
       terroir: {
         climate: '溫帶大陸性，陡峭花崗岩坡地蓄熱，微氣候比周邊更溫暖',
         soil: '花崗岩風化砂質土（Arènes granitiques），排水極佳，貧瘠逼迫根系深扎',
@@ -1402,7 +1402,7 @@ const WINE_DB = {
       primaryGrapes: ['Grenache', 'Syrah', 'Mourvèdre'],
       styleSummary: '隆河谷最廣域的地區性 AOC，以格那希為主的混調紅酒，果香奔放、酒體圓潤，是法國南部最具代表性的日常餐酒，性價比極高。',
       memoryHook: '南法陽光的日常餐桌酒：廣域混調，格那希主導的圓潤果香，平易近人',
-      keyIdentifiers: ['Red Berry(紅莓果香)', 'Garrigue(南法草本)', 'Warm & Round(溫暖圓潤)', 'Low Tannin(低單寧)', 'Easy-Drinking Style(易飲型)'],
+      keyIdentifiers: ['Red Berry(紅莓)', 'Garrigue(南法草本)', 'Warm & Round(溫暖圓潤)', 'Low Tannin(低單寧)', 'Easy-Drinking Style(易飲型)'],
       terroir: {
         climate: '典型地中海型氣候，整個隆河谷皆適用，日照充沛，夏乾冬雨',
         soil: '多元：河谷沖積土、石灰岩礫石、砂質土，因地點而異',
@@ -1430,7 +1430,7 @@ const WINE_DB = {
       primaryGrapes: ['Corvina', 'Rondinella', 'Molinara'],
       styleSummary: '威尼托的輕盈日常紅酒，帶有清新酸莓與杏仁苦尾風味，是 Amarone 與 Ripasso 的基礎酒款，也是最能體現科維納品種原始清秀個性的入門產區。',
       memoryHook: 'Amarone 的輕盈版原型：科維納的清新酸莓，杏仁苦味尾韻是辨識記號',
-      keyIdentifiers: ['Sour Berry(酸莓)', 'Red Cherry(紅櫻桃)', 'Bitter Almond Finish(杏仁苦尾)', 'Light Body(輕盈酒體)', 'Fresh & Easy-Drinking(清爽易飲)'],
+      keyIdentifiers: ['Sour Berry(酸莓)', 'Red Cherry(紅櫻桃)', 'Bitter Almond Finish(苦杏仁尾韻)', 'Light Body(輕盈酒體)', 'Fresh & Easy-Drinking(清新易飲)'],
       terroir: {
         climate: '溫帶大陸性，受 Garda 湖調節，夏季溫暖但夜間涼爽',
         soil: '石灰岩山坡（Classico 核心區）與平原沖積土混合，山坡地塊品質更優',
@@ -1508,7 +1508,7 @@ const WINE_DB = {
       primaryGrapes: ['Malbec', 'Cabernet Sauvignon'],
       styleSummary: '門多薩海拔最高、近年商業能見度成長最快的次產區，部分地塊超過1500公尺，極端日夜溫差賦予馬爾貝克更細緻的單寧與更鮮明的酸度，風格比盧漢德庫約更為優雅緊緻，是阿根廷精品酒近年最受矚目的新興產區。',
       memoryHook: '門多薩新星：破1500公尺高海拔孕育的緊緻優雅馬爾貝克',
-      keyIdentifiers: ['Extreme Altitude(極端高海拔)', 'Fine Tannin(細緻單寧)', 'High Acidity(高酸度)', 'Red Fruit(紅色水果)'],
+      keyIdentifiers: ['Extreme Altitude(極端高海拔)', 'Refined Tannin(細緻單寧)', 'High Acidity(高酸度)', 'Red Fruit(紅色水果)'],
       terroir: {
         climate: '高海拔沙漠型氣候，部分地塊超過1500公尺，是門多薩日夜溫差最顯著的次產區。',
         soil: '沖積沙質與石灰質土壤，部分高海拔地塊含大量卵石。',
@@ -1824,7 +1824,7 @@ const WINE_DB = {
       primaryGrapes: ['Touriga Nacional'],
       styleSummary: '葡萄牙最具歷史的山區紅酒產區，四周高山環繞形成天然屏障，花崗岩砂質土壤搭配高海拔涼爽氣候，讓國產多瑙加展現比溫暖產區更細緻的花香與礦石感單寧，是葡萄牙優雅風格紅酒的代表產區。',
       memoryHook: '葡萄牙的山中優雅：花崗岩土壤孕育細緻版國產多瑙加',
-      keyIdentifiers: ['Violet(紫羅蘭)', 'Red Cherry(紅櫻桃)', 'Granite Soil(花崗岩土壤)', 'Fine Tannin(細緻單寧)'],
+      keyIdentifiers: ['Violet(紫羅蘭)', 'Red Cherry(紅櫻桃)', 'Granite Soil(花崗岩土壤)', 'Refined Tannin(細緻單寧)'],
       terroir: {
         climate: '大陸性氣候，四周高山環繞形成天然屏障阻隔海洋與極端氣候影響，日夜溫差顯著。',
         soil: '花崗岩風化砂質土為主，排水良好、土壤貧瘠利於根系深扎。',
@@ -1902,7 +1902,7 @@ const WINE_DB = {
       primaryGrapes: ['Sauvignon Blanc', 'Chardonnay', 'Pinot Noir'],
       styleSummary: '智利最具代表性的沿海冷涼氣候產區，緊鄰太平洋，晨霧與涼爽海風大幅延長生長季，白蘇維濃展現明亮草本與百香果氣息，夏多內與黑皮諾亦有出色表現，是智利精品白酒與冷氣候紅酒的指標產區。',
       memoryHook: '智利冷涼海岸代表：太平洋晨霧孕育的白蘇維濃與夏多內',
-      keyIdentifiers: ['Passionfruit(百香果)', 'Grassy(草本)', 'Citrus(柑橘)', 'High Acidity(高酸度)', 'Coastal Fog(沿海晨霧)'],
+      keyIdentifiers: ['Passionfruit(百香果)', 'Grass(青草)', 'Citrus(柑橘)', 'High Acidity(高酸度)', 'Coastal Fog(沿海晨霧)'],
       terroir: {
         climate: '冷涼海洋性氣候，緊鄰太平洋，晨霧與涼爽海風顯著延長生長季、保留酸度。',
         soil: '黏土與花崗岩風化土為主，排水良好。',
@@ -1980,7 +1980,7 @@ const WINE_DB = {
       primaryGrapes: ['Chenin Blanc', 'Syrah'],
       styleSummary: '南非當代最受矚目的自然派與老藤白詩楠重鎮，乾燥炎熱氣候搭配未灌溉的旱作老藤，賦予白詩楠濃縮的核果與蜂蠟氣息，隆河式希哈與格納希混調亦備受推崇，是近年南非精品酒革命的核心產區。',
       memoryHook: '南非當代酒業革命核心：旱作老藤白詩楠與隆河式希哈混調',
-      keyIdentifiers: ['Old Vine Chenin Blanc(老藤白詩楠)', 'Beeswax(蜂蠟)', 'Dry-Farmed(旱作)', 'Rhône Blend(隆河式混調)'],
+      keyIdentifiers: ['Old Vine Chenin Blanc(老藤白詩楠)', 'Beeswax(蜂蠟)', 'Dry-Farmed(旱作)', 'Rhône Blend(隆河混調)'],
       terroir: {
         climate: '地中海型氣候，乾燥炎熱，多數葡萄園採旱作、不灌溉。',
         soil: '花崗岩與頁岩風化土為主，部分地塊含鐵質土。',
@@ -2084,7 +2084,7 @@ const WINE_DB = {
       primaryGrapes: ['Grenache', 'Syrah', 'Cabernet Sauvignon'],
       styleSummary: '加州中海岸的隆河混調重鎮，風格溫暖飽滿但因沿海霧氣與夜間降溫而保有一定明亮度。「隆河遊俠（Rhône Rangers）」運動的重要據點，格那希、希哈、慕維得爾混調表現突出，也是卡本內蘇維濃與金芬黛的優質產地。',
       memoryHook: '加州的隆河：Tablas Creek 與教皇新堡名莊合資，引進正統隆河種苗',
-      keyIdentifiers: ['Blackberry(黑莓)', 'Garrigue(南法草本)', 'Rhône Blend(隆河混調)', 'Limestone(石灰質土壤)'],
+      keyIdentifiers: ['Blackberry(黑莓)', 'Garrigue(南法草本)', 'Rhône Blend(隆河混調)', 'Limestone(石灰岩)'],
       terroir: {
         climate: '溫暖地中海型氣候，內陸日照充足，沿海霧氣帶來顯著夜間降溫。',
         soil: '西側石灰質土壤，東側沖積土為主，兩者風格差異明顯。',
@@ -2110,7 +2110,7 @@ const WINE_DB = {
       primaryGrapes: ['Pinot Noir', 'Chardonnay'],
       styleSummary: '加州最具代表性的冷涼氣候黑皮諾產區，太平洋晨霧沿俄羅斯河谷深入內陸，大幅延長生長季並保留酸度，黑皮諾展現紅色莓果與細膩單寧，夏多內則兼具成熟果味與清新礦物感，是新世界冷氣候黑皮諾的指標產區之一。',
       memoryHook: '加州冷涼黑皮諾指標：太平洋晨霧沿河谷深入內陸的天然空調',
-      keyIdentifiers: ['Red Cherry(紅櫻桃)', 'Cranberry(蔓越莓)', 'Silky Tannin(絲滑單寧)', 'Coastal Fog(沿海晨霧)'],
+      keyIdentifiers: ['Red Cherry(紅櫻桃)', 'Cranberry(蔓越莓)', 'Silky Tannin(絲質單寧)', 'Coastal Fog(沿海晨霧)'],
       terroir: {
         climate: '冷涼海洋性氣候，太平洋晨霧沿俄羅斯河谷深入內陸，午後多陽光，日夜溫差顯著。',
         soil: 'Goldridge砂質壤土為主，排水良好。',
@@ -2136,7 +2136,7 @@ const WINE_DB = {
       primaryGrapes: ['Pinot Noir', 'Chardonnay'],
       styleSummary: '聖塔芭芭拉郡最受矚目的冷涼產區，罕見的東西走向山谷讓太平洋涼風與晨霧得以長驅直入，是加州少數能種出兼具濃縮果味與明亮酸度的黑皮諾與夏多內的產區，近年評論家關注度快速上升。',
       memoryHook: '東西走向山谷的地理奇蹟：太平洋涼風直灌的黑皮諾新星產區',
-      keyIdentifiers: ['Dark Cherry(黑櫻桃)', 'Saline Minerality(鹹礦物感)', 'High Acidity(高酸度)', 'East-West Valley(東西走向山谷)'],
+      keyIdentifiers: ['Black Cherry(黑櫻桃)', 'Saline Minerality(鹹礦物感)', 'High Acidity(高酸度)', 'East-West Valley(東西走向山谷)'],
       terroir: {
         climate: '冷涼海洋性氣候，罕見的東西走向山谷地形讓太平洋涼風與晨霧直接深入內陸。',
         soil: '海洋沉積土與砂質土為主，含豐富貝殼化石。',
@@ -2266,7 +2266,7 @@ const WINE_DB = {
       primaryGrapes: ['Chardonnay', 'Sauvignon Blanc'],
       styleSummary: '南澳最重要的冷涼氣候高海拔產區，海拔顯著調節氣溫，是南澳少數能種出優雅細緻白酒與氣泡酒基酒的地區，夏多內與白蘇維濃展現明亮酸度與礦物感，與周邊溫暖產區的濃郁紅酒風格形成鮮明對比。',
       memoryHook: '南澳的清涼高地：海拔調節下的優雅夏多內與白蘇維濃',
-      keyIdentifiers: ['High Altitude(高海拔)', 'Citrus(柑橘)', 'Mineral(礦物感)', 'High Acidity(高酸度)'],
+      keyIdentifiers: ['High Altitude(高海拔)', 'Citrus(柑橘)', 'Mineral(礦石感)', 'High Acidity(高酸度)'],
       terroir: {
         climate: '冷涼高海拔氣候，海拔顯著調節氣溫，生長季比周邊南澳產區涼爽許多。',
         soil: '砂質壤土與頁岩混合，部分地塊含花崗岩風化土。',
@@ -2424,7 +2424,7 @@ const WINE_DB = {
       primaryGrapes: ['Montepulciano'],
       styleSummary: '義大利最平易近人的日常紅酒代表，顏色深邃、單寧柔順、李子與黑櫻桃果香飽滿，是全球市場能見度最高的義大利紅酒之一。少數酒莊如 Valentini、Emidio Pepe 則證明本品種也能釀出結構精緻的陳年佳釀。',
       memoryHook: '義大利國民餐酒代表：柔順單寧與飽滿果香，也有隱藏版的陳年實力派',
-      keyIdentifiers: ['Plum(李子)', 'Black Cherry(黑櫻桃)', 'Soft Tannin(柔順單寧)', 'Everyday Value(高性價比日常酒)'],
+      keyIdentifiers: ['Plum(李子)', 'Black Cherry(黑櫻桃)', 'Soft Tannin(柔順單寧)', 'Everyday Value(日常餐酒)'],
       terroir: {
         climate: '地中海型氣候，受亞得里亞海與亞平寧山脈雙重調節，日照充足。',
         soil: '山麓黏土與石灰岩沖積土為主，沿海地塊排水更佳。',
@@ -2826,7 +2826,7 @@ const WINE_DB = {
       primaryGrapes: ['Monastrell'],
       styleSummary: '西班牙東南部半沙漠高原產區，Monastrell（即慕維得爾）是絕對主角。沙質土壤天然阻絕根瘤蚜蟲害，保留大量未嫁接百年老藤，濃縮度與性價比俱佳，是近年國際市場熱議的西班牙價值型紅酒代表。',
       memoryHook: '西班牙價值型紅酒新星：沙漠老藤 Monastrell，未嫁接根系保留百年',
-      keyIdentifiers: ['Blackberry(黑莓)', 'Plum(李子)', 'Ungrafted Old Vine(未嫁接老藤)', 'High Value(高性價比)'],
+      keyIdentifiers: ['Blackberry(黑莓)', 'Plum(李子)', 'Ungrafted Old Vine(未嫁接老藤)', 'Great Value(性價比高)'],
       terroir: {
         climate: '半沙漠大陸性氣候，年雨量稀少，日照極為充足。',
         soil: '沙質土壤為主，天然阻絕根瘤蚜蟲害，保留大量未嫁接老藤。',
@@ -3408,7 +3408,8 @@ const WINE_DB = {
         { name: 'Cinquième Cru(五級酒莊)', note: '18家，包含近年表現常超越排名的Château Lynch-Bages等。' }
       ],
       history: '評選對象僅限Médoc（左岸）紅酒與Sauternes/Barsac貴腐甜白，Saint-Émilion與Pomerol當年並未納入，因此波爾多右岸至今仍無1855體系下的分級，這也是右岸酒莊必須另外仰賴Saint-Émilion Classification等獨立制度的根本原因。Sauternes/Barsac同年另訂獨立的3級甜酒分級（Premier Cru Supérieur僅Château d\'Yquem一家、Premier Cru、Deuxième Cru），與Médoc系統平行但不互通，兩套系統等級名稱雖然相同，實際評選對象與標準卻完全獨立。',
-      crossNote: '分級掛在「酒莊」這個法人實體上，即使酒莊日後賣掉部分葡萄園、甚至完全換了地塊，原本的等級仍會跟著酒莊名稱走——這是與勃根地「分級掛在土地上」最根本的邏輯差異，也解釋了為什麼波爾多酒莊熱衷於購地擴張（等級不受影響），而勃根地酒農即使聲望再高，也無法讓新購入的地塊借用原有葡萄園的特級園身分。'
+      crossNote: '分級掛在「酒莊」這個法人實體上，即使酒莊日後賣掉部分葡萄園、甚至完全換了地塊，原本的等級仍會跟著酒莊名稱走——這是與<span class="grape-inline-link" onclick="jumpToClassificationById(\'burgundy-cru\')">勃根地</span>「分級掛在土地上」最根本的邏輯差異，也解釋了為什麼波爾多酒莊熱衷於購地擴張（等級不受影響），而勃根地酒農即使聲望再高，也無法讓新購入的地塊借用原有葡萄園的特級園身分。',
+      relatedAppellations: ['margaux', 'pauillac', 'haut-medoc', 'medoc', 'sauternes', 'barsac'],
     },
     {
       id: 'saint-emilion',
@@ -3424,7 +3425,8 @@ const WINE_DB = {
         { name: 'Grand Cru Classé(特級酒莊)', note: '約85家，涵蓋聖艾米濃絕大多數具一定聲望的酒莊。' }
       ],
       history: '2006年與2012年的重新評選都曾引發酒莊提告法院、要求撤銷結果的爭議事件——2006年評選甚至一度遭法院裁定結果無效、暫時恢復1996年舊名單，凸顯「定期複評」制度雖然立意在於維持品質動態淘汰，但實務執行上牽涉龐大商業利益與莊園身價，是波爾多分級史上最具爭議的一段歷史。',
-      crossNote: '與1855體系同樣是「酒莊分級」，但「每10年重新評選」與1855「一次性、幾乎不變動」形成鮮明對比，可作為同一種分級邏輯（By 酒莊）下兩種截然不同治理哲學的對照範例——1855用「凍結歷史排名」換取穩定性與可預期性，聖艾米濃則用「定期複評」換取品質代表性，兩者各有支持者與批評者。'
+      crossNote: '與<span class="grape-inline-link" onclick="jumpToClassificationById(\'bordeaux-1855\')">1855體系</span>同樣是「酒莊分級」，但「每10年重新評選」與1855「一次性、幾乎不變動」形成鮮明對比，可作為同一種分級邏輯（By 酒莊）下兩種截然不同治理哲學的對照範例——1855用「凍結歷史排名」換取穩定性與可預期性，聖艾米濃則用「定期複評」換取品質代表性，兩者各有支持者與批評者。',
+      relatedAppellations: ['saint-emilion'],
     },
     {
       id: 'burgundy-cru',
@@ -3441,7 +3443,8 @@ const WINE_DB = {
         { name: 'Régionale(大區級)', note: '標示Bourgogne等大區名稱，佔比過半，是勃根地入門酒款的主力來源。' }
       ],
       history: '此分級架構源自中世紀熙篤會（Cistercian）修士數百年間對不同地塊土壤、排水與日照差異的細膩觀察與紀錄，1936年由法國AOC制度正式法律化，是全世界「風土決定品質」（terroir）概念最極致的體現；1789年法國大革命後教會與貴族地產被強制分割拍賣、加上拿破崙法典規定遺產須諸子均分，是造成今日地塊持有極度細碎化的兩大歷史推手。',
-      crossNote: '與波爾多「By 酒莊」邏輯相反：同一位生產者可能同時擁有Grand Cru、Premier Cru與Village等級的地塊，同一年份不同等級的酒款品質落差主要來自土地而非釀酒師技術，這也是理解「By 葡萄園」分級的關鍵——品飲勃根地時，「誰種的」與「種在哪」同樣重要，甚至後者往往更受行家重視。'
+      crossNote: '與<span class="grape-inline-link" onclick="jumpToClassificationById(\'bordeaux-1855\')">波爾多</span>「By 酒莊」邏輯相反：同一位生產者可能同時擁有Grand Cru、Premier Cru與Village等級的地塊，同一年份不同等級的酒款品質落差主要來自土地而非釀酒師技術，這也是理解「By 葡萄園」分級的關鍵——品飲勃根地時，「誰種的」與「種在哪」同樣重要，甚至後者往往更受行家重視。',
+      relatedAppellations: ['cote-de-nuits', 'cote-de-beaune', 'chablis', 'cote-chalonnaise', 'maconnais', 'hautes-cotes-de-nuits', 'hautes-cotes-de-beaune'],
     },
     {
       id: 'champagne-echelle',
@@ -3457,7 +3460,8 @@ const WINE_DB = {
         { name: 'Cru(其餘村莊)', note: '香檳區其餘約260個村莊，評級低於90%，仍可能出產優質香檳，僅代表歷史訂價評級較低。' }
       ],
       history: '官方的百分比訂價機制已於2010年正式廢止（改由市場自由議價），但Grand Cru／Premier Cru的村莊名聲分級至今仍普遍印在酒標與業界論述中，實質上已從「訂價工具」轉型為「行銷與品質參考標籤」；近年興起的「單一園香檳」與「小農香檳」浪潮，某種程度上正是對這套「以村莊而非地塊」評級邏輯過於粗略的反動。',
-      crossNote: '與義大利DOCG同屬「By 產區」邏輯：分級對象是一整個地理範圍（村莊／法定產區），而非個別酒莊或個別葡萄園，範圍內所有符合規範的生產者共享同一等級標示——但香檳的「村莊」尺度遠小於DOCG的「產區」尺度，介於勃根地「葡萄園」與傳統「產區」概念的中間地帶，是三種By分類尺度大小的絕佳對照案例。'
+      crossNote: '與<span class="grape-inline-link" onclick="jumpToClassificationById(\'italy-docg-pyramid\')">義大利DOCG</span>同屬「By 產區」邏輯：分級對象是一整個地理範圍（村莊／法定產區），而非個別酒莊或個別葡萄園，範圍內所有符合規範的生產者共享同一等級標示——但香檳的「村莊」尺度遠小於DOCG的「產區」尺度，介於勃根地「葡萄園」與傳統「產區」概念的中間地帶，是三種By分類尺度大小的絕佳對照案例。',
+      relatedAppellations: ['montagne-de-reims', 'vallee-de-la-marne', 'cote-des-blancs'],
     },
     {
       id: 'france-aoc-pyramid',
@@ -3473,7 +3477,8 @@ const WINE_DB = {
         { name: 'Vin de France(日常餐酒)', note: '2009年由舊制Vin de Table（日常餐酒）更名，最基礎等級，幾乎無產區與品種限制，可混調不同年份與產區的酒液，酒標僅能標示「法國葡萄酒」與品種（若標示品種）。' }
       ],
       history: '法國是全世界最早建立法定產區（Appellation d\'Origine）觀念的國家，1935年成立INAO（國家原產地名稱局）並開始劃定AOC產區邊界，是後續義大利DOC/DOCG、西班牙DO/DOCa等歐洲法定產區制度的原型範本。2009年歐盟農業法規改革要求全體會員國統一為PDO（受保護原產地名稱）/PGI（受保護地理標示）兩層架構，法國因此新增AOP作為AOC的官方歐盟對應用語、Vin de Pays更名為IGP、Vin de Table更名為Vin de France，但法規本質與各等級規範門檻並未實質改變，僅是名稱與歐盟用語接軌。',
-      crossNote: '與義大利DOCG/DOC/IGT/VdT、西班牙DOCa/DO/VdlT/VdM、德國Prädikatswein等其餘全國性金字塔同屬「By 產區」邏輯的歐盟共通二層架構（AOP對應DOCG/DOC/DOCa/DO，IGP對應IGT/VdlT）；法國的獨特之處在於AOC/AOP底下還疊加了勃根地Grand Cru/Premier Cru、波爾多1855等眾多獨立的By葡萄園/By酒莊分級，這張全國性金字塔僅是最基礎的骨架，經典法定產區幾乎都在AOC/AOP這一層再往上疊加更精細的分級。'
+      crossNote: '與<span class="grape-inline-link" onclick="jumpToClassificationById(\'italy-docg-pyramid\')">義大利DOCG/DOC/IGT/VdT</span>、<span class="grape-inline-link" onclick="jumpToClassificationById(\'spain-do-pyramid\')">西班牙DOCa/DO/VdlT/VdM</span>、<span class="grape-inline-link" onclick="jumpToClassificationById(\'germany-praedikatswein\')">德國Prädikatswein</span>等其餘全國性金字塔同屬「By 產區」邏輯的歐盟共通二層架構（AOP對應DOCG/DOC/DOCa/DO，IGP對應IGT/VdlT）；法國的獨特之處在於AOC/AOP底下還疊加了<span class="grape-inline-link" onclick="jumpToClassificationById(\'burgundy-cru\')">勃根地Grand Cru/Premier Cru</span>、<span class="grape-inline-link" onclick="jumpToClassificationById(\'bordeaux-1855\')">波爾多1855</span>等眾多獨立的By葡萄園/By酒莊分級，這張全國性金字塔僅是最基礎的骨架，經典法定產區幾乎都在AOC/AOP這一層再往上疊加更精細的分級。',
+      relatedAppellations: [],
     },
     {
       id: 'bordeaux-basic-hierarchy',
@@ -3489,7 +3494,8 @@ const WINE_DB = {
         { name: 'Bordeaux AOC(基礎法定產區)', note: '波爾多全區通用的入門法定產區，涵蓋左右岸與衛星產區，允許範圍最廣，是波爾多產量最大的等級。' }
       ],
       history: 'Bordeaux AOC與Bordeaux Supérieur AOC是波爾多最基礎的地理分級，任何位於波爾多產區邊界內、符合基本規範的酒莊皆可標示，兩者差異僅在於產量上限與陳年時間門檻。Cru Bourgeois則源自Médoc地區，是為1855分級未能納入的眾多優質酒莊設立的品質認證：2003年官方首次公布正式分級名單，隨即遭落選酒莊興訟，2007年法院以評選過程欠缺透明為由判決撤銷該分級；此後Cru Bourgeois一度改為不分位階、逐年份重新認證的品質標章。近年官方已重新引入Cru Bourgeois／Cru Bourgeois Supérieur／Cru Bourgeois Exceptionnel三級位階制度，但確切現行細則（如評選週期、最新適用年份）建議以官方最新公告為準，此處不做具體年份陳述。',
-      crossNote: '與1855分級（Grand Cru Classé，僅Médoc/Sauternes-Barsac約60家頂尖酒莊）及Saint-Émilion分級（僅限右岸聖艾米濃）並非互斥或競爭關係，而是分屬不同地理範圍與評選邏輯的並存體系：1855分級是「凍結於1855年、極少更動」的歷史名單，僅涵蓋Médoc最頂尖的少數酒莊；Cru Bourgeois則是1855分級之外、Médoc其餘優質酒莊的品質認證，理論上任何符合條件的酒莊皆可申請，兩者對象完全不重疊。消費者選購時應理解：一瓶Médoc酒款若未列名1855分級，仍可能是聲譽優良的Cru Bourgeois酒莊；此表把Cru Bourgeois歸類在Region僅為配合現有三分類架構的權宜安排，實際上Cru Bourgeois是掛在個別酒莊身上的品質認證，性質上更接近By 酒莊邏輯。'
+      crossNote: '與<span class="grape-inline-link" onclick="jumpToClassificationById(\'bordeaux-1855\')">1855分級</span>（Grand Cru Classé，僅Médoc/Sauternes-Barsac約60家頂尖酒莊）及<span class="grape-inline-link" onclick="jumpToClassificationById(\'saint-emilion\')">Saint-Émilion分級</span>（僅限右岸聖艾米濃）並非互斥或競爭關係，而是分屬不同地理範圍與評選邏輯的並存體系：1855分級是「凍結於1855年、極少更動」的歷史名單，僅涵蓋Médoc最頂尖的少數酒莊；Cru Bourgeois則是1855分級之外、Médoc其餘優質酒莊的品質認證，理論上任何符合條件的酒莊皆可申請，兩者對象完全不重疊。消費者選購時應理解：一瓶Médoc酒款若未列名1855分級，仍可能是聲譽優良的Cru Bourgeois酒莊；此表把Cru Bourgeois歸類在Region僅為配合現有三分類架構的權宜安排，實際上Cru Bourgeois是掛在個別酒莊身上的品質認證，性質上更接近By 酒莊邏輯。',
+      relatedAppellations: ['margaux', 'pauillac', 'haut-medoc', 'medoc'],
     },
     {
       id: 'alsace-grand-cru',
@@ -3504,7 +3510,8 @@ const WINE_DB = {
         { name: 'Alsace AOC(基礎法定產區)', note: '阿爾薩斯全區通用的入門等級，允許品種範圍更廣、產量上限更寬鬆，是本區日常餐酒的主力來源。' }
       ],
       history: '阿爾薩斯Grand Cru分級始於1975年，是法國少數以「品種＋地塊」雙重限制並行的葡萄園分級——與勃根地Grand Cru可涵蓋多個品種不同，阿爾薩斯Grand Cru原則上僅限四大貴族品種（少數地塊如Zotzenberg允許Sylvaner例外），且產量上限較基礎Alsace AOC更嚴格。51個地塊陸續分批劃定完成，個別地塊因地質（花崗岩、石灰岩、片岩等多元地質）差異極大，風格辨識度也隨之不同。',
-      crossNote: '與勃根地Grand Cru／Premier Cru同屬「By 葡萄園」邏輯，但阿爾薩斯Grand Cru額外疊加了「限定品種」這項勃根地沒有的門檻（勃根地Grand Cru可用Pinot Noir或Chardonnay等多種品種），是「By 葡萄園」邏輯下另一種設計哲學的對照案例；阿爾薩斯同時也是法國少數以品種標示為主流（而非產區名稱）的產區，即使基礎Alsace AOC等級的酒標，通常也會直接標示品種名稱。'
+      crossNote: '與<span class="grape-inline-link" onclick="jumpToClassificationById(\'burgundy-cru\')">勃根地Grand Cru／Premier Cru</span>同屬「By 葡萄園」邏輯，但阿爾薩斯Grand Cru額外疊加了「限定品種」這項勃根地沒有的門檻（勃根地Grand Cru可用Pinot Noir或Chardonnay等多種品種），是「By 葡萄園」邏輯下另一種設計哲學的對照案例；阿爾薩斯同時也是法國少數以品種標示為主流（而非產區名稱）的產區，即使基礎Alsace AOC等級的酒標，通常也會直接標示品種名稱。',
+      relatedAppellations: ['alsace'],
     },
     {
       id: 'italy-docg-pyramid',
@@ -3521,7 +3528,8 @@ const WINE_DB = {
         { name: 'VdT(日常餐酒)', note: 'Vino da Tavola，最基礎等級，幾乎無產區與品種規範，僅標示「義大利葡萄酒」。' }
       ],
       history: '著名的「Super Tuscan悖論」：1970至80年代部分托斯卡尼酒莊（如Sassicaia、Tignanello）因使用Cabernet Sauvignon等國際品種、不符合當時Chianti DOC的傳統混調規定，只能被迫標示為最低階的VdT——但品質與價格卻是全義大利頂尖，直接促成1992年IGT等級的誕生，用以收編這類「規則外的優秀酒款」。有趣的是，即使日後升級的大門已經敞開，Sassicaia等酒莊至今仍選擇留在較低等級，反映「等級」與「品質／價格」在義大利酒標系統裡從一開始就未必對等的深層矛盾。',
-      crossNote: '與香檳Échelle des Crus同屬「By 產區」邏輯，但義大利此制度是全國性、跨區域的四級架構，而非單一產區內的村莊分級，兩者可作為「產區分級」尺度大小的對照；與後續新增的西班牙DO/DOCa、德國Prädikatswein、葡萄牙DOC金字塔並列，可看出歐盟各國法定產區制度雖然名稱各異，骨架卻高度相似。'
+      crossNote: '與<span class="grape-inline-link" onclick="jumpToClassificationById(\'champagne-echelle\')">香檳Échelle des Crus</span>同屬「By 產區」邏輯，但義大利此制度是全國性、跨區域的四級架構，而非單一產區內的村莊分級，兩者可作為「產區分級」尺度大小的對照；與後續新增的<span class="grape-inline-link" onclick="jumpToClassificationById(\'spain-do-pyramid\')">西班牙DO/DOCa</span>、<span class="grape-inline-link" onclick="jumpToClassificationById(\'germany-praedikatswein\')">德國Prädikatswein</span>、<span class="grape-inline-link" onclick="jumpToClassificationById(\'portugal-doc-pyramid\')">葡萄牙DOC金字塔</span>並列，可看出歐盟各國法定產區制度雖然名稱各異，骨架卻高度相似。',
+      relatedAppellations: ['alto-adige', 'amarone-della-valpolicella', 'asti', 'barbaresco', 'barbera-dasti', 'barolo', 'brunello-di-montalcino', 'cerasuolo-di-vittoria', 'chianti-classico', 'collio', 'etna', 'fiano-di-avellino', 'franciacorta', 'gavi', 'lambrusco', 'montepulciano-dabruzzo', 'primitivo-di-manduria', 'prosecco', 'sagrantino-di-montefalco', 'soave', 'taurasi', 'valpolicella', 'verdicchio-dei-castelli-di-jesi'],
     },
     {
       id: 'barolo-mga',
@@ -3536,7 +3544,8 @@ const WINE_DB = {
         { name: 'DOCG + MGA單一園標示', note: '如Cannubi、Brunate、Rabajà等，只能使用該界線內採收的果實，強調特定地塊的風土個性，近年逐漸成為指標酒莊展現實力的旗艦款式。' }
       ],
       history: 'MGA制度直到2010年才正式官方化立法（Barolo）、2007年（Barbaresco），比勃根地的葡萄園分級晚了近一世紀，反映義大利從「產區導向」逐步走向「地塊導向」的較晚近趨勢；劃界過程本身也充滿爭議，部分歷史知名地塊因周邊酒莊角力，界線範圍一度大幅擴張又縮減，凸顯地塊劃界背後的商業與政治張力並不亞於品質考量。',
-      crossNote: '與勃根地Grand Cru／Premier Cru同屬「By 葡萄園」邏輯，但MGA本身不再區分高低層級（沒有「特級園優於一級園」的官方位階），單純是官方認證的地塊名稱清單，實際聲望高低由市場長期評價自然形成，而非法規明訂——這與德國VDP的Erste Lage／Grosse Lage仍保留官方位階高低形成鮮明對比，可作為「By 葡萄園」邏輯下「有無官方位階」兩種設計哲學的對照。'
+      crossNote: '與<span class="grape-inline-link" onclick="jumpToClassificationById(\'burgundy-cru\')">勃根地Grand Cru／Premier Cru</span>同屬「By 葡萄園」邏輯，但MGA本身不再區分高低層級（沒有「特級園優於一級園」的官方位階），單純是官方認證的地塊名稱清單，實際聲望高低由市場長期評價自然形成，而非法規明訂——這與<span class="grape-inline-link" onclick="jumpToClassificationById(\'vdp-lagen\')">德國VDP的Erste Lage／Grosse Lage</span>仍保留官方位階高低形成鮮明對比，可作為「By 葡萄園」邏輯下「有無官方位階」兩種設計哲學的對照。',
+      relatedAppellations: ['barolo', 'barbaresco'],
     },
     {
       id: 'chianti-classico-gran-selezione',
@@ -3552,7 +3561,8 @@ const WINE_DB = {
         { name: 'Chianti Classico(基本款)', note: '陳年至少12個月，佔絕大多數市場流通量。' }
       ],
       history: '此三級制是在DOCG框架「內部」再疊加的酒莊／酒款分級，與DOCG本身（產區層級）是兩個不同維度：一瓶酒同時擁有「Chianti Classico DOCG」的產區身分，以及「Gran Selezione」的酒莊分級身分；此設計某種程度上是對前述「Super Tuscan悖論」的間接回應——透過在DOCG內部再造一個更嚴謹的頂級門檻，讓堅持傳統Sangiovese混調規定的酒莊，也能有機會生產與國際名莊分庭抗禮的頂級款式。',
-      crossNote: '與波爾多1855同屬「By 酒莊」邏輯，但差異在於Gran Selezione的評選標準是客觀的自有葡萄園與陳年規範，而非1855當年主觀的市場交易價格排名，也因此Gran Selezione理論上任何符合條件的酒莊都能申請晉升，不像1855幾乎已是永久凍結的歷史名單。'
+      crossNote: '與<span class="grape-inline-link" onclick="jumpToClassificationById(\'bordeaux-1855\')">波爾多1855</span>同屬「By 酒莊」邏輯，但差異在於Gran Selezione的評選標準是客觀的自有葡萄園與陳年規範，而非1855當年主觀的市場交易價格排名，也因此Gran Selezione理論上任何符合條件的酒莊都能申請晉升，不像1855幾乎已是永久凍結的歷史名單。',
+      relatedAppellations: ['chianti-classico'],
     },
     {
       id: 'veneto-classico',
@@ -3567,7 +3577,8 @@ const WINE_DB = {
         { name: 'Soave Classico(蘇瓦韋經典產區)', note: '歷史最早劃定的火山岩丘陵核心區，與東側擴增的平原沖積土產區風味落差明顯，Classico核心區普遍被視為品質更穩定的指標範圍。' }
       ],
       history: 'Valpolicella與Soave皆在20世紀後期因市場需求擴大而將產區邊界擴增至周邊平原地帶，「Classico」標示因此誕生，用以區隔最早劃定、通常品質條件更優越的歷史核心丘陵地塊與後期擴增的平原區域；兩者的Classico範圍皆對應各自產區最初劃定時的邊界。',
-      crossNote: '與Chianti Classico的「Classico」用法邏輯相通——兩者皆指「歷史最早劃定的核心產區範圍」而非品質分級——但關鍵差異在於Chianti Classico本身已獨立發展出自己的DOCG地位（不同於外圍的一般Chianti DOCG），而Valpolicella/Soave的Classico僅是同一個DOC/DOCG內部的地理子產區標示，未獨立升格為不同等級，選購時不應假設「有Classico字樣＝品質分級更高」，僅代表產區地理範圍不同。'
+      crossNote: '與<span class="grape-inline-link" onclick="jumpToClassificationById(\'chianti-classico-gran-selezione\')">Chianti Classico</span>的「Classico」用法邏輯相通——兩者皆指「歷史最早劃定的核心產區範圍」而非品質分級——但關鍵差異在於Chianti Classico本身已獨立發展出自己的DOCG地位（不同於外圍的一般Chianti DOCG），而Valpolicella/Soave的Classico僅是同一個DOC/DOCG內部的地理子產區標示，未獨立升格為不同等級，選購時不應假設「有Classico字樣＝品質分級更高」，僅代表產區地理範圍不同。',
+      relatedAppellations: ['valpolicella', 'amarone-della-valpolicella', 'soave'],
     },
     {
       id: 'vdp-lagen',
@@ -3584,7 +3595,8 @@ const WINE_DB = {
         { name: 'Gutswein(莊園基本款)', note: '酒莊自有葡萄園釀造的入門款，對應勃根地Régionale，通常是酒莊的日常餐搭主力。' }
       ],
       history: 'VDP前身可追溯至1910年成立的德國葡萄酒拍賣協會，2012年正式確立現行四級架構，是繼勃根地之後全世界第二個完整移植「風土分級」邏輯的重要案例；因為不是政府法律，非VDP會員酒莊即使葡萄園條件相當，也無法使用Grosse Lage標示，這也讓「加入VDP」本身成為許多優質德國酒莊的重要目標，形成一種民間自律凌駕官方法規的特殊局面。',
-      crossNote: '與勃根地Grand Cru／Premier Cru同屬「By 葡萄園」邏輯的直接對照，但關鍵差異在於VDP是民間協會標準而非政府立法——這點反而類似波爾多1855分級最初也是民間商會評定，凸顯「法定」與「約定俗成但具公信力」兩種分級正當性來源的差異；與義大利MGA相比，VDP更進一步保留了官方（協會內部）位階高低，而非單純的地塊名稱清單。'
+      crossNote: '與<span class="grape-inline-link" onclick="jumpToClassificationById(\'burgundy-cru\')">勃根地Grand Cru／Premier Cru</span>同屬「By 葡萄園」邏輯的直接對照，但關鍵差異在於VDP是民間協會標準而非政府立法——這點反而類似<span class="grape-inline-link" onclick="jumpToClassificationById(\'bordeaux-1855\')">波爾多1855分級</span>最初也是民間商會評定，凸顯「法定」與「約定俗成但具公信力」兩種分級正當性來源的差異；與<span class="grape-inline-link" onclick="jumpToClassificationById(\'barolo-mga\')">義大利MGA</span>相比，VDP更進一步保留了官方（協會內部）位階高低，而非單純的地塊名稱清單。',
+      relatedAppellations: ['mosel', 'rheingau', 'pfalz', 'baden'],
     },
     {
       id: 'germany-praedikatswein',
@@ -3603,7 +3615,8 @@ const WINE_DB = {
         { name: 'Eiswein(冰酒)', note: '與BA同等成熟度門檻，但須在葡萄自然結凍狀態下採收壓榨，走獨立分支而非糖度線性排列，近年因暖化導致符合條件的年份日益稀少。' }
       ],
       history: 'Prädikatswein是1971年德國葡萄酒法（Weingesetz）建立的Deutscher Wein／Landwein／Qualitätswein／Prädikatswein四級國家架構的最高一級，六個Prädikat子級距完全依採收當下的天然糖度（Oechsle）科學測量分級，是全世界少數用「客觀物理量測」而非「人為評鑑」決定等級門檻的法定分級制度；也正因為門檻完全客觀，近年氣候暖化使得原本稀有的Spätlese、Auslese等級愈趨容易達成，反而讓部分堅持傳統風格的頂尖酒莊主動選擇不申報Prädikat等級、改用VDP等自訂系統標示酒款。',
-      crossNote: '與義大利DOCG/DOC/IGT/VdT同屬全國性「By 產區」架構下的品質階梯，但義大利四級的核心判準是「產區規範嚴謹度」，德國六個Prädikat子級距則是「採收糖度」，兩者是完全不同的分級哲學——這也是為什麼德國Prädikatswein常被誤會為「越高級越甜」，實際上等級只反映採收糖度潛力，成品甜度另由酒標trocken(不甜)/halbtrocken(半甜)/lieblich(微甜)/süss(甜)標示決定，這也解釋了為什麼同樣標示Kabinett的酒款，市面上可以同時看到干型與微甜兩種風格。'
+      crossNote: '與<span class="grape-inline-link" onclick="jumpToClassificationById(\'italy-docg-pyramid\')">義大利DOCG/DOC/IGT/VdT</span>同屬全國性「By 產區」架構下的品質階梯，但義大利四級的核心判準是「產區規範嚴謹度」，德國六個Prädikat子級距則是「採收糖度」，兩者是完全不同的分級哲學——這也是為什麼德國Prädikatswein常被誤會為「越高級越甜」，實際上等級只反映採收糖度潛力，成品甜度另由酒標trocken(不甜)/halbtrocken(半甜)/lieblich(微甜)/süss(甜)標示決定，這也解釋了為什麼同樣標示Kabinett的酒款，市面上可以同時看到干型與微甜兩種風格。',
+      relatedAppellations: ['mosel', 'rheingau', 'pfalz', 'baden'],
     },
     {
       id: 'spain-do-pyramid',
@@ -3620,7 +3633,8 @@ const WINE_DB = {
         { name: 'Vino de Mesa(日常餐酒)', note: '最基礎等級，幾乎無產區與品種規範，日常餐酒的主要來源。' }
       ],
       history: 'DOCa等級的門檻並非單純「產區範圍規範」，而是額外要求「至少10年持續維持高於一般DO的品質水準」，因此即使Ribera del Duero、Priorat（早年）等產區聲望已相當高，仍需經過長時間觀察才能升格，是西班牙分級制度中刻意設計的「時間篩選」機制；Priorat取得DOQ資格前，1980年代一批年輕釀酒師重新開墾當地陡峭的llicorella板岩梯田，是這個產區得以在短短二十年內從默默無聞躍升至西班牙最高等級的關鍵推手。',
-      crossNote: '與義大利DOCG/DOC/IGT/VdT、德國Deutscher Wein四級架構同屬「By 產區」邏輯的全國性金字塔，三者可互相對照理解「法定產區分級」在不同國家的共通骨架；但西班牙DOCa的「長期品質觀察期」門檻，在義大利/德國的對應等級中並無直接對應機制，反而更接近前述聖艾米濃「定期複評」的精神，只是複評對象換成整個產區而非個別酒莊。'
+      crossNote: '與<span class="grape-inline-link" onclick="jumpToClassificationById(\'italy-docg-pyramid\')">義大利DOCG/DOC/IGT/VdT</span>、<span class="grape-inline-link" onclick="jumpToClassificationById(\'germany-praedikatswein\')">德國Deutscher Wein四級架構</span>同屬「By 產區」邏輯的全國性金字塔，三者可互相對照理解「法定產區分級」在不同國家的共通骨架；但西班牙DOCa的「長期品質觀察期」門檻，在義大利/德國的對應等級中並無直接對應機制，反而更接近前述<span class="grape-inline-link" onclick="jumpToClassificationById(\'saint-emilion\')">聖艾米濃「定期複評」</span>的精神，只是複評對象換成整個產區而非個別酒莊。',
+      relatedAppellations: ['rioja', 'priorat', 'ribera-del-duero', 'rias-baixas'],
     },
     {
       id: 'rioja-aging',
@@ -3637,7 +3651,8 @@ const WINE_DB = {
         { name: 'Joven/Genérico(無陳年標示/年輕酒)', note: '不受陳年時間規範，強調果香新鮮度，通常上市即飲用，近年隨新一代酒莊崛起而愈趨受到重視。' }
       ],
       history: '此陳年分級架構源自19世紀波爾多釀酒技術傳入Rioja後發展出的傳統，當時波爾多根瘤蚜蟲害肆虐，法國釀酒師大量移居Rioja，也把橡木桶陳年工藝一併帶入；早年美國橡木桶的普遍使用（相對於法國橡木桶更明顯的椰子與香草氣息）也是Rioja風格區別於法國同業的重要特徵。近年部分指標酒莊主動退出Rioja DOCa體系，改標示更低階的Vino de España，正是因為認為陳年時間分級無法反映其地塊風土訴求，是「By 酒款陳年時間」與「By 葡萄園風土」兩種分級哲學路線之爭的著名案例。',
-      crossNote: '與Chianti Classico的Riserva/Gran Selezione三級制看似相似（都用「陳年時間」疊加於產區之上），但關鍵差異在於Gran Selezione額外要求「須使用酒莊自有葡萄園」（因此歸類為By 酒莊具備依據），Rioja的Crianza/Reserva/Gran Reserva則完全不涉及葡萄來源限制，純粹是陳年時間門檻——這正是本表把Rioja歸類在Estate、卻特別加註「並不完美對應」的原因；近年西班牙也開始出現類似Rioja自家的Viñedos Singulares（單一葡萄園標示，2017年新增）等地塊導向的新制度，某種程度上正是對這套傳統陳年分級的補充與反思。'
+      crossNote: '與<span class="grape-inline-link" onclick="jumpToClassificationById(\'chianti-classico-gran-selezione\')">Chianti Classico的Riserva/Gran Selezione</span>三級制看似相似（都用「陳年時間」疊加於產區之上），但關鍵差異在於Gran Selezione額外要求「須使用酒莊自有葡萄園」（因此歸類為By 酒莊具備依據），Rioja的Crianza/Reserva/Gran Reserva則完全不涉及葡萄來源限制，純粹是陳年時間門檻——這正是本表把Rioja歸類在Estate、卻特別加註「並不完美對應」的原因；近年西班牙也開始出現類似Rioja自家的Viñedos Singulares（單一葡萄園標示，2017年新增）等地塊導向的新制度，某種程度上正是對這套傳統陳年分級的補充與反思。',
+      relatedAppellations: ['rioja'],
     },
     {
       id: 'portugal-doc-pyramid',
@@ -3653,7 +3668,8 @@ const WINE_DB = {
         { name: 'Vinho(日常餐酒)', note: '最基礎等級，前身為Vinho de Mesa，2009年歐盟法規改革後統一更名。' }
       ],
       history: '葡萄牙擁有超過250個原生葡萄品種，是全世界品種多樣性密度最高的產酒國之一，DOC規範中對「傳統品種」的認定範圍也因此格外複雜，這是Vinho Regional等級在葡萄牙特別活躍、常吸引指標酒莊主動選用（換取混調自由度）的重要背景；Douro產區更是全世界最早（1756年）建立官方法定產區邊界的葡萄酒產區之一，早於法國波爾多與勃根地的正式分級近兩百年，是葡萄牙葡萄酒史上經常被低估的先驅地位。',
-      crossNote: '與義大利、西班牙、德國的全國性金字塔同屬「By 產區」邏輯，四國對照可看出歐盟DOP（受保護原產地名稱，對應DOC/DO/DOCG等）／IGP（受保護地理標示，對應Vinho Regional/IGT/VdlT等）的共通二層架構，是理解歐盟整體葡萄酒法規邏輯的最佳入門對照組——這也意味著即使名稱與細節門檻各國互異，「By 產區」邏輯背後的歐盟法規骨架其實高度統一，遠比酒莊分級或葡萄園分級來得標準化。'
+      crossNote: '與<span class="grape-inline-link" onclick="jumpToClassificationById(\'italy-docg-pyramid\')">義大利</span>、<span class="grape-inline-link" onclick="jumpToClassificationById(\'spain-do-pyramid\')">西班牙</span>、<span class="grape-inline-link" onclick="jumpToClassificationById(\'germany-praedikatswein\')">德國</span>的全國性金字塔同屬「By 產區」邏輯，四國對照可看出歐盟DOP（受保護原產地名稱，對應DOC/DO/DOCG等）／IGP（受保護地理標示，對應Vinho Regional/IGT/VdlT等）的共通二層架構，是理解歐盟整體葡萄酒法規邏輯的最佳入門對照組——這也意味著即使名稱與細節門檻各國互異，「By 產區」邏輯背後的歐盟法規骨架其實高度統一，遠比酒莊分級或葡萄園分級來得標準化。',
+      relatedAppellations: ['douro', 'vinho-verde', 'dao', 'alentejo']
     }
   ],
 

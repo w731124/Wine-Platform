@@ -908,3 +908,22 @@
      - emoji是否保留由使用者裁定：保留🔴🟡，只新增數量顯示，不移除表情符號。
      原因：先實際核對computed style而非直接假設使用者所見即為CSS錯誤，核對後如實回報「無字級差異、僅為視覺錯覺」，避免對本來就一致的樣式做多餘修改；唯一的真實落差（數量顯示）比照既有`renderGrapeTierFilters()`模式解決，讓兩排篩選在架構與呈現上完全對稱。
      驗證：headless Chrome確認重新整理後`#grape-color-filters`顯示「全部All(33)／🔴紅葡萄品種(17)／🟡白葡萄品種(16)」（17+16=33），點擊紅葡萄篩選鈕確認正確篩出17張卡片且`active`狀態正確套用；截圖確認兩排視覺密度更接近、字級落差不明顯；執行`auditWineDB()`確認兩類既有警告數量不變。
+
+## 2026-07-30 分級制度頁串聯強化（crossNote行內連結＋產區↔分級雙向連結）＋keyIdentifiers全站一致性稽核
+
+246. **crossNote行內連結（任務A）與相關產區雙向連結（任務B）的對照表核對後，發現1處我自己的核對錯誤並即時修正**：核對16筆`crossNote`時，初稿誤把`italy-docg-pyramid`crossNote裡才有的「與後續新增的西班牙DO/DOCa、德國Prädikatswein、葡萄牙DOC金字塔並列」內容，錯植到`champagne-echelle`（其原文只提及「義大利DOCG」一項），animate過程中發現後立即用原始文字重新核對全部16筆、修正回正確版本才動工寫入檔案，避免把使用者從未寫過的句子誤植進crossNote正文（違反「原文字內容不變動一字」的要求）。
+     原因：延續「不可自行假設，需逐一核對」的方法論，本次是動工過程中自我發現並修正的錯誤，而非使用者事後抓到，記錄下來提醒之後若有多筆結構相似的資料要交叉核對時，應每筆都重新對照原文而非依賴先前彙整的摘要表。
+247. **新增`js/core.js`的`jumpToClassificationById(id)`函式（比照`jumpToGrapeById()`寫法）**：切換至`panel-classifications`、設定`curClassCountry`／`classInteracted`使目標卡片實際渲染進DOM（分級制度頁預設不顯示任何卡片，需先模擬點擊國家篩選的狀態）、`renderClassificationPanel()`後`setTimeout`定位並展開對應手風琴卡片。
+     原因：分級制度頁的`classInteracted`門檻機制（使用者未互動前不顯示任何卡片）與品種圖鑑/品飲系統的預設全顯不同，若只是單純切換分頁不會看到任何卡片，因此`jumpToClassificationById()`必須額外處理國家篩選狀態，這是動工前實際核對`classifications.js`程式碼才發現的必要步驟，未曾單純比照`jumpToGrapeById()`就假設可行。
+248. **16筆`crossNote`逐一將提及其他分級卡片名稱的文字片段包成`<span class="grape-inline-link" onclick="jumpToClassificationById('id')">`（沿用既有樣式class，不新增CSS），原文字內容一字不動，共31處連結**：2處使用者裁定的模糊案例——`burgundy-cru`crossNote泛稱「波爾多」連到`bordeaux-1855`（使用者選擇：連到最經典代表案例）；`spain-do-pyramid`crossNote的「德國Deutscher Wein四級架構」措辭雖與`germany-praedikatswein`卡片實際名稱不同仍連過去（使用者選擇：語意上是同一張卡）。
+     原因：使用者逐條裁定後才動工，避免自行假設泛稱指向哪一張卡。
+249. **`WINE_DB.classifications`每筆新增`relatedAppellations`欄位（16筆皆有，陣列長度0–23不等），3處範圍由使用者裁定**：`france-aoc-pyramid`裁定為空陣列`[]`（全法國性AOC架構理論上適用所有法國產區，連結任何特定產區皆不精確，使用者選擇不連結）；`italy-docg-pyramid`裁定擴大連結全部23個既有義大利產區（使用者選擇「擴大到全義大利」而非僅卡片內文明確點名的3個範例）；`vdp-lagen`裁定連結德國全部4個既有產區`mosel`/`rheingau`/`pfalz`/`baden`（使用者選擇「連結」，儘管VDP卡片本文未點名具體產區）。其餘13筆依卡片自身內文明確點名的產區填入，範圍1–7筆不等。
+     原因：使用者逐條裁定範圍後才動工，避免「一對多」或「泛稱範圍」的自行假設誤差；`italy-docg-pyramid`與`vdp-lagen`/`germany-praedikatswein`這類全國性/跨區域卡片，本質上就是任務描述裡點名的「最容易出錯的一對多情境」，本次逐一列出對照表取得確認後才寫入資料。
+250. **`js/classifications.js`新增「🔗 相關產區 Related Regions」渲染區塊，`js/regions.js`的`openDrawer()`新增反向「🎖 查看分級制度 Related Classifications」區塊**：分級卡片內的相關產區連結沿用既有`jumpToRegionById()`函式（核對後發現此函式已透過`openDrawer(app)`直接開啟產區抽屜、不需另外處理手風琴群組展開或`scrollIntoView`，任務描述原先預期需要新建的手風琴群組展開邏輯其實不需要，是核對現有程式碼後省下的一步）；產區抽屜內的反向連結則用`(WINE_DB.classifications||[]).filter(c=>(c.relatedAppellations||[]).includes(app.id))`即時查找該產區被哪些分級卡引用，可能同時顯示多張（如Margaux同時對應`bordeaux-1855`與`bordeaux-basic-hierarchy`兩張卡）。
+     原因：動工前實際核對`regions.js`現有機制而非憑印象假設，發現`jumpToRegionById()`本身已足夠、不需修改或新增手風琴展開邏輯，避免了不必要的程式碼變動；反向連結用篩選查找而非在產區資料裡反向維護一份對照清單，因為`relatedAppellations`已是唯一事實來源，避免雙向手動維護造成的資料不同步風險。
+     驗證：全域大括號/中括號配對平衡（1258/1258、724/724）；headless Chrome依序測試`bordeaux-basic-hierarchy`卡片crossNote內的「1855分級」連結正確跳轉並展開`bordeaux-1855`卡片；`bordeaux-1855`卡片的「相關產區」區塊點擊`Margaux(瑪歌)`正確開啟該產區抽屜；抽屜內「查看分級制度」區塊正確顯示兩張相關分級卡（`1855 Cru Classé`與`Bordeaux AOC · Cru Bourgeois`），點擊後方card正確跳轉並展開`bordeaux-basic-hierarchy`，完成完整雙向迴圈驗證；另測試`chablis`產區抽屜正確顯示連回`burgundy-cru`；`italy-docg-pyramid`卡片23個相關產區tag截圖確認正常換行、無版面溢出；執行`auditWineDB()`確認兩類既有警告完全無變化（本次未觸及`WINE_DB.appellations`本身的地圖/年份矩陣相關欄位）。
+251. **keyIdentifiers全站一致性稽核（任務C），比照#218方法論但獨立處理**：`grep`全部110筆`keyIdentifiers`欄位、共290個詞條標籤，逐一比對後列出20組「英文詞彙相同但中文翻譯不一致」的確定案例，加上5組「英文詞彙不同但語意疑似重複」的邊界案例交由使用者比照#218的Peach/White Peach判斷邏輯裁定。核對過程中發現初次統計的多數/少數關係有3處算反了（`Silky Tannin`實際上「絲質單寧」3筆多於「絲滑單寧」2筆、`Passionfruit`實際上無空格版本4筆多於有空格版本3筆、`Volcanic Mineral`實際上「火山礦石感」2筆多於「火山岩礦石感」1筆），已改用`grep -c`重新逐一核實每組實際筆數後才決定統一方向，未沿用最初可能有誤的口頭報告數字。
+     - 5組邊界案例使用者裁定：Cassis／Blackcurrant保留區分（法式/通用術語語境差異）；Dark Cherry統一改為Black Cherry（既有站內慣用詞）；Bell Pepper／Green Pepper保留區分（可能對應不同品種脈絡）；Great Value／High Value統一（採多數者`Great Value(性價比高)`2筆）；Grass／Grassy統一（採多數者`Grass(青草)`3筆）。
+     - 20組確定案例依「多數決」統一（單一詞條的中文翻譯若在站內多筆重複出現，即以多數版本為準修正少數版本），無多數可判（1:1平手）的8組（Soft Tannin、Rose、Bitter Almond Finish、Fresh & Easy-Drinking、Rhône Blend、Full-Bodied Dry、Everyday Value、Limestone）則由我依語意清晰度武斷選定一版並在此註明屬武斷裁決，非資料驅動。
+     原因：核對範圍嚴格限定在`keyIdentifiers`欄位本身，不比照本次順手擴大到`aromaWheel`等其他欄位（如`Dark Cherry`在`aromaWheel`裡的2筆刻意保留不動），維持與#218「僅稽核單一欄位」的既定範圍原則一致；多數決是可驗證、可重現的客觀標準，武斷選定的7組已在此明確標註以利日後檢視。
+     驗證：`grep -c`確認全部20組少數版本用詞在全域已歸零（含5組邊界案例裡C2/C4/C5的3組修正結果）；`keyIdentifiers`總筆數仍為110（未增減任何標籤，只改字詞內容）；全域大括號/中括號配對平衡；`auditWineDB()`確認警告無變化（`keyIdentifiers`不在稽核範圍內）。

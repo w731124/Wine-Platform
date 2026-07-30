@@ -102,6 +102,12 @@ function toggleClassCard(hdr) {
 
 function buildClassificationCardHTML(c) {
   const meta = CLASS_BASIS_META[c.basis] || {};
+  const relatedAppellationsHTML = (c.relatedAppellations || []).map(rid => {
+    const app = WINE_DB.appellations.find(a => a.id === rid);
+    return app
+      ? `<span class="tg tg-reg" style="cursor:pointer;text-decoration:underline;" onclick="jumpToRegionById('${rid}')">${app.name}</span>`
+      : `<span class="tg tg-reg">${rid}</span>`;
+  }).join('');
   const tiersHTML = (c.tiers || []).map((t, i) => `
     <div style="display:flex;gap:10px;align-items:flex-start;padding:9px 12px;background:var(--bg-card);border:1px solid var(--border-lt);border-radius:8px;">
       <span style="font-family:'Cinzel',serif;font-weight:700;color:var(--gold-dk);font-size:12px;flex-shrink:0;">${i + 1}</span>
@@ -131,7 +137,8 @@ function buildClassificationCardHTML(c) {
         <p class="ins-lbl">🎖️ 分級層級 Tiers（由高至低）</p>
         <div class="flex flex-col gap-2 mb-3">${tiersHTML}</div>
         ${c.history ? `<div class="ic mb-3" style="background:var(--bg-card);"><p class="ins-lbl">📜 歷史背景 History</p><p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">${c.history}</p></div>` : ''}
-        ${c.crossNote ? `<div class="ic" style="background:var(--bg-card);"><p class="ins-lbl">🔗 跨區對照 Cross-reference</p><p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">${c.crossNote}</p></div>` : ''}
+        ${c.crossNote ? `<div class="ic mb-3" style="background:var(--bg-card);"><p class="ins-lbl">🔗 跨區對照 Cross-reference</p><p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);">${c.crossNote}</p></div>` : ''}
+        ${relatedAppellationsHTML ? `<div class="ic" style="background:var(--bg-card);"><p class="ins-lbl">🔗 相關產區 Related Regions</p><div class="flex flex-wrap gap-1">${relatedAppellationsHTML}</div></div>` : ''}
       </div>
     </div>`;
 }
