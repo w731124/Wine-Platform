@@ -3472,9 +3472,9 @@ const WINE_DB = {
       basisLabel: 'Region(產區)',
       summary: '波爾多最基礎的地理分級骨架，從全區通用的Bordeaux AOC到品質門檻略高的Bordeaux Supérieur AOC，再到僅適用於Médoc（左岸）、以酒莊品質認證構成的Cru Bourgeois——與1855分級／Saint-Émilion分級並非互斥競爭關係，而是分屬不同地理範圍與評選邏輯的並存體系。',
       tiers: [
-        { name: 'Bordeaux AOC(基礎法定產區)', note: '波爾多全區通用的入門法定產區，涵蓋左右岸與衛星產區，允許範圍最廣，是波爾多產量最大的等級。' },
+        { name: 'Cru Bourgeois(布爾喬亞級酒莊)', note: '僅適用於Médoc（左岸），是1855分級之外、為未入選頂尖酒莊設立的品質認證，現行分為Cru Bourgeois／Cru Bourgeois Supérieur／Cru Bourgeois Exceptionnel三級（沿革見下方歷史說明）。' },
         { name: 'Bordeaux Supérieur AOC(超級波爾多)', note: '與Bordeaux AOC地理範圍重疊，但要求更低產量上限與更長的最低陳年時間，品質門檻略高於基礎款。' },
-        { name: 'Cru Bourgeois(布爾喬亞級酒莊)', note: '僅適用於Médoc（左岸），是1855分級之外、為未入選頂尖酒莊設立的品質認證，現行分為Cru Bourgeois／Cru Bourgeois Supérieur／Cru Bourgeois Exceptionnel三級（沿革見下方歷史說明）。' }
+        { name: 'Bordeaux AOC(基礎法定產區)', note: '波爾多全區通用的入門法定產區，涵蓋左右岸與衛星產區，允許範圍最廣，是波爾多產量最大的等級。' }
       ],
       history: 'Bordeaux AOC與Bordeaux Supérieur AOC是波爾多最基礎的地理分級，任何位於波爾多產區邊界內、符合基本規範的酒莊皆可標示，兩者差異僅在於產量上限與陳年時間門檻。Cru Bourgeois則源自Médoc地區，是為1855分級未能納入的眾多優質酒莊設立的品質認證：2003年官方首次公布正式分級名單，隨即遭落選酒莊興訟，2007年法院以評選過程欠缺透明為由判決撤銷該分級；此後Cru Bourgeois一度改為不分位階、逐年份重新認證的品質標章。近年官方已重新引入Cru Bourgeois／Cru Bourgeois Supérieur／Cru Bourgeois Exceptionnel三級位階制度，但確切現行細則（如評選週期、最新適用年份）建議以官方最新公告為準，此處不做具體年份陳述。',
       crossNote: '與1855分級（Grand Cru Classé，僅Médoc/Sauternes-Barsac約60家頂尖酒莊）及Saint-Émilion分級（僅限右岸聖艾米濃）並非互斥或競爭關係，而是分屬不同地理範圍與評選邏輯的並存體系：1855分級是「凍結於1855年、極少更動」的歷史名單，僅涵蓋Médoc最頂尖的少數酒莊；Cru Bourgeois則是1855分級之外、Médoc其餘優質酒莊的品質認證，理論上任何符合條件的酒莊皆可申請，兩者對象完全不重疊。消費者選購時應理解：一瓶Médoc酒款若未列名1855分級，仍可能是聲譽優良的Cru Bourgeois酒莊；此表把Cru Bourgeois歸類在Region僅為配合現有三分類架構的權宜安排，實際上Cru Bourgeois是掛在個別酒莊身上的品質認證，性質上更接近By 酒莊邏輯。'

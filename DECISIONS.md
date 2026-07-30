@@ -878,3 +878,5 @@
 239. **修正`rioja-aging`卡片Joven級別的詞序**：`Genérico/Joven(無陳年標示/年輕酒)` → `Joven/Genérico(無陳年標示/年輕酒)`，僅調整tier名稱字串的詞語順序以符合官方規格原文，`note`內容與其餘tiers陣列結構完全不動。
      原因：使用者核對後確認原詞序與官方規格文字順序不符，屬於精確度修正而非新增缺漏內容。
      驗證：`WINE_DB.classifications.length`確認為16（12+4）；全域大括號/中括號配對平衡（1257/1257、707/707）；headless Chrome依國家篩選確認France顯示7張卡（含3張新卡）、Italy顯示4張卡（含`veneto-classico`）；展開`bordeaux-basic-hierarchy`截圖確認視覺與既有卡片一致；`rioja-aging`展開後DOM文字確認含「Joven/Genérico」且不再含舊詞序「Genérico/Joven」；執行`auditWineDB()`確認兩類既有警告（缺少地圖座標33筆、法國產區未綁定年份矩陣4筆）完全無變化，因本次僅修改`WINE_DB.classifications`、未觸及`WINE_DB.appellations`。
+240. **修正`bordeaux-basic-hierarchy`卡片`tiers`陣列順序反了**：使用者發現這張卡是由低至高（Bordeaux AOC→Bordeaux Supérieur AOC→Cru Bourgeois），與全站其餘15張分級卡「由高至低」的既定慣例不符，改為Cru Bourgeois→Bordeaux Supérieur AOC→Bordeaux AOC，僅調整陣列順序，`name`/`note`文字內容與`summary`/`history`/`crossNote`皆不動。
+     原因：#238新增此卡時疏忽了「由高至低」是全站分級卡一致遵循的既定慣例（`classifications.js`的`buildClassificationCardHTML()`固定顯示「分級層級 Tiers（由高至低）」標題），使用者實際檢視畫面後發現這張新卡是唯一順序反過來的，屬於單純的疏漏而非設計判斷。
