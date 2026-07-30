@@ -277,6 +277,7 @@ document.addEventListener('DOMContentLoaded', function() {
   populateCompareSelects();
   renderCompareGrapeColorFilters();
   renderFoodCategoryFilters();
+  renderGrapeColorFilters();
   renderGrapeTierFilters();
   renderGrapePanel();
   renderClassCountryFilters();

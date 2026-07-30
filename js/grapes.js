@@ -13,6 +13,23 @@ function setGrapeColorFilter(color, btn) {
   renderGrapePanel();
 }
 
+// 數字為即時動態計算（依 WINE_DB.grapes 實際 skinColor 分布），不寫死數字，比照 renderGrapeTierFilters() 的做法
+function renderGrapeColorFilters() {
+  const wrap = document.getElementById('grape-color-filters');
+  if (!wrap) return;
+  const all = WINE_DB.grapes || [];
+  const redCount = all.filter(g => g.skinColor === 'red').length;
+  const whiteCount = all.filter(g => g.skinColor === 'white').length;
+  const opts = [
+    { key: 'all', label: `全部 All (${all.length})` },
+    { key: 'red', label: `🔴 紅葡萄品種 (${redCount})` },
+    { key: 'white', label: `🟡 白葡萄品種 (${whiteCount})` }
+  ];
+  wrap.innerHTML = opts.map(o =>
+    `<button class="fp ${o.key === curGrapeColor ? 'active' : ''}" onclick="setGrapeColorFilter('${o.key}',this)">${o.label}</button>`
+  ).join('');
+}
+
 function setGrapeTierFilter(tier, btn) {
   curGrapeTier = tier;
   const wrap = document.getElementById('grape-tier-filters');
