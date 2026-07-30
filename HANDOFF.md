@@ -1,58 +1,54 @@
 # HANDOFF
 
-> 本檔案每次 session 結束時覆蓋重寫，不累加舊內容。最後更新：2026-07-29。
+> 本檔案每次 session 結束時覆蓋重寫，不累加舊內容。最後更新：2026-07-30。
 
 ## 一、本次開發歷程
 
-**本次涵蓋範圍（接續上一版 HANDOFF，該版由commit `da0a595`寫入、涵蓋至#222）：CLAUDE.md新增HANDOFF覆寫時機規則、4項技術債清理、新增「儲存與侍酒」頁面、分級制度/釀造工藝兩頁的WSET官方規格核對、sparkling補寫Moscato/Asti、品種資料庫擴充WSET L2 LO4的10個缺席品種，共6批工作。`git fetch`確認本機領先`origin/main` 8個commit，即將push。**
+**本次涵蓋範圍（接續上一版 HANDOFF，該版由commit `d825b86`寫入、涵蓋至#235）：分級制度頁新增4張品質階層卡片＋rioja-aging詞序修正、釀造工藝頁sparkling/fortified補上官方標籤術語、品種圖鑑資料組織重構（LO4徽章回溯標記＋分級篩選列＋三層排序）、兩排篩選列視覺統一、分級制度頁串聯強化（crossNote行內連結＋產區↔分級雙向連結）＋keyIdentifiers全站稽核常態化、三項收尾（年份矩陣例外定案／servingTemp交叉核對／稽核邏輯常態化），共8個commit。`git fetch`確認本機領先`origin/main` 1個commit，即將push。**
 
-### 1. CLAUDE.md新增規則：HANDOFF.md覆寫時機（DECISIONS.md #224，commit `3e30b59`）
-- 使用者採用提案：HANDOFF.md的覆寫必須是該次session最後一個git commit的一部分，不得在session中途、預期後續仍有其他改動時提前寫入並視為完成。此規則的採用背景見上一版HANDOFF記載的「教訓」。
+### 1. 分級制度頁新增4張卡片＋rioja-aging詞序修正（DECISIONS.md #236-240，commit `bbb3c38`＋`e276cb4`）
+- 新增`france-aoc-pyramid`／`bordeaux-basic-hierarchy`／`alsace-grand-cru`／`veneto-classico`共4張分級卡（`WINE_DB.classifications` 12→16筆），格式完全比照既有12張卡；Cru Bourgeois現行三級制沿革因把握不足，依使用者指示只寫確定的歷史脈絡（2003分級→訴訟→撤銷→改制），不寫死不確定的最新年份。
+- `rioja-aging`的`Genérico/Joven`詞序修正為`Joven/Genérico`（符合官方規格原文順序）。
+- **使用者事後發現`bordeaux-basic-hierarchy`卡片的`tiers`順序反了**（由低至高，應為由高至低），已修正為`Cru Bourgeois→Bordeaux Supérieur AOC→Bordeaux AOC`，這是全站16張分級卡中唯一一次順序疏漏，提醒之後新增分級卡務必檢查`tiers`陣列順序。
 
-### 2. 技術債清理：4項候選技術債逐一核對後修復（DECISIONS.md #225-226，commit `46940d1`）
-- 比照#51方法論，逐項核對現況是否仍成立而非照單直接動工：
-  1. `--fs-label`CSS變數——確認仍是孤兒（全站僅`:root`定義本身一處），已刪除。
-  2. France/Italy/Iberia建置腳本CRLF正規式錯誤——確認仍存在且可重現（實際執行`build-france-map.pl`得到exit 255），3支腳本正規式比照`build-germany-map.pl`改為`\r?\n`，改完重新執行皆exit 0。
-  3. `WINE_DB.wineStyles`的`production`備份欄位——確認仍是死欄位且與`productionSteps`/`productionTable`無語意分歧，使用者裁定直接刪除，6個物件的`production:`欄位全數移除。
-  4. 響應式報告「3項輕微瑕疵」——**核對發現報告本身計數（寫3）與實際內容（僅2項）不一致**：地圖探索標題375px換行、年份詳情卡2欄/3欄grid窄螢幕換行，這2項原判定「非阻塞可接受」，使用者確認後仍予以修復（`index.html`媒體查詢+`.vmi-grid2`/`.vmi-grid3`class）。
-- 過程中發現`_devserver.ps1`因缺少UTF-8 BOM、導致Windows PowerShell 5.1用系統ANSI codepage誤讀腳本裡的CJK路徑字面量而全部回傳404，已修復（改用`Set-Content -Encoding UTF8`加回BOM）。
+### 2. 釀造工藝頁sparkling/fortified補上官方標籤術語（DECISIONS.md #241，commit `7a2c29d`）
+- sparkling款`tags`陣列新增5個標籤（Brut/Demi-Sec/Vintage/Non-Vintage·NV/Traditional Method與Cap Classique並列）；fortified款`productionTable`新增「常見風格標示」列（波特Ruby-Tawny五style、雪莉Fino-PX七style）。呈現方式依「術語是否對應既有欄位分類維度」決定：能對應表格欄位的用表格擴充，無法對應的用`tags`標籤。
 
-### 3. 新增「儲存與侍酒」頁面＋品飲系統頁補熱害卡片（DECISIONS.md #227-228，commit `74fcf6f`）
-- 依WSET L2 LO6新增`#panel-storage`（比照07-11食物搭配面板做法，`switchToPanel`通用邏輯不需修改），5張手風琴卡片：理想儲存條件、開瓶後保存方式、建議侍酒溫度（業界慣用具體區間，官方規格僅定性描述）、開瓶與醒酒程序、常見酒缺陷關聯。
-- 核對發現品飲系統頁「常見酒缺陷」清單缺少「熱害」項目，與需求前提不符，取得確認後同步新增第6項缺陷卡片，並新增`js/core.js`的`jumpToFaultById()`建立兩頁雙向捲動連結。
+### 3. 品種圖鑑資料組織重構：LO4徽章回溯標記＋分級篩選列＋三層排序（DECISIONS.md #242-244，commit `01095e3`）
+- 12個非原始品種（tempranillo/sangiovese/nebbiolo/grenache/malbec/zinfandel-primitivo/gamay/chenin-blanc/gewurztraminer/viognier/semillon/albarino）回溯標記`wsetLevel:'2-regional'`；`js/grapes.js`徽章文字更名為「WSET L2·主要品種」／「WSET L2·區域重要品種」。
+- 新增第二列獨立分級篩選（全部/主要品種/區域重要品種/其他，數字即時動態計算不寫死）；預設列表改三層排序（分級類別→酒色紅/白→英文品種名字母序）。
+- **此commit的git commit訊息一開始複製貼上錯誤**（誤植上一個LO4擴充任務的訊息），發現後立即用`git commit --amend`修正為`01095e3`，內容檔案本身沒有問題，只有訊息文字錯誤。
 
-### 4. 分級制度頁／釀造工藝頁WSET官方規格核對（純核對，未寫入獨立commit，結果已於對話中提供）
-- 分級制度頁對WSET 25項標籤術語核對：已涵蓋7項／部分涵蓋7項／完全缺漏11項，缺漏集中在氣泡酒/加烈酒風格標示（Brut/Demi-Sec/Fino-PX/Ruby-Tawny全數缺漏）與各國陳年/風格副標示（Old Vine、Late Harvest、Classico等）。
-- 釀造工藝頁6款式字數現況：`history`156–203字、`grapes`131–155字（後因#231變動）、`terroir`97–149字，DECISIONS.md並未留下如產區資料庫「150-200字」般的明確數字基準；sparkling/fortified技術覆蓋率比對LO5：fortified完整涵蓋，sparkling原本缺Moscato/Asti風格（已於#231補上）。
+### 4. 統一品種圖鑑兩排篩選列視覺呈現（DECISIONS.md #245，commit `a39e549`）
+- 使用者回報兩排篩選按鈕字級不一致，**實際核對computed CSS後確認font-size/font-weight/padding完全相同，並無真正差異**，落差來自emoji+文字長度造成的視覺錯覺；唯一真實落差（酒色篩選缺數量顯示）改為`renderGrapeColorFilters()`動態渲染修正。
 
-### 5. sparkling補上Moscato/Asti段落（DECISIONS.md #231，commit `df70103`）
-- 使用者裁定不統一terroir字數基準，但確認補寫#230抓到的內容缺口：sparkling的`grapes`欄位新增Moscato d'Asti品種與單次發酵風格說明，連結既有`muscat`品種卡片。
+### 5. 分級制度頁串聯強化＋keyIdentifiers全站稽核常態化（DECISIONS.md #246-251，commit `ac7db92`）
+- 16筆`crossNote`新增31處行內連結（`jumpToClassificationById()`），原文字內容不變動一字；`WINE_DB.classifications`新增`relatedAppellations`欄位，`js/classifications.js`渲染「相關產區」區塊，`js/regions.js`的`openDrawer()`新增反向「查看分級制度」區塊，完成雙向連結。
+- **動工過程中自行發現並修正1處crossNote核對錯誤**（`champagne-echelle`誤植`italy-docg-pyramid`的內容，寫入前重新核對原文才改正）。
+- keyIdentifiers全站一致性稽核：20組確定同義詞統一＋5組邊界案例（3組統一/2組保留區分）。**核對過程也抓到3處多數/少數關係算反的錯誤**（Silky Tannin／Passionfruit／Volcanic Mineral），改用`grep -c`逐一核實後才統一。
 
-### 6. 品種資料庫擴充：WSET L2 LO4「區域重要品種」10個缺席品種（DECISIONS.md #232-235，commit `66d49bc`）
-- 核對10個候選品種對應產區現況，**發現3項與原始清單描述不符**：Montepulciano d'Abruzzo與Verdicchio dei Castelli di Jesi其實已存在（非預期的「完全缺席」）、Carménère既有拼法是雙重音符而非單一重音符。避免了重複新增已存在的產區。
-- 新增10筆品種資料（`WINE_DB.grapes` 23→33）、4筆產區資料（`WINE_DB.appellations` 106→110：Barbera d'Asti/Gavi/Fiano di Avellino/Tokaj），Tokaj是網站首筆匈牙利資料，同步新增`assets/flags/hu.svg`與`COUNTRY_FLAG_CODE`。
-- 新增`wsetLevel:'2-regional'`欄位＋金色「WSET L2·LO4」徽章區分LO3/LO4品種（使用者在「新增語意欄位」vs「不區分」兩選項中選前者）。
-- `auditWineDB()`驗證：義大利3筆新產區因既有動態座標投影邏輯自動標記於Italy地圖（比照#220葡萄牙案例，非刻意實作），僅Tokaj因無地圖覆蓋落入「缺少地圖座標」清單（預期內、非新類型警告）。
+### 6. 三項收尾（DECISIONS.md #252-255，commit `490f18d`）
+- 年份矩陣4筆例外（sauternes/barsac/beaujolais/entre-deux-mers）正式裁定為刻意排除，`auditWineDB()`新增`KNOWN_VINTAGE_EXCEPTIONS`，輸出從❌改為✅已知例外。
+- 33筆`servingTemp`與儲存頁5個溫度區間交叉核對，6筆超界依裁定調整品種數值（5個清淡紅酒品種`14–16→14–15°C`、Gamay`12–14→13–14°C`、Gewürztraminer`8–10→10–13°C`）；新增品種卡片↔儲存頁溫度表雙向連結。
+- `auditWineDB()`新增第5/6項稽核`inconsistentVocabulary`（掃描範圍擴大到`aromaWheel`+`keyIdentifiers`兩欄位）與`servingTempMismatch`。**新稽核範圍擴大後浮現4筆`aromaWheel`裡先前刻意排除在keyIdentifiers-only稽核之外的既有案例**（`haut-medoc`/`sta-rita-hills`的`Dark Cherry(黑櫻桃)`、`marlborough`/`sauvignon-blanc`的`Passion Fruit(百香果)`），屬預期內新發現，尚未修正。
 
 ## 二、討論過但尚未執行的項目／下一步規劃
 
 **已重新核對現況：**
 
-- **上一版記載的「響應式報告3項輕微瑕疵」已解決**：本次確認實際只有2項具體案例（非3項，報告本身計數有誤），且這2項（地圖標題換行、年份詳情卡grid）皆已於本次#226修復，此項不再是待辦。
-- **分級制度頁的11項完全缺漏標籤術語（氣泡酒/加烈酒風格標示、Old Vine等）目前僅止於核對回報，尚未動工修復**——是否要擴充分級制度頁的分類邏輯（例如新增「By 甜度/風格」第4種分類）或另闢新頁面承接這些不屬於現有「By酒莊/葡萄園/產區」三分類的標籤，需要使用者決定方向後才能動工。
-- **現有23筆品種裡先前擴增的15個非LO3品種，尚未逐一核對哪些屬於官方LO4其餘12個品種而應一併回溯標記`wsetLevel:'2-regional'`**——這是#233明確記錄的任務範圍外缺口，本次選擇不擴大稽核，留待日後單獨處理。
-- **舊世界產區擴充（France/Italy/Spain/Germany）持續有零星進展但未系統化**：本次因LO4品種任務新增了3筆義大利產區（Barbera d'Asti/Gavi/Fiano di Avellino），法國/西班牙/德國目前仍無新進展。
+- **`aromaWheel`欄位裡的4筆非標準詞彙寫法尚未修正**（見上方第6點）：`Dark Cherry(黑櫻桃)`應改`Black Cherry(黑櫻桃)`、`Passion Fruit(百香果)`應改`Passionfruit(百香果)`，皆已被新的`inconsistentVocabulary`稽核抓到並在console顯示，但這次任務範圍是「稽核邏輯常態化」而非「修正這4筆」，是否要修正、或者這4筆是否有意保留在`aromaWheel`裡不同於`keyIdentifiers`的寫法，需要使用者裁定後才動工。
+- **分級制度頁的原始11項完全缺漏標籤術語，現況已部分改變**：阿爾薩斯Grand Cru／Valpolicella-Soave的Classico已透過新增分級卡解決（本次#236-238）；氣泡酒Brut/Demi-Sec/Cap Classique與雪莉/波特風格標示已透過「款式風格描述」路線解決（#241新增至釀造工藝頁的tags/表格，而非分級制度頁的tier卡）。**仍完全未處理的是Old Vine/Vieilles Vignes與Late Harvest/Vendanges Tardives**，這兩項當初就被歸類為「無法歸類到既有By酒莊/葡萄園/產區三分類」，尚待使用者決定如何處理（新增第4種分類邏輯？或另闢頁面？）。
+- **現有23筆品種裡先前擴增的15個非LO3品種，是否還有其餘LO4品種需要回溯標記的疑慮已釐清**：本次#242已完整核對並補上全部12個確定屬於LO4的品種，剩餘3個（cabernet-franc/gruner-veltliner/muscat）確認不屬於官方規格範圍、維持不標記，此項不再是待辦。
 
 ## 三、我明確要求先記下來、之後再處理的內容
 
-- 核對本次6批工作的完整對話紀錄，沒有發現使用者提出「先記下來、之後處理」但尚未處理的擱置項目（上述二、的3個項目皆已在回報時明確定調為「範圍外/待決定方向」，非「已承諾之後處理」）。
+- 核對本次8個commit的完整對話紀錄，沒有發現使用者提出「先記下來、之後處理」但尚未處理的擱置項目（上述二、的2個項目皆已在回報時明確定調為「待裁定」，非「已承諾之後處理」）。
 
 ## 四、現況檢查提醒
 
-- **push狀態（重要）**：本次session結束時本機**領先**`origin/main` 8個commit（`3e30b59`→`66d49bc`，即將push）。**接手時務必先跑`git fetch && git status -sb`確認目前的落後/領先狀態**，不要假設本機一定是最新或一定已同步。
-- **本機環境限制（沿用既往，本次新增一項教訓）**：沒有Node.js，`python3`/`python`是Windows Store空殼；headless Chrome路徑固定在`C:\Program Files\Google\Chrome\Application\chrome.exe`。驗證方式：PowerShell內建`System.Net.HttpListener`起靜態伺服器＋`System.Net.WebSockets.ClientWebSocket`手動驅動headless Chrome DevTools Protocol。**新教訓：`_devserver.ps1`這類含CJK路徑字面量的.ps1腳本，檔案本身必須帶UTF-8 BOM，否則Windows PowerShell 5.1會用系統ANSI codepage誤讀而導致路徑全部讀錯（本次因此排查了一段時間才發現是編碼問題而非邏輯錯誤）**，scratchpad裡的`_devserver.ps1`已修復並帶BOM，之後直接沿用即可。
-- **`--fs-label`孤兒變數已刪除**（本次#225清理），若之後又看到類似`--fs-*`變數零使用情況，可比照本次方法核對後清理。
-- **3支建置腳本（France/Italy/Iberia）的CRLF regex已修復**（本次#225），與`build-germany-map.pl`一致使用`\r?\n`，之後重跑舊腳本不會再因換行符不符而失敗。
-- **分級制度頁對WSET官方25項標籤術語的核對結果（7項已涵蓋/7項部分涵蓋/11項完全缺漏）已回報但未修復**，接手時可主動詢問使用者是否要排入優先序。
-- **`project-snapshot.md`目前已經過時**：本次多批工作皆未重新產生此檔案，快取內容明顯落後於當前程式碼。這份檔案每次有新commit後都會過時，如果使用者需要更新版本要重新產生，不要假設現有內容反映最新狀態。
-- **接手的Claude Code務必實際開啟異動的檔案核對真實現況**，不要只憑這份HANDOFF.md的文字描述去猜測。
+- **push狀態（重要）**：本次session結束時本機**領先**`origin/main` 1個commit（本次HANDOFF.md覆寫將是最後一次commit，即將push）。**接手時務必先跑`git fetch && git status -sb`確認目前的落後/領先狀態**，不要假設本機一定是最新或一定已同步。
+- **`auditWineDB()`現在有6項稽核**（缺少地圖座標／缺少比較模式profile／法國產區未綁定年份矩陣／詞彙一致性`inconsistentVocabulary`／侍酒溫度區間`servingTempMismatch`，加上整體通過判斷），新增已知例外時比照既有`KNOWN_VINTAGE_EXCEPTIONS`／`KNOWN_SERVING_TEMP_STRADDLE_EXCEPTIONS`的模式（獨立常數＋輸出時區分✅已知例外與❌真正警告），不要直接把例外硬編碼進判斷式裡，維持這個站內已建立的稽核設計慣例。
+- **`CANONICAL_VOCABULARY_MAP`（`js/core.js`）是全站詞彙統一的唯一事實來源**：日後若新增品種或產區資料時用了容易與既有詞彙混淆的英文/中文寫法，`auditWineDB()`會自動抓到並警告，若確認是新的同義詞情況，記得同步更新這個常數而不是只在資料層面修正。
+- **本機環境限制（沿用既往）**：沒有Node.js，`python3`/`python`是Windows Store空殼；headless Chrome路徑固定在`C:\Program Files\Google\Chrome\Application\chrome.exe`；`_devserver.ps1`已修復UTF-8 BOM問題，之後直接沿用即可，不需重新排查。
+- **`project-snapshot.md`目前已經過時**：本次8個commit皆未重新產生此檔案，快取內容明顯落後於當前程式碼。這份檔案每次有新commit後都會過時，如果使用者需要更新版本要重新產生，不要假設現有內容反映最新狀態。
+- **接手的Claude Code務必實際開啟異動的檔案核對真實現況**，不要只憑這份HANDOFF.md的文字描述去猜測——本次session本身就有3次「先核對才發現自己或先前報告有誤」的案例（champagne-echelle內容誤植、3組詞彙多數/少數算反、commit訊息複製貼上錯誤），這是最好的示範：即使是同一個session裡剛做的核對，也可能出錯，重新核對永遠是必要的。
