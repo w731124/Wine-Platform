@@ -880,3 +880,11 @@
      驗證：`WINE_DB.classifications.length`確認為16（12+4）；全域大括號/中括號配對平衡（1257/1257、707/707）；headless Chrome依國家篩選確認France顯示7張卡（含3張新卡）、Italy顯示4張卡（含`veneto-classico`）；展開`bordeaux-basic-hierarchy`截圖確認視覺與既有卡片一致；`rioja-aging`展開後DOM文字確認含「Joven/Genérico」且不再含舊詞序「Genérico/Joven」；執行`auditWineDB()`確認兩類既有警告（缺少地圖座標33筆、法國產區未綁定年份矩陣4筆）完全無變化，因本次僅修改`WINE_DB.classifications`、未觸及`WINE_DB.appellations`。
 240. **修正`bordeaux-basic-hierarchy`卡片`tiers`陣列順序反了**：使用者發現這張卡是由低至高（Bordeaux AOC→Bordeaux Supérieur AOC→Cru Bourgeois），與全站其餘15張分級卡「由高至低」的既定慣例不符，改為Cru Bourgeois→Bordeaux Supérieur AOC→Bordeaux AOC，僅調整陣列順序，`name`/`note`文字內容與`summary`/`history`/`crossNote`皆不動。
      原因：#238新增此卡時疏忽了「由高至低」是全站分級卡一致遵循的既定慣例（`classifications.js`的`buildClassificationCardHTML()`固定顯示「分級層級 Tiers（由高至低）」標題），使用者實際檢視畫面後發現這張新卡是唯一順序反過來的，屬於單純的疏漏而非設計判斷。
+
+## 2026-07-29 釀造工藝頁sparkling款補上Moscato/Asti品種與風格說明（補充範圍：sparkling/fortified款新增官方標籤術語）
+
+241. **sparkling與fortified兩款式卡片，在既有LO5技術正確性核對之外，一併補上官方標籤術語**：這些術語屬於「款式風格描述」而非「品質階層」，使用者明確要求不做成`classifications.js`那種tier卡片，改為在既有欄位自然帶出，呈現方式由我決定並於動工前回報確認。
+     - sparkling款：在既有`tags`陣列新增5個標籤——`Brut(不甜型，殘糖<12g/L)`／`Demi-Sec(半甜型，殘糖32–50g/L)`／`Vintage(年份酒)`／`Non-Vintage/NV(無年份酒)`／`Traditional Method／Cap Classique(傳統法之英文正式稱法／南非稱法，簡稱MCC)`，選擇`tags`是因為這些詞不對應現有傳統法/水槽法/轉注法三欄中任一欄，適合以標籤呈現。
+     - fortified款：在既有`productionTable`新增一列「常見風格標示」，利用表格本來就有的波特/雪莉/馬德拉三欄，波特欄列出Ruby/Reserve Ruby/LBV/Vintage/Tawny五個風格，雪莉欄列出Fino/Amontillado/Oloroso/Pale Cream/Medium/Cream/PX七個風格，選擇擴充表格而非`tags`是因為12個術語分屬兩種不同酒種，塞進單一`tags`陣列會混淆不清，既有表格欄位結構恰好能自然分組。
+     原因：使用者要求先核對LO5技術正確性再視需要擴充官方標籤術語；呈現方式選擇的判斷依據是「術語是否對應既有欄位的分類維度」——能對應欄位的用表格擴充，無法對應的用標籤呈現，兩種手法皆為既有結構的延伸而非新創格式。
+     驗證：全域大括號/中括號配對平衡（1258/1258、708/708）；headless Chrome確認sparkling卡片展開後`tags`區塊顯示9個標籤（4個既有+5個新增）、無版面溢出；fortified卡片`productionTable`確認為5列（4列既有+1列新增），三欄內容正確對應波特/雪莉/馬德拉；執行`auditWineDB()`確認警告數量無變化（本次僅修改`WINE_DB.wineStyles`，該陣列不在`auditWineDB()`稽核範圍內）。

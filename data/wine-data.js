@@ -3665,7 +3665,7 @@ const WINE_DB = {
           { label: '成本／複雜度', values: ['最高', '最低', '中等'] }
         ]
       },
-      tags: ['Autolysis(酒渣自溶)', 'Remuage(轉瓶)', 'Dosage(補液)', 'High Acidity(高酸度基酒)'],
+      tags: ['Autolysis(酒渣自溶)', 'Remuage(轉瓶)', 'Dosage(補液)', 'High Acidity(高酸度基酒)', 'Brut(不甜型，殘糖<12g/L，最常見氣泡酒甜度)', 'Demi-Sec(半甜型，殘糖32–50g/L)', 'Vintage(年份酒，單一年份釀造)', 'Non-Vintage/NV(無年份酒，多年份調配以維持品牌一致風格)', 'Traditional Method／Cap Classique(傳統法之英文正式稱法／南非對同一工法的稱法，簡稱MCC)'],
     },
     {
       id: 'red',
@@ -3754,7 +3754,12 @@ const WINE_DB = {
           { label: '強化時機', values: ['發酵中途', '發酵完全結束後', '發酵完全結束後'] },
           { label: '酒精度', values: ['19–22%', '約15%（Fino系）至17–18%以上（Oloroso）', '依風格而定'] },
           { label: '甜度光譜', values: ['天生帶甜', '極干（Fino/Manzanilla）至極甜（Pedro Ximénez）', 'Sercial（不甜）至Malmsey（極甜）'] },
-          { label: '陳年關鍵', values: ['木桶或瓶中陳年', 'Flor生物陳年（Fino）或氧化陳年（Oloroso），Amontillado為中間風格', '刻意加熱陳年（estufagem槽內加熱或canteiro閣樓自然受熱）'] }
+          { label: '陳年關鍵', values: ['木桶或瓶中陳年', 'Flor生物陳年（Fino）或氧化陳年（Oloroso），Amontillado為中間風格', '刻意加熱陳年（estufagem槽內加熱或canteiro閣樓自然受熱）'] },
+          { label: '常見風格標示', values: [
+            'Ruby(寶石紅)／Reserve Ruby(珍藏寶石紅)／LBV(晚裝瓶年份，Late Bottled Vintage)／Vintage(年份波特)／Tawny(茶色，可再標示10/20/30/40年)：由年輕果香至氧化堅果調性依序遞增',
+            'Fino／Amontillado／Oloroso／Pale Cream／Medium／Cream／PX(Pedro Ximénez)：依生物／氧化陳年程度與甜度分類，Fino最干最淡，PX最濃最甜',
+            '依四大貴族品種對應甜度光譜分級，無獨立風格標示系統（見左側品種說明）'
+          ] }
         ]
       },
       tags: ['Fortification(中途/完全發酵後強化)', 'Flor(酒花)', 'Solera System(索雷拉系統)', 'Estufagem(加熱陳年)'],
