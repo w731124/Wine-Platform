@@ -941,3 +941,11 @@
 255. **稽核邏輯常態化：`auditWineDB()`新增第5/6項稽核`inconsistentVocabulary`與`servingTempMismatch`**：前者新增`CANONICAL_VOCABULARY_MAP`常數（源自#251的20組keyIdentifiers統一結果），掃描範圍依使用者要求擴大到`aromaWheel`與`keyIdentifiers`兩欄位（涵蓋`WINE_DB.appellations`與`WINE_DB.grapes`），任何欄位值命中非標準寫法即列入`❌`警告；後者新增`SERVING_TEMP_BANDS`（5個溫度區間）與`KNOWN_SERVING_TEMP_STRADDLE_EXCEPTIONS`（Chenin Blanc/Viognier/Sémillon/Furmint四個刻意橫跨區間的已知例外），解析每個品種`servingTemp`字串的數字範圍後檢查是否完整落在其中一個區間內。兩項稽核的清單為空時，同樣併入既有「✅ 全部產區通過一致性稽核」的整體通過判斷條件，不另開新的訊息系統。
      原因：動工前grep確認`auditWineDB()`僅在`DOMContentLoaded`結尾呼叫一次、且`data/wine-data.js`在`js/core.js`之前載入，`WINE_DB.grapes`資料在函式執行時必然已就緒，新增的2項檢查皆為純資料比對（不依賴地圖DOM渲染完成），故確認可直接插入既有函式、不需調整呼叫時機。
      驗證：headless Chrome執行`auditWineDB()`，`servingTempMismatch`清單為空（確認#253的6筆調整已讓全部33品種落在區間內或屬已知例外）；`inconsistentVocabulary`清單命中4筆——`marlborough`／`sauvignon-blanc`的`aromaWheel`各有一筆`Passion Fruit(百香果)`、`haut-medoc`／`sta-rita-hills`的`aromaWheel`各有一筆`Dark Cherry(黑櫻桃)`，這是#251刻意限定「僅稽核keyIdentifiers欄位」時留在`aromaWheel`裡未處理的既有案例，現在稽核範圍擴大後才浮現，屬預期內的新發現而非本次改動introduce的問題，是否要一併修正留待使用者後續決定；`auditCountryFlags()`確認未受影響仍正常執行。
+
+## 2026-07-30 aromaWheel詞彙非標準寫法修正、Old Vine/Late Harvest分級歸屬裁定
+
+256. **`inconsistentVocabulary`稽核抓到的4筆`aromaWheel`非標準詞彙，裁定修正**：`marlborough`／`sauvignon-blanc`的`Passion Fruit(百香果)`改為`Passionfruit(百香果)`，`haut-medoc`／`sta-rita-hills`的`Dark Cherry(黑櫻桃)`改為`Black Cherry(黑櫻桃)`，統一比照`CANONICAL_VOCABULARY_MAP`（源自#251 keyIdentifiers統一結果）的標準寫法，僅取代陣列內字串本身，`aromaWheel`陣列長度與其餘3個詞條皆不動。
+     原因：這4筆並無如Cassis／Blackcurrant那樣值得保留區分的語境差異，單純是輸入時未對齊`keyIdentifiers`同期已統一的寫法；若維持現狀，`inconsistentVocabulary`稽核會長期顯示❌警告卻無對應例外常數可解釋原因，不符合#252-255建立的「已知例外要嘛修正、要嘛正式列入例外常數」稽核設計慣例。
+     驗證：`grep`確認全域已無`Dark Cherry`／`Passion Fruit(`殘留；全域大括號/中括號配對平衡（1258/1258、724/724）；預期`auditWineDB()`重新執行後`inconsistentVocabulary`清單應為空。
+257. **裁定分級制度頁不新增第4種分類、也不另闢頁面處理Old Vine/Vieilles Vignes與Late Harvest/Vendanges Tardives，維持現狀不修改程式碼**：核對現況發現`Old Vine`已在多筆品種／產區的`styleSummary`／`history`／`keyIdentifiers`欄位自然出現（如Barossa產區完整說明「Barossa Old Vine Charter」樹齡分級），`Vendanges Tardives`也已在`agingPotential`欄位出現，比照#241 sparkling/fortified款標籤術語的既定判斷原則——這兩項本質是「風格／採收方式標示」而非「品質階層」，不屬於`classifications.js`分級卡片（By酒莊/葡萄園/產區）的設計範疇，現況已透過既有欄位自然帶出實質內容，形式上視為已解決。
+     原因：新增第4種分類會破壞既有三分類（By酒莊/葡萄園/產區）的設計一致性，且這兩項術語的性質與已透過#241解法（既有欄位自然帶出而非tier卡片）處理過的氣泡酒/加烈酒風格標示相同，沿用同一判斷邏輯較為一致；另闢頁面對這種程度的內容而言範圍過大，不符合CLAUDE.md「非必要不做全檔重構，以達成需求的最小範圍為原則」。
