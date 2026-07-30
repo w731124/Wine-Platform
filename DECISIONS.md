@@ -881,7 +881,7 @@
 240. **修正`bordeaux-basic-hierarchy`卡片`tiers`陣列順序反了**：使用者發現這張卡是由低至高（Bordeaux AOC→Bordeaux Supérieur AOC→Cru Bourgeois），與全站其餘15張分級卡「由高至低」的既定慣例不符，改為Cru Bourgeois→Bordeaux Supérieur AOC→Bordeaux AOC，僅調整陣列順序，`name`/`note`文字內容與`summary`/`history`/`crossNote`皆不動。
      原因：#238新增此卡時疏忽了「由高至低」是全站分級卡一致遵循的既定慣例（`classifications.js`的`buildClassificationCardHTML()`固定顯示「分級層級 Tiers（由高至低）」標題），使用者實際檢視畫面後發現這張新卡是唯一順序反過來的，屬於單純的疏漏而非設計判斷。
 
-## 2026-07-29 釀造工藝頁sparkling款補上Moscato/Asti品種與風格說明（補充範圍：sparkling/fortified款新增官方標籤術語）
+## 2026-07-29 釀造工藝頁sparkling/fortified款補上官方標籤術語（補充範圍，併入釀造工藝深度審查任務）
 
 241. **sparkling與fortified兩款式卡片，在既有LO5技術正確性核對之外，一併補上官方標籤術語**：這些術語屬於「款式風格描述」而非「品質階層」，使用者明確要求不做成`classifications.js`那種tier卡片，改為在既有欄位自然帶出，呈現方式由我決定並於動工前回報確認。
      - sparkling款：在既有`tags`陣列新增5個標籤——`Brut(不甜型，殘糖<12g/L)`／`Demi-Sec(半甜型，殘糖32–50g/L)`／`Vintage(年份酒)`／`Non-Vintage/NV(無年份酒)`／`Traditional Method／Cap Classique(傳統法之英文正式稱法／南非稱法，簡稱MCC)`，選擇`tags`是因為這些詞不對應現有傳統法/水槽法/轉注法三欄中任一欄，適合以標籤呈現。
