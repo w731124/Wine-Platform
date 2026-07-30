@@ -133,7 +133,7 @@ function buildGrapeCardHTML(g) {
             <p class="ins-lbl">🗺️ 代表產區 Regions</p>
             <div class="flex flex-wrap gap-1 mb-3">${regionTags}</div>
             <p class="ins-lbl">🌡️ 適飲溫度 Serving Temp</p>
-            <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);margin-bottom:12px;">${g.servingTemp}</p>
+            <p style="font-size:var(--fs-base);line-height:1.65;color:var(--txt2);margin-bottom:12px;">${g.servingTemp}　<span class="grape-inline-link" onclick="jumpToStorageServingTemp()">查看完整侍酒建議</span></p>
             <p class="ins-lbl">🍽️ 餐酒搭配 Food Pairing</p>
             <div class="flex flex-wrap gap-1">${foodTags}</div>
           </div>

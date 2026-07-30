@@ -50,8 +50,69 @@ function cleanupLegacyCellarStorage(){
    「（法國產區）年份矩陣綁定」三個面向都具備完整資料，於 console 輸出報告。
    純檢查、不更動任何既有渲染邏輯；可在 DOMContentLoaded 後安全呼叫。
 ════════════════════════════════════ */
+// 法國產區確定不綁定年份矩陣的已知例外清單（2026-07-30正式裁定，見DECISIONS.md）：
+// 貴腐甜酒（sauternes/barsac）年份表格式不適用一般年份評級邏輯；beaujolais教學份量疑慮；
+// entre-deux-mers為基礎不甜白酒入門款，及早飲用不具年份陳年討論價值。
+const KNOWN_VINTAGE_EXCEPTIONS = {
+  'sauternes': '貴腐甜酒風格，年份表格式不適用',
+  'barsac': '貴腐甜酒風格，年份表格式不適用',
+  'beaujolais': '教學份量疑慮，暫不納入',
+  'entre-deux-mers': '基礎不甜白酒入門款，及早飲用不具年份陳年討論價值'
+};
+
+// 已知應統一但尚未統一的詞彙對照表（比照#218/#251的keyIdentifiers全站一致性稽核結果常態化）：
+// key為非標準寫法，value為站內已確立的標準寫法；掃描範圍涵蓋 aromaWheel 與 keyIdentifiers 兩欄位。
+const CANONICAL_VOCABULARY_MAP = {
+  'Soft Tannin(柔軟單寧)': 'Soft Tannin(柔順單寧)',
+  'Beeswax(蜂蠟香氣)': 'Beeswax(蜂蠟)',
+  'Beeswax(蜂蠟感)': 'Beeswax(蜂蠟)',
+  'Leather(皮革香)': 'Leather(皮革)',
+  'Rose(玫瑰花香)': 'Rose(玫瑰花)',
+  'Bitter Almond Finish(杏仁苦尾)': 'Bitter Almond Finish(苦杏仁尾韻)',
+  'Crisp High Acidity(高爽脆酸度)': 'Crisp High Acidity(高酸爽脆)',
+  'Crisp High Acidity(清爽高酸)': 'Crisp High Acidity(高酸爽脆)',
+  'Fresh & Easy-Drinking(清爽易飲)': 'Fresh & Easy-Drinking(清新易飲)',
+  'Rhône Blend(隆河式混調)': 'Rhône Blend(隆河混調)',
+  'Red Berry(紅莓果香)': 'Red Berry(紅莓)',
+  'Full-Bodied Dry Style(飽滿干型酒體)': 'Full-Bodied Dry(飽滿干型)',
+  'Passion Fruit(百香果)': 'Passionfruit(百香果)',
+  'Everyday Value(高性價比日常酒)': 'Everyday Value(日常餐酒)',
+  'Green Apple(清新蘋果，白酒)': 'Green Apple(青蘋果)',
+  'White Peach(水蜜桃)': 'White Peach(白桃)',
+  'Limestone(石灰質土壤)': 'Limestone(石灰岩)',
+  'Mineral(礦物感)': 'Mineral(礦石感)',
+  'Volcanic Mineral(火山岩礦石感)': 'Volcanic Mineral(火山礦石感)',
+  'Strawberry(草莓紅果，紅酒)': 'Strawberry(草莓)',
+  'Fine Tannin(細緻單寧)': 'Refined Tannin(細緻單寧)',
+  'Silky Tannin(絲滑單寧)': 'Silky Tannin(絲質單寧)',
+  'Dark Cherry(黑櫻桃)': 'Black Cherry(黑櫻桃)',
+  'High Value(高性價比)': 'Great Value(性價比高)',
+  'Grassy(草本)': 'Grass(青草)'
+};
+
+// 建議侍酒溫度5個區間（比照「儲存與侍酒」頁 index.html 的靜態內容，見DECISIONS.md）
+const SERVING_TEMP_BANDS = [
+  { min: 6, max: 8 },
+  { min: 7, max: 10 },
+  { min: 10, max: 13 },
+  { min: 13, max: 15 },
+  { min: 16, max: 18 }
+];
+// 刻意橫跨兩區間的已知例外（多風格品種，2026-07-30核對後確認維持現狀）
+const KNOWN_SERVING_TEMP_STRADDLE_EXCEPTIONS = {
+  'chenin-blanc': '風格橫跨不甜到貴腐甜型，刻意橫跨清淡與濃郁白酒兩區間',
+  'viognier': '酒體介於兩區間之間，刻意橫跨',
+  'semillon': '干型與貴腐甜型溫度需求不同，刻意橫跨',
+  'furmint': '不甜型與貴腐甜酒溫度需求不同，刻意橫跨'
+};
+function parseServingTempRange(str){
+  const m = (str || '').match(/(\d+)\s*[–\-]\s*(\d+)/);
+  if(!m) return null;
+  return { min: parseInt(m[1], 10), max: parseInt(m[2], 10) };
+}
+
 function auditWineDB(){
-  const report = { total: WINE_DB.appellations.length, missingMap: [], missingCompare: [], franceUnboundToVintage: [], ok: [] };
+  const report = { total: WINE_DB.appellations.length, missingMap: [], missingCompare: [], franceUnboundToVintage: [], inconsistentVocabulary: [], servingTempMismatch: [], ok: [] };
   const vintageRowIds = WINE_DB.vintages.rows.map(r=>r.id);
 
   // 將法國年份列 id 拆解為關鍵字，用於模糊比對 subRegion/region 是否能掛上某一列
@@ -86,18 +147,55 @@ function auditWineDB(){
       const matched = Object.keys(vintageKeywords).some(rowId =>
         vintageRowIds.includes(rowId) && vintageKeywords[rowId].some(kw => haystack.includes(kw))
       );
-      if(!matched){ report.franceUnboundToVintage.push(app.id); issues.push('vintage-binding'); }
+      if(!matched){
+        report.franceUnboundToVintage.push(app.id);
+        if(!KNOWN_VINTAGE_EXCEPTIONS[app.id]) issues.push('vintage-binding');
+      }
     }
+
+    // 5) 詞彙一致性檢查：aromaWheel／keyIdentifiers 是否命中已知非標準寫法
+    const vocabTerms = [...(app.aromaWheel || []), ...(app.keyIdentifiers || [])];
+    vocabTerms.forEach(term => {
+      if(CANONICAL_VOCABULARY_MAP[term]){
+        report.inconsistentVocabulary.push(`${app.id}: "${term}" 應改為 "${CANONICAL_VOCABULARY_MAP[term]}"`);
+        issues.push('vocabulary');
+      }
+    });
 
     if(issues.length === 0) report.ok.push(app.id);
   });
+
+  WINE_DB.grapes.forEach(g=>{
+    // 5) 詞彙一致性檢查（grapes.aromaWheel）
+    (g.aromaWheel || []).forEach(term => {
+      if(CANONICAL_VOCABULARY_MAP[term]){
+        report.inconsistentVocabulary.push(`${g.id}: "${term}" 應改為 "${CANONICAL_VOCABULARY_MAP[term]}"`);
+      }
+    });
+
+    // 6) servingTemp 是否落在「建議侍酒溫度」5個區間中的其中一個
+    const range = parseServingTempRange(g.servingTemp);
+    if(range){
+      const fitsSomeBand = SERVING_TEMP_BANDS.some(b => range.min >= b.min && range.max <= b.max);
+      if(!fitsSomeBand && !KNOWN_SERVING_TEMP_STRADDLE_EXCEPTIONS[g.id]){
+        report.servingTempMismatch.push(`${g.id}（${g.servingTemp}）`);
+      }
+    }
+  });
+
+  const knownVintageIds = Object.keys(KNOWN_VINTAGE_EXCEPTIONS);
+  const knownVintageUnbound = report.franceUnboundToVintage.filter(id => knownVintageIds.includes(id));
+  const unexpectedVintageUnbound = report.franceUnboundToVintage.filter(id => !knownVintageIds.includes(id));
 
   // Console 報告輸出
   console.groupCollapsed(`%c[WINE_DB Audit] ${report.ok.length}/${report.total} 完全通過`, 'color:#5C061C;font-weight:bold;');
   if(report.missingMap.length) console.warn('❌ 缺少地圖座標 (data-id 未在地圖 DOM 中找到):', report.missingMap);
   if(report.missingCompare.length) console.warn('❌ 缺少比較模式所需 profile 欄位:', report.missingCompare);
-  if(report.franceUnboundToVintage.length) console.warn('❌ 法國產區未綁定至年份矩陣任何一列:', report.franceUnboundToVintage);
-  if(!report.missingMap.length && !report.missingCompare.length && !report.franceUnboundToVintage.length){
+  if(knownVintageUnbound.length) console.log('%c✅ 已知並確認維持排除的法國產區（不綁定年份矩陣）:', 'color:#1a7a1a;font-weight:bold;', knownVintageUnbound.map(id => `${id}（${KNOWN_VINTAGE_EXCEPTIONS[id]}）`));
+  if(unexpectedVintageUnbound.length) console.warn('❌ 法國產區未綁定至年份矩陣任何一列（非已知例外清單，需檢查）:', unexpectedVintageUnbound);
+  if(report.inconsistentVocabulary.length) console.warn('❌ aromaWheel／keyIdentifiers 命中已知非標準詞彙寫法:', report.inconsistentVocabulary);
+  if(report.servingTempMismatch.length) console.warn('❌ servingTemp 未落在建議侍酒溫度任一區間內（非已知橫跨例外）:', report.servingTempMismatch);
+  if(!report.missingMap.length && !report.missingCompare.length && !unexpectedVintageUnbound.length && !report.inconsistentVocabulary.length && !report.servingTempMismatch.length){
     console.log('%c✅ 全部產區通過一致性稽核', 'color:#1a7a1a;font-weight:bold;');
   }
   console.groupEnd();
@@ -226,6 +324,15 @@ function jumpToFaultById(id){
   setTimeout(() => {
     const el = document.querySelector(`[data-fault-id="${id}"]`);
     if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 50);
+}
+
+function jumpToStorageServingTemp(){
+  switchToPanel('storage');
+  const hdr = document.getElementById('storage-servingtemp-hdr');
+  if (hdr && !hdr.classList.contains('open')) toggleSATSection(hdr);
+  setTimeout(() => {
+    if (hdr) hdr.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }, 50);
 }
 

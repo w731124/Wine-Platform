@@ -927,3 +927,17 @@
      - 20組確定案例依「多數決」統一（單一詞條的中文翻譯若在站內多筆重複出現，即以多數版本為準修正少數版本），無多數可判（1:1平手）的8組（Soft Tannin、Rose、Bitter Almond Finish、Fresh & Easy-Drinking、Rhône Blend、Full-Bodied Dry、Everyday Value、Limestone）則由我依語意清晰度武斷選定一版並在此註明屬武斷裁決，非資料驅動。
      原因：核對範圍嚴格限定在`keyIdentifiers`欄位本身，不比照本次順手擴大到`aromaWheel`等其他欄位（如`Dark Cherry`在`aromaWheel`裡的2筆刻意保留不動），維持與#218「僅稽核單一欄位」的既定範圍原則一致；多數決是可驗證、可重現的客觀標準，武斷選定的7組已在此明確標註以利日後檢視。
      驗證：`grep -c`確認全部20組少數版本用詞在全域已歸零（含5組邊界案例裡C2/C4/C5的3組修正結果）；`keyIdentifiers`總筆數仍為110（未增減任何標籤，只改字詞內容）；全域大括號/中括號配對平衡；`auditWineDB()`確認警告無變化（`keyIdentifiers`不在稽核範圍內）。
+
+## 2026-07-30 三項收尾：年份矩陣4筆例外正式定案、servingTemp與儲存頁溫度交叉核對、稽核邏輯常態化寫入auditWineDB()
+
+252. **年份矩陣4筆未綁定產區（sauternes/barsac/beaujolais/entre-deux-mers）正式裁定為刻意排除，`auditWineDB()`新增`KNOWN_VINTAGE_EXCEPTIONS`常數**：動工前grep確認`franceUnboundToVintage`現有邏輯（單純把未匹配`vintageKeywords`的法國產區id塞進陣列並整批`console.warn`），改為這4筆id若出現在清單中，先從`issues`判定移除（使其計入`report.ok`而非失敗）並另外分流輸出為`✅ 已知並確認維持排除`資訊訊息；只有清單裡出現這4筆以外的新id才維持原本`❌`警告樣式。
+     原因：使用者正式裁定這4筆維持現狀、不新增年份矩陣列，稽核邏輯若不區分「已知且接受的例外」與「真正需要修的新問題」，往後每次執行`auditWineDB()`都會被這4筆已知情況淹沒真正需要注意的新警告，比照#Task A既定的「已知例外用✅而非❌」設計原則。
+     驗證：headless Chrome執行`auditWineDB()`確認4筆正確輸出為✅已知例外（各自附上排除原因），且`missingMap`等其餘既有稽核項目輸出格式未受影響。
+253. **33筆`servingTemp`與「儲存與侍酒」頁5個溫度區間交叉核對，發現6筆數值超出/低於對應區間邊界，依使用者裁定調整品種數值（不動區間本身）**：Pinot Noir／Cabernet Franc／Barbera／Montepulciano／Corvina（基礎款）原為`14–16°C`（超出清淡紅酒13–15°C區間上限1°C），改為`14–15°C`；Gamay原為`12–14°C`（低於同一區間下限1°C），改為`13–14°C`；Gewürztraminer原為`8–10°C`（落在清淡白酒區間，但WSET教材通常歸類為濃郁飽滿型芳香白酒），依使用者裁定改為`10–13°C`（歸入濃郁型白酒區間）。白酒交界案例（Chenin Blanc／Viognier／Sémillon／Furmint的`10–12°C`，橫跨兩區間邊界）使用者裁定維持現狀不動，因這些品種本身風格橫跨不甜到貴腐甜型，刻意橫跨兩區間並非數字錯誤。
+     原因：使用者要求先核對不擅自修改任一邊，逐一列出衝突案例（含哪5個品種呈現「系統性1°C超界」的規律模式）取得裁定後才動工，避免我自行假設該調整品種數字還是調整區間本身。
+254. **新增品種詳情卡片↔儲存頁溫度表的雙向連結，比照既有`jumpToGrapeById()`/`jumpToFaultById()`模式**：`js/core.js`新增`jumpToStorageServingTemp()`（切換至`panel-storage`、展開`#storage-servingtemp-hdr`手風琴、`scrollIntoView`），`js/grapes.js`的`servingTemp`欄位旁新增「查看完整侍酒建議」連結；`index.html`儲存頁溫度表則把既有文字裡本來就提及的品種名稱（Sauvignon Blanc／Chardonnay／Pinot Noir／Gamay／Cabernet Sauvignon／Syrah）改用`<span class="grape-inline-link" onclick="jumpToGrapeById(...)">`包裹，未新增例句、未新增第三種篩選列。
+     原因：使用者核對後選擇簡化方案（不新增溫度篩選列，只做雙向連結），避免新增一整套篩選狀態變數與渲染邏輯的較高成本；連結對象選用溫度表原文已提及的品種名稱而非窮舉每個區間所有品種，維持「僅包裹既有文字」的最小改動原則，與品種圖鑑先前的`grape-inline-link`慣例一致。
+     驗證：headless Chrome確認Pinot Noir卡片`servingTemp`顯示更新後的`14–15°C`且連結存在；點擊後正確跳轉`panel-storage`並展開`storage-servingtemp-hdr`；儲存頁點擊`Sauvignon Blanc`連結正確跳轉`panel-grapes`並展開對應品種卡片，完成雙向迴圈驗證。
+255. **稽核邏輯常態化：`auditWineDB()`新增第5/6項稽核`inconsistentVocabulary`與`servingTempMismatch`**：前者新增`CANONICAL_VOCABULARY_MAP`常數（源自#251的20組keyIdentifiers統一結果），掃描範圍依使用者要求擴大到`aromaWheel`與`keyIdentifiers`兩欄位（涵蓋`WINE_DB.appellations`與`WINE_DB.grapes`），任何欄位值命中非標準寫法即列入`❌`警告；後者新增`SERVING_TEMP_BANDS`（5個溫度區間）與`KNOWN_SERVING_TEMP_STRADDLE_EXCEPTIONS`（Chenin Blanc/Viognier/Sémillon/Furmint四個刻意橫跨區間的已知例外），解析每個品種`servingTemp`字串的數字範圍後檢查是否完整落在其中一個區間內。兩項稽核的清單為空時，同樣併入既有「✅ 全部產區通過一致性稽核」的整體通過判斷條件，不另開新的訊息系統。
+     原因：動工前grep確認`auditWineDB()`僅在`DOMContentLoaded`結尾呼叫一次、且`data/wine-data.js`在`js/core.js`之前載入，`WINE_DB.grapes`資料在函式執行時必然已就緒，新增的2項檢查皆為純資料比對（不依賴地圖DOM渲染完成），故確認可直接插入既有函式、不需調整呼叫時機。
+     驗證：headless Chrome執行`auditWineDB()`，`servingTempMismatch`清單為空（確認#253的6筆調整已讓全部33品種落在區間內或屬已知例外）；`inconsistentVocabulary`清單命中4筆——`marlborough`／`sauvignon-blanc`的`aromaWheel`各有一筆`Passion Fruit(百香果)`、`haut-medoc`／`sta-rita-hills`的`aromaWheel`各有一筆`Dark Cherry(黑櫻桃)`，這是#251刻意限定「僅稽核keyIdentifiers欄位」時留在`aromaWheel`裡未處理的既有案例，現在稽核範圍擴大後才浮現，屬預期內的新發現而非本次改動introduce的問題，是否要一併修正留待使用者後續決定；`auditCountryFlags()`確認未受影響仍正常執行。

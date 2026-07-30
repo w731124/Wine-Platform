@@ -1167,7 +1167,7 @@
   </div>
 
   <div class="acc-wrap" style="margin-bottom:14px;">
-    <div class="acc-hdr" onclick="toggleSATSection(this)">
+    <div class="acc-hdr" id="storage-servingtemp-hdr" onclick="toggleSATSection(this)">
       <div style="display:flex;align-items:center;gap:12px;">
         <div style="width:38px;height:38px;border-radius:10px;background:rgba(92,6,28,.08);display:flex;align-items:center;justify-content:center;font-size:20px;">🧊</div>
         <div>
@@ -1186,19 +1186,19 @@
           </div>
           <div style="display:flex;gap:10px;align-items:flex-start;">
             <span style="flex-shrink:0;min-width:80px;background:rgba(58,110,168,.06);border:1px solid rgba(58,110,168,.18);color:#1A3A6A;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">7–10°C</span>
-            <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">清淡不甜白酒／粉紅酒 Light-bodied White &amp; Rosé（如Sauvignon Blanc、多數粉紅酒）；不甜型加烈酒 Dry Fortified（如Fino、Manzanilla雪莉）亦適用此區間</span>
+            <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">清淡不甜白酒／粉紅酒 Light-bodied White &amp; Rosé（如<span class="grape-inline-link" onclick="jumpToGrapeById('sauvignon-blanc')">Sauvignon Blanc</span>、多數粉紅酒）；不甜型加烈酒 Dry Fortified（如Fino、Manzanilla雪莉）亦適用此區間</span>
           </div>
           <div style="display:flex;gap:10px;align-items:flex-start;">
             <span style="flex-shrink:0;min-width:80px;background:rgba(58,110,168,.12);border:1px solid rgba(58,110,168,.28);color:#0E2448;border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">10–13°C</span>
-            <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">濃郁型／經橡木桶白酒 Full-bodied/Oaked White（如白布根地、多數Chardonnay）</span>
+            <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">濃郁型／經橡木桶白酒 Full-bodied/Oaked White（如白布根地、多數<span class="grape-inline-link" onclick="jumpToGrapeById('chardonnay')">Chardonnay</span>）</span>
           </div>
           <div style="display:flex;gap:10px;align-items:flex-start;">
             <span style="flex-shrink:0;min-width:80px;background:rgba(92,6,28,.06);border:1px solid rgba(92,6,28,.18);color:var(--burg);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">13–15°C</span>
-            <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">清淡型紅酒 Light-bodied Red（如Pinot Noir、薄酒萊Gamay）</span>
+            <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">清淡型紅酒 Light-bodied Red（如<span class="grape-inline-link" onclick="jumpToGrapeById('pinot-noir')">Pinot Noir</span>、薄酒萊<span class="grape-inline-link" onclick="jumpToGrapeById('gamay')">Gamay</span>）</span>
           </div>
           <div style="display:flex;gap:10px;align-items:flex-start;">
             <span style="flex-shrink:0;min-width:80px;background:rgba(92,6,28,.14);border:1px solid rgba(92,6,28,.32);color:var(--burg);border-radius:20px;padding:3px 10px;font-size:var(--fs-base);font-weight:500;text-align:center;">16–18°C</span>
-            <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">濃郁型紅酒 Full-bodied Red（如Cabernet Sauvignon、Syrah）；甜型加烈酒 Sweet Fortified（如Port、Cream Sherry）亦適用此區間，皆為微涼室溫而非現代中央空調房間的實際室溫</span>
+            <span style="font-size:var(--fs-base);color:var(--txt2);line-height:1.6;padding-top:2px;">濃郁型紅酒 Full-bodied Red（如<span class="grape-inline-link" onclick="jumpToGrapeById('cabernet-sauvignon')">Cabernet Sauvignon</span>、<span class="grape-inline-link" onclick="jumpToGrapeById('syrah-shiraz')">Syrah</span>）；甜型加烈酒 Sweet Fortified（如Port、Cream Sherry）亦適用此區間，皆為微涼室溫而非現代中央空調房間的實際室溫</span>
           </div>
         </div>
       </div>
