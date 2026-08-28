@@ -243,6 +243,17 @@ function submitQuiz(isAuto){
   showQuizState('result');
 }
 
+function quizExitToStart(){
+  if (!quizSubmitted) {
+    const msg = quizMode === 'exam'
+      ? '測驗尚未繳卷，離開將放棄本次進度且不會記錄成績，確定要離開嗎？'
+      : '練習尚未完成，確定要離開嗎？';
+    if (!confirm(msg)) return;
+  }
+  if (quizTimerId) { clearInterval(quizTimerId); quizTimerId = null; }
+  showQuizState('start');
+}
+
 function calculateQuizResults(){
   let correct = 0, wrong = 0, unanswered = 0;
   const loStats = {};

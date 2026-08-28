@@ -528,7 +528,8 @@
           <p style="font-size:var(--fs-sm);color:var(--txt3);font-weight:600;margin-bottom:8px;">題目導覽</p>
           <div id="quiz-nav-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:5px;"></div>
         </div>
-        <button id="quiz-submit-btn" onclick="submitQuiz(false)" style="width:100%;padding:9px;border-radius:20px;border:1px solid var(--burg);background:var(--burg);color:#fff;font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">結束測驗並繳卷</button>
+        <button id="quiz-submit-btn" onclick="submitQuiz(false)" style="width:100%;padding:9px;border-radius:20px;border:1px solid var(--burg);background:var(--burg);color:#fff;font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-bottom:8px;">結束測驗並繳卷</button>
+        <button onclick="quizExitToStart()" style="width:100%;padding:9px;border-radius:20px;border:1px solid var(--border);background:#fff;color:var(--txt2);font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">離開測驗</button>
       </div>
       <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:20px;box-shadow:var(--sh);">
         <p id="quiz-question-meta" style="font-size:var(--fs-sm);color:var(--txt4);margin-bottom:8px;"></p>
