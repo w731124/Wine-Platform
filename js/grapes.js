@@ -106,7 +106,7 @@ function buildGrapeCardHTML(g) {
   }).join('');
   const foodTags = (g.foodPairingTags || []).map(f => `<span class="tg tg-food">${f}</span>`).join('');
 
-  const colorAccent = g.skinColor === 'red' ? 'var(--burg)' : 'var(--gold-dk)';
+  const colorAccent = g.skinColor === 'red' ? 'var(--burg)' : 'var(--gold)';
   return `
     <div class="acc-wrap mb-3" style="border-left:4px solid ${colorAccent};">
       <div class="acc-hdr" data-grape-id="${g.id}" onclick="toggleGrapeCard(this,'${g.id}')">
