@@ -948,4 +948,18 @@
      原因：這4筆並無如Cassis／Blackcurrant那樣值得保留區分的語境差異，單純是輸入時未對齊`keyIdentifiers`同期已統一的寫法；若維持現狀，`inconsistentVocabulary`稽核會長期顯示❌警告卻無對應例外常數可解釋原因，不符合#252-255建立的「已知例外要嘛修正、要嘛正式列入例外常數」稽核設計慣例。
      驗證：`grep`確認全域已無`Dark Cherry`／`Passion Fruit(`殘留；全域大括號/中括號配對平衡（1258/1258、724/724）；預期`auditWineDB()`重新執行後`inconsistentVocabulary`清單應為空。
 257. **裁定分級制度頁不新增第4種分類、也不另闢頁面處理Old Vine/Vieilles Vignes與Late Harvest/Vendanges Tardives，維持現狀不修改程式碼**：核對現況發現`Old Vine`已在多筆品種／產區的`styleSummary`／`history`／`keyIdentifiers`欄位自然出現（如Barossa產區完整說明「Barossa Old Vine Charter」樹齡分級），`Vendanges Tardives`也已在`agingPotential`欄位出現，比照#241 sparkling/fortified款標籤術語的既定判斷原則——這兩項本質是「風格／採收方式標示」而非「品質階層」，不屬於`classifications.js`分級卡片（By酒莊/葡萄園/產區）的設計範疇，現況已透過既有欄位自然帶出實質內容，形式上視為已解決。
+
+## 2026-08-28 Phase 1完成：新增`data/quiz-data.js`自我測驗題庫，QUIZ_BANK達300題（LO1-LO6依WSET L2官方配分）
+
+258. **新增獨立資料檔`data/quiz-data.js`，定義`QUIZ_BANK`陣列，最終規模定案為300題，依WSET L2官方六大Learning Outcome考試配分比例分布**：LO1(葡萄種植環境因素)=30、LO2(釀造工藝與瓶陳)=24、LO3(主要品種)=114、LO4(區域重要品種)=72、LO5(氣泡酒與加烈酒)=36、LO6(儲存與侍酒)=24，逐一對應官方考綱佔比，用於支援後續Phase 2完整模擬考（60分鐘50題，依此比例抽題）與依LO篩選的短版練習模式。本次僅新增此一獨立資料檔，未修改`index.html`或任何現有JS檔案、未新增任何渲染邏輯，模組化邊界維持獨立。
+     原因：Phase 0先以官方配分佔比最小、內容範圍最單純的LO6（24題）作為pilot驗證資料格式與出題品質是否可行，確認可行後才依此標準擴充LO1-LO5共276題，是Phase 0→Phase 1既定的階段性擴充計畫；測驗頁面的介面與計分邏輯留待Phase 2另行處理，Phase 1階段刻意只處理資料本身。
+     驗證：headless Chrome載入`QUIZ_BANK.length`確認為300；依`lo`欄位分組統計確認六組數字（30/24/114/72/36/24）與官方配分逐一吻合；全域300筆`id`格式為`lo{N}-{來源縮寫}-{編號}`且無重複、`options`陣列長度皆為4、`correctIndex`皆介於0-3。
+259. **每題物件schema定案為8個欄位：`id`/`lo`/`sourceType`/`sourceId`/`question`/`options[4]`/`correctIndex`/`explanation`，`sourceType`固定3種值**：`'static-panel'`（內容來自`index.html`靜態區塊，如LO6儲存與侍酒panel的題目）、`'data-object'`（反推自`WINE_DB.grapes`或`WINE_DB.wineStyles`等既有資料物件，LO3、LO4全數與LO5全數屬此類）、`'wset-spec-supplement'`（現有資料庫未涵蓋、查證WSET官方規格內容後補充的題目，如LO1、LO2多數內容與LO6少數術語題）。
+     原因：三種`sourceType`對應三種不同的內容查證來源與可信度層級——`data-object`類題目理論上可隨對應`WINE_DB`物件異動而重新自動核對正確性，`wset-spec-supplement`類題目則需要人工重新對照官方規格才能確認是否過時，`sourceType`欄位是日後區分這兩種維護方式的唯一依據。
+260. **出題方法論：優先反推自既有網站資料，資料庫未涵蓋但屬官方考綱範圍的內容才查證規格補充；每筆題目動工前先對照來源資料實際欄位值逐句核實**：LO3（114題，官方配分佔比最大）依8個官方主要品種（Chardonnay/Sauvignon Blanc/Riesling/Pinot Gris/Cabernet Sauvignon/Merlot/Pinot Noir/Syrah-Shiraz）分子批次產出，每品種14題，加2題跨品種綜合辨識題補齊114題配額；LO4（72題）依22個`wsetLevel:'2-regional'`品種分6個子批次產出。
+     原因：反推自既有資料能確保題目內容與網站呈現的知識完全一致，避免「網站上寫A、題庫卻考B」的矛盾；逐句核實而非憑印象出題，是Phase 1全程貫徹、也是使用者每批次皆明確要求的稽核方法。
+     驗證：Phase 1每個子批次完成後皆逐項比對來源資料欄位（`styleSummary`/`history`/`confusionNote`/`aromaWheel`/`representativeRegions`/`servingTemp`/`foodPairingTags`/`profile`等），累計未發現一筆題目內容與資料庫實際欄位矛盾的案例。
+261. **題庫維護鐵律（往後擴充練習題或任何題庫異動皆須沿用）：新增題目時，正解位置必須用程式（Python random.shuffle分層隨機，而非人工排列）決定，並在程式輸出結果確認後才寫入題目，避免正解位置集中於固定選項**：這是Phase 1開發過程中修正過兩次分布不均問題後確立的規則——人工排列或人工「刻意分散」皆曾在不同批次出現正解位置集中於單一選項、或宣告的排列序列與題目文字實際內容不符的情況，改為程式化流程產生序列後才未再發生同類問題。
+     原因：正解位置的隨機性若依賴人工排列，即使刻意注意也難以完全避免無意識的位置偏好；「先用程式產生序列、確認輸出結果、再寫入題目」的順序讓序列本身在寫入前即可被獨立驗證，而非寫入後才回頭抽查。
+     驗證：改為程式化流程後的每個批次（Cabernet Sauvignon起至LO5加烈酒收尾，共9個子批次），逐批驗證程式宣告的correctIndex序列與題目物件實際寫入結果完全一致，未再出現落差。
      原因：新增第4種分類會破壞既有三分類（By酒莊/葡萄園/產區）的設計一致性，且這兩項術語的性質與已透過#241解法（既有欄位自然帶出而非tier卡片）處理過的氣泡酒/加烈酒風格標示相同，沿用同一判斷邏輯較為一致；另闢頁面對這種程度的內容而言範圍過大，不符合CLAUDE.md「非必要不做全檔重構，以達成需求的最小範圍為原則」。
