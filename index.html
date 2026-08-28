@@ -462,17 +462,31 @@
 
   <!-- 起始畫面 -->
   <div id="quiz-state-start" class="quiz-state active" style="text-align:center;padding:36px 16px;">
-    <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:32px;box-shadow:var(--sh);max-width:520px;margin:0 auto;">
-      <p style="font-size:var(--fs-card-title);font-weight:700;color:var(--burg);margin-bottom:12px;">測驗規則 Rules</p>
-      <p style="font-size:var(--fs-base);color:var(--txt2);line-height:1.8;margin-bottom:22px;text-align:left;">
-        ・共 50 題，依 WSET Level 2 官方 Learning Outcome 配分比例隨機抽樣<br>
-        ・作答時間 60 分鐘，倒數歸零將自動繳卷<br>
-        ・繳卷後依官方 5 級標準換算成績（Distinction／Merit／Pass／Fail／Unclassified）<br>
-        ・成績會保留在本機瀏覽器最近 10 筆歷史紀錄，可於「查看歷史成績」查閱
-      </p>
-      <button id="quiz-start-btn" onclick="startQuiz()" style="padding:10px 30px;border-radius:20px;border:none;background:var(--burg);color:#fff;font-size:var(--fs-lg);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">開始測驗</button>
-      <button id="quiz-practice-entry-btn" onclick="showQuizState('lo-select')" style="margin-left:10px;padding:10px 30px;border-radius:20px;border:1px solid var(--burg);background:#fff;color:var(--burg);font-size:var(--fs-lg);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">選LO練習</button>
-      <button id="quiz-history-entry-btn" onclick="showQuizState('history')" style="margin-left:10px;padding:10px 30px;border-radius:20px;border:1px solid var(--border);background:#fff;color:var(--txt2);font-size:var(--fs-lg);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">查看歷史成績</button>
+    <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:32px;box-shadow:var(--sh);max-width:560px;margin:0 auto;">
+      <p style="font-size:var(--fs-card-title);font-weight:700;color:var(--burg);margin-bottom:12px;text-align:left;">測驗規則 Rules</p>
+      <ul style="text-align:left;font-size:var(--fs-base);color:var(--txt2);line-height:1.8;margin:0 0 24px;padding-left:20px;">
+        <li>共 50 題，依 WSET Level 2 官方 Learning Outcome 配分比例隨機抽樣</li>
+        <li>作答時間 60 分鐘，倒數歸零將自動繳卷</li>
+        <li>繳卷後依官方 5 級標準換算成績（Distinction／Merit／Pass／Fail／Unclassified）</li>
+        <li>成績會保留在本機瀏覽器最近 10 筆歷史紀錄，可於「查看歷史成績」查閱</li>
+      </ul>
+
+      <p style="font-size:var(--fs-card-title);font-weight:700;color:var(--burg);margin-bottom:12px;text-align:left;">各 Learning Outcome 配分 Official LO Allocation</p>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:26px;">
+        <div style="display:flex;justify-content:space-between;font-size:var(--fs-base);color:var(--txt2);"><span>LO1 葡萄種植環境因素</span><span>5題（10%）</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:var(--fs-base);color:var(--txt2);"><span>LO2 釀造工藝與瓶陳</span><span>4題（8%）</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:var(--fs-base);color:var(--txt2);"><span>LO3 主要品種</span><span>19題（38%）</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:var(--fs-base);color:var(--txt2);"><span>LO4 區域重要品種</span><span>12題（24%）</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:var(--fs-base);color:var(--txt2);"><span>LO5 氣泡酒與加烈酒</span><span>6題（12%）</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:var(--fs-base);color:var(--txt2);"><span>LO6 儲存與侍酒</span><span>4題（8%）</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:var(--fs-base);font-weight:700;color:var(--burg);border-top:1px solid var(--border-lt);padding-top:6px;margin-top:2px;"><span>合計</span><span>50題（100%）</span></div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;">
+        <button id="quiz-start-btn" onclick="startQuiz()" style="padding:10px 30px;border-radius:20px;border:none;background:var(--burg);color:#fff;font-size:var(--fs-lg);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">開始測驗</button>
+        <button id="quiz-practice-entry-btn" onclick="showQuizState('lo-select')" style="padding:10px 30px;border-radius:20px;border:1px solid var(--burg);background:#fff;color:var(--burg);font-size:var(--fs-lg);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">選LO練習</button>
+        <button id="quiz-history-entry-btn" onclick="showQuizState('history')" style="padding:10px 30px;border-radius:20px;border:1px solid var(--border);background:#fff;color:var(--txt2);font-size:var(--fs-lg);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">查看歷史成績</button>
+      </div>
     </div>
   </div>
 
