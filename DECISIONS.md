@@ -976,3 +976,14 @@
      原因：這5個門檻是WSET官方考試制度的既定規則，非本站教學內容判斷、未來也不會因為站內設計需求而調整，寫死為常數符合CLAUDE.md「不做非必要的抽象化」原則；若WSET官方日後調整配分標準，屆時應視為題庫規格變更、與Phase 1 `QUIZ_BANK`資料格式一併重新查證，而非現在預留設定介面。
 266. **`js/core.js`的`DOMContentLoaded`初始化清單新增`initQuizPanel()`一行呼叫，但該函式僅呼叫`showQuizState('start')`確保預設顯示起始畫面，不在頁面載入當下執行抽題或渲染題目**：50題的抽取（`buildQuizQuestionSet()`）與所有畫面渲染，延後到使用者實際點擊「開始測驗」按鈕觸發`startQuiz()`時才執行；按鈕的觸發綁定沿用全站既有的`onclick="startQuiz()"`行內屬性寫法，未額外用`addEventListener`重複綁定。
      原因：與`renderGrapePanel()`等「頁面載入即渲染全部內容」的既有panel初始化模式刻意不同——模擬考題目每次都應是使用者主動觸發的新一輪隨機抽樣，頁面載入時就抽題既無意義（使用者可能永遠不會點進此分頁）也會讓「開始測驗」按鈕的行為與實際已存在的題目狀態不一致。
+
+## 2026-08-28 Phase 2延伸：新增「依LO篩選練習模式」
+
+267. **`buildQuizQuestionSet()`改為接受`allocation`參數（預設值`QUIZ_LO_ALLOCATION`），並抽出`_beginQuizSession(allocation)`供`startQuiz()`與新增的`startPractice(lo)`共用「重置狀態→抽題→切換畫面→渲染」邏輯**：`startQuiz()`傳入完整的`QUIZ_LO_ALLOCATION`（50題6個LO），`startPractice(lo)`傳入單一LO的`{[lo]: QUIZ_PRACTICE_QUESTION_COUNT}`（8題），兩者共用同一套抽樣/洗牌/畫面渲染實作，差異只在傳入的配分物件與外層是否啟動計時器。
+     原因：正式模擬考與LO練習在「抽題→重置狀態→渲染畫面」這段邏輯完全相同，唯一差異是配分表與是否計時，若各寫一份會讓未來修改抽題或渲染邏輯時要同步改兩處、容易漏改其中一份而產生行為分歧；改為參數化＋共用輔助函式後，`buildQuizQuestionSet()`本身不知道呼叫端是考試還是練習，職責維持單純。
+268. **練習模式（`quizMode==='practice'`）不套用官方5級分級，`calculateQuizResults()`的`grade`欄位固定回傳`null`，分級判斷的if/else僅在`quizMode==='exam'`時執行**：核心的答對/答錯/未作答/`loStats`統計邏輯完全共用不分支。
+     原因：WSET官方5級標準（Distinction~Unclassified）的門檻設計是針對「50題全配分範圍模擬考」的完整成績分佈校準，套用在單一LO、僅8題的練習抽樣上在統計意義上不成立（8題的答對比例分布與50題完全不同，門檻換算沒有官方依據），若仍套用會誤導使用者以為練習分數等同正式考試等級。
+269. **LO正確率明細區塊（`#quiz-lo-breakdown-block`）在practice模式下整塊隱藏，不只隱藏分級徽章**：`renderQuizResults()`依`quizMode`同時控制`#quiz-result-exam-summary`（徽章+分級文字）、`#quiz-lo-breakdown-block`與新增的`#quiz-result-plain-score`三者的顯示/隱藏。
+     原因：LO正確率明細的用途是「50題橫跨6個LO時，幫使用者看出哪個LO相對弱」，但練習模式本身就是單一LO、單一數字（如「LO3：6/8」）與練習模式已顯示的「答對6/8題」完全重複，保留明細區塊只會讓畫面多一組冗餘資訊而非提供新資訊。
+270. **結果畫面的操作按鈕從HTML寫死的單一「重新測驗」`<button>`改為空的`<div id="quiz-result-actions">`，按鈕內容一律由`renderQuizResults()`依`quizMode`動態注入**：exam模式渲染單一「重新測驗」按鈕（`onclick="startQuiz()"`）；practice模式渲染「再練一次」（`onclick="startPractice(${quizPracticeLo})"`，沿用同一個已選定的LO）與「換一個LO」（`onclick="showQuizState('lo-select')"`，返回LO選擇畫面）兩個按鈕。
+     原因：兩種模式下一輪「重來」該做的事完全不同——exam模式的重來永遠是重新抽50題，practice模式的重來則要記得使用者原本選的是哪個LO（用模組層級變數`quizPracticeLo`）並額外提供「換LO」的路徑，單一寫死的按鈕無法同時涵蓋這兩種行為與數量不同的按鈕組合，因此改為容器＋JS動態渲染，維持`renderQuizResults()`是結果畫面唯一的渲染來源，不需要在HTML與JS兩處分別維護按鈕邏輯。

@@ -471,6 +471,23 @@
         ・本次成績不會儲存，重新整理頁面後將會消失
       </p>
       <button id="quiz-start-btn" onclick="startQuiz()" style="padding:10px 30px;border-radius:20px;border:none;background:var(--burg);color:#fff;font-size:var(--fs-lg);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">開始測驗</button>
+      <button id="quiz-practice-entry-btn" onclick="showQuizState('lo-select')" style="margin-left:10px;padding:10px 30px;border-radius:20px;border:1px solid var(--burg);background:#fff;color:var(--burg);font-size:var(--fs-lg);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">選LO練習</button>
+    </div>
+  </div>
+
+  <!-- LO篩選練習：選擇畫面 -->
+  <div id="quiz-state-lo-select" class="quiz-state" style="text-align:center;padding:36px 16px;">
+    <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:32px;box-shadow:var(--sh);max-width:520px;margin:0 auto;">
+      <p style="font-size:var(--fs-card-title);font-weight:700;color:var(--burg);margin-bottom:6px;">選擇練習範圍 Practice by LO</p>
+      <p style="font-size:var(--fs-base);color:var(--txt2);margin-bottom:20px;">每次隨機抽 8 題，不計時、不分級</p>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
+        <button class="fp" onclick="startPractice(1)">LO1 葡萄種植環境因素</button>
+        <button class="fp" onclick="startPractice(2)">LO2 釀造工藝與瓶陳</button>
+        <button class="fp" onclick="startPractice(3)">LO3 主要品種</button>
+        <button class="fp" onclick="startPractice(4)">LO4 區域重要品種</button>
+        <button class="fp" onclick="startPractice(5)">LO5 氣泡酒與加烈酒</button>
+        <button class="fp" onclick="startPractice(6)">LO6 儲存與侍酒</button>
+      </div>
     </div>
   </div>
 
@@ -478,7 +495,7 @@
   <div id="quiz-state-active" class="quiz-state">
     <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-4">
       <div>
-        <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:14px;box-shadow:var(--sh);margin-bottom:12px;text-align:center;">
+        <div id="quiz-timer-panel" style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:14px;box-shadow:var(--sh);margin-bottom:12px;text-align:center;">
           <p style="font-size:var(--fs-sm);color:var(--txt4);margin-bottom:4px;">剩餘時間</p>
           <p id="quiz-timer" style="font-family:'Cinzel',serif;font-size:var(--fs-2xl);font-weight:700;color:var(--burg);">60:00</p>
         </div>
@@ -503,22 +520,21 @@
   <!-- 結果畫面 -->
   <div id="quiz-state-result" class="quiz-state">
     <div style="text-align:center;margin-bottom:24px;">
-      <div style="display:inline-flex;align-items:center;gap:14px;">
+      <div id="quiz-result-exam-summary" style="display:inline-flex;align-items:center;gap:14px;">
         <div class="quiz-badge" id="quiz-result-badge"></div>
         <div style="text-align:left;">
           <div id="quiz-result-grade-text" style="font-family:'Cinzel',serif;font-size:var(--fs-2xl);font-weight:700;color:var(--burg);"></div>
           <div id="quiz-result-score-text" style="font-size:var(--fs-base);color:var(--txt3);"></div>
         </div>
       </div>
+      <p id="quiz-result-plain-score" style="display:none;font-family:'Cinzel',serif;font-size:var(--fs-2xl);font-weight:700;color:var(--burg);"></p>
       <p style="font-size:var(--fs-sm);color:var(--txt4);margin-top:10px;">本次成績未儲存，重新整理頁面後將會消失</p>
     </div>
-    <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:16px;box-shadow:var(--sh);margin-bottom:20px;">
+    <div id="quiz-lo-breakdown-block" style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:16px;box-shadow:var(--sh);margin-bottom:20px;">
       <p style="font-size:var(--fs-lg);font-weight:600;color:var(--burg);margin-bottom:10px;">各 Learning Outcome 正確率</p>
       <div id="quiz-lo-breakdown" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
     </div>
-    <div style="text-align:center;margin-bottom:20px;">
-      <button onclick="startQuiz()" style="padding:9px 26px;border-radius:20px;border:none;background:var(--burg);color:#fff;font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">重新測驗</button>
-    </div>
+    <div id="quiz-result-actions" style="text-align:center;margin-bottom:20px;"></div>
     <p style="font-size:var(--fs-lg);font-weight:600;color:var(--burg);margin-bottom:10px;">逐題複查</p>
     <div id="quiz-review-list"></div>
   </div>

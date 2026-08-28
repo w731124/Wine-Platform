@@ -7,6 +7,15 @@
 
 const QUIZ_LO_ALLOCATION = {1:5, 2:4, 3:19, 4:12, 5:6, 6:4};
 const QUIZ_DURATION_SECONDS = 60 * 60;
+const QUIZ_PRACTICE_QUESTION_COUNT = 8;
+const QUIZ_LO_LABELS = {
+  1: 'LO1 葡萄種植環境因素',
+  2: 'LO2 釀造工藝與瓶陳',
+  3: 'LO3 主要品種',
+  4: 'LO4 區域重要品種',
+  5: 'LO5 氣泡酒與加烈酒',
+  6: 'LO6 儲存與侍酒'
+};
 
 const QUIZ_GRADE_META = {
   dist:         {cls:'qb-dist',         short:'D', label:'Pass with Distinction(卓越)'},
@@ -22,6 +31,8 @@ let quizCurrentIndex = 0;
 let quizTimeRemaining = QUIZ_DURATION_SECONDS;
 let quizTimerId = null;
 let quizSubmitted = false;
+let quizMode = 'exam';
+let quizPracticeLo = null;
 
 function quizShuffle(arr){
   const a = arr.slice();
@@ -38,11 +49,11 @@ function showQuizState(state){
   if (el) el.classList.add('active');
 }
 
-function buildQuizQuestionSet(){
+function buildQuizQuestionSet(allocation = QUIZ_LO_ALLOCATION){
   let picked = [];
-  Object.keys(QUIZ_LO_ALLOCATION).forEach(loKey => {
+  Object.keys(allocation).forEach(loKey => {
     const lo = Number(loKey);
-    const n = QUIZ_LO_ALLOCATION[lo];
+    const n = allocation[lo];
     const pool = QUIZ_BANK.filter(q => q.lo === lo);
     picked = picked.concat(quizShuffle(pool).slice(0, n));
   });
@@ -60,10 +71,10 @@ function buildQuizQuestionSet(){
   });
 }
 
-/* ── 開始測驗 ── */
-function startQuiz(){
+/* ── 開始測驗 / 開始練習：共用的抽題＋狀態重置＋畫面切換 ── */
+function _beginQuizSession(allocation){
   if (quizTimerId) { clearInterval(quizTimerId); quizTimerId = null; }
-  quizQuestions = buildQuizQuestionSet();
+  quizQuestions = buildQuizQuestionSet(allocation);
   quizAnswers = new Array(quizQuestions.length).fill(null);
   quizCurrentIndex = 0;
   quizTimeRemaining = QUIZ_DURATION_SECONDS;
@@ -72,8 +83,25 @@ function startQuiz(){
   showQuizState('active');
   renderQuizNavGrid();
   renderQuizQuestion();
+}
+
+function startQuiz(){
+  quizMode = 'exam';
+  _beginQuizSession(QUIZ_LO_ALLOCATION);
+
+  const timerPanel = document.getElementById('quiz-timer-panel');
+  if (timerPanel) timerPanel.style.display = '';
   updateQuizTimerDisplay();
   quizTimerId = setInterval(quizTick, 1000);
+}
+
+function startPractice(lo){
+  quizMode = 'practice';
+  quizPracticeLo = lo;
+  _beginQuizSession({[lo]: QUIZ_PRACTICE_QUESTION_COUNT});
+
+  const timerPanel = document.getElementById('quiz-timer-panel');
+  if (timerPanel) timerPanel.style.display = 'none';
 }
 
 function quizTick(){
@@ -170,30 +198,52 @@ function calculateQuizResults(){
     else wrong++;
   });
   const scoreRatio = correct / quizQuestions.length;
-  let grade;
-  if (scoreRatio >= 0.85) grade = 'dist';
-  else if (scoreRatio >= 0.70) grade = 'merit';
-  else if (scoreRatio >= 0.55) grade = 'pass';
-  else if (scoreRatio >= 0.45) grade = 'fail';
-  else grade = 'unclassified';
+  let grade = null;
+  if (quizMode === 'exam') {
+    if (scoreRatio >= 0.85) grade = 'dist';
+    else if (scoreRatio >= 0.70) grade = 'merit';
+    else if (scoreRatio >= 0.55) grade = 'pass';
+    else if (scoreRatio >= 0.45) grade = 'fail';
+    else grade = 'unclassified';
+  }
   return {correct, wrong, unanswered, scoreRatio, grade, loStats};
 }
 
 function renderQuizResults(){
   const r = calculateQuizResults();
-  const meta = QUIZ_GRADE_META[r.grade];
+  const examSummary = document.getElementById('quiz-result-exam-summary');
+  const plainScore = document.getElementById('quiz-result-plain-score');
+  const loBlock = document.getElementById('quiz-lo-breakdown-block');
+  const actionsWrap = document.getElementById('quiz-result-actions');
 
-  const badge = document.getElementById('quiz-result-badge');
-  badge.className = 'quiz-badge ' + meta.cls;
-  badge.textContent = meta.short;
-  document.getElementById('quiz-result-grade-text').textContent = meta.label;
-  document.getElementById('quiz-result-score-text').textContent = `${r.correct} / ${quizQuestions.length}　（${(r.scoreRatio * 100).toFixed(1)}%）`;
+  if (quizMode === 'exam') {
+    const meta = QUIZ_GRADE_META[r.grade];
+    if (examSummary) examSummary.style.display = '';
+    if (plainScore) plainScore.style.display = 'none';
+    if (loBlock) loBlock.style.display = '';
 
-  const loWrap = document.getElementById('quiz-lo-breakdown');
-  loWrap.innerHTML = Object.keys(r.loStats).sort((a, b) => a - b).map(lo => {
-    const s = r.loStats[lo];
-    return `<span class="tg" style="background:rgba(92,6,28,.06);color:var(--burg);">LO${lo}：${s.correct}/${s.total}</span>`;
-  }).join('');
+    const badge = document.getElementById('quiz-result-badge');
+    badge.className = 'quiz-badge ' + meta.cls;
+    badge.textContent = meta.short;
+    document.getElementById('quiz-result-grade-text').textContent = meta.label;
+    document.getElementById('quiz-result-score-text').textContent = `${r.correct} / ${quizQuestions.length}　（${(r.scoreRatio * 100).toFixed(1)}%）`;
+
+    const loWrap = document.getElementById('quiz-lo-breakdown');
+    loWrap.innerHTML = Object.keys(r.loStats).sort((a, b) => a - b).map(lo => {
+      const s = r.loStats[lo];
+      return `<span class="tg" style="background:rgba(92,6,28,.06);color:var(--burg);">LO${lo}：${s.correct}/${s.total}</span>`;
+    }).join('');
+
+    if (actionsWrap) actionsWrap.innerHTML = `<button onclick="startQuiz()" style="padding:9px 26px;border-radius:20px;border:none;background:var(--burg);color:#fff;font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">重新測驗</button>`;
+  } else {
+    if (examSummary) examSummary.style.display = 'none';
+    if (loBlock) loBlock.style.display = 'none';
+    if (plainScore) {
+      plainScore.style.display = '';
+      plainScore.textContent = `答對 ${r.correct} / ${quizQuestions.length} 題`;
+    }
+    if (actionsWrap) actionsWrap.innerHTML = `<button onclick="startPractice(${quizPracticeLo})" style="padding:9px 26px;border-radius:20px;border:none;background:var(--burg);color:#fff;font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-right:10px;">再練一次</button><button onclick="showQuizState('lo-select')" style="padding:9px 26px;border-radius:20px;border:1px solid var(--burg);background:#fff;color:var(--burg);font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">換一個LO</button>`;
+  }
 
   const reviewWrap = document.getElementById('quiz-review-list');
   reviewWrap.innerHTML = quizQuestions.map((q, i) => {
