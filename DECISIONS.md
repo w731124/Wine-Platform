@@ -1027,3 +1027,8 @@
 
 280. **新增`quizExitToStart()`函式與對應的「離開測驗」按鈕（`quiz-state-active`左側欄，緊接在「結束測驗並繳卷」下方）**：若`quizSubmitted`為`false`（尚未繳卷），先跳確認提示（exam模式文字強調「不會記錄成績」、practice模式文字較輕量僅問是否離開）；使用者確認後才`clearInterval`停止計時器（若有）並`showQuizState('start')`切回起始畫面；取消確認則不做任何事，停留在原畫面。正式考與LO練習共用同一顆按鈕與同一套邏輯，practice模式下`quizTimerId`本來就是`null`，`clearInterval(null)`是安全的no-op。
      原因：使用者回報「開始測驗」與「選LO練習」進去的作答畫面(`quiz-state-active`)都沒有離開路徑，是與#275（`quiz-state-lo-select`缺返回鈕）同一類「進入畫面後出不去」的疏漏，但作答畫面不能比照單純加顆`showQuizState('start')`按鈕了事——正式模擬考此時有一個`setInterval`計時器正在跑，若不先停止就切換畫面，計時器會在背景繼續倒數，時間到時仍會呼叫`submitQuiz(true)`自動繳卷、把使用者早已離開視線的答題狀態存進歷史紀錄，造成「畫面已經離開，卻在背景默默生成一筆歷史成績」的詭異副作用；加上離開等於放棄目前作答進度是有實質後果的操作，比照`submitQuiz()`既有「未作答時跳確認」的手法先確認再放行，避免使用者手滑點掉還在作答中的測驗。
+
+## 2026-08-28 模擬考panel左上角標題／副標依畫面狀態動態切換
+
+281. **新增`quiz-panel-title`/`quiz-panel-subtitle`兩個id（原本是panel-quiz最上方寫死的`<h1>`/`<p>`），新增`updateQuizPanelHeader(state)`函式，在`showQuizState()`每次切換畫面時同步呼叫，依`state`（以及`state==='active'`時再細分`quizMode`）動態改寫標題文字**：`lo-select`畫面固定顯示「LO篩選練習 Practice by LO」＋「選擇一個 Learning Outcome，隨機抽 8 題複習，不計時、不分級」；`active`畫面若`quizMode==='practice'`，標題同樣顯示「LO篩選練習 Practice by LO」，副標改用`QUIZ_LO_LABELS[quizPracticeLo]`帶出使用者正在練習的具體LO名稱（如「LO3 主要品種　隨機抽 8 題複習，不計時、不分級」）；其餘畫面（`start`／`active`且exam模式／`result`／`history`）一律回退顯示`QUIZ_PANEL_HEADER_DEFAULT`預設的「模擬考 Mock Exam／依WSET Level 2官方配分比例抽題，50題60分鐘限時模擬」。
+     原因：使用者反映在「選LO練習」畫面時，左上角panel標題仍固定顯示模擬考本體的「50題60分鐘限時模擬」，與畫面實際功能（LO篩選練習、8題、不計時、不分級）不符；追問後確認同一問題也存在於practice模式的作答畫面。改在`showQuizState()`統一呼叫`updateQuizPanelHeader()`（而非在`startPractice()`/按鈕`onclick`等各個進入點分別改寫標題文字），確保不論從哪個路徑進出這兩個畫面，標題永遠與當下實際`state`／`quizMode`同步，不會因為漏改某個進入點而又出現文字與畫面不符的情況。

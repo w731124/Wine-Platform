@@ -46,11 +46,34 @@ function quizShuffle(arr){
   return a;
 }
 
+const QUIZ_PANEL_HEADER_DEFAULT = {
+  title: '模擬考 Mock Exam',
+  subtitle: '依 WSET Level 2 官方配分比例抽題，50題 60分鐘限時模擬'
+};
+
+function updateQuizPanelHeader(state){
+  const titleEl = document.getElementById('quiz-panel-title');
+  const subtitleEl = document.getElementById('quiz-panel-subtitle');
+  if (!titleEl || !subtitleEl) return;
+
+  if (state === 'lo-select') {
+    titleEl.textContent = 'LO篩選練習 Practice by LO';
+    subtitleEl.textContent = '選擇一個 Learning Outcome，隨機抽 8 題複習，不計時、不分級';
+  } else if (state === 'active' && quizMode === 'practice') {
+    titleEl.textContent = 'LO篩選練習 Practice by LO';
+    subtitleEl.textContent = `${QUIZ_LO_LABELS[quizPracticeLo]}　隨機抽 8 題複習，不計時、不分級`;
+  } else {
+    titleEl.textContent = QUIZ_PANEL_HEADER_DEFAULT.title;
+    subtitleEl.textContent = QUIZ_PANEL_HEADER_DEFAULT.subtitle;
+  }
+}
+
 function showQuizState(state){
   document.querySelectorAll('.quiz-state').forEach(el => el.classList.remove('active'));
   const el = document.getElementById('quiz-state-' + state);
   if (el) el.classList.add('active');
   if (state === 'history') renderQuizHistoryList();
+  updateQuizPanelHeader(state);
 }
 
 /* ── 歷史成績（localStorage） ── */
