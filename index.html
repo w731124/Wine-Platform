@@ -504,13 +504,13 @@
     <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:32px;box-shadow:var(--sh);max-width:520px;margin:0 auto;">
       <p style="font-size:var(--fs-card-title);font-weight:700;color:var(--burg);margin-bottom:6px;">選擇練習範圍 Practice by LO</p>
       <p style="font-size:var(--fs-base);color:var(--txt2);margin-bottom:20px;">每次隨機抽 8 題，不計時、不分級</p>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;">
-        <button class="fp" onclick="startPractice(1)">LO1 葡萄種植環境因素</button>
-        <button class="fp" onclick="startPractice(2)">LO2 釀造工藝與瓶陳</button>
-        <button class="fp" onclick="startPractice(3)">LO3 主要品種</button>
-        <button class="fp" onclick="startPractice(4)">LO4 區域重要品種</button>
-        <button class="fp" onclick="startPractice(5)">LO5 氣泡酒與加烈酒</button>
-        <button class="fp" onclick="startPractice(6)">LO6 儲存與侍酒</button>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;">
+        <button class="fp" onclick="startPractice(1)" style="width:100%;text-align:left;">LO1 葡萄種植環境因素</button>
+        <button class="fp" onclick="startPractice(2)" style="width:100%;text-align:left;">LO2 釀造工藝與瓶陳</button>
+        <button class="fp" onclick="startPractice(3)" style="width:100%;text-align:left;">LO3 主要品種</button>
+        <button class="fp" onclick="startPractice(4)" style="width:100%;text-align:left;">LO4 區域重要品種</button>
+        <button class="fp" onclick="startPractice(5)" style="width:100%;text-align:left;">LO5 氣泡酒與加烈酒</button>
+        <button class="fp" onclick="startPractice(6)" style="width:100%;text-align:left;">LO6 儲存與侍酒</button>
       </div>
       <button onclick="showQuizState('start')" style="margin-top:20px;padding:7px 20px;border-radius:20px;border:1px solid var(--border);background:#fff;color:var(--txt2);font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">返回</button>
     </div>
