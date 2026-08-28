@@ -987,3 +987,11 @@
      原因：LO正確率明細的用途是「50題橫跨6個LO時，幫使用者看出哪個LO相對弱」，但練習模式本身就是單一LO、單一數字（如「LO3：6/8」）與練習模式已顯示的「答對6/8題」完全重複，保留明細區塊只會讓畫面多一組冗餘資訊而非提供新資訊。
 270. **結果畫面的操作按鈕從HTML寫死的單一「重新測驗」`<button>`改為空的`<div id="quiz-result-actions">`，按鈕內容一律由`renderQuizResults()`依`quizMode`動態注入**：exam模式渲染單一「重新測驗」按鈕（`onclick="startQuiz()"`）；practice模式渲染「再練一次」（`onclick="startPractice(${quizPracticeLo})"`，沿用同一個已選定的LO）與「換一個LO」（`onclick="showQuizState('lo-select')"`，返回LO選擇畫面）兩個按鈕。
      原因：兩種模式下一輪「重來」該做的事完全不同——exam模式的重來永遠是重新抽50題，practice模式的重來則要記得使用者原本選的是哪個LO（用模組層級變數`quizPracticeLo`）並額外提供「換LO」的路徑，單一寫死的按鈕無法同時涵蓋這兩種行為與數量不同的按鈕組合，因此改為容器＋JS動態渲染，維持`renderQuizResults()`是結果畫面唯一的渲染來源，不需要在HTML與JS兩處分別維護按鈕邏輯。
+
+## 2026-08-28 Phase 2再延伸：新增模擬考歷史成績記錄（全站首次導入localStorage）
+
+271. **`saveQuizHistoryRecord()`把`calculateQuizResults()`回傳的`loStats`（各LO答對/總題數明細）也一併存進每筆歷史紀錄，但`renderQuizHistoryList()`這階段不渲染顯示，只顯示時間/分數/百分比/分級**：資料寫入與畫面呈現刻意不同步收斂。
+     原因：`loStats`是免費取得的資訊（`calculateQuizResults()`本來就會算出來，存不存都不影響效能），現在存起來但先不顯示，讓「歷史成績趨勢分析」（如未來想做「哪個LO長期偏弱」的走勢圖）可以直接用既有歷史資料回溯分析，不必等到那時才回頭修改資料寫入的schema、也不會有「新功能上線後才有資料、舊紀錄缺欄位」的資料不一致問題；只是本次UI範圍刻意先不做這塊呈現，避免一次擴大太多。
+272. **`submitQuiz()`在儲存歷史紀錄與`renderQuizResults()`渲染結果畫面時，各自獨立呼叫一次`calculateQuizResults()`，未把計算結果抽成局部變數共用**：50題規模下`calculateQuizResults()`只是一次`Array.forEach`與幾個if/else比較，重複執行一次的成本可忽略。
+     原因：`calculateQuizResults()`目前是無參數、直接讀模組層級`quizQuestions`/`quizAnswers`/`quizMode`的純函式，維持這個「呼叫端不用傳參數、內部自己讀當下狀態」的既有簽章，比為了省一次重複運算去改函式簽章（例如讓它回傳值可被兩處共用、或引入額外的暫存變數）更不容易在後續維護時不小心讓兩個呼叫點的執行時機或依賴狀態出現落差；效能成本與程式碼變動風險不成比例。
+273. **localStorage讀寫（`saveQuizHistoryRecord()`/`loadQuizHistory()`）皆包在`try/catch`內，失敗時用`console.warn()`印出警告並回傳安全預設值（讀取失敗回傳`[]`、寫入失敗僅跳過不拋出），比照既有`cleanupLegacyCellarStorage()`「用try/catch吸收localStorage不可用情境、不讓錯誤中斷主流程」的既定慣例，但額外加上`console.warn`訊息**：`cleanupLegacyCellarStorage()`本身是`try{...}catch{}`完全靜默；本次額外印出警告訊息是因為歷史成績記錄是「使用者主動觸發、預期會生效」的功能（不像`cleanupLegacyCellarStorage()`是背景一次性清理），無痕模式或儲存空間已滿等情境下靜默失敗會讓使用者以為成績有存到、之後回來查看歷史卻找不到而困惑，加上console警告至少讓有檢查console習慣的人能定位問題，同時仍確保任何localStorage例外都不會讓繳卷/計分/畫面渲染等測驗核心流程中斷。

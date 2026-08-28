@@ -472,7 +472,17 @@
       </p>
       <button id="quiz-start-btn" onclick="startQuiz()" style="padding:10px 30px;border-radius:20px;border:none;background:var(--burg);color:#fff;font-size:var(--fs-lg);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">開始測驗</button>
       <button id="quiz-practice-entry-btn" onclick="showQuizState('lo-select')" style="margin-left:10px;padding:10px 30px;border-radius:20px;border:1px solid var(--burg);background:#fff;color:var(--burg);font-size:var(--fs-lg);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">選LO練習</button>
+      <button id="quiz-history-entry-btn" onclick="showQuizState('history')" style="margin-left:10px;padding:10px 30px;border-radius:20px;border:1px solid var(--border);background:#fff;color:var(--txt2);font-size:var(--fs-lg);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">查看歷史成績</button>
     </div>
+  </div>
+
+  <!-- 歷史成績畫面 -->
+  <div id="quiz-state-history" class="quiz-state" style="padding:16px 0;">
+    <div class="mb-4" style="display:flex;align-items:center;justify-content:space-between;">
+      <p style="font-size:var(--fs-card-title);font-weight:700;color:var(--burg);">歷史成績 History</p>
+      <button onclick="showQuizState('start')" style="padding:7px 20px;border-radius:20px;border:1px solid var(--border);background:#fff;color:var(--txt2);font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">返回</button>
+    </div>
+    <div id="quiz-history-list"></div>
   </div>
 
   <!-- LO篩選練習：選擇畫面 -->

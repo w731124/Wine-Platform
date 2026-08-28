@@ -17,6 +17,9 @@ const QUIZ_LO_LABELS = {
   6: 'LO6 儲存與侍酒'
 };
 
+const QUIZ_HISTORY_STORAGE_KEY = 'wineAtlasQuizHistory';
+const QUIZ_HISTORY_MAX = 10;
+
 const QUIZ_GRADE_META = {
   dist:         {cls:'qb-dist',         short:'D', label:'Pass with Distinction(卓越)'},
   merit:        {cls:'qb-merit',        short:'M', label:'Pass with Merit(優異)'},
@@ -47,6 +50,59 @@ function showQuizState(state){
   document.querySelectorAll('.quiz-state').forEach(el => el.classList.remove('active'));
   const el = document.getElementById('quiz-state-' + state);
   if (el) el.classList.add('active');
+  if (state === 'history') renderQuizHistoryList();
+}
+
+/* ── 歷史成績（localStorage） ── */
+function saveQuizHistoryRecord(result){
+  const record = {
+    timestamp: Date.now(),
+    correct: result.correct,
+    total: quizQuestions.length,
+    scoreRatio: result.scoreRatio,
+    grade: result.grade,
+    loStats: result.loStats
+  };
+  try{
+    const raw = localStorage.getItem(QUIZ_HISTORY_STORAGE_KEY);
+    const history = raw ? JSON.parse(raw) : [];
+    history.unshift(record);
+    if (history.length > QUIZ_HISTORY_MAX) history.length = QUIZ_HISTORY_MAX;
+    localStorage.setItem(QUIZ_HISTORY_STORAGE_KEY, JSON.stringify(history));
+  }catch(e){
+    console.warn('❌ [Quiz History] 儲存模擬考歷史成績失敗：', e);
+  }
+}
+
+function loadQuizHistory(){
+  try{
+    const raw = localStorage.getItem(QUIZ_HISTORY_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  }catch(e){
+    console.warn('❌ [Quiz History] 讀取模擬考歷史成績失敗：', e);
+    return [];
+  }
+}
+
+function renderQuizHistoryList(){
+  const wrap = document.getElementById('quiz-history-list');
+  if (!wrap) return;
+  const history = loadQuizHistory();
+  if (history.length === 0) {
+    wrap.innerHTML = `<p style="font-size:var(--fs-base);color:var(--txt3);text-align:center;padding:20px 0;">尚無歷史紀錄，完成一次模擬考後就會出現在這裡</p>`;
+    return;
+  }
+  wrap.innerHTML = history.map(record => {
+    const meta = QUIZ_GRADE_META[record.grade];
+    const dateStr = new Date(record.timestamp).toLocaleString('zh-TW');
+    return `<div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:12px;padding:14px 16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+      <div>
+        <p style="font-size:var(--fs-base);font-weight:600;color:var(--txt);margin-bottom:2px;">${dateStr}</p>
+        <p style="font-size:var(--fs-sm);color:var(--txt3);">${record.correct} / ${record.total}　（${(record.scoreRatio * 100).toFixed(1)}%）</p>
+      </div>
+      <span style="font-size:var(--fs-base);font-weight:600;color:var(--burg);white-space:nowrap;">${meta ? meta.label : ''}</span>
+    </div>`;
+  }).join('');
 }
 
 function buildQuizQuestionSet(allocation = QUIZ_LO_ALLOCATION){
@@ -182,6 +238,7 @@ function submitQuiz(isAuto){
   }
   quizSubmitted = true;
   if (quizTimerId) { clearInterval(quizTimerId); quizTimerId = null; }
+  if (quizMode === 'exam') saveQuizHistoryRecord(calculateQuizResults());
   renderQuizResults();
   showQuizState('result');
 }
