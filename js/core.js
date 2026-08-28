@@ -419,6 +419,7 @@ document.addEventListener('DOMContentLoaded', function() {
   renderIberiaMarkers();
   renderGermanyMarkers();
   initMapTooltips();
+  initQuizPanel();
   auditWineDB();
   auditCountryFlags();
 });

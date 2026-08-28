@@ -60,6 +60,7 @@
           <div class="tab-dropdown" id="dd-tools-group">
             <button class="tab-dropdown-item" onclick="selectTabFromGroup(this,'vintage',event)"><span>📅</span> 年份矩陣</button>
             <button class="tab-dropdown-item" onclick="selectTabFromGroup(this,'compare',event)"><span>⚖️</span> 比較模式</button>
+            <button class="tab-dropdown-item" onclick="selectTabFromGroup(this,'quiz',event)"><span>📝</span> 模擬考</button>
           </div>
         </div>
       </div>
@@ -446,6 +447,80 @@
       <div style="position:relative;max-width:400px;margin:0 auto;height:320px;"><canvas id="compare-grape-radar-chart"></canvas></div>
     </div>
     <div class="cm-two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;" id="compare-grape-identity"></div>
+  </div>
+</div>
+
+
+<!-- ╔══════════════════════════╗
+     ║  PANEL 5 — 模擬考       ║
+     ╚══════════════════════════╝ -->
+<div id="panel-quiz" class="panel">
+  <div class="mb-4">
+    <h1 style="font-family:'Cinzel',serif;font-size:var(--fs-h1);font-weight:700;color:var(--burg);margin-bottom:3px;">模擬考 Mock Exam</h1>
+    <p style="font-size:var(--fs-lg);color:var(--txt3);">依 WSET Level 2 官方配分比例抽題，50題 60分鐘限時模擬</p>
+  </div>
+
+  <!-- 起始畫面 -->
+  <div id="quiz-state-start" class="quiz-state active" style="text-align:center;padding:36px 16px;">
+    <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:32px;box-shadow:var(--sh);max-width:520px;margin:0 auto;">
+      <p style="font-size:var(--fs-card-title);font-weight:700;color:var(--burg);margin-bottom:12px;">測驗規則 Rules</p>
+      <p style="font-size:var(--fs-base);color:var(--txt2);line-height:1.8;margin-bottom:22px;text-align:left;">
+        ・共 50 題，依 WSET Level 2 官方 Learning Outcome 配分比例隨機抽樣<br>
+        ・作答時間 60 分鐘，倒數歸零將自動繳卷<br>
+        ・繳卷後依官方 5 級標準換算成績（Distinction／Merit／Pass／Fail／Unclassified）<br>
+        ・本次成績不會儲存，重新整理頁面後將會消失
+      </p>
+      <button id="quiz-start-btn" onclick="startQuiz()" style="padding:10px 30px;border-radius:20px;border:none;background:var(--burg);color:#fff;font-size:var(--fs-lg);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">開始測驗</button>
+    </div>
+  </div>
+
+  <!-- 作答畫面 -->
+  <div id="quiz-state-active" class="quiz-state">
+    <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-4">
+      <div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:14px;box-shadow:var(--sh);margin-bottom:12px;text-align:center;">
+          <p style="font-size:var(--fs-sm);color:var(--txt4);margin-bottom:4px;">剩餘時間</p>
+          <p id="quiz-timer" style="font-family:'Cinzel',serif;font-size:var(--fs-2xl);font-weight:700;color:var(--burg);">60:00</p>
+        </div>
+        <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:14px;box-shadow:var(--sh);margin-bottom:12px;">
+          <p style="font-size:var(--fs-sm);color:var(--txt3);font-weight:600;margin-bottom:8px;">題目導覽</p>
+          <div id="quiz-nav-grid" style="display:grid;grid-template-columns:repeat(5,1fr);gap:5px;"></div>
+        </div>
+        <button id="quiz-submit-btn" onclick="submitQuiz(false)" style="width:100%;padding:9px;border-radius:20px;border:1px solid var(--burg);background:var(--burg);color:#fff;font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">結束測驗並繳卷</button>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:20px;box-shadow:var(--sh);">
+        <p id="quiz-question-meta" style="font-size:var(--fs-sm);color:var(--txt4);margin-bottom:8px;"></p>
+        <p id="quiz-question-text" style="font-size:var(--fs-lg);font-weight:600;color:var(--txt);margin-bottom:16px;"></p>
+        <div id="quiz-options" style="display:flex;flex-direction:column;gap:10px;"></div>
+        <div style="display:flex;justify-content:space-between;margin-top:22px;">
+          <button id="quiz-prev-btn" onclick="quizGoToOffset(-1)" style="padding:8px 20px;border-radius:20px;border:1px solid var(--border);background:#fff;color:var(--txt2);font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">上一題</button>
+          <button id="quiz-next-btn" onclick="quizGoToOffset(1)" style="padding:8px 20px;border-radius:20px;border:1px solid var(--burg);background:#fff;color:var(--burg);font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">下一題</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 結果畫面 -->
+  <div id="quiz-state-result" class="quiz-state">
+    <div style="text-align:center;margin-bottom:24px;">
+      <div style="display:inline-flex;align-items:center;gap:14px;">
+        <div class="quiz-badge" id="quiz-result-badge"></div>
+        <div style="text-align:left;">
+          <div id="quiz-result-grade-text" style="font-family:'Cinzel',serif;font-size:var(--fs-2xl);font-weight:700;color:var(--burg);"></div>
+          <div id="quiz-result-score-text" style="font-size:var(--fs-base);color:var(--txt3);"></div>
+        </div>
+      </div>
+      <p style="font-size:var(--fs-sm);color:var(--txt4);margin-top:10px;">本次成績未儲存，重新整理頁面後將會消失</p>
+    </div>
+    <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:16px;box-shadow:var(--sh);margin-bottom:20px;">
+      <p style="font-size:var(--fs-lg);font-weight:600;color:var(--burg);margin-bottom:10px;">各 Learning Outcome 正確率</p>
+      <div id="quiz-lo-breakdown" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
+    </div>
+    <div style="text-align:center;margin-bottom:20px;">
+      <button onclick="startQuiz()" style="padding:9px 26px;border-radius:20px;border:none;background:var(--burg);color:#fff;font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">重新測驗</button>
+    </div>
+    <p style="font-size:var(--fs-lg);font-weight:600;color:var(--burg);margin-bottom:10px;">逐題複查</p>
+    <div id="quiz-review-list"></div>
   </div>
 </div>
 
@@ -1311,6 +1386,7 @@
      JAVASCRIPT — CLEANED & FIXED
 ═══════════════════════════════════════════════ -->
 <script src="data/wine-data.js"></script>
+<script src="data/quiz-data.js"></script>
 <script src="js/core.js"></script>
 <script src="js/regions.js"></script>
 <script src="js/map.js"></script>
@@ -1320,5 +1396,6 @@
 <script src="js/foodpairing.js"></script>
 <script src="js/classifications.js"></script>
 <script src="js/winestyles.js"></script>
+<script src="js/quiz.js"></script>
 </body>
 </html>
