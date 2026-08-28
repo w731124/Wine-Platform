@@ -1032,3 +1032,8 @@
 
 281. **新增`quiz-panel-title`/`quiz-panel-subtitle`兩個id（原本是panel-quiz最上方寫死的`<h1>`/`<p>`），新增`updateQuizPanelHeader(state)`函式，在`showQuizState()`每次切換畫面時同步呼叫，依`state`（以及`state==='active'`時再細分`quizMode`）動態改寫標題文字**：`lo-select`畫面固定顯示「LO篩選練習 Practice by LO」＋「選擇一個 Learning Outcome，隨機抽 8 題複習，不計時、不分級」；`active`畫面若`quizMode==='practice'`，標題同樣顯示「LO篩選練習 Practice by LO」，副標改用`QUIZ_LO_LABELS[quizPracticeLo]`帶出使用者正在練習的具體LO名稱（如「LO3 主要品種　隨機抽 8 題複習，不計時、不分級」）；其餘畫面（`start`／`active`且exam模式／`result`／`history`）一律回退顯示`QUIZ_PANEL_HEADER_DEFAULT`預設的「模擬考 Mock Exam／依WSET Level 2官方配分比例抽題，50題60分鐘限時模擬」。
      原因：使用者反映在「選LO練習」畫面時，左上角panel標題仍固定顯示模擬考本體的「50題60分鐘限時模擬」，與畫面實際功能（LO篩選練習、8題、不計時、不分級）不符；追問後確認同一問題也存在於practice模式的作答畫面。改在`showQuizState()`統一呼叫`updateQuizPanelHeader()`（而非在`startPractice()`/按鈕`onclick`等各個進入點分別改寫標題文字），確保不論從哪個路徑進出這兩個畫面，標題永遠與當下實際`state`／`quizMode`同步，不會因為漏改某個進入點而又出現文字與畫面不符的情況。
+
+## 2026-08-28 品種圖鑑卡片新增紅/白酒色左側色條，取代新增標籤方案
+
+282. **`js/grapes.js`的`buildGrapeCardHTML()`，在每張卡片外層`.acc-wrap`加一行inline style `border-left:4px solid`，紅葡萄品種（`skinColor==='red'`）用`var(--burg)`、白葡萄品種用`var(--gold-dk)`，色條跑滿整張卡片高度；不修改`.acc-wrap`/`.acc-hdr`共用CSS class本身（SAT品飲等其他分頁的手風琴也用同一個class），改動限定在品種圖鑑卡片各自的inline style。**：事前提供三個不新增標籤的方案（左側色條／標題文字顏色依酒色切換／emoji放大加圓底色）供使用者選擇，使用者選定方案一（左側色條）。
+     原因：使用者明確要求「不要再加標籤了，卡片上標籤已經太多」——現有卡片已有原產國、WSET分級兩個`tg`標籤，若再疊加一個「紅/白」標籤只會讓標題列更擁擠；改用色條是純視覺分類手法，不佔用任何文字/版面空間，也不是新增的標籤元素。用inline style而非新增CSS class，是因為`.acc-wrap`是全站共用的手風琴容器class，直接改class定義會連動影響SAT品飲、儲存與侍酒等其他用到手風琴的分頁，不符合「不影響既有功能」的最小改動原則；已用Playwright實測確認紅/白卡片的`border-left-color`分別正確渲染為`rgb(92,6,28)`／`rgb(168,138,96)`。
