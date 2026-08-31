@@ -1598,13 +1598,13 @@ const QUIZ_BANK = [
     sourceId: 'riesling',
     question: 'Riesling最鮮明的品種特徵為何？',
     options: [
-      '極高酸度，且從極干到極甜（貴腐、冰酒）各種甜度光譜皆能勝任',
-      '低酸度、僅能釀成甜酒',
-      '單寧含量高、酒體厚重',
-      '完全不適合陳年'
+      '低酸度風格，僅能釀成單一甜型酒款',
+      '極高酸度，橫跨極干到極甜各種甜度皆能勝任',
+      '單寧含量高，酒體厚重且澀感十分明顯',
+      '完全不適合任何形式的長期瓶中陳年'
     ],
-    correctIndex: 0,
-    explanation: 'styleSummary明確指出Riesling兼具極高酸度與晚收潛力，橫跨干型到甜型皆能展現。'
+    correctIndex: 1,
+    explanation: 'styleSummary明確指出Riesling兼具極高酸度與晚收潛力，橫跨干型到甜型（貴腐、冰酒）皆能展現。'
   },
   {
     id: 'lo3-rie-002',
@@ -1613,12 +1613,12 @@ const QUIZ_BANK = [
     sourceId: 'riesling',
     question: 'Riesling最早文獻記載可追溯至哪個世紀、哪個產區？',
     options: [
-      '19世紀，法國香檳區',
-      '20世紀，紐西蘭馬爾堡',
-      '16世紀，西班牙赫雷斯',
-      '1435年，德國萊茵高地區'
+      '1435年，德國萊茵高地區',
+      '19世紀，法國香檳區一帶',
+      '20世紀，紐西蘭馬爾堡地區',
+      '16世紀，西班牙赫雷斯地區'
     ],
-    correctIndex: 3,
+    correctIndex: 0,
     explanation: 'history記載最早文獻可追溯至1435年德國萊茵高地區，是少數能明確追溯栽培源頭的歐洲古老品種之一。'
   },
   {
@@ -1628,13 +1628,13 @@ const QUIZ_BANK = [
     sourceId: 'riesling',
     question: '關於Riesling常見的迷思「Riesling＝甜酒」，正確的理解為何？',
     options: [
-      '這個迷思完全正確，Riesling只能釀成甜酒',
-      '這是誤解，Riesling干型與甜型（如Auslese、貴腐）皆為經典風格，甜度須依酒標標示判斷而非品種本身決定',
-      'Riesling只能釀成干型酒',
-      '甜度只取決於採收季節，與酒標標示無關'
+      '這個迷思完全正確，Riesling只能釀成甜型',
+      '這是誤解，干型與甜型皆為經典風格，須依酒標判斷甜度',
+      'Riesling只能釀成干型酒，無法做成甜酒',
+      '甜度只取決於採收季節，與酒標標示完全無關'
     ],
     correctIndex: 1,
-    explanation: 'confusionNote明確點出此常見誤解，強調甜度判斷需依酒標而非品種本身。'
+    explanation: 'confusionNote明確點出此常見誤解，Riesling干型與甜型（如Auslese、貴腐）皆為經典風格，甜度須依酒標標示判斷而非品種本身決定。'
   },
   {
     id: 'lo3-rie-004',
@@ -1643,13 +1643,13 @@ const QUIZ_BANK = [
     sourceId: 'riesling',
     question: 'Riesling與格烏茲塔明那（Gewürztraminer）相比，關鍵區辨特徵為何？',
     options: [
-      '兩者風味特徵幾乎無法區分',
-      'Riesling香氣較內斂、酸度遠高於格烏茲塔明那；格烏茲塔明那則以濃郁荔枝玫瑰香與低酸為特徵',
-      '格烏茲塔明那的酸度遠高於Riesling',
-      'Riesling以荔枝玫瑰香為招牌香氣'
+      'Riesling香氣內斂高酸；格烏茲塔明那濃郁荔枝玫瑰低酸',
+      '兩者風味特徵幾乎完全無法區分辨別出來',
+      '格烏茲塔明那的酸度表現遠高於Riesling',
+      'Riesling反而以荔枝玫瑰香為招牌特徵香氣'
     ],
-    correctIndex: 1,
-    explanation: 'confusionNote明確對比：Riesling香氣內斂、高酸；格烏茲塔明那則濃郁荔枝玫瑰香、低酸，兩者盲飲不易混淆。'
+    correctIndex: 0,
+    explanation: 'confusionNote明確對比：Riesling香氣較內斂、酸度遠高於格烏茲塔明那；格烏茲塔明那則以濃郁荔枝玫瑰香與低酸為特徵，兩者盲飲不易混淆。'
   },
   {
     id: 'lo3-rie-005',
@@ -1658,13 +1658,13 @@ const QUIZ_BANK = [
     sourceId: 'riesling',
     question: 'Riesling在二戰後品牌形象受挫的原因為何？',
     options: [
-      '受廉價甜型出口酒（如部分Liebfraumilch類產品）拖累品牌形象，近年隨精品干型Riesling復興才逐漸重拾應有地位',
-      '因為法規全面禁止Riesling種植',
-      '因為品種本身完全消失了數十年',
-      '因為只有干型Riesling才受市場青睞'
+      '因為法規全面禁止Riesling種植與生產',
+      '因為品種本身完全從市場上消失了數十年',
+      '因為只有干型Riesling才受到市場青睞',
+      '受廉價甜型出口酒拖累品牌形象，近年才逐漸復興'
     ],
-    correctIndex: 0,
-    explanation: 'history記載Riesling二戰後受廉價甜型出口酒拖累形象，19世紀時其實曾與波爾多頂級酒莊並列售價、聲望極高。'
+    correctIndex: 3,
+    explanation: 'history記載Riesling二戰後受廉價甜型出口酒（如部分Liebfraumilch類產品）拖累品牌形象，近年隨精品干型Riesling復興才逐漸重拾應有地位；19世紀時其實曾與波爾多頂級酒莊並列售價、聲望極高。'
   },
   {
     id: 'lo3-rie-006',
@@ -1673,12 +1673,12 @@ const QUIZ_BANK = [
     sourceId: 'riesling',
     question: '下列哪一項是Riesling aromaWheel香氣輪中，特別標記為「陳年後才出現」的特徵香氣？',
     options: [
-      '青蘋果',
-      '萊姆',
+      '青蘋果（Green Apple）香氣',
       '陳年汽油感（Petrol）',
-      '板岩礦石感'
+      '萊姆（Lime）柑橘香氣',
+      '板岩礦石感（Slate）香氣'
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation: 'aromaWheel列出Lime、Green Apple、Slate Mineral、Petrol，其中Petrol陳年汽油感是Riesling隨瓶陳發展出的獨特標誌性香氣，年輕酒款通常不明顯。'
   },
   {
@@ -1688,10 +1688,10 @@ const QUIZ_BANK = [
     sourceId: 'riesling',
     question: '下列哪一個產區不屬於Riesling的代表性種植區域？',
     options: [
-      'Mosel（摩塞爾）',
+      'Mosel（摩塞爾）地區',
       'Clare Valley（克萊爾谷）',
       'Chianti Classico（經典奇揚地）',
-      'Wachau（瓦豪）'
+      'Wachau（瓦豪）地區'
     ],
     correctIndex: 2,
     explanation: 'representativeRegions涵蓋Mosel、Rheingau、Alsace、Wachau、Clare Valley、Pfalz等產區，Chianti Classico是義大利以Sangiovese聞名的產區，不在Riesling清單中。'
@@ -1704,11 +1704,11 @@ const QUIZ_BANK = [
     question: 'Riesling建議的侍酒溫度區間為何？',
     options: [
       '10–13°C',
-      '8–10°C',
       '13–15°C',
-      '16–18°C'
+      '16–18°C',
+      '8–10°C'
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: 'servingTemp欄位標示為8–10°C，對應清淡不甜白酒/高酸品種的溫度區間。'
   },
   {
@@ -1718,12 +1718,12 @@ const QUIZ_BANK = [
     sourceId: 'riesling',
     question: 'Riesling適合搭配下列哪些食物類型？',
     options: [
-      '紅肉與野味',
-      '甜點與水果',
-      '醃肉開胃菜',
-      '辛香料理、亞洲料理、甲殼海鮮、清淡開胃菜'
+      '紅肉與野味等重口味料理',
+      '辛香料理、亞洲料理、甲殼海鮮',
+      '甜點、水果等偏甜食材料理',
+      '醃肉、開胃菜與煙燻食材'
     ],
-    correctIndex: 3,
+    correctIndex: 1,
     explanation: 'foodPairingTags列出Spicy、Asian Cuisine、Shellfish、Light Appetizer，Riesling的高酸與微甜特性使其特別適合搭配辛辣的亞洲料理，能中和辣度並平衡口感。'
   },
   {
@@ -1733,12 +1733,12 @@ const QUIZ_BANK = [
     sourceId: 'riesling',
     question: '依profile資料，Riesling的酸度（acidity）評分與白蘇維醂（Sauvignon Blanc）相比如何？',
     options: [
-      'Riesling遠低於白蘇維濃',
-      '兩者評分相同，皆為9分，都是酸度最鮮明的白酒品種之一',
-      'Riesling遠高於白蘇維濃',
-      '兩者評分皆為5分'
+      'Riesling遠低於白蘇維濃的酸度表現',
+      'Riesling酸度表現遠高於白蘇維濃',
+      '兩者評分相同，皆為9分的高酸品種',
+      '兩者評分皆為5分的中等程度'
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: 'Riesling與Sauvignon Blanc的profile.acidity皆為9，是酸度表現最突出的兩個白酒品種，但風味走向截然不同。'
   },
   {
@@ -1749,9 +1749,9 @@ const QUIZ_BANK = [
     question: '依profile資料，Riesling的陳年潛力（aging）評分為何，與其風格特性有何關聯？',
     options: [
       '2分，屬極低陳年潛力，僅適合年輕時飲用',
-      '10分，滿分，優於所有品種',
-      '7分，屬中高陳年潛力，與其極高酸度提供的陳年支撐力、以及發展出汽油礦石調性的特性相符',
-      '陳年潛力與酸度無關'
+      '10分，滿分，表現優於所有其他葡萄品種',
+      '7分，屬中高陳年潛力，與高酸支撐陳年能力相符',
+      '陳年潛力純粹與品種酸度高低完全無關'
     ],
     correctIndex: 2,
     explanation: 'profile.aging為7，高酸是白酒陳年潛力的關鍵支撐要素之一，這也解釋了為何Riesling能發展出獨特的陳年汽油礦石感。'
@@ -1763,12 +1763,12 @@ const QUIZ_BANK = [
     sourceId: 'riesling',
     question: 'Riesling的果皮顏色分類與原產國為何？',
     options: [
+      '白皮，原產德國',
       '黑皮，原產法國',
       '灰皮，原產奧地利',
-      '白皮，原產紐西蘭',
-      '白皮，原產德國'
+      '白皮，原產紐西蘭'
     ],
-    correctIndex: 3,
+    correctIndex: 0,
     explanation: "skinColor:'white'、originCountry:'Germany(德國)'。"
   },
   {
@@ -1778,12 +1778,12 @@ const QUIZ_BANK = [
     sourceId: 'riesling',
     question: '為什麼說Riesling是「少數能明確追溯栽培源頭的歐洲古老品種之一」？',
     options: [
-      '因其最早文獻記載明確可追溯至1435年德國萊茵高地區，栽培歷史脈絡清晰',
-      '因為它是所有歐洲品種中最年輕的一個',
-      '因為它從未離開過原產地',
-      '因為它完全沒有任何歷史文獻記載'
+      '因為它是所有歐洲品種中最年輕的一個品種',
+      '因為它從未離開過原產地、也從未曾外傳',
+      '因為它完全沒有任何歷史文獻記載留存',
+      '最早文獻可追溯至1435年德國萊茵高，脈絡清晰'
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: '多數古老葡萄品種的確切起源已難以考證，Riesling憑藉1435年的明確文獻記載成為少數例外。'
   },
   {
@@ -1793,12 +1793,12 @@ const QUIZ_BANK = [
     sourceId: 'riesling',
     question: 'Riesling的profile資料顯示其單寧（tannin）與酒體（body）評分分別為何？',
     options: [
-      '單寧6分、酒體7分（厚重型）',
-      '單寧3分、酒體9分',
-      '單寧9分、酒體3分',
-      '單寧0分（白酒不帶皮發酵）、酒體3分（輕盈型）'
+      '單寧6分、酒體7分，屬厚重型風格',
+      '單寧3分、酒體9分，兩者評分皆偏高',
+      '單寧0分（不帶皮發酵）、酒體3分（輕盈型）',
+      '單寧9分、酒體3分，兩者評分完全相反'
     ],
-    correctIndex: 3,
+    correctIndex: 2,
     explanation: 'profile中tannin為0（所有白葡萄品種共通特性）、body為3，反映Riesling典型的輕盈酒體與高酸清爽風格。'
   },
   {

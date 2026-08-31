@@ -1,8 +1,8 @@
 {
   "note": "quiz-data.js 題庫內容重寫進度追蹤檔。與已遺失的舊版 quiz-rewrite-progress.json 區隔，v2 為重來後的新起點。每完成一批就在 batches 追加一筆紀錄，並把該批 id 併入 completedIds。",
   "totalQuestions": 300,
-  "completedCount": 82,
-  "remainingCount": 218,
+  "completedCount": 96,
+  "remainingCount": 204,
   "batches": [
     {
       "batchLabel": "lo1-batch1",
@@ -70,6 +70,17 @@
         "lo3-svb-006", "lo3-svb-007", "lo3-svb-008", "lo3-svb-009", "lo3-svb-010",
         "lo3-svb-011", "lo3-svb-012", "lo3-svb-013", "lo3-svb-014"
       ]
+    },
+    {
+      "batchLabel": "lo3-riesling",
+      "idRange": "lo3-rie-001~014",
+      "count": 14,
+      "completedAt": "2026-08-28",
+      "ids": [
+        "lo3-rie-001", "lo3-rie-002", "lo3-rie-003", "lo3-rie-004", "lo3-rie-005",
+        "lo3-rie-006", "lo3-rie-007", "lo3-rie-008", "lo3-rie-009", "lo3-rie-010",
+        "lo3-rie-011", "lo3-rie-012", "lo3-rie-013", "lo3-rie-014"
+      ]
     }
   ],
   "completedIds": [
@@ -89,6 +100,9 @@
     "lo3-cha-011", "lo3-cha-012", "lo3-cha-013", "lo3-cha-014",
     "lo3-svb-001", "lo3-svb-002", "lo3-svb-003", "lo3-svb-004", "lo3-svb-005",
     "lo3-svb-006", "lo3-svb-007", "lo3-svb-008", "lo3-svb-009", "lo3-svb-010",
-    "lo3-svb-011", "lo3-svb-012", "lo3-svb-013", "lo3-svb-014"
+    "lo3-svb-011", "lo3-svb-012", "lo3-svb-013", "lo3-svb-014",
+    "lo3-rie-001", "lo3-rie-002", "lo3-rie-003", "lo3-rie-004", "lo3-rie-005",
+    "lo3-rie-006", "lo3-rie-007", "lo3-rie-008", "lo3-rie-009", "lo3-rie-010",
+    "lo3-rie-011", "lo3-rie-012", "lo3-rie-013", "lo3-rie-014"
   ]
 }
