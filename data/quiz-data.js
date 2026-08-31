@@ -368,13 +368,13 @@ const QUIZ_BANK = [
     sourceId: 'grape-parts',
     question: '葡萄果皮（skin）主要提供釀酒師哪些成分？',
     options: [
-      '果皮不含任何對釀酒有意義的成分',
+      '糖分、酸度、水分',
+      '單寧、酸度、糖分',
       '色澤、單寧、風味物質',
-      '糖分與水分',
-      '僅有酸度'
+      '僅有色澤與水分'
     ],
-    correctIndex: 1,
-    explanation: '官方規格明列果皮提供Colour, Tannins, Flavours。'
+    correctIndex: 2,
+    explanation: '官方規格明列果皮提供Colour, Tannins, Flavours；糖分、酸度、水分主要來自果肉，屬常見混淆點。'
   },
   {
     id: 'lo1-002',
@@ -383,13 +383,13 @@ const QUIZ_BANK = [
     sourceId: 'grape-parts',
     question: '葡萄果肉（pulp）主要提供哪些成分？',
     options: [
-      '僅有酸度與單寧',
+      '色澤、單寧、糖分、水分',
+      '單寧、酸度、色澤、水分',
       '糖分、酸度、水分、風味物質',
-      '僅有糖分',
-      '單寧與色澤'
+      '僅有糖分與酸度兩項'
     ],
-    correctIndex: 1,
-    explanation: '果肉提供Sugar, Acids, Water, Flavours；單寧主要來自果皮與籽梗。'
+    correctIndex: 2,
+    explanation: '果肉提供Sugar, Acids, Water, Flavours；單寧與色澤主要來自果皮，屬常見混淆點。'
   },
   {
     id: 'lo1-003',
@@ -398,13 +398,13 @@ const QUIZ_BANK = [
     sourceId: 'vine-requirements',
     question: '葡萄藤生長所需的基本要素為何？',
     options: [
-      '不需要任何外部條件',
-      '僅需水與陽光',
       '溫暖度、日照、水分、養分、二氧化碳',
-      '僅需二氧化碳與養分'
+      '溫暖度、日照、水分、氧氣、氮氣',
+      '日照、水分、養分、氧氣、風速',
+      '溫暖度、水分、養分、二氧化碳、氧氣'
     ],
-    correctIndex: 2,
-    explanation: '官方規格列出五項：Warmth, Sunlight, Water, Nutrients, CO2。'
+    correctIndex: 0,
+    explanation: '官方規格列出五項：Warmth, Sunlight, Water, Nutrients, CO2；氧氣、氮氣、風速均非官方明列要素。'
   },
   {
     id: 'lo1-004',
@@ -413,12 +413,12 @@ const QUIZ_BANK = [
     sourceId: 'vine-requirements',
     question: '葡萄藤透過光合作用主要利用哪一種氣體轉化為養分？',
     options: [
+      '二氧化碳',
       '氧氣',
       '氮氣',
-      '二氧化碳',
       '氬氣'
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: 'CO2是葡萄藤生長所需的關鍵氣體要素之一，用於光合作用。'
   },
   {
@@ -428,13 +428,13 @@ const QUIZ_BANK = [
     sourceId: 'grape-ripening-stages',
     question: '葡萄形成的三個依序階段為何？',
     options: [
+      '轉色（véraison）→開花（flowering）→坐果（fruit set）',
+      '坐果（fruit set）→轉色（véraison）→開花（flowering）',
       '開花（flowering）→坐果（fruit set）→轉色（véraison）',
-      'véraison→開花→坐果',
-      '轉色→坐果→開花',
-      '坐果→開花→轉色'
+      '開花（flowering）→轉色（véraison）→坐果（fruit set）'
     ],
-    correctIndex: 0,
-    explanation: '官方規格明列葡萄形成階段依序為flowering, fruit set, véraison。'
+    correctIndex: 2,
+    explanation: '官方規格明列葡萄形成階段依序為flowering, fruit set, véraison；其餘選項為順序錯置。'
   },
   {
     id: 'lo1-006',
@@ -443,13 +443,13 @@ const QUIZ_BANK = [
     sourceId: 'grape-ripening-stages',
     question: '「Véraison（轉色期）」指的是什麼？',
     options: [
+      '葡萄藤進行冬季修剪、去除多餘枝條的階段',
       '葡萄開始轉色、正式進入成熟期的階段',
-      '葡萄藤修剪的階段',
-      '採收後的發酵階段',
-      '葡萄藤開花的階段'
+      '葡萄採收後進入酒槽發酵轉化的階段',
+      '葡萄藤萌芽開花、準備授粉結果的階段'
     ],
-    correctIndex: 0,
-    explanation: 'véraison是葡萄由綠轉色、正式進入成熟過程的轉折點。'
+    correctIndex: 1,
+    explanation: 'véraison是葡萄由綠轉色、正式進入成熟過程的轉折點，與修剪、發酵、開花階段不同。'
   },
   {
     id: 'lo1-007',
@@ -458,13 +458,13 @@ const QUIZ_BANK = [
     sourceId: 'grape-ripening-stages',
     question: '官方規格將葡萄熟度分為哪三種類型？',
     options: [
-      '發酵前、發酵中、發酵後',
-      '採收前、採收中、採收後',
-      '生澀、成熟、過熟腐敗',
-      '未熟（unripe）、成熟（ripe）、極熟（extra-ripe，如晚摘、風乾）'
+      '發酵前（pre-fermentation）、發酵中、發酵後',
+      '未熟（unripe）、成熟（ripe）、極熟（extra-ripe）',
+      '採收前（pre-harvest）、採收中、採收後',
+      '生澀（unripe fault）、成熟、過熟腐敗（rot）'
     ],
-    correctIndex: 3,
-    explanation: '官方規格明列Unripe grapes, Ripe grapes, Extra-ripe grapes (late harvest, raisined)。'
+    correctIndex: 1,
+    explanation: '官方規格明列Unripe grapes, Ripe grapes, Extra-ripe grapes；extra-ripe包含晚摘、風乾等極熟型態。'
   },
   {
     id: 'lo1-008',
@@ -473,12 +473,12 @@ const QUIZ_BANK = [
     sourceId: 'grape-ripening-changes',
     question: '葡萄在成熟過程中，糖分與酸度的變化趨勢為何？',
     options: [
-      '兩者皆不變',
       '糖分上升、酸度下降',
+      '糖分與酸度皆維持不變',
       '糖分下降、酸度上升',
-      '兩者皆上升'
+      '糖分與酸度皆持續上升'
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: '隨葡萄成熟，光合作用累積糖分使糖度上升，同時酸度因呼吸作用消耗而下降。'
   },
   {
@@ -488,13 +488,13 @@ const QUIZ_BANK = [
     sourceId: 'grape-ripening-changes',
     question: '葡萄成熟過程中，單寧的變化趨勢為何？',
     options: [
-      '單寧隨成熟度增加而逐漸軟化、澀感降低',
-      '單寧與成熟度無關',
+      '單寧含量與成熟度變化並無明顯關聯',
       '單寧含量與澀感隨成熟度增加而持續上升',
-      '單寧只存在於白葡萄中'
+      '單寧僅存在於白葡萄品種中，紅葡萄無單寧',
+      '單寧隨成熟度增加而逐漸軟化、澀感降低'
     ],
-    correctIndex: 0,
-    explanation: '成熟度提升時單寧會逐漸軟化，澀感降低。'
+    correctIndex: 3,
+    explanation: '成熟度提升時單寧會逐漸軟化，澀感降低；紅、白葡萄皆含單寧，僅白酒釀造多不萃取果皮單寧。'
   },
   {
     id: 'lo1-010',
@@ -503,13 +503,13 @@ const QUIZ_BANK = [
     sourceId: 'grape-ripening-changes',
     question: '白葡萄與黑葡萄在成熟過程中的香氣/風味變化，官方規格的描述方式為何？',
     options: [
-      '只有黑葡萄會有香氣變化',
-      '兩者變化完全相同，沒有區分必要',
-      '官方規格分別列出白葡萄與黑葡萄各自的一般性香氣風味變化模式，兩者不完全相同',
-      '香氣變化與成熟度無關'
+      '官方僅針對黑葡萄列出香氣變化模式，白葡萄未提及',
+      '官方分別列出白葡萄與黑葡萄各自的香氣變化模式',
+      '官方認為兩者香氣變化模式完全相同，不須區分',
+      '官方規格中香氣變化僅與品種無關，只與產區有關'
     ],
-    correctIndex: 2,
-    explanation: '規格中將白葡萄與黑葡萄的香氣風味變化分開列出兩個子項目。'
+    correctIndex: 1,
+    explanation: '規格中將白葡萄與黑葡萄的香氣風味變化分開列出兩個子項目，兩者變化模式不完全相同。'
   },
   {
     id: 'lo1-011',
@@ -518,9 +518,9 @@ const QUIZ_BANK = [
     sourceId: 'environmental-influences',
     question: '官方規格將葡萄種植氣候分為哪三種基本類型？',
     options: [
-      '乾燥、潮濕、適中',
-      '高緯度、中緯度、低緯度',
-      '熱帶、溫帶、寒帶',
+      '乾燥（dry）、潮濕（humid）、適中（medium）',
+      '熱帶（tropical）、溫帶（temperate）、寒帶（frigid）',
+      '高緯（high latitude）、中緯、低緯（low latitude）',
       '涼爽（cool）、溫和（moderate）、溫暖（warm）'
     ],
     correctIndex: 3,
@@ -534,11 +534,11 @@ const QUIZ_BANK = [
     question: '下列何者不屬於官方規格列出的「其他氣候影響因素」？',
     options: [
       '緯度（latitude）與海拔（altitude）',
-      '葡萄藤修剪方式（pruning method）',
       '坡度（slope）與朝向（aspect）',
-      '山脈（mountains）與土壤（soils）'
+      '山脈（mountains）與土壤（soils）',
+      '葡萄藤修剪方式（pruning method）'
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: '修剪方式屬於「種植選項」，不屬於「其他氣候影響因素」；官方此項列出latitude, altitude, mountains, slope, aspect, soils, seas, rivers, air, fog, cloud, mist。'
   },
   {
@@ -548,12 +548,12 @@ const QUIZ_BANK = [
     sourceId: 'environmental-influences',
     question: '鄰近海洋或大型湖泊對葡萄園氣候的主要調節作用是什麼？',
     options: [
-      '完全不影響葡萄種植氣候',
-      '只影響降雨量，與溫度無關',
-      '使氣候更趨極端（溫差更大）',
-      '具有調節溫度的作用，通常使氣候更溫和穩定'
+      '完全不影響葡萄園氣候，僅影響土壤排水',
+      '只影響區域降雨量，與溫度調節無關',
+      '具有調節溫度的作用，通常使氣候更溫和穩定',
+      '使氣候更趨極端，日夜溫差因此擴大'
     ],
-    correctIndex: 3,
+    correctIndex: 2,
     explanation: '水體具有蓄熱與釋熱的調節效果，鄰近海洋/湖泊/河流通常使區域氣候溫差較小。'
   },
   {
@@ -563,13 +563,13 @@ const QUIZ_BANK = [
     sourceId: 'environmental-influences',
     question: '晨霧（fog/mist）對葡萄園最主要的潛在影響為何（尤其貴腐甜酒產區）？',
     options: [
-      '可能促進貴腐黴（Botrytis）生長，也可能有助於延緩成熟、調節溫度',
-      '只影響採收時間，不影響葡萄本身',
-      '完全沒有實質影響',
-      '只會加速葡萄腐敗，對釀酒毫無益處'
+      '可能促進貴腐黴（Botrytis）生長，並調節溫度',
+      '只會延後採收時間，對釀酒品質沒有幫助',
+      '對葡萄生長與最終品質完全沒有影響',
+      '只會加速葡萄腐敗，對釀酒毫無益處可言'
     ],
     correctIndex: 0,
-    explanation: '晨霧提供的濕度是貴腐黴生長的關鍵條件之一（如Sauternes、Tokaj）。'
+    explanation: '晨霧提供的濕度是貴腐黴生長的關鍵條件之一（如Sauternes、Tokaj），也具有調節溫度的作用。'
   },
   {
     id: 'lo1-015',
@@ -578,13 +578,13 @@ const QUIZ_BANK = [
     sourceId: 'weather-influences',
     question: '下列何者屬於官方規格列出的「天氣影響因素」？',
     options: [
-      '訓練與修剪方式',
-      '土壤類型與坡度',
-      '乾旱（drought）、霜害（frost）、冰雹（hail）、降雨（rain）、日照（sunlight）、溫度（temperature）',
-      '緯度與海拔'
+      '修剪、灌溉、疏葉、套袋、施肥、除草',
+      '乾旱、霜害、冰雹、降雨、日照、溫度',
+      '緯度、海拔、坡度、朝向、土壤、水系',
+      '發酵溫度、浸皮、榨汁、下膠、過濾、裝瓶'
     ],
-    correctIndex: 2,
-    explanation: '這6項屬於年度間變動的短期氣候事件，與長期固定的「其他氣候影響因素」不同類別。'
+    correctIndex: 1,
+    explanation: '官方Weather influences明列drought, frost, hail, rain, sunlight, temperature六項；其餘分屬種植選項、其他氣候影響因素、釀酒步驟。'
   },
   {
     id: 'lo1-016',
@@ -593,13 +593,13 @@ const QUIZ_BANK = [
     sourceId: 'weather-influences',
     question: '春季霜害（spring frost）對葡萄藤最主要的威脅是什麼？',
     options: [
-      '破壞已經成熟的果實',
-      '增加葡萄的糖度',
-      '使葡萄提早成熟',
+      '破壞已經成熟的果實，導致採收品質下降',
+      '提高葡萄的糖度，有助於釀出濃郁酒款',
+      '加速葡萄成熟速度，使採收時間提前',
       '凍傷剛萌發的嫩芽，可能導致當年大幅減產'
     ],
     correctIndex: 3,
-    explanation: '春霜發生在嫩芽剛萌發、抗寒能力最弱的階段。'
+    explanation: '春霜發生在嫩芽剛萌發、抗寒能力最弱的階段，可能造成當年大幅減產。'
   },
   {
     id: 'lo1-017',
@@ -608,13 +608,13 @@ const QUIZ_BANK = [
     sourceId: 'ripeness-quality-link',
     question: '葡萄熟度如何影響葡萄酒的風格與品質？',
     options: [
-      '熟度只影響顏色，不影響其他特性',
-      '熟度直接影響糖度、酸度、單寧成熟度與香氣風味濃縮程度，是決定酒款風格的核心因素',
-      '熟度只在白酒中有影響力',
-      '熟度與酒的風格品質完全無關'
+      '熟度直接影響糖度、酸度、單寧與香氣濃縮度',
+      '熟度只影響酒的顏色，與其他特性無關',
+      '熟度只對白酒風格有影響，紅酒不受影響',
+      '熟度變化與酒的風格品質完全無關'
     ],
-    correctIndex: 1,
-    explanation: '熟度變化牽動糖、酸、單寧、香氣風味等多重面向，直接決定成品風格。'
+    correctIndex: 0,
+    explanation: '熟度變化牽動糖、酸、單寧、香氣風味等多重面向，是決定成品風格的核心因素之一。'
   },
   {
     id: 'lo1-018',
@@ -623,12 +623,12 @@ const QUIZ_BANK = [
     sourceId: 'ripeness-quality-link',
     question: '早摘（early-picked）葡萄與晚摘（late-harvest）葡萄釀成的酒款，風格差異的一般趨勢為何？',
     options: [
-      '早摘通常釀出更濃郁厚重的酒款',
-      '兩者風格完全相同',
-      '早摘葡萄通常酸度較高、酒精度較低、風味較清淡；晚摘葡萄則相反',
-      '晚摘葡萄無法用來釀酒'
+      '早摘通常釀出更濃郁厚重、酒精度更高的酒款',
+      '早摘酸度較高、酒精較低、風味較淡；晚摘則相反',
+      '早摘與晚摘葡萄釀出的酒款風格完全相同',
+      '晚摘葡萄因糖度過高，無法用於正常釀酒'
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation: '採收時機是決定葡萄糖酸比、進而影響成品風格的關鍵種植選項之一。'
   },
   {
@@ -638,13 +638,13 @@ const QUIZ_BANK = [
     sourceId: 'grape-growing-options',
     question: '下列何者屬於官方規格列出的「葡萄園種植選項」？',
     options: [
-      '整枝訓練、修剪、灌溉、雜草/病蟲害管理、有機種植、產量管理、採收',
-      '氣候類型與土壤種類',
-      '發酵溫度',
-      '緯度與海拔'
+      '緯度、海拔、坡度、朝向、鄰近水域',
+      '乾旱、霜害、冰雹、降雨、溫度',
+      '整枝、修剪、灌溉、病蟲害管理、有機種植、採收',
+      '破皮、榨汁、下膠、過濾、裝瓶'
     ],
-    correctIndex: 0,
-    explanation: '這7項屬於種植者可主動控制的管理決策，與「環境影響」為不同子項目。'
+    correctIndex: 2,
+    explanation: '官方Grape growing options列出整枝訓練、修剪、灌溉、雜草/病蟲害管理、有機種植、產量管理、採收等項目，與環境因素、天氣因素、釀酒步驟為不同子項目。'
   },
   {
     id: 'lo1-020',
@@ -653,13 +653,13 @@ const QUIZ_BANK = [
     sourceId: 'grape-growing-options',
     question: '有機種植（organic production）的核心精神為何？',
     options: [
-      '完全不採收葡萄，讓其自然凋零',
-      '避免使用合成化學肥料、農藥、除草劑等，以更自然的方式管理葡萄園',
-      '只適用於白葡萄品種',
-      '使用更多化學合成農藥以提高產量'
+      '完全不進行採收，任由葡萄自然凋零',
+      '僅適用於白葡萄品種的種植管理方式',
+      '使用更多化學合成農藥以提高產量',
+      '避免使用合成化學肥料、農藥與除草劑'
     ],
-    correctIndex: 1,
-    explanation: '核心是限制合成化學投入物的使用。'
+    correctIndex: 3,
+    explanation: '有機種植核心是限制合成化學投入物的使用，以更自然的方式管理葡萄園，不限品種類型。'
   },
   {
     id: 'lo1-021',
