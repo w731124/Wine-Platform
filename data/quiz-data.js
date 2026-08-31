@@ -1388,10 +1388,10 @@ const QUIZ_BANK = [
     sourceId: 'sauvignon-blanc',
     question: 'Sauvignon Blanc的經典風格特徵為何？',
     options: [
-      '高酸爽脆的芳香品種，經典帶有草本與醋栗香氣',
-      '低酸度、濃郁橡木調性',
-      '單寧明顯、酒體厚重',
-      '永遠是甜型酒款'
+      '高酸爽脆的芳香品種，帶草本與醋栗香氣',
+      '低酸度圓潤風格，帶濃郁橡木調性',
+      '單寧明顯厚重，酒體飽滿且澀感強',
+      '永遠是甜型酒款，無法釀成不甜酒'
     ],
     correctIndex: 0,
     explanation: 'styleSummary明確描述為高酸爽脆的芳香品種，經典風格帶草本與醋栗香氣。'
@@ -1403,12 +1403,12 @@ const QUIZ_BANK = [
     sourceId: 'sauvignon-blanc',
     question: 'Sauvignon Blanc起源於哪個區域，最早文獻記載可追溯至何時？',
     options: [
-      '法國羅亞爾河與波爾多一帶，18世紀文獻已有記載',
-      '德國萊茵高，15世紀文獻記載',
-      '義大利東北部，20世紀才有記載',
-      '西班牙赫雷斯，16世紀文獻記載'
+      '德國萊茵高地區，15世紀已有文獻記載',
+      '法國羅亞爾河與波爾多，18世紀已有記載',
+      '義大利東北部地區，20世紀才首見記載',
+      '西班牙赫雷斯地區，16世紀已有文獻記載'
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: 'history欄位明確記載起源於法國羅亞爾河與波爾多一帶，18世紀文獻已有栽培記載。'
   },
   {
@@ -1418,12 +1418,12 @@ const QUIZ_BANK = [
     sourceId: 'sauvignon-blanc',
     question: 'DNA分析確認Sauvignon Blanc與哪個知名紅酒品種具有親緣關係？',
     options: [
-      '完全沒有已知的親緣關係品種',
-      '黑皮諾',
-      '梅洛',
-      '是卡本內蘇維濃（Cabernet Sauvignon）的親本之一（與卡本內弗朗共同繁殖出卡本內蘇維濃）'
+      '是卡本內蘇維濃的親本之一',
+      '完全沒有已知的親緣品種',
+      '與黑皮諾具有直接親緣關係',
+      '與梅洛具有直接親緣關係'
     ],
-    correctIndex: 3,
+    correctIndex: 0,
     explanation: 'DNA分析確認白蘇維濃與卡本內弗朗為親本，共同繁殖出全球知名度最高的卡本內蘇維濃，換言之白蘇維濃是卡本內蘇維濃的祖父輩品種之一。'
   },
   {
@@ -1433,12 +1433,12 @@ const QUIZ_BANK = [
     sourceId: 'sauvignon-blanc',
     question: '1980年代紐西蘭馬爾堡Sauvignon Blanc震驚國際市場的招牌香氣特徵為何？',
     options: [
-      '蜂蜜與杏桃',
+      '溫和的蜂蜜與杏桃香氣',
+      '明顯的奶油與榛果香氣',
       '濃郁的百香果與青椒香氣',
-      '奶油與榛果',
-      '汽油與礦石感'
+      '強烈的汽油與礦石感香氣'
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: 'history記載1980年代馬爾堡以其獨特濃郁的百香果與青椒香氣震驚國際市場，開創新世界風格典範。'
   },
   {
@@ -1448,12 +1448,12 @@ const QUIZ_BANK = [
     sourceId: 'sauvignon-blanc',
     question: '羅亞爾河（如Sancerre）與紐西蘭馬爾堡的Sauvignon Blanc，兩者風格光譜的核心差異為何？',
     options: [
-      '兩者風格完全相同，沒有可辨識差異',
-      '馬爾堡風格較羅亞爾河更礦石感',
-      '羅亞爾河傾向燧石礦石感的冷涼礦物風格；紐西蘭馬爾堡則傾向熱帶果香奔放的風格',
-      '羅亞爾河風格較馬爾堡更熱帶果香'
+      '兩者風格完全相同，沒有明顯可辨識差異',
+      '馬爾堡風格比羅亞爾河更具礦石感特徵',
+      '羅亞爾河風格比馬爾堡更偏熱帶果香調',
+      '羅亞爾河偏燧石礦物風格；馬爾堡偏熱帶果香'
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: 'styleSummary點出因氣候差異呈現燧石礦石感或熱帶果香兩種光譜，分別對應舊世界（如羅亞爾河）與新世界（如馬爾堡）的典型風格。'
   },
   {
@@ -1463,12 +1463,12 @@ const QUIZ_BANK = [
     sourceId: 'sauvignon-blanc',
     question: 'Sauvignon Blanc與賽美蓉（Sémillon）經常混調（如波爾多白酒與索甸貴腐甜酒），兩者角色互補的方式為何？',
     options: [
-      '兩者角色完全相同，混調沒有實質意義',
-      '白蘇維濃提供高酸與明亮香氣，賽美蓉提供酒體與陳年後的蜂蠟質地',
-      '賽美蓉提供高酸，白蘇維濃提供酒體與蜂蠟質地',
-      '兩者從不一起混調'
+      '兩者角色完全相同，混調並無實質意義',
+      '賽美蓉提供高酸，白蘇維濃提供酒體蜂蠟質地',
+      '白蘇維濃提供高酸香氣，賽美蓉提供酒體蜂蠟質地',
+      '兩者風格完全互斥，歷史上從未一起混調過'
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: 'confusionNote說明白蘇維濃與賽美蓉常見混調且角色互補：白蘇維濃提供高酸與明亮香氣，賽美蓉提供酒體與陳年後的蜂蠟質地。'
   },
   {
@@ -1478,10 +1478,10 @@ const QUIZ_BANK = [
     sourceId: 'sauvignon-blanc',
     question: 'Sauvignon Blanc與白詩楠（Chenin Blanc）相比，風格辨識上的關鍵差異為何？',
     options: [
-      '兩者風味特徵幾乎無法區分',
-      '白蘇維濃的青草／醋栗調性更明確、酸度更銳利；白詩楠則以榲桲與蜂蜜調性、酸度較圓潤為特徵',
-      '白詩楠的酸度遠高於白蘇維濃',
-      '白蘇維濃帶有明顯榲桲蜂蜜調性'
+      '兩者風味特徵幾乎完全無法區分辨別',
+      '白蘇維濃青草醋栗調性更明確；白詩楠偏榲桲蜂蜜圓潤',
+      '白詩楠的酸度表現明顯遠高於白蘇維濃',
+      '白蘇維濃本身反而帶有明顯榲桲蜂蜜調性'
     ],
     correctIndex: 1,
     explanation: 'confusionNote明確對比兩者：白蘇維濃青草/醋栗調性更明確、酸度更銳利，白詩楠則以榲桲與蜂蜜調性、較圓潤酸度為特徵。'
@@ -1493,12 +1493,12 @@ const QUIZ_BANK = [
     sourceId: 'sauvignon-blanc',
     question: '下列哪一個產區不屬於Sauvignon Blanc的代表性種植區域？',
     options: [
-      'Barossa Valley（巴羅莎谷）',
       'Sancerre（松塞爾）',
       'Marlborough（馬爾堡）',
-      'Graves（格拉夫）'
+      'Graves（格拉夫）',
+      'Barossa Valley（巴羅莎谷）'
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: 'representativeRegions涵蓋Sancerre、Marlborough、Graves等產區，Barossa Valley是澳洲以Shiraz聞名的產區，不在Sauvignon Blanc代表產區清單中。'
   },
   {
@@ -1510,10 +1510,10 @@ const QUIZ_BANK = [
     options: [
       '10–13°C',
       '13–15°C',
-      '8–10°C',
-      '16–18°C'
+      '16–18°C',
+      '8–10°C'
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: 'servingTemp欄位標示為8–10°C，對應清淡不甜白酒的溫度區間。'
   },
   {
@@ -1523,10 +1523,10 @@ const QUIZ_BANK = [
     sourceId: 'sauvignon-blanc',
     question: 'Sauvignon Blanc適合搭配下列哪些食物類型？',
     options: [
-      '紅肉與野味',
-      '甜點與水果',
+      '紅肉與野味等重口味料理',
+      '甜點、水果與冰品類料理',
       '海鮮、山羊起司、蘆筍等低脂料理',
-      '醃肉開胃菜'
+      '醃肉、開胃菜與煙燻食材'
     ],
     correctIndex: 2,
     explanation: 'foodPairingTags列出Seafood、Goat Cheese、Light Fat、Asparagus，與其高酸清爽的特性相呼應（蘆筍是傳統上公認難與葡萄酒搭配的食材之一，但與白蘇維濃的草本調性有互補效果）。'
@@ -1538,12 +1538,12 @@ const QUIZ_BANK = [
     sourceId: 'sauvignon-blanc',
     question: '依profile資料，Sauvignon Blanc的酸度（acidity）評分為何？',
     options: [
-      '5分，中等偏低',
-      '7分，中高',
-      '3分，偏低',
-      '9分，接近滿分的高酸'
+      '9分，接近滿分的高酸',
+      '5分，屬於中等偏低程度',
+      '7分，屬於中高偏上程度',
+      '3分，屬於明顯偏低程度'
     ],
-    correctIndex: 3,
+    correctIndex: 0,
     explanation: 'profile.acidity為9，是白蘇維濃最鮮明的特徵之一，也是其「高酸爽脆」風格定位的數據依據。'
   },
   {
@@ -1553,13 +1553,13 @@ const QUIZ_BANK = [
     sourceId: 'sauvignon-blanc',
     question: '依profile資料，Sauvignon Blanc的陳年潛力（aging）評分與Chardonnay相比如何？',
     options: [
-      '兩者陳年潛力評分相同',
-      'Sauvignon Blanc陳年潛力遠高於Chardonnay',
-      '陳年潛力與品種無關，只與產區有關',
-      'Sauvignon Blanc的陳年潛力（3分）明顯低於Chardonnay（6分），多數Sauvignon Blanc適合年輕時飲用'
+      '兩者陳年潛力評分完全相同，皆為中等5分',
+      '白蘇維濃陳年潛力（3分）明顯低於夏多內（6分）',
+      '白蘇維濃陳年潛力反而遠高於夏多內許多',
+      '陳年潛力純粹與品種無關，只和產區有關'
     ],
-    correctIndex: 3,
-    explanation: 'profile.aging為3，反映白蘇維濃多數風格（尤其新世界芳香奔放型）不刻意追求長期陳年，這與其阻擋MLF、追求新鮮酸度的釀造哲學一致。'
+    correctIndex: 1,
+    explanation: 'profile.aging為3，反映白蘇維濃多數風格（尤其新世界芳香奔放型）不刻意追求長期陳年，這與其阻擋MLF、追求新鮮酸度的釀造哲學一致（Chardonnay為6分）。'
   },
   {
     id: 'lo3-svb-013',
