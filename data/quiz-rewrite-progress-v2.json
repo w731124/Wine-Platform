@@ -1,8 +1,8 @@
 {
   "note": "quiz-data.js 題庫內容重寫進度追蹤檔。與已遺失的舊版 quiz-rewrite-progress.json 區隔，v2 為重來後的新起點。每完成一批就在 batches 追加一筆紀錄，並把該批 id 併入 completedIds。",
   "totalQuestions": 300,
-  "completedCount": 50,
-  "remainingCount": 250,
+  "completedCount": 54,
+  "remainingCount": 246,
   "batches": [
     {
       "batchLabel": "lo1-batch1",
@@ -38,6 +38,16 @@
         "lo2-011", "lo2-012", "lo2-013", "lo2-014", "lo2-015",
         "lo2-016", "lo2-017", "lo2-018", "lo2-019", "lo2-020"
       ]
+    },
+    {
+      "batchLabel": "lo2-batch2",
+      "idRange": "lo2-021~024",
+      "count": 4,
+      "completedAt": "2026-08-28",
+      "note": "LO2 complete",
+      "ids": [
+        "lo2-021", "lo2-022", "lo2-023", "lo2-024"
+      ]
     }
   ],
   "completedIds": [
@@ -50,6 +60,7 @@
     "lo2-001", "lo2-002", "lo2-003", "lo2-004", "lo2-005",
     "lo2-006", "lo2-007", "lo2-008", "lo2-009", "lo2-010",
     "lo2-011", "lo2-012", "lo2-013", "lo2-014", "lo2-015",
-    "lo2-016", "lo2-017", "lo2-018", "lo2-019", "lo2-020"
+    "lo2-016", "lo2-017", "lo2-018", "lo2-019", "lo2-020",
+    "lo2-021", "lo2-022", "lo2-023", "lo2-024"
   ]
 }
