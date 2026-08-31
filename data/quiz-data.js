@@ -668,13 +668,13 @@ const QUIZ_BANK = [
     sourceId: 'grape-growing-options',
     question: '一般而言，較低的產量（yield）與葡萄品質之間存在什麼樣的常見關聯？',
     options: [
-      '產量越低，品質必然越差',
-      '產量越高，濃縮度必然越高',
-      '較低產量通常關聯較濃縮的風味與品質，但這並非絕對規則，仍需視具體條件而定',
-      '產量與品質完全無關'
+      '產量越低，品質必然越差，兩者呈絕對負相關',
+      '產量越高，濃縮度必然越高，兩者呈正相關',
+      '較低產量通常關聯較濃縮的風味，但非絕對規則',
+      '產量高低與葡萄品質完全無關，毫無關聯'
     ],
     correctIndex: 2,
-    explanation: '官方規格強調這是「一般趨勢」而非鐵律。'
+    explanation: '官方規格強調「較低產量常關聯較濃縮風味與品質」是一般趨勢而非鐵律，仍需視具體條件而定。'
   },
   {
     id: 'lo1-022',
@@ -683,13 +683,13 @@ const QUIZ_BANK = [
     sourceId: 'grape-growing-options',
     question: '「葡萄糖分濃縮」的三種主要方式為何？',
     options: [
-      '浸皮、榨汁、混調',
-      '極熟葡萄（extra-ripe）、貴腐黴葡萄（botrytis/noble rot）、冷凍葡萄（frozen）',
-      '發酵、蒸餾、澄清',
+      '極熟葡萄、貴腐黴葡萄、冷凍葡萄',
+      '浸皮萃取、榨汁分離、混調三步驟',
+      '發酵、蒸餾、澄清三道釀造工序',
       '橡木桶陳年、瓶中陳年、不鏽鋼桶陳年'
     ],
-    correctIndex: 1,
-    explanation: '分別對應晚摘型、貴腐型、冰酒型甜酒的原料處理方式。'
+    correctIndex: 0,
+    explanation: '分別對應晚摘型（extra-ripe）、貴腐型（botrytis/noble rot）、冰酒型（frozen）甜酒的原料處理方式。'
   },
   {
     id: 'lo1-023',
@@ -698,12 +698,12 @@ const QUIZ_BANK = [
     sourceId: 'italy-docg-pyramid',
     question: '義大利的法定產區分級架構由高至低依序為？',
     options: [
-      'DOCG → DOC → IGT',
       'IGT → DOC → DOCG',
       '三者地位平行，無高低之分',
-      'DOC → DOCG → IGT'
+      'DOC → DOCG → IGT',
+      'DOCG → DOC → IGT'
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: '由高至低為DOCG、DOC、IGT。'
   },
   {
@@ -713,13 +713,13 @@ const QUIZ_BANK = [
     sourceId: 'spain-do-pyramid',
     question: '西班牙法定產區分級中，DOCa與DO的關係為何？',
     options: [
-      '兩者完全相同，只是新舊名稱之別',
-      'DOCa是比DO更高一級的分類，目前僅Rioja與Priorat等極少數產區獲此殊榮',
-      'DO等級高於DOCa',
-      'DOCa專指氣泡酒'
+      '兩者完全相同，只是新舊名稱不同',
+      'DO是比DOCa更高一級的分類',
+      'DOCa是專門用於氣泡酒的特殊分級',
+      'DOCa是比DO更高一級的分類'
     ],
-    correctIndex: 1,
-    explanation: 'DOCa是西班牙產區分級體系中最高等級。'
+    correctIndex: 3,
+    explanation: 'DOCa是西班牙產區分級體系中最高等級，目前僅Rioja與Priorat等極少數產區獲此殊榮。'
   },
   {
     id: 'lo1-025',
@@ -728,13 +728,13 @@ const QUIZ_BANK = [
     sourceId: 'eu-gi-general',
     question: '歐盟GI體系中，PDO與PGI的核心差異為何？',
     options: [
-      'PDO規範較嚴格，通常要求全程在指定產區完成；PGI規範相對寬鬆，允許更大地理彈性',
-      'PDO只適用於氣泡酒',
-      '兩者完全相同，只是英文縮寫不同',
-      'PGI等級高於PDO'
+      'PDO與PGI規範完全相同，僅英文縮寫不同',
+      'PDO規範較嚴格、要求全程於產區完成；PGI較寬鬆',
+      'PGI規範較嚴格，等級高於且優先於PDO',
+      'PDO與PGI僅適用於氣泡酒，不適用靜態酒'
     ],
-    correctIndex: 0,
-    explanation: '各會員國再各自對應本國用語（如法國AOP/IGP、義大利DOCG-DOC/IGT）。'
+    correctIndex: 1,
+    explanation: 'PDO通常要求全程在指定產區完成，PGI規範相對寬鬆、允許更大地理彈性；各會員國再各自對應本國用語（如法國AOP/IGP、義大利DOCG-DOC/IGT）。'
   },
   {
     id: 'lo1-026',
@@ -743,13 +743,13 @@ const QUIZ_BANK = [
     sourceId: 'germany-gi-tiers',
     question: '德國葡萄酒法定分級由高至低依序為？',
     options: [
-      'Prädikatswein專指氣泡酒',
       'Prädikatswein → Qualitätswein → Landwein',
       'Landwein → Qualitätswein → Prädikatswein',
-      '三者地位平行'
+      'Qualitätswein → Prädikatswein → Landwein',
+      'Landwein → Prädikatswein → Qualitätswein'
     ],
-    correctIndex: 1,
-    explanation: 'Prädikatswein依採收糖度再分Kabinett至TBA六個子級。'
+    correctIndex: 0,
+    explanation: '由高至低為Prädikatswein → Qualitätswein → Landwein；Prädikatswein依採收糖度再分Kabinett至TBA六個子級。'
   },
   {
     id: 'lo1-027',
@@ -758,13 +758,13 @@ const QUIZ_BANK = [
     sourceId: 'germany-praedikatswein',
     question: 'Icewine/Eiswein的定義為何？',
     options: [
-      '葡萄在藤上自然結凍狀態下採收壓榨釀成的甜酒，屬於德國Prädikatswein體系中的特殊子級',
-      '只在法國生產',
-      '專指加烈酒的一種',
-      '任何冷藏保存的葡萄酒'
+      '只在法國布根地產區生產的傳統甜酒款',
+      '專指加烈型甜酒其中一種特殊類別',
+      '葡萄在藤上自然結凍狀態下採收釀成的甜酒',
+      '泛指任何經過人工冷藏保存的酒款'
     ],
-    correctIndex: 0,
-    explanation: 'Eiswein需在葡萄自然結凍狀態下採收。'
+    correctIndex: 2,
+    explanation: 'Eiswein需在葡萄自然結凍狀態下採收壓榨，屬於德國Prädikatswein體系中的特殊子級，非法國專屬、亦非加烈酒。'
   },
   {
     id: 'lo1-028',
@@ -773,13 +773,13 @@ const QUIZ_BANK = [
     sourceId: 'old-vine-labelling',
     question: '「Old Vine/Vieilles Vignes」這類標示術語的性質為何？',
     options: [
-      '是受官方法規嚴格規範、有明確最低藤齡門檻的法定分級用語',
-      '專指低於10年的年輕葡萄藤',
-      '多數產區並無法規強制規定最低藤齡門檻，是生產者風格/行銷用語而非品質分級術語',
-      '等同於法國AOC分級中的最高等級'
+      '是受官方法規嚴格規範、有明確門檻的分級用語',
+      '專指藤齡低於10年、尚未成熟的年輕葡萄藤',
+      '多數產區並無法規門檻，屬行銷用語而非分級術語',
+      '等同於法國AOC分級體系中的最高等級'
     ],
     correctIndex: 2,
-    explanation: '強調老藤通常帶來的低產量與風味濃縮特性，但非官方分級用語。'
+    explanation: '強調老藤通常帶來的低產量與風味濃縮特性，但多數產區並無法規強制規定最低藤齡門檻，是生產者風格/行銷用語而非官方分級術語。'
   },
   {
     id: 'lo1-029',
@@ -788,13 +788,13 @@ const QUIZ_BANK = [
     sourceId: 'botrytis-noble-rot-labelling',
     question: '酒標上的「Botrytis/Noble Rot」標示所指為何？',
     options: [
-      '只出現在紅葡萄品種上',
-      '一種葡萄病害，任何感染此菌的葡萄都必須淘汰不能使用',
-      '專指葡萄藤本身老化的現象',
-      '葡萄感染貴腐黴（Botrytis cinerea）後，水分蒸發使糖分與風味物質高度濃縮，是釀造頂級貴腐甜酒的關鍵條件'
+      '只會出現在紅葡萄品種上，白葡萄不會感染',
+      '葡萄感染貴腐黴後水分蒸發，糖分與風味高度濃縮',
+      '一種葡萄病害，感染後葡萄必須全數淘汰不用',
+      '專指葡萄藤本身隨樹齡老化的自然現象'
     ],
-    correctIndex: 3,
-    explanation: '屬於官方規格LO1中「濃縮糖分的方式」之一。'
+    correctIndex: 1,
+    explanation: '葡萄感染貴腐黴（Botrytis cinerea）後，水分蒸發使糖分與風味物質高度濃縮，是釀造頂級貴腐甜酒的關鍵條件，屬於官方規格LO1中「濃縮糖分的方式」之一。'
   },
   {
     id: 'lo1-030',
@@ -803,13 +803,13 @@ const QUIZ_BANK = [
     sourceId: 'vintage-labelling',
     question: '酒標上的「Vintage」標示所指為何？',
     options: [
-      '專指氣泡酒才會標示的術語',
-      '代表該酒款陳放的總年數',
-      '代表釀造該酒所使用葡萄的採收年份',
-      '代表該酒莊成立的年份'
+      '專指氣泡酒才會標示的年份術語',
+      '代表該酒款裝瓶前陳放的總年數',
+      '代表該酒莊創立成立的年份',
+      '代表釀造該酒所使用葡萄的採收年份'
     ],
-    correctIndex: 2,
-    explanation: '部分酒款（如多數香檳）刻意混調多個年份而不標示Vintage（NV）。'
+    correctIndex: 3,
+    explanation: 'Vintage代表釀造該酒所使用葡萄的採收年份；部分酒款（如多數香檳）刻意混調多個年份而不標示Vintage（NV）。'
   },
   {
     id: 'lo2-001',

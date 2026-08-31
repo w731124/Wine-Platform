@@ -1,8 +1,8 @@
 {
   "note": "quiz-data.js 題庫內容重寫進度追蹤檔。與已遺失的舊版 quiz-rewrite-progress.json 區隔，v2 為重來後的新起點。每完成一批就在 batches 追加一筆紀錄，並把該批 id 併入 completedIds。",
   "totalQuestions": 300,
-  "completedCount": 20,
-  "remainingCount": 280,
+  "completedCount": 30,
+  "remainingCount": 270,
   "batches": [
     {
       "batchLabel": "lo1-batch1",
@@ -15,12 +15,25 @@
         "lo1-011", "lo1-012", "lo1-013", "lo1-014", "lo1-015",
         "lo1-016", "lo1-017", "lo1-018", "lo1-019", "lo1-020"
       ]
+    },
+    {
+      "batchLabel": "lo1-batch2",
+      "idRange": "lo1-021~030",
+      "count": 10,
+      "completedAt": "2026-08-28",
+      "note": "LO1 complete",
+      "ids": [
+        "lo1-021", "lo1-022", "lo1-023", "lo1-024", "lo1-025",
+        "lo1-026", "lo1-027", "lo1-028", "lo1-029", "lo1-030"
+      ]
     }
   ],
   "completedIds": [
     "lo1-001", "lo1-002", "lo1-003", "lo1-004", "lo1-005",
     "lo1-006", "lo1-007", "lo1-008", "lo1-009", "lo1-010",
     "lo1-011", "lo1-012", "lo1-013", "lo1-014", "lo1-015",
-    "lo1-016", "lo1-017", "lo1-018", "lo1-019", "lo1-020"
+    "lo1-016", "lo1-017", "lo1-018", "lo1-019", "lo1-020",
+    "lo1-021", "lo1-022", "lo1-023", "lo1-024", "lo1-025",
+    "lo1-026", "lo1-027", "lo1-028", "lo1-029", "lo1-030"
   ]
 }
