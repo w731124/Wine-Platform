@@ -2018,12 +2018,12 @@ const QUIZ_BANK = [
     sourceId: 'cabernet-sauvignon',
     question: 'Cabernet Sauvignon的風格核心特徵為何？',
     options: [
-      '厚實高單寧的晚熟品種，黑醋栗與雪松骨架鮮明，適應多元氣候並具備極佳陳年潛力',
-      '薄皮早熟、低單寧品種，主要用於粉紅酒釀造',
+      '薄皮早熟低單寧品種，多用於粉紅酒',
       '專門用於甜酒釀造，天然酸度極低',
-      '僅適合單一冷涼氣候類型種植，無法適應溫暖產區'
+      '僅適合單一冷涼氣候，無法適應溫暖產區',
+      '厚實高單寧的晚熟品種，具極佳陳年潛力'
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: 'styleSummary明確描述為厚實高單寧的晚熟品種，黑醋栗與雪松骨架鮮明，適應多元氣候並具極佳陳年潛力。'
   },
   {
@@ -2033,13 +2033,13 @@ const QUIZ_BANK = [
     sourceId: 'cabernet-sauvignon',
     question: 'Cabernet Sauvignon的起源與DNA鑑定結果為何？',
     options: [
-      '是古羅馬時期就存在的純種古老品種，血統從未間斷',
-      '起源於義大利，2000年代才傳入法國波爾多',
-      '親本經鑑定為黑皮諾與Gouais Blanc',
-      '波爾多西部18世紀的自然雜交品種，1996年加州大學戴維斯分校團隊證實親本為卡本內弗朗與白蘇維濃'
+      '是古羅馬時期就已存在的純種古老品種',
+      '波爾多18世紀的自然雜交，親本為卡本內弗朗與白蘇維濃',
+      '起源於義大利，直到2000年代才傳入波爾多',
+      '親本經DNA鑑定為黑皮諾與已幾近絕跡的Gouais Blanc'
     ],
-    correctIndex: 3,
-    explanation: 'history記載1996年UC Davis團隊證實親本為卡本內弗朗與白蘇維濃（一紅一白的意外配對）。'
+    correctIndex: 1,
+    explanation: 'history記載1996年UC Davis團隊證實親本為卡本內弗朗與白蘇維濃（一紅一白的意外配對），是波爾多西部18世紀的自然雜交品種。'
   },
   {
     id: 'lo3-cs-003',
@@ -2048,13 +2048,13 @@ const QUIZ_BANK = [
     sourceId: 'cabernet-sauvignon',
     question: '厚實果皮與晚熟特性，使Cabernet Sauvignon特別適應波爾多左岸的什麼地理條件？',
     options: [
-      '肥沃黏土平原，水分充足',
-      '礫石台地——良好排水且白天蓄熱、夜間釋熱，有助於晚熟品種完成成熟',
-      '偏好陰涼潮濕的森林邊緣地帶',
-      '與土壤條件完全無關，純粹是歷史偶然形成的種植傳統'
+      '礫石台地，排水良好且能蓄熱釋熱助熟成',
+      '肥沃黏土平原，水分十分充足供應',
+      '偏好陰涼潮濕的森林邊緣地帶種植',
+      '與土壤條件完全無關，純屬種植傳統'
     ],
-    correctIndex: 1,
-    explanation: '礫石台地排水良好且具蓄熱效果，有助於晚熟品種完成成熟。'
+    correctIndex: 0,
+    explanation: '礫石台地排水良好且具蓄熱效果，白天蓄熱、夜間釋熱，有助於晚熟品種完成成熟。'
   },
   {
     id: 'lo3-cs-004',
@@ -2063,13 +2063,13 @@ const QUIZ_BANK = [
     sourceId: 'cabernet-sauvignon',
     question: 'Cabernet Sauvignon與其父本卡本內弗朗（Cabernet Franc）在風格上的關鍵區辨為何？',
     options: [
-      '卡本內蘇維濃單寧最緊實、晚熟、黑醋栗與石墨氣息主導；卡本內弗朗顏色較淺、青椒與覆盆莓氣息更明顯、單寧較柔和',
-      '兩者風味完全相同，盲飲無法區分',
-      '卡本內弗朗單寧比卡本內蘇維濃更緊實厚重',
-      '卡本內蘇維濃顏色較淺，卡本內弗朗顏色較深'
+      '卡本內蘇維濃單寧緊實黑醋栗主導；卡本內弗朗較淺青椒柔和',
+      '兩者風味特徵幾乎完全相同，盲飲難以區分辨別',
+      '卡本內弗朗單寧反而比卡本內蘇維濃更緊實厚重',
+      '卡本內蘇維濃顏色較淺，卡本內弗朗顏色反而較深'
     ],
     correctIndex: 0,
-    explanation: 'confusionNote明確對比兩者單寧、熟度與香氣特徵的差異。'
+    explanation: 'confusionNote明確對比兩者：卡本內蘇維濃單寧最緊實、晚熟、黑醋栗與石墨氣息主導；卡本內弗朗顏色較淺、青椒與覆盆莓氣息更明顯、單寧較柔和。'
   },
   {
     id: 'lo3-cs-005',
@@ -2078,13 +2078,13 @@ const QUIZ_BANK = [
     sourceId: 'cabernet-sauvignon',
     question: '在與Merlot的波爾多混調中，Cabernet Sauvignon通常扮演的角色為何？',
     options: [
-      '提供骨架與陳年潛力，而非果香奔放度，因其單寧緊實、晚熟',
-      '提供柔和果香與易飲度，骨架則由Merlot負責',
+      '提供柔和果香與易飲度，骨架交由梅洛負責',
       '兩者在混調中角色完全相同，可互相替代',
-      '只作為調色劑使用，不影響風味結構'
+      '提供骨架與陳年潛力，單寧緊實而非果香奔放',
+      '只作為調色劑使用，完全不影響風味結構'
     ],
-    correctIndex: 0,
-    explanation: 'confusionNote指出混調時卡本內蘇維濃通常負責提供骨架與陳年潛力，梅洛則負責果香與易飲度。'
+    correctIndex: 2,
+    explanation: 'confusionNote指出混調時卡本內蘇維濃通常負責提供骨架與陳年潛力，梅洛則負責果香與易飲度，因卡本內蘇維濃單寧緊實、晚熟。'
   },
   {
     id: 'lo3-cs-006',
@@ -2095,10 +2095,10 @@ const QUIZ_BANK = [
     options: [
       '紅李、黑櫻桃、巧克力、月桂葉',
       '梨子、白桃、蜂蜜、杏仁',
-      '黑醋栗、雪松、石墨、薄荷',
-      '草莓乾、皮革、菸草、香草'
+      '草莓乾、皮革、菸草、香草',
+      '黑醋栗、雪松、石墨、薄荷'
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: 'aromaWheel列出Blackcurrant、Cedar、Graphite、Mint；其餘選項為其他品種的特徵香氣。'
   },
   {
@@ -2109,11 +2109,11 @@ const QUIZ_BANK = [
     question: '下列哪一個產區不屬於Cabernet Sauvignon的代表性種植區域？',
     options: [
       'Napa Valley（納帕谷）',
-      'Pauillac（波雅克）',
       'Mosel（摩塞爾）',
+      'Pauillac（波雅克）',
       'Margaret River（瑪格麗特河）'
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation: 'representativeRegions涵蓋Pauillac、Napa Valley、Margaret River等產區，Mosel是Riesling的代表產區。'
   },
   {
@@ -2138,12 +2138,12 @@ const QUIZ_BANK = [
     sourceId: 'cabernet-sauvignon',
     question: 'Cabernet Sauvignon適合搭配下列哪些食物類型？',
     options: [
-      '海鮮、開胃菜、亞洲料理、清淡料理',
       '高脂、紅肉、硬質起司、燒烤',
+      '海鮮、開胃菜、亞洲料理、清淡料理',
       '甜點與水果',
       '醃肉與開胃菜'
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: 'foodPairingTags列出High Fat、Red Meat、Hard Cheese、Grilled。'
   },
   {
@@ -2153,13 +2153,13 @@ const QUIZ_BANK = [
     sourceId: 'cabernet-sauvignon',
     question: '依profile資料，Cabernet Sauvignon的單寧（tannin）評分為何，這與其品種特性有何關聯？',
     options: [
-      '2分，屬於單寧極輕盈的品種',
-      '8分，屬於單寧最緊實厚重的品種之一，與其晚熟厚皮的特性相符',
-      '單寧評分與果皮厚度完全無關',
-      '8分，但屬於單寧口感最柔和圓潤的品種之一'
+      '2分，屬於單寧極為輕盈的品種之一',
+      '單寧評分與果皮厚度完全無直接關聯',
+      '8分，單寧最緊實厚重，與晚熟厚皮相符',
+      '8分，但單寧口感反而最柔和圓潤'
     ],
-    correctIndex: 1,
-    explanation: 'profile.tannin為8，與其厚實果皮、晚熟特性直接相關。'
+    correctIndex: 2,
+    explanation: 'profile.tannin為8，與其厚實果皮、晚熟特性直接相關，屬於單寧最緊實厚重的品種之一。'
   },
   {
     id: 'lo3-cs-011',
@@ -2168,13 +2168,13 @@ const QUIZ_BANK = [
     sourceId: 'cabernet-sauvignon',
     question: '依profile資料，Cabernet Sauvignon與Merlot的陳年潛力（aging）評分相比如何？',
     options: [
-      'Cabernet Sauvignon（9分）略高於Merlot（7分），與其更高單寧、更厚實骨架的特性相符',
-      '兩者陳年潛力評分完全相同',
-      'Merlot的陳年潛力遠高於Cabernet Sauvignon',
+      '兩者陳年潛力評分完全相同，皆為8分',
+      '梅洛的陳年潛力反而遠高於卡本內蘇維濃',
+      '卡本內蘇維濃（9分）略高於梅洛（7分）',
       '陳年潛力評分與單寧含量沒有任何關聯'
     ],
-    correctIndex: 0,
-    explanation: 'Cabernet Sauvignon的profile.aging為9，高於Merlot的7。'
+    correctIndex: 2,
+    explanation: 'Cabernet Sauvignon的profile.aging為9，高於Merlot的7，與其更高單寧、更厚實骨架的特性相符。'
   },
   {
     id: 'lo3-cs-012',
@@ -2183,13 +2183,13 @@ const QUIZ_BANK = [
     sourceId: 'cabernet-sauvignon',
     question: 'Cabernet Sauvignon目前在全球葡萄酒版圖中的種植地位為何？',
     options: [
-      '種植面積持續萎縮，如今僅剩波爾多小範圍種植',
-      '是全球種植面積最廣的頂級紅酒品種之一，從納帕谷、庫納瓦拉到智利馬波河谷都有代表性演繹',
+      '種植面積持續萎縮，僅剩波爾多小範圍種植',
+      '是全球種植面積最廣的頂級紅酒品種之一',
       '只能在法國種植，未曾成功移植海外產區',
       '種植面積雖廣，但國際品質評價普遍偏低'
     ],
     correctIndex: 1,
-    explanation: 'history記載19世紀隨波爾多國際聲望擴散至新世界，如今已是全球種植面積最廣的頂級紅酒品種之一。'
+    explanation: 'history記載19世紀隨波爾多國際聲望擴散至新世界，如今已是全球種植面積最廣的頂級紅酒品種之一，從納帕谷、庫納瓦拉到智利馬波河谷都有代表性演繹。'
   },
   {
     id: 'lo3-cs-013',
@@ -2198,12 +2198,12 @@ const QUIZ_BANK = [
     sourceId: 'cabernet-sauvignon',
     question: 'Cabernet Sauvignon的果皮顏色分類與原產國為何？',
     options: [
+      '黑皮，原產法國',
       '白皮，原產法國',
       '黑皮，原產義大利',
-      '黑皮，原產法國',
       '灰皮，原產德國'
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: "skinColor:'red'（黑皮）、originCountry:'France(法國)'。"
   },
   {
@@ -2213,13 +2213,13 @@ const QUIZ_BANK = [
     sourceId: 'cabernet-sauvignon',
     question: '依profile資料，Cabernet Sauvignon的花香（floral）評分僅2分，這反映了什麼風格特徵？',
     options: [
-      '花香調性是其全品種中最濃郁鮮明的特徵',
-      'floral評分與品種風味特徵完全無關，純屬隨機數值',
-      'floral評分必然與profile.tannin評分呈正相關',
-      '其風味核心以黑色果香、雪松、石墨等厚重調性為主，花香調性並非重點'
+      '花香調性反而是其全品種中最濃郁的特徵',
+      '風味核心以黑色果香、雪松、石墨為主，花香非重點',
+      'floral評分與品種風味特徵完全無關，純屬隨機',
+      'floral評分必然與單寧評分呈正相關，兩者連動'
     ],
-    correctIndex: 3,
-    explanation: 'floral僅2分，與aromaWheel列出的黑醋栗、雪松、石墨、薄荷等厚重調性相符。'
+    correctIndex: 1,
+    explanation: 'floral僅2分，與aromaWheel列出的黑醋栗、雪松、石墨、薄荷等厚重調性相符，花香調性並非其風味重點。'
   },
   {
     id: 'lo3-mer-001',
