@@ -1178,13 +1178,13 @@ const QUIZ_BANK = [
     sourceId: 'chardonnay',
     question: 'Chardonnay作為「中性品種」的意思是什麼？',
     options: [
-      '它只能釀成氣泡酒',
-      '品種本身香氣特徵不強烈，最終風格高度取決於產地氣候與釀造工法（如是否使用橡木桶、是否進行MLF）',
-      '它只能在法國種植',
-      '它完全沒有任何可辨識的香氣'
+      '它只能釀成氣泡酒，無法做成靜態酒款',
+      '它只能在法國單一國家種植生產',
+      '它完全沒有任何可辨識的香氣特徵',
+      '品種香氣不強烈，風格取決於氣候與釀造工法'
     ],
-    correctIndex: 1,
-    explanation: 'Chardonnay因香氣中性、可塑性強，從夏布利的礦石高酸到納帕谷的奶油橡木皆可展現，是其風靡全球的原因。'
+    correctIndex: 3,
+    explanation: 'Chardonnay因香氣中性、可塑性強，從夏布利的礦石高酸到納帕谷的奶油橡木皆可展現，是其風靡全球的原因（是否使用橡木桶、是否進行MLF等釀造工法影響顯著）。'
   },
   {
     id: 'lo3-cha-002',
@@ -1193,13 +1193,13 @@ const QUIZ_BANK = [
     sourceId: 'chardonnay',
     question: 'Chardonnay起源於哪個產區，其親本經DNA分析確認為何？',
     options: [
-      '起源於義大利，是原生古老品種',
-      '起源於波爾多，親本為卡本內弗朗與白蘇維濃',
-      '起源於勃根地馬貢內地區，親本為黑皮諾與Gouais Blanc',
-      '起源於德國萊茵高，親本不明'
+      '起源於義大利中部，是本土原生古老品種',
+      '起源於法國波爾多，親本為卡本內弗朗與白蘇維濃',
+      '起源於勃根地馬貢內地區，親本之一為黑皮諾',
+      '起源於德國萊茵高地區，確切親本至今不明'
     ],
     correctIndex: 2,
-    explanation: '2000年代DNA分析確認Chardonnay親本為黑皮諾與已幾近絕跡的Gouais Blanc。'
+    explanation: '2000年代DNA分析確認Chardonnay親本為黑皮諾與已幾近絕跡的Gouais Blanc（白高維斯）。'
   },
   {
     id: 'lo3-cha-003',
@@ -1208,10 +1208,10 @@ const QUIZ_BANK = [
     sourceId: 'chardonnay',
     question: '冷涼氣候（如Chablis夏布利）種植的Chardonnay，典型風格特徵為何？',
     options: [
-      '單寧含量高、酒體厚重',
-      '高酸度、礦石感明顯、青蘋果與檸檬等清爽果香',
-      '低酸度、高酒精、熱帶果香',
-      '永遠帶有明顯奶油橡木調性'
+      '單寧含量高、酒體厚重澀感明顯',
+      '高酸度、礦石感明顯、青蘋果檸檬果香',
+      '低酸度、高酒精、熱帶水果香氣',
+      '永遠帶有明顯奶油與橡木桶調性'
     ],
     correctIndex: 1,
     explanation: 'Chardonnay的aromaWheel包含Green Apple、Lemon等青綠果香，冷涼產區這類特徵更為明顯；Chardonnay不含單寧（tannin profile為0），因白酒不帶皮發酵。'
@@ -1223,10 +1223,10 @@ const QUIZ_BANK = [
     sourceId: 'chardonnay',
     question: '溫暖氣候（如Napa Valley納帕谷）種植並經橡木桶processing的Chardonnay，典型風格特徵為何？',
     options: [
-      '保持完全不甜、無任何橡木調性',
-      '極高酸度、礦石感強烈',
-      '單寧含量高、澀感明顯',
-      '酒體較飽滿，常帶有奶油、榛果等經橡木桶與MLF帶來的調性'
+      '保持完全不甜、無任何橡木調性殘留',
+      '極高酸度、礦石感異常強烈明顯',
+      '單寧含量高、澀感十分明顯突出',
+      '酒體較飽滿，常帶奶油榛果等橡木調性'
     ],
     correctIndex: 3,
     explanation: 'Chardonnay的aromaWheel也包含Butter、Hazelnut這類經橡木桶與乳酸發酵帶來的調性，常見於溫暖產區風格。'
@@ -1238,13 +1238,13 @@ const QUIZ_BANK = [
     sourceId: 'chardonnay',
     question: 'Chardonnay與白蘇維濃（Sauvignon Blanc）在香氣邏輯上的核心差異為何？',
     options: [
-      '兩者香氣邏輯完全相同',
-      '白蘇維濃比Chardonnay更依賴橡木桶',
-      'Chardonnay品種本身中性、風味主要來自釀造與產地；白蘇維濃品種特徵強烈（草本與醋栗氣息明確可辨），釀造工法影響相對有限',
-      'Chardonnay只能釀造甜酒'
+      'Chardonnay靠釀造塑形；白蘇維濃品種特徵強烈明確',
+      '兩者香氣邏輯完全相同，難以區分辨別',
+      '白蘇維濃比Chardonnay更依賴橡木桶調性',
+      'Chardonnay只能釀造甜型酒款，無法做乾型'
     ],
-    correctIndex: 2,
-    explanation: 'confusionNote明確點出兩者香氣邏輯完全相反的對照關係。'
+    correctIndex: 0,
+    explanation: 'confusionNote明確點出兩者香氣邏輯完全相反的對照關係：Chardonnay品種本身中性、風味主要來自釀造與產地；白蘇維濃品種特徵強烈（草本與醋栗氣息明確可辨），釀造工法影響相對有限。'
   },
   {
     id: 'lo3-cha-006',
@@ -1253,13 +1253,13 @@ const QUIZ_BANK = [
     sourceId: 'chardonnay',
     question: '下列何者是Chardonnay在盲飲時容易與其混淆的品種，兩者的關鍵區辨特徵為何？',
     options: [
-      '白皮諾（Pinot Blanc），白皮諾酸度通常更柔和、缺乏Chardonnay經橡木桶後常見的奶油榛果調性',
-      '麗絲玲，因兩者都有明顯汽油調性',
-      '白蘇維濃，因兩者香氣特徵極為相似',
-      '格烏茲塔明那，因兩者都帶有玫瑰荔枝香氣'
+      '白皮諾，其酸度更柔和、缺乏橡木奶油榛果調性',
+      '麗絲玲，因兩者都帶有明顯汽油調性香氣',
+      '白蘇維濃，因兩者香氣特徵極為相似難辨',
+      '格烏茲塔明那，因兩者都帶玫瑰荔枝香氣'
     ],
     correctIndex: 0,
-    explanation: 'confusionNote指出Chardonnay與白皮諾在盲飲時偶有混淆的區辨要點。'
+    explanation: 'confusionNote指出Chardonnay與白皮諾（Pinot Blanc）在盲飲時偶有混淆，白皮諾酸度通常更柔和、缺乏Chardonnay經橡木桶後常見的奶油榛果調性。'
   },
   {
     id: 'lo3-cha-007',
@@ -1268,12 +1268,12 @@ const QUIZ_BANK = [
     sourceId: 'chardonnay',
     question: '下列哪一個產區不屬於Chardonnay的代表性種植區域？',
     options: [
-      'Mosel（摩塞爾）',
       'Napa Valley（納帕谷）',
+      'Mosel（摩塞爾）',
       'Chablis（夏布利）',
       'Margaret River（瑪格麗特河）'
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: 'representativeRegions涵蓋Chablis、Napa Valley、Margaret River等多個產區，Mosel是Riesling的代表產區，不在Chardonnay清單中。'
   },
   {
@@ -1283,12 +1283,12 @@ const QUIZ_BANK = [
     sourceId: 'chardonnay',
     question: 'Chardonnay建議的侍酒溫度區間為何？',
     options: [
-      '13–15°C',
       '10–13°C',
+      '13–15°C',
       '16–18°C',
       '6–8°C'
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: 'servingTemp欄位標示為10–13°C，對應濃郁型／經橡木桶白酒的溫度區間。'
   },
   {
@@ -1298,12 +1298,12 @@ const QUIZ_BANK = [
     sourceId: 'chardonnay',
     question: 'Chardonnay適合搭配下列哪些食物類型？',
     options: [
-      '辛辣料理與燒烤紅肉',
-      '甜點與水果',
-      '醃肉與開胃菜',
-      '海鮮、奶油醬汁料理、中脂禽肉料理'
+      '辛辣重口味料理與燒烤紅肉',
+      '海鮮、奶油醬汁、中脂禽肉料理',
+      '甜點、水果與冰品類料理',
+      '醃肉、燻製品與開胃小菜'
     ],
-    correctIndex: 3,
+    correctIndex: 1,
     explanation: 'foodPairingTags列出Seafood、Cream Sauce、Moderate Fat、Poultry，與其中等酒體和常見的奶油質地相呼應。'
   },
   {
@@ -1328,12 +1328,12 @@ const QUIZ_BANK = [
     sourceId: 'chardonnay',
     question: 'Chardonnay在profile資料中的酸度（acidity）與陳年潛力（aging）評分相對如何？',
     options: [
-      '酸度低、陳年潛力低',
-      '兩者評分完全相同',
-      '酸度與陳年潛力皆為滿分',
-      '酸度中高（7分）、陳年潛力中等偏高（6分），優質Chardonnay具備一定陳年能力'
+      '酸度偏低（3分）、陳年潛力也偏低（2分）',
+      '兩者評分完全相同，皆為中等5分',
+      '酸度中高（7分）、陳年潛力中等偏高（6分）',
+      '酸度與陳年潛力皆為滿分10分之高'
     ],
-    correctIndex: 3,
+    correctIndex: 2,
     explanation: 'profile中acidity為7、aging為6，反映其兼具支撐陳年的酸度結構與一定的陳年潛力，尤其經橡木桶陳年的版本。'
   },
   {
@@ -1343,13 +1343,13 @@ const QUIZ_BANK = [
     sourceId: 'chardonnay',
     question: '1990年代葡萄酒市場曾出現對Chardonnay的什麼反思聲浪？',
     options: [
-      '認為Chardonnay只能種植在法國',
-      '「過度橡木化（over-oaked）」的市場反思，導致部分消費者一度追捧「ABC（Anything But Chardonnay）」風潮',
-      '認為Chardonnay完全不適合釀酒',
-      '認為Chardonnay應該全面禁止使用不鏽鋼槽'
+      '認為Chardonnay只能種植在法國一地',
+      '認為Chardonnay完全不適合用來釀酒',
+      '對「過度橡木化」的反思，一度出現ABC風潮',
+      '認為Chardonnay應全面禁止使用不鏽鋼槽'
     ],
-    correctIndex: 1,
-    explanation: '因其可塑性強、市場一度過度依賴橡木桶調性，1990年代確實出現對「過度橡木化」的反思聲浪。'
+    correctIndex: 2,
+    explanation: '因其可塑性強、市場一度過度依賴橡木桶調性，1990年代確實出現對「過度橡木化（over-oaked）」的市場反思，導致部分消費者一度追捧「ABC（Anything But Chardonnay）」風潮。'
   },
   {
     id: 'lo3-cha-013',
@@ -1359,11 +1359,11 @@ const QUIZ_BANK = [
     question: 'Chardonnay的果皮顏色（skinColor）分類與原產國為何？',
     options: [
       '黑皮，原產義大利',
-      '灰皮，原產德國',
       '白皮，原產法國',
+      '灰皮，原產德國',
       '白皮，原產美國'
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation: "skinColor:'white'、originCountry:'France(法國)'。"
   },
   {
@@ -1373,13 +1373,13 @@ const QUIZ_BANK = [
     sourceId: 'chardonnay',
     question: '為什麼Chardonnay被稱為「全球適應力最強的白酒品種之一」？',
     options: [
-      '因其品種香氣中性、可塑性高，從冷涼到溫暖氣候、不鏽鋼槽到橡木桶皆能展現不同且皆具辨識度的風格',
-      '因為全世界只有一個產區能種植它',
-      '因為它不需要陽光與水分即可生長',
-      '因為它只能在單一氣候類型下生長'
+      '因為全世界僅有單一產區能夠種植它',
+      '因為它完全不需要陽光與水分即可生長',
+      '因為它只能在單一固定氣候類型下生長',
+      '品種中性、可塑性高，冷涼到溫暖氣候皆能展現風格'
     ],
-    correctIndex: 0,
-    explanation: '正是這種「可塑性」讓Chardonnay能在幾乎所有主要葡萄酒產區找到立足之地，風格光譜極廣。'
+    correctIndex: 3,
+    explanation: '正是這種「可塑性」讓Chardonnay能在幾乎所有主要葡萄酒產區找到立足之地，風格光譜極廣，從冷涼到溫暖氣候、不鏽鋼槽到橡木桶皆能展現不同且皆具辨識度的風格。'
   },
   {
     id: 'lo3-svb-001',

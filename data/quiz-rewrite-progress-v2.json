@@ -1,8 +1,8 @@
 {
   "note": "quiz-data.js 題庫內容重寫進度追蹤檔。與已遺失的舊版 quiz-rewrite-progress.json 區隔，v2 為重來後的新起點。每完成一批就在 batches 追加一筆紀錄，並把該批 id 併入 completedIds。",
   "totalQuestions": 300,
-  "completedCount": 54,
-  "remainingCount": 246,
+  "completedCount": 68,
+  "remainingCount": 232,
   "batches": [
     {
       "batchLabel": "lo1-batch1",
@@ -48,6 +48,17 @@
       "ids": [
         "lo2-021", "lo2-022", "lo2-023", "lo2-024"
       ]
+    },
+    {
+      "batchLabel": "lo3-chardonnay",
+      "idRange": "lo3-cha-001~014",
+      "count": 14,
+      "completedAt": "2026-08-28",
+      "ids": [
+        "lo3-cha-001", "lo3-cha-002", "lo3-cha-003", "lo3-cha-004", "lo3-cha-005",
+        "lo3-cha-006", "lo3-cha-007", "lo3-cha-008", "lo3-cha-009", "lo3-cha-010",
+        "lo3-cha-011", "lo3-cha-012", "lo3-cha-013", "lo3-cha-014"
+      ]
     }
   ],
   "completedIds": [
@@ -61,6 +72,9 @@
     "lo2-006", "lo2-007", "lo2-008", "lo2-009", "lo2-010",
     "lo2-011", "lo2-012", "lo2-013", "lo2-014", "lo2-015",
     "lo2-016", "lo2-017", "lo2-018", "lo2-019", "lo2-020",
-    "lo2-021", "lo2-022", "lo2-023", "lo2-024"
+    "lo2-021", "lo2-022", "lo2-023", "lo2-024",
+    "lo3-cha-001", "lo3-cha-002", "lo3-cha-003", "lo3-cha-004", "lo3-cha-005",
+    "lo3-cha-006", "lo3-cha-007", "lo3-cha-008", "lo3-cha-009", "lo3-cha-010",
+    "lo3-cha-011", "lo3-cha-012", "lo3-cha-013", "lo3-cha-014"
   ]
 }
