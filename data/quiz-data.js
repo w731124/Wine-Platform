@@ -1808,10 +1808,10 @@ const QUIZ_BANK = [
     sourceId: 'pinot-gris',
     question: 'Pinot Grigio與Pinot Gris這兩個稱呼所指的是什麼關係？',
     options: [
-      '兩個完全不同的品種，只是名字相似',
-      '義大利種植的是黑葡萄，法國種植的是白葡萄',
-      '同一個品種，僅因產地與工法不同而呈現兩種截然不同的風格面貌',
-      '兩者是親子關係，Pinot Gris是Pinot Grigio的變種'
+      '兩個完全不同的品種，只是名字相似而已',
+      '義大利種的是黑葡萄，法國種的是白葡萄',
+      '同一品種，因產地工法不同呈現兩種風格',
+      '兩者是親子關係，一個是另一個的變種'
     ],
     correctIndex: 2,
     explanation: 'styleSummary明確指出這是同一品種因產地與工法呈現兩種面貌：義大利Pinot Grigio清爽中性，阿爾薩斯Pinot Gris則酒體飽滿油脂感強烈。'
@@ -1823,10 +1823,10 @@ const QUIZ_BANK = [
     sourceId: 'pinot-gris',
     question: '灰皮諾（Pinot Gris）這個品種名稱的由來為何？',
     options: [
-      '因為它是黑皮諾的基因突變種，果皮呈現介於白與黑之間的灰粉色，因此得名',
-      '因為它總是在灰色天氣下採收',
-      '因為它是刻意雜交培育的新品種',
-      '因為它的釀酒容器多為灰色橡木桶'
+      '是黑皮諾的基因突變種，果皮呈灰粉色因而得名',
+      '因為它總是在陰天多雲的天氣下採收',
+      '因為它是刻意雜交培育出的新品種',
+      '因為它的釀酒容器多半為灰色橡木桶'
     ],
     correctIndex: 0,
     explanation: 'history記載灰皮諾是黑皮諾的基因突變種，果皮呈灰粉色因而得名。'
@@ -1838,12 +1838,12 @@ const QUIZ_BANK = [
     sourceId: 'pinot-gris',
     question: '灰皮諾19世紀由匈牙利傳入阿爾薩斯後，發展出什麼樣的風格定位？',
     options: [
-      '清爽中性、早飲易感的風格',
-      '完全被市場淘汰、停止種植',
-      '酒體飽滿、油脂感強烈，長期被視為阿爾薩斯貴族品種之一',
-      '專門用於釀造氣泡酒'
+      '清爽中性、早飲易感的簡單風格特徵',
+      '酒體飽滿、油脂感強烈，被視為貴族品種',
+      '完全被市場淘汰、逐漸停止種植生產',
+      '只被專門用於釀造氣泡酒的基酒品種'
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation: 'history記載灰皮諾19世紀傳入阿爾薩斯後發展出酒體飽滿、油脂感強烈的風格，長期被認為是阿爾薩斯貴族品種之一。'
   },
   {
@@ -1853,10 +1853,10 @@ const QUIZ_BANK = [
     sourceId: 'pinot-gris',
     question: '20世紀末哪個產區以清爽中性風格的Pinot Grigio席捲國際市場？',
     options: [
-      '德國萊茵高',
+      '德國萊茵高（Rheingau）地區',
       '義大利東北部（Friuli、Veneto）',
-      '澳洲巴羅莎谷',
-      '美國納帕谷'
+      '澳洲巴羅莎谷（Barossa）地區',
+      '美國納帕谷（Napa Valley）地區'
     ],
     correctIndex: 1,
     explanation: 'history記載20世紀末義大利東北部（Friuli、Veneto）以清爽中性、早飲易感的Pinot Grigio風格席捲國際市場。'
@@ -1868,13 +1868,13 @@ const QUIZ_BANK = [
     sourceId: 'pinot-gris',
     question: '關於Pinot Grigio與Pinot Gris的風格差異，正確的理解為何？',
     options: [
-      '義大利式（Grigio）早摘保酸、不鏽鋼槽發酵，追求清爽中性；阿爾薩斯式（Gris）晚摘、酒體飽滿甚至微帶殘糖',
-      '兩者風味相近，選購時不需特別區分',
-      '義大利式（Grigio）晚摘、酒體飽滿；阿爾薩斯式（Gris）早摘保酸、追求清爽',
-      '兩者的差異來自完全不同的基因型'
+      '兩者風味相近，選購時完全不需特別區分',
+      '義式Grigio晚摘飽滿；阿式Gris早摘保酸求清爽',
+      '兩者風格差異純粹來自完全不同的基因型',
+      '義式Grigio早摘保酸求清爽；阿式Gris晚摘飽滿帶殘糖'
     ],
-    correctIndex: 0,
-    explanation: 'confusionNote明確說明差異純粹來自產地與釀造哲學而非基因，並詳細對比兩種風格的釀造選項差異。'
+    correctIndex: 3,
+    explanation: 'confusionNote明確說明差異純粹來自產地與釀造哲學而非基因，並詳細對比兩種風格的釀造選項差異：義大利式（Grigio）早摘保酸、不鏽鋼槽發酵，追求清爽中性；阿爾薩斯式（Gris）晚摘、酒體飽滿甚至微帶殘糖。'
   },
   {
     id: 'lo3-pgg-006',
@@ -1883,13 +1883,13 @@ const QUIZ_BANK = [
     sourceId: 'pinot-gris',
     question: '選購Pinot Grigio/Gris類型酒款時，confusionNote建議消費者應以什麼作為判斷風格的依據？',
     options: [
-      '完全依賴酒精濃度數字',
-      '酒標上的語言（義大利文標示Grigio或法文標示Gris），而非假設兩者風味相近',
-      '完全依賴瓶身顏色',
-      '完全依賴價格高低'
+      '完全依賴酒精濃度數字的高低判斷',
+      '完全依賴瓶身與酒標顏色來判斷',
+      '酒標上的語言標示（Grigio或Gris）',
+      '完全依賴售價的高低來判斷風格'
     ],
-    correctIndex: 1,
-    explanation: 'confusionNote強調選購時務必以酒標語言判斷預期風格，而非假設兩者風味相近。'
+    correctIndex: 2,
+    explanation: 'confusionNote強調選購時務必以酒標上的語言（義大利文標示Grigio或法文標示Gris）判斷預期風格，而非假設兩者風味相近。'
   },
   {
     id: 'lo3-pgg-007',
@@ -1898,12 +1898,12 @@ const QUIZ_BANK = [
     sourceId: 'pinot-gris',
     question: '德國對於灰皮諾這個品種的稱呼為何？',
     options: [
-      'Weissburgunder',
       'Grauburgunder',
+      'Weissburgunder',
       'Spätburgunder',
-      'Silvaner'
+      'Silvaner（希爾瓦那）'
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: 'styleSummary提及德國稱灰皮諾為Grauburgunder（"grau"即德文的「灰色」）。'
   },
   {
@@ -1959,9 +1959,9 @@ const QUIZ_BANK = [
     question: 'Pinot Gris適合搭配下列哪些食物類型？',
     options: [
       '低脂、海鮮、開胃菜、亞洲料理',
-      '紅肉與野味',
-      '甜點與水果',
-      '醃肉開胃菜'
+      '紅肉、野味與燒烤重口味料理',
+      '甜點、水果與冰品類料理',
+      '醃肉、開胃菜與煙燻食材'
     ],
     correctIndex: 0,
     explanation: 'foodPairingTags列出Light Fat、Seafood、Appetizer、Asian Cuisine，適合搭配清淡海鮮類料理。'
@@ -1973,12 +1973,12 @@ const QUIZ_BANK = [
     sourceId: 'pinot-gris',
     question: '依profile資料，Pinot Gris的陳年潛力（aging）評分為何？',
     options: [
-      '7分，中高陳年潛力',
-      '9分，接近滿分',
-      '5分，中等偏上',
-      '3分，屬偏低陳年潛力，多數風格適合年輕時飲用'
+      '7分，中高陳年潛力，適合長期存放',
+      '3分，偏低陳年潛力，適合年輕飲用',
+      '9分，接近滿分，優於絕大多數品種',
+      '5分，中等偏上，可適度短期陳放'
     ],
-    correctIndex: 3,
+    correctIndex: 1,
     explanation: 'profile.aging為3，與其多數風格（尤其義大利式清爽路線）適合早飲的特性相符。'
   },
   {
@@ -1988,12 +1988,12 @@ const QUIZ_BANK = [
     sourceId: 'pinot-gris',
     question: '依profile資料，Pinot Gris的酸度（acidity）評分與白蘇維濃（Sauvignon Blanc，9分）相比如何？',
     options: [
-      'Pinot Gris更高，為10分',
-      'Pinot Gris遠低於白蘇維濃，僅為5分，酸度中等而非銳利',
-      '兩者評分相同',
-      'Pinot Gris完全沒有酸度'
+      'Pinot Gris更高，達到10分接近滿分',
+      '兩者評分完全相同，皆為9分高酸',
+      'Pinot Gris完全沒有酸度表現可言',
+      'Pinot Gris遠低於白蘇維濃，僅5分中等'
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: 'profile.acidity為5，明顯低於白蘇維濃的9分，反映Pinot Gris走中性易飲路線而非白蘇維濃的高酸鮮明風格。'
   },
   {
@@ -2003,12 +2003,12 @@ const QUIZ_BANK = [
     sourceId: 'pinot-gris',
     question: 'Pinot Gris的原產國標示為何，這點與其「灰皮諾是黑皮諾的基因突變種」的身世有何關聯？',
     options: [
-      '原產法國，因其突變自法國原生的黑皮諾品種',
       '原產義大利，與法國品種黑皮諾無關',
+      '原產法國，因其突變自法國原生的黑皮諾品種',
       '原產德國，與其命名Grauburgunder相符',
       '原產匈牙利，因19世紀由此傳入阿爾薩斯'
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: 'originCountry標示為France(法國)，與其作為黑皮諾基因突變種的起源相符，儘管後來在阿爾薩斯、義大利、匈牙利等地都有重要發展歷史。'
   },
   {
