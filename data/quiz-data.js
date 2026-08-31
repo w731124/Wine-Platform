@@ -818,12 +818,12 @@ const QUIZ_BANK = [
     sourceId: 'alcoholic-fermentation',
     question: '酒精發酵的基本化學過程為何？',
     options: [
-      '酵母將水轉化為糖分與酒精',
-      '細菌將酸度轉化為單寧',
       '酵母將糖分轉化為酒精與二氧化碳',
-      '酵母將酒精轉化為糖分'
+      '酵母將水分轉化為糖分與酒精',
+      '細菌將糖分的酸度轉化為單寧',
+      '酵母將酒精逆向轉化為糖分'
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: '官方規格明列酒精發酵過程為Yeast converts sugar into alcohol and carbon dioxide。'
   },
   {
@@ -848,12 +848,12 @@ const QUIZ_BANK = [
     sourceId: 'winestyle-red',
     question: '紅酒釀造中，「破皮去梗」後緊接的關鍵步驟為何？',
     options: [
-      '直接裝瓶',
-      '立即進行乳酸發酵',
-      '冷凍保存',
-      '發酵浸皮，透過踩皮或淋皮確保色素與單寧均勻萃取'
+      '直接裝瓶儲存，不進行任何後續處理',
+      '立即進行乳酸發酵，跳過酒精發酵階段',
+      '發酵浸皮，透過踩皮或淋皮萃取色素單寧',
+      '送入冷凍庫保存數週後才開始發酵'
     ],
-    correctIndex: 3,
+    correctIndex: 2,
     explanation: '紅酒帶皮發酵是核心工藝起點，發酵浸皮階段需踩皮或淋皮打散上浮的果皮酒帽。'
   },
   {
@@ -863,10 +863,10 @@ const QUIZ_BANK = [
     sourceId: 'winestyle-red',
     question: '紅酒釀造中，「自流酒（free-run）」與「壓榨酒（press wine）」的差異為何？',
     options: [
-      '兩者完全相同，只是裝瓶順序不同',
-      '自流酒較純淨清爽，壓榨酒單寧較重，是壓榨分離階段產生的兩種不同酒液',
-      '自流酒單寧較重，壓榨酒較清爽',
-      '自流酒專指白酒工藝'
+      '兩者完全相同，只是裝瓶先後順序不同',
+      '自流酒較純淨清爽，壓榨酒單寧較重',
+      '自流酒單寧較重，壓榨酒反而較清爽',
+      '自流酒專指白酒工藝，紅酒沒有此步驟'
     ],
     correctIndex: 1,
     explanation: '壓榨分離階段會產生風格不同的自流酒與壓榨酒，可依風格需求決定是否混調回主酒。'
@@ -878,12 +878,12 @@ const QUIZ_BANK = [
     sourceId: 'winestyle-white',
     question: '白酒釀造中，為什麼多半在整串壓榨或破皮後立即榨汁，果皮接觸時間極短？',
     options: [
-      '避免萃取單寧與色素，以保留白酒追求的清新果香與明亮酸度',
-      '白葡萄品種本身沒有果皮',
-      '縮短釀造時間以降低成本',
-      '法規強制規定不可帶皮發酵'
+      '白葡萄品種本身天生沒有果皮構造',
+      '純粹為了縮短釀造時間、降低成本',
+      '法規明文強制規定不可帶皮發酵',
+      '避免萃取單寧與色素，保留清新果香與酸度'
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: '白酒工藝核心是避開紅酒式的萃取，快速去皮取汁以保留新鮮果香與酸度。'
   },
   {
@@ -893,13 +893,13 @@ const QUIZ_BANK = [
     sourceId: 'winestyle-white',
     question: '白酒發酵溫度與紅酒相比，通常有何差異？',
     options: [
-      '白酒發酵溫度遠高於紅酒',
-      '兩者發酵溫度完全相同',
-      '白酒發酵溫度較低（約12–18°C），以保留細緻果香與新鮮感，紅酒則多在25–30°C發酵',
-      '白酒完全不需要控溫發酵'
+      '白酒發酵溫度較低，紅酒發酵溫度較高',
+      '白酒發酵溫度遠高於紅酒，兩者相反',
+      '白酒與紅酒發酵溫度完全相同不分',
+      '白酒完全不需要進行控溫發酵處理'
     ],
-    correctIndex: 2,
-    explanation: '低溫發酵是白酒工藝的關鍵選項之一，多使用不鏽鋼槽維持中性風味與低溫環境。'
+    correctIndex: 0,
+    explanation: '白酒發酵溫度較低（約12–18°C），以保留細緻果香與新鮮感，紅酒則多在25–30°C發酵，是白酒工藝的關鍵選項之一。'
   },
   {
     id: 'lo2-007',
@@ -909,12 +909,12 @@ const QUIZ_BANK = [
     question: '粉紅酒最主要的三種釀造工法為何？',
     options: [
       '熱萃取法、冷萃取法、真空萃取法',
-      '傳統法、水槽法、轉注法',
+      '傳統法、水槽法、轉注法混調',
       '整串發酵法、破皮發酵法、去梗發酵法',
-      '直接壓榨法、短時間浸皮法、放血法（Saignée）'
+      '直接壓榨法、短時間浸皮法、放血法'
     ],
     correctIndex: 3,
-    explanation: '這三種是官方與業界慣用的粉紅酒釀造分類法，果皮接觸時間長短決定色澤深淺。'
+    explanation: '這三種（放血法即Saignée）是官方與業界慣用的粉紅酒釀造分類法，果皮接觸時間長短決定色澤深淺。'
   },
   {
     id: 'lo2-008',
@@ -923,12 +923,12 @@ const QUIZ_BANK = [
     sourceId: 'winestyle-rose',
     question: '「放血法（Saignée）」在粉紅酒釀造中的定位為何？',
     options: [
-      '是普羅旺斯主流的主動追求工藝',
-      '通常是紅酒釀造過程中為濃縮紅酒色澤與結構而放出部分粉紅色酒液的副產品，而非主動追求的粉紅酒工藝',
-      '是色澤最淺的粉紅酒工法',
-      '專用於白葡萄品種'
+      '是普羅旺斯地區主流的主動追求工藝',
+      '是粉紅酒工法中色澤最淺的一種',
+      '是紅酒濃縮工藝中放出酒液的副產品',
+      '是專門只用於白葡萄品種的工法'
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: '放血法多半是紅酒濃縮工藝的副產品，與直接壓榨法、短時間浸皮法這類「主動追求」的粉紅酒工藝定位不同。'
   },
   {
@@ -938,12 +938,12 @@ const QUIZ_BANK = [
     sourceId: 'winemaking-adjustments',
     question: '「補糖（Chaptalization）」這項釀造調整選項的目的為何？',
     options: [
-      '降低酒液的酒精濃度',
-      '在葡萄糖分不足的年份或產區，於發酵前添加糖分以提高最終酒精濃度',
-      '增加酒液的甜度作為成品風格',
-      '取代乳酸發酵的作用'
+      '於發酵後添加糖分，降低最終酒精濃度',
+      '直接增加酒液甜度，作為成品風格',
+      '於發酵前添加糖分，提高最終酒精濃度',
+      '用來取代乳酸發酵在釀造中的作用'
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: '補糖是官方規格列出的「調整」選項之一，目的是提高潛在酒精度而非成品甜度，發酵仍會將添加的糖分轉化為酒精。'
   },
   {
@@ -953,13 +953,13 @@ const QUIZ_BANK = [
     sourceId: 'winemaking-adjustments',
     question: '「調整酸度（Acidification）」通常在哪種情況下會被使用？',
     options: [
-      '任何情況下都會例行使用，不需視條件而定',
-      '只用於氣泡酒',
-      '只用於已裝瓶的成品酒',
-      '葡萄生長於過熱氣候、成熟度過高導致天然酸度不足時，添加酸類以維持酒款新鮮感'
+      '任何情況下都會例行使用，無須視條件',
+      '葡萄過熟、天然酸度不足時添加酸類調整',
+      '只用於氣泡酒二次發酵前的調整階段',
+      '只用於已裝瓶完成後的成品酒調整'
     ],
-    correctIndex: 3,
-    explanation: '與補糖相對應，酸度調整多發生在溫暖氣候產區，用來補足天然酸度的不足。'
+    correctIndex: 1,
+    explanation: '與補糖相對應，酸度調整多發生在溫暖氣候、葡萄成熟度過高導致天然酸度不足的產區，用來補足酸度以維持新鮮感。'
   },
   {
     id: 'lo2-011',
@@ -968,12 +968,12 @@ const QUIZ_BANK = [
     sourceId: 'winestyle-red',
     question: '紅酒釀造中「延長泡皮（Extended Maceration）」的目的為何？',
     options: [
-      '發酵完成後延長果皮接觸時間數週，柔化單寧、增添結構複雜度',
-      '加速發酵速度',
-      '降低酒精濃度',
-      '防止氧化'
+      '加速發酵速度，藉此縮短釀造時間',
+      '降低酒液最終的酒精濃度表現',
+      '防止酒液氧化，藉此延長保存期限',
+      '發酵後延長果皮接觸數週，柔化單寧增添結構'
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: '延長泡皮是可選的釀造選項，透過拉長果皮接觸時間來柔化單寧、增添結構。'
   },
   {
@@ -983,13 +983,13 @@ const QUIZ_BANK = [
     sourceId: 'sweet-wine-methods',
     question: '釀造甜酒時，「停止發酵（Fermentation Stopped）」這項工法的原理為何？',
     options: [
+      '透過降溫或加酒精等方式中止發酵，保留殘糖',
       '讓發酵持續進行至所有糖分轉化完畢',
-      '只適用於氣泡酒',
-      '透過降溫、過濾或添加酒精等方式，在發酵完全消耗糖分前中止，藉此保留天然殘糖',
-      '與甜酒的釀造完全無關'
+      '只適用於氣泡酒二次發酵的工序步驟',
+      '與甜酒的釀造工藝完全無關的技術'
     ],
-    correctIndex: 2,
-    explanation: '官方規格明列Sweet wine的釀造選項為「Fermentation stopped」與「Sweetness added」兩種主要思路。'
+    correctIndex: 0,
+    explanation: '官方規格明列Sweet wine的釀造選項為「Fermentation stopped」與「Sweetness added」兩種主要思路，前者透過降溫、過濾或添加酒精中止發酵以保留天然殘糖。'
   },
   {
     id: 'lo2-013',
@@ -998,13 +998,13 @@ const QUIZ_BANK = [
     sourceId: 'sweet-wine-methods',
     question: '除了中止發酵之外，官方規格列出的另一種甜酒釀造思路為何？',
     options: [
-      '延長泡皮',
-      '完全不使用糖分',
-      '使用野生酵母發酵',
-      '發酵完全進行至乾型後，再另外添加甜度（Sweetness Added）'
+      '延長泡皮時間，以增加萃取程度',
+      '發酵至乾型後，再額外添加甜度',
+      '完全不使用任何糖分於釀造中',
+      '使用野生酵母進行天然發酵'
     ],
-    correctIndex: 3,
-    explanation: '先完全發酵至乾型，再透過添加甜葡萄汁等方式回甜。'
+    correctIndex: 1,
+    explanation: '先完全發酵至乾型，再透過添加甜葡萄汁等方式回甜（Sweetness Added）。'
   },
   {
     id: 'lo2-014',
@@ -1014,12 +1014,12 @@ const QUIZ_BANK = [
     question: '官方規格列出的三種主要發酵容器類型為何？',
     options: [
       '玻璃瓶、塑膠桶、陶罐',
-      '不鏽鋼（stainless steel）、水泥（concrete）、橡木（oak）',
       '竹編容器、皮革容器、石缸',
-      '僅限不鏽鋼一種'
+      '不鏽鋼、水泥、橡木',
+      '僅限不鏽鋼一種容器類型'
     ],
-    correctIndex: 1,
-    explanation: '容器類型直接影響酒款是否帶有木質調性與氧氣交換程度。'
+    correctIndex: 2,
+    explanation: '官方規格明列發酵容器為stainless steel（不鏽鋼）、concrete（水泥）、oak（橡木）三類，容器類型直接影響酒款是否帶有木質調性與氧氣交換程度。'
   },
   {
     id: 'lo2-015',
@@ -1028,13 +1028,13 @@ const QUIZ_BANK = [
     sourceId: 'oak-vessel-types',
     question: '橡木桶的哪些變因會影響其對葡萄酒風格的影響程度？',
     options: [
-      '只有橡木桶的顏色會影響風格',
-      '只有橡木桶的產地會影響風格',
-      '桶身尺寸大小、新舊程度、以及內壁烘烤程度（level of toast）',
-      '橡木桶對風格完全沒有影響'
+      '只有橡木桶的表面顏色會影響風格',
+      '桶身尺寸、新舊程度、內壁烘烤程度',
+      '只有橡木桶的產地來源會影響風格',
+      '橡木桶種類對風格完全沒有任何影響'
     ],
-    correctIndex: 2,
-    explanation: '官方規格明列Oak vessel types包含small/large、new/old、level of toast等變因。'
+    correctIndex: 1,
+    explanation: '官方規格明列Oak vessel types包含桶身尺寸大小（small/large）、新舊程度（new/old）、以及內壁烘烤程度（level of toast）等變因。'
   },
   {
     id: 'lo2-016',
@@ -1043,13 +1043,13 @@ const QUIZ_BANK = [
     sourceId: 'winestyle-red',
     question: '「乳酸發酵（Malolactic Conversion/MLF）」對酒款的主要影響為何？',
     options: [
-      '將尖銳的蘋果酸轉化為柔和的乳酸，常伴隨奶油、堅果調性，幾乎所有紅酒都會進行此步驟',
-      '使酒款酸度更加尖銳',
-      '使酒款顏色變深',
-      '只發生在氣泡酒中'
+      '使酒款的酸度變得更加尖銳刺激',
+      '將尖銳蘋果酸轉化為柔和乳酸，常帶奶油堅果調性',
+      '使酒款的顏色明顯加深、轉為深紫',
+      '只發生在氣泡酒二次發酵的過程中'
     ],
-    correctIndex: 0,
-    explanation: '紅酒工藝流程中MLF幾乎是必經步驟，能軟化酸度、增添複雜度。'
+    correctIndex: 1,
+    explanation: '紅酒工藝流程中MLF幾乎是必經步驟，將尖銳的蘋果酸轉化為柔和的乳酸，常伴隨奶油、堅果調性，能軟化酸度、增添複雜度。'
   },
   {
     id: 'lo2-017',
@@ -1058,13 +1058,13 @@ const QUIZ_BANK = [
     sourceId: 'winestyle-white',
     question: '為什麼像Riesling、Sauvignon Blanc這類芳香品種的白酒，多半刻意阻擋乳酸發酵（MLF）進行？',
     options: [
-      '因為這些品種不含蘋果酸',
-      '為了保留銳利明亮的酸度，這是這類品種風格的核心特徵',
-      '因為MLF只適用於紅酒',
-      '因為法規禁止芳香白酒進行MLF'
+      '因為這些品種本身不含蘋果酸成分',
+      '因為MLF理論上只適用於紅酒',
+      '為了保留銳利明亮的酸度風格特徵',
+      '因為法規明文禁止芳香白酒進行MLF'
     ],
-    correctIndex: 1,
-    explanation: '芳香品種白酒的風格核心在於保留清新酸度與品種香氣。'
+    correctIndex: 2,
+    explanation: '芳香品種白酒的風格核心在於保留清新、銳利明亮的酸度與品種香氣，這是這類品種風格的核心特徵。'
   },
   {
     id: 'lo2-018',
@@ -1073,13 +1073,13 @@ const QUIZ_BANK = [
     sourceId: 'lees-contact',
     question: '「酒渣接觸（Lees）」對葡萄酒風格可能帶來什麼影響？',
     options: [
-      '使酒款顏色變淡',
-      '完全沒有風味影響，只是釀造流程的副產品',
-      '只影響酒精濃度',
-      '可能增添質地厚度、複雜度與特定風味（如麵包、堅果調性），常見於白酒攪桶或氣泡酒的酒渣自溶'
+      '增添質地厚度、複雜度與麵包堅果調性',
+      '使酒款顏色明顯變淺、趨於透明',
+      '完全沒有風味影響，純屬釀造副產品',
+      '只會影響酒液最終的酒精濃度高低'
     ],
-    correctIndex: 3,
-    explanation: '酒渣與酒液接觸的時間長短、是否攪動，是官方規格列出的重要釀造選項之一。'
+    correctIndex: 0,
+    explanation: '酒渣與酒液接觸的時間長短、是否攪動，是官方規格列出的重要釀造選項之一，可能增添質地厚度、複雜度與特定風味（如麵包、堅果調性），常見於白酒攪桶或氣泡酒的酒渣自溶。'
   },
   {
     id: 'lo2-019',
@@ -1088,13 +1088,13 @@ const QUIZ_BANK = [
     sourceId: 'blending-purpose',
     question: '「調配（Blending）」在釀造工藝中的三個主要目的為何？',
     options: [
-      '維持風格一致性（consistency）、增加複雜度（complexity）、達成特定風格（style）',
       '降低成本、加快釀造速度、延長保存期限',
-      '只是為了消耗多餘的原料',
-      '只適用於氣泡酒'
+      '消耗多餘原料、簡化倉儲管理、節省人力',
+      '只適用於氣泡酒二次發酵前的調配步驟',
+      '維持風格一致性、增加複雜度、達成特定風格'
     ],
-    correctIndex: 0,
-    explanation: '官方規格明列調配的三個核心目的。'
+    correctIndex: 3,
+    explanation: '官方規格明列調配的三個核心目的為consistency（一致性）、complexity（複雜度）、style（達成特定風格）。'
   },
   {
     id: 'lo2-020',
@@ -1103,13 +1103,13 @@ const QUIZ_BANK = [
     sourceId: 'bottle-ageing-red',
     question: '紅酒在瓶中陳年過程中，最主要會產生哪些變化？',
     options: [
-      '顏色變得更深更鮮豔',
-      '完全不會產生任何變化',
-      '顏色、單寧、香氣風味都會產生變化——顏色通常由紫紅漸轉磚紅、單寧逐漸軟化、香氣從果香轉為更複雜的三級香氣',
-      '只有酒精濃度會改變'
+      '顏色會隨陳年變得更深、更加鮮豔',
+      '完全不會產生任何變化，長期維持原狀',
+      '只有酒精濃度會隨陳年逐漸改變',
+      '顏色、單寧、香氣風味皆會產生明顯變化'
     ],
-    correctIndex: 2,
-    explanation: '官方規格明列紅酒瓶陳的關鍵變化為Colour, Tannin, Aromas and flavours三個面向。'
+    correctIndex: 3,
+    explanation: '官方規格明列紅酒瓶陳的關鍵變化為Colour, Tannin, Aromas and flavours三個面向——顏色通常由紫紅漸轉磚紅、單寧逐漸軟化、香氣從果香轉為更複雜的三級香氣。'
   },
   {
     id: 'lo2-021',
