@@ -2439,12 +2439,12 @@ const QUIZ_BANK = [
     question: 'Pinot Noir的風格核心特徵為何？',
     options: [
       '厚皮晚熟品種，單寧極度厚重，僅適合溫暖氣候種植',
-      '薄皮早熟品種，單寧輕盈、酸度明亮，紅色漿果與泥土氣息展現細膩風土差異，是風土表現力最強的品種之一',
-      '是白葡萄品種，主要用於釀造氣泡酒基酒',
-      '天然完全不具備陳年潛力，須立即飲用'
+      '是白葡萄品種，主要用於釀造氣泡酒的基酒之一',
+      '天然完全不具備任何陳年潛力，須立即飲用完畢',
+      '薄皮早熟品種，單寧輕盈酸度明亮，風土表現力極強'
     ],
-    correctIndex: 1,
-    explanation: 'styleSummary描述為薄皮早熟品種，單寧輕盈、酸度明亮，是風土表現力最強的品種之一。'
+    correctIndex: 3,
+    explanation: 'styleSummary描述為薄皮早熟品種，單寧輕盈、酸度明亮，紅色漿果與泥土氣息展現細膩風土差異，是風土表現力最強的品種之一。'
   },
   {
     id: 'lo3-pn-002',
@@ -2453,13 +2453,13 @@ const QUIZ_BANK = [
     sourceId: 'pinot-noir',
     question: 'DNA證據顯示Pinot Noir的栽培歷史可追溯至何時、何地？',
     options: [
-      '羅馬時期以前的勃根地地區，是全球最古老的葡萄品種之一',
       '18世紀的澳洲，是相對年輕的品種',
-      '20世紀的美國加州',
-      '16世紀的西班牙赫雷斯'
+      '羅馬時期以前的勃根地，是最古老品種之一',
+      '20世紀的美國加州地區才開始種植',
+      '16世紀的西班牙赫雷斯地區一帶'
     ],
-    correctIndex: 0,
-    explanation: 'DNA證據顯示Pinot Noir栽培歷史可追溯至羅馬時期以前的勃根地地區。'
+    correctIndex: 1,
+    explanation: 'DNA證據顯示Pinot Noir栽培歷史可追溯至羅馬時期以前的勃根地地區，是全球最古老的葡萄品種之一。'
   },
   {
     id: 'lo3-pn-003',
@@ -2468,9 +2468,9 @@ const QUIZ_BANK = [
     sourceId: 'pinot-noir',
     question: 'Pinot Noir因基因極不穩定、易突變，衍生出哪些近親變種？',
     options: [
-      '卡本內蘇維濃、梅洛',
-      '希哈、格那希',
-      '田帕尼優、山吉歐維榭',
+      '卡本內蘇維濃、梅洛等波爾多品種',
+      '希哈、格那希等隆河谷代表品種',
+      '田帕尼優、山吉歐維榭等南歐品種',
       '灰皮諾、白皮諾等眾多近親變種'
     ],
     correctIndex: 3,
@@ -2484,11 +2484,11 @@ const QUIZ_BANK = [
     question: '中世紀由哪個團體在勃根地系統化栽培Pinot Noir，並發展出以地塊（Climat）為核心的風土分級概念？',
     options: [
       '波爾多商會',
-      '熙篤會修士',
       '羅馬軍團',
-      '法國皇室'
+      '法國皇室',
+      '熙篤會修士'
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: '中世紀由熙篤會修士在勃根地系統化栽培，逐步發展出以地塊為核心的風土分級概念。'
   },
   {
@@ -2498,12 +2498,12 @@ const QUIZ_BANK = [
     sourceId: 'pinot-noir',
     question: 'Pinot Noir的薄皮特性使其對什麼特別敏感，種植難度公認為何？',
     options: [
+      '對霜害、病害極度敏感，種植難度公認最高',
       '完全不受任何天氣因素影響，種植難度最低',
-      '只對高溫敏感，霜害完全不構成威脅',
-      '薄皮特性與種植難度無關',
-      '對霜害、病害極度敏感，種植難度公認是頂級品種中最高的之一'
+      '只對高溫敏感，霜害完全不構成任何威脅',
+      '薄皮特性與種植難度完全沒有直接關聯'
     ],
-    correctIndex: 3,
+    correctIndex: 0,
     explanation: '薄皮特性使其對霜害、病害極度敏感，種植難度公認是頂級品種中最高的之一。'
   },
   {
@@ -2513,13 +2513,13 @@ const QUIZ_BANK = [
     sourceId: 'pinot-noir',
     question: 'Pinot Noir與加美（Gamay）相比，兩者風格上的關鍵差異為何？',
     options: [
-      '兩者風格幾乎完全相同，僅產區命名不同',
-      '加美的單寧與酒體遠比黑皮諾更重',
-      '黑皮諾單寧與酒體皆更重、陳年潛力強，加美單寧極輕、多以二氧化碳浸漬工法早飲',
-      '黑皮諾多以二氧化碳浸漬工法釀造，加美則走陳年路線'
+      '兩者風格幾乎完全相同，僅產區命名不同而已',
+      '加美的單寧與酒體反而遠比黑皮諾更重厚',
+      '黑皮諾單寧酒體更重陳年強；加美單寧輕早飲',
+      '黑皮諾反而多用二氧化碳浸漬，加美走陳年路線'
     ],
     correctIndex: 2,
-    explanation: '兩者常因同樣產自勃根地/薄酒萊地區而被連結，但風格差異極大。'
+    explanation: '黑皮諾單寧與酒體皆更重、陳年潛力強，加美單寧極輕、多以二氧化碳浸漬工法早飲，兩者常因同樣產自勃根地/薄酒萊地區而被連結，但風格差異極大。'
   },
   {
     id: 'lo3-pn-007',
@@ -2528,13 +2528,13 @@ const QUIZ_BANK = [
     sourceId: 'pinot-noir',
     question: 'Pinot Noir與格那希（Grenache）相比，酸度與酒精度的差異為何？',
     options: [
-      '黑皮諾酸度遠高於格那希、酒精度也通常較低，格那希的甜熟果香與較低酸度是明顯區隔',
-      '兩者酸度與酒精度完全相同',
-      '格那希酸度遠高於黑皮諾',
-      '黑皮諾的酒精度通常高於格那希'
+      '兩者酸度與酒精度表現完全相同不分',
+      '黑皮諾酸度遠高於格那希，酒精度通常較低',
+      '格那希酸度反而遠高於黑皮諾許多',
+      '黑皮諾的酒精度通常反而高於格那希'
     ],
-    correctIndex: 0,
-    explanation: '與格那希相比，黑皮諾顏色相近但酸度遠高於格那希、酒精度也通常較低。'
+    correctIndex: 1,
+    explanation: '與格那希相比，黑皮諾顏色相近但酸度遠高於格那希、酒精度也通常較低，格那希的甜熟果香與較低酸度是明顯區隔。'
   },
   {
     id: 'lo3-pn-008',
@@ -2543,12 +2543,12 @@ const QUIZ_BANK = [
     sourceId: 'pinot-noir',
     question: 'Pinot Noir的aromaWheel香氣輪列出哪些核心香氣？',
     options: [
-      '紅櫻桃、覆盆子、蘑菇、玫瑰',
       '黑醋栗、雪松、石墨、薄荷',
       '黑胡椒、黑莓、煙燻肉香、紫羅蘭',
+      '紅櫻桃、覆盆子、蘑菇、玫瑰',
       '紅李、黑櫻桃、巧克力、月桂葉'
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: 'aromaWheel列出Red Cherry、Raspberry、Mushroom、Rose。'
   },
   {
@@ -2563,7 +2563,7 @@ const QUIZ_BANK = [
       'Barossa Valley（巴羅莎谷）',
       'Côte de Nuits（夜丘）'
     ],
-    correctIndex: 3,
+    correctIndex: 2,
     explanation: 'representativeRegions涵蓋Côte de Nuits、Sonoma Coast、Central Otago等產區，Barossa Valley是澳洲以Shiraz聞名的產區。'
   },
   {
@@ -2573,12 +2573,12 @@ const QUIZ_BANK = [
     sourceId: 'pinot-noir',
     question: 'Pinot Noir建議的侍酒溫度區間為何？',
     options: [
-      '6–8°C',
       '14–15°C',
+      '6–8°C',
       '10–13°C',
       '16–18°C'
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: 'servingTemp欄位標示為14–15°C，介於清淡型與濃郁型紅酒之間。'
   },
   {
@@ -2588,12 +2588,12 @@ const QUIZ_BANK = [
     sourceId: 'pinot-noir',
     question: 'Pinot Noir適合搭配下列哪些食物類型？',
     options: [
-      '高脂、紅肉、野味、燒烤',
-      '海鮮與甲殼類',
-      '中脂、白肉、蕈菇鮮味、鴨肉',
-      '甜點與水果'
+      '高脂、紅肉、野味、燒烤料理',
+      '海鮮與甲殼類等清淡料理',
+      '甜點與水果等偏甜食材',
+      '中脂、白肉、蕈菇鮮味、鴨肉'
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: 'foodPairingTags列出Moderate Fat、White Meat、Mushroom Umami、Duck。'
   },
   {
@@ -2603,13 +2603,13 @@ const QUIZ_BANK = [
     sourceId: 'pinot-noir',
     question: '依profile資料，Pinot Noir的單寧（tannin）評分為何，與Cabernet Sauvignon（8分）相比如何？',
     options: [
-      '4分，明顯低於Cabernet Sauvignon，反映其單寧輕盈的薄皮品種特性',
-      '9分，遠高於Cabernet Sauvignon',
-      '兩者單寧評分完全相同',
-      '單寧評分與果皮厚度無關'
+      '9分，遠高於卡本內蘇維濃許多之高',
+      '兩者單寧評分完全相同，皆為中等6分',
+      '4分，明顯低於卡本內蘇維濃，單寧輕盈',
+      '單寧評分與果皮厚度完全沒有關聯'
     ],
-    correctIndex: 0,
-    explanation: 'profile.tannin為4，明顯低於Cabernet Sauvignon的8。'
+    correctIndex: 2,
+    explanation: 'profile.tannin為4，明顯低於Cabernet Sauvignon的8，反映其單寧輕盈的薄皮品種特性。'
   },
   {
     id: 'lo3-pn-013',
@@ -2618,13 +2618,13 @@ const QUIZ_BANK = [
     sourceId: 'pinot-noir',
     question: '依profile資料，Pinot Noir的花香（floral）評分為8分，這在所有品種中屬於什麼水準？',
     options: [
-      '屬於花香調性最不明顯的品種之一',
+      '屬於花香調性最鮮明的品種之一，與玫瑰香氣呼應',
+      '屬於花香調性最不明顯的品種之一，接近無香',
       '花香評分與aromaWheel香氣描述完全無關',
-      '屬於花香調性最鮮明濃郁的品種之一，與其aromaWheel中的玫瑰香氣相呼應',
-      '8分代表完全沒有花香調性'
+      '8分代表完全沒有任何花香調性可言'
     ],
-    correctIndex: 2,
-    explanation: 'profile.floral為8，與aromaWheel中列出的Rose（玫瑰）香氣相呼應。'
+    correctIndex: 0,
+    explanation: 'profile.floral為8，與aromaWheel中列出的Rose（玫瑰）香氣相呼應，屬於花香調性最鮮明濃郁的品種之一。'
   },
   {
     id: 'lo3-pn-014',
@@ -2636,7 +2636,7 @@ const QUIZ_BANK = [
       '白皮，原產德國，法國稱之為Pinot Gris',
       '黑皮，原產法國，德語產區稱之為Spätburgunder',
       '黑皮，原產義大利，德語產區稱之為Grauburgunder',
-      '灰皮，原產法國，無其他別名'
+      '灰皮，原產法國，德語產區無特殊別名'
     ],
     correctIndex: 1,
     explanation: "skinColor:'red'、originCountry:'France(法國)'，德語產區稱之為Spätburgunder。"

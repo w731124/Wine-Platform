@@ -1,8 +1,8 @@
 {
   "note": "quiz-data.js 題庫內容重寫進度追蹤檔。與已遺失的舊版 quiz-rewrite-progress.json 區隔，v2 為重來後的新起點。每完成一批就在 batches 追加一筆紀錄，並把該批 id 併入 completedIds。",
   "totalQuestions": 300,
-  "completedCount": 138,
-  "remainingCount": 162,
+  "completedCount": 152,
+  "remainingCount": 148,
   "batches": [
     {
       "batchLabel": "lo1-batch1",
@@ -114,6 +114,17 @@
         "lo3-mer-006", "lo3-mer-007", "lo3-mer-008", "lo3-mer-009", "lo3-mer-010",
         "lo3-mer-011", "lo3-mer-012", "lo3-mer-013", "lo3-mer-014"
       ]
+    },
+    {
+      "batchLabel": "lo3-pinot-noir",
+      "idRange": "lo3-pn-001~014",
+      "count": 14,
+      "completedAt": "2026-08-28",
+      "ids": [
+        "lo3-pn-001", "lo3-pn-002", "lo3-pn-003", "lo3-pn-004", "lo3-pn-005",
+        "lo3-pn-006", "lo3-pn-007", "lo3-pn-008", "lo3-pn-009", "lo3-pn-010",
+        "lo3-pn-011", "lo3-pn-012", "lo3-pn-013", "lo3-pn-014"
+      ]
     }
   ],
   "completedIds": [
@@ -145,6 +156,9 @@
     "lo3-cs-011", "lo3-cs-012", "lo3-cs-013", "lo3-cs-014",
     "lo3-mer-001", "lo3-mer-002", "lo3-mer-003", "lo3-mer-004", "lo3-mer-005",
     "lo3-mer-006", "lo3-mer-007", "lo3-mer-008", "lo3-mer-009", "lo3-mer-010",
-    "lo3-mer-011", "lo3-mer-012", "lo3-mer-013", "lo3-mer-014"
+    "lo3-mer-011", "lo3-mer-012", "lo3-mer-013", "lo3-mer-014",
+    "lo3-pn-001", "lo3-pn-002", "lo3-pn-003", "lo3-pn-004", "lo3-pn-005",
+    "lo3-pn-006", "lo3-pn-007", "lo3-pn-008", "lo3-pn-009", "lo3-pn-010",
+    "lo3-pn-011", "lo3-pn-012", "lo3-pn-013", "lo3-pn-014"
   ]
 }
