@@ -2649,12 +2649,12 @@ const QUIZ_BANK = [
     question: 'Syrah/Shiraz的風格核心特徵為何？',
     options: [
       '薄皮早熟品種，單寧極輕盈，僅適合冷涼氣候種植',
-      '是白葡萄品種，主要用於釀造貴腐甜酒',
-      '風格完全不受產地影響，全球風格皆一致',
-      '厚皮品種，舊世界（北隆河）展現冷香料與黑胡椒骨架，新世界（澳洲）則濃縮成熟果醬與巧克力，風格因產地而異'
+      '厚皮品種，舊世界冷香料黑胡椒；新世界濃縮果醬巧克力',
+      '是白葡萄品種，主要用於釀造貴腐甜酒的基酒',
+      '風格完全不受產地影響，全球風格皆保持一致'
     ],
-    correctIndex: 3,
-    explanation: 'styleSummary描述為厚皮品種，舊世界展現冷香料與黑胡椒骨架，新世界則濃縮成熟果醬與巧克力，風格因產地而異。'
+    correctIndex: 1,
+    explanation: 'styleSummary描述為厚皮品種，舊世界（北隆河）展現冷香料與黑胡椒骨架，新世界（澳洲）則濃縮成熟果醬與巧克力，風格因產地而異。'
   },
   {
     id: 'lo3-syr-002',
@@ -2663,12 +2663,12 @@ const QUIZ_BANK = [
     sourceId: 'syrah-shiraz',
     question: '2000年代DNA親緣分析確認Syrah的親本為何，推翻了什麼長期流傳的傳說？',
     options: [
-      '親本為黑皮諾與Gouais Blanc，推翻了法國本土起源說',
-      '親本為Dureza與Mondeuse Blanche兩個古老隆河品種，推翻了長期流傳的波斯或敘利亞起源傳說',
-      '親本為卡本內弗朗與白蘇維濃，推翻了隆河起源說',
-      '至今尚無任何DNA分析研究，起源仍完全成謎'
+      '親本為法國隆河兩個古老品種，推翻波斯敘利亞起源說',
+      '親本為黑皮諾與白高維斯，推翻法國本土起源說',
+      '親本為卡本內弗朗與白蘇維濃，推翻了隆河起源說法',
+      '至今尚無任何DNA分析研究，起源仍完全成謎待解'
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: 'DNA親緣分析確認Syrah親本為Dureza與Mondeuse Blanche兩個古老隆河品種，推翻了波斯或敘利亞起源傳說。'
   },
   {
@@ -2678,12 +2678,12 @@ const QUIZ_BANK = [
     sourceId: 'syrah-shiraz',
     question: '18世紀末是誰將Syrah引入澳洲，並在當地發展出濃縮成熟風格、改稱為Shiraz？',
     options: [
-      '法國波爾多商人',
-      '蘇格蘭移民詹姆士．布斯比',
-      '德國修士',
-      '義大利釀酒師'
+      '法國波爾多的葡萄酒商人',
+      '德國萊茵地區的傳教修士',
+      '義大利托斯卡尼的釀酒師',
+      '蘇格蘭移民詹姆士．布斯比'
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: '18世紀末由蘇格蘭移民詹姆士．布斯比引入澳洲，在此發展出與原鄉截然不同的濃縮成熟風格，並改稱Shiraz。'
   },
   {
@@ -2693,12 +2693,12 @@ const QUIZ_BANK = [
     sourceId: 'syrah-shiraz',
     question: 'Syrah在法國與Shiraz在澳洲這兩種身份認同的現象，以及至今仍保有全球數一數二老藤希哈的產區為何？',
     options: [
-      'Napa Valley（納帕谷）',
-      'Mosel（摩塞爾）',
-      'Barossa Valley（巴羅莎谷）',
-      'Rioja（里奧哈）'
+      'Napa Valley（納帕谷）地區',
+      'Mosel（摩塞爾）河谷地區',
+      'Rioja（里奧哈）產區一帶',
+      'Barossa Valley（巴羅莎谷）'
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: '兩地形成「同一品種、兩種身份認同」的獨特現象，至今Barossa Valley仍保有全球數一數二的老藤希哈。'
   },
   {
@@ -2708,12 +2708,12 @@ const QUIZ_BANK = [
     sourceId: 'syrah-shiraz',
     question: 'Syrah與格那希（Grenache）常見於教皇新堡的GSM混調配方中，兩者角色互補的方式為何？',
     options: [
+      '希哈提供顏色單寧胡椒骨架，格那希提供酒精甜熟果香',
       '希哈提供酒精度與甜熟果香，格那希提供顏色與單寧骨架',
-      '兩者角色完全相同，混調沒有實質分工意義',
-      '希哈提供顏色、單寧與胡椒辛香骨架，格那希提供酒精度與甜熟果香',
-      '希哈與格那希從未一起混調'
+      '兩者角色完全相同，混調並沒有實質分工意義',
+      '希哈與格那希兩者歷史上從未一起混調過'
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: '兩者角色互補：希哈提供顏色、單寧與胡椒辛香骨架，格那希提供酒精度與甜熟果香。'
   },
   {
@@ -2724,12 +2724,12 @@ const QUIZ_BANK = [
     question: '「Shiraz」與「Syrah」這兩個名稱拼寫不同，實際上代表什麼關係？',
     options: [
       '是兩個完全不同的獨立品種，僅風味相近',
-      'Shiraz是Syrah的芽變品種，兩者基因略有差異',
-      'Shiraz專指白葡萄品種，Syrah專指黑葡萄品種',
-      '實為完全相同的品種，並非兩個獨立品種，只是澳洲與法國/舊世界的慣用稱呼不同'
+      'Shiraz是Syrah的芽變品種，基因略有差異',
+      '實為完全相同的品種，只是產地慣用稱呼不同',
+      'Shiraz專指白葡萄，Syrah專指黑葡萄品種'
     ],
-    correctIndex: 3,
-    explanation: 'Shiraz與Syrah雖拼寫不同，實為完全相同的品種，並非兩個獨立品種。'
+    correctIndex: 2,
+    explanation: 'Shiraz與Syrah雖拼寫不同，實為完全相同的品種，並非兩個獨立品種，只是澳洲與法國/舊世界的慣用稱呼不同。'
   },
   {
     id: 'lo3-syr-007',
@@ -2739,8 +2739,8 @@ const QUIZ_BANK = [
     question: 'Syrah/Shiraz的aromaWheel香氣輪列出哪些核心香氣？',
     options: [
       '黑胡椒、黑莓、煙燻肉香、紫羅蘭',
-      '紅櫻桃、覆盆子、蘑菇、玫瑰',
-      '黑醋栗、雪松、石墨、薄荷',
+      '紅櫻桃、覆盆子、蘑菇與玫瑰',
+      '黑醋栗、雪松、石墨與薄荷',
       '紅李、黑櫻桃、巧克力、月桂葉'
     ],
     correctIndex: 0,
@@ -2753,13 +2753,13 @@ const QUIZ_BANK = [
     sourceId: 'syrah-shiraz',
     question: '下列哪一個產區不屬於Syrah/Shiraz的代表性種植區域？',
     options: [
-      'Hermitage（艾米達吉）',
-      'Côte-Rôtie（羅第丘）',
-      'Barossa Valley（巴羅莎谷）',
+      'Hermitage（艾米達吉）地區',
+      'Côte-Rôtie（羅第丘）產區',
+      'Barossa Valley（巴羅莎谷）一帶',
       'Rioja（里奧哈）'
     ],
-    correctIndex: 0,
-    explanation: 'representativeRegions涵蓋Hermitage、Côte-Rôtie、Barossa Valley等產區，Rioja是西班牙以Tempranillo聞名的產區。'
+    correctIndex: 3,
+    explanation: 'representativeRegions涵蓋Hermitage、Côte-Rôtie、Barossa Valley等產區，Rioja是西班牙以Tempranillo聞名的產區，不在Syrah/Shiraz代表產區清單中（此題經WSET規格與解析文字核對後，已將正解從Hermitage修正為Rioja，此為經Harry核准的內容修正，原資料存在題幹與解析矛盾）。'
   },
   {
     id: 'lo3-syr-009',
@@ -2769,11 +2769,11 @@ const QUIZ_BANK = [
     question: 'Syrah/Shiraz建議的侍酒溫度區間為何？',
     options: [
       '6–8°C',
+      '16–18°C',
       '10–13°C',
-      '8–10°C',
-      '16–18°C'
+      '8–10°C'
     ],
-    correctIndex: 3,
+    correctIndex: 1,
     explanation: 'servingTemp欄位標示為16–18°C。'
   },
   {
@@ -2783,12 +2783,12 @@ const QUIZ_BANK = [
     sourceId: 'syrah-shiraz',
     question: 'Syrah/Shiraz適合搭配下列哪些食物類型？',
     options: [
+      '海鮮與甲殼類等清淡料理',
       '高脂、紅肉、野味、燒烤',
-      '海鮮與甲殼類',
-      '甜點與水果',
-      '低脂開胃菜'
+      '甜點與水果等偏甜食材',
+      '低脂開胃菜與清淡小點'
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: 'foodPairingTags列出High Fat、Red Meat、Game、Grilled。'
   },
   {
@@ -2798,12 +2798,12 @@ const QUIZ_BANK = [
     sourceId: 'syrah-shiraz',
     question: '依profile資料，Syrah/Shiraz的酒體（body）與酒精濃度（alcohol）評分分別為何？',
     options: [
-      '酒體8分、酒精濃度8分，屬全品種中偏高水準的濃郁厚實風格',
       '酒體2分、酒精濃度3分，屬清淡型紅酒',
-      '酒體與酒精濃度評分皆為0',
+      '酒體與酒精濃度評分皆接近0分之低',
+      '酒體8分、酒精濃度8分，屬濃郁厚實風格',
       '酒體8分，但酒精濃度極低僅2分'
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: 'profile中body為8、alcohol為8，反映其濃縮厚實的風格特徵。'
   },
   {
@@ -2813,10 +2813,10 @@ const QUIZ_BANK = [
     sourceId: 'syrah-shiraz',
     question: '依profile資料，Syrah/Shiraz的單寧（tannin）評分與Cabernet Sauvignon（8分）相比如何？',
     options: [
-      '遠高於Cabernet Sauvignon，達到滿分',
-      '7分，略低於Cabernet Sauvignon但仍屬單寧厚重的品種',
-      '兩者單寧評分完全相同',
-      '單寧評分與品種厚皮特性無關'
+      '遠高於卡本內蘇維濃，達到滿分10分之高',
+      '7分，略低於卡本內蘇維濃但仍屬厚重單寧',
+      '兩者單寧評分完全相同，皆為中等7分',
+      '單寧評分與品種厚皮特性完全無關'
     ],
     correctIndex: 1,
     explanation: 'profile.tannin為7，略低於Cabernet Sauvignon的8，但仍屬單寧表現厚重的品種之一。'
@@ -2828,12 +2828,12 @@ const QUIZ_BANK = [
     sourceId: 'syrah-shiraz',
     question: 'Syrah/Shiraz的果皮顏色分類與原產國為何？',
     options: [
-      '白皮，原產法國',
       '黑皮，原產法國',
+      '白皮，原產法國',
       '黑皮，原產澳洲',
       '灰皮，原產西班牙'
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: "skinColor:'red'、originCountry:'France(法國)'，儘管Shiraz之名與澳洲密不可分，但品種起源仍是法國北隆河。"
   },
   {
@@ -2843,13 +2843,13 @@ const QUIZ_BANK = [
     sourceId: 'syrah-shiraz',
     question: '依profile資料，Syrah/Shiraz的陳年潛力（aging）評分為8分，這與其品種特性的關聯為何？',
     options: [
-      '代表Syrah/Shiraz完全不具備任何陳年價值',
-      '陳年潛力評分與單寧或酒體結構無關',
-      '反映其厚實單寧與酒體結構具備長期陳年支撐力，與Cabernet Sauvignon（9分）相近',
-      '8分代表其陳年潛力是所有品種中最低的'
+      '代表希哈完全不具備任何陳年價值可言之高',
+      '陳年潛力評分與單寧或酒體結構完全無關',
+      '反映厚實單寧酒體具長期陳年力，近卡本內蘇維濃',
+      '代表其陳年潛力是所有品種中最低的一個'
     ],
     correctIndex: 2,
-    explanation: 'profile.aging為8，與Cabernet Sauvignon的9分相近。'
+    explanation: 'profile.aging為8，與Cabernet Sauvignon的9分相近，反映其厚實單寧與酒體結構具備長期陳年支撐力。'
   },
   {
     id: 'lo3-sup-001',
@@ -2858,12 +2858,12 @@ const QUIZ_BANK = [
     sourceId: 'multi-grape-comparison',
     question: '下列四個品種中，依profile資料，哪一個的單寧（tannin）評分最高？',
     options: [
-      'Pinot Noir（4分）',
-      'Merlot（6分）',
-      'Syrah/Shiraz（7分）',
-      'Cabernet Sauvignon（8分）'
+      'Pinot Noir（4分）評分最低',
+      'Merlot（6分）評分居中',
+      'Cabernet Sauvignon（8分）',
+      'Syrah/Shiraz（7分）'
     ],
-    correctIndex: 3,
+    correctIndex: 2,
     explanation: '四個品種的tannin評分分別為：Cabernet Sauvignon 8、Syrah/Shiraz 7、Merlot 6、Pinot Noir 4，Cabernet Sauvignon為最高，這與其厚實果皮、晚熟特性直接相關。'
   },
   {
@@ -2874,11 +2874,11 @@ const QUIZ_BANK = [
     question: '在WSET L2官方八大主要品種中，下列哪一組全部屬於白葡萄品種？',
     options: [
       'Chardonnay、Cabernet Sauvignon、Riesling、Merlot',
-      'Chardonnay、Sauvignon Blanc、Riesling、Pinot Gris',
       'Pinot Noir、Syrah/Shiraz、Merlot、Cabernet Sauvignon',
-      'Sauvignon Blanc、Pinot Noir、Riesling、Syrah/Shiraz'
+      'Sauvignon Blanc、Pinot Noir、Riesling、Syrah/Shiraz',
+      'Chardonnay、Sauvignon Blanc、Riesling、Pinot Gris'
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: '官方八大主要品種中，白葡萄品種為Chardonnay、Sauvignon Blanc、Riesling、Pinot Gris；黑葡萄品種為Cabernet Sauvignon、Merlot、Pinot Noir、Syrah/Shiraz。'
   },
   {

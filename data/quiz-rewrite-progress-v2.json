@@ -1,8 +1,8 @@
 {
   "note": "quiz-data.js 題庫內容重寫進度追蹤檔。與已遺失的舊版 quiz-rewrite-progress.json 區隔，v2 為重來後的新起點。每完成一批就在 batches 追加一筆紀錄，並把該批 id 併入 completedIds。",
   "totalQuestions": 300,
-  "completedCount": 152,
-  "remainingCount": 148,
+  "completedCount": 168,
+  "remainingCount": 132,
   "batches": [
     {
       "batchLabel": "lo1-batch1",
@@ -125,6 +125,19 @@
         "lo3-pn-006", "lo3-pn-007", "lo3-pn-008", "lo3-pn-009", "lo3-pn-010",
         "lo3-pn-011", "lo3-pn-012", "lo3-pn-013", "lo3-pn-014"
       ]
+    },
+    {
+      "batchLabel": "lo3-syrah-shiraz-supplement",
+      "idRange": "lo3-syr-001~014, lo3-sup-001~002",
+      "count": 16,
+      "completedAt": "2026-08-28",
+      "note": "LO3 complete; lo3-syr-008 content correction applied (correctIndex fixed from Hermitage to Rioja per Harry-approved fix)",
+      "ids": [
+        "lo3-syr-001", "lo3-syr-002", "lo3-syr-003", "lo3-syr-004", "lo3-syr-005",
+        "lo3-syr-006", "lo3-syr-007", "lo3-syr-008", "lo3-syr-009", "lo3-syr-010",
+        "lo3-syr-011", "lo3-syr-012", "lo3-syr-013", "lo3-syr-014",
+        "lo3-sup-001", "lo3-sup-002"
+      ]
     }
   ],
   "completedIds": [
@@ -159,6 +172,10 @@
     "lo3-mer-011", "lo3-mer-012", "lo3-mer-013", "lo3-mer-014",
     "lo3-pn-001", "lo3-pn-002", "lo3-pn-003", "lo3-pn-004", "lo3-pn-005",
     "lo3-pn-006", "lo3-pn-007", "lo3-pn-008", "lo3-pn-009", "lo3-pn-010",
-    "lo3-pn-011", "lo3-pn-012", "lo3-pn-013", "lo3-pn-014"
+    "lo3-pn-011", "lo3-pn-012", "lo3-pn-013", "lo3-pn-014",
+    "lo3-syr-001", "lo3-syr-002", "lo3-syr-003", "lo3-syr-004", "lo3-syr-005",
+    "lo3-syr-006", "lo3-syr-007", "lo3-syr-008", "lo3-syr-009", "lo3-syr-010",
+    "lo3-syr-011", "lo3-syr-012", "lo3-syr-013", "lo3-syr-014",
+    "lo3-sup-001", "lo3-sup-002"
   ]
 }
