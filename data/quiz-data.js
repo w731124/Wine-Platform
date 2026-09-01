@@ -2228,13 +2228,13 @@ const QUIZ_BANK = [
     sourceId: 'merlot',
     question: 'Merlot的風格核心特徵為何？',
     options: [
-      '晚熟且單寧極度緊澀，僅適合長期橡木桶陳年後才能飲用',
-      '早熟且單寧圓潤，果香飽滿豐腴，常作為卡本內蘇維濃的混調搭檔，亦可獨立展現絲滑質地',
+      '晚熟且單寧極度緊澀，需長期陳年才能飲用',
       '是白葡萄品種，主要用於釀造氣泡酒基酒',
-      '天然酸度極高，是所有紅酒品種中酸度最鮮明的'
+      '早熟且單寧圓潤，果香飽滿豐腴，常作混調搭檔',
+      '天然酸度極高，是紅酒品種中酸度最鮮明的'
     ],
-    correctIndex: 1,
-    explanation: 'styleSummary描述為早熟且單寧圓潤，果香飽滿豐腴，常作為卡本內蘇維濃的混調搭檔。'
+    correctIndex: 2,
+    explanation: 'styleSummary描述為早熟且單寧圓潤，果香飽滿豐腴，常作為卡本內蘇維濃的混調搭檔，亦可獨立展現絲滑質地。'
   },
   {
     id: 'lo3-mer-002',
@@ -2243,13 +2243,13 @@ const QUIZ_BANK = [
     sourceId: 'merlot',
     question: 'Merlot名稱的由來為何？',
     options: [
-      '源自釀酒師的姓氏',
-      '源自法語merle（烏鶇），因果實色澤或烏鶇喜愛啄食而得名',
-      '源自波爾多某個城堡的名稱',
-      '源自拉丁語意指陽光'
+      '源自法語merle（烏鶇），因鳥喜啄食而得名',
+      '源自某位釀酒師姓氏的傳承而來',
+      '源自波爾多某個知名城堡的名稱',
+      '源自拉丁語，意指「陽光」之意'
     ],
-    correctIndex: 1,
-    explanation: 'history記載Merlot名稱源自法語merle（烏鶇），起源於波爾多右岸，18世紀文獻已有記載。'
+    correctIndex: 0,
+    explanation: 'history記載Merlot名稱源自法語merle（烏鶇），因果實色澤或烏鶇喜愛啄食而得名，起源於波爾多右岸，18世紀文獻已有記載。'
   },
   {
     id: 'lo3-mer-003',
@@ -2258,12 +2258,12 @@ const QUIZ_BANK = [
     sourceId: 'merlot',
     question: '相較於Cabernet Sauvignon，Merlot的發芽與成熟時序、以及對哪種土壤條件的適應力更強？',
     options: [
-      '發芽與成熟皆更晚，適應力較弱，僅能在特定小範圍種植',
-      '發芽與成熟時序與Cabernet Sauvignon完全相同',
+      '發芽與成熟皆更晚，適應力較弱，僅能小範圍種植',
       '發芽與成熟皆更早，對黏土與石灰岩台地的適應力更強',
-      '只能種植於礫石台地，無法適應黏土'
+      '發芽與成熟時序，與卡本內蘇維濃完全相同',
+      '只能種植於礫石台地，完全無法適應黏土'
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation: 'Merlot發芽與成熟皆更早，對黏土與石灰岩台地的適應力更強，這是右岸聖愛美濃、玻美侯改以梅洛為主力的關鍵風土因素。'
   },
   {
@@ -2273,12 +2273,12 @@ const QUIZ_BANK = [
     sourceId: 'merlot',
     question: '20世紀末Merlot種植面積一度超越Cabernet Sauvignon，成為全球種植最廣的紅酒品種之一，主要原因為何？',
     options: [
-      '法規強制規定各產區必須優先種植Merlot',
       '國際市場對「順口易飲」紅酒的需求上升',
+      '法規強制規定各產區必須優先種植Merlot',
       'Cabernet Sauvignon因病蟲害大量絕種',
       'Merlot的售價遠低於其他品種，帶動大量種植'
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: '20世紀末隨國際市場對「順口易飲」紅酒需求上升，梅洛種植面積一度超越卡本內蘇維濃。'
   },
   {
@@ -2288,13 +2288,13 @@ const QUIZ_BANK = [
     sourceId: 'merlot',
     question: 'Merlot與Cabernet Sauvignon作為波爾多混調經典搭檔，兩者風格關係的正確描述為何？',
     options: [
-      '兩者風格幾乎相同，混調沒有太大實質意義',
-      '梅洛單寧圓潤早熟、紅李與巧克力調性、酒體較豐腴；卡本內蘇維濃單寧緊實晚熟、黑醋栗與雪松調性、骨架更堅硬',
-      '梅洛的單寧比卡本內蘇維濃更緊實',
-      '卡本內蘇維濃的酒體比梅洛更豐腴圓潤'
+      '兩者風格幾乎相同，混調並沒有太大實質意義',
+      '梅洛的單寧反而比卡本內蘇維濃更緊實厚重',
+      '卡本內蘇維濃的酒體反而比梅洛更豐腴圓潤',
+      '梅洛單寧圓潤早熟；卡本內蘇維濃單寧緊實晚熟骨架硬'
     ],
-    correctIndex: 1,
-    explanation: '兩者是波爾多混調的經典搭檔但風格互補而非相近。'
+    correctIndex: 3,
+    explanation: '梅洛單寧圓潤早熟、紅李與巧克力調性、酒體較豐腴；卡本內蘇維濃單寧緊實晚熟、黑醋栗與雪松調性、骨架更堅硬，兩者是波爾多混調的經典搭檔但風格互補而非相近。'
   },
   {
     id: 'lo3-mer-006',
@@ -2303,12 +2303,12 @@ const QUIZ_BANK = [
     sourceId: 'merlot',
     question: 'Merlot與卡本內弗朗（Cabernet Franc）相比，風格上的關鍵差異為何？',
     options: [
-      '兩者風味特徵完全相同，無法區分',
-      '卡本內弗朗顏色比梅洛更深',
-      '梅洛顏色更深、果香更甜熟；卡本內弗朗則帶明顯青椒與覆盆莓的清爽草本調性',
-      '梅洛帶明顯青椒調性，卡本內弗朗則以甜熟果香為主'
+      '兩者風味特徵幾乎完全相同，難以區分辨別',
+      '卡本內弗朗顏色反而比梅洛顏色更深沉',
+      '梅洛反而帶青椒調性，卡本內弗朗則以甜熟果香為主',
+      '梅洛顏色更深果香甜熟；卡本內弗朗帶青椒草本調性'
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: '與卡本內弗朗相比，梅洛顏色更深、果香更甜熟，卡本內弗朗則帶明顯青椒與覆盆莓的清爽草本調性。'
   },
   {
@@ -2333,12 +2333,12 @@ const QUIZ_BANK = [
     sourceId: 'merlot',
     question: '下列哪一個產區不屬於Merlot的代表性種植區域？',
     options: [
-      'Barolo（巴羅洛）',
       'Saint-Émilion（聖愛美濃）',
+      'Barolo（巴羅洛）',
       'Pomerol（玻美侯）',
       'Columbia Valley（哥倫比亞河谷）'
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: 'representativeRegions涵蓋Saint-Émilion、Pomerol、Columbia Valley等產區，Barolo是義大利以Nebbiolo聞名的產區。'
   },
   {
@@ -2350,10 +2350,10 @@ const QUIZ_BANK = [
     options: [
       '6–8°C',
       '10–13°C',
-      '16–18°C',
-      '8–10°C'
+      '8–10°C',
+      '16–18°C'
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: 'servingTemp欄位標示為16–18°C。'
   },
   {
@@ -2363,12 +2363,12 @@ const QUIZ_BANK = [
     sourceId: 'merlot',
     question: 'Merlot適合搭配下列哪些食物類型？',
     options: [
+      '海鮮與甲殼類等清淡料理',
+      '甜點與水果等偏甜食材',
       '中脂、紅肉、鮮味、烤物',
-      '海鮮與甲殼類',
-      '甜點與水果',
-      '低脂開胃菜'
+      '低脂開胃菜與清淡小點'
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: 'foodPairingTags列出Moderate Fat、Red Meat、Umami、Roasted。'
   },
   {
@@ -2378,13 +2378,13 @@ const QUIZ_BANK = [
     sourceId: 'merlot',
     question: '依profile資料，Merlot的單寧（tannin）評分與Cabernet Sauvignon相比如何？',
     options: [
-      '兩者單寧評分完全相同',
-      'Merlot的單寧評分遠高於Cabernet Sauvignon',
-      '單寧評分與品種特性無關',
-      'Merlot（6分）低於Cabernet Sauvignon（8分），反映其單寧較圓潤柔和的風格'
+      '兩者單寧評分完全相同，皆為中等7分',
+      '梅洛（6分）低於卡本內蘇維濃（8分），較圓潤柔和',
+      '梅洛的單寧評分反而遠高於卡本內蘇維濃',
+      '單寧評分與品種特性完全沒有直接關聯'
     ],
-    correctIndex: 3,
-    explanation: 'Merlot的profile.tannin為6，低於Cabernet Sauvignon的8。'
+    correctIndex: 1,
+    explanation: 'Merlot的profile.tannin為6，低於Cabernet Sauvignon的8，反映其單寧較圓潤柔和的風格。'
   },
   {
     id: 'lo3-mer-012',
@@ -2393,13 +2393,13 @@ const QUIZ_BANK = [
     sourceId: 'merlot',
     question: '依profile資料，Merlot的酒體（body）與酒精濃度（alcohol）評分分別為何？',
     options: [
-      '酒體7分、酒精濃度7分，屬中高酒體與酒精度的紅酒風格',
-      '酒體2分、酒精濃度3分，屬清淡型紅酒',
-      '酒體10分，是所有品種中酒體最厚重的',
-      '酒體與酒精濃度評分皆為0'
+      '酒體2分、酒精濃度3分，屬清淡型紅酒風格',
+      '酒體10分，是所有品種中酒體最厚重的一個',
+      '酒體7分、酒精濃度7分，屬中高酒體風格',
+      '酒體與酒精濃度評分皆接近0分'
     ],
-    correctIndex: 0,
-    explanation: 'profile中body為7、alcohol為7。'
+    correctIndex: 2,
+    explanation: 'profile中body為7、alcohol為7，屬中高酒體與酒精度的紅酒風格。'
   },
   {
     id: 'lo3-mer-013',
@@ -2410,10 +2410,10 @@ const QUIZ_BANK = [
     options: [
       '白皮，原產法國',
       '黑皮，原產義大利',
-      '灰皮，原產西班牙',
-      '黑皮，原產法國'
+      '黑皮，原產法國',
+      '灰皮，原產西班牙'
     ],
-    correctIndex: 3,
+    correctIndex: 2,
     explanation: "skinColor:'red'（黑皮）、originCountry:'France(法國)'。"
   },
   {
@@ -2423,13 +2423,13 @@ const QUIZ_BANK = [
     sourceId: 'merlot',
     question: '依profile資料，Merlot的陳年潛力（aging）評分為7分，這與其品種特性的關聯為何？',
     options: [
-      '代表Merlot完全不具備任何陳年價值',
-      '陳年潛力評分與單寧或酒體皆無關聯',
-      '代表Merlot的陳年潛力是所有紅酒品種中最高的',
-      '反映其雖不如Cabernet Sauvignon極致，但仍具備一定陳年潛力，尤其經橡木桶陳年的版本'
+      '代表梅洛完全不具備任何陳年價值可言',
+      '雖不如卡本內蘇維濃極致，但仍具一定陳年潛力',
+      '陳年潛力評分與單寧或酒體皆毫無關聯',
+      '代表梅洛的陳年潛力是所有品種中最高'
     ],
-    correctIndex: 3,
-    explanation: 'profile.aging為7，僅略低於Cabernet Sauvignon的9。'
+    correctIndex: 1,
+    explanation: '反映其雖不如Cabernet Sauvignon極致，但仍具備一定陳年潛力，尤其經橡木桶陳年的版本；profile.aging為7，僅略低於Cabernet Sauvignon的9。'
   },
   {
     id: 'lo3-pn-001',
