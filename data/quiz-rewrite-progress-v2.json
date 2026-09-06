@@ -1,8 +1,8 @@
 {
   "note": "quiz-data.js 題庫內容重寫進度追蹤檔。與已遺失的舊版 quiz-rewrite-progress.json 區隔，v2 為重來後的新起點。每完成一批就在 batches 追加一筆紀錄，並把該批 id 併入 completedIds。",
   "totalQuestions": 300,
-  "completedCount": 188,
-  "remainingCount": 112,
+  "completedCount": 207,
+  "remainingCount": 93,
   "batches": [
     {
       "batchLabel": "lo1-batch1",
@@ -152,6 +152,21 @@
         "lo4-gre-001", "lo4-gre-002", "lo4-gre-003", "lo4-gre-004",
         "lo4-mal-001", "lo4-mal-002", "lo4-mal-003", "lo4-mal-004"
       ]
+    },
+    {
+      "batchLabel": "lo4-batch2",
+      "idRange": "lo4-chb-001~004, lo4-zin-001~003, lo4-gam-001~003, lo4-gew-001~003, lo4-vio-001~003, lo4-sem-001~003",
+      "count": 19,
+      "completedAt": "2026-09-06",
+      "note": "LO4批次2：Chenin Blanc(4)/Zinfandel(3)/Gamay(3)/Gewürztraminer(3)/Viognier(3)/Sémillon(3)",
+      "ids": [
+        "lo4-chb-001", "lo4-chb-002", "lo4-chb-003", "lo4-chb-004",
+        "lo4-zin-001", "lo4-zin-002", "lo4-zin-003",
+        "lo4-gam-001", "lo4-gam-002", "lo4-gam-003",
+        "lo4-gew-001", "lo4-gew-002", "lo4-gew-003",
+        "lo4-vio-001", "lo4-vio-002", "lo4-vio-003",
+        "lo4-sem-001", "lo4-sem-002", "lo4-sem-003"
+      ]
     }
   ],
   "completedIds": [
@@ -195,6 +210,12 @@
     "lo4-san-001", "lo4-san-002", "lo4-san-003", "lo4-san-004",
     "lo4-neb-001", "lo4-neb-002", "lo4-neb-003", "lo4-neb-004",
     "lo4-gre-001", "lo4-gre-002", "lo4-gre-003", "lo4-gre-004",
-    "lo4-mal-001", "lo4-mal-002", "lo4-mal-003", "lo4-mal-004"
+    "lo4-mal-001", "lo4-mal-002", "lo4-mal-003", "lo4-mal-004",
+    "lo4-chb-001", "lo4-chb-002", "lo4-chb-003", "lo4-chb-004",
+    "lo4-zin-001", "lo4-zin-002", "lo4-zin-003",
+    "lo4-gam-001", "lo4-gam-002", "lo4-gam-003",
+    "lo4-gew-001", "lo4-gew-002", "lo4-gew-003",
+    "lo4-vio-001", "lo4-vio-002", "lo4-vio-003",
+    "lo4-sem-001", "lo4-sem-002", "lo4-sem-003"
   ]
 }
