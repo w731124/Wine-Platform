@@ -4239,11 +4239,11 @@ const QUIZ_BANK = [
     question: '強化酒的興起與大航海時代的長途海運密切相關，17世紀英國商人添加烈酒提高酒精度的目的為何？',
     options: [
       '純粹為了提高售價，與海運耐久性無關',
-      '讓運往英國的葡萄牙紅酒耐得住長途海運',
       '為了掩蓋葡萄牙紅酒本身的品質缺陷',
-      '為了符合英國當時的宗教飲酒規範'
+      '為了符合英國當時的宗教飲酒規範',
+      '讓運往英國的葡萄牙紅酒耐得住長途海運'
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: '17世紀英國商人為讓運往英國的葡萄牙紅酒耐得住長途海運，開始添加烈酒提高酒精度。'
   },
   {
@@ -4268,12 +4268,12 @@ const QUIZ_BANK = [
     sourceId: 'fortified',
     question: '雪莉酒的強化傳統源自何處，受什麼歷史文化影響？',
     options: [
-      '源自西班牙赫雷斯地區，受摩爾人影響的釀酒文化',
       '源自葡萄牙杜羅河谷，受英國商人影響',
-      '源自馬德拉島，受大航海時代長途海運影響',
-      '源自法國波爾多，受修道院釀酒傳統影響'
+      '源自馬德拉島，受大航海長途海運影響',
+      '源自法國波爾多，受修道院釀酒傳統影響',
+      '源自西班牙赫雷斯，受摩爾人釀酒文化影響'
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: '雪莉酒的強化傳統更早，源自西班牙赫雷斯地區受摩爾人影響的釀酒文化。'
   },
   {
@@ -4283,10 +4283,10 @@ const QUIZ_BANK = [
     sourceId: 'fortified',
     question: '馬德拉酒獨特的「刻意加熱陳年（estufagem）」工藝，其歷史成因為何？',
     options: [
-      '是釀酒師從一開始就刻意設計的工法，沒有意外成分',
-      '與溫度或海運完全無關，純粹是為了節省釀造成本',
-      '早期運酒船隻長期暴露於赤道高溫下，意外發現酒質更穩定醇厚，才發展出此工藝',
-      '源自古羅馬時期就已存在的加熱工藝'
+      '是釀酒師從一開始就刻意設計的工法，並無意外',
+      '與溫度或海運完全無關，純粹為節省釀造成本',
+      '運酒船長期暴露赤道高溫，意外發現酒質更穩定',
+      '源自古羅馬時期就已經存在的加熱工藝'
     ],
     correctIndex: 2,
     explanation: '早期運酒船隻長期暴露於赤道高溫下，意外發現酒質更穩定醇厚，才發展出刻意加熱陳年的工藝。'
@@ -4298,12 +4298,12 @@ const QUIZ_BANK = [
     sourceId: 'fortified',
     question: '波特酒的核心品種以哪個產區的原生品種混調而成？',
     options: [
-      '赫雷斯原生品種',
-      '杜羅河原生品種（如Touriga Nacional等）',
-      '馬德拉島原生品種',
-      '波爾多原生品種'
+      '馬德拉島當地的原生葡萄品種',
+      '波爾多地區的原生葡萄品種',
+      '杜羅河谷當地的原生葡萄品種',
+      '赫雷斯地區的原生葡萄品種'
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: '波特酒以Touriga Nacional等杜羅河原生品種混調。'
   },
   {
@@ -4313,9 +4313,9 @@ const QUIZ_BANK = [
     sourceId: 'fortified',
     question: '雪莉酒的乾型與甜型版本分別以什麼品種為主？',
     options: [
-      '乾型以Pedro Ximénez為主，甜型用Palomino',
-      '乾型以Palomino為主，甜型另用Pedro Ximénez或Moscatel',
-      '乾型與甜型使用完全相同的品種，僅釀造工法不同',
+      '乾型用PX為主，甜型反而用Palomino',
+      '乾型用Palomino，甜型用PX或Moscatel',
+      '乾型與甜型使用完全相同的品種類型',
       '乾型與甜型皆以Touriga Nacional為主'
     ],
     correctIndex: 1,
@@ -4328,12 +4328,12 @@ const QUIZ_BANK = [
     sourceId: 'fortified',
     question: '馬德拉酒的四大貴族品種（Sercial、Verdelho、Bual、Malmsey）如何對應風格光譜？',
     options: [
-      '對應由不甜到極甜的風格光譜，品種與甜度幾乎一一對應',
       '四個品種釀造出的甜度完全相同，沒有光譜差異',
       '只有Sercial一個品種真正用於釀酒，其餘三者僅具歷史意義',
+      '對應由不甜到極甜的風格光譜，品種與甜度幾乎一一對應',
       '四個品種對應的是酒精濃度光譜，與甜度無關'
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: '馬德拉酒四大貴族品種對應由不甜到極甜的風格光譜，品種與甜度幾乎一一對應。'
   },
   {
@@ -4343,10 +4343,10 @@ const QUIZ_BANK = [
     sourceId: 'fortified',
     question: '杜羅河谷陡峭的片岩梯田承受夏季酷暑，這種風土條件造就了波特酒葡萄的什麼特性？',
     options: [
-      '極低糖分',
+      '葡萄糖分極低不足',
       '極高酸度而糖分偏低',
-      '風土條件與波特酒葡萄的糖分濃縮完全無關',
-      '高度濃縮'
+      '風土與糖分濃縮完全無關',
+      '葡萄糖分高度濃縮'
     ],
     correctIndex: 3,
     explanation: '杜羅河谷陡峭的片岩梯田承受夏季酷暑，造就波特酒葡萄的高度濃縮。'
@@ -4358,12 +4358,12 @@ const QUIZ_BANK = [
     sourceId: 'fortified',
     question: '赫雷斯的albariza白堊土如何支撐Palomino品種在燠熱氣候下維持基本酸度？',
     options: [
+      '吸收陽光並加速水分快速蒸發',
+      '與陽光反射水分保留完全無關',
       '反射陽光並在乾季保留水分',
-      '吸收陽光並加速水分蒸發',
-      '與陽光反射或水分保留完全無關，純粹因土壤肥沃',
-      '白堊土會使葡萄提早成熟，因此與酸度保留無關'
+      '使葡萄提早成熟，與酸度保留無關'
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: 'albariza白堊土反射陽光並在乾季保留水分，支撐Palomino在燠熱氣候下維持基本酸度。'
   },
   {
@@ -4373,13 +4373,13 @@ const QUIZ_BANK = [
     sourceId: 'fortified',
     question: '波特酒與雪莉酒/馬德拉酒相比，強化時機的關鍵差異為何？',
     options: [
-      '三者皆於發酵中途強化，沒有差異',
-      '波特酒於發酵完全結束後才強化，雪莉酒與馬德拉酒則於發酵中途強化',
-      '波特酒於發酵中途強化，雪莉酒與馬德拉酒則於發酵完全結束後才強化',
+      '波特酒發酵後強化；雪莉馬德拉發酵中途強化',
+      '三者皆於發酵中途強化，沒有任何差異',
+      '波特酒發酵中途強化；雪莉馬德拉發酵後強化',
       '強化時機與這三款酒的甜度風格完全無關'
     ],
     correctIndex: 2,
-    explanation: '這是三者強化時機的關鍵差異，也直接影響波特酒天生帶甜的特性。'
+    explanation: '波特酒於發酵中途強化，藉此提前中止發酵、保留天然糖分，這正是波特酒天生帶甜的關鍵原因；雪莉酒與馬德拉酒則於發酵完全結束後才強化，因此可以做出如Fino這類完全不甜的風格。'
   },
   {
     id: 'lo5-for-011',
@@ -4388,12 +4388,12 @@ const QUIZ_BANK = [
     sourceId: 'fortified',
     question: '波特酒天生帶甜的原因，與其強化時機有何直接關聯？',
     options: [
+      '發酵中途強化會中止發酵，保留尚未轉化為酒精的天然糖分',
       '波特酒天生帶甜與強化時機完全無關，純粹是額外添加糖分所致',
       '波特酒的甜度來自發酵完全結束後額外添加的葡萄濃縮汁',
-      '波特酒其實不帶甜，甜度只是消費者的誤解',
-      '發酵中途強化會中止發酵，保留尚未轉化為酒精的天然糖分'
+      '波特酒其實不帶甜，甜度只是消費者的誤解'
     ],
-    correctIndex: 3,
+    correctIndex: 0,
     explanation: '發酵中途強化使酒精快速升高中止酵母活動，保留尚未轉化為酒精的天然糖分。'
   },
   {
@@ -4404,12 +4404,12 @@ const QUIZ_BANK = [
     question: '雪莉酒的Fino與Oloroso兩種主要風格，在陳年方式上的關鍵差異為何？',
     options: [
       '兩者皆採相同的氧化陳年方式，沒有差異',
+      'Fino採Flor生物陳年；Oloroso採氧化陳年',
       'Fino採氧化陳年，Oloroso則採Flor生物陳年',
-      '陳年方式與Fino、Oloroso的風格差異完全無關',
-      'Fino採Flor生物陳年，Oloroso則採氧化陳年，Amontillado為介於兩者之間的中間風格'
+      '陳年方式與兩者的風格差異完全沒有關聯'
     ],
-    correctIndex: 3,
-    explanation: 'Amontillado為介於兩者之間的中間風格。'
+    correctIndex: 1,
+    explanation: 'Fino採Flor生物陳年，Oloroso則採氧化陳年，Amontillado為介於兩者之間的中間風格。'
   },
   {
     id: 'lo5-for-013',
@@ -4418,12 +4418,12 @@ const QUIZ_BANK = [
     sourceId: 'fortified',
     question: '馬德拉酒的兩種加熱陳年方式「estufagem」與「canteiro」有何差異？',
     options: [
-      '兩者其實是同一種工法的不同稱呼，沒有實質差異',
       'estufagem為槽內加熱，canteiro則是閣樓自然受熱',
+      '兩者其實是同一種工法的不同稱呼，沒有實質差異',
       'estufagem是閣樓自然受熱，canteiro則是槽內加熱',
       'estufagem與canteiro皆專指瓶中陳年，與加熱無關'
     ],
-    correctIndex: 1,
+    correctIndex: 0,
     explanation: 'estufagem為槽內加熱，canteiro則是閣樓自然受熱。'
   },
   {
@@ -4433,13 +4433,13 @@ const QUIZ_BANK = [
     sourceId: 'fortified',
     question: '波特酒常見風格標示中，「Tawny(茶色)」與「Ruby(寶石紅)」的風味差異方向為何？',
     options: [
-      '由Ruby年輕果香到Tawny氧化堅果調性依序遞增，可再標示10/20/30/40年等陳年時長',
       '兩者風味完全相同，只是顏色標示不同',
-      'Tawny代表年輕果香，Ruby則代表氧化堅果調性',
-      'Tawny與Ruby皆專指未經任何陳年的新酒'
+      'Tawny代表年輕果香，Ruby反而代表氧化堅果調性',
+      'Tawny與Ruby皆專指未經任何陳年的新酒',
+      '由Ruby年輕果香到Tawny氧化堅果調性依序遞增'
     ],
-    correctIndex: 0,
-    explanation: '由Ruby、Reserve Ruby、LBV、Vintage至Tawny，由年輕果香至氧化堅果調性依序遞增。'
+    correctIndex: 3,
+    explanation: '由Ruby、Reserve Ruby、LBV、Vintage至Tawny，由年輕果香至氧化堅果調性依序遞增，可再標示10/20/30/40年等陳年時長。'
   },
   {
     id: 'lo5-for-015',
@@ -4448,13 +4448,13 @@ const QUIZ_BANK = [
     sourceId: 'fortified',
     question: '雪莉酒常見風格標示中，「Fino」與「Pedro Ximénez(PX)」在甜度光譜上的位置為何？',
     options: [
-      'Fino最甜，PX最干',
-      '兩者甜度完全相同，僅陳年方式不同',
-      'Fino與PX皆專指同一等級的中間甜度風格',
-      'Fino最干最淡，PX最濃最甜，兩者是雪莉酒甜度光譜的兩個極端'
+      'Fino反而最甜，PX則最干最淡不甜',
+      'Fino最干最淡，PX最濃最甜，是甜度光譜兩極端',
+      '兩者甜度完全相同，僅陳年方式不同而已',
+      'Fino與PX皆專指同一等級的中間甜度風格'
     ],
-    correctIndex: 3,
-    explanation: 'Fino最干最淡，PX最濃最甜。'
+    correctIndex: 1,
+    explanation: 'Fino最干最淡，PX最濃最甜，兩者是雪莉酒甜度光譜的兩個極端。'
   },
   {
     id: 'lo5-for-016',
@@ -4480,11 +4480,11 @@ const QUIZ_BANK = [
     options: [
       '指強化酒裝瓶時添加的花香調味劑',
       '指波特酒陳年過程中瓶內產生的沉澱物',
-      '一層天然酵母膜覆蓋於酒液表面、隔絕氧氣進行生物陳年，主要用於雪莉酒Fino系風格',
+      '天然酵母膜覆蓋酒液表面進行生物陳年',
       '指馬德拉酒加熱陳年過程中產生的焦糖化反應'
     ],
     correctIndex: 2,
-    explanation: 'Flor是雪莉酒Fino系風格的關鍵陳年機制。'
+    explanation: '一層天然酵母膜覆蓋於酒液表面、隔絕氧氣進行生物陳年，主要用於雪莉酒Fino系風格，是雪莉酒Fino系風格的關鍵陳年機制。'
   },
   {
     id: 'lo5-for-018',
@@ -4494,11 +4494,11 @@ const QUIZ_BANK = [
     question: '強化酒工藝術語「Solera System（索雷拉系統）」的核心概念為何？',
     options: [
       '指單一年份、單一酒桶的靜態陳年方式',
-      '專指波特酒的年份標示系統',
-      '多層次、多年份酒桶依序疊放並定期部分抽取調配的動態混調陳年系統，常見於雪莉酒',
+      '專指波特酒特有的年份標示系統',
+      '多層次多年份酒桶動態混調陳年系統',
       '指馬德拉酒特有的閣樓自然受熱陳年方式'
     ],
     correctIndex: 2,
-    explanation: '這是雪莉酒常用的多層次、多年份動態混調陳年系統，確保成品風格的一致性。'
+    explanation: '多層次、多年份酒桶依序疊放並定期部分抽取調配的動態混調陳年系統，常見於雪莉酒，確保成品風格的一致性。'
   }
 ];

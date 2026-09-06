@@ -1,8 +1,8 @@
 {
   "note": "quiz-data.js 題庫內容重寫進度追蹤檔。與已遺失的舊版 quiz-rewrite-progress.json 區隔，v2 為重來後的新起點。每完成一批就在 batches 追加一筆紀錄，並把該批 id 併入 completedIds。",
   "totalQuestions": 300,
-  "completedCount": 258,
-  "remainingCount": 42,
+  "completedCount": 276,
+  "remainingCount": 24,
   "batches": [
     {
       "batchLabel": "lo1-batch1",
@@ -209,6 +209,19 @@
         "lo5-spk-011", "lo5-spk-012", "lo5-spk-013", "lo5-spk-014", "lo5-spk-015",
         "lo5-spk-016", "lo5-spk-017", "lo5-spk-018"
       ]
+    },
+    {
+      "batchLabel": "lo5-fortified",
+      "idRange": "lo5-for-001~018",
+      "count": 18,
+      "completedAt": "2026-09-06",
+      "note": "LO5加烈酒批次18題 — LO5 complete；lo5-for-010內容因與lo5-for-011矛盾一度暫緩，經Harry確認修正後（波特酒發酵中途強化保留天然糖分）併入本批",
+      "ids": [
+        "lo5-for-001", "lo5-for-002", "lo5-for-003", "lo5-for-004", "lo5-for-005",
+        "lo5-for-006", "lo5-for-007", "lo5-for-008", "lo5-for-009", "lo5-for-010",
+        "lo5-for-011", "lo5-for-012", "lo5-for-013", "lo5-for-014", "lo5-for-015",
+        "lo5-for-016", "lo5-for-017", "lo5-for-018"
+      ]
     }
   ],
   "completedIds": [
@@ -273,6 +286,10 @@
     "lo5-spk-001", "lo5-spk-002", "lo5-spk-003", "lo5-spk-004", "lo5-spk-005",
     "lo5-spk-006", "lo5-spk-007", "lo5-spk-008", "lo5-spk-009", "lo5-spk-010",
     "lo5-spk-011", "lo5-spk-012", "lo5-spk-013", "lo5-spk-014", "lo5-spk-015",
-    "lo5-spk-016", "lo5-spk-017", "lo5-spk-018"
+    "lo5-spk-016", "lo5-spk-017", "lo5-spk-018",
+    "lo5-for-001", "lo5-for-002", "lo5-for-003", "lo5-for-004", "lo5-for-005",
+    "lo5-for-006", "lo5-for-007", "lo5-for-008", "lo5-for-009", "lo5-for-010",
+    "lo5-for-011", "lo5-for-012", "lo5-for-013", "lo5-for-014", "lo5-for-015",
+    "lo5-for-016", "lo5-for-017", "lo5-for-018"
   ]
 }
