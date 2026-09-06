@@ -3743,12 +3743,12 @@ const QUIZ_BANK = [
     sourceId: 'verdicchio',
     question: 'Verdicchio在20世紀中期以什麼行銷手法推廣全球，卻也因此長期被貼上「廉價量產」標籤？',
     options: [
-      '限量編號酒標行銷',
-      '手工吹製水晶瓶行銷',
-      '魚形酒瓶行銷',
+      '獨特的魚形酒瓶包裝行銷',
+      '限量編號酒標行銷手法',
+      '手工吹製水晶瓶行銷手法',
       '生肖年份特殊瓶身行銷'
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: '以魚形酒瓶行銷全球，成為義大利白酒能見度最高的品種之一。'
   },
   {
@@ -3758,9 +3758,9 @@ const QUIZ_BANK = [
     sourceId: 'verdicchio',
     question: '近年Bucci、Garofoli等酒莊致力於Riserva等級的低產量釀造，證明Verdicchio的什麼特性足以支撐長期陳年？',
     options: [
-      '極高的單寧含量',
-      '天生的高酸度',
-      '極低的酒精濃度',
+      '極高的單寧含量表現',
+      '天生具備的高酸度特性',
+      '極低的酒精濃度表現',
       '特殊的貴腐感染能力'
     ],
     correctIndex: 1,
@@ -3773,13 +3773,13 @@ const QUIZ_BANK = [
     sourceId: 'verdicchio',
     question: 'Verdicchio與Cortese（釀造Gavi的品種）因風味特徵相近而偶爾混淆，兩者最可靠的辨識方式為何？',
     options: [
-      '兩者的酒精濃度差異，Cortese遠高於Verdicchio',
-      '產區（馬爾凱vs皮埃蒙特），Verdicchio果香更偏柑橘與青蘋果，Cortese則風格更中性寡淡',
-      '兩者的顏色深淺，Cortese顏色明顯較深',
-      '兩者無法透過任何方式區辨，完全相同'
+      '兩者酒精濃度差異，Cortese遠高於Verdicchio',
+      '產區不同，Verdicchio偏柑橘青蘋果，Cortese較中性',
+      '兩者顏色深淺不同，Cortese顏色明顯較深',
+      '兩者無法透過任何方式區辨，完全相同一致'
     ],
     correctIndex: 1,
-    explanation: '最可靠的辨識方式仍是產區，兩者風味細節也有差異。'
+    explanation: '最可靠的辨識方式仍是產區（馬爾凱vs皮埃蒙特），Verdicchio果香更偏柑橘與青蘋果，Cortese則風格更中性寡淡，兩者風味細節也有差異。'
   },
   {
     id: 'lo4-cot-001',
@@ -3788,12 +3788,12 @@ const QUIZ_BANK = [
     sourceId: 'cortese',
     question: 'Cortese傳統上因風味中性、缺乏強烈品種特徵而長期被視為配角，是什麼契機讓它躍升為義大利最具國際知名度的白酒品種之一？',
     options: [
-      '1990年代加入DOCG最高分級',
+      '1990年代加入DOCG最高分級體系',
       '20世紀初被引入法國香檳區混調',
-      '1970年代後Gavi產區致力於行銷推廣',
-      '二戰後被聯合國列為保護品種'
+      '二戰後被聯合國正式列為保護品種',
+      '1970年代後Gavi產區致力行銷推廣'
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: '1970年代後Gavi產區致力於行銷推廣，讓Cortese躍升為義大利最具國際知名度的白酒品種之一。'
   },
   {
@@ -3818,13 +3818,13 @@ const QUIZ_BANK = [
     sourceId: 'cortese',
     question: 'Cortese與Verdicchio因風味中性、酸度高而常被混淆，兩者的辨識差異為何？',
     options: [
-      '兩者風味完全相同，無法區分',
-      'Cortese整體風味更寡淡內斂、礦物感更明顯，Verdicchio則帶有更明顯的杏仁與核果調性',
-      'Verdicchio風味更寡淡內斂，Cortese則帶明顯杏仁核果調性',
-      '兩者的差異只在於顏色深淺'
+      'Cortese更寡淡內斂礦物；Verdicchio帶杏仁核果',
+      '兩者風味完全相同，無法加以區分辨別',
+      'Verdicchio反而更寡淡內斂，Cortese帶杏仁核果調性',
+      '兩者的差異純粹只在於顏色深淺不同'
     ],
-    correctIndex: 1,
-    explanation: '仍建議以產區作為最終辨識依據。'
+    correctIndex: 0,
+    explanation: 'Cortese整體風味更寡淡內斂、礦物感更明顯，Verdicchio則帶有更明顯的杏仁與核果調性，仍建議以產區作為最終辨識依據。'
   },
   {
     id: 'lo4-gar-001',
@@ -3833,12 +3833,12 @@ const QUIZ_BANK = [
     sourceId: 'garganega',
     question: 'Garganega在火山玄武岩地塊上發展出獨特的礦物質結構，這與東側平原什麼土壤種植的酒款形成鮮明品質落差？',
     options: [
-      '花崗岩砂質土',
-      '純黏土地質',
-      '石灰岩沖積土',
-      '礫石台地'
+      '花崗岩砂質土壤',
+      '純黏土質地土壤',
+      '礫石台地地形',
+      '石灰岩沖積土壤'
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation: '火山玄武岩地塊與東側平原石灰岩沖積土形成鮮明品質落差。'
   },
   {
@@ -3848,12 +3848,12 @@ const QUIZ_BANK = [
     sourceId: 'garganega',
     question: '1970至80年代哪些先驅酒莊致力於提升Soave Classico核心區的品質形象，扭轉外界對Soave廉價量產的刻板印象？',
     options: [
-      'Pieropan、Anselmi等酒莊',
       'Antinori、Frescobaldi等酒莊',
-      'Gaja、Ceretto等酒莊',
-      'Mastroberardino酒莊'
+      'Gaja、Ceretto等知名酒莊',
+      'Pieropan、Anselmi等酒莊',
+      'Mastroberardino家族酒莊'
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: 'Pieropan、Anselmi等先驅酒莊致力於提升Classico核心區的品質形象。'
   },
   {
@@ -3864,12 +3864,12 @@ const QUIZ_BANK = [
     question: 'Garganega與Corvina（Valpolicella/Amarone的核心紅葡萄品種）常被一併作為教學對照組，兩者的共通與差異點為何？',
     options: [
       '兩者其實是完全相同的品種，只是顏色標示不同',
-      'Garganega是紅葡萄，Corvina是白葡萄',
-      '兩者風味與風乾工法皆有相似之處，但Garganega是白葡萄、Corvina是紅葡萄，分屬威尼托紅白酒的代表品種',
+      'Garganega反而是紅葡萄，Corvina才是白葡萄',
+      '兩者風乾工法相似，但一白一紅分屬威尼托代表',
       '兩者完全沒有任何共通點，不會被一併討論'
     ],
     correctIndex: 2,
-    explanation: '常作為「威尼托風乾工法不限紅白酒」的教學對照組。'
+    explanation: '兩者風味與風乾工法皆有相似之處，但Garganega是白葡萄、Corvina是紅葡萄，分屬威尼托紅白酒的代表品種，常作為「威尼托風乾工法不限紅白酒」的教學對照組。'
   },
   {
     id: 'lo4-fia-001',
@@ -3878,12 +3878,12 @@ const QUIZ_BANK = [
     sourceId: 'fiano',
     question: '古羅馬時期文獻記載的「Apianum」可能即為Fiano的前身，這個名稱的由來與什麼有關？',
     options: [
+      '意指蜜蜂偏愛採集其香甜果實',
       '意指品種原產於古羅馬的Apium地區',
       '意指這是修道院僧侶培育的品種',
-      '意指這是專供皇室釀酒使用的品種',
-      '意指蜜蜂偏愛採集其香甜果實'
+      '意指這是專供皇室釀酒使用的品種'
     ],
-    correctIndex: 3,
+    correctIndex: 0,
     explanation: '古羅馬時期文獻記載的「Apianum」意指蜜蜂偏愛採集其香甜果實。'
   },
   {
@@ -3893,12 +3893,12 @@ const QUIZ_BANK = [
     sourceId: 'fiano',
     question: '哪個家族酒莊在20世紀是保存與復興Fiano的關鍵推手，並於1978年推出現代版Fiano di Avellino奠定其品質聲望？',
     options: [
-      'Mastroberardino家族酒莊',
-      'Antinori家族酒莊',
-      'Gaja家族酒莊',
-      'Bologna家族酒莊'
+      'Antinori家族老牌知名酒莊',
+      'Gaja家族老牌頂級酒莊',
+      'Bologna家族老牌知名酒莊',
+      'Mastroberardino家族酒莊'
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation: 'Mastroberardino家族酒莊是保存與復興本品種的關鍵推手。'
   },
   {
@@ -3908,13 +3908,13 @@ const QUIZ_BANK = [
     sourceId: 'fiano',
     question: 'Fiano與Verdicchio同樣強調陳年實力而常被一併討論，兩者的風味差異為何？',
     options: [
-      '兩者風味完全相同，僅產區不同',
-      'Verdicchio的蜂蜜堅果調性更濃郁厚實，Fiano則走清爽柑橘路線',
-      '兩者皆完全不具備任何陳年實力',
-      'Fiano的蜂蜜與堅果調性更濃郁厚實，Verdicchio則以柑橘與杏仁的清爽調性為主'
+      '兩者風味完全相同，僅產區不同而已之別',
+      'Verdicchio反而蜂蜜堅果更濃郁，Fiano走清爽柑橘路線',
+      'Fiano蜂蜜堅果更濃郁；Verdicchio柑橘杏仁清爽',
+      '兩者皆完全不具備任何陳年實力可言'
     ],
-    correctIndex: 3,
-    explanation: '兩者最可靠的辨識方式仍是產區（坎帕尼亞vs馬爾凱）。'
+    correctIndex: 2,
+    explanation: 'Fiano的蜂蜜與堅果調性更濃郁厚實，Verdicchio則以柑橘與杏仁的清爽調性為主，兩者最可靠的辨識方式仍是產區（坎帕尼亞vs馬爾凱）。'
   },
   {
     id: 'lo4-fur-001',
@@ -3923,12 +3923,12 @@ const QUIZ_BANK = [
     sourceId: 'furmint',
     question: 'Furmint特別容易感染貴腐菌（Botrytis cinerea），這得益於Tokaj產區哪兩條河流交會處秋季易起的晨霧？',
     options: [
-      '多瑙河與萊茵河',
-      'Bodrog與Tisza兩河',
-      '隆河與索恩河',
-      '萊茵河與摩塞爾河'
+      '多瑙河與萊茵河交會之處',
+      '隆河與索恩河交會之處',
+      'Bodrog與Tisza兩河交會處',
+      '萊茵河與摩塞爾河交會處'
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: 'Bodrog與Tisza兩河交會處秋季易起的晨霧，造就傳奇的Tokaji Aszú貴腐甜酒。'
   },
   {
@@ -3938,12 +3938,12 @@ const QUIZ_BANK = [
     sourceId: 'furmint',
     question: 'Furmint除了傳統貴腐甜酒外，近年還發展出什麼獨立風格，因其高酸度與礦物感逐漸受到國際市場關注？',
     options: [
-      '氣泡酒',
-      '加烈酒',
-      '粉紅酒',
-      '不甜型乾白酒'
+      '氣泡酒釀造風格',
+      '不甜型乾白酒風格',
+      '加烈酒釀造風格',
+      '粉紅酒釀造風格'
     ],
-    correctIndex: 3,
+    correctIndex: 1,
     explanation: '不甜型Furmint乾白酒被視為匈牙利白酒的下一波浪潮。'
   },
   {
@@ -3953,13 +3953,13 @@ const QUIZ_BANK = [
     sourceId: 'furmint',
     question: 'Furmint與Tokaj混調搭檔Hárslevelű相比，兩者在混調中角色互補的方式為何？',
     options: [
-      '兩者角色完全相同，可互相替代',
-      'Furmint酸度更高、骨架更緊實，是主導品種；Hárslevelű則香氣更奔放、帶明顯椴樹花與蜂蜜調性，用於補充香氣複雜度',
-      'Hárslevelű是主導品種，Furmint只用於補充香氣',
-      'Furmint與Hárslevelű從未一起混調'
+      '兩者角色完全相同，可以互相替代使用',
+      'Hárslevelű反而是主導品種，Furmint只補充香氣',
+      'Furmint與Hárslevelű兩者從未一起混調過',
+      'Furmint酸高骨架緊是主導；Hárslevelű補充香氣複雜度'
     ],
-    correctIndex: 1,
-    explanation: '兩者角色互補而非替代關係。'
+    correctIndex: 3,
+    explanation: 'Furmint酸度更高、骨架更緊實，是主導品種；Hárslevelű則香氣更奔放、帶明顯椴樹花與蜂蜜調性，用於補充香氣複雜度，兩者角色互補而非替代關係。'
   },
   {
     id: 'lo5-spk-001',

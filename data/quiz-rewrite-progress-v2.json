@@ -1,8 +1,8 @@
 {
   "note": "quiz-data.js 題庫內容重寫進度追蹤檔。與已遺失的舊版 quiz-rewrite-progress.json 區隔，v2 為重來後的新起點。每完成一批就在 batches 追加一筆紀錄，並把該批 id 併入 completedIds。",
   "totalQuestions": 300,
-  "completedCount": 225,
-  "remainingCount": 75,
+  "completedCount": 240,
+  "remainingCount": 60,
   "batches": [
     {
       "batchLabel": "lo1-batch1",
@@ -182,6 +182,20 @@
         "lo4-pin-001", "lo4-pin-002", "lo4-pin-003",
         "lo4-car-001", "lo4-car-002", "lo4-car-003"
       ]
+    },
+    {
+      "batchLabel": "lo4-batch4",
+      "idRange": "lo4-ver-001~003, lo4-cot-001~003, lo4-gar-001~003, lo4-fia-001~003, lo4-fur-001~003",
+      "count": 15,
+      "completedAt": "2026-09-06",
+      "note": "LO4批次4：Verdicchio/Cortese/Garganega/Fiano/Furmint各3題 — LO4 complete",
+      "ids": [
+        "lo4-ver-001", "lo4-ver-002", "lo4-ver-003",
+        "lo4-cot-001", "lo4-cot-002", "lo4-cot-003",
+        "lo4-gar-001", "lo4-gar-002", "lo4-gar-003",
+        "lo4-fia-001", "lo4-fia-002", "lo4-fia-003",
+        "lo4-fur-001", "lo4-fur-002", "lo4-fur-003"
+      ]
     }
   ],
   "completedIds": [
@@ -237,6 +251,11 @@
     "lo4-cor-001", "lo4-cor-002", "lo4-cor-003",
     "lo4-mon-001", "lo4-mon-002", "lo4-mon-003",
     "lo4-pin-001", "lo4-pin-002", "lo4-pin-003",
-    "lo4-car-001", "lo4-car-002", "lo4-car-003"
+    "lo4-car-001", "lo4-car-002", "lo4-car-003",
+    "lo4-ver-001", "lo4-ver-002", "lo4-ver-003",
+    "lo4-cot-001", "lo4-cot-002", "lo4-cot-003",
+    "lo4-gar-001", "lo4-gar-002", "lo4-gar-003",
+    "lo4-fia-001", "lo4-fia-002", "lo4-fia-003",
+    "lo4-fur-001", "lo4-fur-002", "lo4-fur-003"
   ]
 }
