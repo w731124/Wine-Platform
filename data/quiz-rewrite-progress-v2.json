@@ -1,8 +1,8 @@
 {
   "note": "quiz-data.js 題庫內容重寫進度追蹤檔。與已遺失的舊版 quiz-rewrite-progress.json 區隔，v2 為重來後的新起點。每完成一批就在 batches 追加一筆紀錄，並把該批 id 併入 completedIds。",
   "totalQuestions": 300,
-  "completedCount": 168,
-  "remainingCount": 132,
+  "completedCount": 188,
+  "remainingCount": 112,
   "batches": [
     {
       "batchLabel": "lo1-batch1",
@@ -138,6 +138,20 @@
         "lo3-syr-011", "lo3-syr-012", "lo3-syr-013", "lo3-syr-014",
         "lo3-sup-001", "lo3-sup-002"
       ]
+    },
+    {
+      "batchLabel": "lo4-batch1",
+      "idRange": "lo4-tem-001~004, lo4-san-001~004, lo4-neb-001~004, lo4-gre-001~004, lo4-mal-001~004",
+      "count": 20,
+      "completedAt": "2026-09-06",
+      "note": "LO4批次1：Tempranillo/Sangiovese/Nebbiolo/Grenache/Malbec各4題",
+      "ids": [
+        "lo4-tem-001", "lo4-tem-002", "lo4-tem-003", "lo4-tem-004",
+        "lo4-san-001", "lo4-san-002", "lo4-san-003", "lo4-san-004",
+        "lo4-neb-001", "lo4-neb-002", "lo4-neb-003", "lo4-neb-004",
+        "lo4-gre-001", "lo4-gre-002", "lo4-gre-003", "lo4-gre-004",
+        "lo4-mal-001", "lo4-mal-002", "lo4-mal-003", "lo4-mal-004"
+      ]
     }
   ],
   "completedIds": [
@@ -176,6 +190,11 @@
     "lo3-syr-001", "lo3-syr-002", "lo3-syr-003", "lo3-syr-004", "lo3-syr-005",
     "lo3-syr-006", "lo3-syr-007", "lo3-syr-008", "lo3-syr-009", "lo3-syr-010",
     "lo3-syr-011", "lo3-syr-012", "lo3-syr-013", "lo3-syr-014",
-    "lo3-sup-001", "lo3-sup-002"
+    "lo3-sup-001", "lo3-sup-002",
+    "lo4-tem-001", "lo4-tem-002", "lo4-tem-003", "lo4-tem-004",
+    "lo4-san-001", "lo4-san-002", "lo4-san-003", "lo4-san-004",
+    "lo4-neb-001", "lo4-neb-002", "lo4-neb-003", "lo4-neb-004",
+    "lo4-gre-001", "lo4-gre-002", "lo4-gre-003", "lo4-gre-004",
+    "lo4-mal-001", "lo4-mal-002", "lo4-mal-003", "lo4-mal-004"
   ]
 }
