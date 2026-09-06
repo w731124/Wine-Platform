@@ -3473,13 +3473,13 @@ const QUIZ_BANK = [
     sourceId: 'albarino',
     question: 'Albariño起源於西班牙哪個地區，品種名稱可能暗示與哪國品種的歷史關聯（此說法尚無確切DNA證據支持）？',
     options: [
-      '安達魯西亞，名稱源自阿拉伯語',
-      '加利西亞下海灣地區，名稱可能源自「白色的萊茵」，暗示與德國白酒品種的可能歷史關聯',
-      '加泰隆尼亞，名稱源自法語',
-      '里奧哈，名稱源自拉丁語'
+      '加利西亞下海灣，名稱可能源自「白色的萊茵」',
+      '安達魯西亞地區，名稱源自阿拉伯語系詞彙',
+      '加泰隆尼亞地區，名稱源自法語相關詞彙',
+      '里奧哈產區一帶，名稱源自拉丁語詞根'
     ],
-    correctIndex: 1,
-    explanation: '起源於西班牙西北部加利西亞下海灣地區，名稱可能源自「白色的萊茵」，此說法尚無確切DNA證據支持。'
+    correctIndex: 0,
+    explanation: '起源於西班牙西北部加利西亞下海灣地區，名稱可能源自「白色的萊茵」，暗示與德國白酒品種的可能歷史關聯，此說法尚無確切DNA證據支持。'
   },
   {
     id: 'lo4-alb-002',
@@ -3488,13 +3488,13 @@ const QUIZ_BANK = [
     sourceId: 'albarino',
     question: 'Albariño在鄰近的葡萄牙青酒（Vinho Verde）產區稱為什麼名稱，兩者差異主要來自何處？',
     options: [
-      '稱為Alvarinho，兩者其實是完全不同的獨立品種',
-      '名稱完全相同，沒有任何差異',
-      '稱為Godello，是另一個西班牙品種',
-      '稱為Alvarinho，差異主要來自產地風土與法規（葡萄牙版本傳統上帶微氣泡感、酒精度較低）'
+      '稱為Alvarinho，差異來自風土與法規',
+      '稱為Alvarinho，兩者是完全不同的獨立品種',
+      '名稱完全相同，兩地之間沒有任何差異',
+      '稱為Godello，其實是另一個西班牙品種'
     ],
-    correctIndex: 3,
-    explanation: '與葡萄牙版本Alvarinho為完全相同品種，差異主要來自產地風土與法規。'
+    correctIndex: 0,
+    explanation: '與葡萄牙版本Alvarinho為完全相同品種，差異主要來自產地風土與法規（葡萄牙版本傳統上帶微氣泡感、酒精度較低）。'
   },
   {
     id: 'lo4-alb-003',
@@ -3503,12 +3503,12 @@ const QUIZ_BANK = [
     sourceId: 'albarino',
     question: 'Albariño與Sauvignon Blanc相比，兩者高酸的共通點容易讓人誤判，實際風味差異為何？',
     options: [
-      '白蘇維濃的海洋鹹鮮感更明顯，阿爾巴利諾則草本調性強烈',
+      '白蘇維濃的海洋鹹鮮感更明顯，阿爾巴利諾草本強烈',
+      '兩者風味幾乎完全相同，沒有可辨識差異',
       '阿爾巴利諾的海洋鹹鮮感更明顯、草本調性較弱',
-      '兩者風味完全相同，沒有可辨識差異',
-      '阿爾巴利諾完全沒有任何香氣特徵'
+      '阿爾巴利諾完全沒有任何可辨識的香氣特徵'
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: '阿爾巴利諾的海洋鹹鮮感更明顯、草本調性較弱。'
   },
   {
@@ -3518,13 +3518,13 @@ const QUIZ_BANK = [
     sourceId: 'barbera',
     question: "1980年代Giacomo Bologna等釀酒師開始嘗試什麼做法，扭轉外界對Barbera「僅適合日常飲用」的刻板印象？",
     options: [
-      '改用大型舊橡木桶延長陳年',
-      '完全停止使用橡木桶，改用不鏽鋼槽',
-      '改種植於更冷涼的高海拔地區',
-      "小型法國橡木桶陳釀（barrique），推出如Bricco dell'Uccellone等指標酒款"
+      '改用大型舊橡木桶延長陳年時間',
+      '完全停止使用任何橡木桶，改用不鏽鋼槽',
+      '改種植於氣候更冷涼的高海拔地區',
+      '改用小型法國橡木桶陳釀（barrique）新工法'
     ],
     correctIndex: 3,
-    explanation: "1980年代嘗試小型法國橡木桶陳釀，證明本品種也能釀出具陳年潛力的頂級版本。"
+    explanation: "1980年代嘗試小型法國橡木桶陳釀（barrique），推出如Bricco dell'Uccellone等指標酒款，證明本品種也能釀出具陳年潛力的頂級版本。"
   },
   {
     id: 'lo4-bar-002',
@@ -3533,13 +3533,13 @@ const QUIZ_BANK = [
     sourceId: 'barbera',
     question: 'Barbera與同產區的Nebbiolo相比，兩者風格上的關鍵差異為何？',
     options: [
-      '兩者風格幾乎完全相同，常被消費者搞混',
+      '兩者風格幾乎完全相同，常被消費者搞混誤認',
+      'Barbera單寧輕酸高深色；Nebbiolo單寧重顏色淡',
       'Nebbiolo單寧極輕、酸度極高，Barbera則單寧極重',
-      'Barbera的顏色比Nebbiolo更淺淡',
-      'Barbera單寧極輕、酸度極高、顏色深邃；Nebbiolo則單寧極重、顏色反而較淡、需要長期陳年軟化'
+      'Barbera的顏色反而比Nebbiolo更加淺淡許多'
     ],
-    correctIndex: 3,
-    explanation: '兩者風格迥異，常見於同一酒莊產品線用以區隔日常款與頂級陳年款。'
+    correctIndex: 1,
+    explanation: 'Barbera單寧極輕、酸度極高、顏色深邃；Nebbiolo則單寧極重、顏色反而較淡、需要長期陳年軟化，兩者風格迥異，常見於同一酒莊產品線用以區隔日常款與頂級陳年款。'
   },
   {
     id: 'lo4-bar-003',
@@ -3550,11 +3550,11 @@ const QUIZ_BANK = [
     options: [
       '極高酸度代表這款酒完全不適合搭配任何食物',
       '酸度評分與其作為日常餐酒的定位完全無關',
-      '極高酸度是其核心特徵，使其長期作為適合日常配餐的親民餐酒選擇',
+      '極高酸度是核心特徵，使其成為親民餐酒選擇',
       '9分代表Barbera的酸度是所有品種中最低的'
     ],
     correctIndex: 2,
-    explanation: 'profile.acidity為9，解釋了其長期作為日常餐酒選擇的原因。'
+    explanation: 'profile.acidity為9，極高酸度是其核心特徵，使其長期作為適合日常配餐的親民餐酒選擇，解釋了其長期作為日常餐酒選擇的原因。'
   },
   {
     id: 'lo4-cor-001',
@@ -3563,13 +3563,13 @@ const QUIZ_BANK = [
     sourceId: 'corvina',
     question: '威尼托Valpolicella產區獨特的風乾工法（Appassimento）如何將Corvina轉化為Amarone？',
     options: [
-      '將採收葡萄置於通風閣樓風乾3–4個月，大幅濃縮糖分與風味，發酵後轉化為酒精度極高的Amarone',
-      '將葡萄直接冷凍後榨汁，如同冰酒工法',
-      '將葡萄浸泡於橡木桶中數月後才發酵',
-      '完全不經過任何特殊工法，僅是不同的混調比例'
+      '將葡萄直接冷凍後榨汁，如同冰酒工法一般處理',
+      '採收葡萄置於閣樓風乾數月，濃縮糖分風味成Amarone',
+      '將葡萄浸泡於橡木桶中長達數月後才進行發酵',
+      '完全不經過任何特殊工法，只是混調比例有所不同'
     ],
-    correctIndex: 0,
-    explanation: '風乾工法能大幅濃縮糖分與風味，轉化為酒精度極高的Amarone。'
+    correctIndex: 1,
+    explanation: '將採收葡萄置於通風閣樓風乾3–4個月，大幅濃縮糖分與風味，發酵後轉化為酒精度極高的Amarone。'
   },
   {
     id: 'lo4-cor-002',
@@ -3578,13 +3578,13 @@ const QUIZ_BANK = [
     sourceId: 'corvina',
     question: 'Corvina與其混調搭檔Rondinella、Corvinone相比，三者在混調中的角色分工為何？',
     options: [
-      '三者風味特徵完全相同，角色可互相替代',
-      'Rondinella是主導品種，Corvina僅用於補充色澤',
-      'Corvina是三者中風味最濃郁、酸度最高的主導品種；Rondinella主要用於補充色澤與產量；Corvinone顆粒較大、糖分濃縮效果更好',
-      'Corvinone是產量最不穩定、最少使用的品種'
+      '三者風味特徵完全相同，角色可互相替代使用',
+      'Rondinella反而是主導品種，Corvina僅補充色澤',
+      'Corvinone是產量最不穩定、最少被使用的品種',
+      'Corvina風味最濃是主導品種，Rondinella補色澤'
     ],
-    correctIndex: 2,
-    explanation: 'Corvina是主導品種，Rondinella補充色澤產量，Corvinone顆粒較大糖分濃縮效果更好。'
+    correctIndex: 3,
+    explanation: 'Corvina是三者中風味最濃郁、酸度最高的主導品種；Rondinella主要用於補充色澤與產量；Corvinone顆粒較大、糖分濃縮效果更好。'
   },
   {
     id: 'lo4-cor-003',
@@ -3593,13 +3593,13 @@ const QUIZ_BANK = [
     sourceId: 'corvina',
     question: 'Corvina作為傳統清爽早飲的日常紅酒，與經Appassimento工法製成的Amarone版本，兩者建議侍酒溫度有何不同？',
     options: [
-      '一般Corvina建議14–15°C，Amarone版本因酒體更濃郁厚重則建議提高至16–18°C',
-      '兩者建議侍酒溫度完全相同',
-      '一般Corvina建議16–18°C，Amarone版本則建議降溫至6–8°C',
-      '侍酒溫度與工法差異無關，純粹依個人喜好決定'
+      '兩者建議侍酒溫度完全相同，皆為14–15°C',
+      '一般建議14–15°C，Amarone則提高至16–18°C',
+      '一般建議16–18°C，Amarone反而降至6–8°C',
+      '侍酒溫度與工法差異完全無關，純憑個人喜好'
     ],
-    correctIndex: 0,
-    explanation: 'servingTemp欄位標示為14–15°C（Amarone版本16–18°C）。'
+    correctIndex: 1,
+    explanation: 'servingTemp欄位標示為一般Corvina建議14–15°C，Amarone版本因酒體更濃郁厚重則建議提高至16–18°C。'
   },
   {
     id: 'lo4-mon-001',
@@ -3608,13 +3608,13 @@ const QUIZ_BANK = [
     sourceId: 'montepulciano',
     question: 'Montepulciano品種名稱與托斯卡尼小鎮「Montepulciano」（以Sangiovese釀造Vino Nobile di Montepulciano）之間的關係為何？',
     options: [
-      '小鎮名稱源自這個品種，兩者是同一件事',
-      '這個品種其實就種植在托斯卡尼小鎮Montepulciano',
-      '兩者是同一品種的不同稱呼方式',
-      '兩者完全無關，是WSET考試中經典的「同名不同義」命名陷阱——一個是品種名稱、一個是地名'
+      '兩者完全無關，是經典的「同名不同義」命名陷阱',
+      '小鎮名稱其實源自這個品種，兩者是同一件事',
+      '這個品種其實就種植在托斯卡尼小鎮境內',
+      '兩者其實是同一品種的不同稱呼方式而已'
     ],
-    correctIndex: 3,
-    explanation: '這是WSET考試中經典的命名陷阱，一個是品種名稱、一個是地名。'
+    correctIndex: 0,
+    explanation: '兩者完全無關，是WSET考試中經典的「同名不同義」命名陷阱——一個是品種名稱、一個是地名。'
   },
   {
     id: 'lo4-mon-002',
@@ -3623,13 +3623,13 @@ const QUIZ_BANK = [
     sourceId: 'montepulciano',
     question: 'Montepulciano d\'Abruzzo與Vino Nobile di Montepulciano這兩款酒名稱相似，實際差異為何？',
     options: [
-      '兩者使用完全相同的品種，只是產區不同',
-      '前者用Sangiovese釀造，後者用Montepulciano品種釀造',
-      '前者用Montepulciano品種釀造；後者是托斯卡尼小鎮以Sangiovese（當地稱Prugnolo Gentile）釀造，兩者品種完全不同',
-      '兩者名稱雖相似但其實是同一款酒的不同標示'
+      '兩者使用完全相同的品種，只是產區不同而已',
+      '前者反而用Sangiovese釀造，後者用Montepulciano品種',
+      '兩者名稱雖相似，但其實是同一款酒的不同標示',
+      '前者用Montepulciano釀造；後者用Sangiovese釀造'
     ],
-    correctIndex: 2,
-    explanation: '兩者品種完全不同，僅因巧合共用「Montepulciano」字樣。'
+    correctIndex: 3,
+    explanation: '前者用Montepulciano品種釀造；後者是托斯卡尼小鎮以Sangiovese（當地稱Prugnolo Gentile）釀造，兩者品種完全不同，僅因巧合共用「Montepulciano」字樣。'
   },
   {
     id: 'lo4-mon-003',
@@ -3638,12 +3638,12 @@ const QUIZ_BANK = [
     sourceId: 'montepulciano',
     question: 'Montepulciano作為全球最暢銷的義大利紅酒之一，主要種植於義大利哪個地區？',
     options: [
-      '阿布魯佐',
       '皮埃蒙特',
+      '阿布魯佐',
       '威尼托',
       '西西里島'
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: '原生於義大利中部，主要種植於阿布魯佐。'
   },
   {
@@ -3653,12 +3653,12 @@ const QUIZ_BANK = [
     sourceId: 'pinotage',
     question: '1925年斯泰倫博斯大學教授Abraham Izak Perold以哪兩個品種雜交培育出Pinotage？',
     options: [
-      '黑皮諾與神索（當時誤稱為Hermitage，因此得名Pinotage）',
-      '卡本內蘇維濃與梅洛',
-      '希哈與格那希',
-      '田帕尼優與格那希'
+      '卡本內蘇維濃與梅洛兩個知名波爾多品種',
+      '希哈與格那希兩個經典隆河代表品種',
+      '黑皮諾與神索，因神索誤稱Hermitage而得名',
+      '田帕尼優與格那希兩個西班牙代表品種'
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: '1925年由Perold以黑皮諾與神索雜交培育而成，因神索當時誤稱Hermitage，故得名Pinotage。'
   },
   {
@@ -3668,13 +3668,13 @@ const QUIZ_BANK = [
     sourceId: 'pinotage',
     question: 'Pinotage雖親本之一為Pinot Noir常被誤認風味相近，但實際風格差異為何？',
     options: [
-      'Pinotage單寧與酒精度皆更高、帶有招牌煙燻／橡膠調性；黑皮諾則酸度更高、單寧更輕盈、以紅色漿果與泥土氣息為主',
-      '兩者風味特徵幾乎完全相同，難以區分',
-      '黑皮諾的單寧與酒精度皆高於Pinotage',
-      'Pinotage以紅色漿果與泥土氣息為主，黑皮諾則帶煙燻調性'
+      'Pinotage單寧酒精更高帶煙燻；黑皮諾酸高單寧輕',
+      '兩者風味特徵幾乎完全相同，難以區分辨別',
+      '黑皮諾的單寧與酒精度反而皆高於Pinotage',
+      'Pinotage反而以紅色漿果泥土氣息為主，黑皮諾帶煙燻調性'
     ],
     correctIndex: 0,
-    explanation: '兩者風格截然不同，Pinotage單寧酒精度更高帶煙燻調性，黑皮諾則更輕盈細膩。'
+    explanation: 'Pinotage單寧與酒精度皆更高、帶有招牌煙燻／橡膠調性；黑皮諾則酸度更高、單寧更輕盈、以紅色漿果與泥土氣息為主，兩者風格截然不同。'
   },
   {
     id: 'lo4-pin-003',
@@ -3685,10 +3685,10 @@ const QUIZ_BANK = [
     options: [
       '軟木塞污染的濕紙板氣味',
       '熱害導致的煮熟水果氣味',
-      '過度氧化的雪莉酒氣味',
-      '丙酮或指甲油氣味'
+      '丙酮或指甲油般的刺鼻氣味',
+      '過度氧化的雪莉酒氣味'
     ],
-    correctIndex: 3,
+    correctIndex: 2,
     explanation: '品質不佳的Pinotage易出現丙酮或指甲油氣味，現代釀造工藝已大幅改善此問題。'
   },
   {
@@ -3698,12 +3698,12 @@ const QUIZ_BANK = [
     sourceId: 'carmenere',
     question: 'Carménère原是19世紀波爾多常見的混調品種之一，為何在歐洲幾近絕跡？',
     options: [
-      '因政府法規強制禁止種植',
-      '根瘤蚜蟲害後因難以嫁接栽培而在歐洲幾近絕跡',
-      '因品質低劣、被市場淘汰',
+      '因政府法規強制禁止種植生產',
+      '因品質低劣、被市場徹底淘汰',
+      '根瘤蚜蟲害後因難嫁接而幾近絕跡',
       '因氣候變遷導致無法適應歐洲氣候'
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation: '根瘤蚜蟲害後因難以嫁接栽培而在歐洲幾近絕跡。'
   },
   {
@@ -3713,13 +3713,13 @@ const QUIZ_BANK = [
     sourceId: 'carmenere',
     question: '直到1994年才由誰透過葉片型態與DNA鑑定確認智利長期被誤植為Merlot的葡萄，其真實身分實為Carménère？',
     options: [
-      '加州大學戴維斯分校的美國團隊',
-      '智利本地的釀酒師協會',
       '法國植物學家Jean-Michel Boursiquot',
-      '義大利的DNA鑑定實驗室'
+      '智利釀酒師Aurelio Montes所帶領的團隊',
+      '美國加州大學戴維斯分校的葡萄研究團隊',
+      '義大利政府設立的葡萄品種DNA鑑定實驗室'
     ],
-    correctIndex: 2,
-    explanation: '1994年法國植物學家Jean-Michel Boursiquot確認其真實身分，智利成為全球最大Carménère產區。'
+    correctIndex: 0,
+    explanation: '1994年法國植物學家Jean-Michel Boursiquot透過葉片型態與DNA鑑定確認其真實身分，智利此後成為全球最大Carménère產區。'
   },
   {
     id: 'lo4-car-003',
@@ -3728,13 +3728,13 @@ const QUIZ_BANK = [
     sourceId: 'carmenere',
     question: 'Carménère與Merlot長期混淆是本品種最著名的歷史事件，兩者的關鍵區辨特徵為何？',
     options: [
-      '兩者外觀與風味完全相同，至今仍無法區分',
-      '梅洛成熟期更晚、帶明顯青椒氣息',
-      'Carménère比梅洛更早熟、果香更甜熟',
-      'Carménère成熟期更晚、青椒與綠色香料氣息更明顯；梅洛則更早熟、果香更甜熟圓潤'
+      '兩者外觀與風味完全相同，至今仍無法區分辨別',
+      '梅洛反而成熟期更晚，帶有明顯青椒氣息',
+      'Carménère反而比梅洛更早熟、果香更甜熟',
+      'Carménère成熟更晚帶青椒；梅洛更早熟甜熟圓潤'
     ],
     correctIndex: 3,
-    explanation: '兩者葉片與果實外觀相似，但成熟期與香氣調性有明顯差異。'
+    explanation: 'Carménère成熟期更晚、青椒與綠色香料氣息更明顯；梅洛則更早熟、果香更甜熟圓潤，兩者葉片與果實外觀相似，但成熟期與香氣調性有明顯差異。'
   },
   {
     id: 'lo4-ver-001',

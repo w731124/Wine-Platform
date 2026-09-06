@@ -1,8 +1,8 @@
 {
   "note": "quiz-data.js 題庫內容重寫進度追蹤檔。與已遺失的舊版 quiz-rewrite-progress.json 區隔，v2 為重來後的新起點。每完成一批就在 batches 追加一筆紀錄，並把該批 id 併入 completedIds。",
   "totalQuestions": 300,
-  "completedCount": 207,
-  "remainingCount": 93,
+  "completedCount": 225,
+  "remainingCount": 75,
   "batches": [
     {
       "batchLabel": "lo1-batch1",
@@ -167,6 +167,21 @@
         "lo4-vio-001", "lo4-vio-002", "lo4-vio-003",
         "lo4-sem-001", "lo4-sem-002", "lo4-sem-003"
       ]
+    },
+    {
+      "batchLabel": "lo4-batch3",
+      "idRange": "lo4-alb-001~003, lo4-bar-001~003, lo4-cor-001~003, lo4-mon-001~003, lo4-pin-001~003, lo4-car-001~003",
+      "count": 18,
+      "completedAt": "2026-09-06",
+      "note": "LO4批次3：Albariño/Barbera/Corvina/Montepulciano/Pinotage/Carménère各3題",
+      "ids": [
+        "lo4-alb-001", "lo4-alb-002", "lo4-alb-003",
+        "lo4-bar-001", "lo4-bar-002", "lo4-bar-003",
+        "lo4-cor-001", "lo4-cor-002", "lo4-cor-003",
+        "lo4-mon-001", "lo4-mon-002", "lo4-mon-003",
+        "lo4-pin-001", "lo4-pin-002", "lo4-pin-003",
+        "lo4-car-001", "lo4-car-002", "lo4-car-003"
+      ]
     }
   ],
   "completedIds": [
@@ -216,6 +231,12 @@
     "lo4-gam-001", "lo4-gam-002", "lo4-gam-003",
     "lo4-gew-001", "lo4-gew-002", "lo4-gew-003",
     "lo4-vio-001", "lo4-vio-002", "lo4-vio-003",
-    "lo4-sem-001", "lo4-sem-002", "lo4-sem-003"
+    "lo4-sem-001", "lo4-sem-002", "lo4-sem-003",
+    "lo4-alb-001", "lo4-alb-002", "lo4-alb-003",
+    "lo4-bar-001", "lo4-bar-002", "lo4-bar-003",
+    "lo4-cor-001", "lo4-cor-002", "lo4-cor-003",
+    "lo4-mon-001", "lo4-mon-002", "lo4-mon-003",
+    "lo4-pin-001", "lo4-pin-002", "lo4-pin-003",
+    "lo4-car-001", "lo4-car-002", "lo4-car-003"
   ]
 }
