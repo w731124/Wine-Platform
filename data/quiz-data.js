@@ -3968,10 +3968,10 @@ const QUIZ_BANK = [
     sourceId: 'sparkling',
     question: '氣泡酒最早可追溯至17世紀香檳區，其氣泡產生的歷史成因為何？',
     options: [
-      '寒冷氣候讓發酵在冬天中斷，隔年春天瓶中殘糖意外引發二次發酵，產生氣泡與高壓',
-      '是釀酒師刻意設計的工法，從一開始就是有意為之',
-      '與溫度或發酵中斷完全無關，純粹是裝瓶時人工注入氣體',
-      '源自古羅馬時期就已存在的成熟工藝'
+      '寒冷氣候使發酵冬天中斷，隔年殘糖意外二次發酵',
+      '是釀酒師刻意設計的工法，從一開始就有意為之',
+      '與溫度或發酵中斷完全無關，純粹人工注入氣體',
+      '源自古羅馬時期就已存在的成熟釀造工藝'
     ],
     correctIndex: 0,
     explanation: '寒冷氣候讓發酵在冬天中斷，隔年春天瓶中殘糖意外引發二次發酵，當時甚至造成大量爆瓶。'
@@ -3983,12 +3983,12 @@ const QUIZ_BANK = [
     sourceId: 'sparkling',
     question: '本篤會修士Dom Pérignon常被通俗說法稱為「氣泡酒發明者」，但他真正的貢獻其實是什麼？',
     options: [
-      '改良調配與壓榨技術，而非發明氣泡本身',
       '確實是他發明了二次發酵產生氣泡的工法',
       '他的貢獻僅限於設計香檳酒瓶的形狀',
+      '改良調配與壓榨技術，而非發明氣泡本身',
       '他發明了轉瓶（remuage）這項技術'
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: 'Dom Pérignon真正的貢獻是改良調配與壓榨技術，而非發明氣泡本身，這是常見的歷史迷思。'
   },
   {
@@ -3998,13 +3998,13 @@ const QUIZ_BANK = [
     sourceId: 'sparkling',
     question: '香檳三大品種在氣泡酒混調中各司其職，下列對應何者正確？',
     options: [
-      'Chardonnay提供結構與紅果調性，Pinot Noir貢獻花香與細緻酸度',
-      '三者角色完全相同，可任意替換比例而不影響風格',
-      'Chardonnay貢獻花香與細緻酸度；Pinot Noir提供結構與紅果調性；Pinot Meunier帶來早熟果香與圓潤口感',
-      '只有Chardonnay是香檳允許使用的品種'
+      'Chardonnay結構；Pinot Noir花香；Meunier辛香骨架',
+      '三者角色完全相同，可任意替換比例',
+      'Chardonnay花香酸；Pinot Noir結構；Meunier圓潤',
+      '只有Chardonnay是法規允許使用的品種'
     ],
     correctIndex: 2,
-    explanation: '三大品種各司其職，共同構成香檳的骨架與複雜度。'
+    explanation: 'Chardonnay貢獻花香與細緻酸度；Pinot Noir提供結構與紅果調性；Pinot Meunier帶來早熟果香與圓潤口感，三大品種各司其職，共同構成香檳的骨架與複雜度。'
   },
   {
     id: 'lo5-spk-004',
@@ -4014,12 +4014,12 @@ const QUIZ_BANK = [
     question: 'Cava與Prosecco在葡萄品種選擇上分別依賴什麼？',
     options: [
       'Cava與Prosecco使用完全相同的品種組合',
-      'Cava依賴Glera，Prosecco使用Macabeo等西班牙原生品種',
-      '兩者都只使用Chardonnay單一品種',
-      'Cava多用西班牙原生的Macabeo、Xarel·lo、Parellada混調；Prosecco則依賴Glera'
+      'Cava依賴Glera，Prosecco用西班牙原生品種',
+      '兩者都只使用Chardonnay單一品種釀造',
+      'Cava用西班牙原生品種混調；Prosecco用Glera'
     ],
     correctIndex: 3,
-    explanation: 'Cava與Prosecco各自依賴不同的原生品種組合。'
+    explanation: 'Cava多用西班牙原生的Macabeo、Xarel·lo、Parellada混調；Prosecco則依賴Glera，各自依賴不同的原生品種組合。'
   },
   {
     id: 'lo5-spk-005',
@@ -4029,12 +4029,12 @@ const QUIZ_BANK = [
     question: 'Asti／Moscato d\'Asti的釀造思路與傳統法或水槽法氣泡酒有何根本不同？',
     options: [
       '與其他氣泡酒工法完全相同，沒有任何差異',
-      '僅進行一次發酵並提前中止以保留天然糖分，是氣泡酒家族裡唯一不靠「二次發酵」產生氣泡的例外做法',
-      'Asti需要經過三次發酵，比傳統法更複雜',
-      'Asti的酒精度遠高於傳統法香檳'
+      'Asti需要經過三次發酵，比傳統法更加複雜',
+      'Asti的酒精度反而遠高於傳統法香檳許多',
+      '僅一次發酵並提前中止，是唯一不靠二次發酵的例外'
     ],
-    correctIndex: 1,
-    explanation: 'Asti酒精度也遠低於傳統法或水槽法氣泡酒（通常僅5–6% abv）。'
+    correctIndex: 3,
+    explanation: '僅進行一次發酵並提前中止以保留天然糖分，是氣泡酒家族裡唯一不靠「二次發酵」產生氣泡的例外做法，酒精度也遠低於傳統法或水槽法氣泡酒（通常僅5–6% abv）。'
   },
   {
     id: 'lo5-spk-006',
@@ -4043,13 +4043,13 @@ const QUIZ_BANK = [
     sourceId: 'sparkling',
     question: '氣泡酒基酒為何特別重視高酸度保留，因此偏好什麼樣的氣候條件？',
     options: [
-      '偏好冷涼氣候，因葡萄成熟緩慢，糖度與風味成熟前已能維持銳利酸度，這是支撐二次發酵與長期陳年的關鍵',
-      '偏好溫暖氣候，因為溫暖氣候能加速累積更高酸度',
-      '氣候條件與氣泡酒基酒的酸度需求完全無關',
-      '偏好極端乾燥的沙漠型氣候'
+      '偏好溫暖氣候，因為能加速累積更高酸度',
+      '偏好冷涼氣候，成熟緩慢能維持銳利酸度支撐陳年',
+      '氣候條件與基酒的酸度需求完全沒有關聯',
+      '偏好極端乾燥的沙漠型氣候條件'
     ],
-    correctIndex: 0,
-    explanation: '冷涼氣候是支撐二次發酵與長期陳年的關鍵。'
+    correctIndex: 1,
+    explanation: '偏好冷涼氣候，因葡萄成熟緩慢，糖度與風味成熟前已能維持銳利酸度，這是支撐二次發酵與長期陳年的關鍵。'
   },
   {
     id: 'lo5-spk-007',
@@ -4059,11 +4059,11 @@ const QUIZ_BANK = [
     question: '香檳與英格蘭南部共享的白堊土，賦予氣泡酒什麼特有風味特徵？',
     options: [
       '特有的辛香料調性，與土壤排水能力無關',
-      '白堊土只影響顏色，不影響風味',
-      '白堊土會使氣泡酒帶有明顯的甜度',
-      '特有的礦石感，因白堊土排水佳且保水適中'
+      '特有的礦石感，因白堊土排水佳且保水適中',
+      '白堊土只會影響顏色，不影響風味表現',
+      '白堊土會使氣泡酒帶有明顯的甜度感'
     ],
-    correctIndex: 3,
+    correctIndex: 1,
     explanation: '白堊土排水佳且保水適中，賦予酒款特有的礦石感。'
   },
   {
@@ -4073,13 +4073,13 @@ const QUIZ_BANK = [
     sourceId: 'sparkling',
     question: '傳統法（Traditional Method）氣泡酒的二次發酵位置與酒渣接觸時間為何？',
     options: [
-      '二次發酵於密閉壓力槽進行，酒渣接觸時間短（數週）',
-      '二次發酵於瓶中進行，酒渣接觸時間長（無年份15個月以上，年份酒3年以上）',
-      '二次發酵於瓶中進行，但完全不需要酒渣接觸',
-      '傳統法不需要進行二次發酵'
+      '二次發酵於密閉壓力槽進行，接觸時間短',
+      '二次發酵於瓶中進行，但完全不需酒渣接觸',
+      '二次發酵於瓶中進行，酒渣接觸時間長達數年',
+      '傳統法完全不需要進行任何二次發酵'
     ],
-    correctIndex: 1,
-    explanation: '對應吐司堅果等自溶(autolysis)風味特徵。'
+    correctIndex: 2,
+    explanation: '二次發酵於瓶中進行，酒渣接觸時間長（無年份15個月以上，年份酒3年以上），對應吐司堅果等自溶(autolysis)風味特徵。'
   },
   {
     id: 'lo5-spk-009',
@@ -4088,13 +4088,13 @@ const QUIZ_BANK = [
     sourceId: 'sparkling',
     question: '水槽法（Tank Method，如Prosecco所採用）與傳統法相比，在成本與風味特徵上有何差異？',
     options: [
-      '水槽法成本最高、酒渣接觸時間最長',
-      '水槽法成本最低、酒渣接觸時間短，風味特徵為清新奔放的品種果香，而非吐司堅果調性',
-      '水槽法與傳統法的成本、風味完全相同',
-      '水槽法完全不需要二次發酵'
+      '水槽法成本反而最高、酒渣接觸時間最長',
+      '水槽法與傳統法的成本風味完全相同',
+      '水槽法完全不需要進行任何二次發酵',
+      '水槽法成本最低，風味為清新奔放品種果香'
     ],
-    correctIndex: 1,
-    explanation: '水槽法成本/複雜度最低，風味特徵與傳統法的自溶調性形成對比。'
+    correctIndex: 3,
+    explanation: '水槽法成本最低、酒渣接觸時間短，風味特徵為清新奔放的品種果香，而非吐司堅果調性，成本/複雜度最低，風味特徵與傳統法的自溶調性形成對比。'
   },
   {
     id: 'lo5-spk-010',
@@ -4103,13 +4103,13 @@ const QUIZ_BANK = [
     sourceId: 'sparkling',
     question: '轉注法（Transfer Method）的二次發酵流程為何？',
     options: [
-      '二次發酵完全於密閉壓力槽進行，與傳統法完全相同',
+      '二次發酵完全於密閉壓力槽，與傳統法完全相同',
+      '瓶中發酵後轉入加壓槽過濾，複雜度介於兩者之間',
       '轉注法完全不需要進行任何形式的二次發酵',
-      '二次發酵於瓶中進行，後轉入加壓槽，整批過濾去渣，成本／複雜度介於傳統法與水槽法之間',
-      '轉注法的酒渣接觸時間比傳統法更長'
+      '轉注法的酒渣接觸時間反而比傳統法更長許多'
     ],
-    correctIndex: 2,
-    explanation: '轉注法成本/複雜度介於傳統法與水槽法之間。'
+    correctIndex: 1,
+    explanation: '二次發酵於瓶中進行，後轉入加壓槽，整批過濾去渣，成本／複雜度介於傳統法與水槽法之間。'
   },
   {
     id: 'lo5-spk-011',
@@ -4118,13 +4118,13 @@ const QUIZ_BANK = [
     sourceId: 'sparkling',
     question: '氣泡酒工藝術語中「Autolysis（酒渣自溶）」指的是什麼現象？',
     options: [
-      '指葡萄本身在採收前自然發酵的現象',
-      '指氣泡在開瓶後自然散失的過程',
-      '死酵母細胞在長時間酒渣接觸過程中分解，賦予酒款吐司、堅果等複雜風味',
-      '指軟木塞因濕度不足而自然乾裂的現象'
+      '指葡萄本身在採收前自然發酵的一種現象',
+      '指氣泡在開瓶後逐漸自然散失的過程',
+      '指軟木塞因濕度不足而自然乾裂的現象',
+      '死酵母細胞分解，賦予酒款吐司堅果等複雜風味'
     ],
-    correctIndex: 2,
-    explanation: '這正是傳統法氣泡酒長時間酒渣接觸後產生吐司、堅果調性的來源。'
+    correctIndex: 3,
+    explanation: '死酵母細胞在長時間酒渣接觸過程中分解，賦予酒款吐司、堅果等複雜風味，這正是傳統法氣泡酒長時間酒渣接觸後產生吐司、堅果調性的來源。'
   },
   {
     id: 'lo5-spk-012',
@@ -4133,13 +4133,13 @@ const QUIZ_BANK = [
     sourceId: 'sparkling',
     question: '「Remuage（轉瓶）」在傳統法氣泡酒工藝中的作用為何？',
     options: [
-      '用來調整氣泡酒的最終甜度',
-      '逐漸將瓶中酒渣集中移動至瓶頸，以利後續去渣（disgorgement）',
-      '用來混合不同年份的基酒',
+      '將瓶中酒渣集中移動至瓶頸，以利後續去渣',
+      '用來調整氣泡酒最終成品的甜度風格',
+      '用來混合不同年份與產區的基酒液',
       '用來提高瓶內壓力以產生更多氣泡'
     ],
-    correctIndex: 1,
-    explanation: '這是傳統法工藝中將酒渣逐漸移動集中至瓶頸的關鍵步驟。'
+    correctIndex: 0,
+    explanation: '逐漸將瓶中酒渣集中移動至瓶頸，以利後續去渣（disgorgement），這是傳統法工藝中將酒渣逐漸移動集中至瓶頸的關鍵步驟。'
   },
   {
     id: 'lo5-spk-013',
@@ -4148,13 +4148,13 @@ const QUIZ_BANK = [
     sourceId: 'sparkling',
     question: '「Dosage（補液）」是氣泡酒工藝中的哪個步驟，其目的為何？',
     options: [
-      '指二次發酵前添加酵母的步驟',
-      '指裝瓶前為了增加氣泡而額外注入二氧化碳',
+      '指二次發酵前額外添加酵母的相關步驟',
+      '指裝瓶前為增加氣泡而額外注入二氧化碳',
       '指轉瓶前為了穩定溫度而進行的步驟',
-      '去渣後添加糖與酒液的混合液，用以調整最終成品的甜度風格'
+      '去渣後添加糖酒混合液，調整最終甜度風格'
     ],
     correctIndex: 3,
-    explanation: '用以調整最終成品的甜度風格（如Brut、Demi-Sec等）。'
+    explanation: '去渣後添加糖與酒液的混合液，用以調整最終成品的甜度風格（如Brut、Demi-Sec等）。'
   },
   {
     id: 'lo5-spk-014',
@@ -4163,12 +4163,12 @@ const QUIZ_BANK = [
     sourceId: 'sparkling',
     question: '氣泡酒最常見的甜度分類「Brut」，其殘糖標準為何？',
     options: [
-      '殘糖32–50g/L',
-      '殘糖必須完全為0',
-      '殘糖沒有明確標準，依各產區自行認定',
-      '殘糖<12g/L，是最常見的氣泡酒甜度'
+      '殘糖32–50g/L，屬於偏甜型分類',
+      '殘糖必須完全為0，絕不允許殘糖',
+      '殘糖<12g/L，是最常見的氣泡酒甜度',
+      '殘糖標準因產區而異，沒有統一規定'
     ],
-    correctIndex: 3,
+    correctIndex: 2,
     explanation: 'Brut是氣泡酒最主流的甜度風格。'
   },
   {
@@ -4178,13 +4178,13 @@ const QUIZ_BANK = [
     sourceId: 'sparkling',
     question: '「Demi-Sec（半甜型）」氣泡酒的殘糖標準與「Brut」相比為何？',
     options: [
-      'Demi-Sec殘糖32–50g/L，明顯高於Brut的<12g/L',
-      'Demi-Sec殘糖低於Brut',
-      '兩者殘糖標準完全相同',
-      'Demi-Sec專指完全不含糖分的極干型氣泡酒'
+      'Demi-Sec殘糖反而明顯低於Brut標準',
+      'Demi-Sec殘糖32–50g/L，明顯高於Brut',
+      '兩者殘糖標準其實完全相同、沒有差異',
+      'Demi-Sec專指完全不含糖分的極干型'
     ],
-    correctIndex: 0,
-    explanation: '明顯高於Brut的殘糖標準<12g/L。'
+    correctIndex: 1,
+    explanation: 'Demi-Sec殘糖32–50g/L，明顯高於Brut的<12g/L。'
   },
   {
     id: 'lo5-spk-016',
@@ -4193,13 +4193,13 @@ const QUIZ_BANK = [
     sourceId: 'sparkling',
     question: '「Vintage」與「Non-Vintage/NV」氣泡酒的核心差異為何？',
     options: [
-      'Vintage為單一年份釀造，Non-Vintage則是多年份調配以維持品牌一致風格',
-      'Vintage是多年份調配，Non-Vintage是單一年份釀造',
-      '兩者其實是同一件事，只是不同產區的稱呼方式',
+      'Vintage單一年份；Non-Vintage多年份調配求一致',
+      'Vintage是多年份調配，Non-Vintage是單一年份',
+      '兩者其實是同一件事，只是不同產區的稱呼',
       'Vintage專指氣泡酒的甜度分類，與年份無關'
     ],
     correctIndex: 0,
-    explanation: '兩者是氣泡酒重要的分類概念。'
+    explanation: 'Vintage為單一年份釀造，Non-Vintage則是多年份調配以維持品牌一致風格，兩者是氣泡酒重要的分類概念。'
   },
   {
     id: 'lo5-spk-017',
@@ -4208,12 +4208,12 @@ const QUIZ_BANK = [
     sourceId: 'sparkling',
     question: '南非對「傳統法」氣泡酒的正式稱法為何？',
     options: [
+      'Cap Classique（簡稱MCC）',
       'Metodo Classico',
       'Método Tradicional',
-      'Cap Classique（簡稱MCC）',
       'Klassische Flaschengärung'
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation: '南非對傳統法的正式稱法為Cap Classique，簡稱MCC。'
   },
   {
@@ -4223,10 +4223,10 @@ const QUIZ_BANK = [
     sourceId: 'sparkling',
     question: '19世紀後，西班牙與義大利分別發展出什麼氣泡酒風格路線？',
     options: [
-      '西班牙與義大利在19世紀後完全放棄氣泡酒生產',
-      '西班牙發展出Cava，義大利發展出Prosecco，各自形成獨立風格路線',
-      '兩國在19世紀後才首次開始接觸氣泡酒工藝，此前完全沒有相關產業',
-      '西班牙發展出Prosecco，義大利發展出Cava'
+      '西班牙與義大利19世紀後放棄氣泡酒生產',
+      '西班牙發展Cava、義大利發展Prosecco',
+      '兩國19世紀後才首次接觸氣泡酒工藝',
+      '西班牙發展Prosecco、義大利發展Cava'
     ],
     correctIndex: 1,
     explanation: '19世紀後兩國各自發展出獨立風格路線。'

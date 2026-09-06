@@ -1,8 +1,8 @@
 {
   "note": "quiz-data.js 題庫內容重寫進度追蹤檔。與已遺失的舊版 quiz-rewrite-progress.json 區隔，v2 為重來後的新起點。每完成一批就在 batches 追加一筆紀錄，並把該批 id 併入 completedIds。",
   "totalQuestions": 300,
-  "completedCount": 240,
-  "remainingCount": 60,
+  "completedCount": 258,
+  "remainingCount": 42,
   "batches": [
     {
       "batchLabel": "lo1-batch1",
@@ -196,6 +196,19 @@
         "lo4-fia-001", "lo4-fia-002", "lo4-fia-003",
         "lo4-fur-001", "lo4-fur-002", "lo4-fur-003"
       ]
+    },
+    {
+      "batchLabel": "lo5-sparkling",
+      "idRange": "lo5-spk-001~018",
+      "count": 18,
+      "completedAt": "2026-09-06",
+      "note": "LO5氣泡酒批次18題",
+      "ids": [
+        "lo5-spk-001", "lo5-spk-002", "lo5-spk-003", "lo5-spk-004", "lo5-spk-005",
+        "lo5-spk-006", "lo5-spk-007", "lo5-spk-008", "lo5-spk-009", "lo5-spk-010",
+        "lo5-spk-011", "lo5-spk-012", "lo5-spk-013", "lo5-spk-014", "lo5-spk-015",
+        "lo5-spk-016", "lo5-spk-017", "lo5-spk-018"
+      ]
     }
   ],
   "completedIds": [
@@ -256,6 +269,10 @@
     "lo4-cot-001", "lo4-cot-002", "lo4-cot-003",
     "lo4-gar-001", "lo4-gar-002", "lo4-gar-003",
     "lo4-fia-001", "lo4-fia-002", "lo4-fia-003",
-    "lo4-fur-001", "lo4-fur-002", "lo4-fur-003"
+    "lo4-fur-001", "lo4-fur-002", "lo4-fur-003",
+    "lo5-spk-001", "lo5-spk-002", "lo5-spk-003", "lo5-spk-004", "lo5-spk-005",
+    "lo5-spk-006", "lo5-spk-007", "lo5-spk-008", "lo5-spk-009", "lo5-spk-010",
+    "lo5-spk-011", "lo5-spk-012", "lo5-spk-013", "lo5-spk-014", "lo5-spk-015",
+    "lo5-spk-016", "lo5-spk-017", "lo5-spk-018"
   ]
 }
