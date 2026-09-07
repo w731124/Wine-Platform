@@ -19,6 +19,8 @@ const QUIZ_LO_LABELS = {
 
 const QUIZ_HISTORY_STORAGE_KEY = 'wineAtlasQuizHistory';
 const QUIZ_HISTORY_MAX = 10;
+const QUIZ_PRACTICE_HISTORY_STORAGE_KEY = 'wineAtlasQuizPracticeHistory';
+const QUIZ_PRACTICE_HISTORY_MAX = 20;
 const QUIZ_SESSION_STORAGE_KEY = 'wineAtlasQuizSession';
 
 const QUIZ_GRADE_META = {
@@ -109,25 +111,77 @@ function loadQuizHistory(){
   }
 }
 
+function savePracticeHistoryRecord(result, lo){
+  const record = {
+    timestamp: Date.now(),
+    lo: lo,
+    correct: result.correct,
+    total: quizQuestions.length,
+    scoreRatio: result.scoreRatio,
+    loStats: result.loStats
+  };
+  try{
+    const raw = localStorage.getItem(QUIZ_PRACTICE_HISTORY_STORAGE_KEY);
+    const history = raw ? JSON.parse(raw) : [];
+    history.unshift(record);
+    if (history.length > QUIZ_PRACTICE_HISTORY_MAX) history.length = QUIZ_PRACTICE_HISTORY_MAX;
+    localStorage.setItem(QUIZ_PRACTICE_HISTORY_STORAGE_KEY, JSON.stringify(history));
+  }catch(e){
+    console.warn('❌ [Quiz Practice History] 儲存練習歷史成績失敗：', e);
+  }
+}
+
+function loadPracticeHistory(){
+  try{
+    const raw = localStorage.getItem(QUIZ_PRACTICE_HISTORY_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  }catch(e){
+    console.warn('❌ [Quiz Practice History] 讀取練習歷史成績失敗：', e);
+    return [];
+  }
+}
+
 function renderQuizHistoryList(){
   const wrap = document.getElementById('quiz-history-list');
   if (!wrap) return;
   const history = loadQuizHistory();
+  const practiceHistory = loadPracticeHistory();
+
+  let html = '<p style="font-size:var(--fs-lg);font-weight:600;color:var(--burg);margin-bottom:8px;">模擬考成績</p>';
   if (history.length === 0) {
-    wrap.innerHTML = `<p style="font-size:var(--fs-base);color:var(--txt3);text-align:center;padding:20px 0;">尚無歷史紀錄，完成一次模擬考後就會出現在這裡</p>`;
-    return;
+    html += `<p style="font-size:var(--fs-base);color:var(--txt3);text-align:center;padding:16px 0;">尚無模擬考紀錄，完成一次模擬考後就會出現在這裡</p>`;
+  } else {
+    html += history.map(record => {
+      const meta = QUIZ_GRADE_META[record.grade];
+      const dateStr = new Date(record.timestamp).toLocaleString('zh-TW');
+      return `<div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:12px;padding:14px 16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+        <div>
+          <p style="font-size:var(--fs-base);font-weight:600;color:var(--txt);margin-bottom:2px;">${dateStr}</p>
+          <p style="font-size:var(--fs-sm);color:var(--txt3);">${record.correct} / ${record.total}　（${(record.scoreRatio * 100).toFixed(1)}%）</p>
+        </div>
+        <span style="font-size:var(--fs-base);font-weight:600;color:var(--burg);white-space:nowrap;">${meta ? meta.label : ''}</span>
+      </div>`;
+    }).join('');
   }
-  wrap.innerHTML = history.map(record => {
-    const meta = QUIZ_GRADE_META[record.grade];
-    const dateStr = new Date(record.timestamp).toLocaleString('zh-TW');
-    return `<div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:12px;padding:14px 16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
-      <div>
-        <p style="font-size:var(--fs-base);font-weight:600;color:var(--txt);margin-bottom:2px;">${dateStr}</p>
-        <p style="font-size:var(--fs-sm);color:var(--txt3);">${record.correct} / ${record.total}　（${(record.scoreRatio * 100).toFixed(1)}%）</p>
-      </div>
-      <span style="font-size:var(--fs-base);font-weight:600;color:var(--burg);white-space:nowrap;">${meta ? meta.label : ''}</span>
-    </div>`;
-  }).join('');
+
+  html += '<p style="font-size:var(--fs-lg);font-weight:600;color:var(--burg);margin:20px 0 8px;">LO練習紀錄</p>';
+  if (practiceHistory.length === 0) {
+    html += `<p style="font-size:var(--fs-base);color:var(--txt3);text-align:center;padding:16px 0;">尚無練習紀錄，完成一次LO篩選練習後就會出現在這裡</p>`;
+  } else {
+    html += practiceHistory.map(record => {
+      const loLabel = QUIZ_LO_LABELS[record.lo] || `LO${record.lo}`;
+      const dateStr = new Date(record.timestamp).toLocaleString('zh-TW');
+      return `<div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:12px;padding:14px 16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+        <div>
+          <p style="font-size:var(--fs-base);font-weight:600;color:var(--txt);margin-bottom:2px;">${dateStr}</p>
+          <p style="font-size:var(--fs-sm);color:var(--txt3);">${loLabel}</p>
+        </div>
+        <span style="font-size:var(--fs-base);font-weight:600;color:var(--txt2);white-space:nowrap;">${record.correct} / ${record.total}　（${(record.scoreRatio * 100).toFixed(1)}%）</span>
+      </div>`;
+    }).join('');
+  }
+
+  wrap.innerHTML = html;
 }
 
 /* ── 進行中測驗狀態持久化（sessionStorage），防止重整/意外關閉遺失進度 ── */
@@ -394,6 +448,7 @@ function submitQuiz(isAuto){
   quizSubmitted = true;
   if (quizTimerId) { clearInterval(quizTimerId); quizTimerId = null; }
   if (quizMode === 'exam') saveQuizHistoryRecord(calculateQuizResults());
+  else if (quizMode === 'practice') savePracticeHistoryRecord(calculateQuizResults(), quizPracticeLo);
   clearQuizSessionState();
   renderQuizResults();
   showQuizState('result');
