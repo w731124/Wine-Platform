@@ -188,10 +188,10 @@ const QUIZ_BANK = [
     sourceId: 'storage-decanting',
     question: '開瓶時聞軟木塞氣味的目的？',
     options: [
-      '判斷產區',
-      '確認軟木塞材質',
-      '判斷陳年時間',
-      '若有濕紙板/發霉味是軟木塞污染警訊之一'
+      '用來判斷這款酒的產地與產區',
+      '用來確認軟木塞的材質種類',
+      '用來判斷這款酒的陳年時間長短',
+      '若有濕紙板發霉味，是軟木塞污染警訊'
     ],
     correctIndex: 3,
     explanation: '濕紙板/發霉味是TCA污染常見警訊。'
@@ -203,13 +203,13 @@ const QUIZ_BANK = [
     sourceId: 'storage-decanting',
     question: '開啟氣泡酒的正確程序？',
     options: [
-      '直接用螺旋錐鑽穿軟木塞',
-      '用力搖晃後快速拔出軟木塞',
-      '撕除錫箔鬆開鐵絲籠時全程壓住軟木塞，瓶身傾斜45度轉動瓶身讓塞子發出輕柔嘆息聲',
-      '開瓶前先冷凍瓶身'
+      '全程壓住軟木塞，瓶身傾斜轉動讓塞子輕柔滑出',
+      '直接用開瓶器螺旋錐鑽穿軟木塞',
+      '用力搖晃酒瓶後快速拔出軟木塞',
+      '開瓶前應先將整瓶酒放入冷凍庫'
     ],
-    correctIndex: 2,
-    explanation: '瓶內壓力可能隨時噴出塞子，須全程壓住並轉動瓶身而非塞子。'
+    correctIndex: 0,
+    explanation: '瓶內壓力可能隨時噴出塞子，須全程壓住並轉動瓶身而非塞子；撕除錫箔鬆開鐵絲籠時全程壓住軟木塞，瓶身傾斜45度轉動瓶身讓塞子發出輕柔嘆息聲。'
   },
   {
     id: 'lo6-015',
@@ -218,13 +218,13 @@ const QUIZ_BANK = [
     sourceId: 'storage-decanting',
     question: '醒酒的兩種主要目的？',
     options: [
-      '提高酒精濃度與加速陳年',
-      '分離陳年老酒沉澱物，以及為年輕高單寧紅酒換氣軟化單寧',
-      '去除軟木塞污染與延緩氧化',
-      '降低酒液溫度與增加氣泡'
+      '提高酒精濃度，並加速酒款陳年速度',
+      '去除軟木塞污染，並延緩酒液氧化速度',
+      '分離老酒沉澱物、為年輕高單寧紅酒換氣軟化',
+      '降低酒液溫度，並增加氣泡活性表現'
     ],
-    correctIndex: 1,
-    explanation: '兩種目的分別對應老酒與年輕酒不同需求。'
+    correctIndex: 2,
+    explanation: '兩種目的分別對應老酒與年輕酒不同需求：分離陳年老酒沉澱物，以及為年輕高單寧紅酒換氣軟化單寧。'
   },
   {
     id: 'lo6-016',
@@ -233,13 +233,13 @@ const QUIZ_BANK = [
     sourceId: 'storage-decanting',
     question: '醒酒時機的正確敘述？',
     options: [
-      '所有酒款都不建議醒酒',
-      '醒酒只適用白酒',
-      '老酒香氣脆弱建議臨飲用前才醒酒且時間宜短，年輕高單寧紅酒可提前數小時甚至更早',
-      '老酒與年輕紅酒都建議提前數小時'
+      '所有酒款都完全不建議進行醒酒處理',
+      '醒酒這個步驟其實只適用於白酒款',
+      '老酒臨飲前才醒且時間宜短；年輕紅酒可提前數小時',
+      '老酒與年輕紅酒皆建議提前數小時醒酒'
     ],
     correctIndex: 2,
-    explanation: '老酒求「短」、年輕高單寧酒求「久」。'
+    explanation: '老酒求「短」、年輕高單寧酒求「久」：老酒香氣脆弱建議臨飲用前才醒酒且時間宜短，年輕高單寧紅酒可提前數小時甚至更早。'
   },
   {
     id: 'lo6-017',
@@ -248,13 +248,13 @@ const QUIZ_BANK = [
     sourceId: 'storage-decanting',
     question: '為什麼紅酒杯通常比白酒杯大？',
     options: [
-      '白酒杯較小為防止氣泡散失',
-      '紅酒杯需容納更多酒液',
-      '純粹傳統習慣無實質功能',
-      '紅酒杯較大以利香氣揮發，白酒杯較小以維持冰鎮溫度'
+      '紅酒杯較大利於香氣揮發，白酒杯較小維持冰鎮',
+      '白酒杯較小純粹是為了防止氣泡散失',
+      '紅酒杯較大只是為了容納更多酒液而已',
+      '純粹是傳統習慣沿用，沒有任何實質功能'
     ],
-    correctIndex: 3,
-    explanation: '杯型設計依酒款特性而異。'
+    correctIndex: 0,
+    explanation: '杯型設計依酒款特性而異：紅酒杯較大以利香氣揮發，白酒杯較小以維持冰鎮溫度。'
   },
   {
     id: 'lo6-018',
@@ -263,12 +263,12 @@ const QUIZ_BANK = [
     sourceId: 'storage-faults',
     question: '軟木塞因儲存濕度不足而乾裂，最可能導致？',
     options: [
-      '軟木塞污染（TCA）與封瓶失效/氧化',
-      '二氧化硫過量',
-      '熱害（Maderisation）',
-      '揮發性酸過高'
+      '二氧化硫添加過量的問題',
+      '軟木塞污染與封瓶失效氧化',
+      '熱害（Maderisation）現象',
+      '揮發性酸過高導致的問題'
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation: '濕度不足使軟木塞乾裂，可能引發TCA污染或密封失效導致氧化。'
   },
   {
@@ -278,13 +278,13 @@ const QUIZ_BANK = [
     sourceId: 'storage-faults',
     question: '「熱害（Heat Damage/Maderisation）」的成因與徵狀？',
     options: [
-      '長期暴露過高溫度或劇烈溫度波動，產生煮熟水果、焦糖甚至醬油氣味，瓶身可能滲液或軟木塞被推出',
-      '二氧化硫添加不足導致氧化',
-      '瓶身直立導致軟木塞乾燥',
-      '軟木塞受TCA污染產生濕紙板氣味'
+      '長期暴露過高溫度，產生煮熟水果焦糖氣味',
+      '二氧化硫添加不足，導致酒液氧化',
+      '瓶身直立存放，導致軟木塞乾燥龜裂',
+      '軟木塞受TCA污染，產生濕紙板氣味'
     ],
     correctIndex: 0,
-    explanation: '熱害由運輸/存放環境溫度不當所致。'
+    explanation: '熱害由運輸/存放環境溫度不當所致：長期暴露過高溫度或劇烈溫度波動，產生煮熟水果、焦糖甚至醬油氣味，瓶身可能滲液或軟木塞被推出。'
   },
   {
     id: 'lo6-020',
@@ -293,13 +293,13 @@ const QUIZ_BANK = [
     sourceId: 'storage-faults',
     question: '瓶身直立存放對軟木塞封瓶酒款最可能造成？',
     options: [
-      '軟木塞未持續接觸酒液而乾燥龜裂，導致封瓶失效氧氣滲入',
-      '提高酒精濃度',
-      '加速陳年熟成',
-      '沒有任何影響'
+      '意外提高酒款的最終酒精濃度表現',
+      '意外加速酒款的陳年熟成速度過程',
+      '軟木塞未接觸酒液乾燥龜裂，導致封瓶失效',
+      '對酒款品質完全沒有任何實質影響'
     ],
-    correctIndex: 0,
-    explanation: '軟木塞需持續浸潤才能維持密封彈性。'
+    correctIndex: 2,
+    explanation: '軟木塞需持續浸潤才能維持密封彈性：軟木塞未持續接觸酒液而乾燥龜裂，導致封瓶失效氧氣滲入。'
   },
   {
     id: 'lo6-021',
@@ -308,12 +308,12 @@ const QUIZ_BANK = [
     sourceId: 'foodpairing-tags',
     question: '生蠔、烤鮭魚一類海鮮料理通常歸類在哪個食物搭配大類？',
     options: [
-      'Red Meat & Game(紅肉與野味)',
-      'Charcuterie & Appetizer(醃肉與開胃菜)',
-      'Umami & Special Ingredients(鮮味與特殊食材)',
-      'Seafood(海鮮)'
+      'Red Meat & Game（紅肉野味）',
+      'Seafood（海鮮）分類',
+      'Charcuterie & Appetizer（醃肉開胃菜）',
+      'Umami & Special Ingredients（鮮味特殊食材）'
     ],
-    correctIndex: 3,
+    correctIndex: 1,
     explanation: '對應FOOD_CATEGORY_MAP中\'seafood\'分類。'
   },
   {
@@ -323,12 +323,12 @@ const QUIZ_BANK = [
     sourceId: 'foodpairing-tags',
     question: '鵝肝與瑪格麗特披薩歸為哪一類？',
     options: [
-      'Vegetable & Mushroom(蔬食與菇蕈)',
-      'Umami & Special Ingredients(鮮味與特殊食材)',
-      'White Meat & Poultry(白肉與禽肉)',
-      'Dessert & Fruit(甜點與水果)'
+      'Vegetable & Mushroom（蔬食與菇蕈類）',
+      'White Meat & Poultry（白肉與禽肉類）',
+      'Dessert & Fruit（甜點與水果類）',
+      'Umami & Special Ingredients（鮮味特殊食材）'
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation: '對應FOOD_CATEGORY_MAP中\'umami\'分類。'
   },
   {
@@ -339,11 +339,11 @@ const QUIZ_BANK = [
     question: '下列何者不屬於WSET官方列出的「會影響葡萄酒的食物成分」？',
     options: [
       '辣度（Chilli heat）',
-      '鮮味（Umami）',
       '單寧（Tannin）',
+      '鮮味（Umami）',
       '甜度（Sweetness）'
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation: '官方食物端因子為甜度/鮮味/酸度/鹹度/風味濃度/脂肪/辣度；單寧屬酒液端被影響成分，非食物成分。'
   },
   {
@@ -353,9 +353,9 @@ const QUIZ_BANK = [
     sourceId: 'food-wine-interactions',
     question: '下列何者屬於WSET官方列出的「會被食物影響的葡萄酒成分」？',
     options: [
-      '脂肪（Fat）',
-      '鹹度（Salt）',
-      '辣度（Chilli heat）',
+      '脂肪（Fat）這項因子',
+      '鹹度（Salt）這項因子',
+      '辣度（Chilli heat）這項因子',
       '苦味（來自單寧或橡木桶）'
     ],
     correctIndex: 3,
