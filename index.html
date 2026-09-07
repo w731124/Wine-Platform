@@ -496,6 +496,14 @@
       <p style="font-size:var(--fs-card-title);font-weight:700;color:var(--burg);">歷史成績 History</p>
       <button onclick="showQuizState('start')" style="padding:7px 20px;border-radius:20px;border:1px solid var(--border);background:#fff;color:var(--txt2);font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">返回</button>
     </div>
+    <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:16px;box-shadow:var(--sh);margin-bottom:20px;">
+      <p style="font-size:var(--fs-lg);font-weight:600;color:var(--burg);margin-bottom:10px;">LO正確率分析（模擬考＋練習彙總）</p>
+      <p id="quiz-lo-weakness-empty" style="font-size:var(--fs-base);color:var(--txt3);text-align:center;padding:20px 0;display:none;">完成至少一次模擬考或練習後，這裡會顯示你的LO正確率分析</p>
+      <div id="quiz-lo-weakness-chart-wrap" style="position:relative;height:260px;">
+        <canvas id="quiz-lo-weakness-chart"></canvas>
+      </div>
+    </div>
+
     <div id="quiz-history-list"></div>
   </div>
 

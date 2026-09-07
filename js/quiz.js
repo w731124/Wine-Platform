@@ -40,6 +40,7 @@ let quizSubmitted = false;
 let quizMode = 'exam';
 let quizPracticeLo = null;
 let pendingResumeQuizState = null;
+let loWeaknessChartInst = null;
 
 function quizShuffle(arr){
   const a = arr.slice();
@@ -141,6 +142,84 @@ function loadPracticeHistory(){
   }
 }
 
+/* ── LO正確率彙總圖表（模擬考＋練習歷史合併統計） ── */
+function computeLoWeaknessStats(){
+  const stats = {};
+  for (let lo = 1; lo <= 6; lo++) stats[lo] = { correct: 0, total: 0 };
+  const allRecords = [...loadQuizHistory(), ...loadPracticeHistory()];
+  allRecords.forEach(record => {
+    const loStats = record.loStats || {};
+    Object.keys(loStats).forEach(loKey => {
+      const lo = Number(loKey);
+      if (!stats[lo]) return;
+      stats[lo].correct += loStats[loKey].correct || 0;
+      stats[lo].total += loStats[loKey].total || 0;
+    });
+  });
+  return stats;
+}
+
+function renderLoWeaknessChart(){
+  const canvas = document.getElementById('quiz-lo-weakness-chart');
+  const wrapEl = document.getElementById('quiz-lo-weakness-chart-wrap');
+  const emptyEl = document.getElementById('quiz-lo-weakness-empty');
+  if (!canvas) return;
+
+  if (loWeaknessChartInst) { loWeaknessChartInst.destroy(); loWeaknessChartInst = null; }
+
+  const stats = computeLoWeaknessStats();
+  const los = [1, 2, 3, 4, 5, 6];
+  const hasAnyData = los.some(lo => stats[lo].total > 0);
+
+  if (!hasAnyData) {
+    if (wrapEl) wrapEl.style.display = 'none';
+    if (emptyEl) emptyEl.style.display = '';
+    return;
+  }
+  if (wrapEl) wrapEl.style.display = '';
+  if (emptyEl) emptyEl.style.display = 'none';
+
+  const labels = los.map(lo => QUIZ_LO_LABELS[lo]);
+  const percents = los.map(lo => stats[lo].total > 0 ? Math.round(stats[lo].correct / stats[lo].total * 1000) / 10 : 0);
+
+  loWeaknessChartInst = new Chart(canvas.getContext('2d'), {
+    data: {
+      labels,
+      datasets: [
+        {
+          type: 'bar',
+          label: '正確率 %',
+          data: percents,
+          backgroundColor: 'rgba(92,6,28,.75)',
+          borderColor: '#5C061C',
+          borderWidth: 1,
+          borderRadius: 4
+        },
+        {
+          type: 'line',
+          label: '官方合格門檻 55%',
+          data: los.map(() => 55),
+          borderColor: '#C5A880',
+          borderWidth: 2,
+          borderDash: [6, 4],
+          pointRadius: 0,
+          fill: false
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: { min: 0, max: 100, ticks: { callback: v => v + '%' } }
+      },
+      plugins: {
+        legend: { display: true, position: 'bottom' }
+      }
+    }
+  });
+}
+
 function renderQuizHistoryList(){
   const wrap = document.getElementById('quiz-history-list');
   if (!wrap) return;
@@ -182,6 +261,7 @@ function renderQuizHistoryList(){
   }
 
   wrap.innerHTML = html;
+  renderLoWeaknessChart();
 }
 
 /* ── 進行中測驗狀態持久化（sessionStorage），防止重整/意外關閉遺失進度 ── */
