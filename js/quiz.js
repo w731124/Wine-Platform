@@ -137,7 +137,7 @@ function buildQuizQuestionSet(allocation = QUIZ_LO_ALLOCATION){
     picked = picked.concat(quizShuffle(pool).slice(0, n));
   });
   picked = quizShuffle(picked);
-  return picked.map(q => {
+  const withShuffledOptions = picked.map(q => {
     const order = quizShuffle(q.options.map((opt, idx) => idx));
     return {
       id: q.id,
@@ -148,6 +148,48 @@ function buildQuizQuestionSet(allocation = QUIZ_LO_ALLOCATION){
       correctIndex: order.indexOf(q.correctIndex)
     };
   });
+  return breakQuizCorrectIndexRuns(withShuffledOptions);
+}
+
+/* ── runtime no-run防護：避免洗牌後仍連續3題以上correctIndex相同 ── */
+function quizHasRunAt(arr, idx){
+  for (let s = Math.max(0, idx - 2); s <= Math.min(arr.length - 3, idx); s++){
+    if (arr[s].correctIndex === arr[s + 1].correctIndex && arr[s + 1].correctIndex === arr[s + 2].correctIndex){
+      return true;
+    }
+  }
+  return false;
+}
+
+function breakQuizCorrectIndexRuns(list){
+  const arr = list.slice();
+  const n = arr.length;
+  for (let i = 2; i < n; i++){
+    if (arr[i].correctIndex === arr[i - 1].correctIndex && arr[i - 1].correctIndex === arr[i - 2].correctIndex){
+      let fixed = false;
+      for (let j = i + 1; j < n; j++){
+        if (arr[j].correctIndex === arr[i - 1].correctIndex) continue;
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+        if (!quizHasRunAt(arr, i) && !quizHasRunAt(arr, j)){
+          fixed = true;
+          break;
+        }
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      // 往後找不到可交換對象時（常見於run落在陣列尾端），改往前找備案，避免尾端盲區
+      if (!fixed){
+        for (let j = i - 3; j >= 0; j--){
+          if (arr[j].correctIndex === arr[i - 1].correctIndex) continue;
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+          if (!quizHasRunAt(arr, i) && !quizHasRunAt(arr, j)){
+            break;
+          }
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+      }
+    }
+  }
+  return arr;
 }
 
 /* ── 開始測驗 / 開始練習：共用的抽題＋狀態重置＋畫面切換 ── */
