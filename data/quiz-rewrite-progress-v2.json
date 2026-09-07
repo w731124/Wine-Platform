@@ -4,6 +4,14 @@
   "completedCount": 300,
   "remainingCount": 0,
   "status": "COMPLETE — all 300 questions rewritten",
+  "corrections": [
+    {
+      "date": "2026-09-06",
+      "reason": "收尾全題庫驗收發現：lo5-spk-003長度洩題gap=11.0（超過門檻10）；lo4-sem-003/lo4-alb-001/lo4-alb-002三題連續correctIndex皆為0，違反no-run約束",
+      "fixedIds": ["lo5-spk-003", "lo4-alb-001"],
+      "result": "gap≥10題目數收斂為0；correctIndex連續序列改為lo4-sem-003=0、lo4-alb-001=2、lo4-alb-002=0、lo4-alb-003=2，no-run違規收斂為0"
+    }
+  ],
   "batches": [
     {
       "batchLabel": "lo1-batch1",

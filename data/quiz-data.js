@@ -3473,12 +3473,12 @@ const QUIZ_BANK = [
     sourceId: 'albarino',
     question: 'Albariño起源於西班牙哪個地區，品種名稱可能暗示與哪國品種的歷史關聯（此說法尚無確切DNA證據支持）？',
     options: [
-      '加利西亞下海灣，名稱可能源自「白色的萊茵」',
-      '安達魯西亞地區，名稱源自阿拉伯語系詞彙',
       '加泰隆尼亞地區，名稱源自法語相關詞彙',
+      '安達魯西亞地區，名稱源自阿拉伯語系詞彙',
+      '加利西亞下海灣，名稱可能源自「白色的萊茵」',
       '里奧哈產區一帶，名稱源自拉丁語詞根'
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation: '起源於西班牙西北部加利西亞下海灣地區，名稱可能源自「白色的萊茵」，暗示與德國白酒品種的可能歷史關聯，此說法尚無確切DNA證據支持。'
   },
   {
@@ -3998,10 +3998,10 @@ const QUIZ_BANK = [
     sourceId: 'sparkling',
     question: '香檳三大品種在氣泡酒混調中各司其職，下列對應何者正確？',
     options: [
-      'Chardonnay結構；Pinot Noir花香；Meunier辛香骨架',
-      '三者角色完全相同，可任意替換比例',
+      '三大品種角色完全相同，可任意替換調配比例',
+      'Chardonnay提供結構，Pinot Noir則貢獻花香與細緻酸度',
       'Chardonnay花香酸；Pinot Noir結構；Meunier圓潤',
-      '只有Chardonnay是法規允許使用的品種'
+      '只有Chardonnay是香檳法規明文允許使用的品種'
     ],
     correctIndex: 2,
     explanation: 'Chardonnay貢獻花香與細緻酸度；Pinot Noir提供結構與紅果調性；Pinot Meunier帶來早熟果香與圓潤口感，三大品種各司其職，共同構成香檳的骨架與複雜度。'
