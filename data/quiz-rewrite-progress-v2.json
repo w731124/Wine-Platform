@@ -1,8 +1,8 @@
 {
   "note": "quiz-data.js 題庫內容重寫進度追蹤檔。與已遺失的舊版 quiz-rewrite-progress.json 區隔，v2 為重來後的新起點。每完成一批就在 batches 追加一筆紀錄，並把該批 id 併入 completedIds。",
   "totalQuestions": 300,
-  "completedCount": 276,
-  "remainingCount": 24,
+  "completedCount": 288,
+  "remainingCount": 12,
   "batches": [
     {
       "batchLabel": "lo1-batch1",
@@ -222,6 +222,16 @@
         "lo5-for-011", "lo5-for-012", "lo5-for-013", "lo5-for-014", "lo5-for-015",
         "lo5-for-016", "lo5-for-017", "lo5-for-018"
       ]
+    },
+    {
+      "batchLabel": "lo6-batchA",
+      "idRange": "lo6-001~012",
+      "count": 12,
+      "completedAt": "2026-09-06",
+      "ids": [
+        "lo6-001", "lo6-002", "lo6-003", "lo6-004", "lo6-005", "lo6-006",
+        "lo6-007", "lo6-008", "lo6-009", "lo6-010", "lo6-011", "lo6-012"
+      ]
     }
   ],
   "completedIds": [
@@ -290,6 +300,8 @@
     "lo5-for-001", "lo5-for-002", "lo5-for-003", "lo5-for-004", "lo5-for-005",
     "lo5-for-006", "lo5-for-007", "lo5-for-008", "lo5-for-009", "lo5-for-010",
     "lo5-for-011", "lo5-for-012", "lo5-for-013", "lo5-for-014", "lo5-for-015",
-    "lo5-for-016", "lo5-for-017", "lo5-for-018"
+    "lo5-for-016", "lo5-for-017", "lo5-for-018",
+    "lo6-001", "lo6-002", "lo6-003", "lo6-004", "lo6-005", "lo6-006",
+    "lo6-007", "lo6-008", "lo6-009", "lo6-010", "lo6-011", "lo6-012"
   ]
 }
