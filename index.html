@@ -499,6 +499,18 @@
     <div id="quiz-history-list"></div>
   </div>
 
+  <!-- 偵測到未完成測驗：繼續或放棄 -->
+  <div id="quiz-state-resume" class="quiz-state" style="text-align:center;padding:36px 16px;">
+    <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:32px;box-shadow:var(--sh);max-width:520px;margin:0 auto;">
+      <p style="font-size:var(--fs-card-title);font-weight:700;color:var(--burg);margin-bottom:12px;">偵測到未完成的測驗</p>
+      <p id="quiz-resume-info" style="font-size:var(--fs-base);color:var(--txt2);margin-bottom:22px;"></p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;">
+        <button onclick="resumeQuizSession()" style="padding:10px 26px;border-radius:20px;border:none;background:var(--burg);color:#fff;font-size:var(--fs-lg);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">繼續上次測驗</button>
+        <button onclick="discardQuizSession()" style="padding:10px 26px;border-radius:20px;border:1px solid var(--border);background:#fff;color:var(--txt2);font-size:var(--fs-lg);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">放棄並重新開始</button>
+      </div>
+    </div>
+  </div>
+
   <!-- LO篩選練習：選擇畫面 -->
   <div id="quiz-state-lo-select" class="quiz-state" style="text-align:center;padding:36px 16px;">
     <div style="background:var(--bg-card);border:1px solid var(--border-lt);border-radius:14px;padding:32px;box-shadow:var(--sh);max-width:520px;margin:0 auto;">

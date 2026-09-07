@@ -1062,3 +1062,14 @@
      | 44%以下 | Fail unclassified | unclassified（未達標） |
 
      原因：先前規劃討論中僅口頭確認「55%/70%/85%」三個數字看似合理，但未曾正式查證其真正來源與完整級距（尤其45%這個門檻、以及「Fail」與「Fail unclassified」兩級的區分，若不記錄下來容易被後續開發誤判為多餘或自行發明的設計而在簡化改版時被誤刪或合併回3級）。此筆記錄的目的就是把查證結果留下白紙黑字依據，避免未來有人（包含未來的我）看到5級制以為是過度工程而擅自簡化為3級。
+
+## 2026-09-06 修正測驗進行中重整頁面遺失進度的風險（sessionStorage持久化）
+
+288. **`js/quiz.js`新增`saveQuizSessionState()`/`loadQuizSessionState()`/`clearQuizSessionState()`，將進行中測驗狀態（`quizMode`/`quizPracticeLo`/`quizQuestions`/`quizAnswers`/`quizCurrentIndex`/`quizTimeRemaining`）寫入`sessionStorage`（key固定為`wineAtlasQuizSession`），並掛在`_beginQuizSession()`（開始時）、`quizSelectAnswer()`（作答時）、`quizTick()`（每次計時器tick）、`quizGoToQuestion()`（跳題導覽時）四個時機點呼叫存檔；`submitQuiz()`交卷成功後與`quizExitToStart()`確認離開後都會呼叫`clearQuizSessionState()`清除紀錄**：`quizGoToQuestion()`是額外加上的存檔時機點，非使用者原始規格逐字要求（原規格只列了「測驗開始／每次作答／每次計時器tick」三個時機）。
+     原因：練習模式（`startPractice()`）不啟動計時器，若只在作答與開始時存檔，使用者在練習模式下純粹跳題瀏覽（尚未作答）時`quizCurrentIndex`不會更新進sessionStorage，導致重整後復原的題號可能是過時的；加上跳題導覽的存檔呼叫，確保兩種模式下「目前題號」都能維持即時同步，不只有作答動作才觸發。
+289. **`window`層級新增`beforeunload`事件監聽，條件為`!quizSubmitted && quizQuestions.length > 0`時才觸發瀏覽器原生離開確認**：監聽器寫在`js/quiz.js`頂層（非包在任何函式或DOMContentLoaded內），因為`window`物件在script執行當下就可用，不需要等DOM就緒。
+     原因：只在「測驗已開始且尚未交卷」時才需要警告使用者，尚未開始測驗（`quizQuestions`為空陣列，模組層級初始值）或已完成交卷（`quizSubmitted`設為`true`）皆不應觸發，避免使用者在瀏覽其他分頁或測驗結束後被誤導離開網站前還跳出不必要的確認提示。
+290. **`initQuizPanel()`偵測到`sessionStorage`裡有未完成測驗紀錄時，除了呼叫既有的`showQuizState('resume')`切換模擬考分頁內部畫面，額外呼叫`showPanel('quiz')`強制切換到模擬考這個外層分頁**：手動用Playwright測試時發現，若不呼叫`showPanel('quiz')`，`quiz-state-resume`這個內層畫面雖然正確套用了`active`class，但外層`panel-quiz`本身在整頁重新載入後會被重設回預設顯示的「產區資料庫」分頁（因為分頁切換狀態本來就沒有被持久化），導致使用者實際上完全看不到這個「繼續/放棄」提示、必須自己點回模擬考分頁才看得到，違背了這個功能「主動提示使用者」的初衷。
+     原因：只有在偵測到未完成測驗紀錄這個特定情境下才強制切換外層分頁，正常情況下（無未完成測驗）頁面重新整理仍維持網站原本「預設回到第一個分頁」的既有行為不變，不影響其他一般使用情境；這是實作過程中透過Playwright實測才發現的真實UI缺陷，而非憑空預想的邊界case。
+291. **手動驗證方式：撰寫Playwright腳本模擬完整使用情境（非僅靜態檢查），涵蓋5種情境**：①模擬考作答中重整→驗證「繼續/放棄」提示正確顯示、點繼續後題號/已作答/剩餘時間/計時器皆正確恢復；②正常交卷後重整→驗證sessionStorage已清除、不再誤判為未完成測驗；③LO練習模式重整→驗證同一套機制對8題練習模式同樣有效，且計時器維持關閉；④「離開測驗」確認離開後重整→驗證狀態正確清除、不再誤觸發；⑤`beforeunload`分別在「尚未開始」「測驗進行中」「已交卷」三種情境下觸發與否皆符合預期。全部5項情境皆通過，過程中console/page皆無錯誤訊息。
+     原因：這個功能的正確性完全取決於「使用者實際操作瀏覽器重整/關閉分頁」這種瀏覽器原生行為，純粹讀程式碼或靜態檢查無法驗證是否真的有效，必須實際驅動瀏覽器模擬重整才能抓到像#290這種「內層class正確但外層分頁被蓋住看不到」的真實UI缺陷；測試過程中也發現兩次測試腳本本身的撰寫問題（Playwright的`confirm()`對話框監聽器要在觸發點擊前註冊、以及重整後外層分頁預設值的正確認知），修正測試腳本後才得到準確的驗證結果，而非誤把測試腳本的瑕疵當成產品程式碼的bug回報。

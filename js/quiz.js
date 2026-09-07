@@ -19,6 +19,7 @@ const QUIZ_LO_LABELS = {
 
 const QUIZ_HISTORY_STORAGE_KEY = 'wineAtlasQuizHistory';
 const QUIZ_HISTORY_MAX = 10;
+const QUIZ_SESSION_STORAGE_KEY = 'wineAtlasQuizSession';
 
 const QUIZ_GRADE_META = {
   dist:         {cls:'qb-dist',         short:'D', label:'Pass with Distinction(卓越)'},
@@ -36,6 +37,7 @@ let quizTimerId = null;
 let quizSubmitted = false;
 let quizMode = 'exam';
 let quizPracticeLo = null;
+let pendingResumeQuizState = null;
 
 function quizShuffle(arr){
   const a = arr.slice();
@@ -128,6 +130,90 @@ function renderQuizHistoryList(){
   }).join('');
 }
 
+/* ── 進行中測驗狀態持久化（sessionStorage），防止重整/意外關閉遺失進度 ── */
+function saveQuizSessionState(){
+  try{
+    const state = {
+      quizMode,
+      quizPracticeLo,
+      quizQuestions,
+      quizAnswers,
+      quizCurrentIndex,
+      quizTimeRemaining,
+      savedAt: Date.now()
+    };
+    sessionStorage.setItem(QUIZ_SESSION_STORAGE_KEY, JSON.stringify(state));
+  }catch(e){
+    console.warn('❌ [Quiz Session] 儲存測驗進度失敗：', e);
+  }
+}
+
+function loadQuizSessionState(){
+  try{
+    const raw = sessionStorage.getItem(QUIZ_SESSION_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  }catch(e){
+    console.warn('❌ [Quiz Session] 讀取測驗進度失敗：', e);
+    return null;
+  }
+}
+
+function clearQuizSessionState(){
+  try{ sessionStorage.removeItem(QUIZ_SESSION_STORAGE_KEY); }catch(e){}
+}
+
+function renderQuizResumePrompt(saved){
+  const el = document.getElementById('quiz-resume-info');
+  if (!el) return;
+  const answeredCount = saved.quizAnswers.filter(a => a !== null).length;
+  const total = saved.quizQuestions.length;
+  if (saved.quizMode === 'exam') {
+    const m = Math.max(0, Math.floor(saved.quizTimeRemaining / 60));
+    const s = Math.max(0, saved.quizTimeRemaining % 60);
+    el.textContent = `模擬考・已作答 ${answeredCount} / ${total} 題・剩餘時間 ${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  } else {
+    const loLabel = QUIZ_LO_LABELS[saved.quizPracticeLo] || 'LO篩選練習';
+    el.textContent = `${loLabel}・已作答 ${answeredCount} / ${total} 題`;
+  }
+}
+
+function resumeQuizSession(){
+  const saved = pendingResumeQuizState;
+  if (!saved) { showQuizState('start'); return; }
+  pendingResumeQuizState = null;
+
+  quizMode = saved.quizMode;
+  quizPracticeLo = saved.quizPracticeLo;
+  quizQuestions = saved.quizQuestions;
+  quizAnswers = saved.quizAnswers;
+  quizCurrentIndex = saved.quizCurrentIndex;
+  quizTimeRemaining = saved.quizTimeRemaining;
+  quizSubmitted = false;
+
+  showQuizState('active');
+  renderQuizNavGrid();
+  renderQuizQuestion();
+
+  const timerPanel = document.getElementById('quiz-timer-panel');
+  if (quizMode === 'exam') {
+    if (timerPanel) timerPanel.style.display = '';
+    updateQuizTimerDisplay();
+    if (quizTimeRemaining > 0) {
+      quizTimerId = setInterval(quizTick, 1000);
+    } else {
+      submitQuiz(true);
+    }
+  } else if (timerPanel) {
+    timerPanel.style.display = 'none';
+  }
+}
+
+function discardQuizSession(){
+  pendingResumeQuizState = null;
+  clearQuizSessionState();
+  showQuizState('start');
+}
+
 function buildQuizQuestionSet(allocation = QUIZ_LO_ALLOCATION){
   let picked = [];
   Object.keys(allocation).forEach(loKey => {
@@ -204,6 +290,7 @@ function _beginQuizSession(allocation){
   showQuizState('active');
   renderQuizNavGrid();
   renderQuizQuestion();
+  saveQuizSessionState();
 }
 
 function startQuiz(){
@@ -228,6 +315,7 @@ function startPractice(lo){
 function quizTick(){
   quizTimeRemaining--;
   updateQuizTimerDisplay();
+  saveQuizSessionState();
   if (quizTimeRemaining <= 0) submitQuiz(true);
 }
 
@@ -261,6 +349,7 @@ function quizGoToQuestion(idx){
   quizCurrentIndex = idx;
   renderQuizNavGrid();
   renderQuizQuestion();
+  saveQuizSessionState();
 }
 
 function quizGoToOffset(delta){
@@ -292,6 +381,7 @@ function quizSelectAnswer(optIndex){
   quizAnswers[quizCurrentIndex] = optIndex;
   renderQuizNavGrid();
   renderQuizQuestion();
+  saveQuizSessionState();
 }
 
 /* ── 繳卷 / 計分 ── */
@@ -304,6 +394,7 @@ function submitQuiz(isAuto){
   quizSubmitted = true;
   if (quizTimerId) { clearInterval(quizTimerId); quizTimerId = null; }
   if (quizMode === 'exam') saveQuizHistoryRecord(calculateQuizResults());
+  clearQuizSessionState();
   renderQuizResults();
   showQuizState('result');
 }
@@ -316,6 +407,8 @@ function quizExitToStart(){
     if (!confirm(msg)) return;
   }
   if (quizTimerId) { clearInterval(quizTimerId); quizTimerId = null; }
+  clearQuizSessionState();
+  quizQuestions = [];
   showQuizState('start');
 }
 
@@ -404,7 +497,23 @@ function renderQuizResults(){
   }).join('');
 }
 
-/* ── 初始化：僅顯示起始畫面，不預先抽題 ── */
+/* ── 離開前警告：測驗進行中（尚未交卷）才提示，避免重整/關閉分頁遺失進度 ── */
+window.addEventListener('beforeunload', function(e){
+  if (!quizSubmitted && quizQuestions.length > 0) {
+    e.preventDefault();
+    e.returnValue = '';
+  }
+});
+
+/* ── 初始化：偵測sessionStorage是否有未完成測驗，否則僅顯示起始畫面 ── */
 function initQuizPanel(){
-  showQuizState('start');
+  const saved = loadQuizSessionState();
+  if (saved && Array.isArray(saved.quizQuestions) && saved.quizQuestions.length > 0) {
+    pendingResumeQuizState = saved;
+    renderQuizResumePrompt(saved);
+    showQuizState('resume');
+    showPanel('quiz'); // 有未完成測驗時強制切到模擬考分頁，避免提示畫面被其他分頁蓋住看不到
+  } else {
+    showQuizState('start');
+  }
 }
