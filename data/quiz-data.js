@@ -2991,15 +2991,15 @@ const QUIZ_BANK = [
     lo: 4,
     sourceType: 'data-object',
     sourceId: 'sangiovese',
-    question: '依profile資料，Sangiovese的酸度（acidity）評分為8分，這與其料理搭配定位有何關聯？',
+    question: 'Sangiovese的高酸度與其料理搭配定位有何關聯？',
     options: [
       '高酸度使其完全不適合搭配任何食物',
-      '酸度評分與食物搭配完全沒有任何關聯',
-      '高酸度代表只能單獨飲用，不能配餐',
-      '高酸度使其成為配餐酒首選，適合番茄料理'
+      '酸度表現與食物搭配一般被認為沒有任何關聯',
+      '高酸度使其成為理想的配餐酒，尤其適合搭配番茄類料理',
+      '高酸度代表只能單獨飲用，不能配餐'
     ],
-    correctIndex: 3,
-    explanation: '高酸度與其foodPairingTags中的番茄酸香直接呼應，使其成為配餐酒的理想選擇。'
+    correctIndex: 2,
+    explanation: 'Sangiovese天生高酸，與其常見的酸櫻桃、番茄葉調性相互呼應，這種高酸特性使其成為義大利料理，尤其是番茄類料理的理想配餐酒選擇。'
   },
   {
     id: 'lo4-neb-001',
@@ -3051,15 +3051,15 @@ const QUIZ_BANK = [
     lo: 4,
     sourceType: 'data-object',
     sourceId: 'nebbiolo',
-    question: '依profile資料，Nebbiolo的陳年潛力（aging）評分為10分（滿分），這代表什麼？',
+    question: 'Nebbiolo（如Barolo、Barbaresco）為何以驚人的長期陳年潛力聞名？',
     options: [
-      '代表這個評分是資料庫的錯誤，紅酒不可能有滿分陳年潛力',
-      '陳年潛力與單寧酸度完全無關，純屬巧合現象',
-      '反映其極高單寧與酸度提供的陳年支撐結構',
-      '代表內比歐露完全不需要瓶中陳年就能達到最佳風味'
+      '極高的單寧與酸度提供了長期陳年所需的結構支撐',
+      '陳年潛力與單寧酸度被認為完全無關，純屬巧合現象',
+      '因為完全不需要瓶中陳年就能達到最佳風味',
+      '因為顏色極深，能有效阻隔氧氣延緩老化'
     ],
-    correctIndex: 2,
-    explanation: 'profile.aging為10，與其極高單寧、酸度評分相符，反映其極高單寧與酸度提供的陳年支撐結構，陳年潛力驚人。'
+    correctIndex: 0,
+    explanation: 'Nebbiolo單寧與酸度皆是所有品種中數一數二的高，這樣的結構為Barolo、Barbaresco等頂級酒款提供了長期陳年所需的支撐力，是義大利葡萄酒教學中陳年潛力的經典案例之一。'
   },
   {
     id: 'lo4-gre-001',
@@ -3276,15 +3276,15 @@ const QUIZ_BANK = [
     lo: 4,
     sourceType: 'data-object',
     sourceId: 'zinfandel-primitivo',
-    question: '依profile資料，Zinfandel/Primitivo的酒精濃度（alcohol）評分為9分，這代表什麼？',
+    question: 'Zinfandel/Primitivo為何常以偏高的酒精濃度聞名？',
     options: [
-      '是所有品種中酒精濃度數一數二高的',
-      '代表這是資料庫錯誤，酒精不可能這麼高',
-      '酒精濃度評分與品種風格完全無關',
-      '代表金芬黛只能釀成低酒精度清爽風格'
+      '這是資料庫錯誤，酒精濃度不可能這麼高',
+      '酒精濃度高低與品種特性一般被認為完全無關',
+      'Zinfandel/Primitivo只能釀成低酒精度的清爽風格',
+      '果串成熟不均，晚採收部分果粒糖度極高，是公認的高酒精代表品種之一'
     ],
-    correctIndex: 0,
-    explanation: 'profile.alcohol為9，是所有已建立資料的品種中酒精濃度數一數二高的，與其果醬香甜厚重的風格相符。'
+    correctIndex: 3,
+    explanation: 'Zinfandel/Primitivo果串內果粒成熟度不均，為等待多數果粒成熟常延後採收，導致部分果粒糖度極高，發酵後轉化出偏高的酒精濃度，是公認以高酒精、果醬香甜風格聞名的代表品種之一。'
   },
   {
     id: 'lo4-gam-001',
@@ -3366,15 +3366,15 @@ const QUIZ_BANK = [
     lo: 4,
     sourceType: 'data-object',
     sourceId: 'gewurztraminer',
-    question: '依profile資料，Gewürztraminer的花香（floral）評分為9分，這與其品種辨識度有何關聯？',
+    question: 'Gewürztraminer為何是少數盲飲時可憑香氣直接辨識的品種？',
     options: [
-      '代表格烏茲塔明那完全沒有任何花香調性',
-      '花香評分與品種辨識度完全沒有任何關聯',
-      '9分代表這是所有品種中花香最不明顯的一個',
-      '是花香調性最鮮明的品種，可憑荔枝香直接辨識'
+      'Gewürztraminer完全沒有任何花香調性',
+      '香氣濃郁度與品種辨識度一般被認為沒有任何關聯',
+      '天然帶有極濃郁鮮明的荔枝、玫瑰花與薑等香料調性，辨識度極高',
+      '這種辨識度其實只出現在極少數特定酒莊的產品'
     ],
-    correctIndex: 3,
-    explanation: '花香評分9分，是花香調性最鮮明的品種之一，是少數盲飲時可憑濃郁荔枝香直接辨識的品種。'
+    correctIndex: 2,
+    explanation: 'Gewürztraminer天然帶有極為鮮明濃郁的荔枝、玫瑰花與薑等香料調性，辨識度在白葡萄品種中數一數二，是少數盲飲時能憑香氣直接辨識的品種代表。'
   },
   {
     id: 'lo4-vio-001',
@@ -3546,15 +3546,15 @@ const QUIZ_BANK = [
     lo: 4,
     sourceType: 'data-object',
     sourceId: 'barbera',
-    question: '依profile資料，Barbera的酸度（acidity）評分為9分，這與其品種定位有何關聯？',
+    question: 'Barbera的高酸度與其作為日常餐酒的定位有何關聯？',
     options: [
+      '酸度表現與其作為日常餐酒的定位一般被認為完全無關',
       '極高酸度代表這款酒完全不適合搭配任何食物',
-      '酸度評分與其作為日常餐酒的定位完全無關',
-      '極高酸度是核心特徵，使其成為親民餐酒選擇',
-      '9分代表Barbera的酸度是所有品種中最低的'
+      '極高酸度是其核心特徵，使其成為爽口易配餐的親民日常選擇',
+      'Barbera其實酸度偏低，這才是親民定位的原因'
     ],
     correctIndex: 2,
-    explanation: 'profile.acidity為9，極高酸度是其核心特徵，使其長期作為適合日常配餐的親民餐酒選擇，解釋了其長期作為日常餐酒選擇的原因。'
+    explanation: 'Barbera天生極高酸度，是其核心品種特徵之一，這種爽口特性使其長期作為義大利日常餐桌上易於配餐的親民酒款選擇。'
   },
   {
     id: 'lo4-cor-001',
