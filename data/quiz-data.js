@@ -1214,7 +1214,7 @@ const QUIZ_BANK = [
       '永遠帶有明顯奶油與橡木桶調性'
     ],
     correctIndex: 1,
-    explanation: 'Chardonnay的aromaWheel包含Green Apple、Lemon等青綠果香，冷涼產區這類特徵更為明顯；Chardonnay不含單寧（tannin profile為0），因白酒不帶皮發酵。'
+    explanation: 'Chardonnay的aromaWheel包含Green Apple、Lemon等青綠果香，冷涼產區這類特徵更為明顯；白葡萄酒普遍不進行帶皮發酵，因此單寧含量極低，這是所有白葡萄品種的共通特性，並非Chardonnay獨有。'
   },
   {
     id: 'lo3-cha-004',
@@ -1311,30 +1311,30 @@ const QUIZ_BANK = [
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'chardonnay',
-    question: '依profile資料，Chardonnay的單寧（tannin）評分為何？',
+    question: '為什麼Chardonnay（以及絕大多數白葡萄酒）幾乎不帶單寧口感？',
     options: [
-      '0分，因白酒不帶皮發酵，幾乎不含單寧',
-      '依產區不同差異極大，從0到9分都有可能',
-      '單寧是Chardonnay最主要的風味特徵',
-      '與Cabernet Sauvignon相同，屬中高單寧'
+      '因為Chardonnay是所有品種中果皮最薄的一種，天生單寧極少',
+      '單寧其實是Chardonnay最主要的風味特徵，只是不易察覺',
+      '單寧含量會依產區不同從無到有大幅浮動，無法一概而論',
+      '白葡萄酒釀造時果汁不與果皮長時間接觸發酵，單寧幾乎無從萃取'
     ],
-    correctIndex: 0,
-    explanation: '白酒因不進行帶皮發酵，單寧含量普遍極低，profile.tannin為0，這是所有白葡萄品種的共通特性，非Chardonnay獨有。'
+    correctIndex: 3,
+    explanation: '白葡萄酒釀造流程通常在榨汁後才發酵，果汁與果皮接觸時間短，單寧（主要存在於果皮、籽與梗）幾乎無法萃取，這是所有白葡萄品種（包含Chardonnay）共通的釀造原理，而非個別品種特性。'
   },
   {
     id: 'lo3-cha-011',
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'chardonnay',
-    question: 'Chardonnay在profile資料中的酸度（acidity）與陳年潛力（aging）評分相對如何？',
+    question: 'Chardonnay在不同釀造風格下，酸度與陳年潛力的關聯為何？',
     options: [
-      '酸度偏低（3分）、陳年潛力也偏低（2分）',
-      '兩者評分完全相同，皆為中等5分',
-      '酸度中高（7分）、陳年潛力中等偏高（6分）',
-      '酸度與陳年潛力皆為滿分10分之高'
+      '只有經過橡木桶陳年的版本才具備任何陳年潛力',
+      '陳年潛力與酸度高低完全無關，純粹取決於裝瓶年份',
+      '未經橡木桶、單靠高酸支撐的頂級版本（如Chablis特級園）本身就具備長期陳年實力，並非只有經橡木桶版本才能陳年',
+      'Chardonnay完全不具備任何陳年潛力，無論釀造方式為何'
     ],
     correctIndex: 2,
-    explanation: 'profile中acidity為7、aging為6，反映其兼具支撐陳年的酸度結構與一定的陳年潛力，尤其經橡木桶陳年的版本。'
+    explanation: 'Chardonnay天生具備支撐陳年的酸度結構，這種陳年實力並非來自橡木桶，而是來自品種本身的酸度與釀造品質——例如完全不經橡木桶、僅靠高酸與礦石感支撐的頂級Chablis特級園，同樣以優異的陳年實力聞名，顯示橡木桶並非決定陳年潛力的關鍵因素。'
   },
   {
     id: 'lo3-cha-012',
@@ -1536,30 +1536,30 @@ const QUIZ_BANK = [
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'sauvignon-blanc',
-    question: '依profile資料，Sauvignon Blanc的酸度（acidity）評分為何？',
+    question: 'Sauvignon Blanc在白葡萄品種中，其天然酸度表現屬於哪種等級？',
     options: [
-      '9分，接近滿分的高酸',
-      '5分，屬於中等偏低程度',
-      '7分，屬於中高偏上程度',
-      '3分，屬於明顯偏低程度'
+      '中等偏低，酸度並非其風味重點',
+      '中高，但仍明顯低於多數白葡萄品種',
+      '偏低，需要靠人工添加酸才能達到爽脆口感',
+      '高酸，是其「爽脆清新」風格定位的關鍵特徵之一'
     ],
-    correctIndex: 0,
-    explanation: 'profile.acidity為9，是白蘇維濃最鮮明的特徵之一，也是其「高酸爽脆」風格定位的數據依據。'
+    correctIndex: 3,
+    explanation: 'Sauvignon Blanc天生高酸，是其「高酸爽脆」風格定位的核心特徵之一，也是其草本與醋栗調性之外另一個重要的品種辨識指標。'
   },
   {
     id: 'lo3-svb-012',
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'sauvignon-blanc',
-    question: '依profile資料，Sauvignon Blanc的陳年潛力（aging）評分與Chardonnay相比如何？',
+    question: 'Sauvignon Blanc與Chardonnay相比，兩者在陳年潛力上的一般傾向為何？',
     options: [
-      '兩者陳年潛力評分完全相同，皆為中等5分',
-      '白蘇維濃陳年潛力（3分）明顯低於夏多內（6分）',
-      '白蘇維濃陳年潛力反而遠高於夏多內許多',
-      '陳年潛力純粹與品種無關，只和產區有關'
+      '兩者陳年潛力完全相同，並無明顯差異',
+      '多數Sauvignon Blanc（尤其新世界芳香奔放型）陳年潛力較低，通常較Chardonnay更適合及早飲用',
+      'Sauvignon Blanc陳年潛力遠高於Chardonnay',
+      '陳年潛力純粹取決於裝瓶年份，與品種完全無關'
     ],
     correctIndex: 1,
-    explanation: 'profile.aging為3，反映白蘇維濃多數風格（尤其新世界芳香奔放型）不刻意追求長期陳年，這與其阻擋MLF、追求新鮮酸度的釀造哲學一致（Chardonnay為6分）。'
+    explanation: '多數Sauvignon Blanc為保留新鮮果香與高酸特性，通常避免蘋果酸乳酸發酵（MLF）與橡木桶陳年，走向較不利長期陳年的早飲風格；相較之下，經橡木桶與MLF處理的Chardonnay（尤其優質版本）較常展現一定的陳年潛力。'
   },
   {
     id: 'lo3-svb-013',
@@ -1731,30 +1731,30 @@ const QUIZ_BANK = [
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'riesling',
-    question: '依profile資料，Riesling的酸度（acidity）評分與白蘇維醂（Sauvignon Blanc）相比如何？',
+    question: 'Riesling與Sauvignon Blanc這兩個白葡萄品種，在酸度表現上有何共同點？',
     options: [
-      'Riesling遠低於白蘇維濃的酸度表現',
-      'Riesling酸度表現遠高於白蘇維濃',
-      '兩者評分相同，皆為9分的高酸品種',
-      '兩者評分皆為5分的中等程度'
+      '兩者酸度皆偏低，是柔和圓潤風格的代表',
+      '只有Riesling酸度高，Sauvignon Blanc其實酸度中等',
+      '兩者皆是公認酸度表現最突出的白葡萄品種代表',
+      '兩者酸度皆會因裝瓶年份不同而完全不可預測'
     ],
     correctIndex: 2,
-    explanation: 'Riesling與Sauvignon Blanc的profile.acidity皆為9，是酸度表現最突出的兩個白酒品種，但風味走向截然不同。'
+    explanation: 'Riesling與Sauvignon Blanc都是公認酸度表現最突出的白葡萄品種代表，但風味走向截然不同：Riesling常帶花香與礦石感，Sauvignon Blanc則以草本與醋栗調性為主。'
   },
   {
     id: 'lo3-rie-011',
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'riesling',
-    question: '依profile資料，Riesling的陳年潛力（aging）評分為何，與其風格特性有何關聯？',
+    question: '為什麼Riesling即使釀成清淡風格，仍以陳年潛力聞名？',
     options: [
-      '2分，屬極低陳年潛力，僅適合年輕時飲用',
-      '10分，滿分，表現優於所有其他葡萄品種',
-      '7分，屬中高陳年潛力，與高酸支撐陳年能力相符',
-      '陳年潛力純粹與品種酸度高低完全無關'
+      '因為Riesling單寧含量極高，能像紅酒一樣長期陳放',
+      '陳年潛力與品種特性完全無關，純屬裝瓶方式差異',
+      '天然高酸提供了支撐長期陳年的結構，並能發展出獨特的陳年香氣（如汽油、礦石感）',
+      'Riesling其實不具備陳年潛力，只是常被誤傳'
     ],
     correctIndex: 2,
-    explanation: 'profile.aging為7，高酸是白酒陳年潛力的關鍵支撐要素之一，這也解釋了為何Riesling能發展出獨特的陳年汽油礦石感。'
+    explanation: '高酸是白酒陳年潛力的關鍵支撐要素之一，Riesling天然高酸使其能發展出獨特的陳年汽油（TDN）與礦石調性，是WSET教學中高酸白酒陳年能力的經典案例。'
   },
   {
     id: 'lo3-rie-012',
@@ -1791,15 +1791,15 @@ const QUIZ_BANK = [
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'riesling',
-    question: 'Riesling的profile資料顯示其單寧（tannin）與酒體（body）評分分別為何？',
+    question: 'Riesling在單寧與酒體上的典型表現為何？',
     options: [
-      '單寧6分、酒體7分，屬厚重型風格',
-      '單寧3分、酒體9分，兩者評分皆偏高',
-      '單寧0分（不帶皮發酵）、酒體3分（輕盈型）',
-      '單寧9分、酒體3分，兩者評分完全相反'
+      '單寧極低（不帶皮發酵，屬白酒共通特性）、酒體輕盈',
+      '單寧與酒體皆厚重，接近紅酒的口感結構',
+      '單寧極高，是少數帶明顯澀感的白葡萄品種',
+      '酒體極為飽滿厚重，是白酒中最厚重的品種之一'
     ],
-    correctIndex: 2,
-    explanation: 'profile中tannin為0（所有白葡萄品種共通特性）、body為3，反映Riesling典型的輕盈酒體與高酸清爽風格。'
+    correctIndex: 0,
+    explanation: '白葡萄酒普遍不帶皮發酵，單寧含量極低，這是所有白葡萄品種的共通特性；Riesling典型風格為輕盈酒體搭配高酸清爽口感。'
   },
   {
     id: 'lo3-pgg-001',
@@ -1971,30 +1971,30 @@ const QUIZ_BANK = [
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'pinot-gris',
-    question: '依profile資料，Pinot Gris的陳年潛力（aging）評分為何？',
+    question: 'Pinot Gris與Pinot Grigio雖是同一品種，為何在陳年潛力上常給人截然不同的印象？',
     options: [
-      '7分，中高陳年潛力，適合長期存放',
-      '3分，偏低陳年潛力，適合年輕飲用',
-      '9分，接近滿分，優於絕大多數品種',
-      '5分，中等偏上，可適度短期陳放'
+      '義大利Pinot Grigio多走清爽早飲風格；阿爾薩斯晚摘/貴腐甜型Pinot Gris則可具備長期陳年實力',
+      '因為兩者其實是完全不同的品種，陳年潛力天生不同',
+      '陳年潛力與釀造風格完全無關，純粹取決於裝瓶年份',
+      '兩者陳年潛力其實完全相同，並無風格差異'
     ],
-    correctIndex: 1,
-    explanation: 'profile.aging為3，與其多數風格（尤其義大利式清爽路線）適合早飲的特性相符。'
+    correctIndex: 0,
+    explanation: '義大利Pinot Grigio多以不鏽鋼槽釀造，走清爽中性、及早飲用的風格；阿爾薩斯的Pinot Gris則可能透過晚摘（Vendange Tardive）或貴腐（Sélection de Grains Nobles）工法，發展出濃縮度與陳年實力兼具的甜型或半甜型酒款，兩者陳年潛力的差異源自產區釀造哲學不同，而非品種本身固定特性。'
   },
   {
     id: 'lo3-pgg-013',
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'pinot-gris',
-    question: '依profile資料，Pinot Gris的酸度（acidity）評分與白蘇維濃（Sauvignon Blanc，9分）相比如何？',
+    question: 'Pinot Gris/Grigio的酸度表現與Sauvignon Blanc相比如何？',
     options: [
-      'Pinot Gris更高，達到10分接近滿分',
-      '兩者評分完全相同，皆為9分高酸',
-      'Pinot Gris完全沒有酸度表現可言',
-      'Pinot Gris遠低於白蘇維濃，僅5分中等'
+      '兩者酸度表現完全相同，皆屬高酸品種',
+      '明顯低於Sauvignon Blanc，走中性、易飲路線而非高酸鮮明風格',
+      'Pinot Gris/Grigio的酸度反而更高更鮮明',
+      'Pinot Gris/Grigio幾乎不具備任何可察覺的酸度'
     ],
-    correctIndex: 3,
-    explanation: 'profile.acidity為5，明顯低於白蘇維濃的9分，反映Pinot Gris走中性易飲路線而非白蘇維濃的高酸鮮明風格。'
+    correctIndex: 1,
+    explanation: 'Pinot Gris/Grigio的酸度明顯低於Sauvignon Blanc，走中性易飲路線，這也是兩者風格定位上的關鍵差異之一。'
   },
   {
     id: 'lo3-pgg-014',
@@ -2151,30 +2151,30 @@ const QUIZ_BANK = [
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'cabernet-sauvignon',
-    question: '依profile資料，Cabernet Sauvignon的單寧（tannin）評分為何，這與其品種特性有何關聯？',
+    question: 'Cabernet Sauvignon的單寧為何以緊實厚重聞名？',
     options: [
-      '2分，屬於單寧極為輕盈的品種之一',
-      '單寧評分與果皮厚度完全無直接關聯',
-      '8分，單寧最緊實厚重，與晚熟厚皮相符',
-      '8分，但單寧口感反而最柔和圓潤'
+      '果皮極薄，單寧其實主要來自橡木桶陳年',
+      '果皮厚實且晚熟，能萃取出大量單寧物質',
+      '單寧含量與果皮厚度完全無直接關聯',
+      '單寧雖含量高，但口感反而最為柔和圓潤'
     ],
-    correctIndex: 2,
-    explanation: 'profile.tannin為8，與其厚實果皮、晚熟特性直接相關，屬於單寧最緊實厚重的品種之一。'
+    correctIndex: 1,
+    explanation: 'Cabernet Sauvignon果皮厚實、晚熟，帶皮發酵能萃取出大量單寧與色素物質，是其單寧緊實厚重風格的品種基礎。'
   },
   {
     id: 'lo3-cs-011',
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'cabernet-sauvignon',
-    question: '依profile資料，Cabernet Sauvignon與Merlot的陳年潛力（aging）評分相比如何？',
+    question: 'Cabernet Sauvignon與Merlot相比，一般而言哪一個陳年潛力較高，原因為何？',
     options: [
-      '兩者陳年潛力評分完全相同，皆為8分',
-      '梅洛的陳年潛力反而遠高於卡本內蘇維濃',
-      '卡本內蘇維濃（9分）略高於梅洛（7分）',
-      '陳年潛力評分與單寧含量沒有任何關聯'
+      'Cabernet Sauvignon通常較高，因其單寧與骨架結構更為緊實厚重',
+      '兩者陳年潛力一般被認為完全相同',
+      'Merlot通常被認為陳年潛力更高',
+      '陳年潛力與單寧含量一般被認為沒有關聯'
     ],
-    correctIndex: 2,
-    explanation: 'Cabernet Sauvignon的profile.aging為9，高於Merlot的7，與其更高單寧、更厚實骨架的特性相符。'
+    correctIndex: 0,
+    explanation: 'Cabernet Sauvignon單寧與骨架結構通常較Merlot更緊實厚重，因此一般教學上認為其陳年潛力較高，這是品種傾向的一般化描述，並非否定個別頂級酒款的例外表現。'
   },
   {
     id: 'lo3-cs-012',
@@ -2211,15 +2211,15 @@ const QUIZ_BANK = [
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'cabernet-sauvignon',
-    question: '依profile資料，Cabernet Sauvignon的花香（floral）評分僅2分，這反映了什麼風格特徵？',
+    question: 'Cabernet Sauvignon的風味核心為何較少帶有明顯花香調性？',
     options: [
-      '花香調性反而是其全品種中最濃郁的特徵',
-      '風味核心以黑色果香、雪松、石墨為主，花香非重點',
-      'floral評分與品種風味特徵完全無關，純屬隨機',
-      'floral評分必然與單寧評分呈正相關，兩者連動'
+      '花香調性其實是Cabernet Sauvignon全品種中最濃郁的特徵',
+      '風味核心以黑色果香、雪松、石墨等厚重調性為主，花香並非其重點特徵',
+      '花香表現與品種風味特徵完全無關，純屬隨機',
+      '單寧含量越高，花香調性必然也越濃郁，兩者連動'
     ],
     correctIndex: 1,
-    explanation: 'floral僅2分，與aromaWheel列出的黑醋栗、雪松、石墨、薄荷等厚重調性相符，花香調性並非其風味重點。'
+    explanation: 'Cabernet Sauvignon的aromaWheel以黑醋栗、雪松、石墨、薄荷等厚重調性為主，花香調性並非其風味重點。'
   },
   {
     id: 'lo3-mer-001',
@@ -2376,30 +2376,30 @@ const QUIZ_BANK = [
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'merlot',
-    question: '依profile資料，Merlot的單寧（tannin）評分與Cabernet Sauvignon相比如何？',
+    question: 'Merlot的單寧口感與Cabernet Sauvignon相比，通常有何差異？',
     options: [
-      '兩者單寧評分完全相同，皆為中等7分',
-      '梅洛（6分）低於卡本內蘇維濃（8分），較圓潤柔和',
-      '梅洛的單寧評分反而遠高於卡本內蘇維濃',
-      '單寧評分與品種特性完全沒有直接關聯'
+      '兩者單寧口感與強度一般被認為完全相同',
+      'Merlot單寧通常較圓潤柔和，整體強度也低於Cabernet Sauvignon',
+      'Merlot單寧反而通常被認為比Cabernet Sauvignon更為緊澀',
+      '單寧口感與品種特性一般被認為沒有直接關聯'
     ],
     correctIndex: 1,
-    explanation: 'Merlot的profile.tannin為6，低於Cabernet Sauvignon的8，反映其單寧較圓潤柔和的風格。'
+    explanation: 'Merlot果皮相對較薄且早熟，單寧萃取通常較Cabernet Sauvignon圓潤柔和，這也是其常被用作混調搭檔以柔化Cabernet Sauvignon單寧的原因之一。'
   },
   {
     id: 'lo3-mer-012',
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'merlot',
-    question: '依profile資料，Merlot的酒體（body）與酒精濃度（alcohol）評分分別為何？',
+    question: 'Merlot在較溫暖產區（如智利中央山谷）種植時，酒體與酒精濃度通常會呈現什麼樣的變化趨勢？',
     options: [
-      '酒體2分、酒精濃度3分，屬清淡型紅酒風格',
-      '酒體10分，是所有品種中酒體最厚重的一個',
-      '酒體7分、酒精濃度7分，屬中高酒體風格',
-      '酒體與酒精濃度評分皆接近0分'
+      '氣候溫暖與否，對酒體和酒精濃度完全沒有影響',
+      '溫暖氣候反而會讓酒體與酒精濃度雙雙下降',
+      '酒體與酒精濃度只受橡木桶類型影響，與氣候無關',
+      '果實成熟度提高，通常釀出酒體更飽滿、酒精濃度更高的酒款'
     ],
-    correctIndex: 2,
-    explanation: 'profile中body為7、alcohol為7，屬中高酒體與酒精度的紅酒風格。'
+    correctIndex: 3,
+    explanation: '這是LO1氣候與葡萄成熟度的基本原理：溫暖氣候提高果實糖度累積，發酵後轉化為更高酒精濃度，並常伴隨更飽滿的酒體，這適用於包含Merlot在內的多數葡萄品種，而非單一品種的固定特性。'
   },
   {
     id: 'lo3-mer-013',
@@ -2421,15 +2421,15 @@ const QUIZ_BANK = [
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'merlot',
-    question: '依profile資料，Merlot的陳年潛力（aging）評分為7分，這與其品種特性的關聯為何？',
+    question: 'Merlot為什麼即使單寧總量不算最低，口感卻仍以「圓潤」聞名？',
     options: [
-      '代表梅洛完全不具備任何陳年價值可言',
-      '雖不如卡本內蘇維濃極致，但仍具一定陳年潛力',
-      '陳年潛力評分與單寧或酒體皆毫無關聯',
-      '代表梅洛的陳年潛力是所有品種中最高'
+      '因為Merlot其實幾乎不含任何單寧成分',
+      '早熟品種，採收時單寧（尤其種籽單寧）成熟度較高，口感較不苦澀生青',
+      '單寧的圓潤與否純粹取決於橡木桶類型，與品種無關',
+      '因為Merlot採收時通常刻意留下大量未成熟果實'
     ],
     correctIndex: 1,
-    explanation: '反映其雖不如Cabernet Sauvignon極致，但仍具備一定陳年潛力，尤其經橡木桶陳年的版本；profile.aging為7，僅略低於Cabernet Sauvignon的9。'
+    explanation: 'Merlot屬早熟品種，採收時果實（含種籽）通常已達到良好的酚類成熟度，單寧口感較不帶生青苦澀感，這是其「圓潤柔和」風格的關鍵原因，與單寧總量高低是兩個不同的面向。'
   },
   {
     id: 'lo3-pn-001',
@@ -2601,30 +2601,30 @@ const QUIZ_BANK = [
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'pinot-noir',
-    question: '依profile資料，Pinot Noir的單寧（tannin）評分為何，與Cabernet Sauvignon（8分）相比如何？',
+    question: 'Pinot Noir的單寧為何普遍偏向輕盈，與Cabernet Sauvignon形成鮮明對比？',
     options: [
-      '9分，遠高於卡本內蘇維濃許多之高',
-      '兩者單寧評分完全相同，皆為中等6分',
-      '4分，明顯低於卡本內蘇維濃，單寧輕盈',
-      '單寧評分與果皮厚度完全沒有關聯'
+      '果皮其實與Cabernet Sauvignon一樣厚實，只是萃取方式不同',
+      '單寧含量與果皮厚度一般被認為沒有關聯',
+      'Pinot Noir其實單寧含量比Cabernet Sauvignon更高',
+      '果皮薄、色素與單寧物質含量天生較少'
     ],
-    correctIndex: 2,
-    explanation: 'profile.tannin為4，明顯低於Cabernet Sauvignon的8，反映其單寧輕盈的薄皮品種特性。'
+    correctIndex: 3,
+    explanation: 'Pinot Noir果皮薄，天生色素與單寧物質含量較少，這是其單寧輕盈風格的品種基礎，與Cabernet Sauvignon厚皮晚熟的特性形成鮮明對比。'
   },
   {
     id: 'lo3-pn-013',
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'pinot-noir',
-    question: '依profile資料，Pinot Noir的花香（floral）評分為8分，這在所有品種中屬於什麼水準？',
+    question: 'Pinot Noir在花香表現上的品種特色為何？',
     options: [
-      '屬於花香調性最鮮明的品種之一，與玫瑰香氣呼應',
+      '屬於花香調性鮮明的品種之一，常與玫瑰等花香氣息相呼應',
       '屬於花香調性最不明顯的品種之一，接近無香',
-      '花香評分與aromaWheel香氣描述完全無關',
-      '8分代表完全沒有任何花香調性可言'
+      '花香表現與品種香氣特徵一般被認為完全無關',
+      'Pinot Noir完全不具備任何花香調性'
     ],
     correctIndex: 0,
-    explanation: 'profile.floral為8，與aromaWheel中列出的Rose（玫瑰）香氣相呼應，屬於花香調性最鮮明濃郁的品種之一。'
+    explanation: 'Pinot Noir的aromaWheel中列出玫瑰（Rose）等花香調性，屬於花香調性較鮮明的品種之一，尤其在較冷涼產區或經一定陳年後更為明顯。'
   },
   {
     id: 'lo3-pn-014',
@@ -2796,30 +2796,30 @@ const QUIZ_BANK = [
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'syrah-shiraz',
-    question: '依profile資料，Syrah/Shiraz的酒體（body）與酒精濃度（alcohol）評分分別為何？',
+    question: 'Syrah/Shiraz在溫暖氣候（如Barossa Valley）種植時，酒體與酒精濃度通常會呈現什麼樣的變化趨勢？',
     options: [
-      '酒體2分、酒精濃度3分，屬清淡型紅酒',
-      '酒體與酒精濃度評分皆接近0分之低',
-      '酒體8分、酒精濃度8分，屬濃郁厚實風格',
-      '酒體8分，但酒精濃度極低僅2分'
+      '果實成熟度與含糖量提高，通常釀出酒體更飽滿、酒精濃度更高的酒款',
+      '氣候溫暖與否，對酒體和酒精濃度完全沒有影響',
+      '溫暖氣候反而會讓酒體與酒精濃度雙雙下降',
+      '酒體與酒精濃度只受釀酒師人為添加酒精影響，與氣候無關'
     ],
-    correctIndex: 2,
-    explanation: 'profile中body為8、alcohol為8，反映其濃縮厚實的風格特徵。'
+    correctIndex: 0,
+    explanation: '這是LO1氣候與葡萄成熟度的基本原理：溫暖氣候延長生長季、提高果實含糖量，發酵後通常轉化為更高的酒精濃度，並伴隨更飽滿的酒體，這適用於包含Syrah/Shiraz在內的多數葡萄品種，而非單一品種的固定特性。'
   },
   {
     id: 'lo3-syr-012',
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'syrah-shiraz',
-    question: '依profile資料，Syrah/Shiraz的單寧（tannin）評分與Cabernet Sauvignon（8分）相比如何？',
+    question: 'Syrah/Shiraz的單寧表現與Cabernet Sauvignon相比如何？',
     options: [
-      '遠高於卡本內蘇維濃，達到滿分10分之高',
-      '7分，略低於卡本內蘇維濃但仍屬厚重單寧',
-      '兩者單寧評分完全相同，皆為中等7分',
-      '單寧評分與品種厚皮特性完全無關'
+      'Syrah/Shiraz單寧含量被認為遠低於絕大多數黑葡萄品種',
+      '同屬單寧表現厚重的品種，強度上與Cabernet Sauvignon相近',
+      '兩者單寧表現被認為毫無相似之處',
+      'Syrah/Shiraz被認為完全不含單寧成分'
     ],
     correctIndex: 1,
-    explanation: 'profile.tannin為7，略低於Cabernet Sauvignon的8，但仍屬單寧表現厚重的品種之一。'
+    explanation: 'Syrah/Shiraz同屬單寧表現厚重的品種之一，強度上與Cabernet Sauvignon相近，這也是兩者常被歸類為「結構扎實」代表性黑葡萄品種的原因。'
   },
   {
     id: 'lo3-syr-013',
@@ -2841,30 +2841,30 @@ const QUIZ_BANK = [
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'syrah-shiraz',
-    question: '依profile資料，Syrah/Shiraz的陳年潛力（aging）評分為8分，這與其品種特性的關聯為何？',
+    question: 'Syrah/Shiraz常帶有一種獨特的黑胡椒／白胡椒香氣，這種特徵與什麼因素最相關？',
     options: [
-      '代表希哈完全不具備任何陳年價值可言之高',
-      '陳年潛力評分與單寧或酒體結構完全無關',
-      '反映厚實單寧酒體具長期陳年力，近卡本內蘇維濃',
-      '代表其陳年潛力是所有品種中最低的一個'
+      '這種胡椒調性完全來自橡木桶陳年時添加的香料',
+      '所有黑葡萄品種都普遍帶有相同程度的胡椒調性',
+      '這種胡椒調性只存在於Shiraz，Syrah完全沒有',
+      '品種本身含有稱為Rotundone的天然化合物，尤其在冷涼氣候下更為明顯'
     ],
-    correctIndex: 2,
-    explanation: 'profile.aging為8，與Cabernet Sauvignon的9分相近，反映其厚實單寧與酒體結構具備長期陳年支撐力。'
+    correctIndex: 3,
+    explanation: 'Syrah/Shiraz常見的黑胡椒／白胡椒調性源自品種天然含有的Rotundone化合物，在較冷涼氣候（如北隆河）下這種特徵通常更為明顯，是其重要的品種辨識線索之一。'
   },
   {
     id: 'lo3-sup-001',
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'multi-grape-comparison',
-    question: '下列四個品種中，依profile資料，哪一個的單寧（tannin）評分最高？',
+    question: '依業界公認的品種特性，下列四個黑葡萄品種中，何者以單寧最為厚重紮實聞名？',
     options: [
-      'Pinot Noir（4分）評分最低',
-      'Merlot（6分）評分居中',
-      'Cabernet Sauvignon（8分）',
-      'Syrah/Shiraz（7分）'
+      'Cabernet Sauvignon（厚皮晚熟，單寧最為緊實厚重）',
+      'Pinot Noir（薄皮早熟，單寧輕盈明亮）',
+      'Merlot（果皮較薄，單寧較圓潤柔和）',
+      'Syrah/Shiraz（單寧扎實，但略遜於Cabernet Sauvignon）'
     ],
-    correctIndex: 2,
-    explanation: '四個品種的tannin評分分別為：Cabernet Sauvignon 8、Syrah/Shiraz 7、Merlot 6、Pinot Noir 4，Cabernet Sauvignon為最高，這與其厚實果皮、晚熟特性直接相關。'
+    correctIndex: 0,
+    explanation: '四個品種的單寧特性依業界公認的品種描述，由厚至薄依序約為：Cabernet Sauvignon＞Syrah/Shiraz＞Merlot＞Pinot Noir，這與各品種果皮厚度及成熟時間直接相關，Cabernet Sauvignon因厚皮晚熟特性成為單寧最紮實的代表。'
   },
   {
     id: 'lo3-sup-002',
