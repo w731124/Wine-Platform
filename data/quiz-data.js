@@ -1214,7 +1214,7 @@ const QUIZ_BANK = [
       '通常帶有明顯奶油與橡木桶調性'
     ],
     correctIndex: 1,
-    explanation: 'Chardonnay的aromaWheel包含Green Apple、Lemon等青綠果香，冷涼產區這類特徵更為明顯；白葡萄酒普遍不進行帶皮發酵，因此單寧含量極低，這是所有白葡萄品種的共通特性，並非Chardonnay獨有。'
+    explanation: 'Chardonnay的香氣輪包含Green Apple、Lemon等青綠果香，冷涼產區這類特徵更為明顯；白葡萄酒普遍不進行帶皮發酵，因此單寧含量極低，這是所有白葡萄品種的共通特性，並非Chardonnay獨有。'
   },
   {
     id: 'lo3-cha-004',
@@ -1229,7 +1229,7 @@ const QUIZ_BANK = [
       '酒體較飽滿，常帶奶油榛果等橡木調性'
     ],
     correctIndex: 3,
-    explanation: 'Chardonnay的aromaWheel也包含Butter、Hazelnut這類經橡木桶與乳酸發酵帶來的調性，常見於溫暖產區風格。'
+    explanation: 'Chardonnay的香氣輪也包含Butter、Hazelnut這類經橡木桶與乳酸發酵帶來的調性，常見於溫暖產區風格。'
   },
   {
     id: 'lo3-cha-005',
@@ -1244,7 +1244,7 @@ const QUIZ_BANK = [
       'Chardonnay多半釀造甜型酒款，較少做乾型'
     ],
     correctIndex: 0,
-    explanation: 'confusionNote明確點出兩者香氣邏輯完全相反的對照關係：Chardonnay品種本身中性、風味主要來自釀造與產地；白蘇維濃品種特徵強烈（草本與醋栗氣息明確可辨），釀造工法影響相對有限。'
+    explanation: '官方規格明確點出兩者香氣邏輯相反的對照關係：Chardonnay品種本身中性、風味主要來自釀造與產地；白蘇維濃品種特徵強烈（草本與醋栗氣息明確可辨），釀造工法影響相對有限。'
   },
   {
     id: 'lo3-cha-006',
@@ -1259,7 +1259,7 @@ const QUIZ_BANK = [
       '格烏茲塔明那，因兩者都帶玫瑰荔枝香氣'
     ],
     correctIndex: 0,
-    explanation: 'confusionNote指出Chardonnay與白皮諾（Pinot Blanc）在盲飲時偶有混淆，白皮諾酸度通常更柔和、缺乏Chardonnay經橡木桶後常見的奶油榛果調性。'
+    explanation: '官方規格指出Chardonnay與白皮諾（Pinot Blanc）在盲飲時偶有混淆，白皮諾酸度通常更柔和、缺乏Chardonnay經橡木桶後常見的奶油榛果調性。'
   },
   {
     id: 'lo3-cha-007',
@@ -1274,7 +1274,7 @@ const QUIZ_BANK = [
       'Margaret River（瑪格麗特河）'
     ],
     correctIndex: 1,
-    explanation: 'representativeRegions涵蓋Chablis、Napa Valley、Margaret River等多個產區，Mosel是Riesling的代表產區，不在Chardonnay清單中。'
+    explanation: '代表產區涵蓋Chablis、Napa Valley、Margaret River等多個產區，Mosel是Riesling的代表產區，不在Chardonnay清單中。'
   },
   {
     id: 'lo3-cha-008',
@@ -1289,7 +1289,7 @@ const QUIZ_BANK = [
       '6–8°C'
     ],
     correctIndex: 0,
-    explanation: 'servingTemp欄位標示為10–13°C，對應濃郁型／經橡木桶白酒的溫度區間。'
+    explanation: '建議侍酒溫度為10–13°C，對應濃郁型／經橡木桶白酒的溫度區間。'
   },
   {
     id: 'lo3-cha-009',
@@ -1304,7 +1304,7 @@ const QUIZ_BANK = [
       '醃肉、燻製品與開胃小菜'
     ],
     correctIndex: 1,
-    explanation: 'foodPairingTags列出Seafood、Cream Sauce、Moderate Fat、Poultry，與其中等酒體和常見的奶油質地相呼應。'
+    explanation: '建議搭餐項目包括Seafood、Cream Sauce、Moderate Fat、Poultry，與其中等酒體和常見的奶油質地相呼應。'
   },
   {
     id: 'lo3-cha-010',
@@ -1356,7 +1356,7 @@ const QUIZ_BANK = [
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'chardonnay',
-    question: 'Chardonnay的果皮顏色（skinColor）分類與原產國為何？',
+    question: 'Chardonnay的果皮顏色分類與原產國為何？',
     options: [
       '黑皮，原產義大利',
       '白皮，原產法國',
@@ -1364,7 +1364,7 @@ const QUIZ_BANK = [
       '白皮，原產美國'
     ],
     correctIndex: 1,
-    explanation: "skinColor:'white'、originCountry:'France(法國)'。"
+    explanation: '果皮顏色為白葡萄，原生國為法國。'
   },
   {
     id: 'lo3-cha-014',
@@ -1394,7 +1394,7 @@ const QUIZ_BANK = [
       '多半是甜型酒款，較少見不甜版本'
     ],
     correctIndex: 0,
-    explanation: 'styleSummary明確描述為高酸爽脆的芳香品種，經典風格帶草本與醋栗香氣。'
+    explanation: '官方規格明確描述為高酸爽脆的芳香品種，經典風格帶草本與醋栗香氣。'
   },
   {
     id: 'lo3-svb-002',
@@ -1454,7 +1454,7 @@ const QUIZ_BANK = [
       '羅亞爾河偏燧石礦物風格；馬爾堡偏熱帶果香'
     ],
     correctIndex: 3,
-    explanation: 'styleSummary點出因氣候差異呈現燧石礦石感或熱帶果香兩種光譜，分別對應舊世界（如羅亞爾河）與新世界（如馬爾堡）的典型風格。'
+    explanation: '官方規格點出因氣候差異呈現燧石礦石感或熱帶果香兩種光譜，分別對應舊世界（如羅亞爾河）與新世界（如馬爾堡）的典型風格。'
   },
   {
     id: 'lo3-svb-006',
@@ -1469,7 +1469,7 @@ const QUIZ_BANK = [
       '兩者混調主要是為了降低生產成本，與風味互補無關'
     ],
     correctIndex: 2,
-    explanation: 'confusionNote說明白蘇維濃與賽美蓉常見混調且角色互補：白蘇維濃提供高酸與明亮香氣，賽美蓉提供酒體與陳年後的蜂蠟質地。'
+    explanation: '官方規格說明白蘇維濃與賽美蓉常見混調且角色互補：白蘇維濃提供高酸與明亮香氣，賽美蓉提供酒體與陳年後的蜂蠟質地。'
   },
   {
     id: 'lo3-svb-007',
@@ -1484,7 +1484,7 @@ const QUIZ_BANK = [
       '白蘇維濃本身帶有明顯榲桲蜂蜜調性'
     ],
     correctIndex: 1,
-    explanation: 'confusionNote明確對比兩者：白蘇維濃青草/醋栗調性更明確、酸度更銳利，白詩楠則以榲桲與蜂蜜調性、較圓潤酸度為特徵。'
+    explanation: '官方規格明確對比兩者：白蘇維濃青草/醋栗調性更明確、酸度更銳利，白詩楠則以榲桲與蜂蜜調性、較圓潤酸度為特徵。'
   },
   {
     id: 'lo3-svb-008',
@@ -1499,7 +1499,7 @@ const QUIZ_BANK = [
       'Barossa Valley（巴羅莎谷）'
     ],
     correctIndex: 3,
-    explanation: 'representativeRegions涵蓋Sancerre、Marlborough、Graves等產區，Barossa Valley是澳洲以Shiraz聞名的產區，不在Sauvignon Blanc代表產區清單中。'
+    explanation: '代表產區涵蓋Sancerre、Marlborough、Graves等產區，Barossa Valley是澳洲以Shiraz聞名的產區，不在Sauvignon Blanc代表產區清單中。'
   },
   {
     id: 'lo3-svb-009',
@@ -1514,7 +1514,7 @@ const QUIZ_BANK = [
       '8–10°C'
     ],
     correctIndex: 3,
-    explanation: 'servingTemp欄位標示為8–10°C，對應清淡不甜白酒的溫度區間。'
+    explanation: '建議侍酒溫度為8–10°C，對應清淡不甜白酒的溫度區間。'
   },
   {
     id: 'lo3-svb-010',
@@ -1529,7 +1529,7 @@ const QUIZ_BANK = [
       '醃肉、開胃菜與煙燻食材'
     ],
     correctIndex: 2,
-    explanation: 'foodPairingTags列出Seafood、Goat Cheese、Light Fat、Asparagus，與其高酸清爽的特性相呼應（蘆筍是傳統上公認難與葡萄酒搭配的食材之一，但與白蘇維濃的草本調性有互補效果）。'
+    explanation: '建議搭餐項目包括Seafood、Goat Cheese、Light Fat、Asparagus，與其高酸清爽的特性相呼應（蘆筍是傳統上公認難與葡萄酒搭配的食材之一，但與白蘇維濃的草本調性有互補效果）。'
   },
   {
     id: 'lo3-svb-011',
@@ -1574,14 +1574,14 @@ const QUIZ_BANK = [
       '白皮，原產義大利'
     ],
     correctIndex: 1,
-    explanation: "skinColor:'white'、originCountry:'France(法國)'。"
+    explanation: '果皮顏色為白葡萄，原生國為法國。'
   },
   {
     id: 'lo3-svb-014',
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'sauvignon-blanc',
-    question: 'Sauvignon Blanc的aromaWheel香氣輪列出哪些核心香氣？',
+    question: 'Sauvignon Blanc的香氣輪列出哪些核心香氣？',
     options: [
       '醋栗、青草、百香果、燧石',
       '蜂蜜、杏桃、橙皮果醬、貴腐風味',
@@ -1589,7 +1589,7 @@ const QUIZ_BANK = [
       '黑莓、黑胡椒、結構化單寧'
     ],
     correctIndex: 0,
-    explanation: 'aromaWheel列出Gooseberry(醋栗)、Grass(青草)、Passionfruit(百香果)、Flint(燧石)，涵蓋舊世界礦石與新世界熱帶果香兩種光譜的代表香氣。'
+    explanation: '香氣輪列出Gooseberry(醋栗)、Grass(青草)、Passionfruit(百香果)、Flint(燧石)，涵蓋舊世界礦石與新世界熱帶果香兩種光譜的代表香氣。'
   },
   {
     id: 'lo3-rie-001',
@@ -1604,7 +1604,7 @@ const QUIZ_BANK = [
       '不適合長期瓶中陳年，建議儘早飲用'
     ],
     correctIndex: 1,
-    explanation: 'styleSummary明確指出Riesling兼具極高酸度與晚收潛力，橫跨干型到甜型（貴腐、冰酒）皆能展現。'
+    explanation: '官方規格明確指出Riesling兼具極高酸度與晚收潛力，橫跨干型到甜型（貴腐、冰酒）皆能展現。'
   },
   {
     id: 'lo3-rie-002',
@@ -1634,7 +1634,7 @@ const QUIZ_BANK = [
       '甜度主要取決於採收季節，與酒標標示較無關'
     ],
     correctIndex: 1,
-    explanation: 'confusionNote明確點出此常見誤解，Riesling干型與甜型（如Auslese、貴腐）皆為經典風格，甜度須依酒標標示判斷而非品種本身決定。'
+    explanation: '官方規格明確點出此常見誤解，Riesling干型與甜型（如Auslese、貴腐）皆為經典風格，甜度須依酒標標示判斷而非品種本身決定。'
   },
   {
     id: 'lo3-rie-004',
@@ -1649,7 +1649,7 @@ const QUIZ_BANK = [
       'Riesling以荔枝玫瑰香為招牌特徵香氣'
     ],
     correctIndex: 0,
-    explanation: 'confusionNote明確對比：Riesling香氣較內斂、酸度遠高於格烏茲塔明那；格烏茲塔明那則以濃郁荔枝玫瑰香與低酸為特徵，兩者盲飲不易混淆。'
+    explanation: '官方規格明確對比：Riesling香氣較內斂、酸度遠高於格烏茲塔明那；格烏茲塔明那則以濃郁荔枝玫瑰香與低酸為特徵，兩者盲飲不易混淆。'
   },
   {
     id: 'lo3-rie-005',
@@ -1671,7 +1671,7 @@ const QUIZ_BANK = [
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'riesling',
-    question: '下列哪一項是Riesling aromaWheel香氣輪中，特別標記為「陳年後才出現」的特徵香氣？',
+    question: '下列哪一項是Riesling香氣輪中，特別標記為「陳年後才出現」的特徵香氣？',
     options: [
       '青蘋果（Green Apple）香氣',
       '陳年汽油感（Petrol）',
@@ -1679,7 +1679,7 @@ const QUIZ_BANK = [
       '板岩礦石感（Slate）香氣'
     ],
     correctIndex: 1,
-    explanation: 'aromaWheel列出Lime、Green Apple、Slate Mineral、Petrol，其中Petrol陳年汽油感是Riesling隨瓶陳發展出的獨特標誌性香氣，年輕酒款通常不明顯。'
+    explanation: '香氣輪列出Lime、Green Apple、Slate Mineral、Petrol，其中Petrol陳年汽油感是Riesling隨瓶陳發展出的獨特標誌性香氣，年輕酒款通常不明顯。'
   },
   {
     id: 'lo3-rie-007',
@@ -1694,7 +1694,7 @@ const QUIZ_BANK = [
       'Wachau（瓦豪）地區'
     ],
     correctIndex: 2,
-    explanation: 'representativeRegions涵蓋Mosel、Rheingau、Alsace、Wachau、Clare Valley、Pfalz等產區，Chianti Classico是義大利以Sangiovese聞名的產區，不在Riesling清單中。'
+    explanation: '代表產區涵蓋Mosel、Rheingau、Alsace、Wachau、Clare Valley、Pfalz等產區，Chianti Classico是義大利以Sangiovese聞名的產區，不在Riesling清單中。'
   },
   {
     id: 'lo3-rie-008',
@@ -1709,7 +1709,7 @@ const QUIZ_BANK = [
       '8–10°C'
     ],
     correctIndex: 3,
-    explanation: 'servingTemp欄位標示為8–10°C，對應清淡不甜白酒/高酸品種的溫度區間。'
+    explanation: '建議侍酒溫度為8–10°C，對應清淡不甜白酒/高酸品種的溫度區間。'
   },
   {
     id: 'lo3-rie-009',
@@ -1724,7 +1724,7 @@ const QUIZ_BANK = [
       '醃肉、開胃菜與煙燻食材'
     ],
     correctIndex: 1,
-    explanation: 'foodPairingTags列出Spicy、Asian Cuisine、Shellfish、Light Appetizer，Riesling的高酸與微甜特性使其特別適合搭配辛辣的亞洲料理，能中和辣度並平衡口感。'
+    explanation: '建議搭餐項目包括Spicy、Asian Cuisine、Shellfish、Light Appetizer，Riesling的高酸與微甜特性使其特別適合搭配辛辣的亞洲料理，能中和辣度並平衡口感。'
   },
   {
     id: 'lo3-rie-010',
@@ -1769,7 +1769,7 @@ const QUIZ_BANK = [
       '白皮，原產紐西蘭'
     ],
     correctIndex: 0,
-    explanation: "skinColor:'white'、originCountry:'Germany(德國)'。"
+    explanation: '果皮顏色為白葡萄，原生國為德國。'
   },
   {
     id: 'lo3-rie-013',
@@ -1814,7 +1814,7 @@ const QUIZ_BANK = [
       '兩者是親子關係，一個是另一個的變種'
     ],
     correctIndex: 2,
-    explanation: 'styleSummary明確指出這是同一品種因產地與工法呈現兩種面貌：義大利Pinot Grigio清爽中性，阿爾薩斯Pinot Gris則酒體飽滿油脂感強烈。'
+    explanation: '官方規格明確指出這是同一品種因產地與工法呈現兩種面貌：義大利Pinot Grigio清爽中性，阿爾薩斯Pinot Gris則酒體飽滿油脂感強烈。'
   },
   {
     id: 'lo3-pgg-002',
@@ -1874,14 +1874,14 @@ const QUIZ_BANK = [
       '義式Grigio早摘保酸求清爽；阿式Gris晚摘飽滿帶殘糖'
     ],
     correctIndex: 3,
-    explanation: 'confusionNote明確說明差異純粹來自產地與釀造哲學而非基因，並詳細對比兩種風格的釀造選項差異：義大利式（Grigio）早摘保酸、不鏽鋼槽發酵，追求清爽中性；阿爾薩斯式（Gris）晚摘、酒體飽滿甚至微帶殘糖。'
+    explanation: '官方規格明確說明差異來自產地與釀造哲學而非基因，並詳細對比兩種風格的釀造選項差異：義大利式（Grigio）早摘保酸、不鏽鋼槽發酵，追求清爽中性；阿爾薩斯式（Gris）晚摘、酒體飽滿甚至微帶殘糖。'
   },
   {
     id: 'lo3-pgg-006',
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'pinot-gris',
-    question: '選購Pinot Grigio/Gris類型酒款時，confusionNote建議消費者應以什麼作為判斷風格的依據？',
+    question: '選購Pinot Grigio/Gris類型酒款時，應以什麼作為判斷風格的依據？',
     options: [
       '主要依賴酒精濃度數字的高低判斷',
       '主要依賴瓶身與酒標顏色來判斷',
@@ -1889,7 +1889,7 @@ const QUIZ_BANK = [
       '主要依賴售價的高低來判斷風格'
     ],
     correctIndex: 2,
-    explanation: 'confusionNote強調選購時務必以酒標上的語言（義大利文標示Grigio或法文標示Gris）判斷預期風格，而非假設兩者風味相近。'
+    explanation: '官方規格強調選購時務必以酒標上的語言（義大利文標示Grigio或法文標示Gris）判斷預期風格，而非假設兩者風味相近。'
   },
   {
     id: 'lo3-pgg-007',
@@ -1904,7 +1904,7 @@ const QUIZ_BANK = [
       'Silvaner（希爾瓦那）'
     ],
     correctIndex: 0,
-    explanation: 'styleSummary提及德國稱灰皮諾為Grauburgunder（"grau"即德文的「灰色」）。'
+    explanation: '官方規格提及德國稱灰皮諾為Grauburgunder（"grau"即德文的「灰色」）。'
   },
   {
     id: 'lo3-pgg-008',
@@ -1919,14 +1919,14 @@ const QUIZ_BANK = [
       'Mosel（摩塞爾）'
     ],
     correctIndex: 3,
-    explanation: 'representativeRegions涵蓋Alsace、Alto Adige、Collio等產區，Mosel是Riesling的代表產區，不在Pinot Gris清單中。'
+    explanation: '代表產區涵蓋Alsace、Alto Adige、Collio等產區，Mosel是Riesling的代表產區，不在Pinot Gris清單中。'
   },
   {
     id: 'lo3-pgg-009',
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'pinot-gris',
-    question: 'Pinot Gris的aromaWheel香氣輪列出哪些核心香氣？',
+    question: 'Pinot Gris的香氣輪列出哪些核心香氣？',
     options: [
       '醋栗、青草、百香果、燧石',
       '萊姆、青蘋果、板岩礦石感、陳年汽油感',
@@ -1934,7 +1934,7 @@ const QUIZ_BANK = [
       '黑莓、黑胡椒、皮革、菸草'
     ],
     correctIndex: 2,
-    explanation: 'aromaWheel列出Pear、White Peach、Honey、Almond，這組香氣組合橫跨清爽果香與較濃郁的蜂蜜杏仁調性，呼應其風格光譜的兩極特性。'
+    explanation: '香氣輪列出Pear、White Peach、Honey、Almond，這組香氣組合橫跨清爽果香與較濃郁的蜂蜜杏仁調性，呼應其風格光譜的兩極特性。'
   },
   {
     id: 'lo3-pgg-010',
@@ -1949,7 +1949,7 @@ const QUIZ_BANK = [
       '8–10°C'
     ],
     correctIndex: 3,
-    explanation: 'servingTemp欄位標示為8–10°C。'
+    explanation: '建議侍酒溫度為8–10°C。'
   },
   {
     id: 'lo3-pgg-011',
@@ -1964,7 +1964,7 @@ const QUIZ_BANK = [
       '醃肉、開胃菜與煙燻食材'
     ],
     correctIndex: 0,
-    explanation: 'foodPairingTags列出Light Fat、Seafood、Appetizer、Asian Cuisine，適合搭配清淡海鮮類料理。'
+    explanation: '建議搭餐項目包括Light Fat、Seafood、Appetizer、Asian Cuisine，適合搭配清淡海鮮類料理。'
   },
   {
     id: 'lo3-pgg-012',
@@ -2009,7 +2009,7 @@ const QUIZ_BANK = [
       '原產匈牙利，因19世紀由此傳入阿爾薩斯'
     ],
     correctIndex: 1,
-    explanation: 'originCountry標示為France(法國)，與其作為黑皮諾基因突變種的起源相符，儘管後來在阿爾薩斯、義大利、匈牙利等地都有重要發展歷史。'
+    explanation: '原生國標示為France(法國)，與其作為黑皮諾基因突變種的起源相符，儘管後來在阿爾薩斯、義大利、匈牙利等地都有重要發展歷史。'
   },
   {
     id: 'lo3-cs-001',
@@ -2024,7 +2024,7 @@ const QUIZ_BANK = [
       '厚實高單寧的晚熟品種，具極佳陳年潛力'
     ],
     correctIndex: 3,
-    explanation: 'styleSummary明確描述為厚實高單寧的晚熟品種，黑醋栗與雪松骨架鮮明，適應多元氣候並具極佳陳年潛力。'
+    explanation: '官方規格明確描述為厚實高單寧的晚熟品種，黑醋栗與雪松骨架鮮明，適應多元氣候並具極佳陳年潛力。'
   },
   {
     id: 'lo3-cs-002',
@@ -2069,7 +2069,7 @@ const QUIZ_BANK = [
       '卡本內蘇維濃顏色較淺，卡本內弗朗顏色較深'
     ],
     correctIndex: 0,
-    explanation: 'confusionNote明確對比兩者：卡本內蘇維濃單寧最緊實、晚熟、黑醋栗與石墨氣息主導；卡本內弗朗顏色較淺、青椒與覆盆莓氣息更明顯、單寧較柔和。'
+    explanation: '官方規格明確對比兩者：卡本內蘇維濃單寧最緊實、晚熟、黑醋栗與石墨氣息主導；卡本內弗朗顏色較淺、青椒與覆盆莓氣息更明顯、單寧較柔和。'
   },
   {
     id: 'lo3-cs-005',
@@ -2084,14 +2084,14 @@ const QUIZ_BANK = [
       '主要作為調色劑使用，對風味結構影響不大'
     ],
     correctIndex: 2,
-    explanation: 'confusionNote指出混調時卡本內蘇維濃通常負責提供骨架與陳年潛力，梅洛則負責果香與易飲度，因卡本內蘇維濃單寧緊實、晚熟。'
+    explanation: '官方規格指出混調時卡本內蘇維濃通常負責提供骨架與陳年潛力，梅洛則負責果香與易飲度，因卡本內蘇維濃單寧緊實、晚熟。'
   },
   {
     id: 'lo3-cs-006',
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'cabernet-sauvignon',
-    question: 'Cabernet Sauvignon的aromaWheel香氣輪列出哪些核心香氣？',
+    question: 'Cabernet Sauvignon的香氣輪列出哪些核心香氣？',
     options: [
       '紅李、黑櫻桃、巧克力、月桂葉',
       '梨子、白桃、蜂蜜、杏仁',
@@ -2099,7 +2099,7 @@ const QUIZ_BANK = [
       '黑醋栗、雪松、石墨、薄荷'
     ],
     correctIndex: 3,
-    explanation: 'aromaWheel列出Blackcurrant、Cedar、Graphite、Mint；其餘選項為其他品種的特徵香氣。'
+    explanation: '香氣輪列出Blackcurrant、Cedar、Graphite、Mint；其餘選項為其他品種的特徵香氣。'
   },
   {
     id: 'lo3-cs-007',
@@ -2114,7 +2114,7 @@ const QUIZ_BANK = [
       'Margaret River（瑪格麗特河）'
     ],
     correctIndex: 1,
-    explanation: 'representativeRegions涵蓋Pauillac、Napa Valley、Margaret River等產區，Mosel是Riesling的代表產區。'
+    explanation: '代表產區涵蓋Pauillac、Napa Valley、Margaret River等產區，Mosel是Riesling的代表產區。'
   },
   {
     id: 'lo3-cs-008',
@@ -2129,7 +2129,7 @@ const QUIZ_BANK = [
       '16–18°C'
     ],
     correctIndex: 3,
-    explanation: 'servingTemp欄位標示為16–18°C。'
+    explanation: '建議侍酒溫度為16–18°C。'
   },
   {
     id: 'lo3-cs-009',
@@ -2144,7 +2144,7 @@ const QUIZ_BANK = [
       '醃肉與開胃菜'
     ],
     correctIndex: 0,
-    explanation: 'foodPairingTags列出High Fat、Red Meat、Hard Cheese、Grilled。'
+    explanation: '建議搭餐項目包括High Fat、Red Meat、Hard Cheese、Grilled。'
   },
   {
     id: 'lo3-cs-010',
@@ -2204,7 +2204,7 @@ const QUIZ_BANK = [
       '灰皮，原產德國'
     ],
     correctIndex: 0,
-    explanation: "skinColor:'red'（黑皮）、originCountry:'France(法國)'。"
+    explanation: '果皮顏色為紅葡萄（黑皮），原生國為法國。'
   },
   {
     id: 'lo3-cs-014',
@@ -2219,7 +2219,7 @@ const QUIZ_BANK = [
       '單寧含量越高，花香調性也會越濃郁，兩者呈正相關'
     ],
     correctIndex: 1,
-    explanation: 'Cabernet Sauvignon的aromaWheel以黑醋栗、雪松、石墨、薄荷等厚重調性為主，花香調性並非其風味重點。'
+    explanation: 'Cabernet Sauvignon的香氣輪以黑醋栗、雪松、石墨、薄荷等厚重調性為主，花香調性並非其風味重點。'
   },
   {
     id: 'lo3-mer-001',
@@ -2234,7 +2234,7 @@ const QUIZ_BANK = [
       '天然酸度極高，是紅酒品種中酸度最鮮明的'
     ],
     correctIndex: 2,
-    explanation: 'styleSummary描述為早熟且單寧圓潤，果香飽滿豐腴，常作為卡本內蘇維濃的混調搭檔，亦可獨立展現絲滑質地。'
+    explanation: '官方規格描述為早熟且單寧圓潤，果香飽滿豐腴，常作為卡本內蘇維濃的混調搭檔，亦可獨立展現絲滑質地。'
   },
   {
     id: 'lo3-mer-002',
@@ -2316,7 +2316,7 @@ const QUIZ_BANK = [
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'merlot',
-    question: 'Merlot的aromaWheel香氣輪列出哪些核心香氣？',
+    question: 'Merlot的香氣輪列出哪些核心香氣？',
     options: [
       '紅李、黑櫻桃、巧克力、月桂葉',
       '黑醋栗、雪松、石墨、薄荷',
@@ -2324,7 +2324,7 @@ const QUIZ_BANK = [
       '玫瑰、焦油、櫻桃乾、甘草'
     ],
     correctIndex: 0,
-    explanation: 'aromaWheel列出Red Plum、Black Cherry、Chocolate、Bay Leaf。'
+    explanation: '香氣輪列出Red Plum、Black Cherry、Chocolate、Bay Leaf。'
   },
   {
     id: 'lo3-mer-008',
@@ -2339,7 +2339,7 @@ const QUIZ_BANK = [
       'Columbia Valley（哥倫比亞河谷）'
     ],
     correctIndex: 1,
-    explanation: 'representativeRegions涵蓋Saint-Émilion、Pomerol、Columbia Valley等產區，Barolo是義大利以Nebbiolo聞名的產區。'
+    explanation: '代表產區涵蓋Saint-Émilion、Pomerol、Columbia Valley等產區，Barolo是義大利以Nebbiolo聞名的產區。'
   },
   {
     id: 'lo3-mer-009',
@@ -2354,7 +2354,7 @@ const QUIZ_BANK = [
       '16–18°C'
     ],
     correctIndex: 3,
-    explanation: 'servingTemp欄位標示為16–18°C。'
+    explanation: '建議侍酒溫度為16–18°C。'
   },
   {
     id: 'lo3-mer-010',
@@ -2369,7 +2369,7 @@ const QUIZ_BANK = [
       '低脂開胃菜與清淡小點'
     ],
     correctIndex: 2,
-    explanation: 'foodPairingTags列出Moderate Fat、Red Meat、Umami、Roasted。'
+    explanation: '建議搭餐項目包括Moderate Fat、Red Meat、Umami、Roasted。'
   },
   {
     id: 'lo3-mer-011',
@@ -2414,7 +2414,7 @@ const QUIZ_BANK = [
       '灰皮，原產西班牙'
     ],
     correctIndex: 2,
-    explanation: "skinColor:'red'（黑皮）、originCountry:'France(法國)'。"
+    explanation: '果皮顏色為紅葡萄（黑皮），原生國為法國。'
   },
   {
     id: 'lo3-mer-014',
@@ -2444,7 +2444,7 @@ const QUIZ_BANK = [
       '薄皮早熟品種，單寧輕盈酸度明亮，風土表現力極強'
     ],
     correctIndex: 3,
-    explanation: 'styleSummary描述為薄皮早熟品種，單寧輕盈、酸度明亮，紅色漿果與泥土氣息展現細膩風土差異，是風土表現力最強的品種之一。'
+    explanation: '官方規格描述為薄皮早熟品種，單寧輕盈、酸度明亮，紅色漿果與泥土氣息展現細膩風土差異，是風土表現力最強的品種之一。'
   },
   {
     id: 'lo3-pn-002',
@@ -2541,7 +2541,7 @@ const QUIZ_BANK = [
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'pinot-noir',
-    question: 'Pinot Noir的aromaWheel香氣輪列出哪些核心香氣？',
+    question: 'Pinot Noir的香氣輪列出哪些核心香氣？',
     options: [
       '黑醋栗、雪松、石墨、薄荷',
       '黑胡椒、黑莓、煙燻肉香、紫羅蘭',
@@ -2549,7 +2549,7 @@ const QUIZ_BANK = [
       '紅李、黑櫻桃、巧克力、月桂葉'
     ],
     correctIndex: 2,
-    explanation: 'aromaWheel列出Red Cherry、Raspberry、Mushroom、Rose。'
+    explanation: '香氣輪列出Red Cherry、Raspberry、Mushroom、Rose。'
   },
   {
     id: 'lo3-pn-009',
@@ -2564,7 +2564,7 @@ const QUIZ_BANK = [
       'Côte de Nuits（夜丘）'
     ],
     correctIndex: 2,
-    explanation: 'representativeRegions涵蓋Côte de Nuits、Sonoma Coast、Central Otago等產區，Barossa Valley是澳洲以Shiraz聞名的產區。'
+    explanation: '代表產區涵蓋Côte de Nuits、Sonoma Coast、Central Otago等產區，Barossa Valley是澳洲以Shiraz聞名的產區。'
   },
   {
     id: 'lo3-pn-010',
@@ -2579,7 +2579,7 @@ const QUIZ_BANK = [
       '16–18°C'
     ],
     correctIndex: 0,
-    explanation: 'servingTemp欄位標示為14–15°C，介於清淡型與濃郁型紅酒之間。'
+    explanation: '建議侍酒溫度為14–15°C，介於清淡型與濃郁型紅酒之間。'
   },
   {
     id: 'lo3-pn-011',
@@ -2594,7 +2594,7 @@ const QUIZ_BANK = [
       '中脂、白肉、蕈菇鮮味、鴨肉'
     ],
     correctIndex: 3,
-    explanation: 'foodPairingTags列出Moderate Fat、White Meat、Mushroom Umami、Duck。'
+    explanation: '建議搭餐項目包括Moderate Fat、White Meat、Mushroom Umami、Duck。'
   },
   {
     id: 'lo3-pn-012',
@@ -2624,7 +2624,7 @@ const QUIZ_BANK = [
       '其香氣調性更接近Cabernet Sauvignon的黑色果香系，而非花香'
     ],
     correctIndex: 0,
-    explanation: 'Pinot Noir的aromaWheel中列出玫瑰（Rose）等花香調性，屬於花香調性較鮮明的品種之一，尤其在較冷涼產區或經一定陳年後更為明顯。'
+    explanation: 'Pinot Noir的香氣輪中列出玫瑰（Rose）等花香調性，屬於花香調性較鮮明的品種之一，尤其在較冷涼產區或經一定陳年後更為明顯。'
   },
   {
     id: 'lo3-pn-014',
@@ -2639,7 +2639,7 @@ const QUIZ_BANK = [
       '灰皮，原產法國，德語產區無特殊別名'
     ],
     correctIndex: 1,
-    explanation: "skinColor:'red'、originCountry:'France(法國)'，德語產區稱之為Spätburgunder。"
+    explanation: '果皮顏色為紅葡萄，原生國為法國，德語產區稱之為Spätburgunder。'
   },
   {
     id: 'lo3-syr-001',
@@ -2654,7 +2654,7 @@ const QUIZ_BANK = [
       '風格差異主要來自採收時間早晚，與氣候冷熱關聯較低'
     ],
     correctIndex: 1,
-    explanation: 'styleSummary描述為厚皮品種，舊世界（北隆河）展現冷香料與黑胡椒骨架，新世界（澳洲）則濃縮成熟果醬與巧克力，風格因產地而異。'
+    explanation: '官方規格描述為厚皮品種，舊世界（北隆河）展現冷香料與黑胡椒骨架，新世界（澳洲）則濃縮成熟果醬與巧克力，風格因產地而異。'
   },
   {
     id: 'lo3-syr-002',
@@ -2736,7 +2736,7 @@ const QUIZ_BANK = [
     lo: 3,
     sourceType: 'data-object',
     sourceId: 'syrah-shiraz',
-    question: 'Syrah/Shiraz的aromaWheel香氣輪列出哪些核心香氣？',
+    question: 'Syrah/Shiraz的香氣輪列出哪些核心香氣？',
     options: [
       '黑胡椒、黑莓、煙燻肉香、紫羅蘭',
       '紅櫻桃、覆盆子、蘑菇與玫瑰',
@@ -2744,7 +2744,7 @@ const QUIZ_BANK = [
       '紅李、黑櫻桃、巧克力、月桂葉'
     ],
     correctIndex: 0,
-    explanation: 'aromaWheel列出Black Pepper、Blackberry、Smoked Meat、Violet，黑胡椒是希哈最具辨識度的招牌香氣之一。'
+    explanation: '香氣輪列出Black Pepper、Blackberry、Smoked Meat、Violet，黑胡椒是希哈最具辨識度的招牌香氣之一。'
   },
   {
     id: 'lo3-syr-008',
@@ -2759,7 +2759,7 @@ const QUIZ_BANK = [
       'Rioja（里奧哈）產區'
     ],
     correctIndex: 3,
-    explanation: 'representativeRegions涵蓋Hermitage、Côte-Rôtie、Barossa Valley等產區，Rioja是西班牙以Tempranillo聞名的產區，不在Syrah/Shiraz代表產區清單中（此題經WSET規格與解析文字核對後，已將正解從Hermitage修正為Rioja，此為經Harry核准的內容修正，原資料存在題幹與解析矛盾）。'
+    explanation: '代表產區涵蓋Hermitage、Côte-Rôtie、Barossa Valley等產區，Rioja是西班牙以Tempranillo聞名的產區，不在Syrah/Shiraz代表產區清單中（此題經WSET規格與解析文字核對後，已將正解從Hermitage修正為Rioja，此為經Harry核准的內容修正，原資料存在題幹與解析矛盾）。'
   },
   {
     id: 'lo3-syr-009',
@@ -2774,7 +2774,7 @@ const QUIZ_BANK = [
       '8–10°C'
     ],
     correctIndex: 1,
-    explanation: 'servingTemp欄位標示為16–18°C。'
+    explanation: '建議侍酒溫度為16–18°C。'
   },
   {
     id: 'lo3-syr-010',
@@ -2789,7 +2789,7 @@ const QUIZ_BANK = [
       '低脂開胃菜與清淡小點'
     ],
     correctIndex: 1,
-    explanation: 'foodPairingTags列出High Fat、Red Meat、Game、Grilled。'
+    explanation: '建議搭餐項目包括High Fat、Red Meat、Game、Grilled。'
   },
   {
     id: 'lo3-syr-011',
@@ -2834,7 +2834,7 @@ const QUIZ_BANK = [
       '灰皮，原產西班牙'
     ],
     correctIndex: 0,
-    explanation: "skinColor:'red'、originCountry:'France(法國)'，儘管Shiraz之名與澳洲密不可分，但品種起源仍是法國北隆河。"
+    explanation: '果皮顏色為紅葡萄，原生國為法國，儘管Shiraz之名與澳洲密不可分，但品種起源仍是法國北隆河。'
   },
   {
     id: 'lo3-syr-014',
@@ -3599,7 +3599,7 @@ const QUIZ_BANK = [
       '侍酒溫度主要取決於年份新舊，與釀造工法差異較無關'
     ],
     correctIndex: 1,
-    explanation: 'servingTemp欄位標示為一般Corvina建議14–15°C，Amarone版本因酒體更濃郁厚重則建議提高至16–18°C。'
+    explanation: '一般Corvina建議侍酒溫度14–15°C，Amarone版本因酒體更濃郁厚重則建議提高至16–18°C。'
   },
   {
     id: 'lo4-mon-001',
@@ -3809,7 +3809,7 @@ const QUIZ_BANK = [
       'Verdicchio dei Castelli di Jesi（馬爾凱）'
     ],
     correctIndex: 0,
-    explanation: 'styleSummary明確指出Cortese是Gavi產區的唯一法定品種。'
+    explanation: '官方規格明確指出Cortese是Gavi產區的唯一法定品種。'
   },
   {
     id: 'lo4-cot-003',
