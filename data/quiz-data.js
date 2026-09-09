@@ -336,30 +336,30 @@ const QUIZ_BANK = [
     lo: 6,
     sourceType: 'wset-spec-supplement',
     sourceId: 'food-wine-interactions',
-    question: '下列何者不屬於WSET官方列出的「會影響葡萄酒的食物成分」？',
+    question: '根據WSET官方規格，食物中的哪一項特性最容易讓葡萄酒的單寧顯得更緊澀苦硬？',
     options: [
-      '辣度（Chilli heat）',
-      '單寧（Tannin）',
+      '甜度（Sweetness）',
       '鮮味（Umami）',
-      '甜度（Sweetness）'
+      '辣度（Chilli heat）',
+      '脂肪（Fat）'
     ],
     correctIndex: 1,
-    explanation: '官方食物端因子為甜度/鮮味/酸度/鹹度/風味濃度/脂肪/辣度；單寧屬酒液端被影響成分，非食物成分。'
+    explanation: '鮮味（Umami）重的食物（如蘆筍、菇類、清蒸海鮮）會讓葡萄酒的單寧感覺更粗糙苦澀、甚至帶金屬感，是知名的搭餐地雷；甜度與脂肪反而有軟化單寧的效果，辣度則主要放大酒精灼熱感，皆非讓單寧變緊澀的主因。'
   },
   {
     id: 'lo6-024',
     lo: 6,
     sourceType: 'wset-spec-supplement',
     sourceId: 'food-wine-interactions',
-    question: '下列何者屬於WSET官方列出的「會被食物影響的葡萄酒成分」？',
+    question: '根據WSET官方規格，食物中的「脂肪」與「鹹味」最容易軟化或降低葡萄酒的哪一項成分？',
     options: [
-      '脂肪（Fat）這項因子',
-      '鹹度（Salt）這項因子',
-      '辣度（Chilli heat）這項因子',
+      '甜度（Sweetness）這項因子',
+      '酸度（Acidity）這項因子',
+      '酒精濃度（Alcohol）這項因子',
       '苦味（來自單寧或橡木桶）'
     ],
     correctIndex: 3,
-    explanation: '官方酒液端因子為甜度/酸度/苦味(單寧/橡木桶)/果香度/酒精；脂肪、鹹度、辣度屬食物端因子。'
+    explanation: '食物中的脂肪與鹹味具有軟化單寧、降低葡萄酒苦澀感知的效果，是經典的搭餐原則（例如油脂豐富的牛排能讓高單寧紅酒喝起來更圓潤）；甜度、酸度、酒精濃度則不是脂肪與鹹味主要作用的對象。'
   },
   {
     id: 'lo1-001',
