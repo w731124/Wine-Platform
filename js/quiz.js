@@ -610,7 +610,7 @@ function renderQuizResults(){
       return `<span class="tg" style="background:rgba(92,6,28,.06);color:var(--burg);">LO${lo}：${s.correct}/${s.total}</span>`;
     }).join('');
 
-    if (actionsWrap) actionsWrap.innerHTML = `<button onclick="startQuiz()" style="padding:9px 26px;border-radius:20px;border:none;background:var(--burg);color:#fff;font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">重新測驗</button>`;
+    if (actionsWrap) actionsWrap.innerHTML = `<button onclick="startQuiz()" style="padding:9px 26px;border-radius:20px;border:none;background:var(--burg);color:#fff;font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">重新測驗</button><button onclick="showQuizState('start')" style="margin-left:10px;padding:9px 26px;border-radius:20px;border:1px solid var(--border);background:#fff;color:var(--txt2);font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">返回首頁</button>`;
   } else {
     if (examSummary) examSummary.style.display = 'none';
     if (loBlock) loBlock.style.display = 'none';
@@ -618,7 +618,7 @@ function renderQuizResults(){
       plainScore.style.display = '';
       plainScore.textContent = `答對 ${r.correct} / ${quizQuestions.length} 題`;
     }
-    if (actionsWrap) actionsWrap.innerHTML = `<button onclick="startPractice(${quizPracticeLo})" style="padding:9px 26px;border-radius:20px;border:none;background:var(--burg);color:#fff;font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-right:10px;">再練一次</button><button onclick="showQuizState('lo-select')" style="padding:9px 26px;border-radius:20px;border:1px solid var(--burg);background:#fff;color:var(--burg);font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">換一個LO</button>`;
+    if (actionsWrap) actionsWrap.innerHTML = `<button onclick="startPractice(${quizPracticeLo})" style="padding:9px 26px;border-radius:20px;border:none;background:var(--burg);color:#fff;font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-right:10px;">再練一次</button><button onclick="showQuizState('lo-select')" style="padding:9px 26px;border-radius:20px;border:1px solid var(--burg);background:#fff;color:var(--burg);font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-right:10px;">換一個LO</button><button onclick="showQuizState('start')" style="padding:9px 26px;border-radius:20px;border:1px solid var(--border);background:#fff;color:var(--txt2);font-size:var(--fs-base);font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;">返回首頁</button>`;
   }
 
   const reviewWrap = document.getElementById('quiz-review-list');
