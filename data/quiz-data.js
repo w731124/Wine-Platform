@@ -3782,6 +3782,36 @@ const QUIZ_BANK = [
     explanation: '田帕尼優酸度較低、單寧更緊實，山吉歐維榭則以更高酸度與酸櫻桃調性為特徵，兩者同樣走「高適配紅酒配餐」路線，但風格細節不同。'
   },
   {
+    id: 'lo4-tem-005',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'tempranillo',
+    question: '西班牙Ribera del Duero產區的Tempranillo，相較於Rioja，風格上常見的差異為何？',
+    options: [
+      'Ribera del Duero海拔較高、日夜溫差更大，酒款風格通常更為濃縮厚實、色澤更深',
+      'Ribera del Duero海拔遠低於Rioja，氣候更為溫暖潮濕，酒款風格通常更為清淡',
+      '兩個產區的差異主要來自法規對橡木桶陳年時間長短的規定，與海拔氣候條件較無直接關聯',
+      'Ribera del Duero法規禁止使用橡木桶陳年，因此風格明顯較Rioja更為清爽'
+    ],
+    correctIndex: 0,
+    explanation: 'Ribera del Duero海拔較高（多在800公尺以上），日夜溫差比Rioja更為顯著，有助於果實在累積成熟度的同時保留酸度，酒款風格通常較Rioja更為濃縮厚實、色澤更深，是西班牙兩大Tempranillo代表產區的重要風格對比。'
+  },
+  {
+    id: 'lo4-tem-006',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'tempranillo',
+    question: 'Tempranillo在葡萄牙又稱為「Tinta Roriz」或「Aragonez」，主要用於哪個知名酒款類型的混調？',
+    options: [
+      '馬德拉酒（Madeira），主要用於馬德拉酒裝瓶前額外加糖，並非用於混調本身',
+      '香檳（Champagne），葡萄牙近年將此品種引入氣泡酒混調配方',
+      '雪莉酒（Sherry），是赫雷斯產區Flor生物陳年工法的核心品種',
+      '波特酒（Port），是杜羅河產區波特酒混調配方中的重要品種之一'
+    ],
+    correctIndex: 3,
+    explanation: 'Tempranillo在葡萄牙杜羅河（Douro）產區稱為Tinta Roriz或Aragonez，是波特酒混調配方中的重要品種之一，展現了同一品種在跨國、跨酒款類型應用上的多元角色。'
+  },
+  {
     id: 'lo4-san-001',
     lo: 4,
     sourceType: 'data-object',
@@ -3840,6 +3870,21 @@ const QUIZ_BANK = [
     ],
     correctIndex: 2,
     explanation: 'Sangiovese天生高酸，與其常見的酸櫻桃、番茄葉調性相互呼應，這種高酸特性使其成為義大利料理，尤其是番茄類料理的理想配餐酒選擇。'
+  },
+  {
+    id: 'lo4-san-005',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'sangiovese',
+    question: 'Brunello di Montalcino與一般Chianti相比，在Sangiovese品種使用上有何關鍵法規差異？',
+    options: [
+      '兩者法規皆允許混調一定比例的其他品種，僅限制混調比例上限有所不同而已',
+      'Brunello di Montalcino主要使用國際品種混調，Sangiovese僅作為次要調配品種',
+      'Brunello法規要求100%單一使用Sangiovese，Chianti則允許混調其他品種',
+      'Chianti法規要求100%單一使用Sangiovese，Brunello則允許混調其他品種'
+    ],
+    correctIndex: 2,
+    explanation: 'Brunello di Montalcino法規要求100%單一使用Sangiovese（當地稱為Sangiovese Grosso），是Sangiovese單一品種表現的頂級代表；Chianti法規則允許混調一定比例的其他品種，兩者呈現的是Sangiovese品種光譜的兩端。'
   },
   {
     id: 'lo4-neb-001',
@@ -3902,6 +3947,21 @@ const QUIZ_BANK = [
     explanation: 'Nebbiolo單寧與酸度皆是所有品種中數一數二的高，這樣的結構為Barolo、Barbaresco等頂級酒款提供了長期陳年所需的支撐力，是義大利葡萄酒教學中陳年潛力的經典案例之一。'
   },
   {
+    id: 'lo4-neb-005',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'nebbiolo',
+    question: 'Barolo與Barbaresco這兩個Nebbiolo頂級產區，風格上常見的對比為何？',
+    options: [
+      '兩者主要差異來自裝瓶前是否經過人工濾除單寧的處理工序差異，而非產區風土本身',
+      'Barolo通常結構更緊實厚重、需要更長瓶陳，Barbaresco則通常風格較早熟易飲、單寧相對柔和',
+      'Barbaresco通常結構遠比Barolo更加緊實厚重，需要更長時間的瓶陳才能達到適飲階段',
+      'Barolo法規明文禁止長期瓶陳，Barbaresco則以極長瓶陳潛力聞名於世'
+    ],
+    correctIndex: 1,
+    explanation: 'Barolo常被稱為「酒中之王」，結構通常更緊實厚重、單寧更為堅實，需要較長的瓶陳時間；Barbaresco因土壤與微氣候略有不同，風格通常較早熟易飲、單寧相對柔和，兩者是Nebbiolo頂級表現的重要風格對比。'
+  },
+  {
     id: 'lo4-gre-001',
     lo: 4,
     sourceType: 'data-object',
@@ -3960,6 +4020,36 @@ const QUIZ_BANK = [
     ],
     correctIndex: 3,
     explanation: '格那希酒體明顯更飽滿厚重、酒精度更高，加美則以極輕盈酒體與極低單寧為特徵，兩者僅在「早飲易感」這點有共通之處。'
+  },
+  {
+    id: 'lo4-gre-005',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'grenache',
+    question: '為什麼Grenache即使釀成高酒精、飽滿酒體的酒款，酒液顏色通常仍相對淺淡？',
+    options: [
+      'Grenache的淺色是因為釀造時刻意大量加水稀釋，與果皮本身特性較無關',
+      'Grenache顏色淺淡是因為法規強制要求裝瓶前必須經過脫色處理',
+      'Grenache顏色淺淡主要是因為採收時故意提早採收、果實尚未完全成熟',
+      'Grenache果皮天生較薄，花青素等色素含量較低，因此即使酒體飽滿，顏色仍偏淺淡'
+    ],
+    correctIndex: 3,
+    explanation: 'Grenache果皮天生較薄，花青素等色素含量相對較低，因此即使因高糖分累積而釀成高酒精、飽滿酒體的酒款，酒液顏色通常仍相對淺淡，是「酒體飽滿但顏色淺」這種容易讓人意外的品種特性。'
+  },
+  {
+    id: 'lo4-gre-006',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'grenache',
+    question: '西班牙Priorat產區以老藤Grenache（當地稱Garnacha）聞名，當地獨特的板岩土壤「Llicorella」對種植有何影響？',
+    options: [
+      '排水性佳但保水能力有限，逼迫老藤根系深入岩層，天然低產但風味濃縮',
+      'Llicorella是一種黏土，保水能力極強，能讓葡萄藤維持極高產量',
+      'Llicorella土壤呈鹼性極強，主要功能是大幅提升果實的天然甜度',
+      'Llicorella土壤含有豐富有機質，能讓葡萄藤在貧瘠環境中依然快速生長'
+    ],
+    correctIndex: 0,
+    explanation: 'Priorat當地的板岩質土壤Llicorella排水性佳但保水能力有限，逼迫老藤根系深入岩層尋找水分，天然限制產量，造就當地Grenache風味濃縮、結構扎實的頂級表現，是Priorat享有國際聲譽的重要風土因素。'
   },
   {
     id: 'lo4-mal-001',
@@ -4022,6 +4112,21 @@ const QUIZ_BANK = [
     explanation: '馬爾貝克的藍莓與可可調性更甜美，單寧質地也更絲滑圓潤，希哈則帶更明顯的黑胡椒辛香與較堅實的單寧骨架。'
   },
   {
+    id: 'lo4-mal-005',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'malbec',
+    question: '阿根廷Mendoza（門多薩）產區的高海拔種植環境，對當地Malbec的風格帶來什麼影響？',
+    options: [
+      '高海拔地區日照強度明顯較平地微弱，因此當地Malbec酒體普遍偏向清淡',
+      '高海拔種植主要是為了方便機械採收，與果實風味表現較無直接關聯',
+      '高海拔地區日夜溫差變化幅度普遍小於低海拔地區，氣候條件更為穩定',
+      '高海拔日照強烈但日夜溫差大，有助於果實累積成熟度與色素的同時，仍保留一定酸度'
+    ],
+    correctIndex: 3,
+    explanation: 'Mendoza及Uco Valley等高海拔產區日照強烈（有助於色素與酚類物質累積），同時晝夜溫差大，有助於果實在成熟的同時保留酸度，是阿根廷Malbec色澤深邃、風味濃縮又不失新鮮感的重要風土因素。'
+  },
+  {
     id: 'lo4-chb-001',
     lo: 4,
     sourceType: 'data-object',
@@ -4082,6 +4187,21 @@ const QUIZ_BANK = [
     explanation: '因白詩楠可橫跨極干到極甜多種風格，不能假設「白詩楠＝甜酒」或「白詩楠＝干酒」。'
   },
   {
+    id: 'lo4-chb-005',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'chenin-blanc',
+    question: '羅亞爾河Vouvray產區的Chenin Blanc，同一產區內常見哪種甜度光譜並存的現象？',
+    options: [
+      'Vouvray法規僅允許單一生產一種甜度風格，明文禁止同一產區內出現不同甜度並存',
+      '同一產區內可能同時生產不甜（Sec）、半甜（Demi-Sec）與甜型（Moelleux）等不同甜度風格',
+      'Vouvray的Chenin Blanc僅能用於釀成氣泡酒款，法規明文禁止生產靜態酒款類型',
+      'Vouvray產區的甜度風格主要取決於裝瓶年份好壞，與釀酒師個人選擇較無關聯'
+    ],
+    correctIndex: 1,
+    explanation: 'Vouvray因年份氣候變化與貴腐菌感染程度不一，同一產區內常見不甜（Sec）到甜型（Moelleux）等不同甜度風格並存的現象，反映了Chenin Blanc天生高酸度帶來的甜度光譜彈性，選購時同樣需要留意酒標甜度標示。'
+  },
+  {
     id: 'lo4-zin-001',
     lo: 4,
     sourceType: 'data-object',
@@ -4125,6 +4245,21 @@ const QUIZ_BANK = [
     ],
     correctIndex: 3,
     explanation: 'Zinfandel/Primitivo果串內果粒成熟度不均，為等待多數果粒成熟常延後採收，導致部分果粒糖度極高，發酵後轉化出偏高的酒精濃度，是公認以高酒精、果醬香甜風格聞名的代表品種之一。'
+  },
+  {
+    id: 'lo4-zin-004',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'zinfandel-primitivo',
+    question: '「White Zinfandel」這款知名的粉紅酒款，其誕生與Zinfandel這個品種的歷史發展有何關聯？',
+    options: [
+      '源自加州一次意外的發酵中止事件，意外催生出帶甜感的粉紅酒風格，後來成為市場熱銷款式',
+      'White Zinfandel是刻意選用果皮全白的Zinfandel變異品系釀造而成的酒款',
+      'White Zinfandel專指不含酒精的Zinfandel葡萄汁飲料，與正式酒款較無關聯',
+      'White Zinfandel是近年才出現的行銷噱頭，與加州Zinfandel種植歷史並無關聯'
+    ],
+    correctIndex: 0,
+    explanation: 'White Zinfandel源自加州一次意外的發酵中止事件，意外產生帶有殘糖甜感的粉紅酒款，後來意外大受市場歡迎，成為1980年代美國暢銷酒款之一，也意外幫助當時面臨拔除危機的老藤Zinfandel葡萄園得以保留下來，是品種歷史上重要的插曲。'
   },
   {
     id: 'lo4-gam-001',
@@ -4172,6 +4307,21 @@ const QUIZ_BANK = [
     explanation: '薄酒萊十村（如Morgon、Moulin-à-Vent）的加美其實具備不輸黑皮諾的陳年潛力，不應被「薄酒萊新酒」的印象一概而論。'
   },
   {
+    id: 'lo4-gam-004',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'gamay',
+    question: '「薄酒萊新酒（Beaujolais Nouveau）」的行銷傳統，通常固定在每年的什麼時間點釋出上市？',
+    options: [
+      '每年1月1日，與新年慶祝活動結合作為固定行銷檔期',
+      '每年11月的第三個星期四，是該產區行之有年的固定上市傳統',
+      '每年葡萄採收完成當天，上市日期每年隨採收時間浮動不固定',
+      '每年12月25日，作為聖誕節應景酒款固定於當天上市'
+    ],
+    correctIndex: 1,
+    explanation: '薄酒萊新酒傳統上固定於每年11月的第三個星期四釋出上市，透過二氧化碳浸皮法快速釀成、強調新鮮果香、及早飲用的行銷概念，是Gamay全球知名度大增的重要行銷傳統，但也與薄酒萊十村等優質產區的Gamay表現有所區隔。'
+  },
+  {
     id: 'lo4-gew-001',
     lo: 4,
     sourceType: 'data-object',
@@ -4217,6 +4367,21 @@ const QUIZ_BANK = [
     explanation: 'Gewürztraminer天然帶有極為鮮明濃郁的荔枝、玫瑰花與薑等香料調性，辨識度在白葡萄品種中數一數二，是少數盲飲時能憑香氣直接辨識的品種代表。'
   },
   {
+    id: 'lo4-gew-004',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'gewurztraminer',
+    question: '阿爾薩斯Gewürztraminer除了不甜型風格外，也常見晚摘（Vendange Tardive）與貴腐精選（Sélection de Grains Nobles）等甜型風格，這類甜型風格的釀造依據為何？',
+    options: [
+      '這類甜型風格完全透過裝瓶前額外添加糖漿調整，與採收時機較無關',
+      '透過延後採收或貴腐菌感染，讓果實糖分進一步濃縮，發展出濃郁的甜型風格',
+      '晚摘與貴腐精選專指經過至少二十年瓶陳的老年份不甜型酒款',
+      '這類甜型風格是近年才出現的行銷噱頭，阿爾薩斯法規並不承認此分類'
+    ],
+    correctIndex: 1,
+    explanation: '阿爾薩斯Vendange Tardive（晚摘）與Sélection de Grains Nobles（貴腐精選）皆是透過延後採收或貴腐菌感染，讓果實糖分進一步濃縮所發展出的甜型風格分類，Gewürztraminer的濃郁香氣特質使其成為適合發展這類甜型風格的品種之一。'
+  },
+  {
     id: 'lo4-vio-001',
     lo: 4,
     sourceType: 'data-object',
@@ -4260,6 +4425,21 @@ const QUIZ_BANK = [
     ],
     correctIndex: 3,
     explanation: '兩者皆可呈現飽滿酒體與偏低酸度，但維歐尼耶的芳香濃度遠高於夏多內，是最主要的辨識依據。'
+  },
+  {
+    id: 'lo4-vio-004',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'viognier',
+    question: 'Viognier在種植與採收管理上，常需要特別留意什麼特性帶來的挑戰？',
+    options: [
+      'Viognier天生酸度極高，若採收過早容易釀成過度尖銳刺酸的酒款',
+      '天生酸度偏低，若採收過晚容易釀成酒體肥厚但缺乏清爽感的酒款，採收時機需謹慎拿捏',
+      'Viognier主要的種植風險是根瘤蚜蟲害，與採收時機或酸度管理較無直接關聯',
+      'Viognier是所有白葡萄品種中糖分累積速度最慢的品種，通常需要延後兩個月以上採收'
+    ],
+    correctIndex: 1,
+    explanation: 'Viognier天生酸度偏低，若採收過晚（追求濃郁花果香氣的同時），容易釀成酒體肥厚但缺乏清爽平衡感的酒款，因此採收時機的拿捏格外重要，是這個品種在種植與釀造管理上常見的挑戰。'
   },
   {
     id: 'lo4-sem-001',
