@@ -547,6 +547,16 @@ function quizExitToStart(){
   showQuizState('start');
 }
 
+/* ── 上方選單「模擬考」項目：一律導回模擬考首頁，測驗進行中則先走離開測驗的確認流程 ── */
+function goToQuizHomeFromNav(itemBtn, evt){
+  if (!quizSubmitted && quizQuestions.length > 0) {
+    quizExitToStart();
+    if (quizQuestions.length > 0) return; // 使用者取消離開，停留原畫面，不切換分頁
+  }
+  selectTabFromGroup(itemBtn, 'quiz', evt);
+  showQuizState('start');
+}
+
 function calculateQuizResults(){
   let correct = 0, wrong = 0, unanswered = 0;
   const loStats = {};
