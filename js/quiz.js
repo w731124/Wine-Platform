@@ -508,7 +508,12 @@ function renderQuizQuestion(){
   const prevBtn = document.getElementById('quiz-prev-btn');
   const nextBtn = document.getElementById('quiz-next-btn');
   if (prevBtn) prevBtn.disabled = quizCurrentIndex === 0;
-  if (nextBtn) nextBtn.disabled = quizCurrentIndex === quizQuestions.length - 1;
+  if (nextBtn) {
+    const isLast = quizCurrentIndex === quizQuestions.length - 1;
+    nextBtn.disabled = false;
+    nextBtn.textContent = isLast ? '繳卷' : '下一題';
+    nextBtn.onclick = isLast ? () => submitQuiz(false) : () => quizGoToOffset(1);
+  }
 }
 
 function quizSelectAnswer(optIndex){
