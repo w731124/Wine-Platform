@@ -53,10 +53,10 @@ const QUIZ_BANK = [
     sourceId: 'storage-conditions',
     question: '建議的葡萄酒儲存濕度區間為何？',
     options: [
-      '濕度沒有影響',
-      '20–40%',
+      '25–40%',
+      '40–50%',
       '50–80%',
-      '90–100%'
+      '82–95%'
     ],
     correctIndex: 2,
     explanation: '濕度過低使軟木塞乾裂，過高導致標籤發霉。'
