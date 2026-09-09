@@ -1652,6 +1652,81 @@ const QUIZ_BANK = [
     explanation: '正是這種「可塑性」讓Chardonnay能在幾乎所有主要葡萄酒產區找到立足之地，風格光譜極廣，從冷涼到溫暖氣候、不鏽鋼槽到橡木桶皆能展現不同且皆具辨識度的風格。'
   },
   {
+    id: 'lo3-cha-015',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'chardonnay',
+    question: 'Chardonnay在香檳區（Champagne）的釀造中扮演什麼角色？',
+    options: [
+      'Chardonnay在香檳區僅作為調配用的少量輔助品種，法規明文不允許以100%單一品種裝瓶',
+      'Chardonnay在香檳區主要用於粉紅香檳的染色調配用途，較少用於白中白酒款釀造',
+      'Chardonnay並非香檳區官方認可的法定品種，該產區僅允許兩種黑葡萄品種合法種植',
+      '是香檳三大法定品種之一，100%使用Chardonnay釀造的香檳稱為「Blanc de Blancs」'
+    ],
+    correctIndex: 3,
+    explanation: 'Chardonnay是香檳區三大法定品種之一（另兩種為Pinot Noir與Pinot Meunier），100%使用Chardonnay釀造的香檳稱為「Blanc de Blancs」（白中白），是官方規格中Chardonnay跨LO應用的重要知識點。'
+  },
+  {
+    id: 'lo3-cha-016',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'chardonnay',
+    question: '市面上常見「奶油感（buttery）」風格的Chardonnay，這種風味主要來自什麼釀造選擇？',
+    options: [
+      '主要來自發酵前延長酒渣接觸時間並持續攪拌，與是否進行乳酸發酵較無直接關聯',
+      '主要來自裝瓶前使用全新美國橡木桶進行長期陳年，與是否進行乳酸發酵較無關',
+      '讓酒液進行乳酸發酵（MLF），將尖銳的蘋果酸轉化為較柔和的乳酸，同時產生奶油般的雙乙醯風味物質',
+      '主要來自採收時刻意延後採收、提高果實成熟度與糖分濃度，讓天然奶油風味物質累積'
+    ],
+    correctIndex: 2,
+    explanation: '乳酸發酵（MLF）會將尖銳的蘋果酸轉化為口感較柔和的乳酸，同時副產物雙乙醯（diacetyl）帶來奶油般的風味，是Chardonnay奶油感風格的主要成因；酒渣接觸主要影響的是麵包／堅果調性與口感圓潤度，性質不同。'
+  },
+  {
+    id: 'lo3-cha-017',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'chardonnay',
+    question: '布根地（Burgundy）Chardonnay產區的法定分級架構，由高至低依序為何？',
+    options: [
+      'Grand Cru（特級園）→ Premier Cru（一級園）→ Village（村莊級）→ Regional（大區級）',
+      'Premier Cru（一級園）→ Grand Cru（特級園）→ Village（村莊級）→ Regional（大區級）',
+      'Village（村莊級）→ Premier Cru（一級園）→ Grand Cru（特級園）→ Regional（大區級）',
+      'Grand Cru（特級園）→ Village（村莊級）→ Premier Cru（一級園）→ Regional（大區級）'
+    ],
+    correctIndex: 0,
+    explanation: '布根地分級由高至低依序為Grand Cru（特級園）、Premier Cru（一級園）、Village（村莊級）、Regional（大區級），是官方規格中重要的法定分級知識點，Chardonnay與Pinot Noir皆適用此架構。'
+  },
+  {
+    id: 'lo3-cha-018',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'chardonnay',
+    question: '除了美國納帕谷之外，下列哪個產區也是以涼爽氣候風格著稱的Chardonnay代表產區？',
+    options: [
+      '澳洲Barossa Valley（巴羅莎谷），該產區以溫暖氣候風格聞名',
+      '澳洲Margaret River（瑪格麗特河），因鄰近印度洋、受海洋氣候調節而風格偏涼爽',
+      '西班牙Rioja（里奧哈），該產區以Tempranillo紅酒聞名',
+      '智利Maipo Valley（邁波谷），該產區同樣以溫暖氣候紅酒聞名居多'
+    ],
+    correctIndex: 1,
+    explanation: '澳洲Margaret River因鄰近印度洋、受海洋調節氣候影響，是澳洲少數以涼爽氣候風格Chardonnay聞名的產區之一，與納帕谷同屬新世界涼爽氣候Chardonnay的代表；其餘三個產區皆以溫暖氣候紅酒品種聞名，並非Chardonnay代表產區。'
+  },
+  {
+    id: 'lo3-cha-019',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'chardonnay',
+    question: '「攪桶（bâtonnage/lees stirring）」這項工序對Chardonnay風格的主要影響為何？',
+    options: [
+      '讓死酵母渣持續與酒液接觸並攪拌，增添酒體的圓潤度與麵包／堅果調性複雜度',
+      '攪桶主要目的是加速酒精發酵的化學反應速度，與酒體質地變化較無直接關聯',
+      '攪桶主要用途是降低酒液最終的總酸度，達到部分去酸的釀造效果',
+      '攪桶是裝瓶前的最後一道過濾步驟，主要用於移除殘留酒渣本身'
+    ],
+    correctIndex: 0,
+    explanation: '攪桶是主動攪動桶底死酵母渣、使其與酒液持續接觸的工序，有助於增添酒體圓潤度、口感厚度與麵包／堅果調性複雜度，是Chardonnay常見的風格化釀造手法之一。'
+  },
+  {
     id: 'lo3-svb-001',
     lo: 3,
     sourceType: 'data-object',
@@ -1860,6 +1935,81 @@ const QUIZ_BANK = [
     ],
     correctIndex: 0,
     explanation: '香氣輪列出Gooseberry(醋栗)、Grass(青草)、Passionfruit(百香果)、Flint(燧石)，涵蓋舊世界礦石與新世界熱帶果香兩種光譜的代表香氣。'
+  },
+  {
+    id: 'lo3-svb-015',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'sauvignon-blanc',
+    question: '「Fumé Blanc」這個酒標用語通常指的是什麼風格的白蘇維濃？',
+    options: [
+      '經橡木桶發酵或陳年的白蘇維濃，風格較為圓潤、帶有煙燻／香料調性，與經典清爽不鏽鋼槽風格不同',
+      '特指產自法國羅亞爾河Pouilly-Fumé產區的白蘇維濃酒款，與加州釀造工法選擇較無關',
+      '特指刻意延遲採收時間、進一步發展出貴腐甜酒風格的白蘇維濃甜型酒款',
+      '特指刻意跳過酒精發酵階段、直接以蒸餾方式製成的白蘇維濃烈酒款'
+    ],
+    correctIndex: 0,
+    explanation: '「Fumé Blanc」源自加州酒莊（如Robert Mondavi）的行銷命名，指經橡木桶發酵或陳年的白蘇維濃，風格較圓潤厚實、帶橡木香料調性，與傳統不鏽鋼槽釀造的清爽草本風格形成對比。'
+  },
+  {
+    id: 'lo3-svb-016',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'sauvignon-blanc',
+    question: '智利Casablanca Valley（卡薩布蘭卡谷）的白蘇維濃，其風格定位相對智利其他內陸產區，一般被認為如何？',
+    options: [
+      '該產區主要種植區域距海遙遠，屬智利境內氣候最溫暖乾燥的內陸河谷產區之一',
+      '因鄰近太平洋、受涼爽海洋氣候調節，風格偏向清爽高酸，與智利內陸溫暖產區的濃郁風格不同',
+      '該產區的白蘇維濃法規規定裝瓶前須混調至少三成比例的Chardonnay',
+      '該產區以經長期橡木桶陳年、風格濃郁厚實的白蘇維濃聞名於國際市場'
+    ],
+    correctIndex: 1,
+    explanation: 'Casablanca Valley鄰近太平洋，受涼爽的洪堡德涼流與晨霧調節氣候，是智利少數以清爽高酸風格白蘇維濃聞名的產區，與智利內陸溫暖產區的濃郁風格形成對比，是新世界涼爽氣候白蘇維濃的代表產區之一。'
+  },
+  {
+    id: 'lo3-svb-017',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'sauvignon-blanc',
+    question: '南非白蘇維濃的風格定位，一般被認為介於哪兩種風格光譜之間？',
+    options: [
+      '介於加州Fumé Blanc橡木風格與義大利Pinot Grigio清淡風格之間',
+      '南非白蘇維濃的風格與德國Riesling高酸甜型風格最為接近',
+      '介於羅亞爾河的礦石／草本調性與紐西蘭馬爾堡的濃郁熱帶果香調性之間',
+      '南非白蘇維濃普遍走向極度濃縮的貴腐甜酒風格，與其他產區差異極大'
+    ],
+    correctIndex: 2,
+    explanation: '南非白蘇維濃常被形容風格定位介於羅亞爾河礦石／草本調性與紐西蘭馬爾堡濃郁熱帶果香調性之間，兼具兩種風格光譜的部分特徵，是常見的產區風格比較知識點。'
+  },
+  {
+    id: 'lo3-svb-018',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'sauvignon-blanc',
+    question: '白蘇維濃常見的「青椒／草本（green pepper/herbaceous）」香氣，主要來自哪一類天然化合物？',
+    options: [
+      '主要來自另一類天然硫醇化合物，其濃度高低與果實成熟度較無直接關聯',
+      '主要來自橡木桶長期陳年過程中，單寧氧化後逐漸釋出的特定風味物質',
+      '主要來自發酵過程中，乳酸菌代謝糖分後產生的特定酯類副產物質',
+      '甲氧基吡𠯤（Methoxypyrazines），在果實未完全成熟時濃度通常較高'
+    ],
+    correctIndex: 3,
+    explanation: '甲氧基吡𠯤（Methoxypyrazines）是白蘇維濃青椒／草本調性的主要來源，其濃度通常隨果實成熟度提高而下降；熱帶果香則主要來自另一類硫醇化合物，兩者是不同的香氣物質來源，常被拿來對比說明。'
+  },
+  {
+    id: 'lo3-svb-019',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'sauvignon-blanc',
+    question: '採收時機的早晚，如何影響白蘇維濃的香氣走向？',
+    options: [
+      '較早採收時青椒／草本調性通常較明顯，較晚採收則熱帶果香與成熟果香調性通常更為突出',
+      '採收時機主要影響最終酒精濃度高低，與香氣調性走向較無直接關聯',
+      '無論採收早晚，白蘇維濃的香氣調性主要由土壤類型決定，與果實成熟度較無關',
+      '較早採收通常帶來更明顯的熱帶果香調性，較晚採收則帶來更明顯的青椒調性'
+    ],
+    correctIndex: 0,
+    explanation: '較早採收時果實酚類物質成熟度較低，甲氧基吡𠯤（青椒調性）濃度較高；隨著採收時間延後、果實成熟度提高，甲氧基吡𠯤濃度下降，熱帶果香調性通常更為突出，是採收時機影響白蘇維濃風格走向的核心原理。'
   },
   {
     id: 'lo3-rie-001',
@@ -2072,6 +2222,81 @@ const QUIZ_BANK = [
     explanation: '白葡萄酒普遍不帶皮發酵，單寧含量極低，這是所有白葡萄品種的共通特性；Riesling典型風格為輕盈酒體搭配高酸清爽口感。'
   },
   {
+    id: 'lo3-rie-015',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'riesling',
+    question: '德國Riesling在甜度光譜上，「Trocken（不甜型）」與傳統印象中的甜型風格，兩者並存的現況反映了什麼？',
+    options: [
+      '現代德國Riesling除了傳統甜型風格，Trocken不甜型也是市場常見且受重視的風格選項',
+      'Trocken主要是用來標示裝瓶年份較新的酒款，與實際殘糖量高低較無直接關聯',
+      'Trocken專指裝瓶前不進行酒渣過濾的傳統釀造方式，與甜度高低較無直接關聯',
+      '現今德國市場的Trocken不甜型多半僅用於低價入門款，傳統甜型仍是市場主流與品質代表'
+    ],
+    correctIndex: 0,
+    explanation: '現代德國Riesling風格光譜涵蓋不甜（Trocken）到極甜（如Trockenbeerenauslese），兩種風格並存且都受市場重視，並非某一種風格完全取代另一種，甜度標示是依實際殘糖量而定，並非單純行銷用語。'
+  },
+  {
+    id: 'lo3-rie-016',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'riesling',
+    question: '阿爾薩斯（Alsace）的Riesling，相較於德國傳統印象中的Riesling風格，常見的差異為何？',
+    options: [
+      '阿爾薩斯Riesling多半以極甜型冰酒風格呈現，酒精濃度通常較低',
+      '阿爾薩斯Riesling的法規要求必須經橡木桶陳年，與德國不鏽鋼槽風格不同',
+      '阿爾薩斯Riesling多半以不甜型（dry）風格呈現，酒精濃度也通常較高，適合搭配多種食物',
+      '阿爾薩斯與德國Riesling的風格差異主要來自使用不同的葡萄品系，而非甜度或釀造風格選擇'
+    ],
+    correctIndex: 2,
+    explanation: '阿爾薩斯Riesling多半採不甜型（dry）釀造，酒精濃度通常高於德國傳統風格，且因高酸度與不甜特性而適合搭配多種食物，與德國常見的甜型印象形成對比，是常見的產區風格比較知識點。'
+  },
+  {
+    id: 'lo3-rie-017',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'riesling',
+    question: '澳洲Clare Valley與Eden Valley的Riesling，代表性風格特徵為何？',
+    options: [
+      '多半為甜型風格，酸度普遍偏低，與德國傳統甜型Riesling風格相近',
+      '不甜型、高酸度，常帶有明顯的萊姆（lime）與礦石調性',
+      '該產區的Riesling法規要求混調一定比例的Chardonnay',
+      '該產區以經橡木桶長期陳年的濃郁奶油風格Riesling聞名'
+    ],
+    correctIndex: 1,
+    explanation: 'Clare Valley與Eden Valley是澳洲代表性的Riesling產區，風格以不甜型、高酸度、明顯的萊姆與礦石調性著稱，是新世界Riesling的重要代表風格之一，與德國傳統甜型印象不同。'
+  },
+  {
+    id: 'lo3-rie-018',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'riesling',
+    question: '為什麼Riesling常被視為釀造貴腐甜酒／冰酒（Icewine）的經典品種選擇之一？',
+    options: [
+      '因為Riesling的果皮特別厚，能承受更長時間的低溫冷凍過程',
+      '因為法規明文規定冰酒僅能使用Riesling這個單一品種釀造',
+      '因為Riesling的天然糖分濃度普遍遠高於其他白葡萄品種，較容易達到冰酒門檻',
+      '其天生的高酸度能在高糖分濃縮的甜型酒款中，平衡甜膩感、維持風味結構的清爽度'
+    ],
+    correctIndex: 3,
+    explanation: 'Riesling天生的高酸度是其適合釀造甜型酒款的關鍵原因——高糖分濃縮後仍能靠高酸度平衡甜膩感、維持風味結構的清爽平衡，而非因為果皮厚度或天然糖分濃度特別突出。'
+  },
+  {
+    id: 'lo3-rie-019',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'riesling',
+    question: '德國摩塞爾（Mosel）產區以陡峭的板岩（slate）坡地種植Riesling聞名，這種地形土壤組合帶來的主要優勢為何？',
+    options: [
+      '陡峭朝陽坡面能增加日照接收角度，板岩則有助於白天蓄熱、夜間緩慢釋放，彌補當地氣候涼爽的限制',
+      '板岩土壤能直接釋放大量礦物質進入果實內部深層，是Riesling礦石風味的主要化學來源',
+      '陡峭地形的主要考量是為了方便大型機械採收作業，藉此提高整體採收效率',
+      '板岩土壤的排水性在當地土壤類型中相對較差，有助於保留額外水分'
+    ],
+    correctIndex: 0,
+    explanation: '摩塞爾陡峭朝陽坡面能增加日照接收角度，板岩則具備白天蓄熱、夜間緩慢釋放的特性，兩者共同彌補當地緯度偏高帶來的氣候涼爽限制，是官方規格中選址因素（坡向、土壤蓄熱）的實際應用案例。'
+  },
+  {
     id: 'lo3-pgg-001',
     lo: 3,
     sourceType: 'data-object',
@@ -2280,6 +2505,66 @@ const QUIZ_BANK = [
     ],
     correctIndex: 1,
     explanation: '原生國標示為France(法國)，與其作為黑皮諾基因突變種的起源相符，儘管後來在阿爾薩斯、義大利、匈牙利等地都有重要發展歷史。'
+  },
+  {
+    id: 'lo3-pgg-015',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'pinot-gris',
+    question: '美國奧勒岡州Willamette Valley的Pinot Gris，其風格定位相對於阿爾薩斯與義大利兩種風格光譜，一般被認為如何？',
+    options: [
+      '介於阿爾薩斯的濃郁圓潤風格與義大利的清爽中性風格之間，兼具一定果香濃郁度與清爽酸度',
+      '完全比照義大利清爽風格複製，與阿爾薩斯風格光譜較無關聯',
+      'Willamette Valley法規禁止種植Pinot Gris，該產區以Pinot Noir聞名',
+      '完全比照阿爾薩斯晚摘甜型風格複製，市面上多為甜型酒款'
+    ],
+    correctIndex: 0,
+    explanation: 'Willamette Valley的Pinot Gris風格常被認為介於阿爾薩斯的濃郁圓潤與義大利的清爽中性之間，兼具一定的果香濃郁度與清爽酸度，是新世界Pinot Gris的重要代表產區之一。'
+  },
+  {
+    id: 'lo3-pgg-016',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'pinot-gris',
+    question: '義大利Friuli（弗留利）產區有一種稱為「Ramato」的Pinot Grigio風格，其特色為何？',
+    options: [
+      'Ramato是指添加天然色素調整酒液顏色的釀造添加物，與果皮接觸較無關',
+      'Ramato專指經過至少十年以上長期瓶陳的老年份Pinot Grigio酒款',
+      '讓果汁與灰皮諾略帶粉紅色的果皮短暫接觸，因此酒液呈現淡淡的銅粉色澤，帶有更多單寧結構與風味複雜度',
+      'Ramato是指跳過發酵階段、直接以蒸餾方式製成的Pinot Grigio烈酒款'
+    ],
+    correctIndex: 2,
+    explanation: 'Ramato（義大利文意為「銅色」）是Friuli產區的傳統風格，讓果汁與灰皮諾略帶粉紅色的果皮短暫接觸，使酒液呈現淡淡的銅粉色澤，同時帶來更多單寧結構與風味複雜度，與一般清爽中性的Pinot Grigio風格不同。'
+  },
+  {
+    id: 'lo3-pgg-017',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'pinot-gris',
+    question: '德國對灰皮諾除了「Grauburgunder」這個現代常用稱呼外，另一個較傳統的稱呼「Ruländer」，通常與什麼風格印象有關？',
+    options: [
+      'Ruländer較常與稍具甜感、酒體飽滿的傳統風格連結，Grauburgunder則較常用於現代不甜型風格',
+      '兩個稱呼指的是兩個親緣關係相近但基因上獨立的葡萄品種，並非同一品種的不同稱呼',
+      'Ruländer專指經過氣泡酒傳統二次發酵工法特別釀造製成的灰皮諾氣泡酒款',
+      'Grauburgunder是德國法規近年明文禁止使用的舊稱，目前僅Ruländer仍為合法標示'
+    ],
+    correctIndex: 0,
+    explanation: '德國市場上，「Ruländer」是較傳統的稱呼，常與稍具甜感、酒體較飽滿的傳統風格連結；「Grauburgunder」則是較現代的稱呼，較常用於不甜型風格酒款，兩者為同一品種的不同稱呼慣例，反映的是風格印象差異而非品種差異。'
+  },
+  {
+    id: 'lo3-pgg-018',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'pinot-gris',
+    question: '白皮諾（Pinot Blanc）與灰皮諾（Pinot Gris）同屬Pinot家族的基因突變近親，兩者在風格辨識上的關鍵差異為何？',
+    options: [
+      '白皮諾是由灰皮諾經人工雜交培育而成的新品種，兩者並非源自同一基因突變起源',
+      '兩者主要差異在於白皮諾的酒精濃度普遍遠高於灰皮諾，是兩者最主要的辨識依據',
+      '白皮諾主要用於氣泡酒基酒，灰皮諾的法規完全禁止用於氣泡酒釀造',
+      '白皮諾風味較為中性淡雅、酸度通常較高，灰皮諾則通常酒體更飽滿、風味更濃郁具辨識度'
+    ],
+    correctIndex: 3,
+    explanation: '白皮諾（Pinot Blanc）與灰皮諾（Pinot Gris）皆為黑皮諾的基因突變品種，白皮諾風味通常較中性淡雅、酸度較高，灰皮諾則通常酒體更飽滿、風味更濃郁具辨識度，兩者風格辨識度不同，並非以酒精濃度作為主要區分依據。'
   },
   {
     id: 'lo3-cs-001',
