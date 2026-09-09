@@ -4487,6 +4487,21 @@ const QUIZ_BANK = [
     explanation: '需理解其「陳年後才展現真正實力」的特性，陳年後會發展出蜂蠟與烤堅果般的複雜層次，這種特性使其成為波爾多白酒與獵人谷陳年白酒的經典案例。'
   },
   {
+    id: 'lo4-sem-004',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'semillon',
+    question: '澳洲Hunter Valley（獵人谷）發展出一種獨特的不甜型Sémillon風格，其釀造與陳年特色為何？',
+    options: [
+      '早採收、低酒精度裝瓶，年輕時風味中性平淡，但經瓶陳數年後能發展出蜂蜜堅果般的複雜香氣',
+      '晚採收、高酒精度裝瓶，年輕時香氣濃郁奔放，但瓶陳潛力相對有限',
+      '該產區傳統做法是先經全新橡木桶陳年數年，才於老熟後裝瓶上市',
+      '該產區的Sémillon僅能用於釀造貴腐甜酒，不生產不甜型酒款'
+    ],
+    correctIndex: 0,
+    explanation: 'Hunter Valley的Sémillon以早採收、低酒精度（通常僅約11%）的不甜型風格聞名，年輕時風味中性平淡、不易受青睞，但經數年瓶陳後能發展出蜂蜜、堅果般的複雜香氣，是全球最獨特、最具陳年實力的不甜型Sémillon風格代表。'
+  },
+  {
     id: 'lo4-alb-001',
     lo: 4,
     sourceType: 'data-object',
@@ -4530,6 +4545,21 @@ const QUIZ_BANK = [
     ],
     correctIndex: 2,
     explanation: '阿爾巴利諾的海洋鹹鮮感更明顯、草本調性較弱。'
+  },
+  {
+    id: 'lo4-alb-004',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'albarino',
+    question: '西班牙Rías Baixas產區氣候潮濕多雨，當地Albariño種植常採用「棚架式（pergola）」高架整枝方式，其主要目的為何？',
+    options: [
+      '棚架式整枝主要是為了方便機械採收，與病害防治較無直接關聯',
+      '棚架式整枝的目的是刻意遮蔽陽光，避免果實接收過多日照造成灼傷',
+      '讓果串遠離地面並提高通風程度，降低潮濕氣候下黴菌病害的感染風險',
+      '棚架式整枝是當地法規強制規定的裝飾性種植方式，與品質較無關聯'
+    ],
+    correctIndex: 2,
+    explanation: 'Rías Baixas氣候潮濕多雨，容易誘發黴菌病害，當地傳統的棚架式（pergola）高架整枝能讓果串遠離地面並提高通風程度，有效降低潮濕氣候下的病害感染風險，是當地因應氣候挑戰發展出的重要種植傳統。'
   },
   {
     id: 'lo4-bar-001',
@@ -4577,6 +4607,21 @@ const QUIZ_BANK = [
     explanation: 'Barbera天生極高酸度，是其核心品種特徵之一，這種爽口特性使其長期作為義大利日常餐桌上易於配餐的親民酒款選擇。'
   },
   {
+    id: 'lo4-bar-004',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'barbera',
+    question: '由於Barbera天生酸度極高，多數酒莊在釀造時通常會採取什麼處理方式，讓成酒口感更為柔順易飲？',
+    options: [
+      '刻意提前終止酒精發酵，透過保留部分天然糖分來平衡過高的酸度感受',
+      '讓酒液完整進行乳酸發酵，將尖銳的蘋果酸轉化為較柔和的乳酸，緩解過高酸度帶來的尖銳口感',
+      '額外添加碳酸鈣等鹼性物質直接中和酒液酸度，是業界處理Barbera最常見的做法',
+      '刻意延長果皮泡皮時間至數週以上，藉此大幅稀釋酒液的整體酸度表現'
+    ],
+    correctIndex: 1,
+    explanation: 'Barbera天生酸度極高，多數酒莊會讓酒液完整進行乳酸發酵（MLF），將尖銳的蘋果酸轉化為口感較柔和的乳酸，緩解過高酸度帶來的尖銳感，是處理這類高酸品種常見的釀造調整手法，與Chardonnay追求奶油感的MLF目的略有不同、但原理相同。'
+  },
+  {
     id: 'lo4-cor-001',
     lo: 4,
     sourceType: 'data-object',
@@ -4620,6 +4665,21 @@ const QUIZ_BANK = [
     ],
     correctIndex: 1,
     explanation: '一般Corvina建議侍酒溫度14–15°C，Amarone版本因酒體更濃郁厚重則建議提高至16–18°C。'
+  },
+  {
+    id: 'lo4-cor-004',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'corvina',
+    question: '威尼托Valpolicella產區除了Appassimento工法（釀成Amarone）之外，還有一種稱為「Ripasso」的工法，其做法與目的為何？',
+    options: [
+      'Ripasso是指將完整果串刻意風乾至少三個月以上才開始發酵的獨立甜酒工法',
+      '讓清爽版Valpolicella酒液，經Amarone殘留果皮渣二次發酵，增添酒體與風味複雜度',
+      'Ripasso專指裝瓶前額外重新過濾兩次以上，藉此確保最終酒液的澄清度工序',
+      'Ripasso是指捨棄原有的Corvina成分，改用其他品種重新混調裝瓶的替代做法'
+    ],
+    correctIndex: 1,
+    explanation: 'Ripasso是讓一般清爽版本的Valpolicella酒液，經過Amarone釀造後殘留的果皮渣（仍帶有殘餘糖分與風味物質）進行二次發酵，藉此為原本清淡的酒款增添酒體、酒精濃度與風味複雜度，是介於一般Valpolicella與Amarone之間的風格，也是Corvina應用工法多元性的重要案例。'
   },
   {
     id: 'lo4-mon-001',
@@ -4667,6 +4727,21 @@ const QUIZ_BANK = [
     explanation: '原生於義大利中部，主要種植於阿布魯佐。'
   },
   {
+    id: 'lo4-mon-004',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'montepulciano',
+    question: 'Montepulciano作為義大利產量與外銷量皆名列前茅的品種，其廣受市場歡迎的特性為何？',
+    options: [
+      '天生產量極低、單寧極為厚重難以入口，僅適合資深品飲者長期窖藏',
+      'Montepulciano主要用於製作蒸餾烈酒的基酒原料，較少直接裝瓶飲用',
+      '天生產量較高、單寧圓潤易飲，能以親民價格提供不錯的品質，適合日常餐搭',
+      '該品種的市場成功純粹來自行銷包裝，與果實本身特性較無直接關聯'
+    ],
+    correctIndex: 2,
+    explanation: 'Montepulciano天生產量較高、單寧相對圓潤易飲，能以親民的價格提供不錯的品質水準，適合作為日常餐搭酒款，這是其成為義大利外銷量名列前茅品種的重要特性基礎。'
+  },
+  {
     id: 'lo4-pin-001',
     lo: 4,
     sourceType: 'data-object',
@@ -4710,6 +4785,21 @@ const QUIZ_BANK = [
     ],
     correctIndex: 2,
     explanation: '品質不佳的Pinotage易出現丙酮或指甲油氣味，現代釀造工藝已大幅改善此問題。'
+  },
+  {
+    id: 'lo4-pin-004',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'pinotage',
+    question: 'Pinotage早期常因釀造工藝不成熟而帶有負面氣味，近年南非酒莊透過什麼方式提升整體品質形象？',
+    options: [
+      '完全放棄使用傳統釀造設備，改採以塑膠容器取代所有橡木桶陳年',
+      '大幅提高每公頃產量，透過稀釋的方式降低負面氣味的濃度',
+      '改將Pinotage與白葡萄品種混調裝瓶，藉此掩蓋原有的負面氣味',
+      '改善採收時機判斷與釀造溫控技術，並更謹慎地控管橡木桶陳年比例'
+    ],
+    correctIndex: 3,
+    explanation: '近年南非酒莊透過改善採收時機判斷（避免過熟）、精進釀造溫控技術，並更謹慎地控管橡木桶陳年比例，有效降低早期Pinotage常見的負面氣味問題，逐步提升整體品質形象，反映出品種潛力與釀造工藝進步的關係。'
   },
   {
     id: 'lo4-car-001',
@@ -4757,6 +4847,21 @@ const QUIZ_BANK = [
     explanation: 'Carménère成熟期更晚、青椒與綠色香料氣息更明顯；梅洛則更早熟、果香更甜熟圓潤，兩者葉片與果實外觀相似，但成熟期與香氣調性有明顯差異。'
   },
   {
+    id: 'lo4-car-004',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'carmenere',
+    question: 'Carménère屬於晚熟品種，若種植於較涼爽或日照不足的地塊，容易出現什麼風味問題？',
+    options: [
+      '容易因果實未完全成熟，酒精濃度異常過高，超出正常釀造範圍',
+      '容易因果實未完全成熟，帶有明顯的青椒／草本調性，與甲氧基吡𠯤這類化合物有關',
+      '容易因果實未完全成熟，單寧含量遠超過Cabernet Sauvignon等厚皮品種',
+      '容易因果實未完全成熟，酒液顏色轉變為接近白酒的淺色調'
+    ],
+    correctIndex: 1,
+    explanation: 'Carménère是晚熟品種，若種植於較涼爽或日照不足的地塊，果實不易完全成熟，容易帶有明顯的青椒／草本調性（與甲氧基吡𠯤這類化合物有關），因此在智利種植時特別需要選擇日照充足、能確保完全成熟的地塊。'
+  },
+  {
     id: 'lo4-ver-001',
     lo: 4,
     sourceType: 'data-object',
@@ -4800,6 +4905,21 @@ const QUIZ_BANK = [
     ],
     correctIndex: 1,
     explanation: '最可靠的辨識方式仍是產區（馬爾凱vs皮埃蒙特），Verdicchio果香更偏柑橘與青蘋果，Cortese則風格更中性寡淡，兩者風味細節也有差異。'
+  },
+  {
+    id: 'lo4-ver-004',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'verdicchio',
+    question: 'Verdicchio dei Castelli di Jesi產區的火山質與石灰質混合土壤，對當地Verdicchio的風格有何影響？',
+    options: [
+      '有助於發展出高酸度與礦石調性兼具的結構，支撐其陳年潛力',
+      '該土壤組合主要功能是大幅提高果實的天然甜度，讓酒款偏向甜型風格',
+      '該土壤組合排水性較差，容易導致當地產量偏高、風味被稀釋',
+      '該土壤組合與Verdicchio的風味表現較無直接關聯，風格主要取決於裝瓶前的過濾工序'
+    ],
+    correctIndex: 0,
+    explanation: 'Verdicchio dei Castelli di Jesi產區的火山質與石灰質混合土壤，有助於Verdicchio發展出高酸度與礦石調性兼具的結構，這樣的結構是其陳年潛力的重要支撐基礎，也是近年Riserva等級酒款證明陳年實力的風土根基。'
   },
   {
     id: 'lo4-cot-001',
@@ -4847,6 +4967,21 @@ const QUIZ_BANK = [
     explanation: 'Cortese整體風味更寡淡內斂、礦物感更明顯，Verdicchio則帶有更明顯的杏仁與核果調性，仍建議以產區作為最終辨識依據。'
   },
   {
+    id: 'lo4-cot-004',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'cortese',
+    question: 'Cortese釀成的Gavi，因風味中性清爽、酸度明快，在食物搭配上常被視為特別適合搭配什麼類型的料理？',
+    options: [
+      '極度辛辣的南洋料理，其低酸度特性能有效緩解辣度的刺激感',
+      '重口味的紅燒燉肉料理，其高單寧結構能與濃郁肉汁達到平衡',
+      '義大利利古里亞與皮埃蒙特一帶的海鮮料理，能襯托海鮮的鮮味而不搶味',
+      '巧克力與濃郁甜點，其濃厚的甜感風格能與甜點的甜膩感互相呼應'
+    ],
+    correctIndex: 2,
+    explanation: 'Gavi風味中性清爽、酸度明快，不易搶過食物本身的風味，是義大利利古里亞與皮埃蒙特一帶海鮮料理的經典搭配選擇，能襯托海鮮的鮮味而不搶味，是Cortese風味中性特質在食物搭配上的實際應用優勢。'
+  },
+  {
     id: 'lo4-gar-001',
     lo: 4,
     sourceType: 'data-object',
@@ -4890,6 +5025,21 @@ const QUIZ_BANK = [
     ],
     correctIndex: 2,
     explanation: '兩者風味與風乾工法皆有相似之處，但Garganega是白葡萄、Corvina是紅葡萄，分屬威尼托紅白酒的代表品種，常作為「威尼托風乾工法不限紅白酒」的教學對照組。'
+  },
+  {
+    id: 'lo4-gar-004',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'garganega',
+    question: 'Garganega天生屬於較高產的品種，Soave Classico核心區與周邊平原大量生產的一般Soave，品質落差常與什麼因素有關？',
+    options: [
+      'Soave Classico核心區的酒莊通常主動控制產量，平原區則常見產量過高導致風味稀釋',
+      '兩者品質落差純粹來自裝瓶時添加的人工香精比例不同，與產量較無關聯',
+      'Soave Classico核心區的法規明文禁止使用Garganega，僅平原區允許種植',
+      '兩者品質落差主要來自採收時間點的年份差異，與地塊或產量管理較無關聯'
+    ],
+    correctIndex: 0,
+    explanation: 'Garganega天生屬於較高產的品種，Soave Classico核心區（多為火山丘陵地）的優質酒莊通常主動控制產量以確保品質，而周邊平原區因地勢平坦、便於大規模機械化生產，常見產量過高導致風味被稀釋，是兩者品質落差的重要成因。'
   },
   {
     id: 'lo4-fia-001',
@@ -4937,6 +5087,21 @@ const QUIZ_BANK = [
     explanation: 'Fiano的蜂蜜與堅果調性更濃郁厚實，Verdicchio則以柑橘與杏仁的清爽調性為主，兩者最可靠的辨識方式仍是產區（坎帕尼亞vs馬爾凱）。'
   },
   {
+    id: 'lo4-fia-004',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'fiano',
+    question: 'Fiano相較於多數義大利白酒品種，在酒體與口感質地上常給人什麼印象？',
+    options: [
+      '酒體通常較為飽滿厚實、質地帶有一定油潤感，與許多輕盈清瘦的義大利白酒品種形成對比',
+      '酒體通常極度輕盈瘦弱，是義大利白酒中酒體表現最單薄的品種之一',
+      '酒體厚薄主要取決於當年份的降雨量多寡，與品種本身特性較無直接關聯',
+      '酒體表現主要取決於裝瓶前是否額外添加甘油，與品種本身特性較無直接關聯'
+    ],
+    correctIndex: 0,
+    explanation: 'Fiano相較於多數義大利白酒品種，酒體通常較為飽滿厚實、質地帶有一定油潤感，與Cortese、Verdicchio等輕盈清瘦風格形成對比，這樣的酒體結構也是其陳年潛力的重要支撐基礎之一。'
+  },
+  {
     id: 'lo4-fur-001',
     lo: 4,
     sourceType: 'data-object',
@@ -4980,6 +5145,21 @@ const QUIZ_BANK = [
     ],
     correctIndex: 3,
     explanation: 'Furmint酸度更高、骨架更緊實，是主導品種；Hárslevelű則香氣更奔放、帶明顯椴樹花與蜂蜜調性，用於補充香氣複雜度，兩者角色互補而非替代關係。'
+  },
+  {
+    id: 'lo4-fur-004',
+    lo: 4,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'furmint',
+    question: 'Furmint天生的高酸度，對Tokaji Aszú這類極甜型貴腐甜酒的風格扮演什麼角色？',
+    options: [
+      '高酸度能平衡極高糖分帶來的甜膩感，維持整體風味結構的清爽與層次感',
+      '高酸度的主要作用是加速貴腐菌感染速度，與最終風味平衡較無直接關聯',
+      '高酸度會與貴腐甜型風格互相衝突，因此Tokaji Aszú多半刻意選用低酸品系',
+      '高酸度主要是裝瓶前額外添加酸性物質調整的結果，與品種天生特性較無關'
+    ],
+    correctIndex: 0,
+    explanation: 'Furmint天生的高酸度，在Tokaji Aszú這類經貴腐菌濃縮、糖分極高的甜型酒款中，扮演平衡甜膩感、維持整體風味結構清爽與層次感的關鍵角色，這與Riesling在其他甜型酒款中的酸度支撐邏輯相似，是Furmint適合釀造頂級貴腐甜酒的核心原理。'
   },
   {
     id: 'lo5-spk-001',
