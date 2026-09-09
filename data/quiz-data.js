@@ -2777,6 +2777,81 @@ const QUIZ_BANK = [
     explanation: 'Cabernet Sauvignon的香氣輪以黑醋栗、雪松、石墨、薄荷等厚重調性為主，花香調性並非其風味重點。'
   },
   {
+    id: 'lo3-cs-015',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'cabernet-sauvignon',
+    question: '波爾多左岸1855年分級制度（1855 Classification）主要是針對什麼進行評等？',
+    options: [
+      '依當時市場交易價格，將左岸酒莊評定為Premier Cru至Cinquième Cru等五個等級',
+      '依據葡萄園土壤的排水性與蓄熱能力優劣程度，將左岸各產區劃分為不同等級',
+      '依當時每位釀酒師的個人聲望、從業資歷與家族傳承背景，將左岸酒莊評定為五個等級',
+      '依酒莊建築物的歷史年代、整體規模大小與外觀氣派程度，將左岸酒莊評定為五個等級'
+    ],
+    correctIndex: 0,
+    explanation: '1855年分級制度是依當時葡萄酒的市場交易價格，將梅多克（Médoc）等左岸酒莊評定為Premier Cru（一級）至Cinquième Cru（五級）共五個等級，是波爾多左岸最具代表性的歷史分級制度，與Cabernet Sauvignon為主的左岸酒款密切相關。'
+  },
+  {
+    id: 'lo3-cs-016',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'cabernet-sauvignon',
+    question: '澳洲Coonawarra（庫納瓦拉）產區以Cabernet Sauvignon聞名，當地著名的紅色土壤「Terra Rossa」對種植有何助益？',
+    options: [
+      'Terra Rossa是一種完全阻絕水分滲透的黏土，能讓葡萄藤持續維持高含水量',
+      'Terra Rossa土壤本身呈鹼性極強，能大幅提升果實的天然甜度',
+      '表層紅色石灰質黏土排水良好，下方石灰岩層則有助於根系深入吸收水分養分',
+      'Terra Rossa土壤含有豐富有機質，主要功能是加速葡萄藤的生長速度'
+    ],
+    correctIndex: 2,
+    explanation: 'Coonawarra著名的Terra Rossa紅土，表層排水良好，下方石灰岩層有助於根系深入發展並吸收穩定的水分養分，是當地Cabernet Sauvignon品質優異的重要風土因素之一。'
+  },
+  {
+    id: 'lo3-cs-017',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'cabernet-sauvignon',
+    question: 'Cabernet Sauvignon在果實未完全成熟或種植於較涼爽氣候時，有時會出現什麼香氣特徵？',
+    options: [
+      '類似青椒的草本調性，來自甲氧基吡𠯤這類化合物，隨成熟度提高而減少',
+      '類似荔枝的濃郁花果調性，來自品種天生的萜烯類化合物',
+      '類似奶油的濃郁調性，來自發酵過程中產生的雙乙醯物質',
+      '類似汽油的礦石調性，來自品種陳年後產生的特定芳香物質'
+    ],
+    correctIndex: 0,
+    explanation: 'Cabernet Sauvignon與白蘇維濃同樣含有甲氧基吡𠯤這類化合物，在果實未完全成熟或種植於較涼爽氣候時，可能出現類似青椒的草本調性，隨果實成熟度提高，此調性通常會逐漸減少。'
+  },
+  {
+    id: 'lo3-cs-018',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'cabernet-sauvignon',
+    question: '義大利托斯卡尼地區，Cabernet Sauvignon等國際品種被引入並與Sangiovese混調，發展出被稱為「Super Tuscan」的酒款風格，這個現象反映了什麼？',
+    options: [
+      '義大利官方法規強制要求所有托斯卡尼酒莊必須種植一定比例的Cabernet Sauvignon',
+      'Super Tuscan專指不使用任何義大利本地品種、僅以進口國際品種釀造的酒款類別',
+      '這個現象主要反映歐盟法規對「托斯卡尼」地理標示的嚴格保護，與品種選擇較無直接關聯',
+      '部分酒莊為追求品質與市場定位，選擇跳脫當地傳統法規限制，改用國際品種混調，最初因此被標示為較低階的餐酒等級'
+    ],
+    correctIndex: 3,
+    explanation: '部分托斯卡尼酒莊為追求品質與國際市場定位，選擇使用Cabernet Sauvignon等國際品種與本地Sangiovese混調，因不符合當地傳統法規要求，最初只能標示為較低階的餐酒等級，後續才逐漸發展出專屬分級，是義大利葡萄酒近代史上的重要現象。'
+  },
+  {
+    id: 'lo3-cs-019',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'cabernet-sauvignon',
+    question: '由於Cabernet Sauvignon單寧結構厚重，部分酒莊會採用「延長泡皮（Extended Maceration）」工序，這項工序的主要目的為何？',
+    options: [
+      '延長泡皮主要用於降低最終酒款的酒精濃度，與單寧結構較無直接關聯',
+      '在酒精發酵完成後持續泡皮一段時間，讓單寧進一步軟化、口感更為圓潤細緻',
+      '延長泡皮是裝瓶前的最後一道過濾工序，主要用於移除酒液中殘留的死酵母渣',
+      '延長泡皮主要目的是加速酒精發酵反應速度，縮短整體釀造週期'
+    ],
+    correctIndex: 1,
+    explanation: '延長泡皮是在酒精發酵完成後，繼續讓酒液與果皮接觸一段時間，讓原本較粗澀的單寧透過持續萃取與聚合作用逐漸軟化，使成酒口感更為圓潤細緻，是處理Cabernet Sauvignon這類厚重單寧品種常見的釀造手法。'
+  },
+  {
     id: 'lo3-mer-001',
     lo: 3,
     sourceType: 'data-object',
@@ -2985,6 +3060,81 @@ const QUIZ_BANK = [
     ],
     correctIndex: 1,
     explanation: 'Merlot屬早熟品種，採收時果實（含種籽）通常已達到良好的酚類成熟度，單寧口感較不帶生青苦澀感，這是其「圓潤柔和」風格的關鍵原因，與單寧總量高低是兩個不同的面向。'
+  },
+  {
+    id: 'lo3-mer-015',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'merlot',
+    question: '波爾多右岸聖愛美濃（St-Émilion）產區的經典混調配方，Merlot通常與哪個品種搭配，與左岸的搭檔品種有何不同？',
+    options: [
+      '通常與希哈（Syrah）搭配裝瓶為主，形成類似南隆河GSM混調配方的品種組合邏輯',
+      '通常與卡本內弗朗（Cabernet Franc）搭配，與左岸慣用的Cabernet Sauvignon不同',
+      '通常僅以單一品種裝瓶為主要風格，聖愛美濃當地法規明文禁止任何形式的品種混調',
+      '通常與格那希（Grenache）搭配裝瓶為主，這是南隆河GSM混調配方邏輯的延伸應用方式'
+    ],
+    correctIndex: 1,
+    explanation: '聖愛美濃的經典配方通常是Merlot搭配卡本內弗朗（Cabernet Franc），與左岸梅多克慣用的Merlot搭配Cabernet Sauvignon不同，是波爾多左右岸混調配方差異的重要知識點。'
+  },
+  {
+    id: 'lo3-mer-016',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'merlot',
+    question: '智利的Merlot在1994年之前，曾與哪個品種長期混淆種植，直到DNA鑑定才釐清？',
+    options: [
+      'Cabernet Franc，兩者因葉形相近，長期被誤認為同一品種',
+      'Petit Verdot，兩者因成熟時間相近，長期被誤認為同一品種',
+      'Carménère，兩者外觀相似，長期被誤認為同一品種種植在同一葡萄園中',
+      'Malbec，兩者因原產法國西南部，長期被誤認為同一品種'
+    ],
+    correctIndex: 2,
+    explanation: '智利葡萄園過去長期將Carménère誤認為Merlot混種在一起，直到1994年DNA鑑定才確認兩者是不同品種，是智利葡萄酒產業近代重要的品種鑑定事件。'
+  },
+  {
+    id: 'lo3-mer-017',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'merlot',
+    question: '美國華盛頓州（Washington State）是加州之外，另一個以Merlot品質聞名的重要產區，其氣候條件相對加州許多產區有何特點？',
+    options: [
+      '日照時數長但晝夜溫差大，有助於果實在累積成熟度的同時保留一定酸度',
+      '氣候型態與熱帶雨林相近，全年濕度極高、降雨量極大',
+      '主要因當地降雨量遠高於加州，需仰賴大量排水設施避免葡萄園淹水',
+      '該產區完全仰賴人工溫室栽培，與露天葡萄園種植方式不同'
+    ],
+    correctIndex: 0,
+    explanation: '華盛頓州內陸產區日照時數長、晝夜溫差大，有助於果實在累積糖分與酚類成熟度的同時，仍能保留一定酸度，是當地Merlot與其他紅酒品種品質優異的重要氣候因素。'
+  },
+  {
+    id: 'lo3-mer-018',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'merlot',
+    question: 'Merlot天生屬於較高產（high-yielding）的品種，種植管理上常需要採取什麼措施以確保品質？',
+    options: [
+      '透過修剪與疏果等產量控制措施，避免產量過高導致果實風味被稀釋',
+      '完全停止灌溉，讓葡萄藤處於極度缺水狀態以強迫減產',
+      '刻意延遲採收至隔年春天，讓多餘果實自然脫落',
+      '大幅增加化學肥料使用量，透過加速生長來間接降低單位產量'
+    ],
+    correctIndex: 0,
+    explanation: 'Merlot天生屬於較高產的品種，若不加以控制容易因產量過高導致果實風味被稀釋，因此種植管理上常需透過修剪、疏果等產量控制措施，確保每株葡萄藤的產量維持在有利品質的範圍內。'
+  },
+  {
+    id: 'lo3-mer-019',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'merlot',
+    question: 'Merlot因發芽時間較早，在種植管理上特別需要留意什麼天氣風險？',
+    options: [
+      '冰雹風險，因Merlot果串結構相對鬆散，特別容易被冰雹擊碎損傷',
+      '乾旱風險，因Merlot根系天生發展深度較其他品種來得淺薄',
+      '強風風險，因Merlot植株生長高度普遍較其他品種更為高大',
+      '春霜（spring frost）風險，因較早發芽的嫩芽對低溫特別敏感脆弱'
+    ],
+    correctIndex: 3,
+    explanation: 'Merlot發芽時間較早，較早萌發的嫩芽對低溫特別敏感，因此春霜是Merlot種植管理上特別需要留意的天氣風險之一，與其發芽早、成熟也早的品種特性直接相關。'
   },
   {
     id: 'lo3-pn-001',
@@ -3197,6 +3347,81 @@ const QUIZ_BANK = [
     explanation: '果皮顏色為紅葡萄，原生國為法國，德語產區稱之為Spätburgunder。'
   },
   {
+    id: 'lo3-pn-015',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'pinot-noir',
+    question: '布根地夜丘（Côte de Nuits）與伯恩丘（Côte de Beaune）這兩個子產區，在特級園（Grand Cru）分布上有何常見的對比印象？',
+    options: [
+      '夜丘的特級園全數種植Chardonnay，伯恩丘的特級園全數種植Pinot Noir',
+      '兩個子產區的特級園分布主要以產區歷史悠久程度區分，與品種類型較無直接關聯',
+      '夜丘的特級園以Pinot Noir紅酒居多，伯恩丘的特級園則以Chardonnay白酒居多',
+      '夜丘與伯恩丘皆不種植Pinot Noir，兩者皆以Chardonnay特級園聞名'
+    ],
+    correctIndex: 2,
+    explanation: '夜丘（Côte de Nuits）的特級園以Pinot Noir紅酒居多，伯恩丘（Côte de Beaune）的特級園則以Chardonnay白酒居多（雖伯恩丘也有少數紅酒特級園），是布根地產區地理與品種分布的重要知識點。'
+  },
+  {
+    id: 'lo3-pn-016',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'pinot-noir',
+    question: '紐西蘭Central Otago（中奧塔哥）產區的Pinot Noir，其氣候條件在紐西蘭當地屬於哪一種類型，並帶來什麼風格特徵？',
+    options: [
+      '屬於熱帶海洋型氣候、終年高溫潮濕，酒款風格通常清淡如水、缺乏果香',
+      '該產區氣候與馬爾堡皆屬溫和海洋型氣候，日夜溫差普遍不大',
+      '該產區地處紐西蘭最北端，屬於全紐西蘭最溫暖潮濕的產區',
+      '屬於大陸型氣候、日照充足但晝夜溫差大，酒款風格通常濃郁飽滿、色澤深邃'
+    ],
+    correctIndex: 3,
+    explanation: 'Central Otago是紐西蘭少數具大陸型氣候特徵的產區，日照充足但晝夜溫差大，當地Pinot Noir酒款風格通常較濃郁飽滿、色澤較深，是紐西蘭最重要的Pinot Noir產區之一。'
+  },
+  {
+    id: 'lo3-pn-017',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'pinot-noir',
+    question: '為什麼Pinot Noir普遍被認為特別適合種植在涼爽氣候（cool climate）產區？',
+    options: [
+      '涼爽氣候能大幅提高Pinot Noir的單寧含量與厚度，藉此彌補單寧天生偏薄的缺點',
+      '涼爽氣候有助於延緩果實成熟速度，讓Pinot Noir在保留較高酸度的同時，逐漸發展出風味複雜度',
+      '涼爽氣候的主要效果是明顯加速Pinot Noir的酒精發酵速度，藉此縮短整體釀造時間',
+      '涼爽氣候能讓Pinot Noir的果皮顏色明顯加深，進而產生更為濃郁飽滿的酒色表現'
+    ],
+    correctIndex: 1,
+    explanation: 'Pinot Noir是相對早熟的品種，涼爽氣候有助於延緩其成熟速度，讓果實在累積風味複雜度的同時仍能保留較高酸度，維持其細緻優雅的風格特徵，這是Pinot Noir偏好涼爽氣候的核心原理。'
+  },
+  {
+    id: 'lo3-pn-018',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'pinot-noir',
+    question: '布根地過去在較涼爽的年份，Pinot Noir常因糖分累積不足而採用什麼釀造調整手法？',
+    options: [
+      '補糖（Chaptalization），在發酵過程中額外添加糖分以提升最終酒精濃度',
+      '補酸（Acidification），額外添加酸性物質以彌補糖分不足',
+      '停止發酵（Fermentation Stopped），提前終止發酵以保留天然糖分',
+      '延長泡皮（Extended Maceration），透過拉長泡皮時間彌補糖分不足'
+    ],
+    correctIndex: 0,
+    explanation: '在較涼爽、日照不足的年份，果實糖分累積可能不足，過去布根地常見的調整手法是補糖（Chaptalization），透過在發酵過程中額外添加糖分來提升最終酒精濃度，是官方規格中釀造調整選項的實際應用案例。'
+  },
+  {
+    id: 'lo3-pn-019',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'pinot-noir',
+    question: '部分Pinot Noir酒莊會採用「整串發酵（whole-bunch fermentation）」，保留部分或全部果梗一起發酵，這項工序對酒款風格可能帶來什麼影響？',
+    options: [
+      '果梗可能增添額外的香料調性與結構感，但若果梗未完全成熟，也可能帶來過於生青的草本氣息',
+      '整串發酵能顯著提高最終酒款的整體酒精濃度數值，與香氣調性較無直接關聯',
+      '整串發酵是裝瓶前的最後一道過濾工序，主要用於移除多餘殘留的果梗碎屑',
+      '整串發酵的主要效果是加深最終酒款的色澤深度，與香料調性或結構感較無關'
+    ],
+    correctIndex: 0,
+    explanation: '整串發酵保留部分或全部果梗一起參與發酵，可能為酒款增添額外的香料調性與結構感，但若果梗未完全成熟（木質化程度不足），也可能帶來過於生青的草本氣息，是把雙面刃的釀造選擇，需視果梗成熟度謹慎判斷是否採用。'
+  },
+  {
     id: 'lo3-syr-001',
     lo: 3,
     sourceType: 'data-object',
@@ -3405,6 +3630,66 @@ const QUIZ_BANK = [
     ],
     correctIndex: 3,
     explanation: 'Syrah/Shiraz常見的黑胡椒／白胡椒調性源自品種天然含有的Rotundone化合物，在較冷涼氣候（如北隆河）下這種特徵通常更為明顯，是其重要的品種辨識線索之一。'
+  },
+  {
+    id: 'lo3-syr-015',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'syrah-shiraz',
+    question: '北隆河的Hermitage與Côte-Rôtie，這兩個知名法定產區在品種使用上有何共同特色？',
+    options: [
+      '兩者皆允許以100%單一Syrah品種裝瓶，屬於北隆河單一品種風格的代表產區',
+      '兩者皆強制要求Syrah須與至少四種其他品種混調，禁止單一品種裝瓶',
+      '兩者的法定品種以格那希為主，Syrah僅能作為少量調配用途的品種使用',
+      '兩者皆位於南隆河，與北隆河的地理範圍並無關聯'
+    ],
+    correctIndex: 0,
+    explanation: 'Hermitage與Côte-Rôtie皆位於北隆河，允許以100%單一Syrah品種裝瓶，是北隆河單一品種風格Syrah的代表產區，與南隆河常見的多品種混調風格（如教皇新堡的GSM配方）形成對比。'
+  },
+  {
+    id: 'lo3-syr-016',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'syrah-shiraz',
+    question: 'Côte-Rôtie法規允許酒莊在釀造Syrah時，額外混入少量白葡萄品種Viognier一起發酵，這項傳統作法的主要目的為何？',
+    options: [
+      'Viognier的主要作用是大幅提高最終酒款的單寧含量與陳年潛力',
+      '混入Viognier主要是為了降低釀造成本，與風味或色澤穩定性較無關',
+      '這項作法是近代行銷噱頭，Côte-Rôtie官方法規並不允許此作法',
+      '少量Viognier能為酒款增添花香調性，並有助於穩定酒液色澤'
+    ],
+    correctIndex: 3,
+    explanation: 'Côte-Rôtie傳統上允許酒莊在Syrah中混入少量（通常不超過一定比例）Viognier一起發酵，少量Viognier能為酒款增添細緻花香調性，同時有助於穩定酒液色澤，是該產區歷史悠久且獨特的傳統工法。'
+  },
+  {
+    id: 'lo3-syr-017',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'syrah-shiraz',
+    question: '南非Stellenbosch（斯泰倫博斯）與Swartland（斯瓦特蘭）產區的Shiraz，在南非葡萄酒版圖中的定位為何？',
+    options: [
+      '兩者皆是南非法規明文禁止種植Shiraz的產區，僅能種植白葡萄品種',
+      '是南非重要的Shiraz代表產區之一，風格介於舊世界優雅與新世界濃郁之間',
+      '兩者是南非境內氣候最寒冷潮濕的產區，並不適合Shiraz這類黑葡萄品種',
+      '兩者的Shiraz種植歷史不足十年，屬於南非最新興的實驗性產區'
+    ],
+    correctIndex: 1,
+    explanation: 'Stellenbosch與Swartland是南非重要的Shiraz代表產區，當地風格常被認為介於舊世界的優雅結構與新世界的濃郁果香之間，是南非葡萄酒版圖中重要的黑葡萄品種產區。'
+  },
+  {
+    id: 'lo3-syr-018',
+    lo: 3,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'syrah-shiraz',
+    question: 'Syrah/Shiraz在色澤深度上，相較於多數其他黑葡萄品種，一般被認為如何？',
+    options: [
+      '通常色澤極淺，是黑葡萄品種中色澤表現數一數二淡薄的品種之一',
+      'Syrah/Shiraz的色澤深淺完全取決於裝瓶時添加的人工色素比例',
+      '通常色澤極深，是黑葡萄品種中色澤表現數一數二深邃的品種之一',
+      '色澤深淺與品種較無關聯，主要單純取決於採收當年的降雨量多寡'
+    ],
+    correctIndex: 2,
+    explanation: 'Syrah/Shiraz的果皮色素含量豐富，成酒通常色澤極深、近乎不透光，是黑葡萄品種中色澤表現數一數二深邃的品種之一，這也是其厚實酒體風格的視覺線索之一。'
   },
   {
     id: 'lo3-sup-001',
