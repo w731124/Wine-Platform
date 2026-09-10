@@ -257,6 +257,36 @@ const QUIZ_BANK = [
     explanation: '杯型設計依酒款特性而異：紅酒杯較大以利香氣揮發，白酒杯較小以維持冰鎮溫度。'
   },
   {
+    id: 'lo6-028',
+    lo: 6,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'storage-decanting',
+    question: '醒酒（Decanting）對老年份紅酒與年輕紅酒，兩者的主要目的常有何不同？',
+    options: [
+      '兩者醒酒目的皆主要為了分離瓶底沉澱物，與接觸空氣軟化單寧較無直接關聯',
+      '老年份紅酒醒酒主要為了加速接觸空氣、軟化單寧，年輕紅酒醒酒則主要為了分離沉澱物',
+      '醒酒僅適用於年輕紅酒，老年份紅酒開瓶後應避免任何形式的醒酒程序',
+      '老年份紅酒醒酒主要為了分離沉澱物，年輕紅酒醒酒則主要為了加速接觸空氣、軟化單寧並釋放香氣'
+    ],
+    correctIndex: 3,
+    explanation: '老年份紅酒常因長期瓶陳產生沉澱物，醒酒主要目的是將澄清酒液與沉澱物分離，同時避免過度接觸空氣導致香氣快速消散；年輕紅酒則通常單寧較為緊澀，醒酒主要目的是加速接觸空氣、軟化單寧口感並釋放封閉的香氣，兩者醒酒的側重目的並不相同。'
+  },
+  {
+    id: 'lo6-029',
+    lo: 6,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'storage-decanting',
+    question: '正式品飲或餐搭場合中，多款葡萄酒依序侍酒時，常見的建議侍酒順序原則為何？',
+    options: [
+      '通常建議先濃郁後清淡、先甜型後不甜，依序遞進品飲，與年份新舊較無關',
+      '侍酒順序主要取決於裝瓶時的酒精濃度高低，與甜度或年份新舊較無直接關聯',
+      '通常建議先清淡後濃郁、先不甜後甜型、先年輕後老年份，依序遞進品飲',
+      '通常建議先老年份後年輕、先甜型後不甜，藉此讓味蕾維持最高敏感度'
+    ],
+    correctIndex: 2,
+    explanation: '正式品飲或餐搭場合常見的建議侍酒順序為：先清淡後濃郁、先不甜後甜型、先年輕後老年份，這樣的順序能避免前一款酒的濃郁風味或甜度蓋過後一款酒的細緻表現，是官方規格中侍酒服務的基本原則之一。'
+  },
+  {
     id: 'lo6-018',
     lo: 6,
     sourceType: 'static-panel',
@@ -300,6 +330,66 @@ const QUIZ_BANK = [
     ],
     correctIndex: 2,
     explanation: '軟木塞需持續浸潤才能維持密封彈性：軟木塞未持續接觸酒液而乾燥龜裂，導致封瓶失效氧氣滲入。'
+  },
+  {
+    id: 'lo6-025',
+    lo: 6,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'storage-faults',
+    question: '葡萄酒常見的「軟木塞汙染（Cork Taint / TCA）」瑕疵，典型的氣味特徵與成因為何？',
+    options: [
+      '帶有明顯的醋酸刺鼻氣味，主因是裝瓶前消毒程序不完全所致',
+      '帶有濃郁的雪莉酒氧化調性，主因是軟木塞密封不良導致的過度氧化',
+      '帶有濕紙板、發霉地下室般的氣味，主因是軟木塞中TCA化合物污染所致',
+      '帶有明顯的臭雞蛋硫化物氣味，主因是軟木塞本身含硫量過高所致'
+    ],
+    correctIndex: 2,
+    explanation: '軟木塞汙染（Cork Taint）是葡萄酒最常見的瑕疵之一，主因是軟木塞中存在的TCA（2,4,6-三氯苯甲醚）化合物污染酒液，典型氣味特徵為濕紙板、發霉地下室般的不悅氣味，會掩蓋酒款原有的果香與風味，是品飲時需要辨識的重要瑕疵知識點。'
+  },
+  {
+    id: 'lo6-026',
+    lo: 6,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'storage-faults',
+    question: '葡萄酒瑕疵中的「還原（Reduction）」，典型氣味特徵與常見成因為何？',
+    options: [
+      '帶有臭雞蛋或燃燒橡膠般的氣味，常因發酵或陳年過程中缺乏氧氣接觸所致',
+      '帶有濕紙板般的氣味，主因是軟木塞中的TCA化合物污染所致',
+      '帶有明顯的醋酸刺鼻氣味，主因是裝瓶後受到高溫劣化所致',
+      '帶有過度濃郁的果醬與葡萄乾氣息，主因是採收時果實過熟所致'
+    ],
+    correctIndex: 0,
+    explanation: '「還原」瑕疵典型氣味特徵為臭雞蛋或燃燒橡膠般的硫化物氣味，常因發酵或陳年過程中酒液缺乏氧氣接觸所致，部分輕微還原瑕疵可透過醒酒讓酒液接觸空氣後改善，但嚴重時仍屬明顯的品質瑕疵。'
+  },
+  {
+    id: 'lo6-027',
+    lo: 6,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'storage-faults',
+    question: '葡萄酒瑕疵中的「氧化（Oxidation）」，與雪莉酒、陳年Tawny Port等「刻意氧化陳年」風格，兩者關鍵區別為何？',
+    options: [
+      '兩者本質上的化學機制相近，差異主要在於裝瓶時的酒液顏色深淺不同',
+      '前者是非預期、破壞酒款原有風格與新鮮感的缺陷；後者是刻意設計、屬於該酒款風格本身的一部分',
+      '前者是白酒與紅酒皆可能出現的瑕疵，後者則專指紅酒才會出現的陳年風格',
+      '前者是裝瓶前就已存在的釀造缺陷，後者則是裝瓶後才逐漸發生的品質劣化現象'
+    ],
+    correctIndex: 1,
+    explanation: '一般靜態酒款出現的氧化是非預期、會破壞酒款原有新鮮果香與風格的品質缺陷；雪莉酒、陳年Tawny Port等強化酒款的氧化陳年則是刻意設計、屬於該酒款風格本身核心的一部分，兩者雖然化學機制類似，但在品質評價上的意義截然不同，是品飲判斷時需要區分的重要概念。'
+  },
+  {
+    id: 'lo6-032',
+    lo: 6,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'storage-faults',
+    question: '相較於軟木塞封瓶，使用旋轉瓶蓋（Screw Cap）封瓶對葡萄酒的儲存與風格發展，常見的影響為何？',
+    options: [
+      '旋轉瓶蓋的氧氣滲透量遠高於軟木塞，因此酒款陳年速度通常明顯更快',
+      '旋轉瓶蓋僅適用於低價入門款酒款，法規明文禁止用於任何高階酒款封瓶',
+      '旋轉瓶蓋與軟木塞在氧氣滲透量與陳年速度上的差異主要取決於裝瓶年份新舊',
+      '幾乎完全杜絕軟木塞汙染（TCA）風險，且氧氣滲透量極低，酒款陳年速度通常較為緩慢'
+    ],
+    correctIndex: 3,
+    explanation: '旋轉瓶蓋幾乎完全杜絕軟木塞汙染（TCA）的風險，且氧氣滲透量極低，因此酒款在瓶中的陳年速度通常較軟木塞封瓶更為緩慢、風格演變也較不同，近年愈來愈多產區（尤其紐西蘭、澳洲的白酒）採用旋轉瓶蓋，是封瓶方式選擇對酒款儲存與風格發展的實際影響案例。'
   },
   {
     id: 'lo6-021',
@@ -5432,6 +5522,96 @@ const QUIZ_BANK = [
     explanation: '19世紀後兩國各自發展出獨立風格路線。'
   },
   {
+    id: 'lo5-spk-019',
+    lo: 5,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'sparkling',
+    question: '傳統法氣泡酒在裝瓶進行二次發酵前，會添加「Liqueur de Tirage」，這是什麼？',
+    options: [
+      '額外添加的天然二氧化碳氣體，直接注入酒瓶中製造氣泡',
+      '額外添加的橡木桶萃取液，用於增添酒款的橡木調性',
+      '裝瓶前用於調整最終甜度的糖漿，與觸發二次發酵較無關聯',
+      '額外添加的酵母與糖分混合液，用於觸發瓶中二次發酵'
+    ],
+    correctIndex: 3,
+    explanation: 'Liqueur de Tirage是裝瓶前額外添加的酵母與糖分混合液，觸發瓶中進行的二次發酵，是傳統法氣泡酒產生天然氣泡與Autolysis風味的起點，屬於官方規格中傳統法工序的關鍵技術細節。'
+  },
+  {
+    id: 'lo5-spk-020',
+    lo: 5,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'sparkling',
+    question: '現代大型香檳廠常使用「Gyropalette（旋轉架）」機械化設備，這項設備取代了傳統法工序中的哪個步驟？',
+    options: [
+      '取代裝瓶前的Liqueur de Tirage添加步驟，改由機械自動注入糖酵母液',
+      '取代最後的Dosage補液步驟，改由機械自動調整最終甜度',
+      '取代傳統人工轉瓶（Remuage），透過機械自動旋轉將酒渣集中至瓶頸',
+      '取代二次發酵本身的溫控流程，讓發酵完全在機械設備內完成'
+    ],
+    correctIndex: 2,
+    explanation: 'Gyropalette是現代化的機械轉瓶設備，取代傳統耗時的人工轉瓶（Remuage），透過程式化的自動旋轉與傾斜，將沉澱的酒渣集中至瓶頸，大幅縮短原本需要數週的人工轉瓶時間，是氣泡酒工藝現代化的代表案例之一。'
+  },
+  {
+    id: 'lo5-spk-021',
+    lo: 5,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'sparkling',
+    question: '香檳分類中的「Blanc de Noirs」，指的是什麼樣的氣泡酒？',
+    options: [
+      '完全使用白葡萄品種Chardonnay釀造、但裝瓶前刻意調色成粉紅色的氣泡酒類別',
+      '裝瓶前額外添加天然黑色素調整最終酒色深淺的氣泡酒類別，是業界常見做法',
+      '使用黑葡萄品種果皮經長時間泡皮工序、最終呈現深紅色的靜態酒款類別',
+      '完全使用黑葡萄品種（如Pinot Noir、Pinot Meunier）榨汁釀成的白色氣泡酒'
+    ],
+    correctIndex: 3,
+    explanation: 'Blanc de Noirs意為「黑中白」，指完全使用黑葡萄品種（如Pinot Noir、Pinot Meunier）榨汁釀造、因榨汁過程中果皮與果汁接觸時間極短而呈現白色或極淺色的氣泡酒，與100%使用Chardonnay的Blanc de Blancs互為對照。'
+  },
+  {
+    id: 'lo5-spk-022',
+    lo: 5,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'sparkling',
+    question: '粉紅香檳（Rosé Champagne）常見的釀造方式，除了短暫泡皮法之外，還有另一種特殊做法，是什麼？',
+    options: [
+      '在裝瓶前的基酒中，混調入少量靜態紅酒，調整出理想的粉紅色澤',
+      '額外添加天然食用色素，直接調整最終酒液的粉紅色澤',
+      '裝瓶後刻意曝曬於陽光下一段時間，讓酒液自然氧化轉為粉紅色',
+      '完全仰賴Pinot Meunier品種天生的粉紅色果皮素，無需額外調整工序'
+    ],
+    correctIndex: 0,
+    explanation: '粉紅香檳除了透過短暫泡皮法萃取色素外，香檳區法規也允許在裝瓶前的基酒中混調入少量靜態紅酒，調整出理想的粉紅色澤，這是香檳區特有、少數法規允許混調紅酒製作粉紅氣泡酒的產區案例。'
+  },
+  {
+    id: 'lo5-spk-023',
+    lo: 5,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'sparkling',
+    question: '法國香檳區以外的傳統法氣泡酒，常統稱為「Crémant」，下列何者正確描述這個分類？',
+    options: [
+      '指使用水槽法釀造、產自義大利的氣泡酒分類名稱，與法國Crémant產區系統較無關聯',
+      '指法國境內、香檳區以外採傳統法釀造的氣泡酒統稱，如Crémant de Loire',
+      'Crémant是香檳區內部劃分出的次級分類，代表酒渣接觸時間較短的入門款香檳',
+      'Crémant是裝瓶前額外添加鮮奶油調整最終口感質地所產生的氣泡酒類別'
+    ],
+    correctIndex: 1,
+    explanation: "Crémant是法國境內、香檳區以外採傳統法釀造的氣泡酒統稱，如羅亞爾河的Crémant de Loire、阿爾薩斯的Crémant d'Alsace、布根地的Crémant de Bourgogne等，讓消費者得以辨識這些酒款採用與香檳相同的傳統法工藝，但產區與價格定位不同。"
+  },
+  {
+    id: 'lo5-spk-024',
+    lo: 5,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'sparkling',
+    question: '德國的氣泡酒統稱為「Sekt」，其品質等級光譜為何？',
+    options: [
+      'Sekt是德國境內銷售量最大的甜型靜態酒款分類名稱，與氣泡酒屬不同分類',
+      '所有Sekt皆須採用傳統法釀造，德國法規明文禁止水槽法生產氣泡酒',
+      '涵蓋大量生產、以水槽法為主的一般Sekt，到強調單一產區、傳統法釀造的高階Sekt',
+      'Sekt是使用Riesling以外品種釀造氣泡酒時的專屬名稱，Riesling氣泡酒另有其他稱呼'
+    ],
+    correctIndex: 2,
+    explanation: '德國Sekt涵蓋的品質光譜相當廣，從大量生產、以水槽法為主的一般Sekt，到近年逐漸受到重視、強調單一產區與傳統法釀造的高階Sekt（如部分標示產區名稱的版本），反映德國氣泡酒產業品質分層的發展趨勢。'
+  },
+  {
     id: 'lo5-for-001',
     lo: 5,
     sourceType: 'data-object',
@@ -5700,5 +5880,125 @@ const QUIZ_BANK = [
     ],
     correctIndex: 2,
     explanation: '多層次、多年份酒桶依序疊放並定期部分抽取調配的動態混調陳年系統，常見於雪莉酒，確保成品風格的一致性。'
+  },
+  {
+    id: 'lo5-for-019',
+    lo: 5,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'fortified',
+    question: 'Vintage Port與Tawny Port，兩者的陳年哲學有何根本差異？',
+    options: [
+      'Vintage Port強調瓶中還原式陳年，裝瓶後仍需長期存放；Tawny Port則強調木桶氧化式陳年',
+      '兩者陳年哲學主要差異來自裝瓶時所使用的酒瓶顏色深淺不同，與陳年方式較無直接關聯',
+      'Vintage Port裝瓶前已在木桶中完成長期氧化陳年程序，裝瓶後即可立即開瓶飲用',
+      'Tawny Port強調瓶中還原式長期陳年，Vintage Port則強調木桶氧化式陳年程序'
+    ],
+    correctIndex: 0,
+    explanation: 'Vintage Port僅在最佳年份裝瓶，裝瓶前僅短暫陳年，強調瓶中還原式（reductive）長期陳年，裝瓶後往往還需要數十年才進入適飲期；Tawny Port則長期於木桶中進行氧化式（oxidative）陳年，裝瓶時已達成熟適飲狀態，兩者是波特酒陳年哲學的兩個對照極端。'
+  },
+  {
+    id: 'lo5-for-020',
+    lo: 5,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'fortified',
+    question: '雪莉酒中的「Manzanilla」風格，其產地與風味特色為何？',
+    options: [
+      '產自赫雷斯內陸地區最溫暖乾燥的地塊，風格較一般Fino更為濃郁厚實飽滿',
+      '僅產自濱海小鎮Sanlúcar de Barrameda，風格較一般Fino更為輕盈、帶鹹鮮海洋氣息',
+      'Manzanilla是使用Pedro Ximénez品種釀造而成的極甜型雪莉酒風格名稱',
+      'Manzanilla是雪莉酒經長期陳年超過三十年以上的特級珍藏版本統稱名稱'
+    ],
+    correctIndex: 1,
+    explanation: 'Manzanilla僅產自濱海小鎮Sanlúcar de Barrameda，受當地涼爽濕潤的海洋氣候影響，Flor生長更為旺盛活躍，風格較一般Fino更為輕盈細緻，並常帶有一絲鹹鮮的海洋氣息，是雪莉酒風格光譜中具高度地域辨識度的類型。'
+  },
+  {
+    id: 'lo5-for-021',
+    lo: 5,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'fortified',
+    question: '雪莉酒中的「Amontillado」風格，其陳年過程有何特殊之處？',
+    options: [
+      '早期在Flor覆蓋下如同Fino般陳年，之後Flor逐漸消退死去，轉為氧化式陳年，兼具兩階段陳年特徵',
+      '從裝瓶到完全成熟全程皆在Flor覆蓋下陳年，陳年時間通常較Fino更長久',
+      '從裝瓶開始即完全暴露於空氣中進行氧化陳年，全程未經過任何Flor覆蓋階段',
+      'Amontillado是額外混調白蘭地烈酒調整風味與最終酒精濃度所產生的雪莉酒類別'
+    ],
+    correctIndex: 0,
+    explanation: 'Amontillado的陳年過程分為兩階段：早期如同Fino般在Flor覆蓋下進行生物陳年，之後因酒精濃度提高等因素，Flor逐漸消退死去，轉為與Oloroso類似的氧化式陳年，因此兼具兩階段陳年帶來的複合風味特徵，是雪莉酒陳年方式多元性的重要案例。'
+  },
+  {
+    id: 'lo5-for-022',
+    lo: 5,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'fortified',
+    question: '法國的「Vin Doux Naturel」（天然甜強化酒，簡稱VDN，如Banyuls、Rivesaltes），與波特酒、雪莉酒相比，在強化酒版圖中的定位為何？',
+    options: [
+      'VDN是波特酒在法國市場銷售時使用的行銷用語，並非獨立的強化酒類別',
+      'VDN是雪莉酒的法國生產版本，釀造工藝與西班牙雪莉酒大致相同',
+      '是法國自產的強化甜酒類別，與葡萄牙波特酒、西班牙雪莉酒並列不同國家的強化酒傳統',
+      'VDN是不含酒精的葡萄汁飲料專屬名稱，與強化酒工藝屬不同產品類別'
+    ],
+    correctIndex: 2,
+    explanation: 'Vin Doux Naturel（VDN）是法國自產的強化甜酒類別，如Banyuls（以Grenache為主）、Rivesaltes等，是法國自身的強化酒傳統，與葡萄牙的波特酒、西班牙的雪莉酒同屬歐洲重要強化酒版圖的一部分，但釀造工藝與品種選擇皆有各自特色。'
+  },
+  {
+    id: 'lo5-for-023',
+    lo: 5,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'fortified',
+    question: '義大利西西里島的「Marsala」，作為歐洲重要強化酒之一，其風格與用途特色為何？',
+    options: [
+      '風格僅限於單一極甜型，法規明文禁止用於料理烹調用途',
+      '風格光譜涵蓋不甜到甜型，除了單飲之外也常用於料理烹調（如提拉米蘇、燉肉醬汁）',
+      'Marsala是未經強化程序、酒精濃度與一般靜態酒款相近的餐酒類別名稱',
+      'Marsala是波特酒在義大利市場銷售時使用的地區性別稱'
+    ],
+    correctIndex: 1,
+    explanation: 'Marsala風格光譜涵蓋不甜到甜型，除了作為單飲的強化酒之外，也是義大利料理中常見的烹調用酒（如提拉米蘇、燉肉醬汁），是少數兼具「單飲強化酒」與「料理用酒」雙重角色的強化酒類別，也是歐洲重要的強化酒產區之一。'
+  },
+  {
+    id: 'lo5-for-024',
+    lo: 5,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'fortified',
+    question: '澳洲Rutherglen產區以哪種強化甜酒聞名，其釀造特色為何？',
+    options: [
+      'Rutherglen Sherry，主要比照西班牙雪莉酒的Flor生物陳年工法釀造而成',
+      'Rutherglen Port，主要比照葡萄牙波特酒的釀造工法與品種選擇進行',
+      'Rutherglen Icewine，以自然低溫冷凍濃縮工法釀造而成的強化甜酒類別',
+      'Rutherglen Muscat，以極晚採收、高度濃縮的Muscat品種釀成，經長期木桶氧化陳年'
+    ],
+    correctIndex: 3,
+    explanation: '澳洲Rutherglen產區以Rutherglen Muscat聞名，使用極晚採收、糖分高度濃縮的Muscat品種釀造，經長期木桶氧化陳年，風格極為濃郁厚實、常帶葡萄乾與焦糖調性，是新世界重要的強化甜酒代表產區之一。'
+  },
+  {
+    id: 'lo6-030',
+    lo: 6,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'food-wine-interactions',
+    question: '食物本身的高酸度（如檸檬、油醋醬），與葡萄酒的搭配原則為何？',
+    options: [
+      '建議搭配酸度極低的葡萄酒，透過反差對比襯托食物本身的酸度層次',
+      '建議搭配酸度至少與食物相當、甚至更高的葡萄酒，避免葡萄酒的酸度顯得平淡遲鈍',
+      '食物的酸度與葡萄酒的酸度搭配較無明確關聯，主要仍取決於顏色是否相配',
+      '建議搭配單寧極高的葡萄酒，藉此中和食物本身的酸度感受'
+    ],
+    correctIndex: 1,
+    explanation: '食物本身的高酸度，會讓搭配的葡萄酒相對顯得平淡遲鈍，因此建議搭配酸度至少與食物相當、甚至更高的葡萄酒，才能維持葡萄酒本身的風味結構與清爽感，是WSET官方規格中食物與酒搭配的基本原則之一。'
+  },
+  {
+    id: 'lo6-031',
+    lo: 6,
+    sourceType: 'wset-spec-supplement',
+    sourceId: 'food-wine-interactions',
+    question: '搭配帶有甜味的料理或甜點時，葡萄酒的甜度選擇上，常見的建議原則為何？',
+    options: [
+      '建議選擇酸度極高的乾型葡萄酒，透過強烈的酸甜對比襯托料理本身的甜度層次感',
+      '甜點與葡萄酒之間的甜度搭配較無明確關聯性，主要仍取決於單寧含量是否相配',
+      '建議選擇甜度至少與食物相當、甚至更高的葡萄酒，避免葡萄酒的甜感被食物襯托得過於平淡甚至顯酸',
+      '建議選擇單寧含量極高的葡萄酒，藉此中和料理本身帶來的甜膩感受'
+    ],
+    correctIndex: 2,
+    explanation: '搭配帶甜味的料理或甜點時，若葡萄酒本身甜度低於食物，酒款容易顯得平淡、甚至因對比而顯得偏酸；因此建議選擇甜度至少與食物相當、甚至更高的葡萄酒，才能維持整體搭配的平衡感，是WSET官方規格中食物與酒搭配的基本原則之一。'
   }
 ];
